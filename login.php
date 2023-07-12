@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
 include("conexionRh.php");
 
-    $statement = $conexionRol->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeo WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado'
+    $statement = $conexionRh->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeo WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado'
     );
     $statement->execute(array(
         
@@ -27,7 +27,7 @@ include("conexionRh.php");
     }
 
     
-        $statement4 = $conexionRol->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeojefes WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado');
+        $statement4 = $conexionRh->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeojefes WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado');
         $statement4->execute(array(
             
             ':correo' => $correo,
@@ -43,7 +43,7 @@ include("conexionRh.php");
             
             
     }
-        $sqlAdmin = $conexionRol->prepare('SELECT correoelectronico, claveacceso, rolacceso from usuariosrh where correoelectronico = :correoelectronico  AND claveacceso = :claveacceso and rolacceso = :rolacceso');
+        $sqlAdmin = $conexionRh->prepare('SELECT correoelectronico, claveacceso, rolacceso from usuariosrh where correoelectronico = :correoelectronico  AND claveacceso = :claveacceso and rolacceso = :rolacceso');
 
         $sqlAdmin->execute(array(
             

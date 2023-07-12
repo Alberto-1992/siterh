@@ -85,7 +85,7 @@
                                             <option value="Sin registro">Sin registro</option>
                                             <?php 
 				    require 'conexionRh.php';
-				        $query = $conexionRol->prepare("SELECT * FROM rolacceso");
+				        $query = $conexionRh->prepare("SELECT * FROM rolacceso");
                         $query->execute();
                         $query->setFetchMode(PDO::FETCH_ASSOC);
 				                    while($row = $query->fetch()) { ?>

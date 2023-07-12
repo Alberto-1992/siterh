@@ -8,16 +8,16 @@ if(isset($_POST['Ingresar'])){
 }
     require 'conexionRh.php';
     try{
-        $conexionRol->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conexionRol->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
-        $conexionRol->beginTransaction();
-    $sql = $conexionRol->prepare("SELECT correoelectronico, claveacceso from usuariosrh where correoelectronico = :correoelectronico and claveacceso = :claveacceso limit 1");
+        $conexionRh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexionRh->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
+        $conexionRh->beginTransaction();
+    $sql = $conexionRh->prepare("SELECT correoelectronico, claveacceso from usuariosrh where correoelectronico = :correoelectronico and claveacceso = :claveacceso limit 1");
         $sql->execute(array(
             ':correoelectronico'=>$correo,
             ':claveacceso'=>$password
         ));
 
-        $validatransac = $conexionRol->commit();
+        $validatransac = $conexionRh->commit();
 
         if($validatransac != false) {
             require 'frontend/registroFormUser.php';
