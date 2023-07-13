@@ -524,30 +524,7 @@ p:hover {
 
   color: red;
 }
-#tresmeses {
 
-  background-image: url(../img/tresmeses.jpg);
-  background-repeat: no-repeat;
-  background-size: 65% 75%;
-  background-position: 95% 85%;
-
-}
-#seismeses{
-
-  background-image: url(../img/seismeses.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 80%;
-  background-position: 95% 85%;
-
-}
-#oneyear {
-
-  background-image: url(../img/oneyear.png);
-  background-repeat: no-repeat;
-  background-size: 70% 80%;
-  background-position: 95% 85%;
-
-}
 #datosTrabajador {
 
   background-image: url(../img/datos.png);
@@ -561,175 +538,10 @@ p:hover {
   box-shadow: 10px 5px 5px green;
 }
 
-#cursosDiplomas {
 
-  background-image: url(../img/diploma.jpg);
-  background-repeat: no-repeat;
-  background-size: 20% 40%;
-  background-position: 95% 85%;
-
-}
-
-#solicitudCursos {
-  background-image: url(../img/solicitudCurso.png);
-  background-repeat: no-repeat;
-  background-size: 20% 40%;
-  background-position: 95% 85%;
-
-}
-
-#formatoIncidencia {
-  background-image: url(../img/images.png);
-  background-repeat: no-repeat;
-  background-size: 20% 40%;
-  background-position: 95% 85%;
-
-}
-
-#cardio1 {
-  background-image: url(../img/infartoagudo.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-#cancer {
-  background-image: url(../img/cancer.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-#clinicas {
-  background-image: url(../img/clincas.png);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-#cancer-mama {
-  background-image: url(../img/cancerdemama.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-}
-#cancer-ovario {
-  background-image: url(../img/cancer-ovario.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-#cancer-testiculo {
-  background-image: url(../img/cancer-testiculo.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-#cancer-colon {
-  background-image: url(../img/cancer-colon.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-#cancer-bucal {
-  background-image: url(../img/cancer_bucal.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-#infartoelevacion {
-  background-image: url(../img/INFARTOELEVACION.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-
-#cisfa {
-  background-image: url(../img/cisfa.png);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-
-#infartosinelevacion {
-  background-image: url(../img/sinelevacion.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-
-#esclerosis {
-  background-image: url(../img/multipleesclerosis.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-
-#angina {
-  background-image: url(../img/angina.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-
-#anginaprinzmetal {
-  background-image: url(../img/anginaprinzmetal.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-
-#hemodinamia {
-  background-image: url(../img/hemodimania.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-}
-
-#anginainestable {
-  background-image: url(../img/anginainestable.jpg);
-  background-repeat: no-repeat;
-  background-size: 60% 60%;
-  background-position: 85% 75%;
-
-}
-
-#anginaestable {
-  background-image: url(../img/angina.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 85% 90%;
-
-}
-
-#rehabilitacion {
-  background-image: url(../img/rehabilitar5.jpg);
-  background-repeat: no-repeat;
-  background-size: 60% 60%;
-  background-position: 95% 90%;
-
-}
-
-#anginapostinfarto {
-  background-image: url(../img/postinfarto.jpg);
-  background-repeat: no-repeat;
-  background-size: 70% 70%;
-  background-position: 95% 85%;
-
-}
 
 #evaluacion {
-  background-image: url(../img/compatibilidad3.jpg);
+  background-image: url(../img/A10.png);
   background-repeat: no-repeat;
   background-size: 70% 70%;
   background-position: 95% 90%;
@@ -737,49 +549,17 @@ p:hover {
 }
 
 
-#cardio7 {
-
-  background-image: url(../img/balon2.jpg);
-  background-repeat: no-repeat;
-  background-size: 20% 40%;
-  background-position: 95% 85%;
-
-}
-
 #reclutamiento {
-  background-image: url(../img/reclutameinto.png);
+  background-image: url(../img/reclutamiento.png);
   background-repeat: no-repeat;
   background-size: 70% 70%;
   background-position: 85% 90%;
 
 }
 
-#cardio8 {
-  background-image: url(../img/AMI_scheme.png);
-  background-repeat: no-repeat;
-  background-size: 20% 40%;
-  background-position: 95% 85%;
-
-}
-
-#cardio9 {
-  background-image: url(../img/AMI_scheme.png);
-  background-repeat: no-repeat;
-  background-size: 20% 40%;
-  background-position: 95% 85%;
-
-}
-
-#cardio10 {
-  background-image: url(../img/AMI_scheme.png);
-  background-repeat: no-repeat;
-  background-size: 20% 40%;
-  background-position: 95% 85%;
-
-}
 
 #compatibilidad {
-  background-image: url(../img/compatibilidad4.jpg);
+  background-image: url(../img/comp.jpeg);
   background-repeat: no-repeat;
   background-size: 70% 70%;
   background-position: 85% 90%;

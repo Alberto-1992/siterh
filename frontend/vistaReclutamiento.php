@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-<link rel="stylesheet" href="css/estilosMenu.css">
 <?php
 error_reporting(0);
 date_default_timezone_set('America/Monterrey');
