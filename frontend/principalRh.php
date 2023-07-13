@@ -28,7 +28,7 @@
     <div class="gallery">
 
         <?php
-        if (isset($_SESSION['usuarioAdmin'])) {
+        if (isset($_SESSION['usuarioAdminRh'])) {
                 require 'menu/menuPrincipal.php';
         ?>
                 
@@ -51,10 +51,6 @@
                     
                 </script>
                 
-            <?php
-            if (isset($_SESSION['usuarioAdmin'])) {
-            $usernameSesion = $_SESSION['usuarioAdmin']; ?>
-        
                 <article class="card" id="evaluacion" onclick="evaluacion();">
                     <a href="../rh/principal">
                         <hr id="hr6">
@@ -91,7 +87,6 @@
 
             <?php
             
-        }
     } else if (isset($_SESSION['usuarioDatos'])) {
             require 'menu/menuPersonal.php';
 

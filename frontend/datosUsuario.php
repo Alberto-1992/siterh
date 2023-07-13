@@ -66,63 +66,7 @@ require 'menu/menuPersonal.php';
                 <a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>
             </a>
         </article>
-        <!--
-<div class="cardio4">
-
-<hr id="hr4">
-     <p>ACE</p>
-     <a id="link" href="ace.php" class="btn btn-danger">Ver Información</a>
-
-</div>
-
-<div class="cardio5">
-
-<hr id="hr5">
-     <p>Angina post infarto</p>
-     <a id="link" href="api.php" class="btn btn-primary">Ver Información</a>
- 
-</div>
-
-<div class="cardio6">
-
-    <hr id="hr6">
-     <p>Primer contacto</p>
-    
-       <a id="link" href="seguros.html" class="btn btn-secondary">Ver Información</a>
-  
-</div>
-
-<div class="cardio7">
-
-    <hr id="hr7">
-     <p>Puerta balón</p>
-     <a id="link" href="seguros.html" class="btn btn-dark">Ver Información</a>
-   
-</div>
-
-<div class="cardio8">
-
-    <hr id="hr8">
-     <p>Tiempo isquemia total</p>
-     <a id="link" href="seguros.html" class="btn btn-success">Ver Información</a>
-     
-</div>
-
-<div class="cardio9">
-
-    <hr id="hr9">
-     <p>Tiempo puerta aguda</p>
-     <a id="link" href="seguros.html" class="btn btn-warning">Ver Información</a>
-
-</div>
-
-<div class="cardio10">
-
-    <hr id="hr10">
-     <p>Estrategia ACTP</p>
-     <a id="link" href="seguros.html" class="btn btn-danger">Ver Información</a>
-</div> 
--->
+        
     </div>
 
     </div>

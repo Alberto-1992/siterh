@@ -48,7 +48,7 @@ require 'conexionRh.php';
 }
 </script>
 
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="editardatospersonales();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="editardatospersonales();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
 
 
     <div class="containerr2">Datos personales</div>
@@ -100,7 +100,7 @@ require 'conexionRh.php';
 <div id="editadatospersonales"></div>
 
 
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="editarlaboratoriosartritis();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="editarlaboratoriosartritis();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Estudios medio superior</div>
 
     <tr>
@@ -137,7 +137,7 @@ require 'conexionRh.php';
 <div id="editarlaboratoriosartritis"></div>
 <!--FINALIZA SECCIÓN DE LABORATORIOS-->
 <!-- INCIA SECCIÓN USG HEPÁTICO-->
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="artritisusghepatic();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="artritisusghepatic();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Estudios nivel superior</div>
 
     <tr>
@@ -173,7 +173,7 @@ require 'conexionRh.php';
 </table>
 <div id="editarusghepaticoartritis"></div>
 
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Estudios nivel maetria</div>
     <tr>
         <th id="th">Nombre de la formación:</th>
@@ -206,7 +206,7 @@ require 'conexionRh.php';
     
 </table>
 <div id="editartratameintoartritis"></div>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Estudios nivel segunda maetria</div>
     <tr>
         <th id="th">Nombre de la formación:</th>
@@ -238,7 +238,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Posgrado/Especialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
@@ -274,7 +274,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Nivel Doctorado/Subespecialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
@@ -310,7 +310,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Otros estudios/Alta especialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
@@ -342,7 +342,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Otros estudios 1</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
@@ -366,7 +366,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Otros estudios 2</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
@@ -390,7 +390,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Servicio social</div>
     <tr>
         <th id="th">Nombre de la dependencia donde se realizó:</th>
@@ -414,8 +414,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
-    <div class="containerr3">Practicas profesionales</div>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <tr>
         <th id="th">Nombre de la dependencia donde se realizó:</th>
         <td id="td"><?php echo $dataRegistro['nombrepracticas']?></td>
@@ -438,7 +437,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Certificación</div>
     <tr>
         <th id="th">Nombre de la institución educativa:</th>
@@ -462,7 +461,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Segunda certificación</div>
     <tr>
         <th id="th">Nombre de la institución educativa:</th>
@@ -486,7 +485,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Actualización academica/primer curso</div>
     <tr>
         <th id="th">Nombre del curso:</th>
@@ -513,7 +512,7 @@ require 'conexionRh.php';
         <td id="td"><?php  echo $dataRegistro['nacionalprimero']?></td>
     </tr>
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Segundo curso</div>
     <tr>
         <th id="th">Nombre del curso:</th>
@@ -540,7 +539,7 @@ require 'conexionRh.php';
         <td id="td"><?php  echo $dataRegistro['nacionalsegundo']?></td>
     </tr>
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Tercer curso</div>
     <tr>
         <th id="th">Nombre del curso:</th>
@@ -567,7 +566,7 @@ require 'conexionRh.php';
         <td id="td"><?php  echo $dataRegistro['nacionaltercero']?></td>
     </tr>
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Experiencia laboral, sector público</div>
     <tr>
         <th id="th">Secretaría de Estado:</th>
@@ -618,7 +617,7 @@ require 'conexionRh.php';
         <td id="td"><?php  echo $dataRegistro['fechaterminouno']?></td>
     </tr>
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Experiencia laboral, sector público-segundo</div>
     <tr>
         <th id="th">Secretaría de Estado:</th>
@@ -669,7 +668,7 @@ require 'conexionRh.php';
         <td id="td"><?php  echo $dataRegistro['fechaterminodos']?></td>
     </tr>
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Experiencia laboral, sector público-tercero</div>
     <tr>
         <th id="th">Secretaría de Estado:</th>
@@ -720,7 +719,7 @@ require 'conexionRh.php';
         <td id="td"><?php  echo $dataRegistro['fechaterminotres']?></td>
     </tr>
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Experiencia laboral, sector privado</div>
     <tr>
         <th id="th">Nombre de la empresa:</th>
@@ -764,7 +763,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Experiencia laboral, sector privado-segundo</div>
     <tr>
         <th id="th">Nombre de la empresa:</th>
@@ -808,7 +807,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Experiencia laboral, sector privado-tercero</div>
     <tr>
         <th id="th">Nombre de la empresa:</th>
@@ -852,7 +851,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Producción cientifica (Investigación, última publicación)</div>
     <tr>
         <th id="th">Nombre del artículo o publicación:</th>
@@ -872,7 +871,7 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Idioma</div>
     <tr>
         <th id="th">Idioma:</th>
@@ -892,14 +891,14 @@ require 'conexionRh.php';
     </tr>
     
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Otras habilidades</div>
     <tr>
         <th id="th">Otras habilidades:</th>
         <td id="td"><?php echo $dataRegistro['otrashabilidades']?></td>
     </tr>
 </table>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" <?php if (isset($_SESSION['usuarioAdmin'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }else if(isset($_SESSION['artritis'])) { if($dataRegistro['editopaciente'] == 1 ) { ?> onclick="actualizaTratamiento();" <?php } }?>>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Manifiesto</div>
     <tr>
         <th id="th">Familiares en el HRAEI:</th>

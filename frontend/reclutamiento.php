@@ -25,7 +25,7 @@
         <?php 
     switch(true) {
 
-        case isset($_SESSION['usuarioAdmin']):
+        case isset($_SESSION['usuarioAdminRh']):
             require 'menu/menuReclutamiento.php';
         break;
         case isset($_SESSION['usuarioJefe']):

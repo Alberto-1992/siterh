@@ -41,14 +41,14 @@ nav.main-menu.expanded {
   left: 0;
   width: 55px;
   overflow: hidden;
-  -webkit-transition: width .05s linear;
+  --webkit-transition: width .05s linear;
   transition: width .05s linear;
   --webkit-transform: translateZ(0) scale(1, 1);
   z-index: 1000;
 }
 
 .main-menu>ul {
-  margin: 7px 0;
+  margin: 0px 0;
 }
 
 .main-menu li {
@@ -67,7 +67,7 @@ nav.main-menu.expanded {
   font-size: 14px;
   text-decoration: none;
   --webkit-transform: translateZ(0) scale(1, 1);
-  -webkit-transition: all .1s linear;
+  --webkit-transition: all .1s linear;
   transition: all .1s linear;
 }
 
@@ -294,17 +294,6 @@ hr {
   margin-top: 0px;
   padding: 5px;
 }
-
-.autoheightgraficos {
-  width: 100%;
-  height: 100%;
-  background: white;
-  color: black;
-  display: flex;
-
-}
-
-
 
 #tabla_resultadobus {
   width: 35rem;

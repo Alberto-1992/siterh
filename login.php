@@ -1,5 +1,5 @@
 <?php session_start();
-//error_reporting(0);
+error_reporting(0);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
@@ -55,7 +55,7 @@ include("conexionRh.php");
         $rowAdmin = $sqlAdmin->fetch();
         
             if ($rowAdmin != false){
-                $_SESSION['usuarioAdmin'] = $correo;
+                $_SESSION['usuarioAdminRh'] = $correo;
                     header('location: principalRh');
             
     }

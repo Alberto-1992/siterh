@@ -1,13 +1,11 @@
 <?php session_start();
     if(isset($_SESSION['usuarioDatos'])) {
-        header('location: principal'); 
+        header('location: principalRh'); 
         
-    }elseif(isset($_SESSION['usuarioAdmin'])){
-        header('location: principal');
+    }elseif(isset($_SESSION['usuarioAdminRh'])){
+        header('location: principalRh');
     }elseif(isset($_SESSION['usuarioJefe'])){
-        header('location: principal');
-    }elseif(isset($_SESSION['usuarioMedico'])){
-        header('location: principal');
+        header('location: principalRh');
     }else{
     header('location: login');
     }

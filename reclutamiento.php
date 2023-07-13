@@ -1,8 +1,8 @@
 <?php session_start();
     switch(true) {
 
-        case isset($_SESSION['usuarioAdmin']):
-            $usernameSesion = $_SESSION['usuarioAdmin']; 
+        case isset($_SESSION['usuarioAdminRh']):
+            $usernameSesion = $_SESSION['usuarioAdminRh']; 
             require 'frontend/reclutamiento.php';
         
         break;

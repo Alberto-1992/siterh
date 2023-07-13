@@ -9,6 +9,9 @@
 
     <nav class="main-menu">
         <ul>
+        <?php
+            if (isset($_SESSION['usuarioAdminRh'])) {
+            $usernameSesion = $_SESSION['usuarioAdminRh']; ?>
             <li>
                 <a href="principalRh">
                     <i class="fa fa-hospital-o fa-2x" id="icon-color"></i>
@@ -17,10 +20,6 @@
                     </span>
                 </a>
             </li>
-            <hr>
-            <?php
-            if (isset($_SESSION['usuarioAdmin'])) {
-            $usernameSesion = $_SESSION['usuarioAdmin']; ?>
             <hr>
             <li>
                 <a href="../rh/principal">
@@ -42,6 +41,7 @@
 
             </li>
             <hr>
+            
             <li>
                 <a href="../compatibilidad/principal">
                     <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -52,6 +52,17 @@
 
             </li>
             <hr>
+            <?php 
+            error_reporting(0);
+                require 'conexionRh.php';
+                    $query = $conexionRh->prepare("SELECT correo from usuarioslogeo where correo = :correo");
+                        $query->execute(array(
+                            ':correo'=>$usernameSesion
+                        ));
+                        $validar = $query->fetch();
+                    $validacorreo = $validar['correo'];
+                    if($validacorreo == 'beto_1866@outlook.com' or $validacorreo == 'isabella291216@gmail.com' or $validacorreo == 'hfco.rosas@gmail.com'){
+                ?>
             <li>
                 <a href="validar" target="_blank">
                     <i class="fa fa-id-card fa-2x" id="icon-color"></i>
@@ -63,8 +74,35 @@
             </li>
             <hr>
             <?php
+
+            }else{  
+            require 'conexionRh.php';
+            $query = $conexionRh->prepare("SELECT correo from usuarioslogeojefes where correo = :correo");
+                        $query->execute(array(
+                            ':correo'=>$usernameSesion
+                        ));
+                        $validar = $query->fetch();
+                    $validacorreo = $validar['correo'];
+                    if($validacorreo == 'beto_1866@outlook.com' or $validacorreo == 'isabella291216@gmail.com' or $validacorreo == 'hfco.rosas@gmail.com'){
+                    ?>
+                    <hr>
+                    <li>
+                <a href="validar" target="_blank">
+                    <i class="fa fa-id-card fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Registrar usuario
+                    </span>
+                </a>
+
+            </li>
+            <?php
+                    }
+                }
+                    ?>
+            <hr>
+<?php
             }
-    ?>
+            ?>
         </ul>
 
         <ul class="logout">
