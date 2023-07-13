@@ -18,11 +18,13 @@ error_reporting(0);
     $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales");
     $total_registro  = mysqli_num_rows($sqlQueryComentarios);
 
-    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.sexo FROM datospersonales order by datospersonales.id_datopersonal DESC LIMIT 23 ");
+    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico FROM datospersonales order by datospersonales.id_datopersonal DESC LIMIT 23 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
-	$query=$conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.sexo FROM datospersonales WHERE
+	$query=$conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico FROM datospersonales WHERE
+        datospersonales.nombre LIKE '%$q%' OR
+        datospersonales.correoelectronico LIKE '%$q%' OR
         datospersonales.curp LIKE '%$q%' OR
 		datospersonales.nombre LIKE '%$q%' OR
 		datospersonales.appaterno LIKE '%$q%' OR
@@ -44,7 +46,7 @@ error_reporting(0);
         <div class="item-comentario" id="<?php echo $dataRegistro['id_datopersonal']; ?>" >
     
                 <div id='<?php echo $dataRegistro['id_datopersonal']; ?>' class='ver-info' >
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['sexo'].'</strong>'.'<br>';
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>';
                     
                     ?>
                     

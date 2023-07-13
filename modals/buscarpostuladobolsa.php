@@ -3,13 +3,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="css/estilosMenu.css" rel="stylesheet">
     <script src="js/enviacurp.js"></script>
-    <script src="js/scriptsSeguimientoBucal.js"></script>
     <div class="modal-dialog modal-lg">
 
 
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header" id="cabeceraModalBucal">
+            <div class="modal-header" style="background-color: brown;">
                 
                 <button type="button" class="close" data-bs-dismiss="modal" onclick="limpiarformularioseguimiento();">&times;</button>
 
