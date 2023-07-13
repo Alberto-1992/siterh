@@ -21,7 +21,7 @@
     <div class="box1">
         <header class="headerinfarto">
         
-            <span id="cabecera">Infarto.</span>
+            <span id="cabecera">Reclutamiento y selección.</span>
 
         </header>
         <?php 

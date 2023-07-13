@@ -11,21 +11,22 @@
     }
     
     </style>
+    <div id="lista-comentarios">
 <?php 
 sleep(0.5);
 
 $utimoId = $_POST['utimoId'];
 $limite  = 10;
 require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales");
-    $total_registro       = mysqli_num_rows($sqlQueryComentarios);
+    $sqlQueryComentarios  = $conexion2->query("SELECT count(*) as id_datopersonal FROM datospersonales");
+    $total_registro       = mysqli_fetch_assoc($sqlQueryComentarios);
 
-    $sqlComentLimit= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.sexo FROM datospersonales WHERE datospersonales.id_datopersonal <= '".$utimoId."' ORDER BY datospersonales.id_datopersonal DESC LIMIT ".$limite." ");
-    $sqlComentLimit->execute();
+    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.sexo FROM datospersonales WHERE datospersonales.id_datopersonal <= '".$utimoId."' ORDER BY datospersonales.id_datopersonal DESC LIMIT ".$limite." ");
+    $query->execute();
 	?>
 
     <?php
-        while($dataRegistro= $sqlComentLimit->fetch())
+        while($dataRegistro= $query->fetch())
         { ?>
 
     <div class="item-comentario" id="<?php echo $dataRegistro['id_datopersonal']; ?>">
@@ -40,6 +41,7 @@ require 'conexionRh.php';
 <?php 
 
     }?>
+    </div>
 <script>
 $(function() {
 
@@ -65,6 +67,8 @@ $(function() {
 
     });
 });
+</script>
+<script>
 $(document).ready(function() {
     $('.item-comentario').on('click', '.ver-info', function() {
 

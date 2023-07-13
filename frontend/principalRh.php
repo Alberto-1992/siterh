@@ -128,13 +128,7 @@
             <?php
                 }
                 ?>
-                <article class="card" id="reclutamiento" onclick="reclutamiento();">
-                    <a href="reclutamiento">
-                        <hr id="hr7">
-                        <p>Reclutamiento y Selección</p>
-                        <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
-                    </a>
-                </article>
+                
                 <?php
             }
 
