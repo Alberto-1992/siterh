@@ -1,24 +1,15 @@
 <?php
 session_start();
 require_once '../conexionRh.php'; 
-
-//  variables de formulario 
-
-
-
 if(isset($_POST['exportar']))
 {    
-    $fechainicio = $_POST['fechainicio']; 
+$fechainicio = $_POST['fechainicio']; 
 $fechafinal = $_POST['fechafinal']; 
 $profesion = $_POST['palabraclave'];
     // nombre del archivo 
     header('Content-Type:text/csv; charset = latin1'); 
-    header('Content-Disposition: attachment; filename="postulados.csv"'); 
-
-    //salida del archivo function de fopen w de write  
+    header('Content-Disposition: attachment; filename="postulados.csv"');  
     $salida = fopen('php://output', 'W'); 
-
-    //columnas del archivo , llamar a la funcion fputcsv
     fputcsv($salida, array(
         'Nombre',
         'Apellido paterno',

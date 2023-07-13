@@ -522,16 +522,29 @@ p:hover {
 
 
 #reclutamiento {
-  background-image: url(../img/reclutamiento.png);
+  background-image: url(../img/reclutamientoyseleccion.jpg);
   background-repeat: no-repeat;
   background-size: 70% 70%;
   background-position: 85% 90%;
 
 }
 
-
 #compatibilidad {
   background-image: url(../img/comp.jpeg);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: 85% 90%;
+
+}
+#contratacion {
+  background-image: url(../img/contratacion.jpg);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: 85% 90%;
+
+}
+#relacioneslaborales {
+  background-image: url(../img/relacioneslaborales.png);
   background-repeat: no-repeat;
   background-size: 70% 70%;
   background-position: 85% 90%;

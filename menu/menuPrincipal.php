@@ -52,6 +52,24 @@
 
             </li>
             <hr>
+            <li>
+                <a href="../contratacion/principal">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <span class="nav-text">
+                        Contratación
+                    </span>
+                </a>
+            </li>
+            <hr>
+            <li>
+                <a href="../relacioneslaborales/principal">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <span class="nav-text">
+                        Relaciones laborales
+                    </span>
+                </a>
+            </li>
+            <hr>
             <?php 
             error_reporting(0);
                 require 'conexionRh.php';

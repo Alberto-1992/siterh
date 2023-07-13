@@ -13,20 +13,17 @@
 
 <body>
 
-    <style>
+<style>
         a {
             text-decoration: none;
         }
-    </style>
+</style>
 
-    <header class="header">
-
+<header class="header">
         <span id="cabecera">R.H</span>
+</header>
 
-    </header>
-
-    <div class="gallery">
-
+<div class="gallery">
         <?php
         if (isset($_SESSION['usuarioAdminRh'])) {
                 require 'menu/menuPrincipal.php';
@@ -46,6 +43,12 @@
                 
                     function estructura() {
                         window.location.href='../rh/admin';
+                    }
+                    function contratacion() {
+                        window.location.href='../contratacion/principal';
+                    }
+                    function relacioneslaborales() {
+                        window.location.href='../laborales/principal';
                     }
                 
                     
@@ -74,7 +77,20 @@
                         <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                     </a>
                 </article>
-
+                <article class="card" id="contratacion" onclick="contratacion();">
+                    <a href="../contratacion/principal">
+                        <hr id="hr7">
+                        <p>Contratación</p>
+                        <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                    </a>
+                </article>
+                <article class="card" id="relacioneslaborales" onclick="relacioneslaborales();">
+                    <a href="../relacioneslaborales/principal">
+                        <hr id="hrestructura-organizacional">
+                        <p>Relaciones laborales</p>
+                        <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
+                    </a>
+                </article>
                 <article class="card" id="estructura-organizacional" onclick="estructura();">
                     <a href="../rh/admin">
                         <hr id="hrestructura-organizacional">
@@ -82,9 +98,7 @@
                         <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
                     </a>
                 </article>
-
-
-
+                
             <?php
             
     } else if (isset($_SESSION['usuarioDatos'])) {
@@ -181,7 +195,6 @@
         }
             ?>
 
-    </div>
-</body>
-
+        </div>
+    </body>
 </html>
