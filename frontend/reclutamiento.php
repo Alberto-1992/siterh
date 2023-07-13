@@ -31,6 +31,9 @@
         case isset($_SESSION['usuarioJefe']):
             require 'menu/menuReclutamiento.php';
         break;
+        case isset($_SESSION['usuarioDatos']):
+            require 'menu/menuReclutamiento.php';
+        break;
         default:
             require 'close_sesion.php';
         }

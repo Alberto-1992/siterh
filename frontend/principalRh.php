@@ -121,11 +121,23 @@
                     </article>
                     
             <?php
-                }
+                }else if($admin == 'daniel.hernanriv@gmail.com'){
                 ?>
-                
+                <script>
+                    function reclutamiento() {
+                        window.location.href='reclutamiento';
+                    }
+                </script>
+                <article class="card" id="reclutamiento" onclick="reclutamiento();">
+                    <a href="reclutamiento">
+                        <hr id="hr7">
+                        <p>Reclutamiento y Selección</p>
+                        <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
+                    </a>
+                </article>
                 <?php
             }
+        }
 
         } else if (isset($_SESSION['usuarioJefe'])) {
             require 'menu/menuPersonal.php';
