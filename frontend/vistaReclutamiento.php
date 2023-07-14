@@ -476,6 +476,7 @@ function cancelaracceso() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
+<div class="containerr3">Practicas profesionales</div>
     <tr>
         <th id="th">Nombre de la dependencia donde se realizó:</th>
         <td id="td"><?php echo $dataRegistro['nombrepracticas']?></td>
