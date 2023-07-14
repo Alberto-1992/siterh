@@ -3,7 +3,7 @@
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh';
+            require 'conexionRh.php';
                 $query = $conexionRh->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
                     $query->execute(array(
                         ':correoelectronico'=>$usernameSesion
@@ -13,7 +13,7 @@
                     if($valida == $usernameSesion){
             require 'frontend/principalRh.php';
                     }else{
-                        echo "<script>alert('No tienes acceso, no insitas');
+                        echo "<script>alert('No tienes acceso, no insistas');
                         window.history.back();</script>";
                     }
         break;
