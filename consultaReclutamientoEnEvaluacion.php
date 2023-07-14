@@ -15,20 +15,20 @@
 <?php 
 error_reporting(0);
 	require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 0");
+    $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 1");
     $total_registro  = mysqli_num_rows($sqlQueryComentarios);
 
-    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder FROM datospersonales where acceder = 0 order by datospersonales.id_datopersonal DESC LIMIT 23 ");
+    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder, datospersonales.confirmarasistencia FROM datospersonales where acceder = 1 order by datospersonales.id_datopersonal DESC LIMIT 23 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
-	$query=$conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder FROM datospersonales WHERE
-        datospersonales.nombre LIKE '%$q%' and acceder = 0 OR
-        datospersonales.correoelectronico LIKE '%$q%' and acceder = 0 OR
-        datospersonales.curp LIKE '%$q%' and acceder = 0 OR
-		datospersonales.nombre LIKE '%$q%' and acceder = 0 OR
-		datospersonales.appaterno LIKE '%$q%' and acceder = 0 OR
-		datospersonales.apmaterno LIKE '%$q%' and acceder = 0 group by datospersonales.id_datopersonal");
+	$query=$conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder, datospersonales.confirmarasistencia FROM datospersonales WHERE
+        datospersonales.nombre LIKE '%$q%' and acceder = 1 OR
+        datospersonales.correoelectronico LIKE '%$q%' and acceder = 1 OR
+        datospersonales.curp LIKE '%$q%' and acceder = 1 OR
+		datospersonales.nombre LIKE '%$q%' and acceder = 1 OR
+		datospersonales.appaterno LIKE '%$q%' and acceder = 1 OR
+		datospersonales.apmaterno LIKE '%$q%' and acceder = 1 group by datospersonales.id_datopersonal");
 }
         ?>
 <input type="submit" id="totalregistro" value="<?php echo $total_registro; ?>">
@@ -43,14 +43,18 @@ error_reporting(0);
         while($dataRegistro= $query->fetch())
         { 
             $acceso = $dataRegistro['acceder'];
+            $confirmar = $dataRegistro['confirmarasistencia'];
             ?>
         
         <div class="item-comentario" id="<?php echo $dataRegistro['id_datopersonal']; ?>" >
     
                 <div id='<?php echo $dataRegistro['id_datopersonal']; ?>' class='ver-info' >
                     <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
-                        ?>
-                    
+                        if($acceso == 1){ 
+                        ?><input type="submit" value="En envaluación" style="padding: 1px; cursor-pointer: none; background: yellow; border: none; color: black; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
+                        <?php 
+                            if($confirmar == 1){ ?>
+                            <input type="submit" value="Asistio" style="padding: 1px; cursor-pointer: none; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
                     </div> 
                 <hr>
             </div>
@@ -70,7 +74,7 @@ error_reporting(0);
 <?php
 
 require_once 'conexionRh.php';
-$sql = $conexionRol->query("SELECT id_datopersonal from datospersonales order by id_datopersonal desc limit 1");
+$sql = $conexionRol->query("SELECT id_datopersonal from datospersonales where acceder = 1 order by id_datopersonal desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 
@@ -87,7 +91,7 @@ $(function() {
         };
         $.ajax({
             type: "POST",
-            url: "consultaReclutamientoBusqueda.php",
+            url: "consultaReclutamientoBusquedaEnEvaluacion.php",
             data: ob,
             beforeSend: function() {
 
@@ -113,7 +117,7 @@ $('.item-comentario').on('click', '.ver-info', function() {
 
     $.ajax({
         type: "POST",
-        url: "consultaReclutamientoBusqueda.php",
+        url: "consultaReclutamientoBusquedaEnEvaluacion.php",
         data: ob,
         beforeSend: function() {
 
@@ -173,7 +177,7 @@ function pageScroll() {
                 let datos = {utimoId:utimoId, totalregistro:totalregistro};
                 $("#tabla_resultadobus").off("scroll");
                 $.ajax({
-                    url: 'obteniendoMasDatosReclutamiento.php',
+                    url: 'obteniendoMasDatosReclutamientoEnEvaluacion.php',
                     data: datos,
                     type: "POST",
                     beforeSend: function() {

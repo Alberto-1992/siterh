@@ -23,9 +23,33 @@
         <ul>
             <li>
                 <a href="#" onclick="buscarpostulados();">
-                    <i class="fa fa-user-md fa-2x" id="icon-color"></i>
+                    <i class="fa fa-search fa-2x" id="icon-color"></i>
                     <span class="nav-text">
                         Buscar postulados
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+            <hr>
+            <ul>
+            <li>
+                <a href="reclutamiento">
+                    <i class="fa fa-user-o fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Postulados
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+        <ul>
+            <hr>
+            <li>
+                <a href="enEvaluacion">
+                    <i class="fa fa-id-card fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        En evaluación
                     </span>
                 </a>
 

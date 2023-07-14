@@ -18,23 +18,30 @@ sleep(0.5);
 $utimoId = $_POST['utimoId'];
 $limite  = 10;
 require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexion2->query("SELECT count(*) as id_datopersonal FROM datospersonales where acceder = 0");
+    $sqlQueryComentarios  = $conexion2->query("SELECT count(*) as id_datopersonal FROM datospersonales where acceder = 1");
     $total_registro       = mysqli_fetch_assoc($sqlQueryComentarios);
 
-    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico FROM datospersonales WHERE acceder = 0 and datospersonales.id_datopersonal <= '".$utimoId."' ORDER BY datospersonales.id_datopersonal DESC LIMIT ".$limite." ");
+    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder, datospersonales.confirmarasistencia FROM datospersonales WHERE acceder = 1 and datospersonales.id_datopersonal <= '".$utimoId."' ORDER BY datospersonales.id_datopersonal DESC LIMIT ".$limite." ");
     $query->execute();
 	?>
 
     <?php
         while($dataRegistro= $query->fetch())
-        { ?>
+        { 
+            $acceso = $dataRegistro['acceder'];
+            $confirmar = $dataRegistro['confirmarasistencia'];
+            ?>
 
     <div class="item-comentario" id="<?php echo $dataRegistro['id_datopersonal']; ?>">
 
         
             <div id="<?php echo $dataRegistro['id_datopersonal'] ?>" class="ver-info" style="cursor: pointer;">
-                <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>';
-                    ?>
+                <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
+                    if($acceso == 1){ 
+                        ?><input type="submit" value="En envaluación" style="padding: 1px; cursor-pointer: none; background: yellow; border: none; color: black; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
+                    <?php 
+                            if($confirmar == 1){ ?>
+                            <input type="submit" value="Asistio" style="padding: 1px; cursor-pointer: none; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
         </div> 
         <hr>
     </div>
@@ -53,7 +60,7 @@ $(function() {
         };
         $.ajax({
             type: "POST",
-            url: "consultaReclutamientoBusqueda.php",
+            url: "consultaReclutamientoBusquedaEnEvaluacion.php",
             data: ob,
             beforeSend: function() {
 

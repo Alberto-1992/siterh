@@ -6,6 +6,7 @@ if(isset($_POST['exportar']))
 $fechainicio = $_POST['fechainicio']; 
 $fechafinal = $_POST['fechafinal']; 
 $profesion = $_POST['palabraclave'];
+$evaluacion = $_POST['evaluacion'];
     // nombre del archivo 
     header('Content-Type:text/csv; charset = latin1'); 
     header('Content-Disposition: attachment; filename="postulados.csv"');  
@@ -32,7 +33,7 @@ $profesion = $_POST['palabraclave'];
     )); 
 
     $QueryConsulta= $conexion2->query("SELECT *, estudiosmediosup.* from datospersonales inner join estudiosmediosup on estudiosmediosup.id_postulado = datospersonales.id_datopersonal
-    where datospersonales.profesion like '%$profesion%' and datospersonales.fechainicio between '$fechainicio' and '$fechafinal'"); 
+    where datospersonales.profesion like '%$profesion%' and datospersonales.fechainicio between '$fechainicio' and '$fechafinal' and acceder = $evaluacion"); 
     while($filaR=$QueryConsulta->fetch_assoc())
     fputcsv($salida, array(
         mb_convert_encoding($filaR['nombre'], 'ISO-8859-1', 'UTF-8'),

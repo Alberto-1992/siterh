@@ -3,7 +3,7 @@ error_reporting(0);
 require_once 'clases/conexion.php';
 $conexion = new Conexion();
 $id = $_POST['id'];
-$query = $conexion->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.acceder, datospersonales.puesto, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
+$query = $conexion->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.acceder, datospersonales.confirmarasistencia, datospersonales.puesto, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
 datospersonales.delegacion, datospersonales.localidad, datospersonales.colonia, datospersonales.calle, datospersonales.numexterior, datospersonales.numinterior, datospersonales.codigopostal, 
 datospersonales.fechanacimiento, datospersonales.entidadnacimiento, datospersonales.rfc, datospersonales.sexo, datospersonales.cartanaturalizacion, datospersonales.telefonocasa, datospersonales.telefonocelular, 
 datospersonales.otrotelefono, datospersonales.correoelectronico, estudiosmediosup.nombreformacionmedia, estudiosmediosup.nombremediasuperior, estudiosmediosup.fechainicio, estudiosmediosup.fechatermino, 
@@ -63,7 +63,7 @@ $query->execute(array(
 ));
 $dataRegistro= $query->fetch();
 if($dataRegistro != false){
-    require 'frontend/vistaReclutamiento.php';
+    require 'frontend/vistaReclutamientoEnEvaluacion.php';
 }else{
 
 }

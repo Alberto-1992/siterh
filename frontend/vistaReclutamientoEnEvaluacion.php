@@ -10,14 +10,26 @@ require 'conexionRh.php';
 <input type="hidden" id="idpersonal" value="<?php echo $dataRegistro['id_principal']; ?>">
 <input type="hidden" id="nombrecandidato" value="<?php echo $dataRegistro['nombre']; ?>">
 <input type="hidden" id="evaluar" value="1">
-<input type="hidden" id="cancerlarevaluacion" value="0">
+<input type="hidden" id="cancelarevaluacion" value="0">
 <div class="containerr">
             
             <input type="submit" onclick="eliminarRegistro();" id="eliminarregistro" value="Eliminar registro">
             <?php
-                if($dataRegistro['acceder'] == 0){ ?>
-            <input type="submit" onclick="asignarAcceso();" id="daracceso" value="Evaluar">
+                if($dataRegistro['acceder'] == 1){ ?>
+            
+            <input type="submit" onclick="cancelaracceso();" id="daracceso" value="Cancerlar evaluación">
+            <?php
+                }
+            ?>
             <?php 
+            if($dataRegistro['confirmarasistencia'] == 0){ ?>
+            <input type="submit" onclick="confirmarasistencia();" id="daracceso" value="Confirmar asistencia">
+                    <?php
+                }else{
+                ?>
+                <input type="submit" onclick="cancelarasistencia();" id="cancelarasistencia" value="Cancelar asistencia">
+
+                <?php
                 }
                 ?>
                 </div>
@@ -39,7 +51,7 @@ require 'conexionRh.php';
 
             success: function (response) {
                 $("#mensaje").html(response);
-                $("#tabla_resultadobus").load('consultaReclutamiento.php');
+                $("#tabla_resultadobus").load('consultaReclutamientoEnEvaluacion.php');
                 
 
             }
@@ -53,33 +65,7 @@ require 'conexionRh.php';
         });
     }
 }
-function asignarAcceso() {
-    var id = $("#idpersonal").val();
-    var actualiza = $("#evaluar").val();
-    var mensaje = confirm("Se le dara acceso al sistemas, desea continuar?"); 
-    let parametros = { id: id, actualiza:actualiza}
-    if (mensaje == true) {
-        $.ajax({
-            data: parametros,
-            url: 'aplicacion/darAcceso.php',
-            type: 'post',
 
-            success: function (response) {
-                $("#mensaje").html(response);
-                $("#tabla_resultadobus").load('consultaReclutamiento.php');
-                
-
-            }
-        });
-    } else {
-        swal({
-            title: 'Cancelado!',
-            text: 'Proceso cancelado',
-            icon: 'warning',
-
-        });
-    }
-}
 function cancelaracceso() {
     var id = $("#idpersonal").val();
     var actualiza = $("#cancelarevaluacion").val();
@@ -93,7 +79,61 @@ function cancelaracceso() {
 
             success: function (response) {
                 $("#mensaje").html(response);
-                $("#tabla_resultadobus").load('consultaReclutamiento.php');
+                $("#tabla_resultadobus").load('consultaReclutamientoEnEvaluacion.php');
+                
+
+            }
+        });
+    } else {
+        swal({
+            title: 'Cancelado!',
+            text: 'Proceso cancelado',
+            icon: 'warning',
+
+        });
+    }
+}
+function confirmarasistencia() {
+    var id = $("#idpersonal").val();
+    var confirmar = $("#evaluar").val();
+    var mensaje = confirm("Confirmar su asistencia?"); 
+    let parametros = { id: id, confirmar:confirmar }
+    if (mensaje == true) {
+        $.ajax({
+            data: parametros,
+            url: 'aplicacion/confirmarAsistencia.php',
+            type: 'post',
+
+            success: function (response) {
+                $("#mensaje").html(response);
+                $("#tabla_resultadobus").load('consultaReclutamientoEnEvaluacion.php');
+                
+
+            }
+        });
+    } else {
+        swal({
+            title: 'Cancelado!',
+            text: 'Proceso cancelado',
+            icon: 'warning',
+
+        });
+    }
+}
+function cancelarasistencia() {
+    var id = $("#idpersonal").val();
+    var confirmar = $("#cancerlarevaluacion").val();
+    var mensaje = confirm("Cancelar su asistencia?"); 
+    let parametros = { id: id, confirmar:confirmar }
+    if (mensaje == true) {
+        $.ajax({
+            data: parametros,
+            url: 'aplicacion/confirmarAsistencia.php',
+            type: 'post',
+
+            success: function (response) {
+                $("#mensaje").html(response);
+                $("#tabla_resultadobus").load('consultaReclutamientoEnEvaluacion.php');
                 
 
             }

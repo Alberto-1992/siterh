@@ -465,3 +465,19 @@ tr {
   padding: 4px;
   margin-left: 5px;
 }
+#daracceso {
+  color: white;
+  background: rgb(75, 186, 38);
+  border: none;
+  font-size: 10px;
+  padding: 4px;
+  margin-left: 5px;
+}
+#cancelarasistencia {
+  color: white;
+  background: rgb(237, 179, 45);
+  border: none;
+  font-size: 10px;
+  padding: 4px;
+  margin-left: 5px;
+}

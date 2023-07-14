@@ -23,7 +23,7 @@
             <hr>
             <li>
                 <a href="../rh/principal">
-                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <i class="fa fa-book" aria-hidden="true"></i>
                     <span class="nav-text">
                         Evaluacion del desempeño
                     </span>
@@ -44,7 +44,7 @@
             
             <li>
                 <a href="../compatibilidad/principal">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
                     <span class="nav-text">
                         Compatiblidad laboral
                     </span>
@@ -54,7 +54,7 @@
             <hr>
             <li>
                 <a href="../contratacion/principal">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     <span class="nav-text">
                         Contratación
                     </span>
