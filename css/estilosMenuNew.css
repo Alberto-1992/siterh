@@ -499,18 +499,12 @@ p:hover {
 
 #datosTrabajador {
 
-  background-image: url(../img/datos.png);
+  background-image: url(../img/datospersonales.png);
   background-repeat: no-repeat;
-  background-size: 20% 40%;
+  background-size: 70% 70%;
   background-position: 95% 85%;
 
 }
-
-#datosTrabajador:hover {
-  box-shadow: 10px 5px 5px green;
-}
-
-
 
 #evaluacion {
   background-image: url(../img/A10.png);

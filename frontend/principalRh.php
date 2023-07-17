@@ -105,11 +105,26 @@
             require 'menu/menuPersonal.php';
 
             ?>
+            <script>
+                function evaluacion() {
+                    window.location.href='../rh/principal';
+                }
+                function misDatos() {
+                    window.location.href='mantenimiento';
+                }
+            </script>
+            <article class="card" id="datosTrabajador" onclick="misDatos();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Mis datos personales</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
             <article class="card" id="evaluacion" onclick="evaluacion();">
                 <a href="../rh/principal">
                     <hr id="hr6">
                     <p>Evaluación del Desempeño</p>
-                    <a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
             <?php
@@ -156,15 +171,26 @@
         } else if (isset($_SESSION['usuarioJefe'])) {
             require 'menu/menuPersonal.php';
         ?>
-
-            <article class="card" id="cursosDiplomas" onclick="evaluacion();">
+            <script>
+                function evaluacion() {
+                    window.location.href='../rh/principal';
+                }
+                function misDatos() {
+                    window.location.href='mantenimiento';
+                }
+            </script>
+            <article class="card" id="evaluacion" onclick="evaluacion();">
 
                 <hr id="hr6">
                 <p>Evaluación del Desempeño</p>
-
-                <a id="link" href="../rh/principal" class="btn btn-secondary">Evaluar</a>
-
-
+                <!--<a id="link" href="../rh/principal" class="btn btn-secondary">Evaluar</a>-->
+            </article>
+            <article class="card" id="datosTrabajador" onclick="misDatos();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Mis datos personales</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
             </article>
             <?php
             if (isset($_SESSION['usuarioJefe'])) {

@@ -1,7 +1,7 @@
 <html>
 <script>
     alert('Sitio en mantenimiento');
-    window.location.href='login';
+    window.history.back();
 </script>
 
 </html>
