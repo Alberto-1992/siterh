@@ -135,7 +135,7 @@
                     </article>
                     
             <?php
-                }else if($admin == 'daniel.hernanriv@gmail.com'){
+                }else if($admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'alexvpuebla@gmail.com'){
                 ?>
                 <script>
                     function reclutamiento() {
@@ -190,6 +190,16 @@
                     </article>
                 <?php
 
+                }else if($admin == 'brendacontreras@hotmail.com'){
+                    ?>
+                <article class="card" id="reclutamiento" onclick="reclutamiento();">
+                    <a href="reclutamiento">
+                        <hr id="hr7">
+                        <p>Reclutamiento y Selección</p>
+                        
+                    </a>
+                </article>
+            <?php
                 }
             }
         }

@@ -12,9 +12,6 @@
                     $valida = $row['correoelectronico'];
                     if($valida == $usernameSesion){
             require 'frontend/principalRh.php';
-                    }else{
-                        echo "<script>alert('No tienes acceso, no insistas');
-                        window.history.back();</script>";
                     }
         break;
         

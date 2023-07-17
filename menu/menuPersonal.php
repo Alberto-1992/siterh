@@ -8,7 +8,7 @@
     <nav class="main-menu">
         <ul>
             <li>
-                <a href="principal">
+                <a href="principalRh">
                     <i class="fa fa-hospital-o fa-2x" id="icon-color"></i>
                     <span class="nav-text">
                         HRAE IXTAPALUCA
