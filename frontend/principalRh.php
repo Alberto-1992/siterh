@@ -26,8 +26,10 @@
         <?php
         if (isset($_SESSION['usuarioAdminRh'])) {
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-        }elseif (isset($_SESSION['usuarioDatos'])) {
+        }else if(isset($_SESSION['usuarioDatos'])) {
             $usernameSesion = $_SESSION['usuarioDatos']; 
+        }else if(isset($_SESSION['usuarioJefe'])) {
+            $usernameSesion = $_SESSION['usuarioJefe']; 
         }
 
                                 $path = "imagenesPerfiles/".$usernameSesion;
