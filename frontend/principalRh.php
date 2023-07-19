@@ -22,15 +22,8 @@
 </style>
 <header class="header">
         <span id="cabecera">R.H</span>
-        <form action="#" method="POST" enctype="multipart/form-data">
+    
         <?php
-        if (isset($_SESSION['usuarioAdminRh'])) {
-            $usernameSesion = $_SESSION['usuarioAdminRh']; 
-        }else if(isset($_SESSION['usuarioDatos'])) {
-            $usernameSesion = $_SESSION['usuarioDatos']; 
-        }else if(isset($_SESSION['usuarioJefe'])) {
-            $usernameSesion = $_SESSION['usuarioJefe']; 
-        }
 
                                 $path = "imagenesPerfiles/".$usernameSesion;
                                 if (file_exists($path)) {
@@ -44,7 +37,6 @@
                                 }
 
                                 ?>
-        </form>
 </header>
 
 <div class="gallery">

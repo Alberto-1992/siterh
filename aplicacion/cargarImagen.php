@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST['subirimagen'])) {
-    //error_reporting(0);
+    error_reporting(0);
     
     $identificador = $_POST['identificador'];
 
