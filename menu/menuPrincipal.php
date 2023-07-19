@@ -166,6 +166,7 @@
                 </a>
             </li>
         </ul>
+        <hr>
         <ul class="logout">
             <li>
                 <a href="close_sesion">

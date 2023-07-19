@@ -26,12 +26,13 @@
         <?php
 
                                 $path = "imagenesPerfiles/".$usernameSesion;
+                                $formato = $usernameSesion.'.jpg';
                                 if (file_exists($path)) {
                                     $directorio = opendir($path);
                                     while ($archivo = readdir($directorio)) {
                                         if (!is_dir($archivo)) {
 
-                                            echo "<img src='imagenesPerfiles/$usernameSesion/$usernameSesion.jpg' style='width: 50px; height: 47px; border-radius: 15px 15px 15px 15px; cursor: pointer;'>";
+                                            echo "<img src='imagenesPerfiles/$usernameSesion/$formato' style='width: 50px; height: 47px; border-radius: 15px 15px 15px 15px; cursor: pointer;'>";
                                         }
                                     }
                                 }
