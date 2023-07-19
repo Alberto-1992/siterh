@@ -18,8 +18,8 @@
         a {
             text-decoration: none;
         }
+        
 </style>
-
 <header class="header">
         <span id="cabecera">R.H</span>
         <form action="#" method="POST" enctype="multipart/form-data">
@@ -38,7 +38,7 @@
                                     while ($archivo = readdir($directorio)) {
                                         if (!is_dir($archivo)) {
 
-                                            echo "<img src='imagenesPerfiles/$usernameSesion/$usernameSesion.jpg' style='width: 50px; height: 47px; border-radius: 15px 15px 15px 15px;'>";
+                                            echo "<img src='imagenesPerfiles/$usernameSesion/$usernameSesion.jpg' style='width: 50px; height: 47px; border-radius: 15px 15px 15px 15px; cursor: pointer;'>";
                                         }
                                     }
                                 }

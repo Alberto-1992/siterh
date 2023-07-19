@@ -10,9 +10,9 @@ if (isset($_POST['subirimagen'])) {
 
 } else {
 
+    $admitidos = ["jpg"];
 
-
-    if ( $_FILES["imagenperfil"]["type"] && $_FILES["imagenperfil"]["size"]) {
+    if (array($_FILES["imagenperfil"]["type"], $admitidos) && $_FILES["imagenperfil"]["size"]) {
 
         $ruta = '../imagenesPerfiles/' . $identificador . '/';
         $archivo = $ruta . $_FILES["imagenperfil"]["name"] = $identificador.'.jpg';
@@ -36,7 +36,7 @@ if (isset($_POST['subirimagen'])) {
             $resultado = @move_uploaded_file($_FILES["imagenperfil"]["tmp_name"], $archivo);
 
             if ($resultado) {
-                echo "<script>alert('Foto actualizada exitosamente'); window.history.back();</script>";
+                echo "<script>alert('Foto cargada exitosamente'); window.history.back();</script>";
             } else {
                 echo "<script>alert('Error al subir la imagen'); window.history.back();</script>";
             }
