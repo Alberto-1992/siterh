@@ -544,6 +544,20 @@ p:hover {
   background-position: 85% 90%;
 
 }
+#academicos {
+  background-image: url(../img/academicos.jpg);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: 85% 90%;
+
+}
+#capacitacion {
+  background-image: url(../img/diploma.jpg);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: 85% 90%;
+
+}
 
 
 #estructura-organizacional {

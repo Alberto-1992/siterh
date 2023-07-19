@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/estilosMenuNew.css" rel="stylesheet">
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <!--<script defer src="https://app.embed.im/snow.js"></script>-->
     <title>Plataforma HRAEI</title>
 </head>
@@ -21,6 +22,27 @@
 
 <header class="header">
         <span id="cabecera">R.H</span>
+        <form action="#" method="POST" enctype="multipart/form-data">
+        <?php
+        if (isset($_SESSION['usuarioAdminRh'])) {
+            $usernameSesion = $_SESSION['usuarioAdminRh']; 
+        }elseif (isset($_SESSION['usuarioDatos'])) {
+            $usernameSesion = $_SESSION['usuarioDatos']; 
+        }
+
+                                $path = "imagenesPerfiles/".$usernameSesion;
+                                if (file_exists($path)) {
+                                    $directorio = opendir($path);
+                                    while ($archivo = readdir($directorio)) {
+                                        if (!is_dir($archivo)) {
+
+                                            echo "<img src='imagenesPerfiles/$usernameSesion/$usernameSesion.jpg' style='width: 50px; height: 47px; border-radius: 15px 15px 15px 15px;'>";
+                                        }
+                                    }
+                                }
+
+                                ?>
+        </form>
 </header>
 
 <div class="gallery">
@@ -98,7 +120,20 @@
                         <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
                     </a>
                 </article>
-                
+                <article class="card" id="academicos" onclick="datosacademicos();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Datos academicos</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
+            <article class="card" id="capacitacion" onclick="capacitacion();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Capacitación y cursos</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
             <?php
             
     } else if (isset($_SESSION['usuarioDatos'])) {
@@ -117,6 +152,20 @@
                 <a href="mantenimiento">
                     <hr id="hr6">
                     <p>Mis datos personales</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
+            <article class="card" id="academicos" onclick="datosacademicos();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Datos academicos</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
+            <article class="card" id="capacitacion" onclick="capacitacion();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Capacitación y cursos</p>
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
@@ -192,6 +241,20 @@
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
+            <article class="card" id="academicos" onclick="datosacademicos();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Datos academicos</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
+            <article class="card" id="capacitacion" onclick="capacitacion();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Capacitación y cursos</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
             <?php
             if (isset($_SESSION['usuarioJefe'])) {
                 
@@ -233,4 +296,10 @@
 
         </div>
     </body>
+    <?php
+require 'modals/cargarImagenperfil.php';
+    ?>
+    <script type='text/javascript'
+        src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
+    </script>
 </html>
