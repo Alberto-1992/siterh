@@ -10,7 +10,7 @@ if (isset($_POST['subirimagen'])) {
 
 } else {
 
-    $admitidos = ["jpg"];
+    $admitidos = ["jpg","png","jpeg"];
 
     if (array($_FILES["imagenperfil"]["type"], $admitidos) && $_FILES["imagenperfil"]["size"]) {
 

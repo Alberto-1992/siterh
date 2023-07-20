@@ -34,7 +34,7 @@
             ?>
                         <br><div class="col-md-12">
                             <input type="hidden" value="<?php echo $identificador ?>" name="identificador">
-                            <input type="file" class="form-control" id="imagenperfil" name="imagenperfil" accept="image/jpg,image/png,image/jpeg" required>
+                            <input type="file" class="form-control" id="imagenperfil" name="imagenperfil" accept=".jpg" required>
                         </div><br>
                         <div class="col-md-6" style="margin-left: auto; margin-right: auto;">
                         <input type="submit" name="subirimagen" class="form-control" value="Cargar imagen">
