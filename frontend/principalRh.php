@@ -22,17 +22,23 @@
 </style>
 <header class="header">
         <span id="cabecera">R.H</span>
-    
         <?php
+        require 'conexionRh.php';
+        $sql = $conexionRh->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
+            $sql->execute(array(
+                ':correo'=>$usernameSesion
+            ));
+            $row = $sql->fetch();
+            $identificador = $row['id_empleado'];
 
-                                $path = "imagenesPerfiles/".$usernameSesion;
+                                $path = "imagenesPerfiles/".$identificador;
                                 $formato = $usernameSesion.'.jpg';
                                 if (file_exists($path)) {
                                     $directorio = opendir($path);
                                     while ($archivo = readdir($directorio)) {
                                         if (!is_dir($archivo)) {
 
-                                            echo "<img src='imagenesPerfiles/$usernameSesion/$formato' style='width: 50px; height: 47px; border-radius: 15px 15px 15px 15px; cursor: pointer;'>";
+                                            echo "<img src='imagenesPerfiles/$identificador/$identificador.jpg' style='width: 50px; height: 47px; border-radius: 15px 15px 15px 15px; cursor: pointer;'>";
                                         }
                                     }
                                 }

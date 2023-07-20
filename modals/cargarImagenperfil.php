@@ -23,9 +23,17 @@
                 $usernameSesion = $_SESSION['usuarioDatos']; 
             }else if(isset($_SESSION['usuarioJefe'])) {
                 $usernameSesion = $_SESSION['usuarioJefe'];
-            }?>
+            }
+            require 'conexionRh.php';
+            $sql = $conexionRh->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
+                $sql->execute(array(
+                    ':correo'=>$usernameSesion
+                ));
+                $row = $sql->fetch();
+                $identificador = $row['id_empleado'];
+            ?>
                         <br><div class="col-md-12">
-                            <input type="hidden" value="<?php echo $usernameSesion ?>" name="identificador">
+                            <input type="hidden" value="<?php echo $identificador ?>" name="identificador">
                             <input type="file" class="form-control" id="imagenperfil" name="imagenperfil" accept=".jpg" required>
                         </div><br>
                         <div class="col-md-6" style="margin-left: auto; margin-right: auto;">
