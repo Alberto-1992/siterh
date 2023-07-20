@@ -38,7 +38,7 @@
                                         }
                                     }
                                 }
-
+                                clearstatcache();
                                 ?>
                             <span id="cabecera">R.H</span>
 </header>
