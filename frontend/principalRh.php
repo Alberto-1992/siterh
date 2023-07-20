@@ -37,9 +37,9 @@
                                             echo "<img src='imagenesPerfiles/$identificador/$identificador.jpg' style='width: 50px; height: 47px; border-radius: 25px 25px 25px 25px; cursor: pointer; float: left; margin-left: -10px;'>";
                                         }
                                     }
-                                    clearstatcache();
+                                    
                                 }
-                                
+                                clearstatcache();
                                 ?>
                             <span id="cabecera">R.H</span>
 </header>
