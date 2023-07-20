@@ -21,7 +21,6 @@
         
 </style>
 <header class="header">
-        <span id="cabecera">R.H</span>
         <?php
         require 'conexionRh.php';
         $sql = $conexionRh->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
@@ -38,12 +37,13 @@
                                     while ($archivo = readdir($directorio)) {
                                         if (!is_dir($archivo)) {
 
-                                            echo "<img src='imagenesPerfiles/$identificador/$identificador.jpg' style='width: 50px; height: 47px; border-radius: 15px 15px 15px 15px; cursor: pointer;'>";
+                                            echo "<img src='imagenesPerfiles/$identificador/$identificador.jpg' style='width: 50px; height: 47px; border-radius: 25px 25px 25px 25px; cursor: pointer; float: left; margin-left: -10px;'>";
                                         }
                                     }
                                 }
 
                                 ?>
+                            <span id="cabecera">R.H</span>
 </header>
 
 <div class="gallery">
