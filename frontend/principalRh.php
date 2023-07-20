@@ -22,13 +22,7 @@
 </style>
 <header class="header">
         <?php
-        require 'conexionRh.php';
-        $sql = $conexionRh->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
-            $sql->execute(array(
-                ':correo'=>$usernameSesion
-            ));
-            $row = $sql->fetch();
-            $identificador = $row['id_empleado'];
+    
 
                                 $path = "imagenesPerfiles/".$identificador;
                                 $formato = $usernameSesion.'.jpg';
