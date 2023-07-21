@@ -10,14 +10,18 @@ if (isset($_POST['subirimagen'])) {
  if ($_FILES["imagenperfil"]["error"] > 0) {
 
 } else {
-
+    $ar = '../imagenesPerfiles/'.$identificador;
+    foreach(glob($ar."/*.*") as $archivos_carpeta) 
+    { 
+     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    } 
     $admitidos = array("image/jpg");
     $valorRand = rand();
 
     if (array($_FILES["imagenperfil"]["type"], $admitidos) && $_FILES["imagenperfil"]["size"]) {
 
         $ruta = '../imagenesPerfiles/'.$identificador.'/';
-        $archivo = $ruta . $_FILES["imagenperfil"]["name"] = 'perfil.jpg';
+        $archivo = $ruta . $_FILES["imagenperfil"]["name"] = $valorRand.'.jpg';
 
 
         if (!file_exists($ruta)) {
@@ -25,7 +29,7 @@ if (isset($_POST['subirimagen'])) {
         }
 
         if (file_exists($archivo)) {
-
+             
             $resultado = @move_uploaded_file($_FILES["imagenperfil"]["tmp_name"], $archivo);
 
             if ($resultado) {
@@ -34,7 +38,7 @@ if (isset($_POST['subirimagen'])) {
                 echo "<script>alert('Error al subir la imagen'); window.history.back();</script>";
             }
         } elseif (!file_exists($archivo)) {
-
+        
             $resultado = @move_uploaded_file($_FILES["imagenperfil"]["tmp_name"], $archivo);
 
             if ($resultado) {
@@ -44,6 +48,7 @@ if (isset($_POST['subirimagen'])) {
             }
         }
     }
+    
 }
 
 ?>
