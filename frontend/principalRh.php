@@ -24,20 +24,20 @@
         }
         
 </style>
-<header class="header">
-<span id="cabecera">R.H</span> 
+<header class="header"> 
         <?php
                                 $path = "imagenesPerfiles/".$identificador;
                                 if (file_exists($path)) {
                                     $directorio = opendir($path);
                                     while ($archivo = readdir($directorio)) {
                                         if (!is_dir($archivo)) {
-                                            echo "<img src='imagenesPerfiles/$identificador/$archivo' style='width: 50px; height: 47px; border-radius: 30px 30px 30px 30px; cursor: pointer; '>";
+                                            echo "<img src='imagenesPerfiles/$identificador/$archivo' style='width: 50px; height: 47px; border-radius: 30px 30px 30px 30px; cursor: pointer; float: left; margin-left: -11px; '>";
                                         }
                                     }
                                 }
                                 clearstatcache();
                                 ?>
+                                <span id="cabecera">R.H</span>
                             
 </header>
 

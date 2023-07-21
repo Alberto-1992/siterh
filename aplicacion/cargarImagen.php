@@ -15,7 +15,7 @@ if (isset($_POST['subirimagen'])) {
     { 
      unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
     } 
-    $admitidos = array("image/jpg");
+    $admitidos = array("image/jpg","image/jpeg","image/png");
     $valorRand = rand();
 
     if (array($_FILES["imagenperfil"]["type"], $admitidos) && $_FILES["imagenperfil"]["size"]) {
