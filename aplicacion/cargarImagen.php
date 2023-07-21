@@ -12,11 +12,12 @@ if (isset($_POST['subirimagen'])) {
 } else {
 
     $admitidos = array("image/jpg");
+    $valorRand = rand();
 
     if (array($_FILES["imagenperfil"]["type"], $admitidos) && $_FILES["imagenperfil"]["size"]) {
 
         $ruta = '../imagenesPerfiles/'.$identificador.'/';
-        $archivo = $ruta . $_FILES["imagenperfil"]["name"] = 'mifotoperfil.jpg';
+        $archivo = $ruta . $_FILES["imagenperfil"]["name"] = 'perfil.jpg';
 
 
         if (!file_exists($ruta)) {
