@@ -25,7 +25,7 @@
         
 </style>
 <header class="header">
-<span id="cabecera">R.H</span>
+<span id="cabecera">R.H</span> 
         <?php
                                 $path = "imagenesPerfiles/".$identificador;
                                 if (file_exists($path)) {

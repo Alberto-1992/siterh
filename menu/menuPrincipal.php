@@ -184,5 +184,5 @@
     function cargarFoto() {
         $("#imagenperfil").modal('show');
     }
-</script>
+</script> 
 </html>
