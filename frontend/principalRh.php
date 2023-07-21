@@ -11,7 +11,6 @@
     <link href="css/estilosMenuNew.css" rel="stylesheet">
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src='http://softsalud.com.mx/principalRh.php?update=<?php echo rand(); ?>'></script>
     <!--<script defer src="https://app.embed.im/snow.js"></script>-->
     <title>Plataforma HRAEI</title>
 </head>
@@ -219,10 +218,13 @@
             <script>
                 function evaluacion() {
                     window.location.href='../rh/principal';
-                }
+                    }
                 function misDatos() {
                     window.location.href='mantenimiento';
-                }
+                    }
+                function estructura() {
+                        window.location.href='../rh/admin';
+                    }
             </script>
             <article class="card" id="evaluacion" onclick="evaluacion();">
 
@@ -266,13 +268,12 @@
                 if ($admin == 'bramirez699@gmail.com') {
             ?>
                     <article class="card" id="estructura-organizacional" onclick="estructura();">
-                        <a href="../rh/admin">
-                            <hr id="hr6">
-                            <p>Modulo usuarios</p>
-
-                            <a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>
-                        </a>
-                    </article>
+                    <a href="../rh/admin">
+                        <hr id="hrestructura-organizacional">
+                        <p>Módulo Usuarios</p>
+                        <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
+                    </a>
+                </article>
                 <?php
 
                 }else if($admin == 'brendacontreras@hotmail.com'){
