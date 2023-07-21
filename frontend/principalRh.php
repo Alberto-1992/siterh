@@ -24,29 +24,20 @@
         
 </style>
 <header class="header">
+<span id="cabecera">R.H</span>
         <?php
-        if(isset($_SESSION['usuarioAdminRh'])){
-            $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh.php';
-        $sql = $conexionRh->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
-            $sql->execute(array(
-                ':correo'=>$usernameSesion
-            ));
-            $row = $sql->fetch();
-            $id = $row['id_empleado']; 
-        }
-                                $path = "imagenesPerfiles/".$id;
+                                $path = "imagenesPerfiles/".$identificador;
                                 if (file_exists($path)) {
                                     $directorio = opendir($path);
                                     while ($archivo = readdir($directorio)) {
                                         if (!is_dir($archivo)) {
-                                            echo "<img src='imagenesPerfiles/$id/$archivo' style='width: 50px; height: 47px; border-radius: 25px 25px 25px 25px; cursor: pointer; float: left; margin-left: -10px;'>";
+                                            echo "<img src='imagenesPerfiles/$identificador/$archivo' style='width: 50px; height: 47px; border-radius: 30px 30px 30px 30px; cursor: pointer; float: left; margin-left: -10px;'>";
                                         }
                                     }
                                 }
                                 clearstatcache();
                                 ?>
-                            <span id="cabecera">R.H</span>
+                            
 </header>
 
 <div class="gallery">
