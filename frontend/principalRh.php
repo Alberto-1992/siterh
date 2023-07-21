@@ -25,7 +25,17 @@
 </style>
 <header class="header">
         <?php
-                                $path = "imagenesPerfiles/".$identificador;
+        if(isset($_SESSION['usuarioAdminRh'])){
+            $usernameSesion = $_SESSION['usuarioAdminRh']; 
+            require 'conexionRh.php';
+        $sql = $conexionRh->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
+            $sql->execute(array(
+                ':correo'=>$usernameSesion
+            ));
+            $row = $sql->fetch();
+            $id = $row['id_empleado']; 
+        }
+                                $path = "imagenesPerfiles/".$id;
                                 if (file_exists($path)) {
                                     $directorio = opendir($path);
                                     while ($archivo = readdir($directorio)) {
