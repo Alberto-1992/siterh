@@ -29,8 +29,9 @@
                                 if (file_exists($path)) {
                                     $directorio = opendir($path);
                                     while ($archivo = readdir($directorio)) {
-                                        if (!is_dir($archivo)) {
-                                            echo "<div data='" . $path . "/" . $archivo . "'></div>";
+                                        if (is_dir($archivo)) {
+                                           
+                                        }else{
                                             echo "<img src='imagenesPerfiles/$identificador/$identificador.jpg' style='width: 50px; height: 47px; border-radius: 25px 25px 25px 25px; cursor: pointer; float: left; margin-left: -10px;'>";
                                         }
                                     }
