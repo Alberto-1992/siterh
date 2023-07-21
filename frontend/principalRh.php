@@ -40,7 +40,7 @@
                                     $directorio = opendir($path);
                                     while ($archivo = readdir($directorio)) {
                                         if (!is_dir($archivo)) {
-                                            echo "<img src='imagenesPerfiles/$identificador/$archivo' style='width: 50px; height: 47px; border-radius: 25px 25px 25px 25px; cursor: pointer; float: left; margin-left: -10px;'>";
+                                            echo "<img src='imagenesPerfiles/$id/$archivo' style='width: 50px; height: 47px; border-radius: 25px 25px 25px 25px; cursor: pointer; float: left; margin-left: -10px;'>";
                                         }
                                     }
                                 }
