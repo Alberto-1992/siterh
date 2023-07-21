@@ -4,6 +4,7 @@ if (isset($_POST['subirimagen'])) {
     error_reporting(0);
     
     $identificador = $_POST['identificador'];
+    
 
  }
  if ($_FILES["imagenperfil"]["error"] > 0) {
@@ -15,7 +16,7 @@ if (isset($_POST['subirimagen'])) {
     if (array($_FILES["imagenperfil"]["type"], $admitidos) && $_FILES["imagenperfil"]["size"]) {
 
         $ruta = '../imagenesPerfiles/' . $identificador . '/';
-        $archivo = $ruta . $_FILES["imagenperfil"]["name"] = $identificador.'.jpg';
+        $archivo = $ruta . $_FILES["imagenperfil"]["name"] = 'mifotoperfil.jpg';
 
 
         if (!file_exists($ruta)) {
