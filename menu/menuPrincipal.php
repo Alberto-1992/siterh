@@ -23,9 +23,21 @@
                                 ':correo' => $usernameSesion
                             ));
                             $rw = $statement->fetch();
+                            if($rw != false){
                             $nombre = $rw['nombre'];
                             $appaterno = $rw['apellidopaterno'];
                             echo $nombre.' '.$appaterno;
+                            }else{
+                                $usernameSesion = $_SESSION['usuarioAdminRh'];
+                                require 'conexionRh.php';
+                                $statement = $conexionRh->prepare("SELECT nombre FROM jefes2022 WHERE correo= :correo");
+                                $statement->execute(array(
+                                    ':correo' => $usernameSesion
+                                ));
+                                $rw = $statement->fetch();
+                                $nombre = $rw['nombre'];
+                                echo $nombre;  
+                            }
                         } else if (isset($_SESSION['usuarioJefe'])) {
                             $usernameSesion = $_SESSION['usuarioJefe'];
                             require 'conexionRh.php';
