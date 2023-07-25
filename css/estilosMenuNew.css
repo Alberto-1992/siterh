@@ -573,7 +573,12 @@ p:hover {
   background-size: 70% 70%;
   background-position: 85% 90%;
 }
-
+#graficosevaluacion {
+  background-image: url(../img/kpis.jpg);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: 85% 90%;
+}
 ::-webkit-scrollbar {
   width: 10px;
 }

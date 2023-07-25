@@ -67,6 +67,9 @@
                     function relacioneslaborales() {
                         window.location.href='../laborales/principal';
                     }
+                    function graficosCapturas() {
+                        window.location.href='graficosEvaluacion';
+                    }
                 
                     
                 </script>
@@ -78,7 +81,20 @@
                         <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                     </a>
                 </article>
-
+                <article class="card" id="graficosevaluacion" onclick="graficosCapturas();">
+                    <a href="graficosEvaluacion">
+                        <hr id="hr6">
+                        <p>Graficos de evaluación</p>
+                        <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                    </a>
+                </article>
+                <article class="card" id="estructura-organizacional" onclick="estructura();">
+                    <a href="../rh/admin">
+                        <hr id="hrestructura-organizacional">
+                        <p>Módulo Usuarios</p>
+                        <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
+                    </a>
+                </article>
                 <article class="card" id="reclutamiento" onclick="reclutamiento();">
                     <a href="reclutamiento">
                         <hr id="hr7">
@@ -105,13 +121,6 @@
                     <a href="../relacioneslaborales/principal">
                         <hr id="hrestructura-organizacional">
                         <p>Relaciones laborales</p>
-                        <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
-                    </a>
-                </article>
-                <article class="card" id="estructura-organizacional" onclick="estructura();">
-                    <a href="../rh/admin">
-                        <hr id="hrestructura-organizacional">
-                        <p>Módulo Usuarios</p>
                         <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
                     </a>
                 </article>
@@ -182,7 +191,7 @@
                 ));
                 $rw = $statement->fetch();
                 $admin = $rw['correo'];
-                if ($admin == 'msandoval@hraei.gob.mx' or $admin == 'isabella291216@gmail.com' or $admin == 'bramirez@gmail.com') {
+                if ($admin == 'msandoval@hraei.gob.mx' or $admin == 'isabella291216@gmail.com' or $admin == 'bramirez699@gmail.com') {
             ?>
                     <article class="card" id="estructura-organizacional" onclick="estructura();">
                         <a href="../rh/admin">
