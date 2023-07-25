@@ -19,7 +19,7 @@
 
             </li>
         </ul>
-        <hr>
+        <hr id="hr">
         <ul>
             <li>
                 <a href="#" onclick="buscarpostulados();">
@@ -31,7 +31,7 @@
 
             </li>
         </ul>
-        <hr>
+        <hr id="hr">
         <ul>
             <li>
                 <a href="reclutamiento">
@@ -44,7 +44,7 @@
             </li>
         </ul>
         <ul>
-            <hr>
+            <hr id="hr">
             <li>
                 <a href="enEvaluacion">
                     <i class="fa fa-id-card fa-2x" id="icon-color"></i>
@@ -55,7 +55,7 @@
 
             </li>
         </ul>
-        <hr>
+        <hr id="hr">
         <ul class="logout">
             <li>
                 <a href="close_sesion">

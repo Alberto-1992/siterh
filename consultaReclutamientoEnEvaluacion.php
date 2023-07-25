@@ -56,7 +56,7 @@ error_reporting(0);
                             if($confirmar == 1){ ?>
                             <input type="submit" value="Asistio" style="padding: 1px; cursor-pointer: none; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
                     </div> 
-                <hr>
+                <hr id="hr">
             </div>
         <?php 
         }

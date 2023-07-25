@@ -242,10 +242,13 @@ thead tr th {
 .main-move {
   left: 40px;
 }
-
-hr {
+#hrinicial {
+  margin-top: 10px;
+  background-color: #00AD22;
+  margin: 0px 0px;
+}
+#hr {
   background-color: grey;
-  height: 1px;
   margin: 0px 0px;
 }
 

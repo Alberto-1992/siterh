@@ -52,7 +52,7 @@ error_reporting(0);
                         ?>
                     
                     </div> 
-                <hr>
+                <hr id="hr">
             </div>
         <?php 
         }
