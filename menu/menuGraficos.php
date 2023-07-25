@@ -6,7 +6,73 @@
 </head>
 
 <body>
+    <script>
+function graficosEvaluacion() {
+    $.ajax({
 
+        url: "graficos/graficoEvaluacionMetas.php",
+
+
+        success: function (data) {
+
+            $("#tabla_resultado").html(data);
+        }
+
+    });
+}
+function graficosDM() {
+    $.ajax({
+
+        url: "graficos/graficoDireccionMedica.php",
+
+
+        success: function (data) {
+
+            $("#tabla_resultado").html(data);
+        }
+
+    });
+}
+function graficosDAF() {
+    $.ajax({
+
+        url: "graficos/graficoDireccionDeAdmonFinanzas.php",
+
+
+        success: function (data) {
+
+            $("#tabla_resultado").html(data);
+        }
+
+    });
+}
+function graficosDO() {
+    $.ajax({
+
+        url: "graficos/graficoDireccionDeOperaciones.php",
+
+
+        success: function (data) {
+
+            $("#tabla_resultado").html(data);
+        }
+
+    });
+}
+function graficosDEyP() {
+    $.ajax({
+
+        url: "graficos/graficoDireccionDeEnsenanzaPlaneacion.php",
+
+
+        success: function (data) {
+
+            $("#tabla_resultado").html(data);
+        }
+
+    });
+}
+</script>
     <nav class="main-menu">
         <ul>
             <li>
@@ -22,10 +88,58 @@
         <hr id="hr">
         <ul>
             <li>
-                <a href="graficoEvaluacionMetas">
-                    <i class="fa fa-search fa-2x" id="icon-color"></i>
+                <a href="#" onclick="graficosEvaluacion();">
+                    <i class="fa fa-user-md fa-2x" id="icon-color"></i>
                     <span class="nav-text">
-                        Evaluación Metas 2022
+                        Dirección General
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+        <hr id="hr">
+        <ul>
+            <li>
+                <a href="#" onclick="graficosDM();">
+                    <i class="fa fa-heartbeat fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Dirección Medica
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+        <hr id="hr">
+        <ul>
+            <li>
+                <a href="#" onclick="graficosDAF();">
+                    <i class="fa fa-cc-visa fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Dirección de Administración y Finanzas
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+        <hr id="hr">
+        <ul>
+            <li>
+                <a href="#" onclick="graficosDO();">
+                    <i class="fa fa-bar-chart fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Dirección de Operaciones
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+        <hr id="hr">
+        <ul>
+            <li>
+                <a href="#" onclick="graficosDEyP();">
+                    <i class="fa fa-address-book-o fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Dirección de planeación y Enseñanza
                     </span>
                 </a>
 

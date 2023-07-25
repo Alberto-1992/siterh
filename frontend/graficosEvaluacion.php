@@ -15,9 +15,19 @@
 </head>
 
 <body>
+<script>
+            
+            $.ajax({
+                url: 'graficos/graficoEvaluacionMetas.php'
+            })
 
+            .done(function(resultado) {
+                $("#tabla_resultado").html(resultado);
+            })
+            
+        </script>
     <div class="box1">
-        <header class="headerinfarto">
+        <header class="headergraficos">
         
             <span id="cabecera">Graficos de evaluación.</span>
 
@@ -33,37 +43,16 @@
         require 'close_sesion.php';
         }
 ?>
-
-
-        <script>
-            /*
-            $.ajax({
-                url: 'consultaReclutamientoBusqueda.php',
-                type: 'POST',
-                dataType: 'html',
-            })
-
-            .done(function(resultado) {
-                $("#tabla_resultado").html(resultado);
-            })
-            $.ajax({
-                url: 'consultaReclutamiento.php',
-                type: 'POST',
-                dataType: 'html',
-            })
-
-            .done(function(resultado) {
-                $("#tabla_resultadobus").html(resultado);
-            })
-*/
-        </script>
         <div class="autoheight">
-            <div id="tabla_resultado" class="adaptar" style="background-color: red; margin-top: 50px;"></div>
+            <div id="tabla_resultado" class="adaptar" style="margin-top: 50px;"></div>
         </div>
     </div>
-
+    
 <script type='text/javascript'
         src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
     </script>
 </body>
+<?php
+   // require 'graficoEvaluacionMetas.php';
+?>
 </html>

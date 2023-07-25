@@ -179,6 +179,19 @@ nav.main-menu li.active>a,
   z-index: 99;
   transition: .5s;
 }
+.headergraficos {
+  width: 100%;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: .2rem;
+  background-color: #04c0d1;
+  z-index: 99;
+  transition: .5s;
+}
 
 #boton_cancerBucal {
   text-decoration: none;

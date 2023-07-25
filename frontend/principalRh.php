@@ -68,7 +68,7 @@
                         window.location.href='../laborales/principal';
                     }
                     function graficosCapturas() {
-                        window.location.href='graficosEvaluacion';
+                        window.open('graficosEvaluacion');
                     }
                 
                     
