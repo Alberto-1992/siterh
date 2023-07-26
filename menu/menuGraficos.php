@@ -72,6 +72,32 @@ function graficosDEyP() {
 
     });
 }
+function globalMetas2022() {
+    $.ajax({
+
+        url: "graficos/graficosCapturas.php",
+
+
+        success: function (data) {
+
+            $("#tabla_resultado").html(data);
+        }
+
+    });
+}
+function globalMetas2023() {
+    $.ajax({
+
+        url: "graficos/graficosCapturasActual.php",
+
+
+        success: function (data) {
+
+            $("#tabla_resultado").html(data);
+        }
+
+    });
+}
 </script>
     <nav class="main-menu">
         <ul>
@@ -80,6 +106,30 @@ function graficosDEyP() {
                     <i class="fa fa-hospital-o fa-2x" id="icon-color"></i>
                     <span class="nav-text">
                         HRAE IXTAPALUCA
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+        <hr id="hr">
+        <ul>
+            <li>
+                <a href="#" onclick="globalMetas2022();">
+                    <i class="fa fa-ravelry fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Global Metas 2022
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+        <hr id="hr">
+        <ul>
+            <li>
+                <a href="#" onclick="globalMetas2023();">
+                    <i class="fa fa-ravelry fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Global Metas 2023
                     </span>
                 </a>
 

@@ -4,8 +4,13 @@
         width: 100%;
         height: 500px;
     }
+    .titulo {
+        text-align: center;
+    }
 </style>
-
+<div class="titulo">
+    <h1>Estado de capturas de Metas 2022</h1>
+</div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
@@ -100,36 +105,46 @@
             <?php
             require '../conexionRh.php';
 
-            $sqlDEP = $conexionGrafico->query("SELECT count(*) as totalDEP from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION'");
-            $rowDEP = mysqli_fetch_assoc($sqlDEP);
-            $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 1");
-            $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
-            $sqlDEP3 = $conexionGrafico->query("SELECT count(*) as totalDEP3 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 4");
-            $rowDEP3 = mysqli_fetch_assoc($sqlDEP3);
-            $sqlDEP4 = $conexionGrafico->query("SELECT count(*) as totalDEP4 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 2");
-            $rowDEP4 = mysqli_fetch_assoc($sqlDEP4);
-
+            $sql1 = $conexionGrafico->query("SELECT count(*) as total1 from personaloperativo2022 where vistobuenoResultado2022 = 1 and eliminado = 0");
+            $row1 = mysqli_fetch_assoc($sql1);
+            $sql2 = $conexionGrafico->query("SELECT count(*) as total2 from personaloperativo2022 where vistobuenoResultado2022 = 2 and eliminado = 0");
+            $row2 = mysqli_fetch_assoc($sql2);
+            $sql3 = $conexionGrafico->query("SELECT count(*) as total3 from personaloperativo2022 where vistobuenoResultado2022 = 3 and eliminado = 0");
+            $row3 = mysqli_fetch_assoc($sql3);
+            $sql5 = $conexionGrafico->query("SELECT count(*) as total5 from personaloperativo2022 where vistobuenoResultado2022 = 5 and eliminado = 0");
+            $row5 = mysqli_fetch_assoc($sql5);
+            $sqlSC = $conexionGrafico->query("SELECT count(*) as totalSC from personaloperativo2022 where vistobuenoResultado2022 = 4 and eliminado = 0");
+            $rowSC = mysqli_fetch_assoc($sqlSC);
+                $total = $row5['total5'] + $row3['total3'] + $row2['total2'] + $row1['total1'];
             ?>
         ];
         // Set data
-        var data = [
-
-            {
-                name: "D.P.E.I",
-                value: <?php echo $rowDEP['totalDEP'] ?>
+        var data = [{
+                name: "Total general",
+                value: <?php echo $total ?>
             },
             {
-                name: "D.P.E.I Finalizo",
-                value: <?php echo $rowDEP2['totalDEP2'] ?>
+                name: "Sin captura",
+                value: <?php echo $row5['total5'] ?>
             },
             {
-                name: "D.P.E.I Sin captura",
-                value: <?php echo $rowDEP3['totalDEP3'] ?>
+                name: "Autorizado",
+                value: <?php echo $row1['total1'] ?>
             },
             {
-                name: "D.P.E.I Pen. VoBo",
-                value: <?php echo $rowDEP4['totalDEP4'] ?>
+                name: "Pendiente. VoBo",
+                value: <?php echo $row2['total2'] ?>
+            },
+            
+            {
+                name: "Rechazadas",
+                value: <?php echo $row3['total3'] ?>
+            },
+            {
+                name: "No participaron",
+                value: <?php echo $rowSC['totalSC'] ?>
             }
+            
         ];
 
         series.bullets.push(function() {
