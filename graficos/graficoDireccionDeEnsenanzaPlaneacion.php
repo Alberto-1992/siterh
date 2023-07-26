@@ -111,23 +111,19 @@ var data = [
 
   {
     name: "D.E.P",
-    value: <?php echo $rowDEP['totalDEP'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/E01.png" }
+    value: <?php echo $rowDEP['totalDEP'] ?>
   },
   {
     name: "D.E.P Finalizo",
-    value: <?php echo $rowDEP2['totalDEP2'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/E01.png" }
+    value: <?php echo $rowDEP2['totalDEP2'] ?>
   },
   {
     name: "D.E.P Sin captura",
-    value: <?php echo $rowDEP3['totalDEP3'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/E01.png" }
+    value: <?php echo $rowDEP3['totalDEP3'] ?>
   },
   {
     name: "D.E.P Pen. VoBo",
-    value: <?php echo $rowDEP3['totalDEP3'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/E01.png" }
+    value: <?php echo $rowDEP3['totalDEP3'] ?>
   }
 ];
 

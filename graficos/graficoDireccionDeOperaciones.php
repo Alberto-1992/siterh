@@ -110,23 +110,19 @@ var datos = [
 var data = [
   {
     name: "D.O",
-    value: <?php echo $rowDO['totalDO'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/C02.png" }
+    value: <?php echo $rowDO['totalDO'] ?>
   },
   {
     name: "D.O Finalizo",
-    value: <?php echo $rowDO2['totalDO2'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/C02.png" }
+    value: <?php echo $rowDO2['totalDO2'] ?>
   },
   {
     name: "D.O Sin captura",
-    value: <?php echo $rowDO3['totalDO3'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/C02.png" }
+    value: <?php echo $rowDO3['totalDO3'] ?>
   },
   {
     name: "D.O Pen. VoBo",
-    value: <?php echo $rowDO4['totalDO4'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/C02.png" }
+    value: <?php echo $rowDO4['totalDO4'] ?>
   }
 ];
 

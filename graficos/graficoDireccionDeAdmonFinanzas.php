@@ -110,23 +110,19 @@ var datos = [
 var data = [
   {
     name: "D.A.F",
-    value: <?php echo $rowDAF['totalDAF'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/D02.png" }
+    value: <?php echo $rowDAF['totalDAF'] ?>
   },
   {
     name: "D.A.F Finalizo",
-    value: <?php echo $rowDAF2['totalDAF2'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/D02.png" }
+    value: <?php echo $rowDAF2['totalDAF2'] ?>
   },
   {
     name: "D.A.F Sin captura",
-    value: <?php echo $rowDAF3['totalDAF3'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/D02.png" }
+    value: <?php echo $rowDAF3['totalDAF3'] ?>
   },
   {
     name: "D.A.F Pen. VoBo",
-    value: <?php echo $rowDAF4['totalDAF4'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/D02.png" }
+    value: <?php echo $rowDAF4['totalDAF4'] ?>
   }
 ];
 

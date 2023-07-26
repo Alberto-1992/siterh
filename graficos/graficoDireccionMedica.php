@@ -111,26 +111,22 @@ var data = [
   {
     
     name: "D.M",
-    value: <?php echo $rowDM['totalDM'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/A04.png" }
+    value: <?php echo $rowDM['totalDM'] ?>
   },
   {
     
     name: "D.M Finalizo",
-    value: <?php echo $rowDM2['totalDM2'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/A04.png" }
+    value: <?php echo $rowDM2['totalDM2'] ?>
   },
   {
     
     name: "D.M Sin captura",
-    value: <?php echo $rowDM3['totalDM3'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/A04.png" }
+    value: <?php echo $rowDM3['totalDM3'] ?>
   },
   {
     
     name: "D.M Pen. VoBo",
-    value: <?php echo $rowDM4['totalDM4'] ?>,
-    bulletSettings: { src: "https://www.amcharts.com/lib/images/faces/A04.png" }
+    value: <?php echo $rowDM4['totalDM4'] ?>
   }
 ];
 
