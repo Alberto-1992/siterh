@@ -18,7 +18,7 @@
 <script>
             
             $.ajax({
-                url: 'graficos/graficoEvaluacionMetas.php'
+                url: 'graficos/graficosCapturas.php'
             })
 
             .done(function(resultado) {
@@ -53,6 +53,6 @@
     </script>
 </body>
 <?php
-   // require 'graficoEvaluacionMetas.php';
+require 'graficos/graficosCapturas.php';
 ?>
 </html>

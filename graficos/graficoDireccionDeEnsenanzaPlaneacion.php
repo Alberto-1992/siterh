@@ -4,7 +4,13 @@
         width: 100%;
         height: 500px;
     }
+    .titulo {
+        text-align: center;
+    }
 </style>
+<div class="titulo">
+    <h2>Dirección de enseñanza y planeación</h2>
+</div>
 
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>

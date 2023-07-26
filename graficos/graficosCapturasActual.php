@@ -8,7 +8,7 @@
     }
 </style>
 <div class="titulo">
-    <h1>Estado de capturas de Metas 2023</h1>
+    <h2>Estado de capturas de Metas 2023</h2>
 </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
