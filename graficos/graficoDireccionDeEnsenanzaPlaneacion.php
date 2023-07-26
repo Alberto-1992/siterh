@@ -121,19 +121,19 @@
         var data = [
 
             {
-                name: "D.P.E.I",
+                name: "D.E.P",
                 value: <?php echo $rowDEP['totalDEP'] ?>
             },
             {
-                name: "D.P.E.I Finalizo",
+                name: "D.E.P Finalizo",
                 value: <?php echo $rowDEP2['totalDEP2'] ?>
             },
             {
-                name: "D.P.E.I Sin captura",
+                name: "D.E.P Sin captura",
                 value: <?php echo $rowDEP3['totalDEP3'] ?>
             },
             {
-                name: "D.P.E.I Pen. VoBo",
+                name: "D.E.P Pen. VoBo",
                 value: <?php echo $rowDEP4['totalDEP4'] ?>
             }
         ];
