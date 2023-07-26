@@ -95,13 +95,13 @@ var datos = [
     <?php
     require '../conexionRh.php';
 
-    $sqlDEP = $conexionGrafico->query("SELECT count(*) as totalDEP from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ENSEÑANZA Y PLANEACION'");
+    $sqlDEP = $conexionGrafico->query("SELECT count(*) as totalDEP from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION'");
     $rowDEP = mysqli_fetch_assoc($sqlDEP);
-    $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ENSEÑANZA Y PLANEACION' and vistobueno = 1");
+    $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 1");
     $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
-    $sqlDEP3 = $conexionGrafico->query("SELECT count(*) as totalDEP3 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ENSEÑANZA Y PLANEACION' and vistobueno = 4");
+    $sqlDEP3 = $conexionGrafico->query("SELECT count(*) as totalDEP3 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 4");
     $rowDEP3 = mysqli_fetch_assoc($sqlDEP3);
-    $sqlDEP4 = $conexionGrafico->query("SELECT count(*) as totalDEP4 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ENSEÑANZA Y PLANEACION' and vistobueno = 2");
+    $sqlDEP4 = $conexionGrafico->query("SELECT count(*) as totalDEP4 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 2");
     $rowDEP4 = mysqli_fetch_assoc($sqlDEP4);
     
     ?>
@@ -123,7 +123,7 @@ var data = [
   },
   {
     name: "D.E.P Pen. VoBo",
-    value: <?php echo $rowDEP3['totalDEP3'] ?>
+    value: <?php echo $rowDEP4['totalDEP4'] ?>
   }
 ];
 
