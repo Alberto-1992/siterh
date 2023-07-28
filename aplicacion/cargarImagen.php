@@ -6,8 +6,8 @@ if (isset($_POST['subirimagen'])) {
     $identificador = $_POST['identificador'];
     
 
- }
- if ($_FILES["imagenperfil"]["error"] > 0) {
+    }
+if ($_FILES["imagenperfil"]["error"] > 0) {
 
 } else {
     $ar = '../imagenesPerfiles/'.$identificador;
@@ -29,7 +29,6 @@ if (isset($_POST['subirimagen'])) {
         }
 
         if (file_exists($archivo)) {
-             
             $resultado = @move_uploaded_file($_FILES["imagenperfil"]["tmp_name"], $archivo);
 
             if ($resultado) {

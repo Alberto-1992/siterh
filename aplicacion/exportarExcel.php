@@ -36,9 +36,9 @@ $evaluacion = $_POST['evaluacion'];
     where datospersonales.profesion like '%$profesion%' and datospersonales.fechainicio between '$fechainicio' and '$fechafinal' and acceder = $evaluacion"); 
     while($filaR=$QueryConsulta->fetch_assoc())
     fputcsv($salida, array(
-        mb_convert_encoding($filaR['nombre'], 'ISO-8859-1', 'UTF-8'),
-        mb_convert_encoding($filaR['appaterno'], 'ISO-8859-1', 'UTF-8'),
-        mb_convert_encoding($filaR['apmaterno'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['nombre'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['appaterno'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['apmaterno'], 'ISO-8859-1', 'UTF-8'),
                         $filaR['curp'],
                         mb_convert_encoding($filaR['profesion'], 'ISO-8859-1', 'UTF-8'),
                         $filaR['rfc'],

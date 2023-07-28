@@ -98,6 +98,7 @@ function globalMetas2023() {
 
     });
 }
+
 </script>
     <nav class="main-menu">
         <ul>
