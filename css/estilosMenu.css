@@ -409,24 +409,11 @@ tr {
   border-radius: 10px;
 }
 
-.containerr {
-  background-color: rgb(255, 255, 255);
-  margin-top: 45px;
-  display: flex;
-  justify-content: flex-start;
-  position: fixed;
-  width: 100%;
-  max-width: 91rem;
-  height: 25px;
-  font-size: 13px;
-  padding: 2px;
-  border-radius: 0px 0px 0px 0px;
 
-}
 
 .containerr2 {
   background: rgb(97, 117, 157);
-  margin-top: 75px;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
   border-radius: 15px 15px 0px 0px;

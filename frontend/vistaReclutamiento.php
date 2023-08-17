@@ -12,16 +12,20 @@ require 'conexionRh.php';
 <input type="hidden" id="nombrecandidato" value="<?php echo $dataRegistro['nombre']; ?>">
 <input type="hidden" id="evaluar" value="1">
 <input type="hidden" id="cancerlarevaluacion" value="0">
-<div class="containerr">
-            
-            <input type="submit" onclick="eliminarRegistro();" id="eliminarregistro" value="Eliminar registro">
+<ul class="nav nav-tabs" style="margin-top: 47px;" >       
+            <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
+            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+                <li><a class="dropdown-item" href="#" onclick="eliminarRegistro();">Eliminar registro</a></li>
             <?php
                 if($dataRegistro['acceder'] == 0){ ?>
-            <input type="submit" onclick="asignarAcceso();" id="daracceso" value="Evaluar">
+                <li><a class="dropdown-item" href="#" onclick="asignarAcceso();">Evaluar</a></li>
             <?php 
                 }
                 ?>
-                </div>
+                </ul>
+        </li>
+    </ul>
                 <style>
                     .table:hover {
                             background: #EBEBEB;
@@ -111,8 +115,6 @@ function cancelaracceso() {
 </script>
 
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-
-
     <div class="containerr2">Datos personales</div>
     <tr>
         <th id="th">Profesion:</th>

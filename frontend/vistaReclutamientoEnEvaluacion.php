@@ -12,28 +12,32 @@ require 'conexionRh.php';
 <input type="hidden" id="nombrecandidato" value="<?php echo $dataRegistro['nombre']; ?>">
 <input type="hidden" id="evaluar" value="1">
 <input type="hidden" id="cancelarevaluacion" value="0">
-<div class="containerr">
-            
-            <input type="submit" onclick="eliminarRegistro();" id="eliminarregistro" value="Eliminar registro">
+<ul class="nav nav-tabs" style="margin-top: 47px;" >       
+            <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
+            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+                <li><a class="dropdown-item" href="#" onclick="eliminarRegistro();">Eliminar registro</a></li>
             <?php
                 if($dataRegistro['acceder'] == 1){ ?>
             
-            <input type="submit" onclick="cancelaracceso();" id="daracceso" value="Cancerlar evaluación">
+                <li><a class="dropdown-item" href="#" onclick="cancelaracceso();">Cancelar evaluación</a></li>
             <?php
                 }
             ?>
             <?php 
             if($dataRegistro['confirmarasistencia'] == 0){ ?>
-            <input type="submit" onclick="confirmarasistencia();" id="daracceso" value="Confirmar asistencia">
+                <li><a class="dropdown-item" href="#" onclick="confirmarasistencia();">Confirmar asistencia</a></li>
                     <?php
                 }else{
                 ?>
-                <input type="submit" onclick="cancelarasistencia();" id="cancelarasistencia" value="Cancelar asistencia">
+                <li><a class="dropdown-item" href="#" onclick="cancelarasistencia();">Cancelar asistencia</a></li>
 
                 <?php
                 }
                 ?>
-                </div>
+        </ul>
+    </li>
+</ul>
                 <style>
                     .table:hover {
                             background: #EBEBEB;
@@ -151,7 +155,6 @@ function cancelarasistencia() {
 </script>
 
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-
 
     <div class="containerr2">Datos personales</div>
     <tr>
