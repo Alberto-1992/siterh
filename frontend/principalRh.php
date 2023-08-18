@@ -229,7 +229,7 @@
 }
 </style>
 <div class="titulo" >
-    <h2 style="font-size: 13px;">Porcentaje participación de metas</h2>
+    <h2 style="font-size: 13px;">Porcentaje general de participación de metas 2023</h2>
 </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -324,7 +324,9 @@ series.appear(1000, 100);
   font-size: 10px;
 }
 </style>
-
+<div class="titulo" >
+    <h2 style="font-size: 13px;">Porcentaje de autorización de metas 2023</h2>
+</div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
@@ -370,15 +372,15 @@ var datos = [
     <?php
     require 'conexionRh.php';
 
-    $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno = 1");
+    $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno = 1 and eliminado = 0");
     $rowDM2 = mysqli_fetch_assoc($sqlDM2);
-    $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno = 1");
+    $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno = 1 and eliminado = 0");
     $rowDAF2 = mysqli_fetch_assoc($sqlDAF2);
-    $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno = 1");
+    $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno = 1 and eliminado = 0");
     $rowDG2 = mysqli_fetch_assoc($sqlDG2);
-    $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno = 1");
+    $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno = 1 and eliminado = 0");
     $rowDO2 = mysqli_fetch_assoc($sqlDO2);
-    $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 1");
+    $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 1 and eliminado = 0");
             $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
     ?>
     ];
@@ -408,7 +410,105 @@ series.appear(1000, 100);
 
 <!-- HTML -->
 <div id="chartdiv3"></div>
+
             </div>
+            <div class="graff" id="grafico_barras">
+            <style>
+#chartdiv4 {
+  width: 100%;
+  height: 15rem;
+  font-size: 10px;
+}
+</style>
+<div class="titulo" >
+    <h2 style="font-size: 13px;">Porcentaje falta de autorización de metas 2023</h2>
+</div>
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am5.ready(function() {
+
+// Create root element
+// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+var root = am5.Root.new("chartdiv4");
+
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
+
+// Create chart
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+var chart = root.container.children.push(
+  am5percent.PieChart.new(root, {
+    endAngle: 270
+  })
+);
+
+// Create series
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+var series = chart.series.push(
+  am5percent.PieSeries.new(root, {
+    valueField: "value",
+    categoryField: "category",
+    endAngle: 270
+  })
+);
+
+series.states.create("hidden", {
+  endAngle: -90
+});
+var datos = [
+    
+    <?php
+    require 'conexionRh.php';
+
+    $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno = 2 and eliminado = 0");
+    $rowDM2 = mysqli_fetch_assoc($sqlDM2);
+    $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno = 2 and eliminado = 0");
+    $rowDAF2 = mysqli_fetch_assoc($sqlDAF2);
+    $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno = 2 and eliminado = 0");
+    $rowDG2 = mysqli_fetch_assoc($sqlDG2);
+    $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno = 2 and eliminado = 0");
+    $rowDO2 = mysqli_fetch_assoc($sqlDO2);
+    $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 2 and eliminado = 0");
+            $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
+    ?>
+    ];
+// Set data
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+series.data.setAll([{
+  category: "Dirección General",
+  value: <?php echo $rowDG2['totalDG2'] ?>
+}, {
+  category: "Dirección de Admon y finanzas",
+  value: <?php echo $rowDAF2['totalDAF2'] ?>
+}, {
+  category: "Dirección Medica",
+  value: <?php echo $rowDM2['totalDM2'] ?>
+}, {
+  category: "Dirección de operaciones",
+  value: <?php echo $rowDO2['totalDO2'] ?>
+}, {
+  category: "Dirección de enseñanza",
+  value: <?php echo $rowDEP2['totalDEP2'] ?>
+}]);
+
+series.appear(1000, 100);
+
+}); // end am5.ready()
+</script>
+
+<!-- HTML -->
+<div id="chartdiv4"></div>
+            </div>
+            <div class="graff" id="grafico_nuevo"></div>
+            <div class="graff" id="grafico_ultimo"></div>
 </div>
 <?php
 //require 'graficos/graficosCapturas.php';

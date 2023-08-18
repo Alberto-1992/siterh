@@ -240,7 +240,7 @@ hr{
 .graficos {
   display: grid;
   grid-auto-rows: 20rem;
-  grid-template-columns: 4fr 2fr 1fr;
+  grid-template-columns: 4fr 3fr 2fr;
   gap: 1rem;
   margin-top: 0px;
   margin-left: 57px;
