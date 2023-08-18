@@ -507,7 +507,258 @@ series.appear(1000, 100);
 <!-- HTML -->
 <div id="chartdiv4"></div>
             </div>
-            <div class="graff" id="grafico_nuevo"></div>
+            <div class="graff" id="grafico_nuevo">
+            <style>
+#chartdiv5 {
+  width: 100%;
+  height: 16rem;
+  font-size: 10px;
+}
+</style>
+<div class="titulo" >
+    <h2 style="font-size: 13px;">Porcentaje de participación por direeción ultimos dos periodos</h2>
+</div>
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am5.ready(function() {
+
+// Create root element
+// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+var root = am5.Root.new("chartdiv5");
+
+
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
+
+
+// Create chart
+// https://www.amcharts.com/docs/v5/charts/xy-chart/
+var chart = root.container.children.push(am5xy.XYChart.new(root, {
+  panX: false,
+  panY: false,
+  wheelX: "none",
+  wheelY: "none",
+  layout: root.horizontalLayout
+}));
+
+
+// Add legend
+// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+var legendData = [];
+var legend = chart.children.push(
+  am5.Legend.new(root, {
+    nameField: "name",
+    fillField: "color",
+    strokeField: "color",
+    //centerY: am5.p50,
+    marginLeft: 10,
+    y: 20,
+    layout: root.verticalLayout,
+    clickTarget: "none"
+  })
+);
+var datos = [
+    
+    <?php
+    require 'conexionRh.php';
+
+    $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno != 4 and eliminado = 0");
+    $rowDM2 = mysqli_fetch_assoc($sqlDM2);
+    $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno != 4 and eliminado = 0");
+    $rowDAF2 = mysqli_fetch_assoc($sqlDAF2);
+    $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno != 4 and eliminado = 0");
+    $rowDG2 = mysqli_fetch_assoc($sqlDG2);
+    $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno != 4 and eliminado = 0");
+    $rowDO2 = mysqli_fetch_assoc($sqlDO2);
+    $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno != 4 and eliminado = 0");
+            $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
+
+    $sqlDM2_1 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno != 4 and eliminado = 0");
+    $rowDM2_1 = mysqli_fetch_assoc($sqlDM2_1);
+    $sqlDAF2_1 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno != 4 and eliminado = 0");
+    $rowDAF2_1 = mysqli_fetch_assoc($sqlDAF2_1);
+    $sqlDG2_1 = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno != 4 and eliminado = 0");
+    $rowDG2_1 = mysqli_fetch_assoc($sqlDG2_1);
+    $sqlDO2_1 = $conexionGrafico->query("SELECT count(*) as totalDO2 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno != 4 and eliminado = 0");
+    $rowDO2_1 = mysqli_fetch_assoc($sqlDO2_1);
+    $sqlDEP2_1 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno != 4 and eliminado = 0");
+            $rowDEP2_1 = mysqli_fetch_assoc($sqlDEP2_1);
+    ?>
+    ];
+var data = [{
+  
+  region: "2022",
+  state: "Dirección de enseñanza",
+  sales: <?php echo $rowDEP2_1['totalDEP2'] ?>
+}, {
+  region: "2022",
+  state: "Dirección de Operaciones",
+  sales: <?php echo $rowDO2_1['totalDO2'] ?>
+}, {
+  region: "2022",
+  state: "Dirección Medica",
+  sales: <?php echo $rowDM2_1['totalDM2'] ?>
+}, {
+  region: "2022",
+  state: "Dirección general",
+  sales: <?php echo $rowDG2_1['totalDG2'] ?>
+}, {
+  region: "2022",
+  state: "Dirección de Admon y Finanzas",
+  sales: <?php echo $rowDAF2_1['totalDAF2'] ?>
+}, {
+  region: "2023",
+  state: "Dirección de enseñanza",
+  sales: <?php echo $rowDEP2['totalDEP2'] ?>
+}, {
+  region: "We2023st",
+  state: "Dirección de operaciones",
+  sales: <?php echo $rowDO2['totalDO2'] ?>
+}, {
+  region: "2023",
+  state: "Dirección Medica",
+  sales: <?php echo $rowDM2['totalDM2'] ?>
+}, {
+  region: "2023",
+  state: "Direccion de Admon y Finanzas",
+  sales: <?php echo $rowDAF2['totalDAF2'] ?>
+}, {
+  region: "2023",
+  state: "Direccion general",
+  sales: <?php echo $rowDG2['totalDG2'] ?>
+}];
+
+
+// Create axes
+// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+  categoryField: "state",
+  renderer: am5xy.AxisRendererY.new(root, {
+    minGridDistance: 10
+  }),
+  tooltip: am5.Tooltip.new(root, {})
+}));
+
+yAxis.get("renderer").labels.template.setAll({
+  fontSize: 10,
+  location: 0.5
+})
+
+yAxis.data.setAll(data);
+
+var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+  renderer: am5xy.AxisRendererX.new(root, {}),
+  tooltip: am5.Tooltip.new(root, {})
+}));
+
+
+// Add series
+// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+  xAxis: xAxis,
+  yAxis: yAxis,
+  valueXField: "sales",
+  categoryYField: "state",
+  tooltip: am5.Tooltip.new(root, {
+    pointerOrientation: "horizontal"
+  })
+}));
+
+series.columns.template.setAll({
+  tooltipText: "{categoryY}: [bold]{valueX}[/]",
+  width: am5.percent(90),
+  strokeOpacity: 0
+});
+
+series.columns.template.adapters.add("fill", function(fill, target) {
+  if (target.dataItem) {
+    switch(target.dataItem.dataContext.region) {
+      case "D.E":
+        return chart.get("colors").getIndex(0);
+        break;
+      case "D.O":
+        return chart.get("colors").getIndex(1);
+        break;
+      case "D.A.F":
+        return chart.get("colors").getIndex(2);
+        break;
+      case "D.G":
+        return chart.get("colors").getIndex(3);
+        break;
+    }
+  }
+  return fill;
+})
+
+series.data.setAll(data);
+
+function createRange(label, category, color) {
+  var rangeDataItem = yAxis.makeDataItem({
+    category: category
+  });
+  
+  var range = yAxis.createAxisRange(rangeDataItem);
+  
+  rangeDataItem.get("label").setAll({
+    fill: color,
+    text: label,
+    location: 1,
+    fontWeight: "bold",
+    dx: -130
+  });
+
+  rangeDataItem.get("grid").setAll({
+    stroke: color,
+    strokeOpacity: 1,
+    location: 1
+  });
+  
+  rangeDataItem.get("tick").setAll({
+    stroke: color,
+    strokeOpacity: 1,
+    location: 1,
+    visible: true,
+    length: 130
+  });
+  
+  legendData.push({ name: label, color: color });
+  
+}
+
+
+createRange("2023", "Direccion general", chart.get("colors").getIndex(1));
+createRange("2022", "Dirección de Admon y Finanzas", chart.get("colors").getIndex(4));
+
+legend.data.setAll(legendData);
+
+// Add cursor
+// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+  xAxis: xAxis,
+  yAxis: yAxis
+}));
+
+
+// Make stuff animate on load
+// https://www.amcharts.com/docs/v5/concepts/animations/
+series.appear();
+chart.appear(1000, 100);
+
+}); // end am5.ready()
+</script>
+
+<!-- HTML -->
+<div id="chartdiv5"></div>
+amCharts
+            </div>
             <div class="graff" id="grafico_ultimo"></div>
 </div>
 <?php
