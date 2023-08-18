@@ -50,6 +50,7 @@
     #chartdiv {
         width: 100%;
         height: 16rem;
+        font-size: 10px;
     }
     .titulo {
         text-align: center;
