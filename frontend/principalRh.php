@@ -316,15 +316,15 @@ series.appear(1000, 100);
 <div id="chartdiv2"></div>
             </div>
             <div class="graff" id="grafico_lineal">
+            <!-- Styles -->
             <style>
 #chartdiv3 {
   width: 100%;
-  height: 16rem;
+  height: 15rem;
+  font-size: 10px;
 }
 </style>
-<div class="titulo" >
-    <h2 style="font-size: 13px;">Porcentaje de participación de competencias</h2>
-</div>
+
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
@@ -348,103 +348,60 @@ root.setThemes([
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
 var chart = root.container.children.push(
   am5percent.PieChart.new(root, {
-    startAngle: 160, endAngle: 380
+    endAngle: 270
   })
 );
 
 // Create series
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
-
-var series0 = chart.series.push(
+var series = chart.series.push(
   am5percent.PieSeries.new(root, {
-    valueField: "litres",
-    categoryField: "country",
-    startAngle: 160,
-    endAngle: 380,
-    radius: am5.percent(70),
-    innerRadius: am5.percent(65)
+    valueField: "value",
+    categoryField: "category",
+    endAngle: 270
   })
 );
 
-var colorSet = am5.ColorSet.new(root, {
-  colors: [series0.get("colors").getIndex(0)],
-  passOptions: {
-    lightness: -0.05,
-    hue: 0
-  }
+series.states.create("hidden", {
+  endAngle: -90
 });
-
-series0.set("colors", colorSet);
-
-series0.ticks.template.set("forceHidden", true);
-series0.labels.template.set("forceHidden", true);
-
-var series1 = chart.series.push(
-  am5percent.PieSeries.new(root, {
-    startAngle: 160,
-    endAngle: 380,
-    valueField: "bottles",
-    innerRadius: am5.percent(80),
-    categoryField: "country"
-  })
-);
-
-series1.ticks.template.set("forceHidden", true);
-series1.labels.template.set("forceHidden", true);
 var datos = [
+    
+    <?php
+    require 'conexionRh.php';
 
-<?php
-require 'conexionRh.php';
-
-$sql1 = $conexionGrafico->query("SELECT count(*) as total1 from personaloperativo2022 where vistobueno = 1 and eliminado = 0");
-$row1 = mysqli_fetch_assoc($sql1);
-$sql2 = $conexionGrafico->query("SELECT count(*) as total2 from personaloperativo2022 where vistobueno = 2 and eliminado = 0");
-$row2 = mysqli_fetch_assoc($sql2);
-$sql3 = $conexionGrafico->query("SELECT count(*) as total3 from personaloperativo2022 where vistobueno = 3 and eliminado = 0");
-$row3 = mysqli_fetch_assoc($sql3);
-$sql4 = $conexionGrafico->query("SELECT count(*) as total4 from personaloperativo2022 where vistobueno = 4 and eliminado = 0");
-$row4 = mysqli_fetch_assoc($sql4);
-$total = $row4['total4'] + $row3['total3'] + $row2['total2'] + $row1['total1'];
-
-$sql5 = $conexionGrafico->query("SELECT count(*) as total5 from personaloperativo2022 where estadocompetencias = 1 and eliminado = 0");
-$row5 = mysqli_fetch_assoc($sql5);
-
-$sql6 = $conexionGrafico->query("SELECT count(*) as total6 from personaloperativo2022 where estadocompetencias = 0 and eliminado = 0");
-$row6 = mysqli_fetch_assoc($sql6);
-
-$sql7 = $conexionGrafico->query("SELECT count(*) as total7 from personaloperativo2022 where estadocompetencias = 1 and eliminado = 0");
-$row7 = mysqli_fetch_assoc($sql7);
-
-$sql8 = $conexionGrafico->query("SELECT count(*) as total8 from personaloperativo2022 where estadocompetencias = 0 and eliminado = 0");
-$row8 = mysqli_fetch_assoc($sql8);
-?>
-];
-var label = chart.seriesContainer.children.push(
-  am5.Label.new(root, {
-    textAlign: "center",
-    centerY: am5.p100,
-    centerX: am5.p50,
-    text: "[fontSize:18px]total[/]:\n[bold fontSize:30px]<?php echo $total ?>[/]"
-  })
-);
-
-var data = [
-  {
-    country: "Evaluaron",
-    litres: <?php echo $row5['total5'] ?>,
-    bottles: <?php echo $row7['total7'] ?>
-  },
-  {
-    country: "No evaluaron",
-    litres: <?php echo $row6['total6'] ?>,
-    bottles: <?php echo $row8['total8'] ?>
-  }
-];
-
+    $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno = 1");
+    $rowDM2 = mysqli_fetch_assoc($sqlDM2);
+    $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno = 1");
+    $rowDAF2 = mysqli_fetch_assoc($sqlDAF2);
+    $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno = 1");
+    $rowDG2 = mysqli_fetch_assoc($sqlDG2);
+    $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno = 1");
+    $rowDO2 = mysqli_fetch_assoc($sqlDO2);
+    $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 1");
+            $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
+    ?>
+    ];
 // Set data
 // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+series.data.setAll([{
+  category: "Dirección General",
+  value: <?php echo $rowDG2['totalDG2'] ?>
+}, {
+  category: "Dirección de Admon y finanzas",
+  value: <?php echo $rowDAF2['totalDAF2'] ?>
+}, {
+  category: "Dirección Medica",
+  value: <?php echo $rowDM2['totalDM2'] ?>
+}, {
+  category: "Dirección de operaciones",
+  value: <?php echo $rowDO2['totalDO2'] ?>
+}, {
+  category: "Dirección de enseñanza",
+  value: <?php echo $rowDEP2['totalDEP2'] ?>
+}]);
 
-series1.data.setAll(data);
+series.appear(1000, 100);
 
 }); // end am5.ready()
 </script>
