@@ -35,9 +35,9 @@ nav.main-menu.expanded {
   background: #ffffff;
   border-right: 1px solid #e5e5e5;
   position: fixed;
-  top: 48px;
+  top: 50px;
   bottom: 0;
-  height: 94%;
+  height: 94.5%;
   left: 0;
   width: 55px;
   overflow: hidden;
@@ -169,7 +169,7 @@ nav.main-menu li.active>a,
 .header {
   width: 100%;
   height: var(--header-height);
-  position: fixed;
+
   top: 0;
   left: 0;
   display: flex;
@@ -231,7 +231,7 @@ hr{
   gap: 1rem;
   grid-auto-rows: 11rem;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  margin-top: 43px;
+  margin-top: 0px;
   margin-left: 57px;
   padding: 10px;
 
