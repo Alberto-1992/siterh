@@ -13,7 +13,7 @@ $status = $_POST['status'];
             <tr>
                 <th>N° empleado</th>
                 <th>Nombre</th>
-                <th>Area deadscripcion</th>
+                <th>Servicio</th>
                 <th>Correo</th>
                 <th>R.F.C</th>
                 <th>Nombre jefe</th>
@@ -42,7 +42,7 @@ $status = $_POST['status'];
             <tr>
                 <th>N° empleado</th>
                 <th>Nombre</th>
-                <th>Area deadscripcion</th>
+                <th>Servicio</th>
                 <th>Correo</th>
                 <th>R.F.C</th>
                 <th>Nombre jefe</th>

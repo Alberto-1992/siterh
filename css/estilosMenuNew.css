@@ -299,29 +299,33 @@ hr{
  
 }
 #buscar {
-  margin-left: 68px;
+  margin-left: 2px;
 }
 #titleSeleccion {
-  margin-left: 80px;
+  margin-left: 2px;
 }
 .tablaBuscador {
   display: grid;
-  grid-auto-rows: 2rem;
+  height: 40rem;
+  grid-auto-rows: 5rem;
   grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 0px;
   margin-left: 57px;
   padding: 10px;
+  overflow-x: scroll;
 }
 @media screen and (max-width: 920px) {
   .tablaBuscador {
     display: grid;
-    grid-auto-rows: 2rem;
+    height: 40rem;
+    grid-auto-rows: 5rem;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: 1rem;
     margin-top: 55px;
     margin-left: 57px;
     padding: 10px;
+    overflow-x: scroll;
   }
 
 }
@@ -330,16 +334,19 @@ hr{
 @media screen and (max-width: 480px) {
   .tablaBuscador {
     display: grid;
-    grid-auto-rows: 2rem;
+    height: 40rem;
+    grid-auto-rows: 5rem;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: 1rem;
     margin-top: 55px;
     margin-left: 57px;
     padding: 10px;
+    overflow-x: scroll;
   }
 }
 .resultado {
   overflow: hidden;
+  height: 40rem;
   padding: 1rem;
   background-color: white;
   border: 1px solid #e0e0e0;

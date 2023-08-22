@@ -1081,6 +1081,8 @@ chart.appear(1000, 100);
     }
  
     </style>
+    
+    <div class="tablaBuscador" >
     <div class="col-md-2" >
     <strong id="titleSeleccion">Seleccione:</strong>
         <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
@@ -1091,8 +1093,6 @@ chart.appear(1000, 100);
             <option value="4">Sin captura</option>
         </select>
     </div>
-    <div class="tablaBuscador" >
-    
         <div id="resultado"></div>
     </div>
     <?php
