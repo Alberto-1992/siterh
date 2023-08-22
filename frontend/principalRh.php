@@ -429,59 +429,63 @@
 
             </div>
             <div class="graff" id="grafico_barras">
-                <style>
-                    #chartdiv4 {
-                        width: 100%;
-                        height: 15rem;
-                        font-size: 10px;
-                    }
-                </style>
-                <div class="titulo">
-                    <h2 style="font-size: 13px;">Porcentaje falta de autorización de metas 2023</h2>
+            <style>
+#chartdiv4 {
+  width: 100%;
+  height: 16rem;
+  font-size: 12px;
+}
+</style>
+<div class="titulo">
+                    <h2 style="font-size: 13px;">Cantidad faltante de autorización de metas 2023</h2>
                 </div>
-                <!-- Resources -->
-                <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-                <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
-                <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
-                <!-- Chart code -->
-                <script>
-                    am5.ready(function() {
+<!-- Chart code -->
+<script>
+am5.ready(function() {
 
-                        // Create root element
-                        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-                        var root = am5.Root.new("chartdiv4");
 
-                        // Set themes
-                        // https://www.amcharts.com/docs/v5/concepts/themes/
-                        root.setThemes([
-                            am5themes_Animated.new(root)
-                        ]);
+// Create root element
+// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+var root = am5.Root.new("chartdiv4");
 
-                        // Create chart
-                        // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
-                        var chart = root.container.children.push(
-                            am5percent.PieChart.new(root, {
-                                endAngle: 270
-                            })
-                        );
 
-                        // Create series
-                        // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
-                        var series = chart.series.push(
-                            am5percent.PieSeries.new(root, {
-                                valueField: "value",
-                                categoryField: "category",
-                                endAngle: 270
-                            })
-                        );
+var myTheme = am5.Theme.new(root);
 
-                        series.states.create("hidden", {
-                            endAngle: -90
-                        });
-                        var datos = [
+myTheme.rule("Grid", ["base"]).setAll({
+  strokeOpacity: 0.1
+});
 
-                            <?php
+
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([
+  am5themes_Animated.new(root),
+  myTheme
+]);
+
+
+// Create chart
+// https://www.amcharts.com/docs/v5/charts/xy-chart/
+var chart = root.container.children.push(am5xy.XYChart.new(root, {
+  panX: false,
+  panY: false,
+  wheelX: "panY",
+  wheelY: "zoomY",
+  layout: root.verticalLayout
+}));
+
+// Add scrollbar
+// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+chart.set("scrollbarY", am5.Scrollbar.new(root, {
+  orientation: "vertical"
+}));
+var datos = [
+<?php
                             require 'conexionRh.php';
 
                             $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno = 2 and eliminado = 0");
@@ -496,32 +500,98 @@
                             $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
                             ?>
                         ];
-                        // Set data
-                        // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
-                        series.data.setAll([{
-                            category: "Dirección General",
-                            value: <?php echo $rowDG2['totalDG2'] ?>
-                        }, {
-                            category: "Dirección de Admon y finanzas",
-                            value: <?php echo $rowDAF2['totalDAF2'] ?>
-                        }, {
-                            category: "Dirección Medica",
-                            value: <?php echo $rowDM2['totalDM2'] ?>
-                        }, {
-                            category: "Dirección de operaciones",
-                            value: <?php echo $rowDO2['totalDO2'] ?>
-                        }, {
-                            category: "Dirección de enseñanza",
-                            value: <?php echo $rowDEP2['totalDEP2'] ?>
-                        }]);
+var data = [ {
+  "year": "Captura metas 2023",
+  "D.G": <?php echo $rowDG2['totalDG2'] ?>,
+  "D.M": <?php echo $rowDM2['totalDM2'] ?>,
+  "D.A.F": <?php echo $rowDAF2['totalDAF2'] ?>,
+  "D.O": <?php echo $rowDO2['totalDO2'] ?>,
+  "D.P.E.E": <?php echo $rowDEP2['totalDEP2'] ?>
+}]
 
-                        series.appear(1000, 100);
 
-                    }); // end am5.ready()
-                </script>
+// Create axes
+// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+var yRenderer = am5xy.AxisRendererY.new(root, {});
+var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+  categoryField: "year",
+  renderer: yRenderer,
+  tooltip: am5.Tooltip.new(root, {})
+}));
 
-                <!-- HTML -->
-                <div id="chartdiv4"></div>
+yRenderer.grid.template.setAll({
+  location: 1
+})
+
+yAxis.data.setAll(data);
+
+var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+  min: 0,
+  renderer: am5xy.AxisRendererX.new(root, {
+    strokeOpacity: 0.1
+  })
+}));
+
+// Add legend
+// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+var legend = chart.children.push(am5.Legend.new(root, {
+  centerX: am5.p50,
+  x: am5.p50
+}));
+
+
+// Add series
+// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+function makeSeries(name, fieldName) {
+  var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+    name: name,
+    stacked: true,
+    xAxis: xAxis,
+    yAxis: yAxis,
+    baseAxis: yAxis,
+    valueXField: fieldName,
+    categoryYField: "year"
+  }));
+
+  series.columns.template.setAll({
+    tooltipText: "{name}, {categoryY}: {valueX}",
+    tooltipY: am5.percent(90)
+  });
+  series.data.setAll(data);
+
+  // Make stuff animate on load
+  // https://www.amcharts.com/docs/v5/concepts/animations/
+  series.appear();
+
+  series.bullets.push(function() {
+    return am5.Bullet.new(root, {
+      sprite: am5.Label.new(root, {
+        text: "{valueX}",
+        fill: root.interfaceColors.get("alternativeText"),
+        centerY: am5.p50,
+        centerX: am5.p50,
+        populateText: true
+      })
+    });
+  });
+
+  legend.data.push(series);
+}
+
+makeSeries("D.G", "D.G");
+makeSeries("D.M", "D.M");
+makeSeries("D.A.F", "D.A.F");
+makeSeries("D.O", "D.O");
+makeSeries("D.P.E.E", "D.P.E.E");
+// Make stuff animate on load
+// https://www.amcharts.com/docs/v5/concepts/animations/
+chart.appear(1000, 100);
+
+}); // end am5.ready()
+</script>
+
+<!-- HTML -->
+<div id="chartdiv4"></div>
             </div>
             <div class="graff" id="grafico_nuevo">
                 <!-- Styles -->
@@ -532,7 +602,7 @@
 }
 </style>
 <div class="titulo">
-                    <h2 style="font-size: 13px;">Participación ultimos dos periodos metas 2023</h2>
+                    <h2 style="font-size: 13px;">Participación ultimos dos periodos metas</h2>
                 </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
