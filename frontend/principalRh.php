@@ -842,7 +842,37 @@ var legend = chart.children.push(
     x: am5.p50
   })
 );
+var datos = [
+    
+    <?php
+    require 'conexionRh.php';
 
+
+    $sqlDGT = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno != 4");
+        $rowDGT = mysqli_fetch_assoc($sqlDGT);
+    $sqlDM = $conexionGrafico->query("SELECT count(*) as totalDM from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno != 4");
+        $rowDM = mysqli_fetch_assoc($sqlDM);
+    $sqlDAF = $conexionGrafico->query("SELECT count(*) as totalDAF from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno != 4");
+        $rowDAF = mysqli_fetch_assoc($sqlDAF);
+    $sqlDEP = $conexionGrafico->query("SELECT count(*) as totalDEP from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno != 4");
+        $rowDEP = mysqli_fetch_assoc($sqlDEP);
+    $sqlDO = $conexionGrafico->query("SELECT count(*) as totalDO from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno != 4");
+        $rowDO = mysqli_fetch_assoc($sqlDO);
+
+        $sqlDGT2022 = $conexionGrafico->query("SELECT count(*) as totalDG2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno != 4");
+        $rowDGT2022 = mysqli_fetch_assoc($sqlDGT2022);
+    $sqlDM2022 = $conexionGrafico->query("SELECT count(*) as totalDM2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno != 4");
+        $rowDM2022 = mysqli_fetch_assoc($sqlDM2022);
+    $sqlDAF2022 = $conexionGrafico->query("SELECT count(*) as totalDAF2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno != 4");
+        $rowDAF2022 = mysqli_fetch_assoc($sqlDAF2022);
+    $sqlDEP2022 = $conexionGrafico->query("SELECT count(*) as totalDEP2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno != 4");
+        $rowDEP2022 = mysqli_fetch_assoc($sqlDEP2022);
+    $sqlDO2022 = $conexionGrafico->query("SELECT count(*) as totalDO2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno != 4");
+        $rowDO2022 = mysqli_fetch_assoc($sqlDO2022);
+
+        
+    ?>
+    ];
 var data = [ {
     "year": "2022",
   "dg": 4.5,
@@ -852,11 +882,11 @@ var data = [ {
   "dpe": 3.8
 }, {
     "year": "2023",
-  "dg": 5.5,
-  "dm": 4.5,
-  "daf": 7.1,
-  "do": 1.8,
-  "dpe": 4.8
+  "dg": <?php echo $rowDGT['totalDG2'] ?>,
+  "dm": <?php echo $rowDM['totalDM'] ?>,
+  "daf": <?php echo $rowDAF['totalDAF'] ?>,
+  "do": <?php echo $rowDO['totalDO'] ?>,
+  "dpe": <?php echo $rowDEP['totalDEP'] ?>
 }]
 
 
@@ -945,9 +975,7 @@ chart.appear(1000, 100);
             </div>
             <div class="graff" id="grafico_ultimo"></div>
         </div>
-    <?php
-        //require 'graficos/graficosCapturas.php';
-    } ?>
+
     <style>
         tfoot input {
         width: 100%;
@@ -965,21 +993,23 @@ chart.appear(1000, 100);
     }
  
     </style>
-    
-    <div class="container" >
-    <div class="col-md-3" >
-    <strong>Buscar</strong>
+    <div class="col-md-2" >
+    <strong id="titleSeleccion">Seleccione:</strong>
         <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
-            <option >Seleccione</option>
+            <option selected>Seleccione</option>
             <option value="1">Autorizados</option>
             <option value="2">Pendiente de VoBo</option>
             <option value="3">Rechazadas</option>
             <option value="4">Sin captura</option>
         </select>
     </div>
-    <br>
+    <div class="tablaBuscador" >
+    
         <div id="resultado"></div>
     </div>
+    <?php
+        //require 'graficos/graficosCapturas.php';
+    } ?>
     <script>
 function estado()
 {

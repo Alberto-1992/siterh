@@ -284,6 +284,7 @@ hr{
     padding: 10px;
   }
 }
+
 .graff {
   overflow: hidden;
   padding: 1rem;
@@ -297,7 +298,59 @@ hr{
   
  
 }
+#buscar {
+  margin-left: 68px;
+}
+#titleSeleccion {
+  margin-left: 80px;
+}
+.tablaBuscador {
+  display: grid;
+  grid-auto-rows: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 0px;
+  margin-left: 57px;
+  padding: 10px;
+}
+@media screen and (max-width: 920px) {
+  .tablaBuscador {
+    display: grid;
+    grid-auto-rows: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem;
+    margin-top: 55px;
+    margin-left: 57px;
+    padding: 10px;
+  }
 
+}
+
+
+@media screen and (max-width: 480px) {
+  .tablaBuscador {
+    display: grid;
+    grid-auto-rows: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 1rem;
+    margin-top: 55px;
+    margin-left: 57px;
+    padding: 10px;
+  }
+}
+.resultado {
+  overflow: hidden;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 10px 5px 5px #ABAAAA;
+  border-radius: 10px;
+  border-radius: 0.3rem;
+  color: #333;
+  cursor: pointer;
+  
+ 
+}
 p {
   text-align: center;
   font-size: 14px;
