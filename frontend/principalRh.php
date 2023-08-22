@@ -158,6 +158,9 @@
                 function misDatos() {
                     window.location.href = 'mantenimiento';
                 }
+                function compatibilidad() {
+                    window.location.href = '../compatibilidad/principal';
+                }
             </script>
 
             <article class="card" id="datosTrabajador" onclick="misDatos();">
@@ -188,6 +191,7 @@
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
+            
             <?php
             if (isset($_SESSION['usuarioDatos'])) {
                 $usernameSesion = $_SESSION['usuarioDatos'];
@@ -226,6 +230,16 @@
                         </a>
                     </article>
             <?php
+                }else if ($admin == 'jacv_8810@hotmail.com') { ?>
+
+            <article class="card" id="compatibilidad" onclick="compatibilidad();">
+                <a href="../compatibilidad/principal">
+                    <hr id="hr6">
+                    <p>Compatibilidad Laboral</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+                    <?php
                 }
             }
         } else if (isset($_SESSION['usuarioJefe'])) {
