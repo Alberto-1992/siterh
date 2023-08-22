@@ -8,7 +8,7 @@ $status = $_POST['status'];
             ));
         ?>
         
-    <table id="example" class="display" style="width:100%">
+    <table id="example" class="table table-striped table-bordered nowrap table-darkgray table-hover" style="width:100%">
         <thead>
             <tr>
                 <th>Nombre</th>

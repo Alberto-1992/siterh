@@ -957,6 +957,7 @@ chart.appear(1000, 100);
     }
     td{
         cursor: pointer;
+        font-size: 12px;
     }
     td:hover{
         background-color: black;
@@ -976,7 +977,7 @@ chart.appear(1000, 100);
             <option value="4">Sin captura</option>
         </select>
     </div>
-    <br><br>
+    <br>
         <div id="resultado"></div>
     </div>
     <script>
