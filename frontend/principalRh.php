@@ -814,7 +814,7 @@
 }
 </style>
 <div class="titulo">
-                    <h2 style="font-size: 13px;">Participación ultimos dos periodos metas</h2>
+                    <h2 style="font-size: 13px;">Participación ultimos dos periodos metas 2023</h2>
                 </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
