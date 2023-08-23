@@ -32,14 +32,14 @@
                                     <strong>Buscar por carrera</strong>
                                     <input type="text" id="palabraclave" name="palabraclave" class="form-control">
                                 </div>
-                                <div class="col-md-12">
+                                <!--<div class="col-md-12">
                                     <strong>En evaluación o inicial</strong>
                                     <select name="evaluacion" class="form-control">
                                         <option>Seleccione</option>
                                         <option value="0">De inicio</option>
                                         <option value="1">En proceso de evaluación</option>
                                     </select>
-                                </div>
+                                </div>-->
                                 <div class="col-md-12"></div>
                                 <br>
                                 
