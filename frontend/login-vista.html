@@ -7,59 +7,40 @@
     <title>HRAEI IXTAPALUCA</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="icono/icono.ico" rel="shortcut icon">
-    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="frontend/estiloslogin.css">
-    <script>
-        document.getElementById('email').addEventListener('input', function () {
-            campo = event.target;
-            valido = document.getElementById('emailOK');
+    <link rel="stylesheet" href="css/estiloslogin.css?=1">
 
-            emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-            //Se muestra un texto a modo de ejemplo, luego va a ser un icono
-            if (emailRegex.test(campo.value)) {
-                valido.innerText = "válido";
-            } else {
-                valido.innerText = "incorrecto";
-            }
-        });
-    </script>
 
 </head>
 
 <body>
-    <header style="width: 100%; height: auto; padding: 4px; text-align: center; color: white; font-size: 17px; background: #104DB3;">
+    <header style="width: auto; height: auto; padding: 4px; text-align: center; color: white; font-size: 17px; background: #1072b3; ">
         <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
     </header>
-<div class="container">
-    <header>
-        </header>
-            <section>
-                <div id="container_demo">
-                    <!--hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4-->
-                    <div id="wrapper">
-                        <div id="login" class="animate form">
-                            <form action="login" method="post" autocomplete="on">
-                                <h1>R.H</h1>
-                                <p>
-                                    <label for="username" class="uname">Correo electronico </label>
-                                    <input id="email" name="usuario" autocomplete="off" required="required" type="email"
-                                        placeholder="Ingresa tu email" value=""/>
-                                    <span id="emailOK"></span>
-                                </p>
-                                <p>
-                                    <label for="password" class="youpasswd">Contraseña </label>
-                                    <input id="password" name="password" required="required" type="password"
-                                        placeholder="Ingresa tu password" />
-                                </p>
-                                    <button class="btn btn-lg btn-primary btn-block btn-signin" id="boton" style="width: 102%"
-                                        action="enviar" type="submit" name="enviar">Ingresar</button>
-                            </form>
-                        </div>
-                    </div>
+
+    <div class="form-bg">
+        <div class="container">
+            <div class="row">
+                    <div class="form-container">
+                        <form class="form-horizontal" action="login" method="post" autocomplete="off">
+                            <h3 class="title">R.H</h3>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-user"></i></span>
+                                <input class="form-control" type="email" placeholder="Username" name="usuario">
+                            
+                            </div>
+                            <div class="form-group">
+                                <span class="input-icon"><i class="fa fa-lock"></i></span>
+                                <input class="form-control" type="password" placeholder="Password" name="password">
+                            </div>
+                            <button class="btn signin" type="submit">Log in</button>
+                        
+                            <span class="register"><a href="https://hraei.gob.mx/rH/recursos_humanos" target="_blank">Hospital Regional de Alta Especialidad de Ixtapaluca</a></span>
+                        </form>
                 </div>
-        </section>
+            </div>
+        </div>
     </div>
-    <footer style="width: 100%; position: fixed; background: #104DB3; height: auto; bottom: 0; color: white; margin-left: 0px; text-align: center;">
+    <footer style="width: 100%; position: fixed; background: #1072b3; height: auto; bottom: 0; color: white;  text-align: center;">
         <p>
             ® Hospital Regional de Alta Especialidad de Ixtapaluca, todos los derechos reservados. <br>
             Carr Federal México-Puebla Km. 34.5, Zoquiapan, 56530 Ixtapaluca, Méx.</p>
