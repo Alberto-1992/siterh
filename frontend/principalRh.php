@@ -437,7 +437,7 @@
 }
 </style>
 <div class="titulo">
-                    <h2 style="font-size: 13px;">Cantidad faltante de autorización de metas 2023</h2>
+                    <h2 style="font-size: 13px;">Sin captura de metas 2023</h2>
                 </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -488,15 +488,15 @@ var datos = [
 <?php
                             require 'conexionRh.php';
 
-                            $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno = 2 and eliminado = 0");
+                            $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno = 4 and eliminado = 0");
                             $rowDM2 = mysqli_fetch_assoc($sqlDM2);
-                            $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno = 2 and eliminado = 0");
+                            $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno = 4 and eliminado = 0");
                             $rowDAF2 = mysqli_fetch_assoc($sqlDAF2);
-                            $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno = 2 and eliminado = 0");
+                            $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno = 4 and eliminado = 0");
                             $rowDG2 = mysqli_fetch_assoc($sqlDG2);
-                            $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno = 2 and eliminado = 0");
+                            $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno = 4 and eliminado = 0");
                             $rowDO2 = mysqli_fetch_assoc($sqlDO2);
-                            $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 2 and eliminado = 0");
+                            $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno = 4 and eliminado = 0");
                             $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
                             ?>
                         ];
