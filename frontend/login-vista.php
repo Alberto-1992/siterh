@@ -27,7 +27,6 @@
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-user"></i></span>
                                 <input class="form-control" type="email" placeholder="Username" name="usuario" required>
-                            
                             </div>
                             <div class="form-group">
                                 <span class="input-icon"><i class="fa fa-lock"></i></span>
