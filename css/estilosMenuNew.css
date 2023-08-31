@@ -240,7 +240,7 @@ hr{
 .graficos {
   display: grid;
   grid-auto-rows: 20rem;
-  grid-template-columns: 4fr 3fr 2fr;
+  grid-template-columns: 4fr 3fr 3fr;
   gap: 1rem;
   margin-top: 0px;
   margin-left: 57px;
@@ -298,6 +298,7 @@ hr{
   
  
 }
+
 #buscar {
   margin-left: 2px;
 }
@@ -514,6 +515,18 @@ p:hover {
 }
 #graficosevaluacion {
   background-image: url(../img/kpis.jpg);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: 85% 90%;
+}
+#enevaluacion {
+  background-image: url(../img/enevaluacion.png);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: 85% 90%;
+}
+#endocumentacion {
+  background-image: url(../img/documentacionrh.jpg);
   background-repeat: no-repeat;
   background-size: 70% 70%;
   background-position: 85% 90%;

@@ -55,6 +55,18 @@
 
             </li>
         </ul>
+        <ul>
+            <hr id="hr">
+            <li>
+                <a href="documentacion">
+                    <i class="fa fa-id-card fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Documentaión
+                    </span>
+                </a>
+
+            </li>
+        </ul>
         <hr id="hr">
         <ul class="logout">
             <li>

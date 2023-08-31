@@ -9,6 +9,7 @@ require 'conexionRh.php';
 
 <div id="mensaje"></div>
 <input type="hidden" id="idpersonal" value="<?php echo $dataRegistro['id_principal']; ?>">
+<input type="hidden" id="curp" value="<?php echo $dataRegistro['curp']; ?>">
 <input type="hidden" id="nombrecandidato" value="<?php echo $dataRegistro['nombre']; ?>">
 <input type="hidden" id="evaluar" value="1">
 <input type="hidden" id="cancelarevaluacion" value="0">
@@ -37,17 +38,7 @@ require 'conexionRh.php';
                 ?>
         </ul>
     </li>
-    <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Estatus</a>
-            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="sincapturaexcel();">Verificar datos</a></li>
-                
-                <li>
-                    <hr class="dropdown-divider" style="margin: 0px; font-size: 10px; padding: 0px;">
-                </li>
-                <li><a class="dropdown-item" href="#" onclick="rechazoexcel();">Rechazo: <?php echo $total_registro5; ?></a></li>
-            </ul>
-        </li>
+    
 </ul>
                 <style>
                     .table:hover {
@@ -55,19 +46,22 @@ require 'conexionRh.php';
                     }
                 </style>
                 <script>
+                
     function eliminarRegistro() {
     var id = $("#idpersonal").val();
+    var curp = $("#curp").val();
+    alert(curp)
     var mensaje = confirm("el registro se eliminara"); 
-    let parametros = { id: id }
+    let parametros = { id: id, curp:curp }
     if (mensaje == true) {
         $.ajax({
             data: parametros,
-            url: 'aplicacion/eliminarRegistroCandidato.php',
+            url: 'aplicacion/eliminarRegistroDocumentacion.php',
             type: 'post',
 
             success: function (response) {
                 $("#mensaje").html(response);
-                $("#tabla_resultadobus").load('consultaReclutamientoEnEvaluacion.php');
+                $("#tabla_resultadobus").load('consultaReclutamientoDocumentacion.php');
                 
 
             }
@@ -167,7 +161,7 @@ function cancelarasistencia() {
 
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
 
-    <div class="containerr2">Datos personales</div>
+    <div class="containerr2" style="background-color: goldenrod;">Datos personales</div>
     <tr>
         <th id="th">Profesion:</th>
         <td id="td"><?php echo $dataRegistro['profesion'] ?></td>
@@ -217,7 +211,7 @@ function cancelarasistencia() {
 
 
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Estudios medio superior</div>
+    <div class="containerr3" style="background-color: goldenrod;">Estudios medio superior</div>
 
     <tr>
         <th id="th">Nombre de la formación:</th>
@@ -254,7 +248,7 @@ function cancelarasistencia() {
 <!--FINALIZA SECCIÓN DE LABORATORIOS-->
 <!-- INCIA SECCIÓN USG HEPÁTICO-->
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Estudios nivel superior</div>
+    <div class="containerr3" style="background-color: goldenrod;">Estudios nivel superior</div>
 
     <tr>
         <th id="th">Nombre de la formación:</th>
@@ -290,7 +284,7 @@ function cancelarasistencia() {
 <div id="editarusghepaticoartritis"></div>
 
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Estudios nivel maetria</div>
+    <div class="containerr3" style="background-color: goldenrod;">Estudios nivel maetria</div>
     <tr>
         <th id="th">Nombre de la formación:</th>
         <td id="td"><?php echo $dataRegistro['nombreformacionmaestria']?></td>
@@ -323,7 +317,7 @@ function cancelarasistencia() {
 </table>
 <div id="editartratameintoartritis"></div>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Estudios nivel segunda maetria</div>
+    <div class="containerr3" style="background-color: goldenrod;">Estudios nivel segunda maetria</div>
     <tr>
         <th id="th">Nombre de la formación:</th>
         <td id="td"><?php echo $dataRegistro['nombreformacionmaestriados']?></td>
@@ -355,7 +349,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Posgrado/Especialidad</div>
+    <div class="containerr3" style="background-color: goldenrod;">Posgrado/Especialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
         <td id="td"><?php echo $dataRegistro['nombreformacionposgrado']?></td>
@@ -391,7 +385,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Nivel Doctorado/Subespecialidad</div>
+    <div class="containerr3" style="background-color: goldenrod;">Nivel Doctorado/Subespecialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
         <td id="td"><?php echo $dataRegistro['nombreformaciondoctorado']?></td>
@@ -427,7 +421,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Otros estudios/Alta especialidad</div>
+    <div class="containerr3" style="background-color: goldenrod;">Otros estudios/Alta especialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
         <td id="td"><?php echo $dataRegistro['nombreformacionaltaesp']?></td>
@@ -459,7 +453,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Otros estudios 1</div>
+    <div class="containerr3" style="background-color: goldenrod;">Otros estudios 1</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
         <td id="td"><?php echo $dataRegistro['nombreformacionotros']?></td>
@@ -483,7 +477,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Otros estudios 2</div>
+    <div class="containerr3" style="background-color: goldenrod;">Otros estudios 2</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
         <td id="td"><?php echo $dataRegistro['nombreformacionotrosdos']?></td>
@@ -507,7 +501,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Servicio social</div>
+    <div class="containerr3" style="background-color: goldenrod;">Servicio social</div>
     <tr>
         <th id="th">Nombre de la dependencia donde se realizó:</th>
         <td id="td"><?php echo $dataRegistro['nombreserviciosocial']?></td>
@@ -531,7 +525,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-<div class="containerr3">Practicas rpofesionales</div>
+<div class="containerr3" style="background-color: goldenrod;">Practicas profesionales</div>
     <tr>
         <th id="th">Nombre de la dependencia donde se realizó:</th>
         <td id="td"><?php echo $dataRegistro['nombrepracticas']?></td>
@@ -555,7 +549,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Certificación</div>
+    <div class="containerr3" style="background-color: goldenrod;">Certificación</div>
     <tr>
         <th id="th">Nombre de la institución educativa:</th>
         <td id="td"><?php echo $dataRegistro['nombreformacioncertificauno']?></td>
@@ -579,7 +573,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Segunda certificación</div>
+    <div class="containerr3" style="background-color: goldenrod;">Segunda certificación</div>
     <tr>
         <th id="th">Nombre de la institución educativa:</th>
         <td id="td"><?php echo $dataRegistro['nombreformacioncertificaciondos']?></td>
@@ -603,7 +597,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Actualización academica/primer curso</div>
+    <div class="containerr3" style="background-color: goldenrod;">Actualización academica/primer curso</div>
     <tr>
         <th id="th">Nombre del curso:</th>
         <td id="td"><?php echo $dataRegistro['nombrecursouno']?></td>
@@ -630,7 +624,7 @@ function cancelarasistencia() {
     </tr>
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Segundo curso</div>
+    <div class="containerr3" style="background-color: goldenrod;">Segundo curso</div>
     <tr>
         <th id="th">Nombre del curso:</th>
         <td id="td"><?php echo $dataRegistro['nombrecursodos']?></td>
@@ -657,7 +651,7 @@ function cancelarasistencia() {
     </tr>
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Tercer curso</div>
+    <div class="containerr3" style="background-color: goldenrod;">Tercer curso</div>
     <tr>
         <th id="th">Nombre del curso:</th>
         <td id="td"><?php echo $dataRegistro['nombrecursotres']?></td>
@@ -684,7 +678,7 @@ function cancelarasistencia() {
     </tr>
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Experiencia laboral, sector público</div>
+    <div class="containerr3" style="background-color: goldenrod;">Experiencia laboral, sector público</div>
     <tr>
         <th id="th">Secretaría de Estado:</th>
         <td id="td"><?php echo $dataRegistro['empresauno']?></td>
@@ -735,7 +729,7 @@ function cancelarasistencia() {
     </tr>
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Experiencia laboral, sector público-segundo</div>
+    <div class="containerr3" style="background-color: goldenrod;">Experiencia laboral, sector público-segundo</div>
     <tr>
         <th id="th">Secretaría de Estado:</th>
         <td id="td"><?php echo $dataRegistro['empresados']?></td>
@@ -786,7 +780,7 @@ function cancelarasistencia() {
     </tr>
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Experiencia laboral, sector público-tercero</div>
+    <div class="containerr3" style="background-color: goldenrod;">Experiencia laboral, sector público-tercero</div>
     <tr>
         <th id="th">Secretaría de Estado:</th>
         <td id="td"><?php echo $dataRegistro['empresatres']?></td>
@@ -837,7 +831,7 @@ function cancelarasistencia() {
     </tr>
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Experiencia laboral, sector privado</div>
+    <div class="containerr3" style="background-color: goldenrod;">Experiencia laboral, sector privado</div>
     <tr>
         <th id="th">Nombre de la empresa:</th>
         <td id="td"><?php echo $dataRegistro['nombrelaboralprivada']?></td>
@@ -881,7 +875,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Experiencia laboral, sector privado-segundo</div>
+    <div class="containerr3" style="background-color: goldenrod;">Experiencia laboral, sector privado-segundo</div>
     <tr>
         <th id="th">Nombre de la empresa:</th>
         <td id="td"><?php echo $dataRegistro['nombrelaboralprivadados']?></td>
@@ -925,7 +919,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Experiencia laboral, sector privado-tercero</div>
+    <div class="containerr3" style="background-color: goldenrod;">Experiencia laboral, sector privado-tercero</div>
     <tr>
         <th id="th">Nombre de la empresa:</th>
         <td id="td"><?php echo $dataRegistro['nombrelaboralprivadatres']?></td>
@@ -969,7 +963,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Producción cientifica (Investigación, última publicación)</div>
+    <div class="containerr3" style="background-color: goldenrod;">Producción cientifica (Investigación, última publicación)</div>
     <tr>
         <th id="th">Nombre del artículo o publicación:</th>
         <td id="td"><?php echo $dataRegistro['nombrepublicacion']?></td>
@@ -989,7 +983,7 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Idioma</div>
+    <div class="containerr3" style="background-color: goldenrod;">Idioma</div>
     <tr>
         <th id="th">Idioma:</th>
         <td id="td"><?php echo $dataRegistro['nombreidioma']?></td>
@@ -1009,14 +1003,14 @@ function cancelarasistencia() {
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Otras habilidades</div>
+    <div class="containerr3" style="background-color: goldenrod;">Otras habilidades</div>
     <tr>
         <th id="th">Otras habilidades:</th>
         <td id="td"><?php echo $dataRegistro['otrashabilidades']?></td>
     </tr>
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Manifiesto</div>
+    <div class="containerr3" style="background-color: goldenrod;">Manifiesto</div>
     <tr>
         <th id="th">Familiares en el HRAEI:</th>
         <td id="td"><?php echo $dataRegistro['familiaresenhraei']?></td>
@@ -1036,6 +1030,6 @@ function cancelarasistencia() {
     
 </table>
 <?php
-    require 'modals/buscarpostuladobolsa.php';
+    //require 'modals/buscarpostuladobolsa.php';
 
 ?>

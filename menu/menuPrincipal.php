@@ -78,7 +78,7 @@
                 </li>
                 <hr>
                 <li>
-                    <a href="reclutamiento">
+                    <a href="principalReclutamiento">
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-text">
                             Reclutamiento y Selección
