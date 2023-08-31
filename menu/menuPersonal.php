@@ -50,6 +50,14 @@
                 </a>
             </li>
         </ul>
+        <li>
+                    <a href="principalRh">
+                        <i class="fa fa-hospital-o fa-2x" id="icon-color"></i>
+                        <span class="nav-text">
+                            Vista principal
+                        </span>
+                    </a>
+                </li>
         <ul class="logout">
             <li>
                 <a href="close_sesion">
