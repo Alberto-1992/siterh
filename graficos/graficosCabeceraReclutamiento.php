@@ -339,6 +339,8 @@ var datos = [
 <?php
 require 'conexionRh.php';
 
+$sql2021 = $conexion2->query("SELECT count(*) as total2021 from datospersonales where fechainicio between '2021-01-01' and '2021-12-31'");
+$row2021 = mysqli_fetch_assoc($sql2021);
 
 $sql2022 = $conexion2->query("SELECT count(*) as total2022 from datospersonales where fechainicio between '2022-01-01' and '2022-12-31'");
 $row2022 = mysqli_fetch_assoc($sql2022);
@@ -350,7 +352,11 @@ $row2023 = mysqli_fetch_assoc($sql2023);
 
 ?>
 ];
-var data = [ {
+var data = [{
+"year": "2021",
+"Postulados 2021": <?php echo $row2021['total2021'] ?>
+}, 
+{
 "year": "2022",
 "Postulados 2022": <?php echo $row2022['total2022'] ?>
 }, {
@@ -425,6 +431,7 @@ populateText: true
 legend.data.push(series);
 }
 
+makeSeries("POSTULADOS 2021", "Postulados 2021");
 makeSeries("POSTULADOS 2022", "Postulados 2022");
 makeSeries("POSTULADOS 2023", "Postulados 2023");
 
