@@ -185,7 +185,7 @@
         }
     </style>
     <div class="titulo">
-        <h2 style="font-size: 13px;">Porcentaje mensual de postulados 2023</h2>
+        <h2 style="font-size: 13px;">Porcentaje trimestral de postulados 2023</h2>
     </div>
     <!-- Resources -->
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
