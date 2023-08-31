@@ -292,7 +292,7 @@ height: 16rem;
 }
 </style>
 <div class="titulo">
-        <h2 style="font-size: 13px;">Participación ultimos dos periodos metas</h2>
+        <h2 style="font-size: 13px;">Postulados ultimos dos años</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -340,45 +340,22 @@ var datos = [
 require 'conexionRh.php';
 
 
-$sqlDGT = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno != 4");
-$rowDGT = mysqli_fetch_assoc($sqlDGT);
-$sqlDM = $conexionGrafico->query("SELECT count(*) as totalDM from personaloperativo2023 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno != 4");
-$rowDM = mysqli_fetch_assoc($sqlDM);
-$sqlDAF = $conexionGrafico->query("SELECT count(*) as totalDAF from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno != 4");
-$rowDAF = mysqli_fetch_assoc($sqlDAF);
-$sqlDEP = $conexionGrafico->query("SELECT count(*) as totalDEP from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno != 4");
-$rowDEP = mysqli_fetch_assoc($sqlDEP);
-$sqlDO = $conexionGrafico->query("SELECT count(*) as totalDO from personaloperativo2023 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno != 4");
-$rowDO = mysqli_fetch_assoc($sqlDO);
+$sql2022 = $conexion2->query("SELECT count(*) as total2022 from datospersonales where fechainicio between '2022-01-01' and '2022-12-31'");
+$row2022 = mysqli_fetch_assoc($sql2022);
 
-$sqlDGT2022 = $conexionGrafico->query("SELECT count(*) as totalDG2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION GENERAL' and vistobueno != 4");
-$rowDGT2022 = mysqli_fetch_assoc($sqlDGT2022);
-$sqlDM2022 = $conexionGrafico->query("SELECT count(*) as totalDM2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION MEDICA' and vistobueno != 4");
-$rowDM2022 = mysqli_fetch_assoc($sqlDM2022);
-$sqlDAF2022 = $conexionGrafico->query("SELECT count(*) as totalDAF2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and vistobueno != 4");
-$rowDAF2022 = mysqli_fetch_assoc($sqlDAF2022);
-$sqlDEP2022 = $conexionGrafico->query("SELECT count(*) as totalDEP2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and vistobueno != 4");
-$rowDEP2022 = mysqli_fetch_assoc($sqlDEP2022);
-$sqlDO2022 = $conexionGrafico->query("SELECT count(*) as totalDO2022 from personaloperativo2022 where descripcionestructura2 = 'DIRECCION DE OPERACIONES' and vistobueno != 4");
-$rowDO2022 = mysqli_fetch_assoc($sqlDO2022);
+$sql2023 = $conexion2->query("SELECT count(*) as total2023 from datospersonales  where fechainicio between '2023-01-01' and '2023-12-31'");
+$row2023 = mysqli_fetch_assoc($sql2023);
+
 
 
 ?>
 ];
 var data = [ {
 "year": "2022",
-"dg": 4.5,
-"dm": 6.5,
-"daf": 3.1,
-"do": 1.1,
-"dpe": 3.8
+"Postulados 2022": <?php echo $row2022['total2022'] ?>
 }, {
 "year": "2023",
-"dg": <?php echo $rowDGT['totalDG2'] ?>,
-"dm": <?php echo $rowDM['totalDM'] ?>,
-"daf": <?php echo $rowDAF['totalDAF'] ?>,
-"do": <?php echo $rowDO['totalDO'] ?>,
-"dpe": <?php echo $rowDEP['totalDEP'] ?>
+"Postulados 2023": <?php echo $row2023['total2023'] ?>
 }]
 
 
@@ -448,11 +425,9 @@ populateText: true
 legend.data.push(series);
 }
 
-makeSeries("D.G", "dg");
-makeSeries("D.M", "dm");
-makeSeries("D.A.F", "daf");
-makeSeries("D.O", "do");
-makeSeries("D.P.E", "dpe");
+makeSeries("POSTULADOS 2022", "Postulados 2022");
+makeSeries("POSTULADOS 2023", "Postulados 2023");
+
 
 
 // Make stuff animate on load
@@ -474,7 +449,7 @@ font-size: 12px;
 }
 </style>
 <div class="titulo">
-        <h2 style="font-size: 13px;">Sin captura de metas 2023</h2>
+        <h2 style="font-size: 13px;">Postulados por profesion 2023</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
