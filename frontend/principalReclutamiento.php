@@ -242,7 +242,56 @@
     </div>
     <?php
         //require 'graficos/graficosCapturas.php';
-    } ?>
+    }else if (isset($_SESSION['usuarioDatos'])) {
+        $usernameSesion = $_SESSION['usuarioDatos'];
+        require 'conexionRh.php';
+        $statement = $conexionRh->prepare("SELECT correo, rol, password FROM usuarioslogeo WHERE correo= :correo AND rol = :rol");
+        $statement->execute(array(
+            ':correo' => $usernameSesion,
+            ':rol' => 7
+        ));
+        $rw = $statement->fetch();
+        $admin = $rw['correo'];
+        if ($admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'alexvpuebla@gmail.com') {
+        ?>
+
+<style>
+        tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+        
+    }
+    td{
+        cursor: pointer;
+        font-size: 12px;
+    }
+    td:hover{
+        background-color: black;
+        color: white;
+    }
+ 
+    </style>
+    
+    <div class="tablaBuscador" >
+    <div class="col-md-2" >
+    <strong id="titleSeleccion">Seleccione:</strong>
+        <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
+            <option selected>Seleccione</option>
+            <option value="2023-01-01:2023-12-31">Todo el año</option>
+            <option value="2023-01-01:2023-03-31">Enero-Marzo</option>
+            <option value="2023-04-01:2023-06-30">Abril-Junio</option>
+            <option value="2023-07-01:2023-09-30">Julio-Agosto</option>
+            <option value="2023-10-01:2023-12-31">Septiembre-Diciembre</option>
+        </select>
+    </div>
+        <div id="resultado"></div>
+    </div>
+
+<?php 
+        }
+    }
+?>
     <script>
 
 function estado()
