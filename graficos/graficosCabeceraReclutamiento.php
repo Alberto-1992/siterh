@@ -185,7 +185,7 @@
         }
     </style>
     <div class="titulo">
-        <h2 style="font-size: 13px;">Porcentaje mensual de postulados</h2>
+        <h2 style="font-size: 13px;">Porcentaje mensual de postulados 2023</h2>
     </div>
     <!-- Resources -->
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -292,7 +292,7 @@ height: 16rem;
 }
 </style>
 <div class="titulo">
-        <h2 style="font-size: 13px;">Postulados ultimos dos años</h2>
+        <h2 style="font-size: 13px;">Postulados ultimos años</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -353,7 +353,7 @@ $row2023 = mysqli_fetch_assoc($sql2023);
 ?>
 ];
 var data = [{
-"year": "2021",
+    "year": "2021",
 "Postulados 2021": <?php echo $row2021['total2021'] ?>
 }, 
 {
