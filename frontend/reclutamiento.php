@@ -17,7 +17,7 @@
 <body>
 
     <div class="box1">
-        <header class="headerinfarto">
+        <header class="headerinfarto" style="background-color: #03CAB1;">
         
             <span id="cabecera">Reclutamiento y selección.</span>
 

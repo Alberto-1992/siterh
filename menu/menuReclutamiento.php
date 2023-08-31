@@ -34,6 +34,18 @@
         <hr id="hr">
         <ul>
             <li>
+                <a href="principalReclutamiento">
+                    <i class="fa fa-bar-chart fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+
+            </li>
+        </ul>
+        <hr id="hr">
+        <ul>
+            <li>
                 <a href="reclutamiento">
                     <i class="fa fa-user-o fa-2x" id="icon-color"></i>
                     <span class="nav-text">
