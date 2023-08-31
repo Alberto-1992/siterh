@@ -50,7 +50,21 @@
             include_once 'graficos/graficosCabeceraReclutamiento.php';
     
         //require 'graficos/graficosCapturas.php';
-    } ?>
+    }else if (isset($_SESSION['usuarioDatos'])) {
+        $usernameSesion = $_SESSION['usuarioDatos'];
+        require 'conexionRh.php';
+        $statement = $conexionRh->prepare("SELECT correo, rol, password FROM usuarioslogeo WHERE correo= :correo AND rol = :rol");
+        $statement->execute(array(
+            ':correo' => $usernameSesion,
+            ':rol' => 7
+        ));
+        $rw = $statement->fetch();
+        $admin = $rw['correo'];
+        if ($admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'alexvpuebla@gmail.com') {
+            include_once 'graficos/graficosCabeceraReclutamiento.php';
+        }
+    }
+?>
  
 
     <div class="gallery">
