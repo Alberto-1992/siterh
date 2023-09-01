@@ -6,7 +6,7 @@ $id = $_POST['id'];
 $query = $conexion->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.acceder, datospersonales.puesto, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
 datospersonales.delegacion, datospersonales.localidad, datospersonales.colonia, datospersonales.calle, datospersonales.numexterior, datospersonales.numinterior, datospersonales.codigopostal, 
 datospersonales.fechanacimiento, datospersonales.entidadnacimiento, datospersonales.rfc, datospersonales.sexo, datospersonales.cartanaturalizacion, datospersonales.telefonocasa, datospersonales.telefonocelular, 
-datospersonales.otrotelefono, datospersonales.correoelectronico, estudiosmediosup.nombreformacionmedia, estudiosmediosup.nombremediasuperior, estudiosmediosup.fechainicio, estudiosmediosup.fechatermino, 
+datospersonales.otrotelefono, datospersonales.correoelectronico, datospersonales.fechainicio as fechapostulado, estudiosmediosup.nombreformacionmedia, estudiosmediosup.nombremediasuperior, estudiosmediosup.fechainicio, estudiosmediosup.fechatermino, 
 estudiosmediosup.tiempocursado, estudiosmediosup.documentomediosuperior, estudiosmediosup.nombreformacionsuperior, estudiosmediosup.nombresuperior, estudiosmediosup.fechasuperiorinicio, 
 estudiosmediosup.fechasuperiortermino, estudiosmediosup.tiempocursadosuperior, estudiosmediosup.documentosuperior, estudiosmediosup.numerocedulasuperior, estudiosmediosup.nombreformacionmaestria, 
 estudiosmediosup.nombremaestria, estudiosmediosup.fechainiciomaestria, estudiosmediosup.fechaterminomaestria, estudiosmediosup.tiempocursadomaestria, estudiosmediosup.documentomaestria, 

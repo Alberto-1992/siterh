@@ -117,6 +117,10 @@ function cancelaracceso() {
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr2">Datos personales</div>
     <tr>
+        <th id="th">Fecha de postulación:</th>
+        <td id="td"><?php echo $dataRegistro['fechapostulado'] ?></td>
+    </tr>
+    <tr>
         <th id="th">Profesion:</th>
         <td id="td"><?php echo $dataRegistro['profesion'] ?></td>
     </tr>
