@@ -15,19 +15,18 @@
 <?php 
 error_reporting(0);
 	require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 0");
+    $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' ");
     $total_registro  = mysqli_num_rows($sqlQueryComentarios);
 
-    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder FROM datospersonales where acceder = 0 order by datospersonales.id_datopersonal DESC LIMIT 23 ");
+    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder FROM datospersonales where acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' order by datospersonales.id_datopersonal DESC LIMIT 23 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
 	$query=$conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder FROM datospersonales WHERE
-        datospersonales.nombre LIKE '%$q%' and acceder = 0 OR
-        datospersonales.correoelectronico LIKE '%$q%' and acceder = 0 OR
-        datospersonales.curp LIKE '%$q%' and acceder = 0 OR
-		datospersonales.nombre LIKE '%$q%' and acceder = 0 OR
-		datospersonales.appaterno LIKE '%$q%' and acceder = 0 OR
+        datospersonales.nombre LIKE '%$q%' and acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' OR
+        datospersonales.correoelectronico LIKE '%$q%' and fechainicio between '2023-01-01' and '2023-12-31' and acceder = 0 OR
+        datospersonales.curp LIKE '%$q%' and fechainicio between '2023-01-01' and '2023-12-31' and acceder = 0 OR
+		datospersonales.appaterno LIKE '%$q%' and fechainicio between '2023-01-01' and '2023-12-31' and acceder = 0 OR
 		datospersonales.apmaterno LIKE '%$q%' and acceder = 0 group by datospersonales.id_datopersonal");
 }
         ?>
@@ -48,7 +47,7 @@ error_reporting(0);
         <div class="item-comentario" id="<?php echo $dataRegistro['id_datopersonal']; ?>" >
     
                 <div id='<?php echo $dataRegistro['id_datopersonal']; ?>' class='ver-info' >
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].' '.$dataRegistro['appaterno'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
                         ?>
                     
                     </div> 

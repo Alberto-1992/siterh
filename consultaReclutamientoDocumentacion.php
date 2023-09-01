@@ -15,7 +15,7 @@
 <?php 
 error_reporting(0);
 	require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexionDocumentacion->query("SELECT datospersonales.id_datopersonal FROM datospersonales where datosActualizados = 1");
+    $sqlQueryComentarios  = $conexionDocumentacion->query("SELECT datospersonales.id_datopersonal FROM datospersonales where datosActualizados = 1 ");
     $total_registro  = mysqli_num_rows($sqlQueryComentarios);
 
     $query= $conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.datosActualizados FROM datospersonales where datosActualizados = 1 order by datospersonales.id_datopersonal DESC LIMIT 23 ");
@@ -26,7 +26,6 @@ error_reporting(0);
         datospersonales.nombre LIKE '%$q%' and datosActualizados = 1 OR
         datospersonales.correoelectronico LIKE '%$q%' and datosActualizados = 1 OR
         datospersonales.curp LIKE '%$q%' and datosActualizados = 1 OR
-		datospersonales.nombre LIKE '%$q%' and datosActualizados = 1 OR
 		datospersonales.appaterno LIKE '%$q%' and datosActualizados = 1 OR
 		datospersonales.apmaterno LIKE '%$q%' and datosActualizados = 1 group by datospersonales.id_datopersonal");
 }
@@ -60,7 +59,7 @@ error_reporting(0);
         <div class="item-comentario" id="<?php echo $dataRegistro['id_datopersonal']; ?>" >
         <input type="hidden" class="curp" value="<?php echo $dataRegistro['curp']; ?>">
                 <div id='<?php echo $dataRegistro['id_datopersonal']; ?>' class='ver-info' >
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].' '.$dataRegistro['appaterno'].' '.$dataRegistro['apmaterno'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
                         if($acceso == 1){ 
                         ?><input type="submit" value="Documentos" style="padding: 1px; cursor-pointer: none; background: orange; border: none; color: black; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
                             
