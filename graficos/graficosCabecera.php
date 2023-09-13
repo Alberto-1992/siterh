@@ -108,13 +108,13 @@
                 <?php
                 require 'conexionRh.php';
 
-                $sql1 = $conexionGrafico->query("SELECT count(*) as total1 from personaloperativo2023 where vistobueno = 1 and eliminado = 0");
+                $sql1 = $conexionGrafico->query("SELECT count(*) as total1 from personaloperativo2023 inner join jefes2022 on jefes2022.id_jefe=personaloperativo2023.id_jefe where personaloperativo2023.vistobueno = 1 and personaloperativo2023.eliminado = 0");
                 $row1 = mysqli_fetch_assoc($sql1);
-                $sql2 = $conexionGrafico->query("SELECT count(*) as total2 from personaloperativo2023 where vistobueno = 2 and eliminado = 0");
+                $sql2 = $conexionGrafico->query("SELECT count(*) as total2 from personaloperativo2023 inner join jefes2022 on jefes2022.id_jefe=personaloperativo2023.id_jefe where personaloperativo2023.vistobueno = 2 and personaloperativo2023.eliminado = 0");
                 $row2 = mysqli_fetch_assoc($sql2);
-                $sql3 = $conexionGrafico->query("SELECT count(*) as total3 from personaloperativo2023 where vistobueno = 3 and eliminado = 0");
+                $sql3 = $conexionGrafico->query("SELECT count(*) as total3 from personaloperativo2023 inner join jefes2022 on jefes2022.id_jefe=personaloperativo2023.id_jefe where personaloperativo2023.vistobueno = 3 and personaloperativo2023.eliminado = 0");
                 $row3 = mysqli_fetch_assoc($sql3);
-                $sql4 = $conexionGrafico->query("SELECT count(*) as total4 from personaloperativo2023 where vistobueno = 4 and eliminado = 0");
+                $sql4 = $conexionGrafico->query("SELECT count(*) as total4 from personaloperativo2023 inner join jefes2022 on jefes2022.id_jefe=personaloperativo2023.id_jefe where personaloperativo2023.vistobueno = 4 and personaloperativo2023.eliminado = 0");
                 $row4 = mysqli_fetch_assoc($sql4);
                 $total = $row4['total4'] + $row3['total3'] + $row2['total2'] + $row1['total1'];
                 ?>

@@ -61,7 +61,7 @@
                 <a href="enEvaluacion">
                     <i class="fa fa-id-card fa-2x" id="icon-color"></i>
                     <span class="nav-text">
-                        En evaluación
+                        Pre selección
                     </span>
                 </a>
 

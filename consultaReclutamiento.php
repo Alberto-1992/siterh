@@ -30,8 +30,22 @@ error_reporting(0);
 		datospersonales.apmaterno LIKE '%$q%' and acceder = 0 group by datospersonales.id_datopersonal");
 }
         ?>
-<input type="submit" id="totalregistro" value="<?php echo $total_registro; ?>">
-
+<input type="hidden" id="totalregistro" value="<?php echo $total_registro; ?>">
+<ul class="nav nav-tabs" >
+        <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link active" aria-current="page" href="#" style="color: red;">Total: <?php echo $total_registro; ?> </a>
+        </li>
+        <!--
+        <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Check documentos</a>
+            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+                <li><a class="dropdown-item" href="#" onclick="documentos();">Documentacion: </a></li>
+                
+                
+            </ul>
+        </li>
+-->
+    </ul>
     <hr id="hrinicial">
 
         <input type="hidden" name="total_registro" id="total_registro" value="<?php echo $total_registro; ?>" >
@@ -45,7 +59,7 @@ error_reporting(0);
             ?>
         
         <div class="item-comentario" id="<?php echo $dataRegistro['id_datopersonal']; ?>" >
-    
+        
                 <div id='<?php echo $dataRegistro['id_datopersonal']; ?>' class='ver-info' >
                     <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].' '.$dataRegistro['appaterno'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
                         ?>
@@ -69,7 +83,7 @@ error_reporting(0);
 <?php
 
 require_once 'conexionRh.php';
-$sql = $conexionRol->query("SELECT id_datopersonal from datospersonales order by id_datopersonal desc limit 1");
+$sql = $conexionRol->query("SELECT id_datopersonal from datospersonales WHERE acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' order by id_datopersonal desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 
@@ -77,7 +91,23 @@ $sql = $conexionRol->query("SELECT id_datopersonal from datospersonales order by
 
 <input type="hidden" id="cargaPrimerRegsitro" value="<?php echo $row['id_datopersonal'] ?>">
 <script>
-    
+function documentos() {
+    var id = $("#curp").val();
+    let parametros = { id: id }
+        $.ajax({
+            data: parametros,
+            url: 'verDocumentoInicio.php',
+            type: 'post',
+
+            success: function (data) {
+                //$("#mensaje").html(response);
+                $("#tabla_resultado").html(data);
+                
+
+            }
+        });
+
+}
 $(function() {
     var id = $("#cargaPrimerRegsitro").val();
         

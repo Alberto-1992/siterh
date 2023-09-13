@@ -15,24 +15,38 @@
 <?php 
 error_reporting(0);
 	require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 1");
+    $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 1 and cargodocumento = 2");
     $total_registro  = mysqli_num_rows($sqlQueryComentarios);
 
-    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder, datospersonales.confirmarasistencia FROM datospersonales where acceder = 1 order by datospersonales.id_datopersonal DESC LIMIT 23 ");
+    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder, datospersonales.confirmarasistencia FROM datospersonales where acceder = 1 and cargodocumento = 2 order by datospersonales.id_datopersonal DESC LIMIT 23 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
 	$query=$conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder, datospersonales.confirmarasistencia FROM datospersonales WHERE
-        datospersonales.nombre LIKE '%$q%' and acceder = 1 OR
-        datospersonales.correoelectronico LIKE '%$q%' and acceder = 1 OR
-        datospersonales.curp LIKE '%$q%' and acceder = 1 OR
-		datospersonales.nombre LIKE '%$q%' and acceder = 1 OR
-		datospersonales.appaterno LIKE '%$q%' and acceder = 1 OR
-		datospersonales.apmaterno LIKE '%$q%' and acceder = 1 group by datospersonales.id_datopersonal");
+        datospersonales.nombre LIKE '%$q%' and acceder = 1 and cargodocumento = 2 OR
+        datospersonales.correoelectronico LIKE '%$q%' and acceder = 1 and cargodocumento = 2 OR
+        datospersonales.curp LIKE '%$q%' and acceder = 1 and cargodocumento = 2 OR
+		datospersonales.nombre LIKE '%$q%' and acceder = 1 and cargodocumento = 2 OR
+		datospersonales.appaterno LIKE '%$q%' and acceder = 1 and cargodocumento = 2 OR
+		datospersonales.apmaterno LIKE '%$q%' and acceder = 1 and cargodocumento = 2 group by datospersonales.id_datopersonal");
 }
         ?>
-<input type="submit" id="totalregistro" value="<?php echo $total_registro; ?>">
+<input type="hidden" id="totalregistro" value="<?php echo $total_registro; ?>">
 
+<ul class="nav nav-tabs" >
+        <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link active" aria-current="page" href="#" style="color: red;">Total: <?php echo $total_registro; ?> </a>
+        </li>
+        
+        <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar a excel</a>
+            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+                <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Decargar </a></li>
+                
+                
+            </ul>
+        </li>
+    </ul>
     <hr id="hrinicial">
 
         <input type="hidden" name="total_registro" id="total_registro" value="<?php echo $total_registro; ?>" >
@@ -74,7 +88,7 @@ error_reporting(0);
 <?php
 
 require_once 'conexionRh.php';
-$sql = $conexionRol->query("SELECT id_datopersonal from datospersonales where acceder = 1 order by id_datopersonal desc limit 1");
+$sql = $conexionRol->query("SELECT id_datopersonal from datospersonales where acceder = 1 and cargodocumento = 2 order by id_datopersonal desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 
@@ -82,7 +96,10 @@ $sql = $conexionRol->query("SELECT id_datopersonal from datospersonales where ac
 
 <input type="hidden" id="cargaPrimerRegsitro" value="<?php echo $row['id_datopersonal'] ?>">
 <script>
-    
+function exportarExcel() {
+    window.location.href='aplicacion/exportarExcelpreseleccion'
+
+}
 $(function() {
     var id = $("#cargaPrimerRegsitro").val();
         

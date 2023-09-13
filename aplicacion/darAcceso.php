@@ -9,9 +9,10 @@ try {
     $conexionRol->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionRol->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionRol->beginTransaction();
-    $sql = $conexionRol->prepare("UPDATE datospersonales set acceder = :acceder where id_datopersonal = :id_datopersonal");
+    $sql = $conexionRol->prepare("UPDATE datospersonales set acceder = :acceder, cargodocumento = :cargodocumento where id_datopersonal = :id_datopersonal");
     $sql->execute(array(
         ':acceder'=>$acceder,
+        ':cargodocumento'=>2,
         ':id_datopersonal' => $id
     ));
     $validatransac = $conexionRol->commit();

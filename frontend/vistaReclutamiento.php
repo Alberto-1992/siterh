@@ -10,6 +10,7 @@ require 'conexionRh.php';
 <div id="mensaje"></div>
 <input type="hidden" id="idpersonal" value="<?php echo $dataRegistro['id_principal']; ?>">
 <input type="hidden" id="nombrecandidato" value="<?php echo $dataRegistro['nombre']; ?>">
+<input type="hidden" id="curp" value="<?php echo $dataRegistro['curp']; ?>">
 <input type="hidden" id="evaluar" value="1">
 <input type="hidden" id="cancerlarevaluacion" value="0">
 <ul class="nav nav-tabs" style="margin-top: 47px;" >       
@@ -34,8 +35,9 @@ require 'conexionRh.php';
                 <script>
     function eliminarRegistro() {
     var id = $("#idpersonal").val();
+    var curp = $("#curp").val();
     var mensaje = confirm("el registro se eliminara"); 
-    let parametros = { id: id }
+    let parametros = { id: id, curp:curp }
     if (mensaje == true) {
         $.ajax({
             data: parametros,

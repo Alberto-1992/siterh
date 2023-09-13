@@ -1,11 +1,16 @@
 <?php
 require_once '../clases/conexion.php';
 $conexionDocumentacion = new ConexionDocumentacion();
+$conexion = new Conexion();
 date_default_timezone_set("America/Monterrey");
 $id = $_POST['id'];
 $identificador = $_POST['curp'];
 $hora = date("Y-m-d h:i:sa");
-
+$sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = :cargodocumento where curp = :curp");
+        $sql->execute(array(
+            ':cargodocumento'=>2,
+            ':curp' =>$identificador
+        ));
 try {
     $conexionDocumentacion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionDocumentacion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
@@ -14,6 +19,7 @@ try {
     $sql->execute(array(
         ':id_datopersonal' => $id
     ));
+    
     $compdomicilio = 'comprobantedomicilio';
     $ar = '../../talent/documentos/'.$compdomicilio.$identificador ;
     foreach(glob($ar."/*.*") as $archivos_carpeta) 

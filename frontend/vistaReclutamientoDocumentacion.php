@@ -50,7 +50,6 @@ require 'conexionRh.php';
     function eliminarRegistro() {
     var id = $("#idpersonal").val();
     var curp = $("#curp").val();
-    alert(curp)
     var mensaje = confirm("el registro se eliminara"); 
     let parametros = { id: id, curp:curp }
     if (mensaje == true) {

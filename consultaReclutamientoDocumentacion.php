@@ -22,7 +22,7 @@ error_reporting(0);
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
-	$query=$conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder FROM datospersonales WHERE
+	$query=$conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.datosActualizados FROM datospersonales WHERE
         datospersonales.nombre LIKE '%$q%' and datosActualizados = 1 OR
         datospersonales.correoelectronico LIKE '%$q%' and datosActualizados = 1 OR
         datospersonales.curp LIKE '%$q%' and datosActualizados = 1 OR
@@ -37,7 +37,8 @@ error_reporting(0);
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Check documentos</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="documentos();">Documentacion: </a></li>
+                <li><a class="dropdown-item" href="#" onclick="documentos();">Documentacion </a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Exportar a excel </a></li>
                 
                 
             </ul>
@@ -90,6 +91,10 @@ $sql = $conexionSeleccion->query("SELECT id_datopersonal from datospersonales wh
 
 <input type="hidden" id="cargaPrimerRegsitro" value="<?php echo $row['id_datopersonal'] ?>">
 <script>
+    function exportarExcel() {
+    window.location.href='aplicacion/exportarExcelDocumentacion'
+
+}
 function documentos() {
     var id = $("#curp").val();
     let parametros = { id: id }
