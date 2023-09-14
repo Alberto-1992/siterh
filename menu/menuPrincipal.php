@@ -137,6 +137,16 @@
 
                     </li>
                     <hr>
+                    <li>
+                        <a href="validarAdministradores" target="_blank">
+                            <i class="fa fa-id-card fa-2x" id="icon-color"></i>
+                            <span class="nav-text">
+                                Ver administradores
+                            </span>
+                        </a>
+
+                    </li>
+                    <hr>
                     <?php
 
                 } else {
@@ -157,8 +167,17 @@
                                     Registrar usuario
                                 </span>
                             </a>
-
                         </li>
+                        <hr>
+                    <li>
+                        <a href="validarAdministradores" target="_blank">
+                            <i class="fa fa-id-card fa-2x" id="icon-color"></i>
+                            <span class="nav-text">
+                                Ver administradores
+                            </span>
+                        </a>
+
+                    </li>
                 <?php
                     }
                 }
