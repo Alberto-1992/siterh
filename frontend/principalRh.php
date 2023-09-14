@@ -291,7 +291,7 @@
                 </a>
             </article>
             <article class="card" id="capacitacion" onclick="capacitacion();">
-                <a href="mantenimiento">
+                <a href="principalCapacitacion">
                     <hr id="hr6">
                     <p>Capacitación y cursos</p>
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
@@ -339,7 +339,7 @@
                 }
 </script>
     <article class="card" id="capacitacion" onclick="capacitacion();">
-                <a href="mantenimiento">
+                <a href="principalCapacitacion">
                     <hr id="hr6">
                     <p>Capacitación y cursos</p>
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
