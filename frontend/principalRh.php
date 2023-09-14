@@ -24,7 +24,6 @@
         a {
             text-decoration: none;
         }
-        
     </style>
     <header class="header">
         <?php
@@ -46,9 +45,9 @@
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <?php
-    if (isset($_SESSION['usuarioAdminRh'])) { 
-            include_once 'graficos/graficosCabecera.php';
-    
+    if (isset($_SESSION['usuarioAdminRh'])) {
+        include_once 'graficos/graficosCabecera.php';
+
         //require 'graficos/graficosCapturas.php';
     } ?>
 
@@ -67,6 +66,7 @@
                 function reclutamiento() {
                     window.location.href = 'principalReclutamiento';
                 }
+
                 function capacitacion() {
                     window.location.href = 'principalCapacitacion';
                 }
@@ -150,7 +150,7 @@
                 </a>
             </article>
             <article class="card" id="capacitacion" onclick="capacitacion();">
-                <a href="mantenimiento">
+                <a href="principalCapacitacion">
                     <hr id="hr6">
                     <p>Capacitación y cursos</p>
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
@@ -170,6 +170,7 @@
                 function misDatos() {
                     window.location.href = 'mantenimiento';
                 }
+
                 function compatibilidad() {
                     window.location.href = '../compatibilidad/principal';
                 }
@@ -203,7 +204,7 @@
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
-            
+
             <?php
             if (isset($_SESSION['usuarioDatos'])) {
                 $usernameSesion = $_SESSION['usuarioDatos'];
@@ -241,17 +242,17 @@
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
-            <?php
-                }else if ($admin == 'jacv_8810@hotmail.com') { ?>
+                <?php
+                } else if ($admin == 'jacv_8810@hotmail.com') { ?>
 
-            <article class="card" id="compatibilidad" onclick="compatibilidad();">
-                <a href="../compatibilidad/principal">
-                    <hr id="hr6">
-                    <p>Compatibilidad Laboral</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
-                    <?php
+                    <article class="card" id="compatibilidad" onclick="compatibilidad();">
+                        <a href="../compatibilidad/principal">
+                            <hr id="hr6">
+                            <p>Compatibilidad Laboral</p>
+                            <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                        </a>
+                    </article>
+            <?php
                 }
             }
         } else if (isset($_SESSION['usuarioJefe'])) {
@@ -329,22 +330,22 @@
 
                         </a>
                     </article>
-                    <?php
+                <?php
 
-} else if ($admin == 'bramirez699@gmail.com') {
-?>
-<script>
-    function capacitacion() {
-                    window.location.href = 'principalCapacitacion';
-                }
-</script>
-    <article class="card" id="capacitacion" onclick="capacitacion();">
-                <a href="principalCapacitacion">
-                    <hr id="hr6">
-                    <p>Capacitación y cursos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
-                </a>
-            </article>
+                } else if ($admin == 'bramirez699@gmail.com') {
+                ?>
+                    <script>
+                        function capacitacion() {
+                            window.location.href = 'principalCapacitacion';
+                        }
+                    </script>
+                    <article class="card" id="capacitacion" onclick="capacitacion();">
+                        <a href="principalCapacitacion">
+                            <hr id="hr6">
+                            <p>Capacitación y cursos</p>
+                            <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                        </a>
+                    </article>
         <?php
                 }
             }
@@ -354,71 +355,72 @@
     </div>
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) { ?>
-    <style>
-        tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-        
-    }
-    td{
-        cursor: pointer;
-        font-size: 12px;
-    }
-    td:hover{
-        background-color: black;
-        color: white;
-    }
- 
-    </style>
-    
-    <div class="tablaBuscador" >
-    <div class="col-md-2" >
-    <strong id="titleSeleccion">Seleccione:</strong>
-        <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
-            <option selected>Seleccione</option>
-            <option value="1">Autorizados</option>
-            <option value="2">Pendiente de VoBo</option>
-            <option value="3">Rechazadas</option>
-            <option value="4">Sin captura</option>
-        </select>
-    </div>
-        <div id="resultado"></div>
-    </div>
+        <style>
+            tfoot input {
+                width: 100%;
+                padding: 3px;
+                box-sizing: border-box;
+
+            }
+
+            td {
+                cursor: pointer;
+                font-size: 12px;
+            }
+
+            td:hover {
+                background-color: black;
+                color: white;
+            }
+        </style>
+
+        <div class="tablaBuscador">
+            <div class="col-md-2">
+                <strong id="titleSeleccion">Seleccione:</strong>
+                <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
+                    <option selected>Seleccione</option>
+                    <option value="1">Autorizados</option>
+                    <option value="2">Pendiente de VoBo</option>
+                    <option value="3">Rechazadas</option>
+                    <option value="4">Sin captura</option>
+                </select>
+            </div>
+            <div id="resultado"></div>
+        </div>
     <?php
         //require 'graficos/graficosCapturas.php';
     } ?>
     <script>
+        function estado() {
 
-function estado()
-{
-
-	let status = $("#buscar").val();
-	let ob = {status:status};
-  $.ajax({
-            type: "POST",
-            url: "consultadataTable.php",
-            data: ob,
-            beforeSend: function() {
-                $('#resultado').html(
-        '<div id="resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-    );
-},                                 
+            let status = $("#buscar").val();
+            let ob = {
+                status: status
+            };
+            $.ajax({
+                type: "POST",
+                url: "consultadataTable.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#resultado').html(
+                        '<div id="resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                    );
+                },
                 success: function(data) {
                     $("#resultado").html(data);
                     //$("#editarDatosPersonalescancerdeMama").modal('show');
-                    }
-                });
+                }
+            });
 
-};
-    </script> 
-    
+        };
+    </script>
+
 </body>
 <?php
 require 'modals/cargarImagenperfil.php';
 ?>
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
-    
+
 </script>
 
 </html>
