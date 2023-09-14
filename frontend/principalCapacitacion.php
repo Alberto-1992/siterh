@@ -39,12 +39,13 @@
         }
         clearstatcache();
         ?>
-        <span id="cabecera">Reclutamiento</span>
+        <span id="cabecera">Capacitación</span>
 
     </header>
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) { 
             include_once 'graficos/graficosCabeceraCapacitacion.php';
@@ -96,6 +97,9 @@
                         function documentos() {
                             window.location.href = '';
                         }
+                        function programacapacitacion() {
+                            window.location.href = 'programaCapacitacion';
+                        }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
                         <a href="reclutamiento">
@@ -115,6 +119,13 @@
                 <a href="documentacion">
                     <hr id="hr6">
                     <p>Busqueda de empleado y cursos</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="endocumentacion" onclick="programacapacitacion();">
+                <a href="programacapacitacion">
+                    <hr id="hr6">
+                    <p>Programa de capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
@@ -151,6 +162,9 @@
                         function documentos() {
                             window.location.href = '';
                         }
+                        function programacapacitacion() {
+                            window.location.href = 'programaCapacitacion';
+                        }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
                         <a href="reclutamiento">
@@ -170,6 +184,13 @@
                 <a href="documentacion">
                     <hr id="hr6">
                     <p>Busqueda de empleado y cursos</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="endocumentacion" onclick="programacapacitacion();">
+                <a href="programacapacitacion">
+                    <hr id="hr6">
+                    <p>Programa de capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
@@ -204,6 +225,9 @@
                         function documentos() {
                             window.location.href = '';
                         }
+                        function programacapacitacion() {
+                            window.location.href = 'programaCapacitacion';
+                        }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
                         <a href="reclutamiento">
@@ -223,6 +247,13 @@
                 <a href="documentacion">
                     <hr id="hr6">
                     <p>Busqueda de empleado y cursos</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="endocumentacion" onclick="programacapacitacion();">
+                <a href="programacapacitacion">
+                    <hr id="hr6">
+                    <p>Programa de capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>

@@ -11,7 +11,7 @@
             $row = $sql->fetch();
             if($row != false){
             $identificador = $row['id_empleado'];
-            require 'frontend/principalCapacitacion.php';
+            require 'frontend/programaCapacitacion.php';
             }else{
                 $usernameSesion = $_SESSION['usuarioAdminRh']; 
             require 'conexionRh.php';
@@ -21,25 +21,20 @@
                 ));
                 $row = $sql->fetch();
                 $identificador = $row['id_jefe'];
-            require 'frontend/principalCapacitacion.php';
+            require 'frontend/programaCapacitacion.php';
             }
         break;
         
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
             require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT correo,id_jefe from jefes2022 where correo = :correo");
+            $sql = $conexionRh->prepare("SELECT id_jefe from jefes2022 where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));
                 $row = $sql->fetch();
                 $identificador = $row['id_jefe'];
-                $mail = $row['correo'];
-                if($mail == 'bramirez699@gmail.com'){
-            require 'frontend/principalCapacitacion.php';
-                }else{
-                    require '';
-                }
+            require 'frontend/programaCapacitacion.php';
         
         break;
 
@@ -52,7 +47,7 @@
                 ));
                 $row = $sql->fetch();
                 $identificador = $row['id_empleado'];
-        require 'frontend/principalCapacitacion.php';
+        require 'frontend/programaCapacitacion.php';
         break;
 
         default:

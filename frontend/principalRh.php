@@ -174,6 +174,9 @@
                 function compatibilidad() {
                     window.location.href = '../compatibilidad/principal';
                 }
+                function capacitacionprograma() {
+                    window.location.href = 'programaCapacitacion';
+                }
             </script>
 
             <article class="card" id="datosTrabajador" onclick="misDatos();">
@@ -190,8 +193,8 @@
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
-            <article class="card" id="capacitacion" onclick="capacitacion();">
-                <a href="mantenimiento">
+            <article class="card" id="capacitacion" onclick="capacitacionprograma();">
+                <a href="programaCapacitacion">
                     <hr id="hr6">
                     <p>Capacitación y cursos</p>
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
@@ -270,12 +273,16 @@
                 function estructura() {
                     window.location.href = '../rh/admin';
                 }
+                function capacitacionprograma() {
+                    window.location.href = 'programaCapacitacion';
+                }
             </script>
             <article class="card" id="evaluacion" onclick="evaluacion();">
-
-                <hr id="hr6">
+            <a href="../rh/principal">
+            <hr id="hr6">
                 <p>Evaluación del Desempeño</p>
                 <!--<a id="link" href="../rh/principal" class="btn btn-secondary">Evaluar</a>-->
+            </a>
             </article>
             <article class="card" id="datosTrabajador" onclick="misDatos();">
                 <a href="mantenimiento">
@@ -291,8 +298,8 @@
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
-            <article class="card" id="capacitacion" onclick="capacitacion();">
-                <a href="principalCapacitacion">
+            <article class="card" id="capacitacion" onclick="capacitacionprograma();">
+                <a href="programaCapacitacion">
                     <hr id="hr6">
                     <p>Capacitación y cursos</p>
                     <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
