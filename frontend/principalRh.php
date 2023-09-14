@@ -51,7 +51,7 @@
     
         //require 'graficos/graficosCapturas.php';
     } ?>
- 
+
 
     <div class="gallery">
         <?php
@@ -66,6 +66,9 @@
 
                 function reclutamiento() {
                     window.location.href = 'principalReclutamiento';
+                }
+                function capacitacion() {
+                    window.location.href = 'principalCapacitacion';
                 }
 
                 function compatibilidad() {
@@ -326,6 +329,22 @@
 
                         </a>
                     </article>
+                    <?php
+
+} else if ($admin == 'bramirez699@gmail.com') {
+?>
+<script>
+    function capacitacion() {
+                    window.location.href = 'principalCapacitacion';
+                }
+</script>
+    <article class="card" id="capacitacion" onclick="capacitacion();">
+                <a href="mantenimiento">
+                    <hr id="hr6">
+                    <p>Capacitación y cursos</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
         <?php
                 }
             }

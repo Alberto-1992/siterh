@@ -13,7 +13,7 @@
                     <i class="fa fa-user fa-2x" id="icon-color"></i>
                     <span class="nav-text">
                         <?php
-                    if (isset($_SESSION['usuarioDatos'])) {
+            if (isset($_SESSION['usuarioDatos'])) {
                 $usernameSesion = $_SESSION['usuarioDatos'];
                 require 'conexionRh.php';
                 $statement = $conexionRh->prepare("SELECT nombre, apellidopaterno FROM personaloperativo2023 WHERE correo= :correo");
