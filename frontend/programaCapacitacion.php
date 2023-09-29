@@ -51,7 +51,7 @@
     <div class="gallery">
         <?php
         if (isset($_SESSION['usuarioAdminRh'])) {
-            require 'menu/menuPrincipal.php';
+            require 'menu/menuCapacitacion.php';
         ?>
 
 <script>
@@ -103,14 +103,8 @@
         <?php
 
         } else if (isset($_SESSION['usuarioDatos'])) {
-            require 'menu/menuPersonal.php';
+            require 'menu/menuCapacitacion.php';
 
-        ?>
-        
-
-            
-            <?php
-            if (isset($_SESSION['usuarioDatos'])) {
                 $usernameSesion = $_SESSION['usuarioDatos'];
                 ?>
                 
@@ -125,7 +119,7 @@
                             window.location.href = 'planindividualcapacitacion';
                         }
                         function capacitacionuseranual() {
-                            window.location.href = 'capacitacionuseranual';
+                            window.open('capacitacionuseranual');
                         }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
@@ -151,9 +145,8 @@
             </article>
                     <?php
                 
-            }
-        } else if (isset($_SESSION['usuarioJefe'])) {
-            require 'menu/menuPersonal.php';
+            } else if (isset($_SESSION['usuarioJefe'])) {
+            require 'menu/menuCapacitacion.php';
 
             
                 ?>
@@ -193,7 +186,7 @@
                 </a>
             </article>
         <?php
-             
+            
             }
         
         ?>

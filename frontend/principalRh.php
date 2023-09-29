@@ -46,10 +46,18 @@
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) {
+        require 'graficos/graficoCabeceraOperativo.php';
         include_once 'graficos/graficosCabecera.php';
 
         //require 'graficos/graficosCapturas.php';
-    } ?>
+    }else if(isset($_SESSION['usuarioDatos'])) {
+        require 'graficos/graficoCabeceraOperativo.php';
+        
+    }else if(isset($_SESSION['usuarioJefe'])) {
+        require 'graficos/graficoCabeceraOperativo.php';
+        
+    }
+    ?>
 
 
     <div class="gallery">
@@ -91,7 +99,20 @@
                     window.open('graficosEvaluacion');
                 }
             </script>
-
+            <article class="card" id="plantillaoperativo" onclick="evaluacion();">
+                <a href="plantillaoperativos">
+                    <hr id="hr6">
+                    <p>Plantilla Operativos</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
+            <article class="card" id="plantillamando" onclick="evaluacion();">
+                <a href="plantillamandos">
+                    <hr id="hr6">
+                    <p>Plantilla Mandos</p>
+                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
             <article class="card" id="evaluacion" onclick="evaluacion();">
                 <a href="../rh/principal">
                     <hr id="hr6">
@@ -160,8 +181,8 @@
 
         } else if (isset($_SESSION['usuarioDatos'])) {
             require 'menu/menuPersonal.php';
-
         ?>
+        
             <script>
                 function evaluacion() {
                     window.location.href = '../rh/principal';

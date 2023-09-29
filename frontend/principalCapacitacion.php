@@ -24,7 +24,6 @@
         a {
             text-decoration: none;
         }
-        
     </style>
     <header class="header" style="background-color: #03CAB1;">
         <?php
@@ -39,19 +38,20 @@
         }
         clearstatcache();
         ?>
+
         <span id="cabecera">Capacitación</span>
 
     </header>
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    
+
     <?php
-    if (isset($_SESSION['usuarioAdminRh'])) { 
-            include_once 'graficos/graficosCabeceraCapacitacion.php';
-    
+    if (isset($_SESSION['usuarioAdminRh'])) {
+        include_once 'graficos/graficosCabeceraCapacitacion.php';
+
         //require 'graficos/graficosCapturas.php';
-    }else if (isset($_SESSION['usuarioDatos'])) {
+    } else if (isset($_SESSION['usuarioDatos'])) {
         $usernameSesion = $_SESSION['usuarioDatos'];
         require 'conexionRh.php';
         $statement = $conexionRh->prepare("SELECT correo, rol, password FROM usuarioslogeo WHERE correo= :correo AND rol = :rol");
@@ -64,13 +64,13 @@
         if ($admin == 'beto_1866@outlook.com') {
             include_once 'graficos/graficosCabeceraReclutamiento.php';
         }
-    }else if (isset($_SESSION['usuarioJefe'])) {
+    } else if (isset($_SESSION['usuarioJefe'])) {
         $usernameSesion = $_SESSION['usuarioJefe'];
         require 'conexionRh.php';
         $statement = $conexionRh->prepare("SELECT correo, rol, password FROM usuarioslogeojefes WHERE correo= :correo AND rol = :rol");
         $statement->execute(array(
             ':correo' => $usernameSesion,
-            ':rol' =>4
+            ':rol' => 4
         ));
         $rw = $statement->fetch();
         $admin = $rw['correo'];
@@ -78,8 +78,8 @@
             include_once 'graficos/graficosCabeceraCapacitacion.php';
         }
     }
-?>
- 
+    ?>
+
 
     <div class="gallery">
         <?php
@@ -87,35 +87,40 @@
             require 'menu/menuPrincipal.php';
         ?>
 
-                <script>
-                        function reclutamiento() {
-                            window.location.href = '';
-                        }
-                        function evaluacion() {
-                            window.location.href = '';
-                        }
-                        function documentos() {
-                            window.location.href = '';
-                        }
-                        function programacapacitacion() {
-                            window.location.href = 'programaCapacitacion';
-                        }
-                    </script>
-                    <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
-                        <a href="reclutamiento">
-                            <hr id="hr6">
-                            <p>Creación de nuevo curso/capacitación</p>
-                            <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
-                        </a>
-                    </article>
-                    <article class="card" id="enevaluacion" onclick="validaciondedocumentacion();">
-                <a href="enEvaluacion">
+            <script>
+                function reclutamiento() {
+                    window.location.href = '';
+                }
+
+                function evaluacion() {
+                    window.location.href = '';
+                }
+
+                function documentos() {
+                    window.location.href = '';
+                }
+
+                function programacapacitacion() {
+                    window.location.href = 'programaCapacitacion';
+                }
+
+                function validaciondedocumentacion() {
+                    window.open('validaDocumentacionCursos')
+                }
+                function listaempleados() {
+                    window.open('programaCursosAutorizadosEmpleados')
+                }
+            </script>
+            <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
+                <a href="reclutamiento">
                     <hr id="hr6">
-                    <p>Validación de documentación</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                    <p>Creación de nuevo curso/capacitación</p>
+                    <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                 </a>
             </article>
-            <article class="card" id="endocumentacion" onclick="listaempleados();">
+
+            </article>
+            <article class="card" id="programaCursosAutorizadosEmpleados" onclick="listaempleados();">
                 <a href="documentacion">
                     <hr id="hr6">
                     <p>Busqueda de empleado y cursos</p>
@@ -129,80 +134,94 @@
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            
-        <?php
+            <article class="card" id="enevaluacion" onclick="validaciondedocumentacion();">
+                <a href="validaDocumentacionCursos">
+                    <hr id="hr6">
+                    <p>Validación de documentación</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+
+            <?php
 
         } else if (isset($_SESSION['usuarioDatos'])) {
             require 'menu/menuPersonal.php';
 
-        ?>
-        
+            ?>
 
-            
-            <?php
-            if (isset($_SESSION['usuarioDatos'])) {
-                $usernameSesion = $_SESSION['usuarioDatos'];
-                require 'conexionRh.php';
-                $statement = $conexionRh->prepare("SELECT correo, rol, password FROM usuarioslogeo WHERE correo= :correo AND rol = :rol");
-                $statement->execute(array(
-                    ':correo' => $usernameSesion,
-                    ':rol' => 7
-                ));
-                $rw = $statement->fetch();
-                $admin = $rw['correo'];
-                if ($admin == 'beto_1866@outlook.com') {
+
+
+                <?php
+                if (isset($_SESSION['usuarioDatos'])) {
+                    $usernameSesion = $_SESSION['usuarioDatos'];
+                    require 'conexionRh.php';
+                    $statement = $conexionRh->prepare("SELECT correo, rol, password FROM usuarioslogeo WHERE correo= :correo AND rol = :rol");
+                    $statement->execute(array(
+                        ':correo' => $usernameSesion,
+                        ':rol' => 7
+                    ));
+                    $rw = $statement->fetch();
+                    $admin = $rw['correo'];
+                    if ($admin == 'beto_1866@outlook.com') {
                 ?>
-                    <script>
-                        function reclutamiento() {
-                            window.location.href = '';
-                        }
-                        function evaluacion() {
-                            window.location.href = '';
-                        }
-                        function documentos() {
-                            window.location.href = '';
-                        }
-                        function programacapacitacion() {
-                            window.location.href = 'programaCapacitacion';
-                        }
-                    </script>
-                    <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
-                        <a href="reclutamiento">
-                            <hr id="hr6">
-                            <p>Creación de nuevo curso/capacitación</p>
-                            <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
-                        </a>
-                    </article>
-                    <article class="card" id="enevaluacion" onclick="validaciondedocumentacion();">
-                <a href="enEvaluacion">
-                    <hr id="hr6">
-                    <p>Validación de documentación</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
-            <article class="card" id="endocumentacion" onclick="listaempleados();">
-                <a href="documentacion">
-                    <hr id="hr6">
-                    <p>Busqueda de empleado y cursos</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
-            <article class="card" id="endocumentacion" onclick="programacapacitacion();">
-                <a href="programacapacitacion">
-                    <hr id="hr6">
-                    <p>Programa de capacitación</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
-            <?php
-                } ?>
+                        <script>
+                            function reclutamiento() {
+                                window.location.href = '';
+                            }
 
-            
+                            function evaluacion() {
+                                window.location.href = '';
+                            }
+
+                            function documentos() {
+                                window.location.href = '';
+                            }
+
+                            function programacapacitacion() {
+                                window.location.href = 'programaCapacitacion';
+                            }
+
+                            function validaciondedocumentacion() {
+                                window.location.href = 'validaDocumentacionCursos'
+                            }
+                        </script>
+                        <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
+                            <a href="reclutamiento">
+                                <hr id="hr6">
+                                <p>Creación de nuevo curso/capacitación</p>
+                                <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
+                            </a>
+                        </article>
+
+                        <article class="card" id="endocumentacion" onclick="listaempleados();">
+                            <a href="documentacion">
+                                <hr id="hr6">
+                                <p>Busqueda de empleado y cursos</p>
+                                <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                            </a>
+                        </article>
+                        <article class="card" id="endocumentacion" onclick="programacapacitacion();">
+                            <a href="programacapacitacion">
+                                <hr id="hr6">
+                                <p>Programa de capacitación</p>
+                                <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                            </a>
+                        </article>
+                        <article class="card" id="enevaluacion" onclick="validaciondedocumentacion();">
+                            <a href="validaDocumentacionCursos">
+                                <hr id="hr6">
+                                <p>Validación de documentación</p>
+                                <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                            </a>
+                        </article>
                     <?php
-                
-            }
-        } else if (isset($_SESSION['usuarioJefe'])) {
-            require 'menu/menuPersonal.php';
+                    } ?>
+
+
+                <?php
+
+                }
+            } else if (isset($_SESSION['usuarioJefe'])) {
+                require 'menu/menuPersonal.php';
 
                 $usernameSesion = $_SESSION['usuarioJefe'];
                 require 'conexionRh.php';
@@ -219,14 +238,21 @@
                         function reclutamiento() {
                             window.location.href = '';
                         }
+
                         function evaluacion() {
                             window.location.href = '';
                         }
+
                         function documentos() {
                             window.location.href = '';
                         }
+
                         function programacapacitacion() {
                             window.location.href = 'programaCapacitacion';
+                        }
+
+                        function validaciondedocumentacion() {
+                            window.location.href = 'validaDocumentacionCursos'
                         }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
@@ -236,71 +262,72 @@
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
+                    <article class="card" id="endocumentacion" onclick="listaempleados();">
+                        <a href="documentacion">
+                            <hr id="hr6">
+                            <p>Busqueda de empleado y cursos</p>
+                            <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                        </a>
+                    </article>
+                    <article class="card" id="endocumentacion" onclick="programacapacitacion();">
+                        <a href="programacapacitacion">
+                            <hr id="hr6">
+                            <p>Programa de capacitación</p>
+                            <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                        </a>
+                    </article>
                     <article class="card" id="enevaluacion" onclick="validaciondedocumentacion();">
-                <a href="enEvaluacion">
-                    <hr id="hr6">
-                    <p>Validación de documentación</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
-            <article class="card" id="endocumentacion" onclick="listaempleados();">
-                <a href="documentacion">
-                    <hr id="hr6">
-                    <p>Busqueda de empleado y cursos</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
-            <article class="card" id="endocumentacion" onclick="programacapacitacion();">
-                <a href="programacapacitacion">
-                    <hr id="hr6">
-                    <p>Programa de capacitación</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
-        <?php
+                        <a href="validaDocumentacionCursos">
+                            <hr id="hr6">
+                            <p>Validación de documentación</p>
+                            <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                        </a>
+                    </article>
+            <?php
                 }
             }
-        
-        ?>
+
+            ?>
 
     </div>
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) { ?>
-    <style>
-        tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-        
-    }
-    td{
-        cursor: pointer;
-        font-size: 12px;
-    }
-    td:hover{
-        background-color: black;
-        color: white;
-    }
- 
-    </style>
-    
-    <div class="tablaBuscador" >
-    <div class="col-md-2" >
-    <strong id="titleSeleccion">Seleccione:</strong>
-        <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
-            <option selected>Seleccione</option>
-            <option value="2023-01-01:2023-12-31">Todo el año</option>
-            <option value="2023-01-01:2023-03-31">Enero-Marzo</option>
-            <option value="2023-04-01:2023-06-30">Abril-Junio</option>
-            <option value="2023-07-01:2023-09-30">Julio-Agosto</option>
-            <option value="2023-10-01:2023-12-31">Septiembre-Diciembre</option>
-        </select>
-    </div>
-        <div id="resultado"></div>
-    </div>
-    <?php
+        <style>
+            tfoot input {
+                width: 100%;
+                padding: 3px;
+                box-sizing: border-box;
+
+            }
+
+            td {
+                cursor: pointer;
+                font-size: 12px;
+            }
+
+            td:hover {
+                background-color: black;
+                color: white;
+            }
+        </style>
+
+        <div class="tablaBuscador">
+            <div class="col-md-2">
+                <strong id="titleSeleccion">Seleccione:</strong>
+                <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
+                    <option selected>Seleccione</option>
+                    <option value="2023-01-01:2023-12-31">Todo el año</option>
+                    <option value="2023-01-01:2023-03-31">Enero-Marzo</option>
+                    <option value="2023-04-01:2023-06-30">Abril-Junio</option>
+                    <option value="2023-07-01:2023-09-30">Julio-Agosto</option>
+                    <option value="2023-10-01:2023-12-31">Septiembre-Diciembre</option>
+                </select>
+            </div>
+            <div id="resultado"></div>
+        </div>
+        <?php
         //require 'graficos/graficosCapturas.php';
-    }else if (isset($_SESSION['usuarioDatos'])) {
+    } else if (isset($_SESSION['usuarioDatos'])) {
         $usernameSesion = $_SESSION['usuarioDatos'];
         require 'conexionRh.php';
         $statement = $conexionRh->prepare("SELECT correo, rol, password FROM usuarioslogeo WHERE correo= :correo AND rol = :rol");
@@ -313,75 +340,76 @@
         if ($admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'alexvpuebla@gmail.com') {
         ?>
 
-<style>
-        tfoot input {
-        width: 100%;
-        padding: 3px;
-        box-sizing: border-box;
-        
-    }
-    td{
-        cursor: pointer;
-        font-size: 12px;
-    }
-    td:hover{
-        background-color: black;
-        color: white;
-    }
- 
-    </style>
-    
-    <div class="tablaBuscador" >
-    <div class="col-md-2" >
-    <strong id="titleSeleccion">Seleccione:</strong>
-        <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
-            <option selected>Seleccione</option>
-            <option value="2023-01-01:2023-12-31">Todo el año</option>
-            <option value="2023-01-01:2023-03-31">Enero-Marzo</option>
-            <option value="2023-04-01:2023-06-30">Abril-Junio</option>
-            <option value="2023-07-01:2023-09-30">Julio-Agosto</option>
-            <option value="2023-10-01:2023-12-31">Septiembre-Diciembre</option>
-        </select>
-    </div>
-        <div id="resultado"></div>
-    </div>
+            <style>
+                tfoot input {
+                    width: 100%;
+                    padding: 3px;
+                    box-sizing: border-box;
 
-<?php 
+                }
+
+                td {
+                    cursor: pointer;
+                    font-size: 12px;
+                }
+
+                td:hover {
+                    background-color: black;
+                    color: white;
+                }
+            </style>
+
+            <div class="tablaBuscador">
+                <div class="col-md-2">
+                    <strong id="titleSeleccion">Seleccione:</strong>
+                    <select name="seleccion" id="buscar" class="form-control" onchange="estado();">
+                        <option selected>Seleccione</option>
+                        <option value="2023-01-01:2023-12-31">Todo el año</option>
+                        <option value="2023-01-01:2023-03-31">Enero-Marzo</option>
+                        <option value="2023-04-01:2023-06-30">Abril-Junio</option>
+                        <option value="2023-07-01:2023-09-30">Julio-Agosto</option>
+                        <option value="2023-10-01:2023-12-31">Septiembre-Diciembre</option>
+                    </select>
+                </div>
+                <div id="resultado"></div>
+            </div>
+
+    <?php
         }
     }
-?>
+    ?>
     <script>
+        function estado() {
 
-function estado()
-{
+            let status = $("#buscar").val();
+            let ob = {
+                status: status
+            };
+            $.ajax({
+                type: "POST",
+                url: "consultadataTableReclutamiento.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#resultado').html(
+                        '<div id="resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                    );
+                },
 
-	let status = $("#buscar").val();
-	let ob = {status:status};
-  $.ajax({
-            type: "POST",
-            url: "consultadataTableReclutamiento.php",
-            data: ob,
-            beforeSend: function() {
-                $('#resultado').html(
-        '<div id="resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-    );
-},
-                                                    
                 success: function(data) {
                     $("#resultado").html(data);
                     //$("#editarDatosPersonalescancerdeMama").modal('show');
-                    }
-                });
+                }
+            });
 
-};
-    </script> 
-    
+        };
+    </script>
+
 </body>
 <?php
 require 'modals/cargarImagenperfil.php';
 ?>
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
-    
+
 </script>
 
 </html>

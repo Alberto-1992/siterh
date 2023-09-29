@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <header style="width: auto; height: auto; padding: 4px; text-align: center; color: white; font-size: 17px; background: #1072b3; ">
+    <header style="width: auto; height: 2rem; padding: 4px; text-align: center; color: white; font-size: 17px; background: #B5B195; font-style:normal;">
         <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
     </header>
 
@@ -32,7 +32,7 @@
                                 <span class="input-icon"><i class="fa fa-lock"></i></span>
                                 <input class="form-control" type="password" placeholder="Password" name="password" required>
                             </div>
-                            <button class="btn signin" type="submit">Log in</button>
+                            <button class="btn signin" type="submit" >Log in</button>
                         
                             <span class="register"><a href="https://hraei.gob.mx/rH/recursos_humanos" target="_blank">Hospital Regional de Alta Especialidad de Ixtapaluca</a></span>
                         </form>
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <footer style="width: 100%; position: fixed; background: #1072b3; height: auto; bottom: 0; color: white;  text-align: center;">
+    <footer style="width: 100%; height: 3rem; position: fixed; background: #B5B195; bottom: 0; color: white;  text-align: center;">
         <p>
             ® Hospital Regional de Alta Especialidad de Ixtapaluca, todos los derechos reservados. <br>
             Carr Federal México-Puebla Km. 34.5, Zoquiapan, 56530 Ixtapaluca, Méx.</p>
@@ -55,7 +55,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $correo = $_POST['usuario'];
     $password = $_POST['password'];
     $password = hash('sha512', $password);
-    
+    $bloqueado = 777;
+    $bloqueadomando = 444;
 include("conexionRh.php");
 
     $statement = $conexionRh->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeo WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado'
@@ -64,7 +65,7 @@ include("conexionRh.php");
         
         ':correo' => $correo,
         ':password' => $password,
-        ':rol'=>7,
+        ':rol'=>$bloqueado,
         ':eliminado'=>0
     ));
 
@@ -81,7 +82,7 @@ include("conexionRh.php");
             
             ':correo' => $correo,
             ':password' => $password,
-            ':rol'=>4,
+            ':rol'=>$bloqueadomando,
             ':eliminado'=>0
         ));
         $resultado4 = $statement4->fetch();

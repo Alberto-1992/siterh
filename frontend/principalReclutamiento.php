@@ -63,6 +63,19 @@
         if ($admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'alexvpuebla@gmail.com') {
             include_once 'graficos/graficosCabeceraReclutamiento.php';
         }
+    }else if (isset($_SESSION['usuarioJefe'])) {
+        $usernameSesion = $_SESSION['usuarioJefe'];
+        require 'conexionRh.php';
+        $statement = $conexionRh->prepare("SELECT correo, rol FROM jefes2022 WHERE correo= :correo AND rol = :rol");
+        $statement->execute(array(
+            ':correo' => $usernameSesion,
+            ':rol' => 4
+        ));
+        $rw = $statement->fetch();
+        $admin = $rw['correo'];
+        if ($admin == 'brendacontreras@hotmail.com') {
+            include_once 'graficos/graficosCabeceraReclutamiento.php';
+        }
     }
 ?>
  

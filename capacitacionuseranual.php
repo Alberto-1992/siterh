@@ -8,4 +8,5 @@ echo "Estamos creando algo nuevo, esperalo";
     function back() {
         window.history.back();
     }
+
 </script>

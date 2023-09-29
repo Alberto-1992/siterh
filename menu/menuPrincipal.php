@@ -54,6 +54,7 @@
                 </a>
             </li>
         </ul>
+        <hr>
         <ul>
             <?php
             if (isset($_SESSION['usuarioAdminRh'])) {
@@ -182,7 +183,7 @@
                     }
                 }
                 ?>
-                <hr>
+                
             <?php
             }
             ?>
