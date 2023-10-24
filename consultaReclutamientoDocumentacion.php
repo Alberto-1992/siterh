@@ -14,15 +14,19 @@
 <div id="lista-comentarios">
 <?php 
 error_reporting(0);
-	require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexionDocumentacion->query("SELECT datospersonales.id_datopersonal FROM datospersonales where datosActualizados = 1 ");
-    $total_registro  = mysqli_num_rows($sqlQueryComentarios);
+require_once 'clases/conexion.php';
+$conexionDocumentacion = new ConexionDocumentacion();
+    $sqlQueryComentarios  = $conexionDocumentacion->prepare("SELECT datospersonales.id_datopersonal FROM datospersonales where datosActualizados = 1 ");
+    $sqlQueryComentarios->execute();
+    $sqlQueryComentarios = $conexionDocumentacion->prepare("SELECT FOUND_ROWS()");
+    $sqlQueryComentarios->execute();
+    $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.datosActualizados FROM datospersonales where datosActualizados = 1 order by datospersonales.id_datopersonal DESC LIMIT 23 ");
+    $query= $conexionDocumentacion->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.datosActualizados FROM datospersonales where datosActualizados = 1 order by datospersonales.id_datopersonal DESC LIMIT 23 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
-	$query=$conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.datosActualizados FROM datospersonales WHERE
+	$query=$conexionDocumentacion->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.datosActualizados FROM datospersonales WHERE
         datospersonales.nombre LIKE '%$q%' and datosActualizados = 1 OR
         datospersonales.correoelectronico LIKE '%$q%' and datosActualizados = 1 OR
         datospersonales.curp LIKE '%$q%' and datosActualizados = 1 OR
@@ -82,8 +86,7 @@ error_reporting(0);
 </div>
 <?php
 
-require_once 'conexionRh.php';
-$sql = $conexionSeleccion->query("SELECT id_datopersonal from datospersonales where datosActualizados = 1 order by id_datopersonal desc limit 1");
+$sql = $conexionDocumentacion->prepare("SELECT id_datopersonal from datospersonales where datosActualizados = 1 order by id_datopersonal desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 

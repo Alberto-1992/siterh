@@ -1,11 +1,11 @@
 <?php
 	
-	require ('../conexionCancer.php');
+	require ('../conexionRh.php');
 	
 	$id_estado = $_POST['id_estado'];
 	
 	$queryM = "SELECT id_municipio, municipio FROM t_municipio WHERE id_estado = '$id_estado' ORDER BY municipio";
-	$resultadoM = $conexion2->query($queryM);
+	$resultadoM = $conexionGrafico->query($queryM);
 	
 	$html= "<option value='0'>Seleccionar Municipio</option>";
 	

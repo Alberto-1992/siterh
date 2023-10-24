@@ -14,6 +14,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/scriptInicio.js"></script>
     <!--<script defer src="https://app.embed.im/snow.js"></script>-->
     <title>Plataforma HRAEI</title>
 </head>
@@ -26,7 +27,7 @@
         }
     </style>
     <header class="header">
-        <?php
+        <?php /*
         $path = "imagenesPerfiles/" . $identificador;
         if (file_exists($path)) {
             $directorio = opendir($path);
@@ -36,7 +37,7 @@
                 }
             }
         }
-        clearstatcache();
+        clearstatcache();*/
         ?>
         <span id="cabecera">R.H</span>
 
@@ -47,7 +48,7 @@
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) {
         require 'graficos/graficoCabeceraOperativo.php';
-        include_once 'graficos/graficosCabecera.php';
+        require 'graficos/graficosCabecera.php';
 
         //require 'graficos/graficosCapturas.php';
     }else if(isset($_SESSION['usuarioDatos'])) {
@@ -67,114 +68,106 @@
         ?>
 
             <script>
-                function evaluacion() {
-                    window.location.href = '../rh/principal';
-                }
-
-                function reclutamiento() {
-                    window.location.href = 'principalReclutamiento';
-                }
-
-                function capacitacion() {
-                    window.location.href = 'principalCapacitacion';
-                }
-
-                function compatibilidad() {
-                    window.location.href = '../compatibilidad/principal';
-                }
-
-                function estructura() {
-                    window.location.href = '../rh/admin';
-                }
-
-                function contratacion() {
-                    window.location.href = '../contratacion/principal';
-                }
-
-                function relacioneslaborales() {
-                    window.location.href = '../laborales/principal';
-                }
-
-                function graficosCapturas() {
-                    window.open('graficosEvaluacion');
-                }
+                
             </script>
-            <article class="card" id="plantillaoperativo" onclick="evaluacion();">
-                <a href="plantillaoperativos">
+            <article class="card" id="mistrabajadores" onclick="misEmpleados();">
+            <a href="misEmpleado">
+            <hr id="hr6">
+            <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
+                <p>Mis trabajadores</p>
+            </a>
+            </article>
+            <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
+                <a href="plantillahraei">
                     <hr id="hr6">
-                    <p>Plantilla Operativos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                    <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Plantilla HRAEI</p>
                 </a>
             </article>
-            <article class="card" id="plantillamando" onclick="evaluacion();">
+            <article class="card" id="plantillamando" onclick="movimientosplantilla();">
                 <a href="plantillamandos">
                     <hr id="hr6">
-                    <p>Plantilla Mandos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                    <i class="fa fa-users" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Movimientos plantilla</p>
                 </a>
             </article>
             <article class="card" id="evaluacion" onclick="evaluacion();">
                 <a href="../rh/principal">
                     <hr id="hr6">
+                    <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Evaluación del Desempeño</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
-                </a>
-            </article>
-            <article class="card" id="graficosevaluacion" onclick="graficosCapturas();">
-                <a href="graficosEvaluacion">
-                    <hr id="hr6">
-                    <p>Graficos de evaluación</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
             <article class="card" id="estructura-organizacional" onclick="estructura();">
                 <a href="../rh/admin">
                     <hr id="hr6">
-                    <p>Módulo Usuarios</p>
-                    <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
+                    <i class="fa fa-desktop" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Control Eval Desemp.</p>
                 </a>
             </article>
+            <article class="card" id="graficosevaluacion" onclick="graficosCapturas();">
+                <a href="graficosEvaluacion">
+                    <hr id="hr6">
+                    <i class="fa fa-bar-chart" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Graficos de evaluación</p>
+                </a>
+            </article>
+            
             <article class="card" id="reclutamiento" onclick="reclutamiento();">
                 <a href="principalReclutamiento">
                     <hr id="hr6">
+                    <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                     <p>Reclutamiento y Selección</p>
-                    <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                 </a>
             </article>
 
-            <article class="card" id="compatibilidad" onclick="compatibilidad();">
-                <a href="../compatibilidad/principal">
+            <article class="card" id="compatibilidad" onclick="compatibilidadUsuarios();">
+                <a href="compatibilidadusuarios">
                     <hr id="hr6">
+                    <i class="fa fa-cogs" aria-hidden="true" id="iconosdiv"></i>
                     <p>Compatibilidad Laboral</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
             <article class="card" id="contratacion" onclick="contratacion();">
-                <a href="../contratacion/principal">
+                <a href="contratacion">
                     <hr id="hr6">
+                    <i class="fa fa-newspaper-o" aria-hidden="true" id="iconosdiv"></i>
                     <p>Contratación</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
             <article class="card" id="relacioneslaborales" onclick="relacioneslaborales();">
                 <a href="../relacioneslaborales/principal">
                     <hr id="hr6">
+                    <i class="fa fa-briefcase" aria-hidden="true" id="iconosdiv"></i>
                     <p>Relaciones laborales</p>
-                    <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
                 </a>
             </article>
             <article class="card" id="academicos" onclick="datosacademicos();">
-                <a href="mantenimiento">
+                <a href="datosAcademicos">
                     <hr id="hr6">
+                    <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Datos academicos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
+            <article class="card" id="datosTrabajador" onclick="misDatos();">
+                <a href="actualizacionDatosPersonales">
+                    <hr id="hr6">
+                    <i class="fa fa-drivers-license" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Mis datos personales</p>
                 </a>
             </article>
             <article class="card" id="capacitacion" onclick="capacitacion();">
                 <a href="principalCapacitacion">
                     <hr id="hr6">
+                    <i class="fa fa-address-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Capacitación y cursos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
+            <article class="card" id="calendarioVacaciones" onclick="vacaciones();">
+                <a href="calendarioVacaciones">
+                    <hr id="hr6">
+                    <i class="fa fa-calendar" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Planeación vacaciones</p>
                 </a>
             </article>
         <?php
@@ -183,200 +176,267 @@
             require 'menu/menuPersonal.php';
         ?>
         
-            <script>
-                function evaluacion() {
-                    window.location.href = '../rh/principal';
-                }
-
-                function misDatos() {
-                    window.location.href = 'mantenimiento';
-                }
-
-                function compatibilidad() {
-                    window.location.href = '../compatibilidad/principal';
-                }
-                function capacitacionprograma() {
-                    window.location.href = 'programaCapacitacion';
-                }
-            </script>
 
             <article class="card" id="datosTrabajador" onclick="misDatos();">
-                <a href="mantenimiento">
+                <a href="actualizacionDatosPersonales">
                     <hr id="hr6">
+                    <i class="fa fa-drivers-license" aria-hidden="true" id="iconosdiv"></i>
                     <p>Mis datos personales</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
             <article class="card" id="academicos" onclick="datosacademicos();">
-                <a href="mantenimiento">
+                <a href="datosAcademicos">
                     <hr id="hr6">
+                    <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Datos academicos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
             <article class="card" id="capacitacion" onclick="capacitacionprograma();">
                 <a href="programaCapacitacion">
                     <hr id="hr6">
+                    <i class="fa fa-address-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Capacitación y cursos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
             <article class="card" id="evaluacion" onclick="evaluacion();">
                 <a href="../rh/principal">
                     <hr id="hr6">
+                    <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Evaluación del Desempeño</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
-
+            <article class="card" id="compatibilidad" onclick="compatibilidadUsuarios();">
+                <a href="compatibilidadusuarios">
+                    <hr id="hr6">
+                    <i class="fa fa-cogs" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Compatibilidad Laboral</p>
+                </a>
+            </article>
+            <article class="card" id="calendarioVacaciones" onclick="vacaciones();">
+                <a href="calendarioVacaciones">
+                    <hr id="hr6">
+                    <i class="fa fa-calendar" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Planeación vacaciones</p>
+                </a>
+            </article>
             <?php
-            if (isset($_SESSION['usuarioDatos'])) {
                 $usernameSesion = $_SESSION['usuarioDatos'];
                 require 'conexionRh.php';
-                $statement = $conexionRh->prepare("SELECT correo, rol, password FROM usuarioslogeo WHERE correo= :correo AND rol = :rol");
+                $statement = $conexionRh->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
                 $statement->execute(array(
-                    ':correo' => $usernameSesion,
-                    ':rol' => 7
+                    ':correo' => $usernameSesion
                 ));
                 $rw = $statement->fetch();
                 $admin = $rw['correo'];
                 if ($admin == 'msandoval@hraei.gob.mx' or $admin == 'isabella291216@gmail.com' or $admin == 'bramirez699@gmail.com') {
             ?>
+        
                     <article class="card" id="estructura-organizacional" onclick="estructura();">
                         <a href="../rh/admin">
                             <hr id="hr6">
+                            <i class="fa fa-desktop" aria-hidden="true" id="iconosdiv"></i>
                             <p>Modulo usuarios</p>
 
                             <a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>
                         </a>
                     </article>
+                    <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
+                <a href="plantillaoperativos">
+                    <hr id="hr6">
+                    <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Plantilla HRAEI</p>
+                </a>
+            </article>
 
                 <?php
                 } else if ($admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'alexvpuebla@gmail.com') {
                 ?>
-                    <script>
-                        function reclutamiento() {
-                            window.location.href = 'principalReclutamiento';
-                        }
-                    </script>
+                    
                     <article class="card" id="reclutamiento" onclick="reclutamiento();">
                         <a href="principalReclutamiento">
                             <hr id="hr6">
+                            <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                             <p>Reclutamiento y Selección</p>
-                            <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
+                    <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
+                <a href="plantillaoperativos">
+                    <hr id="hr6">
+                    <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Plantilla HRAEI</p>
+                </a>
+            </article>
                 <?php
                 } else if ($admin == 'jacv_8810@hotmail.com') { ?>
-
+                    
                     <article class="card" id="compatibilidad" onclick="compatibilidad();">
-                        <a href="../compatibilidad/principal">
+                        <a href="compatibilidad">
                             <hr id="hr6">
+                            <i class="fa fa-cogs" aria-hidden="true" id="iconosdiv"></i>
                             <p>Compatibilidad Laboral</p>
-                            <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                         </a>
                     </article>
+                    <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
+                <a href="plantillaoperativos">
+                    <hr id="hr6">
+                    <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Plantilla HRAEI</p>
+                </a>
+            </article>
             <?php
+            }else if($admin == 'jbaldome@yahoo.com.mx' or $admin == 'adriana.zent@hotmail.com') {
+                ?>
+                    <article class="card" id="contratacion" onclick="contratacion();">
+            <a href="contratacion">
+                <hr id="hr6">
+                <i class="fa fa-newspaper-o" aria-hidden="true" id="iconosdiv"></i>
+                <p>Contratación</p>
+            </a>
+        </article>
+        <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
+            <a href="plantillahraei">
+                <hr id="hr6">
+                <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                <p>Plantilla HRAEI</p>
+            </a>
+        </article>
+        <?php
                 }
-            }
+            
         } else if (isset($_SESSION['usuarioJefe'])) {
             require 'menu/menuPersonal.php';
             ?>
-            <script>
-                function evaluacion() {
-                    window.location.href = '../rh/principal';
-                }
-
-                function misDatos() {
-                    window.location.href = 'mantenimiento';
-                }
-
-                function estructura() {
-                    window.location.href = '../rh/admin';
-                }
-                function capacitacionprograma() {
-                    window.location.href = 'programaCapacitacion';
-                }
-            </script>
+            <article class="card" id="mistrabajadores" onclick="misEmpleados();">
+            <a href="misEmpleado">
+            <hr id="hr6">
+            <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
+                <p>Mis trabajadores</p>
+            </a>
+            </article>
             <article class="card" id="evaluacion" onclick="evaluacion();">
             <a href="../rh/principal">
             <hr id="hr6">
+            <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                 <p>Evaluación del Desempeño</p>
-                <!--<a id="link" href="../rh/principal" class="btn btn-secondary">Evaluar</a>-->
             </a>
             </article>
             <article class="card" id="datosTrabajador" onclick="misDatos();">
-                <a href="mantenimiento">
+                <a href="actualizacionDatosPersonales">
                     <hr id="hr6">
+                    <i class="fa fa-drivers-license" aria-hidden="true" id="iconosdiv"></i>
                     <p>Mis datos personales</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
             <article class="card" id="academicos" onclick="datosacademicos();">
-                <a href="mantenimiento">
+                <a href="datosAcademicos">
                     <hr id="hr6">
+                    <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Datos academicos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
                 </a>
             </article>
             <article class="card" id="capacitacion" onclick="capacitacionprograma();">
                 <a href="programaCapacitacion">
                     <hr id="hr6">
+                    <i class="fa fa-address-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Capacitación y cursos</p>
-                    <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
+                </a>
+            </article>
+            <article class="card" id="compatibilidad" onclick="compatibilidadUsuarios();">
+                <a href="compatibilidadusuarios">
+                    <hr id="hr6">
+                    <i class="fa fa-cogs" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Compatibilidad Laboral</p>
+                </a>
+            </article>
+            <article class="card" id="calendarioVacaciones" onclick="vacaciones();">
+                <a href="calendarioVacaciones">
+                    <hr id="hr6">
+                    <i class="fa fa-calendar" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Planeación vacaciones</p>
                 </a>
             </article>
             <?php
-            if (isset($_SESSION['usuarioJefe'])) {
 
                 $usernameSesion = $_SESSION['usuarioJefe'];
                 require 'conexionRh.php';
-                $statement = $conexionRh->prepare("SELECT correo, rol FROM usuarioslogeojefes WHERE correo= :correo AND rol = :rol");
+                $statement = $conexionRh->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo ");
                 $statement->execute(array(
-                    ':correo' => $usernameSesion,
-                    ':rol' => 4
+                    ':correo' => $usernameSesion
                 ));
                 $rw = $statement->fetch();
                 $admin = $rw['correo'];
                 if ($admin == 'bramirez699@gmail.com') {
             ?>
+                    <article class="card" id="capacitacion" onclick="capacitacion();">
+                        <a href="principalCapacitacion">
+                            <hr id="hr6">
+                            <i class="fa fa-address-book" aria-hidden="true" id="iconosdiv"></i>
+                            <p>Capacitación y cursos</p>
+                        </a>
+                    </article>
+                    <article class="card" id="contratacion" onclick="contratacion();">
+                <a href="contratacion">
+                    <hr id="hr6">
+                    <i class="fa fa-newspaper-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Contratación</p>
+                </a>
+            </article>
                     <article class="card" id="estructura-organizacional" onclick="estructura();">
                         <a href="../rh/admin">
                             <hr id="hr6">
+                            <i class="fa fa-desktop" aria-hidden="true" id="iconosdiv"></i>
                             <p>Módulo Usuarios</p>
-                            <!--<a id="linkestructura" href="../rh/admin" class="btn btn-secondary">Estructura</a>-->
                         </a>
                     </article>
+                    <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
+                <a href="plantillaoperativos">
+                    <hr id="hr6">
+                    <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Plantilla HRAEI</p>
+                </a>
+            </article>
                 <?php
 
                 } else if ($admin == 'brendacontreras@hotmail.com') {
                 ?>
+                
                     <article class="card" id="reclutamiento" onclick="reclutamiento();">
                         <a href="principalReclutamiento">
                             <hr id="hr6">
+                            <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                             <p>Reclutamiento y Selección</p>
 
                         </a>
                     </article>
-                <?php
-
-                } else if ($admin == 'bramirez699@gmail.com') {
+                    
+            <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
+                <a href="plantillaoperativos">
+                    <hr id="hr6">
+                    <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Plantilla HRAEI</p>
+                </a>
+            </article>
+            <?php
+            }else if($admin == 'oscar.rosasc@hotmail.com' ) {
                 ?>
-                    <script>
-                        function capacitacion() {
-                            window.location.href = 'principalCapacitacion';
-                        }
-                    </script>
-                    <article class="card" id="capacitacion" onclick="capacitacion();">
-                        <a href="principalCapacitacion">
-                            <hr id="hr6">
-                            <p>Capacitación y cursos</p>
-                            <!--<a id="link" href="../rh/principal" class="btn btn-success">Evaluación</a>-->
-                        </a>
-                    </article>
+                
+                    <article class="card" id="contratacion" onclick="contratacion();">
+            <a href="contratacion">
+                <hr id="hr6">
+                <i class="fa fa-newspaper-o" aria-hidden="true" id="iconosdiv"></i>
+                <p>Contratación</p>
+            </a>
+        </article>
+        <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
+            <a href="plantillahraei">
+                <hr id="hr6">
+                <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                <p>Plantilla HRAEI</p>
+            </a>
+        </article>
         <?php
+                
                 }
-            }
         }
         ?>
 

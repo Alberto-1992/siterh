@@ -26,21 +26,21 @@
 <div id="lista-comentarios">
 <?php 
 error_reporting(0);
-	require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexionGrafico->query("SELECT * FROM datos where validaautorizacion = 1");
-    $total_registro  = mysqli_num_rows($sqlQueryComentarios);
+require_once 'clases/conexion.php';
+$conexionX = new ConexionRh();
+$sqlQueryComentarios  = $conexionX->prepare("SELECT plantillahraei.Empleado FROM plantillahraei");
+$sqlQueryComentarios->execute();
+$sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
+$sqlQueryComentarios->execute();
+$total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionRh->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos where validaautorizacion = 1 order by datos.id DESC LIMIT 23 ");
+    $query= $conexionX->prepare("SELECT  Nombre, Empleado, DescripcionPuesto,RFC  FROM plantillahraei order by Empleado DESC LIMIT 30");
     if(isset($_POST['evento']))
 {
-	$q= $_POST['evento'];
-	$query=$conexionRh->prepare("SELECT datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos WHERE
-            id_empleado LIKE '%$q%' and validaautorizacion = 1 
-            nombreinstitucion LIKE '%$q%' and validaautorizacion = 1 OR
-            nombrecurso LIKE '%$q%'  and validaautorizacion = 1 OR
-		    areaquefortalece LIKE '%$q%' and validaautorizacion = 1 OR
-            asistecomo LIKE '%$q%' and validaautorizacion = 1 OR
-		    modalidad LIKE '%$q%' group by datos.id");
+	$id= $_POST['evento'];
+	$query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC  FROM plantillahraei where 
+    Nombre like '%$id%' or
+    Empleado like '%$id%' order by plantillahraei.Empleado");
 }
         ?>
 <input type="hidden" id="totalregistro" value="<?php echo $total_registro; ?>">
@@ -69,14 +69,14 @@ error_reporting(0);
         $query->execute();
         while($dataRegistro= $query->fetch())
         { 
-            $acceso = $dataRegistro['validaautorizacion'];
             ?>
         
-        <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
+        <div class="item-comentario" id="<?php echo $dataRegistro['Empleado']; ?>">
         
-                <div id='<?php echo $dataRegistro['id']; ?>' class='ver-info'>
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>';
-                        ?>
+                <div id='<?php echo $dataRegistro['Empleado']; ?>' class='ver-info'>
+                <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['Nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['RFC'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['Empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong>';
+                    
+                    ?>
                     
                     </div> 
                 <hr id="hr" >
@@ -96,14 +96,13 @@ error_reporting(0);
 </div>
 <?php
 
-require_once 'conexionRh.php';
-$sql = $conexionRh->prepare("SELECT id from datos WHERE validaautorizacion = 1 order by id desc limit 1");
+$sql = $conexionX->prepare("SELECT id_empleado from datos WHERE validaautorizacion = 1 order by id desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 
 ?>
 
-<input type="hidden" id="cargaPrimerRegsitro" value="<?php echo $row['id'] ?>">
+<input type="hidden" id="cargaPrimerRegsitro" value="<?php echo $row['id_empleado'] ?>">
 <script>
 function documentos() {
     var id = $("#curp").val();
@@ -124,7 +123,7 @@ function documentos() {
 }
 $(function() {
     var id = $("#cargaPrimerRegsitro").val();
-        
+    
         let ob = {
             id: id
         };
@@ -216,7 +215,7 @@ function pageScroll() {
                 let datos = {utimoId:utimoId, totalregistro:totalregistro};
                 $("#tabla_resultadobus").off("scroll");
                 $.ajax({
-                    url: 'obteniendoMasDatosReclutamiento.php',
+                    url: 'obteniendoMasDatosCursosAutorizados.php',
                     data: datos,
                     type: "POST",
                     beforeSend: function() {

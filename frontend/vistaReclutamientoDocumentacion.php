@@ -18,24 +18,9 @@ require 'conexionRh.php';
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
                 <li><a class="dropdown-item" href="#" onclick="eliminarRegistro();">Eliminar registro</a></li>
-            <?php
-                if($dataRegistro['acceder'] == 1){ ?>
+                <li><a class="dropdown-item" href="#" onclick="pasarContratacion();">Pasar a contratación</a></li>
             
-                <li><a class="dropdown-item" href="#" onclick="cancelaracceso();">Cancelar evaluación</a></li>
-            <?php
-                }
-            ?>
-            <?php 
-            if($dataRegistro['confirmarasistencia'] == 0){ ?>
-                <li><a class="dropdown-item" href="#" onclick="confirmarasistencia();">Confirmar asistencia</a></li>
-                    <?php
-                }else{
-                ?>
-                <li><a class="dropdown-item" href="#" onclick="cancelarasistencia();">Cancelar asistencia</a></li>
-
-                <?php
-                }
-                ?>
+        
         </ul>
     </li>
     
@@ -56,6 +41,33 @@ require 'conexionRh.php';
         $.ajax({
             data: parametros,
             url: 'aplicacion/eliminarRegistroDocumentacion.php',
+            type: 'post',
+
+            success: function (response) {
+                $("#mensaje").html(response);
+                $("#tabla_resultadobus").load('consultaReclutamientoDocumentacion.php');
+                
+
+            }
+        });
+    } else {
+        swal({
+            title: 'Cancelado!',
+            text: 'Proceso cancelado',
+            icon: 'warning',
+
+        });
+    }
+}
+function pasarContratacion() {
+    var id = $("#idpersonal").val();
+    var curp = $("#curp").val();
+    var mensaje = confirm("El registro pasara a contratación?"); 
+    let parametros = { id: id, curp:curp }
+    if (mensaje == true) {
+        $.ajax({
+            data: parametros,
+            url: 'aplicacion/pasarAcontratacion.php',
             type: 'post',
 
             success: function (response) {

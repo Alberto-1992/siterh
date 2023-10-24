@@ -2,7 +2,7 @@
     .graficos2 {
   display: grid;
   grid-auto-rows: 20rem;
-  grid-template-columns: 6fr 1fr;
+  grid-template-columns: 4fr 4fr 4fr;
   gap: 1rem;
   margin-top: 0px;
   margin-left: 57px;

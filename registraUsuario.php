@@ -12,12 +12,13 @@ if (isset($_POST['almacenar'])){
     $password = hash('sha512', $password);
     $cpassword = hash('sha512', $cpassword);
 } 
-    require 'conexionRh.php';
+require_once 'clases/conexion.php';
+$conexionX = new ConexionRh();
     try{
-        $conexionRh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conexionRh->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
-        $conexionRh->beginTransaction();
-        $statement = $conexionRh->prepare("INSERT INTO usuariosrh (nombrecompleto, correoelectronico, claveacceso, rolacceso) VALUES (:nombrecompleto, :correoelectronico, :claveacceso, :rolacceso)");
+        $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
+        $conexionX->beginTransaction();
+        $statement = $conexionX->prepare("INSERT INTO usuariosrh (nombrecompleto, correoelectronico, claveacceso, rolacceso) VALUES (:nombrecompleto, :correoelectronico, :claveacceso, :rolacceso)");
         $statement->execute(array(
             
             ':nombrecompleto' => $name,
@@ -27,14 +28,14 @@ if (isset($_POST['almacenar'])){
         
         ));
     
-        $validatransac = $conexionRh->commit();
+        $validatransac = $conexionX->commit();
 
         if($validatransac != false) {
             echo "<script>alert('Datos registrados'); window.history.back();
 </script>";
 }
 }catch(Exception $e) {
-$conexionRh->rollBack();
+$conexionX->rollBack();
 echo "<script>alert('Error inesperado');
 </script>";
 } 

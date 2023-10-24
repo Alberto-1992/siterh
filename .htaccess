@@ -12,4 +12,8 @@
     RewriteRule ^(.*)$ $1.html
     #RewriteRule ^([a-z]+)/?$ $1.html [NC]
     
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
     </IfModule>

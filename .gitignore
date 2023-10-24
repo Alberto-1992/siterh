@@ -1,4 +1,8 @@
 conexionRh.php
 clases/conexion.php
+clases/config
+clases/configDocumentos
+clases/configRh
 close_sesion.php
 imagenesPerfiles/**/
+documentoscursos/**/

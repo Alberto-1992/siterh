@@ -59,12 +59,13 @@ require 'conexionRh.php';
 }
 function autorizar() {
     var id = $("#id").val();
+    var lineaestrategica = $("#linea").val();
     var mensaje = confirm("El curso sera autorizado"); 
-    let parametros = { id: id }
+    let parametros = { id: id, lineaestrategica:lineaestrategica }
     if (mensaje == true) {
         $.ajax({
             data: parametros,
-            url: 'autorizarDocumento.php',
+            url: 'aplicacion/autorizarDocumento.php',
             type: 'post',
 
             success: function (response) {
@@ -154,9 +155,14 @@ else if($validaacceso == 4){
 </table>
 <div class="form-row">
 <div class="col-md-3">
-    <strong>Selecciona la linea</strong>
-<select class="form-control" id="linea">
-    <option value="linea uno">Linea uno</option>
+    <strong>Linea estrategica</strong>
+<select class="form-control" id="linea" name="lineaestrategica">
+    <option value="">Seleccione</option>
+    <option value="ACTUALIZACION NORMATIVA">ACTUALIZACION NORMATIVA</option>
+    <option value="FORTALECIMIENTO DE COMPETENCIAS GERENCIALES">FORTALECIMIENTO DE COMPETENCIAS GERENCIALES</option>
+    <option value="FORTALECIMIENTO DE COMPETENCIAS TECNICO - ADMINISTRATIVAS">FORTALECIMIENTO DE COMPETENCIAS TECNICO - ADMINISTRATIVAS</option>
+    <option value="CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS">CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</option>
+    <option value="FORTALECIMIENTO DE COMPETENCIAS ESPECIALIZADAS">FORTALECIMIENTO DE COMPETENCIAS ESPECIALIZADAS</option>
 </select>
 </div>
 <div class="col-md-3">

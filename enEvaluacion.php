@@ -3,8 +3,9 @@
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh.php';
-                $query = $conexionRh->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
+            require_once 'clases/conexion.php';
+                $conexionX = new ConexionRh();
+                $query = $conexionX->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
                     $query->execute(array(
                         ':correoelectronico'=>$usernameSesion
                     ));

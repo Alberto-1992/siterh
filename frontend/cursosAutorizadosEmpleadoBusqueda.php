@@ -10,6 +10,7 @@
     <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link rel="stylesheet" href="css/multiple-select.css" />
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <title>Validación de actualizaciones academicas</title>
 
@@ -108,7 +109,7 @@
 	let ob = {evento:evento};
   $.ajax({
             type: "POST",
-            url: "consultaValidacionDocumentos.php",
+            url: "cursosAutorizadosEmpleados.php",
             data: ob,
                                                     
                 success: function(data) {
@@ -122,8 +123,10 @@
 <script type='text/javascript'
         src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
     </script>
-
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
+</script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js" crossorigin="anonymous"></script>
+    <script src="js/multiple-select.js"></script>
     <script>
         window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     </script>
@@ -154,7 +157,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>

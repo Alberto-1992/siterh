@@ -80,7 +80,7 @@
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
-            $nombreempleado = $nombre . ' ' . $appaterno . ' ' . $apmaterno;
+            $nombreempleado = $nombre;
         break;
         
         case isset($_SESSION['usuarioJefe']):
@@ -88,7 +88,7 @@
         break;
 
         case isset($_SESSION['usuarioDatos']):
-            $nombreempleado = $nombre . ' ' . $appaterno . ' ' . $apmaterno;
+            $nombreempleado = $nombre;
         break;
 
         default:
@@ -104,8 +104,8 @@
                     <label for="mensaje">Nombre:</label>
                     <input type="text" class="form-control" name="nombreempleado" id="nombreempleado" placeholder="Nombre" required value="<?php echo $nombreempleado ?>">
                 </div>
-                <div class="col-md-12">
-                    <strong>Tipo de capacitación:</strong>
+                <div class="col-md-6">
+                    <label for="mensaje">Tipo de capacitación:</label>
                     <select class="form-control" name="tipodecapacitacion" id="tipodecapacitacion" required onchange="tipoCapacitacion();">
                         <option value="Sin dato">Seleccione</option>
                         <?php
@@ -219,8 +219,11 @@
     <div class="container" style="width: 100%; overflow-x:scroll;">
         <?php
         error_reporting(0);
-        require 'conexionRh.php';
-        $sql = $conexionGrafico->query("SELECT * from datos where id_empleado = $identificador and validaautorizacion = 1 order by id desc");
+        require_once 'clases/conexion.php';
+        $conexionX = new ConexionRh();
+                    
+        $sql = $conexionX->prepare("SELECT * from datos where id_empleado = $identificador and validaautorizacion = 1 order by id desc");
+        $sql->execute();
 
         ?>
 
@@ -239,7 +242,7 @@
             </thead>
             <tbody>
                 <?php
-                while ($dataRegistro = $sql->fetch_assoc()) {
+                while ($dataRegistro = $sql->fetch()) {
                     $valor = $dataRegistro['id'];
                     $nombrecurso = $dataRegistro['nombrecurso'];
                     $fechatermino = $dataRegistro['fechatermino'];

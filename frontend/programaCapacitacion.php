@@ -27,7 +27,7 @@
         
     </style>
     <header class="header" style="background-color: #03CAB1;">
-        <?php
+        <?php /*
         $path = "imagenesPerfiles/" . $identificador;
         if (file_exists($path)) {
             $directorio = opendir($path);
@@ -37,7 +37,7 @@
                 }
             }
         }
-        clearstatcache();
+        clearstatcache(); */
         ?>
         <span id="cabecera">Capacitacion</span>
 
@@ -67,38 +67,33 @@
                         function capacitacionuseranual() {
                             window.location.href = 'capacitacionuseranual';
                         }
-                        function registroenventoscapacitacion() {
-                            window.location.href = 'registroenventoscapacitacion';
-                        }
+                        
                     </script>
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
                         <a href="capacitacionuseranual">
                             <hr id="hr6">
+                            <i class="fa fa-calendar" aria-hidden="true" id="iconosdiv"></i>
                             <p>Programa anual de capacitación</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
-                    <article class="card" id="enevaluacion" onclick="planindividualcapacitacion();">
+                    <article class="card" id="planindividualcapacitacion" onclick="planindividualcapacitacion();">
                 <a href="planindividualcapacitacion">
                     <hr id="hr6">
+                    <i class="fa fa-bookmark" aria-hidden="true" id="iconosdiv"></i>
                     <p>Plan individual de capacitacion</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            <article class="card" id="endocumentacion" onclick="solicitudpermisoadministrativo();">
+            <article class="card" id="permisoadministrativo" onclick="solicitudpermisoadministrativo();">
                 <a href="solicitudpermisoadministrativo">
                     <hr id="hr6">
-                    <p>Solicitud de permiso administrativo menor a 30 días</p>
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Permiso administrativo menor a 30 días</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            <article class="card" id="endocumentacion" onclick="registroenventoscapacitacion();">
-                <a href="registroenventoscapacitacion">
-                    <hr id="hr6">
-                    <p>Registro de eventos de capacitación</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
+        
             
         <?php
 
@@ -125,20 +120,23 @@
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
                         <a href="capacitacionuseranual">
                             <hr id="hr6">
+                            <i class="fa fa-calendar" aria-hidden="true" id="iconosdiv"></i>
                             <p>Programa anual de capacitación</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
-                    <article class="card" id="enevaluacion" onclick="planindividualcapacitacion();">
+                    <article class="card" id="planindividualcapacitacion" onclick="planindividualcapacitacion();">
                 <a href="planindividualcapacitacion">
                     <hr id="hr6">
-                    <p>Plan individual de capacitacion</p>
+                    <i class="fa fa-bookmark" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Plan individual de capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            <article class="card" id="endocumentacion" onclick="solicitudpermisoadministrativo();">
+            <article class="card" id="permisoadministrativo" onclick="solicitudpermisoadministrativo();">
                 <a href="solicitudpermisoadministrativo">
                     <hr id="hr6">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
                     <p>Solicitud de permiso administrativo menor a 30 días</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
@@ -167,20 +165,23 @@
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
                         <a href="capacitacionuseranual">
                             <hr id="hr6">
+                            <i class="fa fa-calendar" aria-hidden="true" id="iconosdiv"></i>
                             <p>Programa anual de capacitación</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
-                    <article class="card" id="enevaluacion" onclick="planindividualcapacitacion();">
+                    <article class="card" id="planindividualcapacitacion" onclick="planindividualcapacitacion();">
                 <a href="planindividualcapacitacion">
                     <hr id="hr6">
+                    <i class="fa fa-bookmark" aria-hidden="true" id="iconosdiv"></i>
                     <p>Plan individual de capacitacion</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            <article class="card" id="endocumentacion" onclick="solicitudpermisoadministrativo();">
+            <article class="card" id="permisoadministrativo" onclick="solicitudpermisoadministrativo();">
                 <a href="solicitudpermisoadministrativo">
                     <hr id="hr6">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
                     <p>Solicitud de permiso administrativo menor a 30 días</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>

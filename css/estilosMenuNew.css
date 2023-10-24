@@ -35,9 +35,9 @@ nav.main-menu.expanded {
   background: #ffffff;
   border-right: 1px solid #e5e5e5;
   position: fixed;
-  top: 50px;
+  top: 46px;
   bottom: 0;
-  height: 94.5%;
+  height: 94.8%;
   left: 0;
   width: 55px;
   overflow: hidden;
@@ -155,7 +155,7 @@ nav.main-menu li.active>a,
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-:root {
+/*:root {
   --header-height: 3rem;
   --nav-width: 90px;
   --first-color: #F2F3F4;
@@ -164,7 +164,7 @@ nav.main-menu li.active>a,
   --body-font: italic;
   --normal-font-size: 19px;
   --z-fixed: 100
-}
+}*/
 
 .header {
   width: 100%;
@@ -215,7 +215,7 @@ hr{
   border: 1px solid #e0e0e0;
   box-shadow: 10px 5px 5px #ABAAAA;
   border-radius: 10px;
-  border-radius: 0.3rem;
+  border-radius: 0.8rem;
   color: #333;
   cursor: pointer;
 
@@ -228,12 +228,24 @@ hr{
 
 .gallery {
   display: grid;
-  gap: 1rem;
-  grid-auto-rows: 11rem;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: .5rem;
+  grid-auto-rows: 9rem;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   margin-top: 0px;
   margin-left: 57px;
   padding: 10px;
+  
+
+}
+.galleryEmpleados {
+  display: grid;
+  gap: .5rem;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  margin-top: 0px;
+  margin-left: 57px;
+  padding: 10px;
+  
 
 }
 
@@ -360,13 +372,19 @@ hr{
  
 }
 p {
-  text-align: center;
-  font-size: 14px;
+  text-align: left;
+  font-size: 13px;
   font-style: oblique;
-  color: black;
-  margin-top: 0px;
+  color: rgb(21, 8, 138);
+  margin-top: 30px;
   text-decoration: none;
 
+}
+#iconosdiv {
+  float: right;
+  color: black;
+  font-size: 35px;
+  margin-top: 25px;
 }
 
 p:hover {
@@ -398,9 +416,6 @@ p:hover {
   background: white;
   color: black;
 }
-
-
-
 #linkdatostrabajador {
   font-size: 12px;
   color: white;
@@ -411,7 +426,6 @@ p:hover {
   background: white;
   color: black;
 }
-
 .btn {
   height: 25px;
   width: 130px;
@@ -419,7 +433,6 @@ p:hover {
   display: flex;
   margin-top: 35%;
   margin-left: 10px;
-
 }
 
 #hr6 {
@@ -431,81 +444,85 @@ p:hover {
   margin-left: auto;
   margin-right: auto;
 }
-
+#hr6-1 {
+  background-color: #da660d;
+  height: 5px;
+  margin-top: 0px;
+  border-radius: 40px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
 #icono {
-
   color: red;
 }
 
 #datosTrabajador {
-
   background-image: url(../img/datospersonales.png);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(24, 24, 24));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 95% 85%;
-
 }
 
 #evaluacion {
   background-image: url(../img/A10.png);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(0, 225, 67));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 95% 90%;
-
 }
 
 
 #reclutamiento {
   background-image: url(../img/reclutamientoyseleccion.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(89, 0, 255));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 90% 90%;
-
 }
 
 #compatibilidad {
   background-image: url(https://img.freepik.com/vector-premium/icono-linea-concepto-compatibilidad-ilustracion-elemento-simple-diseno-simbolo-esquema-concepto-compatibilidad-puede-utilizar-ui-ux-web-movil_159242-1841.jpg?w=2000);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(255, 111, 0));
   background-repeat: no-repeat;
-  background-size: 90% 90%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
-
 }
 #contratacion {
   background-image: url(../img/contratacion.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(3, 2, 72));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
-
 }
 #relacioneslaborales {
   background-image: url(../img/relacioneslaborales.png);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(3, 170, 212));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
-
 }
 #academicos {
   background-image: url(../img/academicos.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(80, 80, 80));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
-
 }
 #capacitacion {
   background-image: url(../img/capcitacioneshraei.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(57, 48, 103));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
-
 }
-
-
 #estructura-organizacional {
   background-image: url(../img/estructura-organizacional.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(189, 48, 205));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
-
 }
 #activostecnologia{
   background-image: url(../img/gestion-emrepsa.jpg);
@@ -515,40 +532,137 @@ p:hover {
 }
 #graficosevaluacion {
   background-image: url(../img/kpis.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(205, 48, 58));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
 }
 #enevaluacion {
   background-image: url(../img/enevaluacion.png);
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(46, 59, 161));
+  background-size: 100% 100%;
   background-position: 85% 90%;
 }
 #endocumentacion {
   background-image: url(../img/documentacionrh.jpg);
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(28, 36, 100));
+  background-size: 100% 100%;
   background-position: 85% 90%;
 }
 #creaciondecursos {
   background-image: url(../img/creaciondecursos.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(29, 29, 33));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
 }
 #plantillaoperativo {
   background-image: url(https://www.sesametime.com/assets/wp-content/uploads/2020/01/plantilla-para-control-horario.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(48, 145, 205));
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
 }
 #plantillamando {
   background-image: url(https://www.sesametime.com/assets/wp-content/uploads/2020/01/plantilla-gestion-bajas-y-ausencias.jpg);
+  background: linear-gradient(rgb(255, 255, 255) 80%, yellow);
   background-repeat: no-repeat;
-  background-size: 70% 70%;
+  background-size: 100% 100%;
   background-position: 85% 90%;
 }
+#programaCursosAutorizadosEmpleados {
+  background-image: url(https://static.vecteezy.com/system/resources/previews/003/354/894/non_2x/business-online-training-seminar-or-courses-background-illustration-vector.jpg);
+  background-repeat: no-repeat;
+  background-size: 70% 70%;
+  background-position: 75% 90%;
+}
+#calendariocapacitacion {
+  background-image: url(https://unavtiroconarco.com/wp-content/uploads/2021/09/calendario.jpg);
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(118, 88, 251));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#cursosasigandos {
+  background-image: url(https://d11cuk1a0j5b57.cloudfront.net/blog/wp-content/uploads/2022/08/18125803/Mejores-plataformas-de-cursos.jpg);
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(43, 39, 63));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#sincursosasignados {
+  background-image: url(https://m.media-amazon.com/images/I/71L0EbialtL.jpg);
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(226, 18, 18));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#programacapacitacion {
+  background-image: url(https://desarrollosocial.guanajuato.gob.mx/wp-content/uploads/2022/06/capacitaciones.jpg);
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(205, 106, 0));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#validaciondocumentocapacitacion {
+  background-image: url(https://m.media-amazon.com/images/I/71L0EbialtL.jpg);
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(0, 205, 109));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#cargaproveedor {
+  background-image: url(https://1.bp.blogspot.com/-ynybuBmLWpQ/XII0QbnLsmI/AAAAAAAAAHU/3FMElXItmr0aS3qkrmE0JdCNthGT2z5GgCLcBGAs/s1600/data%2Bbase.jpg);
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(163, 163, 182));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#busquedacurso {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(195, 205, 0));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#busquedacursoempleado {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(205, 167, 0));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#planindividualcapacitacion {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(0, 205, 123));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#permisoadministrativo {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(24, 94, 169));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#autorizacioncapacitacion {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(53, 53, 54));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#calendarioVacaciones {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(0, 31, 116));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
+#mistrabajadores {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(41, 93, 237));
+  background-size: 100% 100%;
+  background-position: 85% 90%; 
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

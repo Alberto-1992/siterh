@@ -19,7 +19,42 @@ try {
     $sql->execute(array(
         ':id_datopersonal' => $id
     ));
-    
+    $actividadeconomica = 'documentoactvidadeconomica';
+    $ar = '../../talent/documentos/'.$actividadeconomica.$identificador ;
+    foreach(glob($ar."/*.*") as $archivos_carpeta) 
+    { 
+     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    }
+    $actanacimiento = 'documentoactanacimiento';
+    $ar = '../../talent/documentos/'.$actanacimiento.$identificador ;
+    foreach(glob($ar."/*.*") as $archivos_carpeta) 
+    { 
+     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    }
+    $ine = 'documentoine';
+    $ar = '../../talent/documentos/'.$ine.$identificador ;
+    foreach(glob($ar."/*.*") as $archivos_carpeta) 
+    { 
+     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    }
+    $cartilla = 'documentocartilla';
+    $ar = '../../talent/documentos/'.$cartilla.$identificador ;
+    foreach(glob($ar."/*.*") as $archivos_carpeta) 
+    { 
+     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    }
+    $firmaelectronica = 'documentofirmaelectonica';
+    $ar = '../../talent/documentos/'.$firmaelectronica.$identificador ;
+    foreach(glob($ar."/*.*") as $archivos_carpeta) 
+    { 
+     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    }
+    $claveinter = 'documentoclaveinterbancaria';
+    $ar = '../../talent/documentos/'.$claveinter.$identificador ;
+    foreach(glob($ar."/*.*") as $archivos_carpeta) 
+    { 
+     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    }
     $compdomicilio = 'comprobantedomicilio';
     $ar = '../../talent/documentos/'.$compdomicilio.$identificador ;
     foreach(glob($ar."/*.*") as $archivos_carpeta) 

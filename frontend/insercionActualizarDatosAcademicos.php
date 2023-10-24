@@ -1,0 +1,535 @@
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #0D7E9A;">
+        <span id="cabecera">Actualización de datos academicos</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+    </nav>
+
+    <div class="container">
+        <div id="mensaje"></div>
+        <h1 style="text-align: center; font-size: 25px;">Actualiza tu información academica</h1>
+        <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualizes tus datos academicos.</h1>
+        <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 0px; text-align:center;">
+            <input type="submit" name="add" value="Cerrar ventana" style="background-color: green; color: white; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">
+        </div>
+
+        <form name="datosacademicosactualizar" id="datosacademicosactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
+            <script>
+                $("#datosacademicosactualizar").on("submit", function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(document.getElementById("datosacademicosactualizar"));
+                    formData.append("dato", "valor");
+                    $.ajax({
+                        url: "aplicacion/updateDatosAcademicos.php",
+                        type: "post",
+                        dataType: "html",
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function(datos) {
+                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+                        },
+                        success: function(datos) {
+                            $("#mensaje").html(datos);
+                            setTimeout(function() {
+                                window.location.href = 'datosAcademicos';
+                            }, 2000);
+
+                        }
+                    })
+                })
+            </script>
+            <div class="form-row">
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color: white;">
+                    <h1 style="font-size:22px;">Datos Academicos</h1>
+                </div>
+                <div class="col-md-3">
+                    <input type="hidden" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
+                </div>
+                <div style="width: 100%; height: auto; background-color: #0D6F9A; text-align:center;margin-top:10px; color:white;">
+                    <h1 style="font-size:22px;">Nivel Medio Superior</h1>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Nombre de la formación académica</label>
+                    <input type="text" id="nombreformacionmedia" name="nombreformacionmedia" autocomplete="off" class="form-control" value="<?php echo $row['nombreformacionmedia'] ?>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Nombre de la institución educativa</label>
+                    <input type="text" id="nombremediasuperior" name="nombremediasuperior" autocomplete="off" class="form-control" value="<?php echo $row['nombremediasuperior'] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Fecha de inicio</label>
+                    <input type="date" id="fechainicio" name="fechainicio" autocomplete="off" class="form-control" value="<?php echo $row['fechainicio'] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Fecha término</label>
+                    <input type="date" id="fechatermino" name="fechatermino" autocomplete="off" class="form-control" value="<?php echo $row['fechatermino'] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Años cursados</label>
+                    <input type="text" id="tiempocursado" name="tiempocursado" autocomplete="off" class="form-control" value="<?php echo $row['tiempocursado'] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Documento que recibe</label>
+                    <input type="text" id="documentomediosuperior" name="documentomediosuperior" autocomplete="off" class="form-control" value="<?php echo $row['documentomediosuperior'] ?>">
+                </div>
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color:white;">
+                    <h1 style="font-size:22px;">Nivel Superior</h1>
+                </div>
+            
+                <?php
+                require 'conexionRh.php';
+                $sqlQueryComentarios  = $conexionRh->prepare("SELECT estudiossuperior.id_empleado FROM estudiossuperior where id_empleado = $identificador ");
+                $sqlQueryComentarios->execute();
+                $sqlQueryComentarios = $conexionRh->prepare("SELECT FOUND_ROWS()");
+                $sqlQueryComentarios->execute();
+                $total_registro = $sqlQueryComentarios->fetchColumn();
+
+                $sql = $conexionRh->prepare("SELECT * from estudiossuperior where id_empleado = :id_empleado");
+                $sql->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+
+                ?>
+
+                <?php
+                while ($rows = $sql->fetch()) {
+                    $valor = $rows['id_superior'];
+                ?>
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px; color:white;">
+                    <h1 style="font-size:22px;">Datos Licenciatura</h1>
+                        </div>
+                    <div class="form-row">
+                    
+                        <input type="hidden" name="id_carrera" value="<?php echo $valor ?>">
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacion" name="nombreformacion[]" class="form-control" value="<?php echo $rows['nombreformacionsuperior']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucion" name="nombreinstitucion[]" class="form-control" value="<?php echo $rows['nombresuperior'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha de inicio</label>
+                            <input type="date" id="fechainicio" name="fechainiciosup[]" class="form-control" value="<?php echo $rows['fechasuperiorinicio'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha termino</label>
+                            <input type="date" id="fechatermino" name="fechaterminosup[]" class="form-control" value="<?php echo $rows['fechasuperiortermino'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Años cursados</label>
+                            <input type="text" id="tiempocursado" name="tiempocursadosup[]" class="form-control" value="<?php echo $rows['tiempocursadosuperior'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Documento que recibe</label>
+                            <input type="text" id="documentorecibe" name="documentorecibe[]" class="form-control" value="<?php echo $rows['documentosuperior'] ?>">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Numero de cedula</label>
+                            <input type="int" id="numerocedula" name="numerocedula[]" class="form-control" value="<?php echo $rows['numerocedulasuperior'] ?>">
+                        </div>
+                    </div>
+
+                <?php  } ?>
+                
+                <div class="form-group col-md-3">
+                    <label>Agregar licenciatura</label>
+                    <input type="number" id="quantity" name="numlicenciaturas" autocomplete="off" class="form-control" min="0" max="5">
+                </div>
+                <script>
+                    document.getElementById("quantity").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity = event.target.value;
+
+                        for (let i = 0; i < quantity; i++) {
+                            content += `<div class="form-row">
+                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                                    <h1 style="font-size:22px;">Información licenciatura ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacion[${i}]" name="nombreformacion[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucion[${i}]" name="nombreinstitucion[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainicio[${i}]" name="fechainiciosup[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechatermino[${i}]" name="fechaterminosup[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursado[${i}]" name="tiempocursadosup[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibe[${i}]" name="documentorecibe[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label>Numero de cedula ${i +1}</label>
+                                <input type="int" id="numerocedula[${i}]" name="numerocedula[]" class="form-control">
+                            </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests").innerHTML = content;
+                    })
+                </script>
+                <div id="divGuests"></div>
+
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color:white;">
+                    <h1 style="font-size:22px;">Nivel Maestria</h1>
+                </div>
+                <?php
+                require 'conexionRh.php';
+                $sqlQueryComentariosm  = $conexionRh->prepare("SELECT estudiosmaestria.id_empleado FROM estudiosmaestria where id_empleado = $identificador ");
+                $sqlQueryComentariosm->execute();
+                $sqlQueryComentariosm = $conexionRh->prepare("SELECT FOUND_ROWS()");
+                $sqlQueryComentariosm->execute();
+                $total_registrom = $sqlQueryComentariosm->fetchColumn();
+
+                $sqlm = $conexionRh->prepare("SELECT * from estudiosmaestria where id_empleado = :id_empleado");
+                $sqlm->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+
+                ?>
+
+                <?php
+                while ($rowm = $sqlm->fetch()) {
+                    $valorm = $rowm['id_maestria'];
+                ?>
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px;color:white;">
+                    <h1 style="font-size:22px;">Datos Maestria</h1>
+                        </div>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacion" class="form-control" value="<?php echo $rowm['nombreformacionmaestria']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucion" class="form-control" value="<?php echo $rowm['nombremaestria'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha de inicio</label>
+                            <input type="date" id="fechainicio" class="form-control" value="<?php echo $rowm['fechamaestriainicio'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha termino</label>
+                            <input type="date" id="fechatermino" class="form-control" value="<?php echo $rowm['fechamaestriatermino'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Años cursados</label>
+                            <input type="text" id="tiempocursado" class="form-control" value="<?php echo $rowm['tiempocursadomaestria'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Documento que recibe</label>
+                            <input type="text" id="documentorecibe" class="form-control" value="<?php echo $rowm['documentomaestria'] ?>">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Numero de cedula</label>
+                            <input type="int" id="numerocedula" class="form-control" value="<?php echo $rowm['numerocedulamaestria'] ?>">
+                        </div>
+                    </div>
+
+                <?php  } ?>
+                
+                <div class="form-group col-md-3">
+                    <label>Agregar maestria</label>
+                    <input type="number" id="quantity2" name="maestrias" autocomplete="off" class="form-control" min="0" max="5">
+                </div>
+                <script>
+                    document.getElementById("quantity2").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity2 = event.target.value;
+
+                        for (let i = 0; i < quantity2; i++) {
+                            content += `<div class="form-row">
+                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                                    <h1 style="font-size:22px;">Información maestria ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacionmaestria[${i}]" name="nombreformacionmaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucionmaestria[${i}]" name="nombreinstitucionmaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciomaestria[${i}]" name="fechainiciosupmaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminomaestria[${i}]" name="fechaterminosupmaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadomaestria[${i}]" name="tiempocursadosupmaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibemaestria[${i}]" name="documentorecibemaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label>Numero de cedula ${i +1}</label>
+                                <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulamaestria[]" class="form-control">
+                            </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests2").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests2"></div>
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                    <h1 style="font-size:22px;">Posgrado/Especialidad</h1>
+                </div>
+                <?php
+                require 'conexionRh.php';
+                $sqlQueryComentariosm  = $conexionRh->prepare("SELECT especialidad.id_empleado FROM especialidad where id_empleado = $identificador ");
+                $sqlQueryComentariosm->execute();
+                $sqlQueryComentariosm = $conexionRh->prepare("SELECT FOUND_ROWS()");
+                $sqlQueryComentariosm->execute();
+                $total_registrom = $sqlQueryComentariosm->fetchColumn();
+
+                $sqlm = $conexionRh->prepare("SELECT * from especialidad where id_empleado = :id_empleado");
+                $sqlm->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+
+                ?>
+
+                <?php
+                while ($rowm = $sqlm->fetch()) {
+                    $valorm = $rowm['id_especialidad'];
+                ?>
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px;color:white;">
+                    <h1 style="font-size:22px;">Datos Posgrado/Especialidad</h1>
+                        </div>
+                    <div class="form-row">
+                    
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacion" name="nombreformacionposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['nombreformacionacademica']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucion" name="nombreinstitucionposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['nombreinstitucion'] ?>">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Unidad hospitalaria</label>
+                            <input type="text" id="unidadhospitalariaesp" name="unidadhospitalariaposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['unidadhospitalaria'] ?>">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Fecha de inicio</label>
+                            <input type="date" id="fechainicio" name="fechainiciosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['fechainicioespecialidad'] ?>">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Fecha termino</label>
+                            <input type="date" id="fechatermino" name="fechaterminosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['fechaterminoespecialidad'] ?>">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Años cursados</label>
+                            <input type="text" id="tiempocursado" name="tiempocursadosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['anioscursados'] ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Documento que recibe</label>
+                            <input type="text" id="documentorecibe" name="documentorecibeposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['documentorecibeespecialidad'] ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Numero de cedula</label>
+                            <input type="int" id="numerocedula" name="numerocedulaposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['numerocedulaespecialidad'] ?>">
+                        </div>
+                    </div>
+
+                <?php  } ?>
+                <div class="form-group col-md-3">
+                    <label>Agregar posgrado/especialidad</label>
+                <input type="number" id="quantity3" name="posgrados" autocomplete="off" class="form-control" min="0" max="5">
+                </div>
+                <script>
+                    document.getElementById("quantity3").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity3 = event.target.value;
+
+                        for (let i = 0; i < quantity3; i++) {
+                            content += `<div class="form-row">
+                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                                    <h1 style="font-size:22px;">Información posgrado ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacionmaestria[${i}]" name="nombreformacionposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucionmaestria[${i}]" name="nombreinstitucionposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciomaestria[${i}]" name="fechainiciosupposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminomaestria[${i}]" name="fechaterminosupposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadomaestria[${i}]" name="tiempocursadosupposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Unidad hospitalaria ${i +1}</label>
+                                <input type="int" id="numerocedulamaestria[${i}]" name="unidadhospitalariaposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibemaestria[${i}]" name="documentorecibeposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Numero de cedula ${i +1}</label>
+                                <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulaposgradoespecialidad[]" class="form-control">
+                            </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests3").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests3"></div>
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                    <h1 style="font-size:22px;">Doctorado/Subespecialidad</h1>
+                </div>
+                <?php
+                require 'conexionRh.php';
+                $sqlQueryComentariosm  = $conexionRh->prepare("SELECT doctorado.id_empleado FROM doctorado where id_empleado = $identificador ");
+                $sqlQueryComentariosm->execute();
+                $sqlQueryComentariosm = $conexionRh->prepare("SELECT FOUND_ROWS()");
+                $sqlQueryComentariosm->execute();
+                $total_registrom = $sqlQueryComentariosm->fetchColumn();
+
+                $sqld = $conexionRh->prepare("SELECT * from doctorado where id_empleado = :id_empleado");
+                $sqld->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+
+                ?>
+
+                <?php
+                while ($rowd = $sqld->fetch()) {
+                    $valord = $rowd['id_doctorado'];
+                ?>
+                    <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px;color:white;">
+                    <h1 style="font-size:22px;">Datos Doctorado</h1>
+                        </div>
+                    <div class="form-row">
+                    
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacion" name="nombreformaciondoctorado[]" class="form-control" value="<?php echo $rowd['nombreformaciondoctorado']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucion" name="nombreinstituciondoctorado[]" class="form-control" value="<?php echo $rowd['nombreinstituciondoctorado'] ?>">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Unidad hospitalaria</label>
+                            <input type="text" id="unidadhospitalariaesp" name="unidadhospitalariadoctorado[]" class="form-control" value="<?php echo $rowd['unidadhospitalariadoctorado'] ?>">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Fecha de inicio</label>
+                            <input type="date" id="fechainiciodoctorado" name="fechainiciosupdoctorado[]" class="form-control" value="<?php echo $rowd['fechainiciodoctorado'] ?>">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Fecha termino</label>
+                            <input type="date" id="fechatermino" name="fechaterminosupdoctorado[]" class="form-control" value="<?php echo $rowd['fechaterminodoctorado'] ?>">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Años cursados</label>
+                            <input type="text" id="tiempocursado" name="tiempocursadosupdoctorado[]" class="form-control" value="<?php echo $rowd['anioscursadosdoctorado'] ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Documento que recibe</label>
+                            <input type="text" id="documentorecibe" name="documentorecibedoctorado[]" class="form-control" value="<?php echo $rowd['documentorecibedoctorado'] ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Numero de cedula</label>
+                            <input type="int" id="numerocedula" name="numeroceduladoctorado[]" class="form-control" value="<?php echo $rowd['numeroceduladoctorado'] ?>">
+                        </div>
+                        
+                    </div>
+
+                <?php  } ?>
+                <div class="form-group col-md-3">
+                    <label>Agregar doctorado</label>
+                <input type="number" id="quantity4" name="doctorados" autocomplete="off" class="form-control" min="0" max="5">
+                </div>
+                <script>
+                    document.getElementById("quantity4").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity4 = event.target.value;
+
+                        for (let i = 0; i < quantity4; i++) {
+                            content += `<div class="form-row">
+                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color:white;">
+                                    <h1 style="font-size:22px;">Información doctorado ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacionmaestria[${i}]" name="nombreformaciondoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucionmaestria[${i}]" name="nombreinstituciondoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciomaestria[${i}]" name="fechainiciosupdoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminomaestria[${i}]" name="fechaterminosupdoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadomaestria[${i}]" name="tiempocursadosupdoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Unidad hospitalaria ${i +1}</label>
+                                <input type="int" id="numerocedulamaestria[${i}]" name="unidadhospitalariadoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibemaestria[${i}]" name="documentorecibedoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Numero de cedula ${i +1}</label>
+                                <input type="int" id="numerocedulamaestria[${i}]" name="numeroceduladoctorado[]" class="form-control">
+                            </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests4").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests4"></div>
+                <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
+                    <input type="submit" name="add" id="btn-send" value="Actualizar">
+                </div>

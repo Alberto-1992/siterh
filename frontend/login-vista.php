@@ -55,29 +55,27 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $correo = $_POST['usuario'];
     $password = $_POST['password'];
     $password = hash('sha512', $password);
-    $bloqueado = 777;
-    $bloqueadomando = 444;
-include("conexionRh.php");
+    $bloqueado = 7;
+    $bloqueadomando = 4;
+include("clases/conexion.php");
+$conexion = new ConexionRh();
 
-    $statement = $conexionRh->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeo WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado'
-    );
+    $statement = $conexion->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeo WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado');
     $statement->execute(array(
-        
         ':correo' => $correo,
         ':password' => $password,
         ':rol'=>$bloqueado,
         ':eliminado'=>0
     ));
-
     $resultado = $statement->fetch();
-    if ($resultado != false){
+    if (!empty($resultado)){
         $_SESSION['usuarioDatos'] = $correo;
         header('location: principalRh');
     
     }
 
     
-        $statement4 = $conexionRh->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeojefes WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado');
+        $statement4 = $conexion->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeojefes WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado');
         $statement4->execute(array(
             
             ':correo' => $correo,
@@ -93,7 +91,7 @@ include("conexionRh.php");
             
             
     }
-        $sqlAdmin = $conexionRh->prepare('SELECT correoelectronico, claveacceso, rolacceso from usuariosrh where correoelectronico = :correoelectronico  AND claveacceso = :claveacceso and rolacceso = :rolacceso');
+        $sqlAdmin = $conexion->prepare('SELECT correoelectronico, claveacceso, rolacceso from usuariosrh where correoelectronico = :correoelectronico  AND claveacceso = :claveacceso and rolacceso = :rolacceso');
 
         $sqlAdmin->execute(array(
             
@@ -104,7 +102,7 @@ include("conexionRh.php");
     
         $rowAdmin = $sqlAdmin->fetch();
         
-            if ($rowAdmin != false){
+            if (!empty($rowAdmin)){
                 $_SESSION['usuarioAdminRh'] = $correo;
                     header('location: principalRh');
             

@@ -4,7 +4,7 @@ require_once '../conexionRh.php';
 
     // nombre del archivo 
     header('Content-Type:text/csv; charset = latin1'); 
-    header('Content-Disposition: attachment; filename="postulados.csv"');  
+    header('Content-Disposition: attachment; filename="preseleccion.csv"');  
     $salida = fopen('php://output', 'W'); 
     fputcsv($salida, array(
         'Nombre',

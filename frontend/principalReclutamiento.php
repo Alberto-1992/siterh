@@ -100,6 +100,7 @@
                     <article class="card" id="reclutamiento" onclick="reclutamiento();">
                         <a href="reclutamiento">
                             <hr id="hr6">
+                            <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                             <p>Reclutamiento y Selección</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
@@ -107,6 +108,7 @@
                     <article class="card" id="enevaluacion" onclick="evaluacion();">
                 <a href="enEvaluacion">
                     <hr id="hr6">
+                    <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>En evaluación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
@@ -114,6 +116,7 @@
             <article class="card" id="endocumentacion" onclick="documentos();">
                 <a href="documentacion">
                     <hr id="hr6">
+                    <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Carga de documentación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
@@ -155,6 +158,7 @@
                     <article class="card" id="reclutamiento" onclick="reclutamiento();">
                         <a href="reclutamiento">
                             <hr id="hr6">
+                            <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                             <p>Reclutamiento y Selección</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
@@ -162,6 +166,7 @@
                     <article class="card" id="enevaluacion" onclick="evaluacion();">
                 <a href="enEvaluacion">
                     <hr id="hr6">
+                    <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>En evaluación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
@@ -169,6 +174,7 @@
             <article class="card" id="endocumentacion" onclick="documentos();">
                 <a href="documentacion">
                     <hr id="hr6">
+                    <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Carga de documentación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
@@ -192,7 +198,7 @@
                 ));
                 $rw = $statement->fetch();
                 $admin = $rw['correo'];
-                if ($admin == 'brendacontreras@hotmail.com') {
+                if ($admin == 'brendacontreras@hotmail.com') {  
                 ?>
                     <script>
                         function reclutamiento() {
@@ -208,6 +214,7 @@
                     <article class="card" id="reclutamiento" onclick="reclutamiento();">
                         <a href="reclutamiento">
                             <hr id="hr6">
+                            <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                             <p>Reclutamiento y Selección</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
@@ -215,6 +222,7 @@
                     <article class="card" id="enevaluacion" onclick="evaluacion();">
                 <a href="enEvaluacion">
                     <hr id="hr6">
+                    <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>En evaluación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
@@ -222,6 +230,7 @@
             <article class="card" id="endocumentacion" onclick="documentos();">
                 <a href="documentacion">
                     <hr id="hr6">
+                    <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Carga de documentación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>

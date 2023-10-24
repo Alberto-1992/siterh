@@ -1,48 +1,43 @@
 <?php session_start();
+require_once 'clases/conexion.php';
+$conexionX = new ConexionRh();
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh.php';
-        $sql = $conexionRh->prepare("SELECT id_empleado, nombre, apellidopaterno, apellidomaterno from personaloperativo2023 where correo = :correo");
+        $sql = $conexionX->prepare("SELECT Empleado, Nombre from plantillahraei where correo = :correo");
             $sql->execute(array(
                 ':correo'=>$usernameSesion
             ));
             $row = $sql->fetch();
             
             if($row != false){
-            $identificador = $row['id_empleado'];
-            $nombre = $row['nombre'];
-                $appaterno = $row['apellidopaterno'];
-                $apmaterno = $row['apellidomaterno'];
+            $identificador = $row['Empleado'];
+            $nombre = $row['Nombre'];
             require 'frontend/planIndividualCapacitacion.php';
             }else{
                 $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh.php';
-                $sql = $conexionRh->prepare("SELECT id_jefe, nombre from jefes2022 where correo = :correo");
+                $sql = $conexionX->prepare("SELECT Empleado, Nombre from plantillahraei where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));
                 $row = $sql->fetch();
-                $identificador = $row['id_jefe'];
-                $nombre = $row['nombre'];
-                $appaterno = $row['apellidopaterno'];
-                $apmaterno = $row['apellidomaterno'];
+                $identificador = $row['Empleado'];
+                $nombre = $row['Nombre'];
             require 'frontend/planIndividualCapacitacion.php';
             }
         break;
         
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
-            require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT correo,id_jefe, nombre from jefes2022 where correo = :correo");
+            $sql = $conexionX->prepare("SELECT correo,Empleado, Nombre from plantillahraei where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));
                 $row = $sql->fetch();
-                $identificador = $row['id_jefe'];
+                $identificador = $row['Empleado'];
                 $mail = $row['correo'];
-                $nombre = $row['nombre'];
+                $nombre = $row['Nombre'];
                 
                 if($mail == 'bramirez699@gmail.com'){
             require 'frontend/planIndividualCapacitacion.php';
@@ -54,16 +49,13 @@
 
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
-            require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT id_empleado, nombre, apellidopaterno, apellidomaterno from personaloperativo2023 where correo = :correo");
+            $sql = $conexionX->prepare("SELECT Empleado, Nombre from plantillahraei where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));
                 $row = $sql->fetch();
-                $identificador = $row['id_empleado'];
-                $nombre = $row['nombre'];
-                $appaterno = $row['apellidopaterno'];
-                $apmaterno = $row['apellidomaterno'];
+                $identificador = $row['Empleado'];
+                $nombre = $row['Nombre'];
         require 'frontend/planIndividualCapacitacion.php';
         break;
 

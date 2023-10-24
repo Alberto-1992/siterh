@@ -17,11 +17,15 @@ sleep(0.5);
 
 $utimoId = $_POST['utimoId'];
 $limite  = 10;
-require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexion2->query("SELECT count(*) as id_datopersonal FROM datospersonales where acceder = 1 and fechainicio between '2023-01-01' and '2023-12-31'");
-    $total_registro       = mysqli_fetch_assoc($sqlQueryComentarios);
+require_once 'clases/conexion.php';
+$conexionBolsa = new Conexion();
+    $sqlQueryComentarios  = $conexionBolsa->prepare("SELECT id_datopersonal FROM datospersonales where acceder = 1 and fechainicio between '2023-01-01' and '2023-12-31'");
+    $sqlQueryComentarios->execute();
+    $sqlQueryComentarios = $conexionBolsa->prepare("SELECT FOUND_ROWS()");
+    $sqlQueryComentarios->execute();
+    $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder, datospersonales.confirmarasistencia FROM datospersonales WHERE acceder = 1 and fechainicio between '2023-01-01' and '2023-12-31' and datospersonales.id_datopersonal <= '".$utimoId."' ORDER BY datospersonales.id_datopersonal DESC LIMIT ".$limite." ");
+    $query= $conexionBolsa->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder, datospersonales.confirmarasistencia FROM datospersonales WHERE acceder = 1 and fechainicio between '2023-01-01' and '2023-12-31' and datospersonales.id_datopersonal <= '".$utimoId."' ORDER BY datospersonales.id_datopersonal DESC LIMIT ".$limite." ");
     $query->execute();
 	?>
 
@@ -43,7 +47,7 @@ require 'conexionRh.php';
                             if($confirmar == 1){ ?>
                             <input type="submit" value="Asistio" style="padding: 1px; cursor-pointer: none; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
         </div> 
-        <hr>
+        <hr id="hr">
     </div>
 <?php 
 

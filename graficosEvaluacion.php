@@ -1,10 +1,12 @@
 <?php session_start();
+require_once 'clases/conexion.php';
+$conexionX = new ConexionRh();
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh.php';
-        $sql = $conexionRh->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
+            
+        $sql = $conexionX->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
             $sql->execute(array(
                 ':correo'=>$usernameSesion
             ));
@@ -14,8 +16,7 @@
             require 'frontend/graficosEvaluacion.php';
             }else{
                 $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh.php';
-                $sql = $conexionRh->prepare("SELECT id_jefe from jefes2022 where correo = :correo");
+                $sql = $conexionX->prepare("SELECT id_jefe from jefes2022 where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));

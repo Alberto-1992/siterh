@@ -14,9 +14,13 @@
 <div id="lista-comentarios">
 <?php 
 error_reporting(0);
-	require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexion2->query("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' ");
-    $total_registro  = mysqli_num_rows($sqlQueryComentarios);
+require_once 'clases/conexion.php';
+$conexionRol = new Conexion();
+    $sqlQueryComentarios  = $conexionRol->prepare("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' ");
+    $sqlQueryComentarios->execute();
+    $sqlQueryComentarios = $conexionRol->prepare("SELECT FOUND_ROWS()");
+    $sqlQueryComentarios->execute();
+    $total_registro = $sqlQueryComentarios->fetchColumn();
 
     $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.correoelectronico, datospersonales.acceder FROM datospersonales where acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' order by datospersonales.id_datopersonal DESC LIMIT 23 ");
     if(isset($_POST['evento']))
@@ -82,8 +86,7 @@ error_reporting(0);
 </div>
 <?php
 
-require_once 'conexionRh.php';
-$sql = $conexionRol->query("SELECT id_datopersonal from datospersonales WHERE acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' order by id_datopersonal desc limit 1");
+$sql = $conexionRol->prepare("SELECT id_datopersonal from datospersonales WHERE acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' order by id_datopersonal desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 

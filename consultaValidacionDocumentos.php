@@ -26,15 +26,19 @@
 <div id="lista-comentarios">
 <?php 
 error_reporting(0);
-	require 'conexionRh.php';
-    $sqlQueryComentarios  = $conexionGrafico->query("SELECT * FROM datos where validaautorizacion = 0");
-    $total_registro  = mysqli_num_rows($sqlQueryComentarios);
+require_once 'clases/conexion.php';
+$conexionX = new ConexionRh();
+    $sqlQueryComentarios  = $conexionX->prepare("SELECT id FROM datos where validaautorizacion = 0");
+    $sqlQueryComentarios->execute();
+    $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
+    $sqlQueryComentarios->execute();
+    $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionRh->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos where validaautorizacion = 0 order by datos.id DESC LIMIT 23 ");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos where validaautorizacion = 0 order by datos.id DESC LIMIT 23 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
-	$query=$conexionRh->prepare("SELECT datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos WHERE
+	$query=$conexionX->prepare("SELECT datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos WHERE
             id_empleado LIKE '%$q%' and validaautorizacion = 0 
             nombreinstitucion LIKE '%$q%' and validaautorizacion = 0 OR
             nombrecurso LIKE '%$q%'  and validaautorizacion = 0 OR
@@ -96,8 +100,7 @@ error_reporting(0);
 </div>
 <?php
 
-require_once 'conexionRh.php';
-$sql = $conexionRh->prepare("SELECT id from datos WHERE validaautorizacion = 0 order by id desc limit 1");
+$sql = $conexionX->prepare("SELECT id from datos WHERE validaautorizacion = 0 order by id desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 
@@ -216,7 +219,7 @@ function pageScroll() {
                 let datos = {utimoId:utimoId, totalregistro:totalregistro};
                 $("#tabla_resultadobus").off("scroll");
                 $.ajax({
-                    url: 'obteniendoMasDatosReclutamiento.php',
+                    url: 'obteniendoMasDatosValidacionDocuCapacitacion.php',
                     data: datos,
                     type: "POST",
                     beforeSend: function() {

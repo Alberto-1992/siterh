@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 require '../conexionRh.php';
 date_default_timezone_set("America/Monterrey");
 $id = $_POST['id'];
@@ -9,8 +9,9 @@ try {
     $conexionRol->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionRol->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionRol->beginTransaction();
-    $sql = $conexionRol->prepare("DELETE from datospersonales where id_datopersonal = :id_datopersonal");
+    $sql = $conexionRol->prepare("UPDATE datospersonales SET acceder = :acceder where id_datopersonal = :id_datopersonal");
     $sql->execute(array(
+        ':acceder'=>0,
         ':id_datopersonal' => $id
     ));
     $compdomicilio = 'documentocurp';

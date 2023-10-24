@@ -18,35 +18,24 @@
                         if (isset($_SESSION['usuarioAdminRh'])) {
                             $usernameSesion = $_SESSION['usuarioAdminRh'];
                             require 'conexionRh.php';
-                            $statement = $conexionRh->prepare("SELECT nombre, apellidopaterno FROM personaloperativo2023 WHERE correo= :correo");
+                            $statement = $conexionRh->prepare("SELECT Nombre FROM plantillahraei WHERE correo= :correo");
                             $statement->execute(array(
                                 ':correo' => $usernameSesion
                             ));
                             $rw = $statement->fetch();
                             if($rw != false){
-                            $nombre = $rw['nombre'];
-                            $appaterno = $rw['apellidopaterno'];
-                            echo $nombre.' '.$appaterno;
-                            }else{
-                                $usernameSesion = $_SESSION['usuarioAdminRh'];
-                                require 'conexionRh.php';
-                                $statement = $conexionRh->prepare("SELECT nombre FROM jefes2022 WHERE correo= :correo");
-                                $statement->execute(array(
-                                    ':correo' => $usernameSesion
-                                ));
-                                $rw = $statement->fetch();
-                                $nombre = $rw['nombre'];
-                                echo $nombre;  
+                            $nombre = $rw['Nombre'];
+                            echo $nombre;
                             }
                         } else if (isset($_SESSION['usuarioJefe'])) {
                             $usernameSesion = $_SESSION['usuarioJefe'];
                             require 'conexionRh.php';
-                            $statement = $conexionRh->prepare("SELECT nombre FROM jefes2022 WHERE correo= :correo");
+                            $statement = $conexionRh->prepare("SELECT Nombre FROM plantillahraei WHERE correo= :correo");
                             $statement->execute(array(
                                 ':correo' => $usernameSesion
                             ));
                             $rw = $statement->fetch();
-                            $nombre = $rw['nombre'];
+                            $nombre = $rw['Nombre'];
                             echo $nombre;
                         }
                         ?>
@@ -64,6 +53,15 @@
                         <i class="fa fa-hospital-o fa-2x" id="icon-color"></i>
                         <span class="nav-text">
                             Vista principal
+                        </span>
+                    </a>
+                </li>
+                <hr>
+                <li>
+                    <a href="plantillahraei">
+                        <i class="fa fa-hospital-o fa-2x" id="icon-color"></i>
+                        <span class="nav-text">
+                            Plantilla HRAEI
                         </span>
                     </a>
                 </li>
@@ -100,7 +98,7 @@
                 </li>
                 <hr>
                 <li>
-                    <a href="../contratacion/principal">
+                    <a href="contratacion">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         <span class="nav-text">
                             Contratación
@@ -132,7 +130,7 @@
                         <a href="validar" target="_blank">
                             <i class="fa fa-id-card fa-2x" id="icon-color"></i>
                             <span class="nav-text">
-                                Registrar usuario
+                                Registrar administrador
                             </span>
                         </a>
 

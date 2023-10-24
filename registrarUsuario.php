@@ -6,24 +6,25 @@ if(isset($_POST['Ingresar'])){
     $password = hash('sha512', $pass);
 
 }
-    require 'conexionRh.php';
+require_once 'clases/conexion.php';
+$conexionX = new ConexionRh();
     try{
-        $conexionRh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conexionRh->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
-        $conexionRh->beginTransaction();
-    $sql = $conexionRh->prepare("SELECT correoelectronico, claveacceso from usuariosrh where correoelectronico = :correoelectronico and claveacceso = :claveacceso limit 1");
+        $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
+        $conexionX->beginTransaction();
+    $sql = $conexionX->prepare("SELECT correoelectronico, claveacceso from usuariosrh where correoelectronico = :correoelectronico and claveacceso = :claveacceso limit 1");
         $sql->execute(array(
             ':correoelectronico'=>$correo,
             ':claveacceso'=>$password
         ));
 
-        $validatransac = $conexionRh->commit();
+        $validatransac = $conexionX->commit();
 
         if($validatransac != false) {
             require 'frontend/registroFormUser.php';
 }
 }catch(Exception $e) {
-$conexionRol->rollBack();
+$conexionX->rollBack();
 echo "<script>alert('something was wrong');
 window.history.back();</script>";
 }

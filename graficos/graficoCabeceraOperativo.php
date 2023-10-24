@@ -51,21 +51,15 @@
     padding: 0px;
   }
 }
-#uno {
+#uno1 {
     width: 100%;
     height: 27rem;
-    background-image: url(https://cdn.eventscase.com/www.healthnology.events/uploads/users/140424/uploads/18cd6ac667322a73fd797a49add0057e4b3e499b75dda8de8d8a0e9fc73b1e246b600f7cab047230f29b4089a9c9184a3387.5c3d1b5b575f5.jpg);
+    background-image: url(https://www.unionguanajuato.mx/wp-content/uploads/2021/10/FRASES-DIA-DE-MUERTOS-IMAGENES.jpg);
     background-size: 100% 27rem;
 
 }
-#dos {
-    width: 100%;
-    height: 27rem;
-    background-image: url(https://www.hraei.gob.mx/photos/Header-GAP-Publico.jpg);
-  background-size: 100% 27rem;
-  background-repeat: no-repeat;
-}
-#tres {
+
+#uno {
     width: 100%;
     height: 27rem;
     background-image: url(https://cdn.eventscase.com/www.healthnology.events/uploads/users/140424/uploads/18cd6ac667322a73fd797a49add0057e4b3e499b75dda8de8d8a0e9fc73b1e246b600f7cab047230f29b4089a9c9184a3387.5c3d1b5b575f5.jpg);
@@ -77,19 +71,16 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+   <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active" id="uno">
     
     </div>
-    <div class="carousel-item" id="dos">
     
-    </div>
-    <div class="carousel-item" id="tres">
+    <!--<div class="carousel-item" id="tres">
    
-    </div>
+    </div>-->
   </div>
   <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

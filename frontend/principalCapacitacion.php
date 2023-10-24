@@ -110,33 +110,61 @@
                 function listaempleados() {
                     window.open('programaCursosAutorizadosEmpleados')
                 }
+                function creacionCursoCapacitacion() {
+                    window.location.href ='creacionCursoCapacitacion';
+                }
+                function registroenventoscapacitacion() {
+                            window.location.href = 'registroeventoscapacitacion';
+                        }
+                        function insercion_datos() {
+                            window.location.href = 'cargaRegistroCapacitacion';
+                        }
             </script>
-            <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
-                <a href="reclutamiento">
+            <article class="card" id="creaciondecursos" onclick="creacionCursoCapacitacion();">
+                <a href="creacionCursoCapacitacion" >
                     <hr id="hr6">
-                    <p>Creación de nuevo curso/capacitación</p>
+                    <i class="fa fa-cloud-upload" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Creación nuevo curso</p>
                     <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                 </a>
             </article>
-
-            </article>
-            <article class="card" id="programaCursosAutorizadosEmpleados" onclick="listaempleados();">
-                <a href="documentacion">
+            <article class="card" id="cargaproveedor" onclick="insercion_datos();">
+                <a href="cargaRegistroCapacitacion" >
                     <hr id="hr6">
-                    <p>Busqueda de empleado y cursos</p>
+                    <i class="fa fa-database" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Carga de datos de proveedor</p>
+                    <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
+                </a>
+            </article>
+            <article class="card" id="busquedacurso" onclick="registroenventoscapacitacion();">
+                <a href="registroeventoscapacitacion">
+                    <hr id="hr6">
+                    <i class="fa fa-search" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Busqueda cursos capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            <article class="card" id="endocumentacion" onclick="programacapacitacion();">
+            </article>
+            <article class="card" id="busquedacursoempleado" onclick="listaempleados();">
+                <a href="documentacion">
+                    <hr id="hr6">
+                    <i class="fa fa-search-plus" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Busqueda cursos empleado</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="programacapacitacion" onclick="programacapacitacion();">
                 <a href="programacapacitacion">
                     <hr id="hr6">
+                    <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Programa de capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            <article class="card" id="enevaluacion" onclick="validaciondedocumentacion();">
+            <article class="card" id="validaciondocumentocapacitacion" onclick="validaciondedocumentacion();">
                 <a href="validaDocumentacionCursos">
                     <hr id="hr6">
+                    <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                     <p>Validación de documentación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
@@ -187,28 +215,32 @@
                         <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
                             <a href="reclutamiento">
                                 <hr id="hr6">
+                                <i class="fa fa-cloud-upload" aria-hidden="true" id="iconosdiv"></i>
                                 <p>Creación de nuevo curso/capacitación</p>
                                 <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                             </a>
                         </article>
 
-                        <article class="card" id="endocumentacion" onclick="listaempleados();">
+                        <article class="card" id="busquedacursoempleado" onclick="listaempleados();">
                             <a href="documentacion">
                                 <hr id="hr6">
-                                <p>Busqueda de empleado y cursos</p>
+                                <i class="fa fa-search-plus" aria-hidden="true" id="iconosdiv"></i>
+                                <p>Busqueda cursos empleado</p>
                                 <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                             </a>
                         </article>
-                        <article class="card" id="endocumentacion" onclick="programacapacitacion();">
+                        <article class="card" id="programacapacitacion" onclick="programacapacitacion();">
                             <a href="programacapacitacion">
                                 <hr id="hr6">
+                                <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                                 <p>Programa de capacitación</p>
                                 <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                             </a>
                         </article>
-                        <article class="card" id="enevaluacion" onclick="validaciondedocumentacion();">
+                        <article class="card" id="validaciondocumentocapacitacion" onclick="validaciondedocumentacion();">
                             <a href="validaDocumentacionCursos">
                                 <hr id="hr6">
+                                <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                                 <p>Validación de documentación</p>
                                 <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                             </a>
@@ -258,27 +290,31 @@
                     <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
                         <a href="reclutamiento">
                             <hr id="hr6">
+                            <i class="fa fa-cloud-upload" aria-hidden="true" id="iconosdiv"></i>
                             <p>Creación de nuevo curso/capacitación</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
-                    <article class="card" id="endocumentacion" onclick="listaempleados();">
+                    <article class="card" id="busquedacursoempleado" onclick="listaempleados();">
                         <a href="documentacion">
                             <hr id="hr6">
-                            <p>Busqueda de empleado y cursos</p>
+                            <i class="fa fa-search-plus" aria-hidden="true" id="iconosdiv"></i>
+                                <p>Busqueda cursos empleado</p>
                             <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                         </a>
                     </article>
-                    <article class="card" id="endocumentacion" onclick="programacapacitacion();">
+                    <article class="card" id="programacapacitacion" onclick="programacapacitacion();">
                         <a href="programacapacitacion">
                             <hr id="hr6">
+                            <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                             <p>Programa de capacitación</p>
                             <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                         </a>
                     </article>
-                    <article class="card" id="enevaluacion" onclick="validaciondedocumentacion();">
+                    <article class="card" id="validaciondocumentocapacitacion" onclick="validaciondedocumentacion();">
                         <a href="validaDocumentacionCursos">
                             <hr id="hr6">
+                            <i class="fa fa-check" aria-hidden="true" id="iconosdiv"></i>
                             <p>Validación de documentación</p>
                             <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                         </a>

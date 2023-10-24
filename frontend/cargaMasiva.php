@@ -1,7 +1,13 @@
 <?php
 error_reporting(0);
 
-include('dbconect.php');
+function connect(){
+    return new mysqli("localhost","root","","metasrh");
+  }
+  $con = connect();
+  if (!$con->set_charset("utf8")) {//asignamos la codificación comprobando que no falle
+        die("Error cargando el conjunto de caracteres utf8");
+  }
 require_once('vendor/php-excel-reader/excel_reader2.php');
 require_once('vendor/SpreadsheetReader.php');
  
@@ -111,6 +117,8 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 </head>
 
@@ -150,7 +158,7 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
 
 
 
-        <strong id="cabecera" style="color: white; float: left; margin-left: 42%; font-size: 18px;">CONSTANCIAS
+        <strong id="cabecera" style="color: white; float: left; margin-left: 42%; font-size: 18px;">Carga usuarios login
             RH</strong>
 
     </header><br>
@@ -175,7 +183,7 @@ $(document).ready(function() {
     <div style="width: 100%; padding: 1%; margin-top: 0px;">
         <input type="submit" class="btn btn-warning" value="Cerrar ventana" style="float: right; margin-top: 30px;"
             onclick="window.close();">
-        <h3 class="mt-5">Importar archivo Empleados a tomar curso o capacitación</h3>
+        <h3 class="mt-5">Importar archivo para acceso al sistema.</h3>
         <hr>
 
         <div class="row">
@@ -203,49 +211,48 @@ $(document).ready(function() {
 
 
                 <?php
-require '../cisfa/conexion.php';
-  $query=$conexion2->query("SELECT * FROM usuarioslogeo");
+require 'conexionRh.php';
+  $query=$conexionGrafico->query("SELECT * FROM usuarioslogeo");
     
    
 if (mysqli_num_rows($query) > 0)
 {
 
    ?>
-                <table id="tabla" class="table table-responsive table-striped table-bordered table-hover display"
-                    cellspacing="0" width="100%">
-                    <thead>
-                        <tr style="background-color:#7C7C7C; color: white; font-style: italic; ">
-
-                            <th>N° trabajador</th>
-                            <th>Password</th>
-                            <th>CURP</th>
-                            <th>Correo</th>
-
-                        </tr>
-                    </thead>
-
-                    <?php
-    while($filaAlumnos= $query->fetch_assoc())
-        {
-    
-     echo
-            '<tr>
-            <input type="hidden" value='.$id.' id="seleccionValor">
-             
-                <td id='.$id.' class="ver-info" title="Click para ver información completa">'.$filaAlumnos['numTrabajador'].'</td>
-                <td>'.$filaAlumnos['password'].'</td>
-                <td>'.$filaAlumnos['curp'].'</td>
-                <td>'.$filaAlumnos['correo'].'</td>
-                
-             </tr>';
-            
-            
+                <table id="example" class="table table-striped table-bordered nowrap table-darkgray table-hover" style="width:100%">
+    <thead>
+        <tr>
+            <th>N° empleado</th>
+            <th>Password</th>
+            <th>Curp</th>
+            <th>Correo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        while ($dataRegistro = $query->fetch_assoc()) {
+        ?>
+            <tr>
+                <td><?php echo $dataRegistro['numTrabajador'] ?></td>
+                <td><?php echo $dataRegistro['password'] ?></td>
+                <td><?php echo $dataRegistro['curp'] ?></td>
+                <td><?php echo $dataRegistro['correo'] ?></td>
+            </tr>
+        <?php
         }
-    }else{
-        echo "<script>alert('Error en la busqueda de información');</script>";
     }
-    
-    ?>
+        ?>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <th>N° empleado</th>
+            <th>Password</th>
+            <th>Curp</th>
+            <th>Correo</th>
+        </tr>
+    </tfoot>
+</table>
                     <!-- Fin Contenido -->
             </div>
         </div>
@@ -254,6 +261,33 @@ if (mysqli_num_rows($query) > 0)
 
     </div>
     <!-- Fin container -->
+    <script>
+    new DataTable('#example', {
+        initComplete: function() {
+            this.api()
+                .columns()
+                .every(function() {
+                    let column = this;
+                    let title = column.footer().textContent;
+
+                    // Create input element
+                    let input = document.createElement('input');
+                    input.placeholder = title;
+                    column.footer().replaceChildren(input);
+
+                    // Event listener for user input
+                    input.addEventListener('keyup', () => {
+                        if (column.search() !== this.value) {
+                            column.search(input.value).draw();
+                        }
+                    });
+                });
+        }
+    });
+    $('#example tfoot tr').appendTo('#example thead');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 
 </body>
 

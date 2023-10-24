@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <div class="modal-header" style="background-color: brown;">
+            <div class="modal-header" style="background-color: #53D6B0;">
                 
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
@@ -11,7 +11,7 @@
 
             <div class="modal-body">
         
-                        <div class="form-title" style="text-align:center; background-color: #d9a4a5; color:black; margin-top:5px; font-size: 17px;">
+                        <div class="form-title" style="text-align:center; background-color: #53D6B0; color: white; margin-top:5px; font-size: 17px;">
                             <strong>Buscar postulados</strong>
                         </div>
                         <!--FIN de Cabecera de Seguimiento Paciente-->
@@ -41,10 +41,11 @@
                                     </select>
                                 </div>-->
                                 <div class="col-md-12"></div>
-                                <br>
                                 
-                                <input type="submit" id="registrar" value="Descargar Excel" name="exportar" style="width: 150px; height: 27px; color: white; background-color: #6CCD06; margin-left: auto; margin-right: auto; margin-top: 5px; text-decoration: none; border: none; border-radius: 15px;">&nbsp;&nbsp;
-                </form>
+                                <div style="width: 100%; height: auto; display:flex; justify-content: center; align-items:center">
+                                <input type="submit" id="registrar" value="Descargar Excel" name="exportar" style="width: 150px; height: 27px; color: white; background-color: #6CCD06; margin-top: 5px; text-decoration: none; border: none; border-radius: 15px;">&nbsp;&nbsp;
+                                </div>
+                            </form>
             </div>
         </div>
     </div>

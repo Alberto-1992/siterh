@@ -80,6 +80,15 @@
             </li>
         </ul>
         <hr id="hr">
+                <li>
+                <a href="accesosMasivosReclutamiento" target="_blank">
+                    <i class="fa fa-desktop fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Cargar masiva accesos
+                    </span>
+                </a>
+            </li>
+        <hr id="hr">
         <ul class="logout">
             <li>
                 <a href="close_sesion">
