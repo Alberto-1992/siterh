@@ -48,7 +48,6 @@
         <h1 style="text-align: center; font-size: 25px;">Carga de información de actualización academica</h1>
         <h1 style="text-align: center; font-size: 15px; color: red;">Te informamos, una vez que hayas cargado tu información, no la podras visualizar hasta que el area de capacitación haya validado los datos, si la información que capturaste es correcta podras visualizarla debajo del formulario</h1>
         <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 10px; text-align:center;">
-            <input type="submit" name="add" value="Cerrar ventana" style="background-color: yellow; color: black; width: 120px; font-size: 15px; border: none; border-radius: 10px;" onclick="window.location.href='programaCapacitacion';">
         </div>
 
         <form name="frmNotification" id="frmNotification" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
@@ -142,9 +141,24 @@
                     <input type="date" class="form-control" name="fechatermino" id="fechatermino" required>
                 </div>
                 <div class="col-md-3">
-                    <label for="mensaje">Modalidad:</label>
-                    <input type="text" class="form-control" name="modalidad" id="modalidad" required>
-                </div>
+                        <label>Modalidad</label>
+                        <select type="form-select" class="form-control" name="modalidad" id="modalidad" required>
+                            <option selected disabled value="">Seleccione</option>
+
+                            <?php
+                            require 'conexionRh.php';
+                            $query = $conexionRh->prepare("SELECT * FROM modalidad");
+                            $query->execute();
+                            $data = $query->fetchAll();
+
+                            foreach ($data as $valores) :
+                                echo '<option value="' . $valores["nombre_modalidad"] . '">' . $valores["nombre_modalidad"] . '</option>';
+                            endforeach;
+
+                            ?>
+
+                        </select>
+                    </div>
                 <div class="col-md-3">
                     <label for="mensaje">Total de horas:</label>
                     <input type="text" class="form-control" name="horas" id="horas" required>
@@ -209,7 +223,9 @@
                     <input type="text" class="form-control" name="otroexpidedocumento" id="otroexpidedocumento">
                 </div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
-                    <input type="submit" name="add" id="btn-send" value="Enviar">
+                <a href="#" id="btn-send" style="background-color: yellow; color: black; font-size: 15px; border: none; border-radius: 7px;" onclick="window.location.href='programaCapacitacion';">Cerrar ventana</a>&nbsp;&nbsp;
+                    <input type="submit" name="add" id="btn-send" value="Guardar">
+                    
                 </div>
             </div>
 

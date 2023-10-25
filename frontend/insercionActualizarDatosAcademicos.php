@@ -51,6 +51,10 @@
                 <div class="col-md-3">
                     <input type="hidden" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
                 </div>
+                <div class="form-group col-md-12">
+                    <label>Ultimo grado de estudios</label>
+                    <input type="text" id="ultimogradoestudios" name="ultimogradoestudios" autocomplete="off" class="form-control" value="<?php echo $row['descripcionultimogrado'] ?>">
+                </div>
                 <div style="width: 100%; height: auto; background-color: #0D6F9A; text-align:center;margin-top:10px; color:white;">
                     <h1 style="font-size:22px;">Nivel Medio Superior</h1>
                 </div>
@@ -163,7 +167,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>Sube tu documento</label>
-                            <input type="file" id="documentolicenciatura" name="documentolicenciatura" class="form-control" accept=".pdf">
+                            <input type="file" id="documentolicenciatura[]" name="documentolicenciatura[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
                             <strong>Documento</strong>
@@ -191,8 +195,8 @@
                 <?php  } ?>
 
                 <div class="form-group col-md-3">
-                    <label>Agregar licenciatura</label>
-                    <input type="number" id="quantity" name="numlicenciaturas" autocomplete="off" class="form-control" min="0" max="5">
+                    <label>Agregar licenciatura (Solo numeros)</label>
+                    <input type="number" id="quantity" name="numlicenciaturas" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
                     document.getElementById("quantity").addEventListener("input", (event) => {
@@ -235,7 +239,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Sube tu documento ${i +1}</label>
-                                <input type="file" id="documentolicenciatura[${i}]" name="documentolicenciatura" class="form-control" accept=".pdf">
+                                <input type="file" id="documentolicenciatura[${i}]" name="documentolicenciatura[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
                         }
@@ -301,7 +305,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>Sube tu documento</label>
-                            <input type="file" id="documentomaestria" name="documentomaestria" class="form-control" accept=".pdf">
+                            <input type="file" id="documentomaestria[]" name="documentomaestria[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
                             <strong>Documento</strong>
@@ -329,8 +333,8 @@
                 <?php  } ?>
 
                 <div class="form-group col-md-3">
-                    <label>Agregar maestria</label>
-                    <input type="number" id="quantity2" name="maestrias" autocomplete="off" class="form-control" min="0" max="5">
+                    <label>Agregar maestria (Solo numeros)</label>
+                    <input type="number" id="quantity2" name="maestrias" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
                     document.getElementById("quantity2").addEventListener("input", (event) => {
@@ -373,7 +377,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Sube tu documento ${i +1}</label>
-                                <input type="file" id="documentomaestria[${i}]" name="documentomaestria" class="form-control" accept=".pdf">
+                                <input type="file" id="documentomaestria[${i}]" name="documentomaestria[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
                         }
@@ -443,7 +447,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Sube tu documento</label>
-                            <input type="file" id="documentoposgradoesp" name="documentoposgradoesp" class="form-control" accept=".pdf">
+                            <input type="file" id="documentoposgradoesp[]" name="documentoposgradoesp[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
                             <strong>Documento</strong>
@@ -470,8 +474,8 @@
 
                 <?php  } ?>
                 <div class="form-group col-md-3">
-                    <label>Agregar posgrado/especialidad</label>
-                    <input type="number" id="quantity3" name="posgrados" autocomplete="off" class="form-control" min="0" max="5">
+                    <label>Agregar posgrado/especialidad (Solo numeros)</label>
+                    <input type="number" id="quantity3" name="posgrados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
                     document.getElementById("quantity3").addEventListener("input", (event) => {
@@ -518,7 +522,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Sube tu documento ${i +1}</label>
-                                <input type="file" id="documentoposgradoesp[${i}]" name="documentoposgradoesp" class="form-control" accept=".pdf">
+                                <input type="file" id="documentoposgradoesp[${i}]" name="documentoposgradoesp[]" class="form-control" accept=".pdf">
                             </div>
 
                         </div>`;
@@ -589,7 +593,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Sube tu documento</label>
-                            <input type="file" id="documentodoctorado" name="documentodoctorado" class="form-control" accept=".pdf">
+                            <input type="file" id="documentodoctorado[]" name="documentodoctorado[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
                             <strong>Documento</strong>
@@ -616,8 +620,8 @@
 
                 <?php  } ?>
                 <div class="form-group col-md-3">
-                    <label>Agregar doctorado</label>
-                    <input type="number" id="quantity4" name="doctorados" autocomplete="off" class="form-control" min="0" max="5">
+                    <label>Agregar doctorado (Solo numeros)</label>
+                    <input type="number" id="quantity4" name="doctorados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
                     document.getElementById("quantity4").addEventListener("input", (event) => {
@@ -664,7 +668,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Sube tu documento ${i +1}</label>
-                                <input type="file" id="documentodoctorado[${i}]" name="documentodoctorado" class="form-control" accept=".pdf">
+                                <input type="file" id="documentodoctorado[${i}]" name="documentodoctorado[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
                         }

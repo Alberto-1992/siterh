@@ -27,36 +27,19 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
     <?php session_start();
     if (isset($_SESSION['usuarioAdminRh']) or isset($_SESSION['usuarioJefe']) or isset($_SESSION['usuarioDatos'])) { ?>
     <ul class="nav nav-tabs" style="margin-top: 48px;" >       
-            <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
-            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <?php
-                if ($dataRegistro['eliminado'] == 0) { ?>
-
-                    <li><a class="dropdown-item" href="#" onclick="bloquear();">Bloquear</a></li>
-                <?php
-                } else if ($dataRegistro['eliminado'] == 1) { ?>
-                    <li><a class="dropdown-item" href="#" onclick="activar();">Activar usuario</a></li>
-                <?php
-                }
             
-                if ($dataRegistro['editarDatos'] == 0) { ?>
-                    <li><a class="dropdown-item" href="#" onclick="editardatos();">Editar datos</a></li>
-                <?php } else if ($dataRegistro['editarDatos'] == 1) { ?>
-                    <li><a class="dropdown-item" href="#" onclick="finalizarEdicion();">Finalizar edición</a></li>
-                <?php }
-
+                <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Academicos</a>
+                <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+                    <li><a class="dropdown-item" href="#" onclick="infoAcademica();">Datos academicos</a></li>
+                </ul>
+            </li>
+        <?php
             };
         
             ?>
-            </ul>
-        </li>
-        <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Academicos</a>
-            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="infoAcademica();">Datos academicos</a></li>
-            </ul>
-        </li>
+        
+        
     </ul>
     
     <script>

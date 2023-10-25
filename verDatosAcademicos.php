@@ -8,6 +8,12 @@ error_reporting(0);
             require 'frontend/datosAcademicosVista.php';
             
         break;
+        case isset($_SESSION['usuarioJefe']):
+            $usernameSesion = $_SESSION['usuarioJefe']; 
+            
+            require 'frontend/datosAcademicosVista.php';
+            
+        break;
         
         require 'close_sesion.php';
         

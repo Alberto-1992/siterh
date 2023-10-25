@@ -20,6 +20,11 @@ try {
         ':documentomediosuperior' => $documentomediosuperior,
         ':id_empleado' => $id_empleado
     ));
+    $sql = $conexionX->prepare("UPDATE ultimogradoestudios set descripcionultimogrado = :descripcionultimogrado where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':descripcionultimogrado'=>$ultimogradoestudios,
+            ':id_empleado'=>$id_empleado
+        ));
 
         $sql = $conexionX->prepare("DELETE from estudiossuperior where id_empleado = :id_empleado");
             $sql->execute(array(
@@ -38,6 +43,8 @@ try {
                 ':id_empleado'=>$id_empleado
             ));
     $validatransac = $conexionX->commit();
+   
+    require '../conexionRh.php';
     if ($_FILES["documentomediasup"]["error"] > 0) {
         
     } else {
@@ -64,7 +71,6 @@ try {
         }
         
     }
-    require '../conexionRh.php';
     $arraynombreformacion =  $_POST['nombreformacion'];
     $arraynombreinstitucion = $_POST['nombreinstitucion'];
     $arrayfechainicio = $_POST['fechainiciosup'];
@@ -90,36 +96,38 @@ try {
         $datoUnico[] = '("' . $nombreformacion . '", "' . $nombreinstitucion . '", "' . $fechainicio . '", "' . $fechatermino . '", "' . $tiempocursado . '", "' . $documentorecibe . '", "' . $numerocedula . '", "' . $id_empleado . '")';
         $consulta = "INSERT into  estudiossuperior(nombreformacionsuperior,nombresuperior,fechasuperiorinicio,fechasuperiortermino,tiempocursadosuperior,documentosuperior,numerocedulasuperior,id_empleado) VALUES " . implode(', ', $datoUnico);
         
-    }
-    if ($_FILES["documentolicenciatura"]["error"] > 0) {
-        
-    } else {
+}
+foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentolicenciatura"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Titulo licenciatura";
+			$archivonombre = $_POST['nombreformacion'][$key];
+			$fuente = $_FILES["documentolicenciatura"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentoslicenciatura/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
 
-        $permitidos = array("application/pdf");
-        
-        if (in_array($_FILES["documentolicenciatura"]["type"], $permitidos) && $_FILES["documentolicenciatura"]["size"]) {
-
-            $ruta = '../documentoslicenciatura/' . $nombreformacion.$id_empleado. '/';
-            $archivo = $ruta . $_FILES["documentolicenciatura"]["name"] = "comprobatelicenciatura.pdf";
-
-
-            if (!file_exists($ruta)) {
-                mkdir($ruta);
-            }
-
-            if (file_exists($archivo)) {
-
-                $resultado = @move_uploaded_file($_FILES["documentolicenciatura"]["tmp_name"], $archivo);
-            } else {
-                $resultado = @move_uploaded_file($_FILES["documentolicenciatura"]["tmp_name"], $archivo);
-            }
-            
-        }
-        
-    }
     mysqli_query($conexionGrafico, $consulta);
-    //datos de carga de maestria
-
+  
     $arraynombreformacionmaestria =  $_POST['nombreformacionmaestria'];
     $arraynombreinstitucionmaestria = $_POST['nombreinstitucionmaestria'];
     $arrayfechainiciomaestria = $_POST['fechainiciosupmaestria'];
@@ -147,35 +155,36 @@ try {
         $datoUnicomaestria[] = '("' . $nombreformacionmaestria . '", "' . $nombreinstitucionmaestria . '", "' . $fechainiciomaestria . '", "' . $fechaterminomaestria . '", "' . $tiempocursadomaestria . '", "' . $documentorecibemaestria . '", "' . $numerocedulamaestria . '", "' . $id_empleado . '")';
         $consulta2 = "INSERT into  estudiosmaestria(nombreformacionmaestria,nombremaestria,fechamaestriainicio,fechamaestriatermino,tiempocursadomaestria,documentomaestria,numerocedulamaestria,id_empleado) VALUES " . implode(', ', $datoUnicomaestria);
         
-    }
-    if ($_FILES["documentomaestria"]["error"] > 0) {
-        
-    } else {
-
-        $permitidos = array("application/pdf");
-        
-        if (in_array($_FILES["documentomaestria"]["type"], $permitidos) && $_FILES["documentomaestria"]["size"]) {
-
-            $ruta = '../documentosmaestria/' . $nombreformacionmaestria.$id_empleado. '/';
-            $archivo = $ruta . $_FILES["documentomaestria"]["name"] = "comprobatemaestria.pdf";
-
-
-            if (!file_exists($ruta)) {
-                mkdir($ruta);
-            }
-
-            if (file_exists($archivo)) {
-
-                $resultado = @move_uploaded_file($_FILES["documentomaestria"]["tmp_name"], $archivo);
-            } else {
-                $resultado = @move_uploaded_file($_FILES["documentomaestria"]["tmp_name"], $archivo);
-            }
-            
-        }
-        
-    }
+    }  
+    foreach($_FILES["documentomaestria"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentomaestria"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Titulo maestria";
+			$archivonombre = $_POST['nombreformacionmaestria'][$key];
+			$fuente = $_FILES["documentomaestria"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentosmaestria/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
     mysqli_query($conexionGrafico, $consulta2);
-
     $arraynombreformacionposgradoespecialidad =  $_POST['nombreformacionposgradoespecialidad'];
     $arraynombreinstitucionposgradoespecialidad = $_POST['nombreinstitucionposgradoespecialidad'];
     $arrayfechainicioposgradoespecialidad = $_POST['fechainiciosupposgradoespecialidad'];
@@ -205,32 +214,34 @@ try {
         $datoUnicoposgradoespecialidad[] = '("' . $nombreformacionposgradoespecialidad . '", "' . $nombreinstitucionposgradoespecialidad . '","' . $unidadhospitalariaposgradoespecialidad . '", "' . $fechainicioposgradoespecialidad . '", "' . $fechaterminoposgradoespecialidad . '", "' . $tiempocursadoposgradoespecialidad . '", "' . $documentorecibeposgradoespecialidad . '", "' . $numerocedulaposgradoespecialidad . '", "' . $id_empleado . '")';
         $consulta3 = "INSERT into  especialidad(nombreformacionacademica,nombreinstitucion,unidadhospitalaria,fechainicioespecialidad,fechaterminoespecialidad,anioscursados,documentorecibeespecialidad,numerocedulaespecialidad,id_empleado) VALUES " . implode(', ', $datoUnicoposgradoespecialidad);
     }
-    if ($_FILES["documentoposgradoesp"]["error"] > 0) {
-        
-    } else {
-
-        $permitidos = array("application/pdf");
-        
-        if (in_array($_FILES["documentoposgradoesp"]["type"], $permitidos) && $_FILES["documentoposgradoesp"]["size"]) {
-
-            $ruta = '../documentosposgradoesp/' . $nombreformacionposgradoespecialidad.$id_empleado. '/';
-            $archivo = $ruta . $_FILES["documentoposgradoesp"]["name"] = "comprobateposgradoespecialidad.pdf";
-
-
-            if (!file_exists($ruta)) {
-                mkdir($ruta);
-            }
-
-            if (file_exists($archivo)) {
-
-                $resultado = @move_uploaded_file($_FILES["documentoposgradoesp"]["tmp_name"], $archivo);
-            } else {
-                $resultado = @move_uploaded_file($_FILES["documentoposgradoesp"]["tmp_name"], $archivo);
-            }
-            
-        }
-        
-    }
+    foreach($_FILES["documentoposgradoesp"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentoposgradoesp"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Titulo posgrado";
+			$archivonombre = $_POST['nombreformacionposgradoespecialidad'][$key];
+			$fuente = $_FILES["documentoposgradoesp"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentosposgradoesp/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
     mysqli_query($conexionGrafico, $consulta3);
 
     $arraynombreformaciondoctorado =  $_POST['nombreformaciondoctorado'];
@@ -262,32 +273,35 @@ try {
         $datoUnicodoctorado[] = '("' . $nombreformaciondoctorado . '", "' . $nombreinstituciondoctorado . '","' . $unidadhospitalariadoctorado . '", "' . $fechainiciodoctorado . '", "' . $fechaterminodoctorado . '", "' . $tiempocursadodoctorado . '", "' . $documentorecibedoctorado . '", "' . $numeroceduladoctorado . '", "' . $id_empleado . '")';
         $consulta4 = "INSERT into  doctorado(nombreformaciondoctorado,nombreinstituciondoctorado,unidadhospitalariadoctorado,fechainiciodoctorado,fechaterminodoctorado,anioscursadosdoctorado,documentorecibedoctorado,numeroceduladoctorado,id_empleado) VALUES " . implode(', ', $datoUnicodoctorado);
     }
-    if ($_FILES["documentodoctorado"]["error"] > 0) {
-        
-    } else {
-
-        $permitidos = array("application/pdf");
-        
-        if (in_array($_FILES["documentodoctorado"]["type"], $permitidos) && $_FILES["documentodoctorado"]["size"]) {
-
-            $ruta = '../documentosdoctorado/' . $nombreformaciondoctorado.$id_empleado. '/';
-            $archivo = $ruta . $_FILES["documentodoctorado"]["name"] = "comprobatedoctorado.pdf";
-
-
-            if (!file_exists($ruta)) {
-                mkdir($ruta);
-            }
-
-            if (file_exists($archivo)) {
-
-                $resultado = @move_uploaded_file($_FILES["documentodoctorado"]["tmp_name"], $archivo);
-            } else {
-                $resultado = @move_uploaded_file($_FILES["documentodoctorado"]["tmp_name"], $archivo);
-            }
-            
-        }
-        
-    }
+    foreach($_FILES["documentodoctorado"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentodoctorado"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Titulo posgrado";
+			$archivonombre = $_POST['nombreformaciondoctorado'][$key];
+			$fuente = $_FILES["documentodoctorado"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentosdoctorado/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
     mysqli_query($conexionGrafico, $consulta4);
     if ($validatransac != false) {
         echo "<script>Swal.fire({

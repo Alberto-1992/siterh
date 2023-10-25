@@ -58,7 +58,7 @@ error_reporting(0);
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
             require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.*,estudiosmediosup.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado inner join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
+            $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.*,estudiosmediosup.*, ultimogradoestudios.descripcionultimogrado FROM plantillahraei left join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado left join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado left join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));
@@ -84,7 +84,7 @@ error_reporting(0);
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
             require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.*, estudiosmediosup.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado inner join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
+            $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.*, estudiosmediosup.*, ultimogradoestudios.descripcionultimogrado FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado inner join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado inner join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));

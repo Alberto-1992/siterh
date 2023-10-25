@@ -305,7 +305,30 @@
             
         } else if (isset($_SESSION['usuarioJefe'])) {
             require 'menu/menuPersonal.php';
-            ?>
+            
+        require 'conexionRh.php';
+                $statement = $conexionRh->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
+                $statement->execute(array(
+                    ':correo' => $usernameSesion
+                ));
+                $rw = $statement->fetch();
+                $admin = $rw['correo'];
+                if ($admin == 'angelnurse73@hotmail.com') {
+                    ?>
+                    <script>
+                        function plantillaenfermeria() {
+                            window.location.href='plantillaEnfermeria';
+                        }
+                    </script>
+<article class="card" id="mistrabajadores" onclick="plantillaenfermeria();">
+            <a href="plantillaEnfermeria">
+            <hr id="hr6">
+            <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
+                <p>Plantilla enfermeria</p>
+            </a>
+</article>
+<?php } ?>
+
             <article class="card" id="mistrabajadores" onclick="misEmpleados();">
             <a href="misEmpleado">
             <hr id="hr6">

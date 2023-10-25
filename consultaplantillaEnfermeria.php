@@ -16,22 +16,22 @@
     error_reporting(0);
     require_once 'clases/conexion.php';
     $conexionX = new ConexionRh();
-    $sqlQueryComentarios  = $conexionX->prepare("SELECT plantillahraei.Empleado FROM plantillahraei");
+    $sqlQueryComentarios  = $conexionX->prepare("SELECT plantillahraei.Empleado FROM plantillahraei where DescripcionPuesto like '%enferme%'");
     $sqlQueryComentarios->execute();
     $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
-    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC FROM plantillahraei order by Empleado DESC LIMIT 30");
+    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC FROM plantillahraei  where DescripcionPuesto like '%enferme%' order by Empleado DESC LIMIT 30");
     if (isset($_POST['evento'])) {
         $id = $_POST['evento'];
     $query= $conexionX->prepare("SELECT Nombre, Empleado,DescripcionPuesto,RFC FROM plantillahraei where 
-    Nombre like '%$id%' or
-    Empleado like '%$id%' order by plantillahraei.Empleado");
+    Nombre like '%$id%' and DescripcionPuesto like '%enferme%' or
+    Empleado like '%$id%' and DescripcionPuesto like '%enferme%' order by plantillahraei.Empleado");
     }
 ?>
 <script>
-    function exportarExcel() {
-        window.location.href='exportarPlantillaExcel';
+    function exportarExcelEnfermeria() {
+        window.location.href='exportarExcelEnfermeria';
     }
 </script>
 <ul class="nav nav-tabs" >
@@ -41,7 +41,7 @@
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Descargar a excel</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelEnfermeria();">Descargar a excel</a></li>
                 
             </ul>
         </li>
@@ -87,7 +87,7 @@
 </div>
 <?php
 
-$sql = $conexionX->prepare("SELECT Empleado from plantillahraei order by Empleado desc limit 1");
+$sql = $conexionX->prepare("SELECT Empleado from plantillahraei where DescripcionPuesto like '%enferme%' order by Empleado desc limit 1");
 $sql->execute();
 $row = $sql->fetch();
 
@@ -105,7 +105,7 @@ $(function() {
   
         $.ajax({
             type: "POST",
-            url: "consultaBusquedaPlantillaHraei.php",
+            url: "consultaBusquedaPlantillaEnfermeria.php",
             data: ob,
             beforeSend: function() {
 
@@ -134,7 +134,7 @@ $('.item-comentario').on('click', '.ver-info', function() {
 
     $.ajax({
         type: "POST",
-        url: "consultaBusquedaPlantillaHraei.php",
+        url: "consultaBusquedaPlantillaEnfermeria.php",
         data: ob,
         beforeSend: function() {
 
@@ -192,7 +192,7 @@ function pageScroll() {
                 let datos = {utimoId:utimoId, totalregistro:totalregistro};
                 $("#tabla_resultadobus").off("scroll");
                 $.ajax({
-                    url: 'obteniendoMasDatosPlantilla.php',
+                    url: 'obteniendoMasDatosPlantillaEnfermeria.php',
                     data: datos,
                     type: "POST",
                     beforeSend: function() {
