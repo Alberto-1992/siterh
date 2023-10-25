@@ -13,14 +13,14 @@ try {
     $sql->execute(array(
         ':id_usuario' => $id
     ));
-    $validatransac = $conexionRh->commit();
+    $validatransac = $conexionX->commit();
 
     if ($validatransac != false) {
         echo "<script>alertify.success('Registro eliminado');
 </script>";
     }
 } catch (Exception $e) {
-    $conexionRh->rollBack();
+    $conexionX->rollBack();
     echo "<script>alertify.error('Error inesperado');
     </script>";
 }
