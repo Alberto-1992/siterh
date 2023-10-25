@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <!--<script defer src="https://app.embed.im/snow.js"></script>-->
-    <title>Contratacion HRAEI</title>
+    <title>Plantilla Enfermeria</title>
 </head>
 
 <body>
