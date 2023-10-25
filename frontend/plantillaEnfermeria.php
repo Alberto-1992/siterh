@@ -27,13 +27,13 @@
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
-            require 'menu/menuPlantilla.php';
+            require 'menu/menuEnfermeria.php';
         break;
         case isset($_SESSION['usuarioJefe']):
-            require 'menu/menuPlantilla.php';
+            require 'menu/menuEnfermeria.php';
         break;
         case isset($_SESSION['usuarioDatos']):
-            require 'menu/menuPlantilla.php';
+            require 'menu/menuEnfermeria.php';
         break;
         default:
             require 'close_sesion.php';
