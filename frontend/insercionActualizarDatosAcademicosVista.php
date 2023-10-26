@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label>Ultimo grado de estudios</label>
-                    <input type="text" id="ultimogradoestudios" name="ultimogradoestudios" autocomplete="off" class="form-control" value="<?php echo $row['descripcionultimogrado'] ?>">
+                    <input type="text" id="ultimogradoestudios" name="ultimogradoestudios" autocomplete="off" class="form-control" value="<?php echo $row['especialidadlaborahraei'] ?>">
                 </div>
                 <div style="width: 100%; height: auto; background-color: #0D6F9A; text-align:center;margin-top:10px; color:white;">
                     <h1 style="font-size:22px;">Nivel Medio Superior</h1>
