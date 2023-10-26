@@ -626,7 +626,7 @@ height: 16rem;
 }
 </style>
 <div class="titulo">
-        <h2 style="font-size: 13px;"></h2>
+        <h2 style="font-size: 13px;">Estatus actualizacion de datos</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -674,23 +674,29 @@ var datos = [
 require 'conexionRh.php';
 
 
-$sqlDGT = $conexionGrafico->query("SELECT count(*) as totalDG2 from personaloperativo2023 where vistobueno != 4");
-$rowDGT = mysqli_fetch_assoc($sqlDGT);
+$sqlplantilla = $conexionGrafico->query("SELECT count(*) as total from plantillahraei");
+$rowplantilla = mysqli_fetch_assoc($sqlplantilla);
 
 
-$sqlDGT2022 = $conexionGrafico->query("SELECT count(*) as totalDG2022 from personaloperativo2022 where vistobueno != 4");
-$rowDGT2022 = mysqli_fetch_assoc($sqlDGT2022);
+$sqlSinactualizar = $conexionGrafico->query("SELECT count(*) as total2 from actualizacion where actualizo = 0");
+$rowSinactualizar = mysqli_fetch_assoc($sqlSinactualizar);
+
+$sqlActualizo = $conexionGrafico->query("SELECT count(*) as total1 from actualizacion where actualizo = 1");
+$rowActualizo = mysqli_fetch_assoc($sqlActualizo);
 
 
 
 ?>
 ];
 var data = [ {
-"year": "2022",
-"Total 2022": <?php echo $rowDGT2022['totalDG2022'] ?>
+"year": "Total plantilla",
+"Total plantilla": <?php echo $rowplantilla['total'] ?>
 }, {
-"year": "2023",
-"Total 2023": <?php echo $rowDGT['totalDG2'] ?>
+"year": "Total actualizo",
+"Total actualizo": <?php echo $rowActualizo['total1'] ?>
+}, {
+"year": "Total sin actualizar",
+"Total sin actualizar": <?php echo $rowSinactualizar['total2'] ?>
 }]
 
 
@@ -760,8 +766,9 @@ populateText: true
 legend.data.push(series);
 }
 
-makeSeries("Total 2022", "Total 2022");
-makeSeries("Total 2023", "Total 2023");
+makeSeries("Total palntilla", "Total plantilla");
+makeSeries("Total actualizo", "Total actualizo");
+makeSeries("Total sin actualizar", "Total sin actualizar");
 
 
 // Make stuff animate on load
@@ -774,5 +781,6 @@ chart.appear(1000, 100);
 <!-- HTML -->
 <div id="chartdiv5"></div>
 </div>
+
 <div class="graff" id="grafico_ultimo"></div>
 </div>
