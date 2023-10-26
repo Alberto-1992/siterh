@@ -26,10 +26,9 @@ try {
             ':especialidadlaborahraei'=>$especialidadlaborahraei,
             ':id_empleado'=>$id_empleado
         ));
-        $sql = $conexionX->prepare("UPDATE actualizacion SET actualizo = :actualizo where id_empleado = :id_empleado");
+        $sql = $conexionX->prepare("UPDATE actualizacion SET actualizo = :actualizo where id_empleado = $id_empleado");
         $sql->execute(array(
-            ':actualizo'=>1,
-            ':id_empleado'=>$id_empleado
+            ':actualizo'=>1
         ));
     
 
