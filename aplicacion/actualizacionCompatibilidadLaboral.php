@@ -22,6 +22,11 @@ try {
         ':tipopuesto2'=>$tipopuestosegundo,
         ':id_empleado'=>$id_empleado
     ));
+    $sql = $conexionX->prepare("UPDATE compatibilidadotroempleo SET otroempleo = :otroempleo where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':otroempleo'=>$otroempleo,
+            ':id_empleado'=>$id_empleado
+        ));
     $validatransac = $conexionX->commit();
 
     if($validatransac != false){

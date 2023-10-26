@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #0D7E9A;">
+<nav class="navbar navbar-expand-md fixed-top" style="background-color: #0D7E9A;">
         <span id="cabecera">Actualización de datos academicos</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -6,7 +6,6 @@
 
 
     </nav>
-
     <div class="container">
     <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
     <link rel="stylesheet" href="iconos/css/all.css?n=1">
@@ -43,7 +42,8 @@
                         }
                     })
                 })
-            </script>
+            </script> 
+            
             <div class="form-row">
                 <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color: white;">
                     <h1 style="font-size:22px;">Datos Academicos</h1>

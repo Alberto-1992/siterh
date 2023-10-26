@@ -70,7 +70,34 @@
                     })
                 })
             </script>
-            <div class="form-row">
+            <script>
+$(function () {
+    $('#contenido').prop("hidden", true);
+
+})
+$(document).ready(function () {
+
+$('#otroempleo').change(function (e) {
+    if ($(this).val() === "Si") {
+
+        $('#contenido').prop("hidden", false);
+    } else {
+        $('#contenido').prop("hidden", true);
+
+    }
+})
+});
+</script>
+<div class="col-md-6">
+                    <strong>Cuento con otro empleo:</strong>
+                    <select name="otroempleo" id="otroempleo" class="form-control" required>
+                        <option value="">Seleccione</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                
+            </select>
+                </div>
+            
             <?php
             error_reporting(0);
     switch(true) {
@@ -97,6 +124,10 @@
         }
         
 ?>
+
+
+<div id="contenido">
+<div class="form-row">
 <div class="col-md-6">
                     <label for="mensaje">N° de Empleado:</label>
 </div>
@@ -163,7 +194,8 @@
                 <option value="Interinato">Interinato</option>
             </select>
                 </div>
-                
+</div>
+</div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
                 <a href="#" name="add" id="btn-send" style="background-color: yellow; color: black; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">Cerrar ventana</a>&nbsp;&nbsp;
                     <input type="submit" name="add" id="btn-send" value="Enviar">
