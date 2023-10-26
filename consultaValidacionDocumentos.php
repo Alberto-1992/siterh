@@ -34,7 +34,7 @@ $conexionX = new ConexionRh();
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos where validaautorizacion = 0 order by datos.id DESC LIMIT 23 ");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos where validaautorizacion = 0 order by datos.id DESC LIMIT 2000 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
