@@ -39,6 +39,32 @@ try {
         ':telefonoemergencia'=>$telefonoemergencia,
         ':parentescoemergencia'=>$parentescoemergencia
     ));
+    if ($_FILES["documentocurp"]["error"] > 0) {
+        
+    } else {
+
+        $permitidos = array("application/pdf");
+        
+        if (in_array($_FILES["documentocurp"]["type"], $permitidos) && $_FILES["documentocurp"]["size"]) {
+
+            $ruta = '../documentoscurp/' . $nombreformacionmedia.$id_empleado. '/';
+            $archivo = $ruta . $_FILES["documentocurp"]["name"] = "Comprobante CURP.pdf";
+
+
+            if (!file_exists($ruta)) {
+                mkdir($ruta);
+            }
+
+            if (file_exists($archivo)) {
+
+                $resultado = @move_uploaded_file($_FILES["documentocurp"]["tmp_name"], $archivo);
+            } else {
+                $resultado = @move_uploaded_file($_FILES["documentocurp"]["tmp_name"], $archivo);
+            }
+            
+        }
+        
+    }
     $validatransac = $conexionX->commit();
 
     if($validatransac != false){

@@ -20,9 +20,10 @@ try {
         ':documentomediosuperior' => $documentomediosuperior,
         ':id_empleado' => $id_empleado
     ));
-    $sql = $conexionX->prepare("UPDATE ultimogradoestudios set descripcionultimogrado = :descripcionultimogrado where id_empleado = :id_empleado");
+    $sql = $conexionX->prepare("UPDATE ultimogradoestudios set descripcionultimogrado = :descripcionultimogrado, especialidadlaborahraei = :especialidadlaborahraei where id_empleado = :id_empleado");
         $sql->execute(array(
             ':descripcionultimogrado'=>$ultimogradoestudios,
+            ':especialidadlaborahraei'=>$especialidadlaborahraei,
             ':id_empleado'=>$id_empleado
         ));
 

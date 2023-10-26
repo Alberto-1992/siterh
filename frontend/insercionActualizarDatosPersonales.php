@@ -106,7 +106,7 @@
     });
 </script>
 <?php 
-
+$datocurp = $row['CURP'];
 $sql = $conexionRh->prepare("SELECT t_estado.estado from t_estado where id_estado = :id_estado");
     $sql->execute(array(
         ':id_estado'=>$estado
@@ -141,6 +141,8 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 </nav>
 
 <div class="container">
+<link rel="stylesheet" href="iconos/css/all.min.css?n=1">
+    <link rel="stylesheet" href="iconos/css/all.css?n=1">
     <div id="mensaje"></div>
     <h1 style="text-align: center; font-size: 25px;">Actualiza tu información personal</h1>
     <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualizes tus datos personales.</h1>
@@ -188,6 +190,31 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <input type="text" class="form-control" name="curp" id="curp" placeholder="CURP" minlength="18" maxlength="18" value="<?php echo $row['CURP'] ?>" required onkeyup="curp2dateAct();" readonly>
             </div>
             <div class="col-md-3">
+                <label for="mensaje">Sube tu CURP:</label>
+                <input type="file" class="form-control" name="documentocurp" id="documentocurp" accept=".pdf">
+            </div>
+            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista CURP</strong>
+                            <?php
+                            $archivo = "Comprobante CURP";
+                            
+                            $path = "documentoscurp/" .$datocurp.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoscurp/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoscurp/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+            <div class="col-md-3">
                 <label for="mensaje">Fecha de nacimiento:</label>
                 <input type="date" class="form-control" name="fechanacimiento" id="fechanacimiento" required readonly value="">
             </div>
@@ -220,6 +247,31 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <label for="mensaje">N° de cartilla militar:</label>
                 <input type="text" class="form-control" name="cartillamilitar" id="cartillamilitar" value="<?php echo $numerocartillamilitar ?>">
             </div>
+            <div class="col-md-3">
+                <label for="mensaje">Sube tu cartilla militar:</label>
+                <input type="file" class="form-control" name="documentocartilla" id="documentocartilla" accept=".pdf">
+            </div>
+            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista Cartilla</strong>
+                            <?php
+                            $archivo = "Cartilla militar";
+                            
+                            $path = "documentoscartilla/" .$datocurp.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoscartilla/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoscartilla/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
             <div class="col-md-3">
                 <label for="mensaje">Carta de naturalizacion:</label>
                 <input type="text" class="form-control" name="naturalizacion" id="naturalizacion" value="<?php echo $cartanaturalizacion ?>">
@@ -301,18 +353,229 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <label for="mensaje">Colonia:</label>
                 <input type="text" class="form-control" name="colonia" id="colonia" value="<?php echo $colonia ?>">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="mensaje">Tel casa:</label>
                 <input type="text" class="form-control" name="telcasa" id="telcasa" value="<?php echo $telcasa ?>">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="mensaje">Tel cel:</label>
                 <input type="text" class="form-control" name="telcel" id="telcel" value="<?php echo $telcel ?>">
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="mensaje">Otro tel:</label>
                 <input type="text" class="form-control" name="otrotel" id="otrotel" value="<?php echo $otrotel ?>">
             </div>
+            <div class="col-md-3">
+                <label for="mensaje">Sube un comprobante de domicilio:</label>
+                <input type="file" class="form-control" name="documentodomicilio" id="documentodomicilio" accept=".pdf">
+            </div>
+            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista Comp Domicilio</strong>
+                            <?php
+                            
+                            $archivo = "Comprobante domicilio";
+                            
+                            $path = "documentoscomprobantedomicilio/" .$datocurp.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoscomprobantedomicilio/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoscomprobantedomicilio/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+                        <script>
+                    function deleteSp() {
+        var inputs = $("input[type=text]");
+        for (var i = 0; i < inputs.length; i++) {
+            var aux = $(inputs[i]).val().trim();
+            $(inputs[i]).val(aux);
+        }
+    }
+
+    function EdadActhijo(FechaNacimiento) {
+
+        var fechaNace = new Date(FechaNacimiento);
+        var fechaActual = new Date()
+
+        var mes = fechaActual.getMonth();
+        var dia = fechaActual.getDate();
+        var año = fechaActual.getFullYear();
+
+        fechaActual.setDate(dia);
+        fechaActual.setMonth(mes);
+        fechaActual.setFullYear(año);
+
+        edad = Math.floor(((fechaActual - fechaNace) / (1000 * 60 * 60 * 24) / 365));
+
+        return edad;
+    }
+
+    function calcularEdadActhijo() {
+        var fecha = document.getElementById('fechanacimientohijo').value;
+
+
+        var edad = EdadActhijo(fecha);
+        document.datospersonalesactualizar.edadhijo.value = edad;
+
+    }
+    function curp2date(curphijo) {
+        deleteSp();
+        var miCurp = document.getElementById('curphijo').value.toUpperCase();
+        var sexo = miCurp.substr(-8, 1);
+        var m = miCurp.match(/^\w{4}(\w{2})(\w{2})(\w{2})/);
+        //miFecha = new Date(año,mes,dia) 
+        var anyo = parseInt(m[1], 10) + 1900;
+        if (anyo < 1980) anyo += 100;
+        var mes = parseInt(m[2], 10) - 1;
+        var dia = parseInt(m[3], 10);
+        document.datospersonalesactualizar.fechanacimientohijo.value = (new Date(anyo, mes, dia));
+        if (sexo == 'M') {
+            document.datospersonalesactualizar.sexohijo.value = 'Femenino';
+        } else if (sexo == 'H') {
+            document.datospersonalesactualizar.sexohijo.value = 'Masculino';
+
+        }
+        calcularEdadActhijo();
+
+    }
+    Date.prototype.toString = function() {
+        var anyo = this.getFullYear();
+        var mes = this.getMonth() + 1;
+        if (mes <= 9) mes = "0" + mes;
+        var dia = this.getDate();
+        if (dia <= 9) dia = "0" + dia;
+        return anyo + "-" + mes + "-" + dia;
+    }
+    window.addEventListener('DOMContentLoaded', (evento) => {
+        const hoy_fecha = new Date().toISOString().substring(0, 10);
+        document.querySelector("input[name='fechanacimientohijo[]']").max = hoy_fecha;
+
+    });
+                </script>
+                        <?php
+                $sqlhijos  = $conexionRh->prepare("SELECT hijos.id_empleado FROM hijos where id_empleado = $identificador ");
+                $sqlhijos->execute();
+                $sqlhijos = $conexionRh->prepare("SELECT FOUND_ROWS()");
+                $sqlhijos->execute();
+                $total_registro = $sqlhijos->fetchColumn();
+
+                $sql = $conexionRh->prepare("SELECT * from hijos where id_empleado = :id_empleado");
+                $sql->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+
+                ?>
+
+                <?php
+                while ($rows = $sql->fetch()) {
+                    $valor = $rows['id_hijo'];
+                ?>
+        <div style="width: 100%; height: auto; background-color:aliceblue; text-align:center;margin-top:10px;">
+                <h1 style="font-size:22px;">Datos hijos</h1>
+            </div>
+            <div class="col-md-3">
+                <label for="mensaje">CURP:</label>
+                <input type="text" class="form-control" name="curphijo[]" id="curphijo[]" value="<?php echo $rows['curphijo'] ?>" maxlength="18">
+            </div>
+            <div class="col-md-3">
+                <label for="mensaje">Nombre completo:</label>
+                <input type="text" class="form-control" name="nombrehijo[]" id="nombrehijo[]" value="<?php echo $rows['nombrecompletohijo'] ?>">
+            </div>
+            <div class="col-md-3">
+                <label>Fecha nacimiento hijo</label>
+                <input type="date" name="fechanacimientohijo[]" id="fechanacimientohijo[]" class="form-control" >
+                </div>
+            <div class="col-md-3">
+                <label for="mensaje">Edad:</label>
+                <input type="text" class="form-control" name="edadhijo[]" id="edadhijo[]" value="<?php echo $rows['edadhijo'] ?>" >
+            </div>
+            <div class="col-md-3">
+                <label for="mensaje">Sexo:</label>
+                <input type="number" class="form-control" name="sexohijo[]" id="sexohijo[]" value="<?php echo $rows['sexohijo'] ?>" >
+            </div>
+            
+            <div class="col-md-4">
+                <label for="mensaje">Sube acta de nacimiento o CURP:</label>
+                <input type="file" class="form-control" name="documentocurphijo[]" id="documentocurphijo" accept=".pdf">
+            </div>
+            <div class="col-md-5" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista CURP Hijo</strong>
+                            <?php
+                             $idhijo = $rows['nombrecompletohijo'];
+                            $archivo = "Comprobante hijo";
+                            
+                            $path = "documentoshijos/" .$idhijo.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoshijos/$idhijo$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoshijos/$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                </div>
+            <?php } ?>
+            <div class="form-group col-md-3">
+                    <label>Tienes hijos? (Solo numeros)</label>
+                    <input type="number" id="quantity" name="numhijos" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                
+                <script>
+                    document.getElementById("quantity").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity = event.target.value;
+
+                        for (let i = 0; i < quantity; i++) {
+                            content += `<div class="form-row">
+                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                                    <h1 style="font-size:22px;">Información Hijo ${i +1}</h1>
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>CURP ${i +1}</label>
+                                <input type="text" id="curphijo" name="curphijo[]" class="form-control" onkeyup="curp2date();" maxlength="18">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre completo ${i +1}</label>
+                                <input type="text" id="nombrehijo" name="nombrehijo[]" class="form-control" onkeyup="calcularEdadActhijo();">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Fecha nacimiento hijo ${i +1}</label>
+                                <input type="date" id="fechanacimientohijo" name="fechanacimientohijo[]" class="form-control" >
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Edad ${i +1}</label>
+                                <input type="int" id="edadhijo" name="edadhijo[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Sexo ${i +1}</label>
+                                <input type="text" id="sexohijo" name="sexohijo[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Sube acta de nacimiento o CURP ${i +1}</label>
+                                <input type="file" id="documentocurphijo[${i}]" name="documentocurphijo[]" class="form-control" accept=".pdf">
+                                </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests").innerHTML = content;
+                    })
+                </script>
+                <div id="divGuests"></div>
+
             <div style="width: 100%; height: auto; background-color:aliceblue; text-align:center;margin-top:10px;">
                 <h1 style="font-size:22px;">En caso de emergencia, llamar a:</h1>
             </div>

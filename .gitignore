@@ -6,3 +6,7 @@ clases/configRh
 close_sesion.php
 imagenesPerfiles/**/
 documentoscursos/**/
+calendario/config.php
+calendarioVacaciones/config.php
+vacacionesColaboradores/config.php
+vacacionesColaboradoresMandos/config.php
