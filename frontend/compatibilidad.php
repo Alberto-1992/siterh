@@ -101,30 +101,60 @@
                     <label for="mensaje">N° de Empleado:</label>
 </div>
                 <input type="text" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color: white;">
+                    <h1 style="font-size:22px;">Primer empleo</h1>
+                </div>
                 <div class="col-md-6">
                     <label for="mensaje">Nombre:</label>
                     <input type="text" class="form-control" name="nombreempleado" id="nombreempleado" placeholder="Nombre" required value="<?php echo $nombreempleado ?>" readonly>
                 </div>
-                
-
-                <input type="hidden" class="form-control" name="areafortalece" id="areafortalece" required readonly>
 
                 <div class="col-md-6">
                     <label for="mensaje">Nombre de la institución donde labora:</label>
-                    <input type="text" class="form-control" name="nombrecurso" id="nombrecurso" placeholder="Nombre de la institución" required>
+                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la institución" required>
                 </div>
                 <div class="col-md-4">
                     <label for="mensaje">Horario:</label>
-                    <input type="text" class="form-control" name="fechainicio" id="fechainicio" required placeholder="Horario en el que labora">
+                    <input type="text" class="form-control" name="horario" id="horario" required placeholder="Horario en el que labora">
                 </div>
                 <div class="col-md-4">
                     <label for="mensaje">Dias:</label>
-                    <input type="text" class="form-control" name="fechatermino" id="fechatermino" required placeholder="Dias en los que labora">
+                    <input type="text" class="form-control" name="dias" id="dias" required placeholder="Dias en los que labora">
                 </div>
                 <div class="col-md-4">
                 <label for="mensaje">Tipo de puesto que ocupa:</label>
-                <select name="empresa" id="empresa" class="form-control">
-                <option value="0" disabled>Seleccione</option>
+                <select name="tipopuesto" id="tipopuesto" class="form-control">
+                <option value="Ninguno">Seleccione</option>
+                <option value="Confianza">Confianza</option>
+                <option value="Base">Base</option>
+                <option value="Honorarios">Honorarios</option>
+                <option value="Eventual en plaza reservada">Eventual en plaza reservada</option>
+                <option value="Provisional">Provisional</option>
+                <option value="Interinato">Interinato</option>
+            </select>
+                </div>
+
+                
+                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color: white;">
+                    <h1 style="font-size:22px;">Segundo empleo</h1>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="mensaje">Nombre de la institución donde labora Segundo:</label>
+                    <input type="text" class="form-control" name="nombreinstitucionsegundo" id="nombreinstitucionsegundo" placeholder="Nombre de la institución" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="mensaje">Horario Segundo:</label>
+                    <input type="text" class="form-control" name="horariosegundo" id="horariosegundo" required placeholder="Horario en el que labora">
+                </div>
+                <div class="col-md-6">
+                    <label for="mensaje">Dias Segundo:</label>
+                    <input type="text" class="form-control" name="diassegundo" id="diassegundo" required placeholder="Dias en los que labora">
+                </div>
+                <div class="col-md-6">
+                <label for="mensaje">Tipo de puesto que ocupa Segundo:</label>
+                <select name="tipopuestosegundo" id="tipopuestosegundo" class="form-control">
+                <option value="Ninguno">Seleccione</option>
                 <option value="Confianza">Confianza</option>
                 <option value="Base">Base</option>
                 <option value="Honorarios">Honorarios</option>
