@@ -199,7 +199,7 @@
                 <?php  } ?>
 
                 <div class="form-group col-md-3">
-                    <label>Agregar licenciatura (Solo numeros)</label>
+                    <strong>Agregar licenciatura (Solo numeros)</strong>
                     <input type="number" id="quantity" name="numlicenciaturas" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -337,7 +337,7 @@
                 <?php  } ?>
 
                 <div class="form-group col-md-3">
-                    <label>Agregar maestria (Solo numeros)</label>
+                    <strong>Agregar maestria (Solo numeros)</strong>
                     <input type="number" id="quantity2" name="maestrias" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -478,7 +478,7 @@
 
                 <?php  } ?>
                 <div class="form-group col-md-3">
-                    <label>Agregar posgrado/especialidad (Solo numeros)</label>
+                    <strong>Agregar posgrado/especialidad (Solo numeros)</strong>
                     <input type="number" id="quantity3" name="posgrados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -624,7 +624,7 @@
 
                 <?php  } ?>
                 <div class="form-group col-md-3">
-                    <label>Agregar doctorado (Solo numeros)</label>
+                    <strong>Agregar doctorado (Solo numeros)</strong>
                     <input type="number" id="quantity4" name="doctorados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>

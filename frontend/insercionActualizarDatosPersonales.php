@@ -530,7 +530,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 </div>
             <?php } ?>
             <div class="form-group col-md-3">
-                    <label>Tienes hijos? (Solo numeros)</label>
+                    <strong>Tienes hijos? (Solo numeros)</strong>
                     <input type="number" id="quantity" name="numhijos" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 
