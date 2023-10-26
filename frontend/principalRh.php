@@ -67,9 +67,18 @@
             require 'menu/menuPrincipal.php';
         ?>
 
-            <script>
-                
-            </script>
+<script>
+                        function plantillaenfermeria() {
+                            window.location.href='plantillaEnfermeria';
+                        }
+                    </script>
+<article class="card" id="mistrabajadores" onclick="plantillaenfermeria();">
+            <a href="plantillaEnfermeria">
+            <hr id="hr6">
+            <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
+                <p>Plantilla enfermeria</p>
+            </a>
+</article>
             <article class="card" id="mistrabajadores" onclick="misEmpleados();">
             <a href="misEmpleado">
             <hr id="hr6">

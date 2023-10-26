@@ -224,6 +224,37 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
 
+    <div class="containerr3">Jornada</div>
+    <tr>
+        <th id="th">Turno:</th>
+        <td id="td"><?php echo $dataRegistro['Turno'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Jornada:</th>
+        <td id="td"><?php echo $dataRegistro['Jornada']?></td>
+    </tr>
+    <tr>
+        <th id="th">Horario:</th>
+        <td id="td"><?php echo $dataRegistro['Horario'] ?></td>
+    </tr>
+    <tr>
+    <tr>
+        <th id="th">Control:</th>
+        <td id="td"><?php echo $dataRegistro['Control'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Tipo:</th>
+        <td id="td"><?php echo $dataRegistro['Tipo'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Adicional:</th>
+        <td id="td"><?php echo $dataRegistro['Adicional'] ?></td>
+    </tr>
+    <tr>
+    
+</table>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
+
     <div class="containerr3">Estrucutra</div>
 
     <tr>
