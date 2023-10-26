@@ -26,8 +26,9 @@ try {
             ':especialidadlaborahraei'=>$especialidadlaborahraei,
             ':id_empleado'=>$id_empleado
         ));
-        $sql = $conexionX->prepare("INSERT INTO actualizacion(id_empleado) values(:id_empleado)");
+        $sql = $conexionX->prepare("UPDATE actualizacion SET actualizo = :actualizo where id_empleado = :id_empleado");
         $sql->execute(array(
+            ':actualizo'=>1,
             ':id_empleado'=>$id_empleado
         ));
     
@@ -49,7 +50,7 @@ try {
                 ':id_empleado'=>$id_empleado
             ));
     $validatransac = $conexionX->commit();
-   
+
     require '../conexionRh.php';
     if ($_FILES["documentomediasup"]["error"] > 0) {
         

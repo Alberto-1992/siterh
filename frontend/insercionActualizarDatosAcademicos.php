@@ -88,7 +88,7 @@
                     <input type="text" id="documentomediosuperior" name="documentomediosuperior" autocomplete="off" class="form-control" value="<?php echo $row['documentomediosuperior'] ?>">
                 </div>
                 <div class="form-group col-md-6">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentomediasup" name="documentomediasup" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-6" style="border: 1px solid #F0F0F0;">
@@ -170,7 +170,7 @@
                             <input type="int" id="numerocedula" name="numerocedula[]" class="form-control" value="<?php echo $rows['numerocedulasuperior'] ?>">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentolicenciatura[]" name="documentolicenciatura[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
@@ -242,7 +242,7 @@
                                 <input type="int" id="numerocedula[${i}]" name="numerocedula[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1}</label>
+                                <label>Sube tu documento ${i +1} (PDF)</label>
                                 <input type="file" id="documentolicenciatura[${i}]" name="documentolicenciatura[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
@@ -308,7 +308,7 @@
                             <input type="int" id="numerocedula" name="numerocedulamaestria[]" class="form-control" value="<?php echo $rowm['numerocedulamaestria'] ?>">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentomaestria[]" name="documentomaestria[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
@@ -380,7 +380,7 @@
                                 <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulamaestria[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1}</label>
+                                <label>Sube tu documento ${i +1} (PDF)</label>
                                 <input type="file" id="documentomaestria[${i}]" name="documentomaestria[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
@@ -450,7 +450,7 @@
                             <input type="int" id="numerocedula" name="numerocedulaposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['numerocedulaespecialidad'] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentoposgradoesp[]" name="documentoposgradoesp[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
@@ -525,7 +525,7 @@
                                 <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulaposgradoespecialidad[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1}</label>
+                                <label>Sube tu documento ${i +1} (PDF)</label>
                                 <input type="file" id="documentoposgradoesp[${i}]" name="documentoposgradoesp[]" class="form-control" accept=".pdf">
                             </div>
 
@@ -596,7 +596,7 @@
                             <input type="int" id="numerocedula" name="numeroceduladoctorado[]" class="form-control" value="<?php echo $rowd['numeroceduladoctorado'] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentodoctorado[]" name="documentodoctorado[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
@@ -671,7 +671,7 @@
                                 <input type="int" id="numerocedulamaestria[${i}]" name="numeroceduladoctorado[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1}</label>
+                                <label>Sube tu documento ${i +1} (PDF)</label>
                                 <input type="file" id="documentodoctorado[${i}]" name="documentodoctorado[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
