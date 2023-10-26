@@ -10,3 +10,13 @@ calendario/config.php
 calendarioVacaciones/config.php
 vacacionesColaboradores/config.php
 vacacionesColaboradoresMandos/config.php
+documentoscartilla/**/
+documentoscomprobantedomicilio/**/
+documentoscurp/**/
+documentoscursos/**/
+documentosdoctorado/**/
+documentoshijos/**/
+documentoslicenciatura/**/
+documentosmaestria/**/
+documentosmediasup/**/
+documentosposgradoesp/**/
