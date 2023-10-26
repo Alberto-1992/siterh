@@ -23,7 +23,7 @@
 error_reporting(0);
     $correo = $_POST['correo'];
             require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.*, estudiosmediosup.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado inner join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
+            $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.*, estudiosmediosup.*, ultimogradoestudios.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado inner join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado inner join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$correo
                 ));
