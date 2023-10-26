@@ -62,13 +62,22 @@
             error_reporting(0);
             
             $id = $dataRegistro['Empleado'];
-            
+            $queryS = $conexionX->prepare("SELECT actualizo from actualizacion where id_empleado = $id");
+                $queryS->execute(array(
+                    ':id_empleado'=>$id
+                ));
+                $dataRegistro2 = $queryS->fetch();
             ?>
             
+            
                 <div id='<?php echo $id ?>' class='ver-info' >
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['Nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['RFC'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['Empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong>';
-                    
-                        ?>
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['Nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['RFC'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['Empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong><br>';
+                        if ($dataRegistro2['actualizo'] == 1) {
+                            ?>
+                                <input type="submit" value="Actualizo" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
+                            <?php }else if($dataRegistro2['actualizo'] == 0) { ?>
+                                <input type="submit" value="Sin captura" style="padding: 1px; background: red; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
+                                <?php } ?>
             </div>
             <hr id="hr">
             </div>
