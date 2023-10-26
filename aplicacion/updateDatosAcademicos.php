@@ -26,6 +26,11 @@ try {
             ':especialidadlaborahraei'=>$especialidadlaborahraei,
             ':id_empleado'=>$id_empleado
         ));
+        $sql = $conexionX->prepare("INSERT INTO actualizacion(id_empleado) values(:id_empleado)");
+        $sql->execute(array(
+            ':id_empleado'=>$id_empleado
+        ));
+    
 
         $sql = $conexionX->prepare("DELETE from estudiossuperior where id_empleado = :id_empleado");
             $sql->execute(array(
