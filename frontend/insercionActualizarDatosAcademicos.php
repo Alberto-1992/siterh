@@ -7,6 +7,7 @@
 
     </nav>
     <div class="container">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
     <link rel="stylesheet" href="iconos/css/all.css?n=1">
         <div id="mensaje"></div>
@@ -684,3 +685,26 @@
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
                     <input type="submit" name="add" id="btn-send" value="Actualizar">
                 </div>
+                <script>
+                    $('input[type="file"]').on('change', function () {
+                        var ext = $(this).val().split('.').pop();
+                        if ($(this).val() != '') {
+                            if (ext == "pdf") {
+                            
+                                if ($(this)[0].files[0].size > 1048576) {
+                                    console.log("El documento excede el tamaño máximo");
+                                    $('#modal-title').text('¡Precaución!');
+                                    $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
+                                    $("#modal-gral").modal();
+                                    $(this).val('');
+                                } else {
+                                    $("#modal-gral").hide();
+                                }
+                            }
+                            else {
+                                $(this).val('');
+                                alert("Extensión no permitida: " + ext);
+                            }
+                        }
+                    });
+                </script>
