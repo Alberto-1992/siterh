@@ -5,12 +5,12 @@ error_reporting(0);
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
             require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT * FROM usuariosrh where correoelectronico = :correoelectronico");
+            $sql = $conexionRh->prepare("SELECT * FROM plantillahraei where correo = :correo");
                 $sql->execute(array(
-                    ':correoelectronico'=>$usernameSesion
+                    ':correo'=>$usernameSesion
                 ));
                 $row = $sql->fetch();
-                $validacorreo = $row['correoelectronico'];
+                $validacorreo = $row['correo'];
             if($validacorreo == $usernameSesion){
             require 'frontend/compatibilidad.php';
             }else{
@@ -22,7 +22,7 @@ error_reporting(0);
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
             require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT * FROM plantillamandos where correo = :correo");
+            $sql = $conexionRh->prepare("SELECT * FROM plantillahraei where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));
@@ -39,7 +39,7 @@ error_reporting(0);
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
             require 'conexionRh.php';
-            $sql = $conexionRh->prepare("SELECT * FROM plantillaoperativos where correo = :correo");
+            $sql = $conexionRh->prepare("SELECT * FROM plantillahraei where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));

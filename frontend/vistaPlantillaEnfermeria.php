@@ -203,7 +203,6 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
         <th id="th">Area de adscripción:</th>
         <td id="td"><?php echo $dataRegistro['DescripcionAdscripcion'] ?></td>
     </tr>
-    
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
 
@@ -233,7 +232,39 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
         <th id="th">Adicional:</th>
         <td id="td"><?php echo $dataRegistro['Adicional'] ?></td>
     </tr>
+</table>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
+
+    <div class="containerr3">Compatibilidad</div>
     <tr>
+        <th id="th">Lugar de trabajo:</th>
+        <td id="td"><?php echo $dataRegistro['LUGARDETRABAJO'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Horario:</th>
+        <td id="td"><?php echo $dataRegistro['HORARIO']?></td>
+    </tr>
+    <tr>
+        <th id="th">Dias laborales:</th>
+        <td id="td"><?php echo $dataRegistro['DIASLABORALES'] ?></td>
+    </tr>
+    <tr>
+    <tr>
+        <th id="th">Lugar de trabajo segundo:</th>
+        <td id="td"><?php echo $dataRegistro['LUGARDETRABAJO2'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Horario segundo:</th>
+        <td id="td"><?php echo $dataRegistro['HORARIO2'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Dias laborales segundo:</th>
+        <td id="td"><?php echo $dataRegistro['DIASLABORALES2'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Observaciones:</th>
+        <td id="td"><?php echo $dataRegistro['OBSERVACIONES'] ?></td>
+    </tr>
     
 </table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
