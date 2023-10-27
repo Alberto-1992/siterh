@@ -31,7 +31,7 @@
 ?>
 <script>
     function exportarExcelEnfermeria() {
-        window.location.href='exportarExcelEnfermeria';
+        window.location.href='exportarExcelEnfermeriaCapturas';
     }
 </script>
 <ul class="nav nav-tabs" >
@@ -41,7 +41,7 @@
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelEnfermeria();">Descargar a excel</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelEnfermeria();">Descargar estado capturas</a></li>
                 
             </ul>
         </li>
