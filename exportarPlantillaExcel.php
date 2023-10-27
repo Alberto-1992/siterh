@@ -73,15 +73,17 @@ require_once 'conexionRh.php';
 
     )); 
 
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, estudiosmediosup.*, estudiossuperior.*, estudiosmaestria.*, especialidad.*, doctorado.*,ultimogradoestudios.descripcionultimogrado from plantillahraei 
+    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, estudiosmediosup.*, estudiossuperior.*, estudiosmaestria.*, especialidad.*, doctorado.*,ultimogradoestudios.descripcionultimogrado, actualizacion.actualizo from plantillahraei 
     left outer join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado 
     left outer join estudiossuperior on estudiossuperior.id_empleado = plantillahraei.Empleado
     left outer join estudiosmaestria on estudiosmaestria.id_empleado = plantillahraei.Empleado 
     left outer join especialidad on especialidad.id_empleado = plantillahraei.Empleado 
     left outer join doctorado on doctorado.id_empleado = plantillahraei.Empleado
-    left outer join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado"); 
+    left outer join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado
+    left outer join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado"); 
     while($filaR=$QueryConsulta->fetch_assoc())
     fputcsv($salida, array(
+                        $filaR['actualizo'],
                         $filaR['RFC'],
                         $filaR['Empleado'],
                         $filaR['CURP'],

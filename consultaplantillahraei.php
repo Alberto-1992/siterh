@@ -33,6 +33,9 @@
     function exportarExcel() {
         window.location.href='exportarPlantillaExcel';
     }
+    function exportarExcelSin() {
+        window.location.href='exportarPlantillaExcelSinCaptura';
+    }
 </script>
 <ul class="nav nav-tabs" >
         <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
@@ -41,7 +44,8 @@
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Descargar a excel</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Descargar a excel capturaron</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelSin();">Descargar a excel sin captura</a></li>
                 
             </ul>
         </li>
