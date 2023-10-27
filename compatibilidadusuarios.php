@@ -28,7 +28,7 @@ error_reporting(0);
                 ));
                 $row = $sql->fetch();
                 $validacorreo = $row['correo'];
-            if($validacorreo == $usernameSesion){
+            if($validacorreo != ''){
             require 'frontend/compatibilidad.php';
             }else{
                 echo "<script>alert('Entrada no valida'); window.history.back();</script>";
@@ -45,7 +45,7 @@ error_reporting(0);
                 ));
                 $row = $sql->fetch();
                 $validacorreo = $row['correo'];
-            if($validacorreo == $usernameSesion){
+            if($validacorreo != '' ){
             require 'frontend/compatibilidad.php';
             }else{
                 echo "<script>alert('Entrada no valida'); window.history.back();</script>";
