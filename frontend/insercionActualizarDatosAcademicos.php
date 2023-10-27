@@ -171,11 +171,15 @@
                             <input type="int" id="numerocedula" name="numerocedula[]" class="form-control" value="<?php echo $rows['numerocedulasuperior'] ?>">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Sube tu documento (PDF)</label>
+                            <label>Sube tu titulo (PDF)</label>
                             <input type="file" id="documentolicenciatura[]" name="documentolicenciatura[]" class="form-control" accept=".pdf">
                         </div>
+                        <div class="form-group col-md-4">
+                            <label>Sube tu cedula (PDF)</label>
+                            <input type="file" id="documentocedula[]" name="documentocedula[]" class="form-control" accept=".pdf">
+                        </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
-                            <strong>Documento</strong>
+                            <strong>Documento titulo</strong>
                             <?php
                             $licenciatura = $rows['nombreformacionsuperior'];
                             
@@ -188,6 +192,27 @@
 
                                         echo "<iframe src='documentoslicenciatura/$licenciatura$identificador/$archivo' class='form-control'></iframe>";
                                         echo "<a href='documentoslicenciatura/$licenciatura$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                            <strong>Documento cedula</strong>
+                            <?php
+                            $licenciatura = $rows['nombreformacionsuperior'];
+                            
+                            $path = "documentoscedulalicenciatura/" . $licenciatura . $identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoscedulalicenciatura/$licenciatura$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoscedulalicenciatura/$licenciatura$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         
                                     }
                                 }
@@ -243,8 +268,12 @@
                                 <input type="int" id="numerocedula[${i}]" name="numerocedula[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1} (PDF)</label>
+                                <label>Sube tu titulo ${i +1} (PDF)</label>
                                 <input type="file" id="documentolicenciatura[${i}]" name="documentolicenciatura[]" class="form-control" accept=".pdf">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Sube tu cedula ${i +1} (PDF)</label>
+                                <input type="file" id="documentocedula[${i}]" name="documentocedula[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
                         }
@@ -312,8 +341,12 @@
                             <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentomaestria[]" name="documentomaestria[]" class="form-control" accept=".pdf">
                         </div>
+                        <div class="form-group col-md-4">
+                            <label>Sube tu documento (PDF)</label>
+                            <input type="file" id="documentomaestriacedula[]" name="documentomaestriacedula[]" class="form-control" accept=".pdf">
+                        </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
-                            <strong>Documento</strong>
+                            <strong>Documento titulo</strong>
                             <?php
                             $maestria = $rowm['nombreformacionmaestria'];
                             
@@ -326,6 +359,27 @@
 
                                         echo "<iframe src='documentosmaestria/$maestria$identificador/$archivo' class='form-control'></iframe>";
                                         echo "<a href='documentosmaestria/$maestria$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                            <strong>Documento cedula</strong>
+                            <?php
+                            $maestria = $rowm['nombreformacionmaestria'];
+                            
+                            $path = "documentosmaestriacedula/" . $maestria . $identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentosmaestriacedula/$maestria$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentosmaestriacedula/$maestria$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         
                                     }
                                 }
@@ -381,8 +435,12 @@
                                 <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulamaestria[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1} (PDF)</label>
+                                <label>Sube tu titulo ${i +1} (PDF)</label>
                                 <input type="file" id="documentomaestria[${i}]" name="documentomaestria[]" class="form-control" accept=".pdf">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Sube tu cedula ${i +1} (PDF)</label>
+                                <input type="file" id="documentomaestriacedula[${i}]" name="documentomaestriacedula[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
                         }
@@ -597,11 +655,15 @@
                             <input type="int" id="numerocedula" name="numeroceduladoctorado[]" class="form-control" value="<?php echo $rowd['numeroceduladoctorado'] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Sube tu documento (PDF)</label>
+                            <label>Sube tu titulo (PDF)</label>
                             <input type="file" id="documentodoctorado[]" name="documentodoctorado[]" class="form-control" accept=".pdf">
                         </div>
+                        <div class="form-group col-md-3">
+                            <label>Sube tu cedula (PDF)</label>
+                            <input type="file" id="documentodoctoradocedula[]" name="documentodoctoradocedula[]" class="form-control" accept=".pdf">
+                        </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
-                            <strong>Documento</strong>
+                            <strong>Documento titulo</strong>
                             <?php
                             $doctorado = $rowd['nombreformaciondoctorado'];
                             
@@ -614,6 +676,27 @@
 
                                         echo "<iframe src='documentosdoctorado/$doctorado$identificador/$archivo' class='form-control'></iframe>";
                                         echo "<a href='documentosdoctorado/$doctorado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+                        <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Documento cedula</strong>
+                            <?php
+                            $doctorado = $rowd['nombreformaciondoctorado'];
+                            
+                            $path = "documentosdoctoradocedula/" . $doctorado . $identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentosdoctoradocedula/$doctorado$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentosdoctoradocedula/$doctorado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         
                                     }
                                 }
@@ -672,8 +755,12 @@
                                 <input type="int" id="numerocedulamaestria[${i}]" name="numeroceduladoctorado[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1} (PDF)</label>
+                                <label>Sube tu titulo ${i +1} (PDF)</label>
                                 <input type="file" id="documentodoctorado[${i}]" name="documentodoctorado[]" class="form-control" accept=".pdf">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Sube tu cedula ${i +1} (PDF)</label>
+                                <input type="file" id="documentodoctoradocedula[${i}]" name="documentodoctoradocedula[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
                         }

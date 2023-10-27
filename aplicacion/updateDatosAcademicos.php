@@ -132,6 +132,34 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+    foreach($_FILES["documentocedula"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentocedula"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Cedula";
+			$archivonombre = $_POST['nombreformacion'][$key];
+			$fuente = $_FILES["documentocedula"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentoscedulalicenciatura/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
 
     mysqli_query($conexionGrafico, $consulta);
   
@@ -173,6 +201,34 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			$fuente = $_FILES["documentomaestria"]["tmp_name"][$key]; 
 			
 			$carpeta = '../documentosmaestria/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
+    foreach($_FILES["documentomaestriacedula"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentomaestriacedula"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Cedula maestria";
+			$archivonombre = $_POST['nombreformacionmaestria'][$key];
+			$fuente = $_FILES["documentomaestriacedula"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentosmaestriacedula/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
 			
 			if(!file_exists($carpeta)){
 				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
@@ -285,11 +341,40 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 		//condicional si el fuchero existe
 		if($_FILES["documentodoctorado"]["name"][$key]) {
 			// Nombres de archivos de temporales
-            $nombredelarchivo = "Titulo posgrado";
+            $nombredelarchivo = "Titulo doctorado";
 			$archivonombre = $_POST['nombreformaciondoctorado'][$key];
 			$fuente = $_FILES["documentodoctorado"]["tmp_name"][$key]; 
 			
 			$carpeta = '../documentosdoctorado/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
+    foreach($_FILES["documentodoctoradocedula"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentodoctoradocedula"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Cedula doctorado";
+			$archivonombre = $_POST['nombreformaciondoctorado'][$key];
+			$fuente = $_FILES["documentodoctoradocedula"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentosdoctoradocedula/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
 			
 			if(!file_exists($carpeta)){
 				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
