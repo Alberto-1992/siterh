@@ -154,7 +154,7 @@
                 </a>
             </article>
             <article class="card" id="programacapacitacion" onclick="programacapacitacion();">
-                <a href="programacapacitacion">
+                <a href="programaCapacitacion">
                     <hr id="hr6">
                     <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Programa de capacitación</p>
@@ -230,7 +230,7 @@
                             </a>
                         </article>
                         <article class="card" id="programacapacitacion" onclick="programacapacitacion();">
-                            <a href="programacapacitacion">
+                            <a href="programaCapacitacion">
                                 <hr id="hr6">
                                 <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                                 <p>Programa de capacitación</p>

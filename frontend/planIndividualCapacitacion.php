@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Carga de informacion de cursos</title>
 
     <!-- Bootstrap core CSS -->
@@ -228,7 +229,6 @@
                     
                 </div>
             </div>
-
         </form>
     </div>
 
@@ -352,6 +352,29 @@
             });
         });
     </script>
+    <script>
+                    $('input[type="file"]').on('change', function () {
+                        var ext = $(this).val().split('.').pop();
+                        if ($(this).val() != '') {
+                            if (ext == "pdf") {
+                            
+                                if ($(this)[0].files[0].size > 1048576) {
+                                    console.log("El documento excede el tamaño máximo");
+                                    $('#modal-title').text('¡Precaución!');
+                                    $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
+                                    $("#modal-gral").modal();
+                                    $(this).val('');
+                                } else {
+                                    $("#modal-gral").hide();
+                                }
+                            }
+                            else {
+                                $(this).val('');
+                                alert("Extensión no permitida: " + ext);
+                            }
+                        }
+                    });
+                </script>
 
 </body>
 

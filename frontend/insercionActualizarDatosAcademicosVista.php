@@ -1,7 +1,18 @@
-<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
-<div class="container" style="margin-top: 50px;">
+<nav class="navbar navbar-expand-md fixed-top" style="background-color: #0D7E9A;">
+        <span id="cabecera">Actualización de datos academicos</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+    </nav>
+    <div class="container">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
+    <link rel="stylesheet" href="iconos/css/all.css?n=1">
         <div id="mensaje"></div>
         <h1 style="text-align: center; font-size: 25px;">Actualiza tu información academica</h1>
+        <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualizes tus datos academicos.</h1>
         <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 0px; text-align:center;">
             <input type="submit" name="add" value="Cerrar ventana" style="background-color: green; color: white; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">
         </div>
@@ -26,13 +37,14 @@
                         success: function(datos) {
                             $("#mensaje").html(datos);
                             setTimeout(function() {
-                                window.location.href = 'plantillaEnfermeria';
+                                window.location.href = 'datosAcademicos';
                             }, 2000);
 
                         }
                     })
                 })
-            </script>
+            </script> 
+            
             <div class="form-row">
                 <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color: white;">
                     <h1 style="font-size:22px;">Datos Academicos</h1>
@@ -45,8 +57,8 @@
                     <input type="text" id="ultimogradoestudios" name="ultimogradoestudios" autocomplete="off" class="form-control" value="<?php echo $row['descripcionultimogrado'] ?>">
                 </div>
                 <div class="form-group col-md-12">
-                    <label style="color: red;">Especialidad con la actualmente labora en el HRAEI.</label>
-                    <input type="text" id="especialidadlaborahraei" name="especialidadlaborahraei" autocomplete="off" class="form-control" value="<?php echo $row['especialidadlaborahraei'] ?>">
+                    <label style="color: red;">Especialidad con la actualmente labora en el HRAEI. (Solo personal medico y enfermeria)</label>
+                    <input type="text" id="especialidadlaborahraei" name="especialidadlaborahraei" autocomplete="off" class="form-control" value="<?php echo $row['especialidadlaborahraei'] ?>" placeholder="Solo si eres personal medico o enfermeria">
                 </div>
                 <div style="width: 100%; height: auto; background-color: #0D6F9A; text-align:center;margin-top:10px; color:white;">
                     <h1 style="font-size:22px;">Nivel Medio Superior</h1>
@@ -77,7 +89,7 @@
                     <input type="text" id="documentomediosuperior" name="documentomediosuperior" autocomplete="off" class="form-control" value="<?php echo $row['documentomediosuperior'] ?>">
                 </div>
                 <div class="form-group col-md-6">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentomediasup" name="documentomediasup" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-6" style="border: 1px solid #F0F0F0;">
@@ -159,7 +171,7 @@
                             <input type="int" id="numerocedula" name="numerocedula[]" class="form-control" value="<?php echo $rows['numerocedulasuperior'] ?>">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentolicenciatura[]" name="documentolicenciatura[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
@@ -188,7 +200,7 @@
                 <?php  } ?>
 
                 <div class="form-group col-md-3">
-                    <label>Agregar licenciatura (Solo numeros)</label>
+                    <strong>Agregar licenciatura (Solo numeros)</strong>
                     <input type="number" id="quantity" name="numlicenciaturas" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -231,7 +243,7 @@
                                 <input type="int" id="numerocedula[${i}]" name="numerocedula[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1}</label>
+                                <label>Sube tu documento ${i +1} (PDF)</label>
                                 <input type="file" id="documentolicenciatura[${i}]" name="documentolicenciatura[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
@@ -297,7 +309,7 @@
                             <input type="int" id="numerocedula" name="numerocedulamaestria[]" class="form-control" value="<?php echo $rowm['numerocedulamaestria'] ?>">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentomaestria[]" name="documentomaestria[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
@@ -326,7 +338,7 @@
                 <?php  } ?>
 
                 <div class="form-group col-md-3">
-                    <label>Agregar maestria (Solo numeros)</label>
+                    <strong>Agregar maestria (Solo numeros)</strong>
                     <input type="number" id="quantity2" name="maestrias" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -369,7 +381,7 @@
                                 <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulamaestria[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1}</label>
+                                <label>Sube tu documento ${i +1} (PDF)</label>
                                 <input type="file" id="documentomaestria[${i}]" name="documentomaestria[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
@@ -439,7 +451,7 @@
                             <input type="int" id="numerocedula" name="numerocedulaposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['numerocedulaespecialidad'] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentoposgradoesp[]" name="documentoposgradoesp[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
@@ -467,7 +479,7 @@
 
                 <?php  } ?>
                 <div class="form-group col-md-3">
-                    <label>Agregar posgrado/especialidad (Solo numeros)</label>
+                    <strong>Agregar posgrado/especialidad (Solo numeros)</strong>
                     <input type="number" id="quantity3" name="posgrados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -514,7 +526,7 @@
                                 <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulaposgradoespecialidad[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1}</label>
+                                <label>Sube tu documento ${i +1} (PDF)</label>
                                 <input type="file" id="documentoposgradoesp[${i}]" name="documentoposgradoesp[]" class="form-control" accept=".pdf">
                             </div>
 
@@ -585,7 +597,7 @@
                             <input type="int" id="numerocedula" name="numeroceduladoctorado[]" class="form-control" value="<?php echo $rowd['numeroceduladoctorado'] ?>">
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Sube tu documento</label>
+                            <label>Sube tu documento (PDF)</label>
                             <input type="file" id="documentodoctorado[]" name="documentodoctorado[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
@@ -613,7 +625,7 @@
 
                 <?php  } ?>
                 <div class="form-group col-md-3">
-                    <label>Agregar doctorado (Solo numeros)</label>
+                    <strong>Agregar doctorado (Solo numeros)</strong>
                     <input type="number" id="quantity4" name="doctorados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -660,7 +672,7 @@
                                 <input type="int" id="numerocedulamaestria[${i}]" name="numeroceduladoctorado[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
-                                <label>Sube tu documento ${i +1}</label>
+                                <label>Sube tu documento ${i +1} (PDF)</label>
                                 <input type="file" id="documentodoctorado[${i}]" name="documentodoctorado[]" class="form-control" accept=".pdf">
                             </div>
                         </div>`;
@@ -673,3 +685,26 @@
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
                     <input type="submit" name="add" id="btn-send" value="Actualizar">
                 </div>
+                <script>
+                    $('input[type="file"]').on('change', function () {
+                        var ext = $(this).val().split('.').pop();
+                        if ($(this).val() != '') {
+                            if (ext == "pdf") {
+                            
+                                if ($(this)[0].files[0].size > 1048576) {
+                                    console.log("El documento excede el tamaño máximo");
+                                    $('#modal-title').text('¡Precaución!');
+                                    $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
+                                    $("#modal-gral").modal();
+                                    $(this).val('');
+                                } else {
+                                    $("#modal-gral").hide();
+                                }
+                            }
+                            else {
+                                $(this).val('');
+                                alert("Extensión no permitida: " + ext);
+                            }
+                        }
+                    });
+                </script>
