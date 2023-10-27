@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="iconos/css/all.css?n=1">
         <div id="mensaje"></div>
         <h1 style="text-align: center; font-size: 25px;">Actualiza tu información academica</h1>
-        <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualizes tus datos academicos.</h1>
+        <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualices tus datos academicos.</h1>
         <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 0px; text-align:center;">
             <input type="submit" name="add" value="Cerrar ventana" style="background-color: green; color: white; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">
         </div>
