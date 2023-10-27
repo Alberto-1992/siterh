@@ -57,7 +57,7 @@ require_once 'conexionRh.php';
             'unidad hospitalaria',
             'fecha inicio especialidad',
             'fecha termino especialidad',
-            'años cursados',
+            mb_convert_encoding('años cursados', 'ISO-8859-1', 'UTF-8'),
             'documento recibe especialidad',
             'numero cedula especialidad',
             'nombre formacion doctorado',
@@ -65,7 +65,7 @@ require_once 'conexionRh.php';
             'unidad hospitalaria doctorado',
             'fecha inicio doctorado',
             'fecha termino doctorado',
-            'años cursados doctorado',
+            mb_convert_encoding('años cursados doctorado', 'ISO-8859-1', 'UTF-8'),
             'documento recibe doctorado',
             'numero cedula doctorado',
             'ultimo grado de estudios'
@@ -73,17 +73,15 @@ require_once 'conexionRh.php';
 
     )); 
 
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, estudiosmediosup.*, estudiossuperior.*, estudiosmaestria.*, especialidad.*, doctorado.*,ultimogradoestudios.descripcionultimogrado, actualizacion.actualizo from plantillahraei 
+    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, estudiosmediosup.*, estudiossuperior.*, estudiosmaestria.*, especialidad.*, doctorado.*,ultimogradoestudios.descripcionultimogrado from plantillahraei 
     left outer join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado 
     left outer join estudiossuperior on estudiossuperior.id_empleado = plantillahraei.Empleado
     left outer join estudiosmaestria on estudiosmaestria.id_empleado = plantillahraei.Empleado 
     left outer join especialidad on especialidad.id_empleado = plantillahraei.Empleado 
     left outer join doctorado on doctorado.id_empleado = plantillahraei.Empleado
-    left outer join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado
-    left outer join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado"); 
+    left outer join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado"); 
     while($filaR=$QueryConsulta->fetch_assoc())
     fputcsv($salida, array(
-                        $filaR['actualizo'],
                         $filaR['RFC'],
                         $filaR['Empleado'],
                         $filaR['CURP'],
