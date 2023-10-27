@@ -477,6 +477,8 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <?php
                 while ($rows = $sql->fetch()) {
                     $valor = $rows['id_hijo'];
+
+                    $edadhijo = $rows['edadhijo'];
                 ?>
         <div style="width: 100%; height: auto; background-color:aliceblue; text-align:center;margin-top:10px;">
                 <h1 style="font-size:22px;">Datos hijos</h1>
@@ -491,15 +493,15 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             </div>
             <div class="col-md-3">
                 <label>Fecha nacimiento hijo</label>
-                <input type="date" name="fechanacimientohijo[]" id="fechanacimientohijo[]" class="form-control" >
+                <input type="date" name="fechanacimientohijo[]" id="fechanacimientohijo[]" class="form-control" value="<?php echo $rows['fechanacimientohijo'] ?>" >
                 </div>
             <div class="col-md-3">
                 <label for="mensaje">Edad:</label>
-                <input type="text" class="form-control" name="edadhijo[]" id="edadhijo[]" value="<?php echo $rows['edadhijo'] ?>" >
+                <input type="number" class="form-control" name="edadhijo[]" id="edadhijo[]" value="<?php echo $edadhijo ?>" >
             </div>
             <div class="col-md-3">
                 <label for="mensaje">Sexo:</label>
-                <input type="number" class="form-control" name="sexohijo[]" id="sexohijo[]" value="<?php echo $rows['sexohijo'] ?>" >
+                <input type="text" class="form-control" name="sexohijo[]" id="sexohijo[]" value="<?php echo $rows['sexohijo'] ?>" >
             </div>
             
             <div class="col-md-4">

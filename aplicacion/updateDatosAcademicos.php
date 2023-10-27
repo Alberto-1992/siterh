@@ -389,7 +389,7 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
                 move_uploaded_file($fuente, $target_path);
 				
 				} else {	
-				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+                    move_uploaded_file($fuente, $target_path);
 			}
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
