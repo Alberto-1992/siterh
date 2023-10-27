@@ -20,6 +20,16 @@ try {
         ':documentomediosuperior' => $documentomediosuperior,
         ':id_empleado' => $id_empleado
     ));
+    $sql = $conexionX->prepare("UPDATE estudiostecnico SET nombreinstituciontecnica=:nombreinstituciontecnica,nombreformaciontecnica=:nombreformaciontecnica,fechainiciotecnico=:fechainiciotecnico,fechaterminotecnico=:fechaterminotecnico,tiempocursadotecnico=:tiempocursadotecnico,documentotecnico=:documentotecnico where id_empleado=:id_empleado");
+    $sql->execute(array(
+        ':nombreinstituciontecnica' => $nombreinstituciontecnica,
+        ':nombreformaciontecnica' => $nombreformaciontecnica,
+        ':fechainiciotecnico' => $fechainiciotecnico,
+        ':fechaterminotecnico' => $fechaterminotecnico,
+        ':tiempocursadotecnico' => $tiempocursadotecnico,
+        ':documentotecnico' => $documentotecnico,
+        ':id_empleado' => $id_empleado
+    ));
     $sql = $conexionX->prepare("UPDATE ultimogradoestudios set descripcionultimogrado = :descripcionultimogrado, especialidadlaborahraei = :especialidadlaborahraei where id_empleado = :id_empleado");
         $sql->execute(array(
             ':descripcionultimogrado'=>$ultimogradoestudios,
@@ -46,6 +56,10 @@ try {
                 ':id_empleado'=>$id_empleado
             ));
             $sql = $conexionX->prepare("DELETE from doctorado where id_empleado = :id_empleado");
+            $sql->execute(array(
+                ':id_empleado'=>$id_empleado
+            ));
+            $sql = $conexionX->prepare("DELETE from estudiospostecnico where id_empleado = :id_empleado");
             $sql->execute(array(
                 ':id_empleado'=>$id_empleado
             ));
@@ -78,6 +92,118 @@ try {
         }
         
     }
+
+    if ($_FILES["documentotecnicoarchivo"]["error"] > 0) {
+        
+    } else {
+
+        $permitidos = array("application/pdf");
+        
+        if (in_array($_FILES["documentotecnicoarchivo"]["type"], $permitidos) && $_FILES["documentotecnicoarchivo"]["size"]) {
+
+            $ruta = '../documentostecnica/' . $nombreformaciontecnica.$id_empleado. '/';
+            $archivo = $ruta . $_FILES["documentotecnicoarchivo"]["name"] = "comprobate tecnica.pdf";
+
+
+            if (!file_exists($ruta)) {
+                mkdir($ruta);
+            }
+
+            if (file_exists($archivo)) {
+
+                $resultado = @move_uploaded_file($_FILES["documentotecnicoarchivo"]["tmp_name"], $archivo);
+            } else {
+                $resultado = @move_uploaded_file($_FILES["documentotecnicoarchivo"]["tmp_name"], $archivo);
+            }
+            
+        }
+        
+    }
+    if ($_FILES["cedulatecnico"]["error"] > 0) {
+        
+    } else {
+
+        $permitidos = array("application/pdf");
+        
+        if (in_array($_FILES["cedulatecnico"]["type"], $permitidos) && $_FILES["cedulatecnico"]["size"]) {
+
+            $ruta = '../documentostecnicacedula/' . $nombreformaciontecnica.$id_empleado. '/';
+            $archivo = $ruta . $_FILES["cedulatecnico"]["name"] = "comprobate tecnica.pdf";
+
+
+            if (!file_exists($ruta)) {
+                mkdir($ruta);
+            }
+
+            if (file_exists($archivo)) {
+
+                $resultado = @move_uploaded_file($_FILES["cedulatecnico"]["tmp_name"], $archivo);
+            } else {
+                $resultado = @move_uploaded_file($_FILES["cedulatecnico"]["tmp_name"], $archivo);
+            }
+            
+        }
+        
+    }
+
+/*inicia postecnico*/ 
+$arraynombreformacionPostecnico =  $_POST['nombreformacionPostecnico'];
+    $arraynombreinstitucionPostecnico = $_POST['nombreinstitucionPostecnico'];
+    $arrayfechainiciosupPostecnico = $_POST['fechainiciosupPostecnico'];
+    $arrayfechaterminosupPostecnico = $_POST['fechaterminosupPostecnico'];
+    $arraytiempocursadosupPostecnico = $_POST['tiempocursadosupPostecnico'];
+    $arraydocumentorecibePostecnico = $_POST['documentorecibePostecnico'];
+    
+
+    $arraynombreformacionPostecnico = array_map("htmlspecialchars", $arraynombreformacionPostecnico);
+    $arraynombreinstitucionPostecnico = array_map("htmlspecialchars", $arraynombreinstitucionPostecnico);
+    $arrayfechainiciosupPostecnico = array_map("htmlspecialchars", $arrayfechainiciosupPostecnico);
+    $arrayfechaterminosupPostecnico = array_map("htmlspecialchars", $arrayfechaterminosupPostecnico);
+    $arraytiempocursadosupPostecnico = array_map("htmlspecialchars", $arraytiempocursadosupPostecnico);
+    $arraydocumentorecibePostecnico = array_map("htmlspecialchars", $arraydocumentorecibePostecnico);
+
+    $sql_array = array();
+    foreach ($arraynombreformacionPostecnico as $clavep => $nombreformacionPostecnico) {
+        $nombreinstitucionPostecnico = $arraynombreinstitucionPostecnico[$clavep];
+        $fechainiciosupPostecnico = $arrayfechainiciosupPostecnico[$clavep];
+        $fechaterminosupPostecnico = $arrayfechaterminosupPostecnico[$clavep];
+        $tiempocursadosupPostecnico = $arraytiempocursadosupPostecnico[$clavep];
+        $documentorecibePostecnico = $arraydocumentorecibePostecnico[$clavep];
+        $datoUnicoP[] = '("' . $nombreformacionPostecnico . '", "' . $nombreinstitucionPostecnico . '", "' . $fechainiciosupPostecnico . '", "' . $fechaterminosupPostecnico . '", "' . $tiempocursadosupPostecnico . '", "' . $documentorecibePostecnico . '", "' . $id_empleado . '")';
+        $consultaP = "INSERT into  estudiospostecnico(nombreformacionpostecnico,nombreinstitucionpostecnico,fechainiciosuppostecnico,fechaterminosuppostecnico,tiempocursadosuppostecnico,documentorecibepostecnico,id_empleado) VALUES " . implode(', ', $datoUnicoP);
+        
+}
+foreach($_FILES["documentolicenciaturaPostecnico"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentolicenciaturaPostecnico"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Diploma postecnico";
+			$archivonombre = $_POST['nombreformacionPostecnico'][$key];
+			$fuente = $_FILES["documentolicenciaturaPostecnico"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentospostecnico/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
+mysqli_query($conexionGrafico, $consultaP);
+
+/*finaliza postecnico*/
     $arraynombreformacion =  $_POST['nombreformacion'];
     $arraynombreinstitucion = $_POST['nombreinstitucion'];
     $arrayfechainicio = $_POST['fechainiciosup'];

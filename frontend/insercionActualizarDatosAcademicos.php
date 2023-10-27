@@ -113,6 +113,229 @@
 
                             ?>
                         </div>
+                        <?php
+                require 'conexionRh.php';
+
+                $sqlt = $conexionRh->prepare("SELECT * from estudiostecnico where id_empleado = :id_empleado");
+                $sqlt->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+                    $rowt = $sqlt->fetch();
+                ?>
+            <div style="width: 100%; height: auto; background-color: #0D6F9A; text-align:center;margin-top:10px; color:white;">
+                    <h1 style="font-size:22px;">Nivel tecnico</h1>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Nombre de la formación académica</label>
+                    <input type="text" id="nombreinstituciontecnica" name="nombreinstituciontecnica" autocomplete="off" class="form-control" value="<?php echo $rowt['nombreinstituciontecnica'] ?>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Nombre de la institución educativa</label>
+                    <input type="text" id="nombreformaciontecnica" name="nombreformaciontecnica" autocomplete="off" class="form-control" value="<?php echo $rowt['nombreformaciontecnica'] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Fecha de inicio</label>
+                    <input type="date" id="fechainiciotecnico" name="fechainiciotecnico" autocomplete="off" class="form-control" value="<?php echo $rowt['fechainiciotecnico'] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Fecha término</label>
+                    <input type="date" id="fechaterminotecnico" name="fechaterminotecnico" autocomplete="off" class="form-control" value="<?php echo $rowt['fechaterminotecnico'] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Años cursados</label>
+                    <input type="text" id="tiempocursadotecnico" name="tiempocursadotecnico" autocomplete="off" class="form-control" value="<?php echo $rowt['tiempocursadotecnico'] ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Documento que recibe</label>
+                    <input type="text" id="documentotecnico" name="documentotecnico" autocomplete="off" class="form-control" value="<?php echo $rowt['documentotecnico'] ?>">
+                </div>
+                <div class="form-group col-md-6">
+                            <label>Sube tu titulo (PDF)</label>
+                            <input type="file" id="documentotecnicoarchivo" name="documentotecnicoarchivo" class="form-control" accept=".pdf">
+                    </div>
+                    <div class="form-group col-md-6">
+                            <label>Sube tu cedula (PDF)</label>
+                            <input type="file" id="cedulatecnico" name="cedulatecnico" class="form-control" accept=".pdf">
+                    </div>
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+                            <strong>Documento titulo</strong>
+                            <?php
+                            $tecnica = $rowt['nombreformaciontecnica'];
+                            
+                            $path = "documentostecnica/" . $tecnica . $identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentostecnica/$tecnica$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentostecnica/$tecnica$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+                    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+                            <strong>Documento cedula</strong>
+                            <?php
+                            $tecnicacedula = $rowt['nombreformaciontecnica'];
+                            
+                            $path = "documentostecnicacedula/" . $tecnicacedula . $identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentostecnicacedula/$tecnicacedula$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentostecnicacedula/$tecnicacedula$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+        <!--inicia postecnico -->
+            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color:white;">
+                    <h1 style="font-size:22px;">Nivel postecnico</h1>
+                </div>
+
+                <?php
+                require 'conexionRh.php';
+                $sqlQueryComentariosP  = $conexionRh->prepare("SELECT estudiospostecnico.id_empleado FROM estudiospostecnico where id_empleado = $identificador ");
+                $sqlQueryComentariosP->execute();
+                $sqlQueryComentariosP = $conexionRh->prepare("SELECT FOUND_ROWS()");
+                $sqlQueryComentariosP->execute();
+                $total_registroP = $sqlQueryComentariosP->fetchColumn();
+
+                $sqlP = $conexionRh->prepare("SELECT * from estudiospostecnico where id_empleado = :id_empleado");
+                $sqlP->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+
+                ?>
+
+                <?php
+                while ($rowsP = $sqlP->fetch()) {
+                    $valorP = $rowsP['id_postecnico'];
+                ?>
+                    <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px; color:white;">
+                        <h1 style="font-size:22px;">Datos postecnico</h1>
+                    </div>
+                    <div class="form-row">
+
+                        <input type="hidden" name="id_carrera" value="<?php echo $valorP ?>">
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacionPostecnico" name="nombreformacionPostecnico[]" class="form-control" value="<?php echo $rowsP['nombreformacionpostecnico']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucionPostecnico" name="nombreinstitucionPostecnico[]" class="form-control" value="<?php echo $rowsP['nombreinstitucionpostecnico'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha de inicio</label>
+                            <input type="date" id="fechainiciosupPostecnico" name="fechainiciosupPostecnico[]" class="form-control" value="<?php echo $rowsP['fechainiciosuppostecnico'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha termino</label>
+                            <input type="date" id="fechaterminosupPostecnico" name="fechaterminosupPostecnico[]" class="form-control" value="<?php echo $rowsP['fechaterminosuppostecnico'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Años cursados</label>
+                            <input type="text" id="tiempocursadosupPostecnico" name="tiempocursadosupPostecnico[]" class="form-control" value="<?php echo $rowsP['tiempocursadosuppostecnico'] ?>">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Documento que recibe</label>
+                            <input type="text" id="documentorecibePostecnico" name="documentorecibePostecnico[]" class="form-control" value="<?php echo $rowsP['documentorecibepostecnico'] ?>">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Sube tu documento (PDF)</label>
+                            <input type="file" id="documentolicenciaturaPostecnico[]" name="documentolicenciaturaPostecnico[]" class="form-control" accept=".pdf">
+                        </div>
+                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                            <strong>Documento postecnico</strong>
+                            <?php
+                            $postecnico = $rowsP['nombreformacionpostecnico'];
+                            
+                            $path = "documentospostecnico/" . $postecnico . $identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentospostecnico/$postecnico$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentospostecnico/$postecnico$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </div>
+                        
+                    </div>
+
+                <?php  } ?>
+
+                <div class="form-group col-md-3">
+                    <strong>Agregar postecnico (Solo numeros)</strong>
+                    <input type="number" id="quantityp" name="numpostecnico" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantityp").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity = event.target.value;
+
+                        for (let i = 0; i < quantity; i++) {
+                            content += `<div class="form-row">
+                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                                    <h1 style="font-size:22px;">Información postecnico ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacionPostecnico[${i}]" name="nombreformacionPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucionPostecnico[${i}]" name="nombreinstitucionPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciosupPostecnico[${i}]" name="fechainiciosupPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminosupPostecnico[${i}]" name="fechaterminosupPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadosupPostecnico[${i}]" name="tiempocursadosupPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibePostecnico[${i}]" name="documentorecibePostecnico[]" class="form-control">
+                                </div>
+                                
+                            <div class="form-group col-md-6">
+                                <label>Sube tu titulo ${i +1} (PDF)</label>
+                                <input type="file" id="documentolicenciaturaPostecnico[${i}]" name="documentolicenciaturaPostecnico[]" class="form-control" accept=".pdf">
+                            </div>
+                            
+                        </div>`;
+                        }
+                        document.getElementById("divGuestsp").innerHTML = content;
+                    })
+                </script>
+                <div id="divGuestsp"></div>
+ <!--inicia licenciatura -->
                 <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color:white;">
                     <h1 style="font-size:22px;">Nivel Superior</h1>
                 </div>
