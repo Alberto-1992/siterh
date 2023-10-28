@@ -21,13 +21,20 @@
         
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
+            require 'conexionRh.php';
+                $query = $conexionRh->prepare("SELECT correo from plantillahraei where correo = :correo");
+                    $query->execute(array(
+                        ':correo'=>$usernameSesion
+                    ));
+                    $row = $query->fetch();
+                    $valida = $row['correo'];
+                    if($valida == 'rosmic23@hotmail.com'){
             require 'frontend/plantillaMedicos.php';
+                    }else{
+                        echo "<script>alert('No tienes acceso, no insistas');
+                        window.history.back();</script>";
+                    }
         
-        break;
-
-        case isset($_SESSION['usuarioDatos']):
-            $usernameSesion = $_SESSION['usuarioDatos'];
-        require 'frontend/plantillaMedicos.php';
         break;
 
         default:

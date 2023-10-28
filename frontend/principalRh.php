@@ -359,7 +359,21 @@
                 <p>Plantilla enfermeria</p>
             </a>
 </article>
-<?php } ?>
+<?php } 
+        if($admin = 'rosmic23@hotmail.com'){ ?>
+        <script>
+        function plantillamedicos() {
+                            window.location.href='plantillaMedicos';
+                        }
+                    </script>
+        <article class="card" id="plantillaMedicos" onclick="plantillamedicos();">
+            <a href="plantillaMedicos">
+            <hr id="hr6">
+            <i class="fa fa-stethoscope" aria-hidden="true" id="iconosdiv"></i>
+                <p>Plantilla Medicos</p>
+            </a>
+        </article>
+    <?php } ?>
 
             <article class="card" id="mistrabajadores" onclick="misEmpleados();">
             <a href="misEmpleado">
