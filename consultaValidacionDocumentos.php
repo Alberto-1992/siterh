@@ -34,17 +34,14 @@ $conexionX = new ConexionRh();
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos where validaautorizacion = 0 order by datos.id DESC LIMIT 2000 ");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos where validaautorizacion = 0 order by datos.id DESC LIMIT 2000 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
-	$query=$conexionX->prepare("SELECT datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos WHERE
-            id_empleado LIKE '%$q%' and validaautorizacion = 0 
-            nombreinstitucion LIKE '%$q%' and validaautorizacion = 0 OR
+	$query=$conexionX->prepare("SELECT datos.id, datos.nombreempleado, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso FROM datos WHERE
+            id_empleado LIKE '%$q%' and validaautorizacion = 0 OR
             nombrecurso LIKE '%$q%'  and validaautorizacion = 0 OR
-		    areaquefortalece LIKE '%$q%' and validaautorizacion = 0 OR
-            asistecomo LIKE '%$q%' and validaautorizacion = 0 OR
-		    modalidad LIKE '%$q%' group by datos.id");
+		    nombreempleado LIKE '%$q%' group by datos.id");
 }
         ?>
 <input type="hidden" id="totalregistro" value="<?php echo $total_registro; ?>">
