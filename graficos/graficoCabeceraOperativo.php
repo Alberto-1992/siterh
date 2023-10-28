@@ -54,8 +54,8 @@
 #uno1 {
     width: 100%;
     height: 27rem;
-    background-image: url(https://www.unionguanajuato.mx/wp-content/uploads/2021/10/FRASES-DIA-DE-MUERTOS-IMAGENES.jpg);
-    background-size: 100% 27rem;
+    background-image: url(https://cdn.elpopular.mx/notas/secciones/libelula/2020/10/31/manual-de-la-ofrenda-de-dia-de-muertos/6767a27984a7057daffc9ccafb44bcbe.png);
+    background-size: 100% 30rem;
 
 }
 
@@ -71,23 +71,23 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-   <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
+   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active" id="uno">
+    <div class="carousel-item active" id="uno1">
     
     </div>
     
-    <!--<div class="carousel-item" id="tres">
+    <div class="carousel-item" id="uno">
    
-    </div>-->
+    </div>
   </div>
   <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
     <span class="sr-only">Previous</span>
   </button>
   <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="carousel-control-next-icon" aria-hidden="true" ></span>
     <span class="sr-only">Next</span>
   </button>
 </div>
