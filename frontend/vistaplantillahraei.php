@@ -185,14 +185,30 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
 
     <div class="containerr2">Datos Personales</div>
+    
     <tr>
         <th id="th">N° trabajador:</th>
         <td id="td"><?php echo $dataRegistro['Empleado'] ?></td>
     </tr>
     <tr>
         <th id="th">Nombre:</th>
-        <td id="td"><?php echo $dataRegistro['Nombre']?></td>
+        <td id="td"><?php echo $dataRegistro['Nombre']?>
+        <?php 
+        $path = "imagenesPerfiles/" . $id_empleado;
+        if (file_exists($path)) {
+            $directorio = opendir($path);
+            while ($archivo = readdir($directorio)) {
+                if (!is_dir($archivo)) {
+                    echo "<img src='imagenesPerfiles/$id_empleado/$archivo' style='width: 150px; height: 150px; border-radius: 20px 20px 20px 20px; cursor: pointer; float: right; margin-right: 11px; '>";
+                }
+            }
+        }
+        clearstatcache();
+        ?>
     </tr>
+    
+    </td>
+        
     <tr>
         <th id="th">Puesto:</th>
         <td id="td"><?php echo $dataRegistro['DescripcionPuesto'] ?></td>
