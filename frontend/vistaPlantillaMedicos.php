@@ -176,6 +176,7 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
         <th id="th">Nombre:</th>
         <td id="td"><?php echo $dataRegistro['Nombre']?>
         <?php 
+        error_reporting(0);
         $path = "imagenesPerfiles/" . $id_empleado;
         if (file_exists($path)) {
             $directorio = opendir($path);
