@@ -25,7 +25,7 @@ $conexionX = new ConexionRh();
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionBolsa->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos  WHERE datos.id <= '".$utimoId."' ORDER BY datos.id DESC LIMIT ".$limite." ");
+    $query= $conexionBolsa->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos  WHERE datos.id < '".$utimoId."' ORDER BY datos.id DESC LIMIT ".$limite." ");
     $query->execute();
 	?>
 
