@@ -29,11 +29,24 @@
     <header class="header">
         <?php 
         $path = "imagenesPerfiles/" . $identificador;
+
         if (file_exists($path)) {
             $directorio = opendir($path);
             while ($archivo = readdir($directorio)) {
                 if (!is_dir($archivo)) {
                     echo "<img src='imagenesPerfiles/$identificador/$archivo' style='width: 50px; height: 47px; border-radius: 30px 30px 30px 30px; cursor: pointer; float: left; margin-left: -11px; '>";
+                }else{
+                
+                }
+            }
+        }else{
+            $path = "imagenesPerfiles/fotodefault";
+            $directorio = opendir($path);
+            while ($archivo = readdir($directorio)) {
+                if (!is_dir($archivo)) {
+                    echo "<img src='imagenesPerfiles/fotodefault/perfil.jpg' style='width: 50px; height: 47px; border-radius: 30px 30px 30px 30px; cursor: pointer; float: left; margin-left: -11px; '>";
+                }else{
+                    
                 }
             }
         }

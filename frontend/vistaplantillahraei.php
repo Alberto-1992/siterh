@@ -202,13 +202,21 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
                     echo "<img src='imagenesPerfiles/$id_empleado/$archivo' style='width: 150px; height: 150px; border-radius: 20px 20px 20px 20px; cursor: pointer; float: right; margin-right: 11px; '>";
                 }
             }
+        }else{
+            $path = "imagenesPerfiles/fotodefault";
+            $directorio = opendir($path);
+            while ($archivo = readdir($directorio)) {
+                if (!is_dir($archivo)) {
+                    echo "<img src='imagenesPerfiles/fotodefault/perfil.jpg' style='width: 150px; height: 150px; border-radius: 20px 20px 20px 20px; cursor: pointer; float: right; margin-right: 11px; '>";
+                }else{
+                    
+                }
+            }
         }
         clearstatcache();
         ?>
-    </tr>
-    
     </td>
-        
+    </tr>  
     <tr>
         <th id="th">Puesto:</th>
         <td id="td"><?php echo $dataRegistro['DescripcionPuesto'] ?></td>
