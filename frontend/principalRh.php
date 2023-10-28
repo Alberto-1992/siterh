@@ -84,7 +84,17 @@
                         function plantillaenfermeria() {
                             window.location.href='plantillaEnfermeria';
                         }
+                        function plantillamedicos() {
+                            window.location.href='plantillaMedicos';
+                        }
                     </script>
+        <article class="card" id="plantillaMedicos" onclick="plantillaenfermeria();">
+            <a href="plantillaMedicos">
+            <hr id="hr6">
+            <i class="fa fa-stethoscope" aria-hidden="true" id="iconosdiv"></i>
+                <p>Plantilla Medicos</p>
+            </a>
+</article>
 <article class="card" id="mistrabajadores" onclick="plantillaenfermeria();">
             <a href="plantillaEnfermeria">
             <hr id="hr6">

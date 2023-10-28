@@ -662,6 +662,12 @@ p:hover {
   background-size: 100% 100%;
   background-position: 85% 90%; 
 }
+#plantillaMedicos {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(129, 0, 6));
+  background-size: 100% 100%;
+  background-position: 85% 90%; 
+}
 
 ::-webkit-scrollbar {
   width: 10px;

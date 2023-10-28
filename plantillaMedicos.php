@@ -11,7 +11,7 @@
                     $row = $query->fetch();
                     $valida = $row['correoelectronico'];
                     if($valida == $usernameSesion){
-            require 'frontend/plantillaEnfermeria.php';
+            require 'frontend/plantillaMedicos.php';
                     }else{
                         echo "<script>alert('No tienes acceso, no insistas');
                         window.history.back();</script>";
@@ -21,13 +21,13 @@
         
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
-            require 'frontend/plantillaEnfermeria.php';
+            require 'frontend/plantillaMedicos.php';
         
         break;
 
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
-        require 'frontend/plantillaEnfermeria.php';
+        require 'frontend/plantillaMedicos.php';
         break;
 
         default:
@@ -36,4 +36,3 @@
         
         }
 ?>
-    
