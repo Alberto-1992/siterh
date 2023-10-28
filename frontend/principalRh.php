@@ -27,7 +27,7 @@
         }
     </style>
     <header class="header">
-        <?php /*
+        <?php 
         $path = "imagenesPerfiles/" . $identificador;
         if (file_exists($path)) {
             $directorio = opendir($path);
@@ -37,7 +37,7 @@
                 }
             }
         }
-        clearstatcache();*/
+        clearstatcache();
         ?>
         <span id="cabecera">R.H</span>
 
