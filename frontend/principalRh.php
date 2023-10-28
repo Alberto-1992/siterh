@@ -360,8 +360,8 @@
                 <p>Plantilla enfermeria</p>
             </a>
 </article>
-<?php }else 
-        if($admin = 'rosmic23@hotmail.com'){ ?>
+<?php }
+        if($admin == 'rosmic23@hotmail.com'){ ?>
         <script>
         function plantillamedicos() {
                             window.location.href='plantillaMedicos';
