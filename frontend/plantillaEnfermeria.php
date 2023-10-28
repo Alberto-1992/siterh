@@ -63,7 +63,7 @@
 
         </script>
         <div class="autoheight">
-<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeyup="return handleKeyPress(event);">
+<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);">
             <div id="tabla_resultadobus">
 
             </div>
@@ -74,7 +74,8 @@
 <script>
   function handleKeyPress(e)
 {
-
+    if (e.keyCode === 13 && !e.shiftKey) {
+        e.preventDefault();
 	let evento = $("#busqueda").val();
 	let ob = {evento:evento};
   $.ajax({
@@ -87,6 +88,7 @@
                     //$("#editarDatosPersonalescancerdeMama").modal('show');
                     }
                 });
+    }
 
 };
 </script>
