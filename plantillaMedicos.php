@@ -1,10 +1,11 @@
 <?php session_start();
+require_once 'clases/conexion.php';
+$conexionX = new ConexionRh();
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh.php';
-                $query = $conexionRh->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
+                $query = $conexionX->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
                     $query->execute(array(
                         ':correoelectronico'=>$usernameSesion
                     ));
@@ -21,8 +22,7 @@
         
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
-            require 'conexionRh.php';
-                $query = $conexionRh->prepare("SELECT correo from plantillahraei where correo = :correo");
+                $query = $conexionX->prepare("SELECT correo from plantillahraei where correo = :correo");
                     $query->execute(array(
                         ':correo'=>$usernameSesion
                     ));
@@ -36,9 +36,7 @@
                     }
         
         break;
-
         default:
-        
         require 'close_sesion.php';
         
         }

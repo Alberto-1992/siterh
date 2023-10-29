@@ -29,7 +29,7 @@
     <header class="header">
         <?php 
         error_reporting(0);
-        $path = "imagenesPerfiles/" . $identificador;
+        $path = "imagenesPerfiles/".$identificador;
 
         if (file_exists($path)) {
             $directorio = opendir($path);

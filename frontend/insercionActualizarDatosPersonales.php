@@ -199,7 +199,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             <?php
                             $archivo = "Comprobante CURP";
                             
-                            $path = "documentoscurp/" .$datocurp.$identificador;
+                            $path = "documentoscurp/".$datocurp.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -212,7 +212,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
             <div class="col-md-3">
@@ -257,7 +257,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             <?php
                             $archivo = "Cartilla militar";
                             
-                            $path = "documentoscartilla/" .$datocurp.$identificador;
+                            $path = "documentoscartilla/".$datocurp.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -270,7 +270,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
             <div class="col-md-3">
@@ -376,7 +376,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             
                             $archivo = "Comprobante domicilio";
                             
-                            $path = "documentoscomprobantedomicilio/" .$datocurp.$identificador;
+                            $path = "documentoscomprobantedomicilio/".$datocurp.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -389,7 +389,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                         <script>
@@ -512,10 +512,10 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             <div class="col-md-5" style="border: 1px solid #F0F0F0;">
                             <strong>Vista CURP Hijo</strong>
                             <?php
-                             $idhijo = $rows['nombrecompletohijo'];
+                            $idhijo = $rows['nombrecompletohijo'];
                             $archivo = "Comprobante hijo";
                             
-                            $path = "documentoshijos/" .$idhijo.$identificador;
+                            $path = "documentoshijos/".$idhijo.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -528,7 +528,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                 </div>
             <?php } ?>

@@ -1,10 +1,11 @@
 <?php session_start();
+require_once 'clases/conexion.php';
+$conexionX = new ConexionRh();
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require 'conexionRh.php';
-                $query = $conexionRh->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
+                $query = $conexionX->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
                     $query->execute(array(
                         ':correoelectronico'=>$usernameSesion
                     ));
@@ -21,8 +22,7 @@
         
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
-            require 'conexionRh.php';
-                $statement = $conexionRh->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
+                $statement = $conexionX->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
                 $statement->execute(array(
                     ':correo' => $usernameSesion
                 ));
@@ -36,8 +36,7 @@
 
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
-            require 'conexionRh.php';
-                $statement = $conexionRh->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
+                $statement = $conexionX->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
                 $statement->execute(array(
                     ':correo' => $usernameSesion
                 ));
@@ -45,7 +44,6 @@
                 $admin = $rw['correo'];
                 if ($admin == 'msandoval@hraei.gob.mx' or $admin == 'isabella291216@gmail.com' or $admin == 'bramirez699@gmail.com' or $admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'alexvpuebla@gmail.com' or $admin == 'jacv_8810@hotmail.com' or $admin == 'jbaldome@yahoo.com.mx' or $admin == 'adriana.zent@hotmail.com') {
         require 'frontend/plantillahraei.php';
-
         break;
                 }
         default:

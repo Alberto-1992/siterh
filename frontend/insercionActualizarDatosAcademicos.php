@@ -97,7 +97,7 @@
                             <?php
                             $mediasup = $row['nombreformacionmedia'];
                             
-                            $path = "documentosmediasup/" . $mediasup . $identificador;
+                            $path = "documentosmediasup/".$mediasup.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -110,7 +110,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                         <?php
@@ -163,7 +163,7 @@
                             <?php
                             $tecnica = $rowt['nombreformaciontecnica'];
                             
-                            $path = "documentostecnica/" . $tecnica . $identificador;
+                            $path = "documentostecnica/".$tecnica.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -184,7 +184,7 @@
                             <?php
                             $tecnicacedula = $rowt['nombreformaciontecnica'];
                             
-                            $path = "documentostecnicacedula/" . $tecnicacedula . $identificador;
+                            $path = "documentostecnicacedula/".$tecnicacedula.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -197,7 +197,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
         <!--inicia postecnico -->
@@ -263,7 +263,7 @@
                             <?php
                             $postecnico = $rowsP['nombreformacionpostecnico'];
                             
-                            $path = "documentospostecnico/" . $postecnico . $identificador;
+                            $path = "documentospostecnico/".$postecnico.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -276,7 +276,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                         
@@ -406,7 +406,7 @@
                             <?php
                             $licenciatura = $rows['nombreformacionsuperior'];
                             
-                            $path = "documentoslicenciatura/" . $licenciatura . $identificador;
+                            $path = "documentoslicenciatura/".$licenciatura.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -419,7 +419,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
@@ -427,7 +427,7 @@
                             <?php
                             $licenciatura = $rows['nombreformacionsuperior'];
                             
-                            $path = "documentoscedulalicenciatura/" . $licenciatura . $identificador;
+                            $path = "documentoscedulalicenciatura/".$licenciatura.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -440,7 +440,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                     </div>
@@ -573,7 +573,7 @@
                             <?php
                             $maestria = $rowm['nombreformacionmaestria'];
                             
-                            $path = "documentosmaestria/" . $maestria . $identificador;
+                            $path = "documentosmaestria/".$maestria.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -586,7 +586,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
@@ -594,7 +594,7 @@
                             <?php
                             $maestria = $rowm['nombreformacionmaestria'];
                             
-                            $path = "documentosmaestriacedula/" . $maestria . $identificador;
+                            $path = "documentosmaestriacedula/".$maestria.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -607,7 +607,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                     </div>
@@ -740,7 +740,7 @@
                             <?php
                             $posgrado = $rowm['nombreformacionacademica'];
                             
-                            $path = "documentosposgradoesp/" . $posgrado . $identificador;
+                            $path = "documentosposgradoesp/".$posgrado.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -753,7 +753,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                     </div>
@@ -890,7 +890,7 @@
                             <?php
                             $doctorado = $rowd['nombreformaciondoctorado'];
                             
-                            $path = "documentosdoctorado/" . $doctorado . $identificador;
+                            $path = "documentosdoctorado/".$doctorado.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -903,7 +903,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
@@ -911,7 +911,7 @@
                             <?php
                             $doctorado = $rowd['nombreformaciondoctorado'];
                             
-                            $path = "documentosdoctoradocedula/" . $doctorado . $identificador;
+                            $path = "documentosdoctoradocedula/".$doctorado.$identificador;
                             if (file_exists($path)) {
                                 $directorio = opendir($path);
                                 while ($archivo = readdir($directorio)) {
@@ -924,7 +924,7 @@
                                     }
                                 }
                             }
-
+                            clearstatcache();
                             ?>
                         </div>
                     </div>

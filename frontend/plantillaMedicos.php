@@ -52,7 +52,7 @@
                 $("#tabla_resultado").html(resultado);
             })
             $.ajax({
-                url: 'consultaplantillaMedicos.php',
+                url: 'consultaPlantillaMedicos.php',
                 type: 'POST',
                 dataType: 'html',
             })
@@ -80,7 +80,7 @@
 	let ob = {evento:evento};
   $.ajax({
             type: "POST",
-            url: "consultaplantillaMedicos.php",
+            url: "consultaPlantillaMedicos.php",
             data: ob,
                                                     
                 success: function(data) {
