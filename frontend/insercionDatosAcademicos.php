@@ -714,7 +714,7 @@
                         if ($(this).val() != '') {
                             if (ext == "pdf") {
                             
-                                if ($(this)[0].files[0].size > 1048576) {
+                                if ($(this)[0].files[0].size > 9048576) {
                                     console.log("El documento excede el tamaño máximo");
                                     $('#modal-title').text('¡Precaución!');
                                     $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
