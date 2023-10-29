@@ -26,7 +26,7 @@ try {
         ':descripcionultimogrado'=>$ultimogradoestudios,
         ':id_empleado'=>$id_empleado
     ));
-    $sql = $conexionX->prepare("INSERT into actualizacion (actualizo, id_empleado) values(:actualizo :id_empleado)");
+    $sql = $conexionX->prepare("INSERT into actualizacion (id_empleado,actualizo) values(:id_empleado,:actualizo)");
         $sql->execute(array(
             ':actualizo'=>1,
             ':id_empleado'=>$id_empleado
