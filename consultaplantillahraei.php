@@ -36,6 +36,30 @@
     function exportarExcelSin() {
         window.location.href='exportarPlantillaExcelSinCaptura';
     }
+    function exportarExcelmediosuperior() {
+        window.location.href='exportaciones/exportarExcelmediosuperior';
+    }
+    function exportarExceltecnicos() {
+        window.location.href='exportaciones/exportarExceltecnicos';
+    }
+    function exportarExcelpostecnicos() {
+        window.location.href='exportaciones/exportarExcelpostecnicos';
+    }
+    function exportarExcelsuperior() {
+        window.location.href='exportaciones/exportarExcelsuperior';
+    }
+    function exportarExcelmaestria() {
+        window.location.href='exportaciones/exportarExcelmaestria';
+    }
+    function exportarExcelposgradoespecialidad() {
+        window.location.href='exportaciones/exportarExcelposgradoespecialidad';
+    }
+    function exportarExceldoctorado() {
+        window.location.href='exportaciones/exportarExceldoctorado';
+    }
+    function datospersonales() {
+        window.location='exportaciones/datosPersonalesUltimogradoEstudios';
+    }
 </script>
 <ul class="nav nav-tabs" >
         <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
@@ -44,7 +68,14 @@
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Descargar a excel</a></li>
+            <li><a class="dropdown-item" href="#" onclick="datospersonales();">Datos empleado/ultimo grado estudios</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelmediosuperior();">Descargar a excel medio superior</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExceltecnicos();">Descargar a excel tecnicos</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelpostecnicos();">Descargar a excel postecnicos</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelsuperior();">Descargar a excel superior</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelmaestria();">Descargar a excel maestria</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelposgradoespecialidad();">Descargar a excel posgrados/especialidad</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExceldoctorado();">Descargar a excel doctorado</a></li>
                 
                 
             </ul>
