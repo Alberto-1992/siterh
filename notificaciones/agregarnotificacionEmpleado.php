@@ -1,24 +1,46 @@
 <?php
 error_reporting(0);
-	require_once '../conexionRh.php';
+	require_once '../clases/conexion.php';
+    $conexionX = new ConexionRh();
 	$count=0;
 	extract($_POST);
 		
 
-        $sqlvalida = $conexionGrafico->query("SELECT descripcionaccion from catalogocapacitacion where id_tipodeaccion = '$tipodecapacitacion'");
-            $row = mysqli_fetch_assoc($sqlvalida);
+        $sqlvalida = $conexionX->prepare("SELECT descripcionaccion from catalogocapacitacion where id_tipodeaccion = ':id_tipodeaccion'");
+            $sqlvalida->execute(array(
+                ':id_tipodeaccion'=>$tipodecapacitacion
+            ));
+
+            $row = $sqlvalida->fetch();
         $capacitacion = $row['descripcionaccion'];
 
-		$sql = "INSERT INTO datos (id_empleado,nombreinstitucion,nombrecurso,fechainicio,fechatermino,areaquefortalece,modalidad,documentorecibe,tipocapacitacion,horas,asistecomo,otroexpidedocumento,nombreempleado) VALUES('" . $id_empleado . "','" . $nombreinstitucion . "','" . $nombrecurso . "','" . $fechainicio . "','" . $fechatermino . "','" . $areafortalece . "','" . $modalidad . "','" . $documentorecibe . "','" . $capacitacion . "','" . $horas . "','" . $asistecomo . "','" . $otroexpidedocumento . "','" . $nombreempleado . "')";
-		mysqli_query($conexionGrafico, $sql);
+		$sql = $conexionX->prepare("INSERT INTO datos (id_empleado,nombreinstitucion,nombrecurso,fechainicio,fechatermino,areaquefortalece,modalidad,documentorecibe,tipocapacitacion,horas,asistecomo,otroexpidedocumento,nombreempleado) 
+        VALUES(:id_empleado,:nombreinstitucion,:nombrecurso,:fechainicio,:fechatermino,:areaquefortalece,:modalidad,:documentorecibe,:tipocapacitacion,:horas,:asistecomo,:otroexpidedocumento,:nombreempleado)");
+                $sql->execute(array(
+                    ':id_empleado'=>$id_empleado,
+                    ':nombreinstitucion'=>$nombreinstitucion,
+                    ':nombrecurso'=>$nombrecurso,
+                    ':fechainicio'=>$fechainicio,
+                    ':fechatermino'=>$fechatermino,
+                    ':areaquefortalece'=>$areafortalece,
+                    ':modalidad'=>$modalidad,
+                    ':documentorecibe'=>$documentorecibe,
+                    ':tipocapacitacion'=>$capacitacion,
+                    ':horas'=>$horas,
+                    ':asistecomo'=>$asistecomo,
+                    ':otroexpidedocumento'=>$otroexpidedocumento,
+                    ':nombreempleado'=>$nombreempleado
+                ));
+
         if ($_FILES["documentocurso"]["error"] > 0) {
+
         } else {
         
             $permitidos = array("application/pdf");
                 $nombrecurso = $_POST["nombrecurso"].$_POST["fechatermino"];
             if (in_array($_FILES["documentocurso"]["type"], $permitidos) && $_FILES["documentocurso"]["size"]) {
         
-                $ruta = '../documentoscursos/'.$nombrecurso.$id_empleado.'/';
+                $ruta = '../documentoscursos/'.$nombrecurso.'-'.$id_empleado.'/';
                 $archivo = $ruta . $_FILES["documentocurso"]["name"] = $_POST["nombrecurso"].'.pdf';
         
         
@@ -30,16 +52,12 @@ error_reporting(0);
         
                     $resultado = @move_uploaded_file($_FILES["documentocurso"]["tmp_name"], $archivo);
         
-                    
-                }else{
-                    
                 }
             }
         }
-	$sql2="SELECT * FROM datos WHERE estado = 0";
-	$result=mysqli_query($conexionGrafico, $sql2);
-	$count=mysqli_num_rows($result);
-
+	//$sql2="SELECT * FROM datos WHERE estado = 0";
+	//$result=mysqli_query($conexionGrafico, $sql2);
+	//$count=mysqli_num_rows($result);
 	if($sql != false){
         echo "<script>Swal.fire({
             position: 'top-end',
