@@ -18,8 +18,8 @@ require_once '../conexionRh.php';
 
     //columnas del archivo , llamar a la funcion fputcsv
     fputcsv($salida, array(
-            'RFC',
             'Empleado',
+            'RFC',
             'CURP',
             'Nombre',
             'Codigo Puesto',
@@ -39,19 +39,30 @@ require_once '../conexionRh.php';
             'Control',
             'Tipo',
             'Adicional',
+            'LUGAR DE TRABAJO',
+            'HORARIO',
+            'DIAS LABORALES',
+            'tipopuesto',
+            'LUGAR DE TRABAJO 2',
+            'HORARIO 2',
+            'DIAS LABORALES 2',
+            'OBSERVACIONES',
+            'tipopuesto2',
             'descripcion ultimo grado de estudios',
             'especialidad labora hraei',
             'actualizo'
     )); 
 
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, ultimogradoestudios.*, horariosplantilla.Turno,horariosplantilla.Jornada,horariosplantilla.Horario,horariosplantilla.Control,horariosplantilla.Tipo,horariosplantilla.Adicional, CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos from plantillahraei 
+    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, ultimogradoestudios.*, horariosplantilla.Turno,horariosplantilla.Jornada,horariosplantilla.Horario,horariosplantilla.Control,horariosplantilla.Tipo,horariosplantilla.Adicional,
+    compatibilidad.*, CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos from plantillahraei 
     left outer join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado 
     left outer join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado
+    left outer join compatibilidad on compatibilidad.id_empleado = plantillahraei.Empleado
     left outer join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado"); 
     while($filaR=$QueryConsulta->fetch_assoc())
     fputcsv($salida, array(
-                        mb_convert_encoding($filaR['RFC'], 'ISO-8859-1', 'UTF-8'),
                         $filaR['Empleado'],
+                        mb_convert_encoding($filaR['RFC'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['CURP'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['Nombre'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['CodigoPuesto'], 'ISO-8859-1', 'UTF-8'),
@@ -71,6 +82,15 @@ require_once '../conexionRh.php';
                         mb_convert_encoding($filaR['Control'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['Tipo'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['Adicional'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['LUGARDETRABAJO'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['HORARIO'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['DIASLABORALES'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['tipopuesto'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['LUGARDETRABAJO2'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['HORARIO2'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['DIASLABORALES2'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['OBSERVACIONES'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['tipopuesto2'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['descripcionultimogrado'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['especialidadlaborahraei'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['actualizodatos'], 'ISO-8859-1', 'UTF-8')

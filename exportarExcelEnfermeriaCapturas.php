@@ -11,7 +11,7 @@ require_once 'conexionRh.php';
 //{    
     // nombre del archivo 
     header('Content-Type:text/csv; charset = latin1'); 
-    header('Content-Disposition: attachment; filename="informacionEmpleados.csv"'); 
+    header('Content-Disposition: attachment; filename="informacionEnfermeria.csv"'); 
 
     //salida del archivo function de fopen w de write  
     $salida = fopen('php://output', 'W'); 
