@@ -40,7 +40,7 @@ error_reporting(0);
                 $nombrecurso = $_POST["nombrecurso"].$_POST["fechatermino"];
             if (in_array($_FILES["documentocurso"]["type"], $permitidos) && $_FILES["documentocurso"]["size"]) {
         
-                $ruta = '../documentoscursos/'.$nombrecurso.'-'.$id_empleado.'/';
+                $ruta = '../documentoscursos/'.$nombrecurso.$id_empleado.'/';
                 $archivo = $ruta . $_FILES["documentocurso"]["name"] = $_POST["nombrecurso"].'.pdf';
         
         

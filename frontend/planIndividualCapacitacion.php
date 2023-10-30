@@ -76,6 +76,8 @@
             <div class="form-row">
             <?php
             error_reporting(0);
+            require_once 'clases/conexion.php';
+            $conexionX = new ConexionRh();
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
@@ -101,15 +103,15 @@
                 <input type="hidden" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
                 <div class="col-md-6">
                     <label for="mensaje">Nombre:</label>
-                    <input type="text" class="form-control" name="nombreempleado" id="nombreempleado" placeholder="Nombre" required value="<?php echo $nombreempleado ?>">
+                    <input type="text" class="form-control" name="nombreempleado" id="nombreempleado" placeholder="Nombre" required value="<?php echo $nombreempleado ?>" readonly>
                 </div>
                 <div class="col-md-6">
                     <label for="mensaje">Tipo de capacitación:</label>
                     <select class="form-control" name="tipodecapacitacion" id="tipodecapacitacion" required onchange="tipoCapacitacion();">
                         <option value="Sin dato">Seleccione</option>
                         <?php
-                        require 'conexionRh.php';
-                        $query = $conexionRh->prepare("SELECT * FROM catalogocapacitacion where activo = 0");
+                    
+                        $query = $conexionX->prepare("SELECT * FROM catalogocapacitacion where activo = 0");
                         $query->execute();
                         $query->setFetchMode(PDO::FETCH_ASSOC);
                         while ($row = $query->fetch()) { ?>
@@ -146,8 +148,7 @@
                             <option selected disabled value="">Seleccione</option>
 
                             <?php
-                            require 'conexionRh.php';
-                            $query = $conexionRh->prepare("SELECT * FROM modalidad");
+                            $query = $conexionX->prepare("SELECT * FROM modalidad");
                             $query->execute();
                             $data = $query->fetchAll();
 
@@ -245,14 +246,11 @@
         <table id="example" class="table table-striped table-bordered nowrap table-darkgray table-hover">
             <thead>
                 <tr>
-                    <th>Nombre de la institución</th>
-                    <th>Otro institucion expide</th>
                     <th>Nombre del curso</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
                     <th>Ver documento</th>
                     <th>Documento recibe</th>
-                    <th>Modalidad</th>
                 </tr>
             </thead>
             <tbody>
@@ -264,15 +262,11 @@
                     $id_empleado = $dataRegistro['id_empleado'];
                 ?>
                     <tr>
-                        <td><?php echo $dataRegistro['nombreinstitucion'] ?></td>
-                        <td><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
                         <td><?php echo $dataRegistro['fechainicio'] ?></td>
                         <td><?php echo $dataRegistro['fechatermino'] ?></td>
-                        <!--<td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank"><iframe width="100%" name="hola" scrolling="auto" src="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" frameborder="0"></iframe><br>Ver archivo</a></td>-->
-                        <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank">Ver documento</a></td>
+                        <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank"><iframe width="100%" name="hola" scrolling="auto" src="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" frameborder="0"></iframe><br>Ver archivo</a></td>
                         <td><?php echo $dataRegistro['documentorecibe'] ?></td>
-                        <td><?php echo $dataRegistro['modalidad'] ?></td>
 
                     </tr>
                 <?php
@@ -282,14 +276,11 @@
 
             <tfoot>
                 <tr>
-                    <th>Nombre de la institución</th>
-                    <th>Otro institucion expide</th>
                     <th>Nombre del curso</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
                     <th>Ver documento</th>
                     <th>Documento recibe</th>
-                    <th>Modalidad</th>
 
                 </tr>
             </tfoot>
