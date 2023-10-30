@@ -24,16 +24,19 @@ require_once 'conexionRh.php';
             'Nombre',
             'CodigoPuesto',
             'DescripcionPuesto',
+            'Ultimo grado de estudios',
+            'Especialidad con la que labora',
             'Turno',
             'Jornada',
             'Horario',
-            'turno',
+            'actualizo datos',
             
 
 
     )); 
 
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos, horariosplantilla.Turno, horariosplantilla.Jornada, horariosplantilla.Horario from plantillahraei inner join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado inner join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado  where plantillahraei.DescripcionPuesto like '%enferme%'"); 
+    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, ultimogradoestudios.descripcionultimogrado, ultimogradoestudios.especialidadlaborahraei,  CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos, horariosplantilla.Turno, horariosplantilla.Jornada, horariosplantilla.Horario
+     from plantillahraei inner join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado inner join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado inner join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado where plantillahraei.DescripcionPuesto like '%enferme%'"); 
     while($filaR=$QueryConsulta->fetch_assoc())
     fputcsv($salida, array(
                         $filaR['RFC'],
@@ -42,6 +45,8 @@ require_once 'conexionRh.php';
                         mb_convert_encoding($filaR['Nombre'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['CodigoPuesto'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['DescripcionPuesto'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['descripcionultimogrado'], 'ISO-8859-1', 'UTF-8'),
+                        mb_convert_encoding($filaR['especialidadlaborahraei'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['Turno'], 'ISO-8859-1', 'UTF-8'),
                         $filaR['Jornada'],
                         $filaR['Horario'],
