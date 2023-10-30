@@ -188,7 +188,7 @@
         }
     </style>
     <div class="titulo">
-        <h2 style="font-size: 13px;">Porcentaje general de participación de metas 2023</h2>
+        <h2 style="font-size: 13px;">Porcentaje actualizacion global</h2>
     </div>
     <!-- Resources -->
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -230,35 +230,27 @@
                 <?php
                 require 'conexionRh.php';
 
-                $sql1 = $conexionGrafico->query("SELECT count(*) as total1 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 1 and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
-                $row1 = mysqli_fetch_assoc($sql1);
-                $sql2 = $conexionGrafico->query("SELECT count(*) as total2 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 2 and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
-                $row2 = mysqli_fetch_assoc($sql2);
-                $sql3 = $conexionGrafico->query("SELECT count(*) as total3 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 3 and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
-                $row3 = mysqli_fetch_assoc($sql3);
-                $sql4 = $conexionGrafico->query("SELECT count(*) as total4 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 4 and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
-                $row4 = mysqli_fetch_assoc($sql4);
+            
+
+
+$sqlSinactualizar = $conexionGrafico->query("SELECT count(*) as total2 from actualizacion where actualizo = 0");
+$rowSinactualizar = mysqli_fetch_assoc($sqlSinactualizar);
+
+$sqlActualizo = $conexionGrafico->query("SELECT count(*) as total1 from actualizacion where actualizo = 1");
+$rowActualizo = mysqli_fetch_assoc($sqlActualizo);
 
                 ?>
             ];
             // Set data
             // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
             series.data.setAll([{
-                    value: <?php echo $row4['total4'] ?>,
-                    category: "Sin captura"
+                    value: <?php echo $rowSinactualizar['total2'] ?>,
+                    category: "Sin actualizar"
                 },
                 {
-                    value: <?php echo $row1['total1'] ?>,
-                    category: "Autorizado"
-                },
-                {
-                    value: <?php echo $row2['total2'] ?>,
-                    category: "Pendiente de VoBo"
-                },
-                {
-                    value: <?php echo $row3['total3'] ?>,
-                    category: "Rechazadas"
-                },
+                    value: <?php echo $rowActualizo['total1'] ?>,
+                    category: "Actualizaron"
+                }
 
             ]);
 
