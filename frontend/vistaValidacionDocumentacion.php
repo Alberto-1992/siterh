@@ -155,7 +155,7 @@ else if($validaacceso == 4){
 
 </table>
 <div class="form-row">
-<div class="col-md-3">
+<div class="col-md-4">
     <strong>Linea estrategica</strong>
 <select class="form-control" id="linea" name="lineaestrategica">
     <option value="">Seleccione</option>
@@ -166,7 +166,7 @@ else if($validaacceso == 4){
     <option value="FORTALECIMIENTO DE COMPETENCIAS ESPECIALIZADAS">Fortalecimiento de competencias especializadas</option>
 </select>
 </div>
-<div class="col-md-3">
+<div class="col-md-4">
     <strong>Selecciona el eje</strong>
 <select class="form-control" id="eje">
     <option value="CAPACITACION">Capacitacion</option>
@@ -182,11 +182,11 @@ else if($validaacceso == 4){
     <option value="ACTUALIZACION TECNICO MEDICO">Actualización tecnico medico</option>
 </select>
 </div>
-<div class="col-md-1">
+<div class="col-md-2">
     <input type="submit" onclick="autorizar();" value="Autorizar" class="form-control" style="background-color: green; color: white; margin-top: 17px;">
 </div>
 </div>
-<div class="container" style="width: 830px; height: 700px; float: left;">
+<div class="container" style="width: 100%; height: 100%; float: left;">
 <?php
 $nombrecurso = $dataRegistro['nombrecurso'];
 $fechafinal = $dataRegistro['fechatermino'];
@@ -197,7 +197,7 @@ if (file_exists($path)) {
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' width='790' height='700' margin-top='50'></iframe>";
+            echo "<iframe src='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' width='100%' height='100%' margin-top='50'></iframe>";
             echo "<a href='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Documento cargado</a>";
         }
     }
