@@ -6,7 +6,7 @@ error_reporting(0);
 	extract($_POST);
 		
 
-        $sqlvalida = $conexionX->prepare("SELECT descripcionaccion from catalogocapacitacion where id_tipodeaccion = ':id_tipodeaccion'");
+        $sqlvalida = $conexionX->prepare("SELECT descripcionaccion from catalogocapacitacion where id_tipodeaccion = :id_tipodeaccion");
             $sqlvalida->execute(array(
                 ':id_tipodeaccion'=>$tipodecapacitacion
             ));
