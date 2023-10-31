@@ -23,13 +23,13 @@ $utimoId = $_POST['utimoId'];
 $limite  = 10;
 require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
-$sqlQueryComentarios  = $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC FROM plantillahraei");
+$sqlQueryComentarios  = $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei");
 $sqlQueryComentarios->execute();
 $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
 $sqlQueryComentarios->execute();
 $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC FROM plantillahraei WHERE plantillahraei.Empleado < '".$utimoId."' ORDER BY plantillahraei.Empleado  DESC LIMIT ".$limite."");
+    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei WHERE plantillahraei.Empleado < '".$utimoId."' ORDER BY plantillahraei.Empleado  DESC LIMIT ".$limite."");
     $query->execute();
 	?>
 
@@ -49,7 +49,7 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
 
         
             <div id="<?php echo $dataRegistro['Empleado'] ?>" class="ver-info" style="cursor: pointer;">
-            <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['Nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['RFC'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['Empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong><br>';
+            <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['Nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['RFC'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['Empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong><br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
                     if ($dataRegistro2['actualizo'] == 1) {
                         ?>
                             <input type="submit" value="Actualizo" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">

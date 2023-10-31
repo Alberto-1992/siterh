@@ -561,11 +561,11 @@
                             <input type="int" id="numerocedula" name="numerocedulamaestria[]" class="form-control" value="<?php echo $rowm['numerocedulamaestria'] ?>">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Sube tu documento (PDF)</label>
+                            <label>Sube tu titulo (PDF)</label>
                             <input type="file" id="documentomaestria[]" name="documentomaestria[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="form-group col-md-4">
-                            <label>Sube tu documento (PDF)</label>
+                            <label>Sube tu cedula (PDF)</label>
                             <input type="file" id="documentomaestriacedula[]" name="documentomaestriacedula[]" class="form-control" accept=".pdf">
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">

@@ -34,14 +34,16 @@ $conexionX = new ConexionRh();
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo FROM datos where validaautorizacion = 0 order by datos.id DESC LIMIT 2000 ");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where validaautorizacion = 0 order by datos.id DESC LIMIT 2000 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
-	$query=$conexionX->prepare("SELECT datos.id, datos.nombreempleado, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso FROM datos WHERE
+	$query=$conexionX->prepare("SELECT datos.id, datos.nombreempleado, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado WHERE
             id_empleado LIKE '%$q%' and validaautorizacion = 0 OR
             nombrecurso LIKE '%$q%'  and validaautorizacion = 0 OR
-		    nombreempleado LIKE '%$q%' group by datos.id");
+		    nombreempleado LIKE '%$q%' and validaautorizacion = 0 OR
+            DescripcionAdscripcion LIKE '%$q%' or
+            DescripcionPuesto LIKE '%$q%' group by datos.id");
 }
         ?>
 <input type="hidden" id="totalregistro" value="<?php echo $total_registro; ?>">
@@ -76,7 +78,7 @@ $conexionX = new ConexionRh();
         <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
         
                 <div id='<?php echo $dataRegistro['id']; ?>' class='ver-info'>
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>';
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong><br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
                         ?>
                     
                     </div> 

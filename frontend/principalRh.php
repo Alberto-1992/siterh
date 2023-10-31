@@ -117,6 +117,7 @@
                     <p>Plantilla HRAEI</p>
                 </a>
             </article>
+            
             <article class="card" id="plantillamando" onclick="movimientosplantilla();">
                 <a href="plantillamandos">
                     <hr id="hr6">
