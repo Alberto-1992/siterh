@@ -2,7 +2,7 @@
 date_default_timezone_set("America/Monterrey");
 setlocale(LC_ALL,"es_ES");
 
-include('config.php');
+include('../conexionRh.php');
                         
 $idEvento         = $_POST['idEvento'];
 $hora = ucwords($_REQUEST['hora']);
@@ -25,7 +25,7 @@ $UpdateProd = ("UPDATE eventoscalendar
         horacurso = '$hora',
         lugarevento = '$lugarevento'
     WHERE id='".$idEvento."' ");
-$result = mysqli_query($con, $UpdateProd);
+$result = mysqli_query($conexionGrafico, $UpdateProd);
 
 header("Location:index.php?ea=1");
 ?>

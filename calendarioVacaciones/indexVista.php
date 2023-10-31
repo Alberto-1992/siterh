@@ -34,10 +34,10 @@
 <?php
 $id = base64_decode($_GET['id']);
 
-include('config.php');
+include('../conexionRh.php');
 $periodo = 2023;
   $SqlEventos   = ("SELECT * FROM vacaciones WHERE id_empleado = $id and periodovacacional = $periodo");
-  $resulEventos = mysqli_query($con, $SqlEventos);
+  $resulEventos = mysqli_query($conexionGrafico, $SqlEventos);
 
 ?>
 <input type="hidden" value="<?php echo $id ?>" id="identificador"> 
@@ -71,7 +71,7 @@ $periodo = 2023;
   <div class="col-md-12 mb-3">
   <?php 
   error_reporting(0);
-  $sql = $con->query("SELECT fecha_inicio,autoriza from vacaciones where id_empleado = $id and periodovacacional = $periodo");
+  $sql = $conexionGrafico->query("SELECT fecha_inicio,autoriza from vacaciones where id_empleado = $id and periodovacacional = $periodo");
     $row = mysqli_fetch_assoc($sql);
     $autorizacion = $row['autoriza'];
     if($autorizacion == 2 or $autorizacion == 1 or $autorizacion == ''){

@@ -63,14 +63,14 @@
     $rw = $statement->fetch();
     $id = $rw['Empleado'];
   }
-  include('config.php');
-  $sql = $con->query("SELECT * FROM vacaciones where id_empleado = $id");
+  include('../conexionRh.php');
+  $sql = $conexionGrafico->query("SELECT * FROM vacaciones where id_empleado = $id");
   $row = mysqli_fetch_assoc($sql);
   $validacion = $row['autoriza'];
   if ($validacion == 0) {
 
     $SqlEventos   = ("SELECT * FROM vacaciones where id_empleado = $id");
-    $resulEventos = mysqli_query($con, $SqlEventos);
+    $resulEventos = mysqli_query($conexionGrafico, $SqlEventos);
 
 
 

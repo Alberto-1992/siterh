@@ -3,7 +3,7 @@ date_default_timezone_set("America/Monterrey");
 setlocale(LC_ALL,"es_ES");
 //$hora = date("g:i:A");
 
-require("config.php");
+require("../conexionRh.php");
 $hora = ucwords($_REQUEST['hora']);
 $lugarevento = ucwords($_REQUEST['lugarevento']);
 $evento            = ucwords($_REQUEST['evento']);
@@ -34,7 +34,7 @@ $InsertNuevoEvento = "INSERT INTO eventoscalendar(
       '" .$hora. "',
       '" .$lugarevento. "'
   )";
-$resultadoNuevoEvento = mysqli_query($con, $InsertNuevoEvento);
+$resultadoNuevoEvento = mysqli_query($conexionGrafico, $InsertNuevoEvento);
 
 header("Location:index.php?e=1");
 

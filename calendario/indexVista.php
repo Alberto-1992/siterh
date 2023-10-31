@@ -50,10 +50,9 @@ if (isset($_SESSION['usuarioAdminRh'])) {
 
 }
 
-include('config.php');
 
   $SqlEventos   = ("SELECT eventoscalendar.* FROM eventoscalendar inner join personalcurso on personalcurso.id_curso = eventoscalendar.id_curso WHERE personalcurso.id_empleado = $id");
-  $resulEventos = mysqli_query($con, $SqlEventos);
+  $resulEventos = mysqli_query($conexionGrafico, $SqlEventos);
 
 ?>
 <div class="mt-5"></div>

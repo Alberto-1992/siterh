@@ -34,7 +34,7 @@
 <?php
 $id = $_GET['id'];
 error_reporting(0);
-include('config.php');
+include('../conexionRh.php');
 require_once '../clases/conexion.php';
             $conexionX = new ConexionRh();
 $periodo = 2023;
@@ -57,7 +57,7 @@ $periodo = 2023;
   <?php 
   //error_reporting(0);
   $id_empleado = $dataEvento['Empleado'];
-  $sql = $con->query("SELECT fecha_inicio,autoriza from vacaciones where id_empleado = $id_empleado and periodovacacional = $periodo");
+  $sql = $conexionGrafico->query("SELECT fecha_inicio,autoriza from vacaciones where id_empleado = $id_empleado and periodovacacional = $periodo");
     $row = mysqli_fetch_assoc($sql);
     $autorizacion = $row['autoriza'];
     if($autorizacion == 2 or $autorizacion == 1 or $autorizacion == ''){

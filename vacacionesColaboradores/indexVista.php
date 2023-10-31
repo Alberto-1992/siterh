@@ -34,10 +34,10 @@
 <?php
 $id = $_GET['id'];
 
-include('config.php');
+include('../conexionRh.php');
 $periodo = 2023;
   $SqlEventos   = ("SELECT vacaciones.id_vacaciones,vacaciones.evento,vacaciones.fecha_inicio,vacaciones.fecha_fin,vacaciones.color_vacaciones,vacaciones.comentario,vacaciones.periodovacacional, plantillahraei.Empleado, plantillahraei.Nombre, personaloperativo2023.id_jefe FROM vacaciones left outer join personaloperativo2023 on personaloperativo2023.id_empleado = vacaciones.id_empleado left outer join plantillahraei on plantillahraei.Empleado = vacaciones.id_empleado WHERE personaloperativo2023.id_jefe = $id and vacaciones.periodovacacional = $periodo");
-  $resulEventos = mysqli_query($con, $SqlEventos);
+  $resulEventos = mysqli_query($conexionGrafico, $SqlEventos);
 
 ?> 
 <script>
@@ -72,7 +72,7 @@ while($dataEvento = mysqli_fetch_assoc($resulEventos)){ ?>
   <?php 
   error_reporting(0);
   $id_empleado = $dataEvento['Empleado'];
-  $sql = $con->query("SELECT autoriza from vacaciones where id_empleado = $id_empleado and periodovacacional = $periodo");
+  $sql = $conexionGrafico->query("SELECT autoriza from vacaciones where id_empleado = $id_empleado and periodovacacional = $periodo");
     $row = mysqli_fetch_assoc($sql);
     $autorizacion = $row['autoriza'];
     if($autorizacion == 2 or $autorizacion == 1 or $autorizacion == ''){

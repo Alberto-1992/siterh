@@ -3,7 +3,7 @@ date_default_timezone_set("America/Monterrey");
 setlocale(LC_ALL,"es_ES");
 //$hora = date("g:i:A");
 
-require("config.php");
+require("../conexionRh.php");
 $id_empleado = ucwords($_REQUEST['id_empleado']);
 $evento            = ucwords($_REQUEST['evento']);
 $f_inicio          = $_REQUEST['fecha_inicio'];
@@ -34,7 +34,7 @@ $InsertNuevoEvento = "INSERT INTO vacaciones(
       '" .$id_empleado. "',
       '".$periodovacacional."'
   )";
-$resultadoNuevoEvento = mysqli_query($con, $InsertNuevoEvento);
+$resultadoNuevoEvento = mysqli_query($conexionGrafico, $InsertNuevoEvento);
 
 header("Location:index.php?e=1");
 
