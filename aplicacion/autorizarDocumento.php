@@ -4,14 +4,16 @@ require_once '../clases/conexion.php';
 $conexionX = new ConexionRh();
 $id = $_POST['id'];
 $lineaestrategica = $_POST['lineaestrategica'];
+$eje = $_POST['eje'];
 try {
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
-$sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautorizacion, lineaestrategica = :lineaestrategica where id = :id");
+$sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautorizacion, lineaestrategica = :lineaestrategica, ejeestrategico = :ejeestrategico where id = :id");
     $sql->execute(array(
         ':validaautorizacion'=>1,
         ':lineaestrategica'=>$lineaestrategica,
+        ':ejeestrategico'=>$eje,
         ':id'=>$id
     ));
 

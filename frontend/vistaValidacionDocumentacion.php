@@ -60,8 +60,9 @@ require 'conexionRh.php';
 function autorizar() {
     var id = $("#id").val();
     var lineaestrategica = $("#linea").val();
+    var eje = $("#eje").val();
     var mensaje = confirm("El curso sera autorizado"); 
-    let parametros = { id: id, lineaestrategica:lineaestrategica }
+    let parametros = { id: id, lineaestrategica:lineaestrategica, eje:eje }
     if (mensaje == true) {
         $.ajax({
             data: parametros,
@@ -162,13 +163,23 @@ else if($validaacceso == 4){
     <option value="FORTALECIMIENTO DE COMPETENCIAS GERENCIALES">Fortalecimiento de competencias gerenciales</option>
     <option value="FORTALECIMIENTO DE COMPETENCIAS TECNICO - ADMINISTRATIVAS">Frotalecimiento de competencias tecnico - Aadministrativas</option>
     <option value="CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS">Cursos vinculados con derechos humanos, Igualdad y no discriminación, Transparencia, Ética y Prevención de conflisctos de interes</option>
-    <option value="FORTALECIMIENTO DE COMPETENCIAS ESPECIALIZADAS">FORTALECIMIENTO DE COMPETENCIAS ESPECIALIZADAS</option>
+    <option value="FORTALECIMIENTO DE COMPETENCIAS ESPECIALIZADAS">Fortalecimiento de competencias especializadas</option>
 </select>
 </div>
 <div class="col-md-3">
     <strong>Selecciona el eje</strong>
-<select class="form-control" id="linea">
-    <option value="linea uno">Linea uno</option>
+<select class="form-control" id="eje">
+    <option value="CAPACITACION">Capacitacion</option>
+    <option value="PROGRAMA ANUAL DE CAPACITACIÓN (PAC/MIR)">Programa anual de capacitación (PAC/MIR)</option>
+    <option value="BECA TIEMPO MENOR A 30 DIAS/SRH">Beca tiempo menor a 30 dias/SRH</option>
+    <option value="COMISIÓN CENTRAL MIXTA DE CAPACITACIÓN">Conmisión central mixta de capacitación</option>
+    <option value="COMITÉ DE ENSEÑANZA Y CAPACITACIÓN">Comité de enseñanza y capacitación</option>
+    <option value="PROGRAMA DE EDUCACIÓN CONTINUA">Peograma de educación continua</option>
+    <option value="INDIVIDUAL">Individual</option>
+    <option value="PERMISO DIRECTO DEL ÁREA">Permiso de área</option>
+    <option value="PROGRAMA ANUAL DE CAPACITACIÓN EN MATERIA DE TRASPARENCIA">Programa anual de capacitación en materia de transparencia</option>
+    <option value="COMITÉ DE ETICA">Comité de etica</option>
+    <option value="ACTUALIZACION TECNICO MEDICO">Actualización tecnico medico</option>
 </select>
 </div>
 <div class="col-md-1">
