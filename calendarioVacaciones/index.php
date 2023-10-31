@@ -241,7 +241,7 @@
   <?php
   } else if ($validacion == 1) {
     $SqlEventos   = ("SELECT * FROM vacaciones where id_empleado = $id");
-    $resulEventos = mysqli_query($con, $SqlEventos);
+    $resulEventos = mysqli_query($conexionGrafico, $SqlEventos);
   ?>
     <div class="mt-5"></div>
     <div class="container">
@@ -327,7 +327,7 @@
   <?php
   } else if ($validacion == 2) {
     $SqlEventos   = ("SELECT * FROM vacaciones where id_empleado = $id and periodovacacional = 2023");
-    $resulEventos = mysqli_query($con, $SqlEventos);
+    $resulEventos = mysqli_query($conexionGrafico, $SqlEventos);
   ?>
     <div class="mt-5"></div>
     <div class="container">
