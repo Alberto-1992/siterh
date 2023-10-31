@@ -172,7 +172,7 @@ else if($validaacceso == 4){
     <option value="">Seleccione</option>
     <option value="ACTUALIZACION NORMATIVA">Actualización normativa</option>
     <option value="FORTALECIMIENTO DE COMPETENCIAS GERENCIALES">Fortalecimiento de competencias gerenciales</option>
-    <option value="FORTALECIMIENTO DE COMPETENCIAS TECNICO - ADMINISTRATIVAS">Frotalecimiento de competencias tecnico - Aadministrativas</option>
+    <option value="FORTALECIMIENTO DE COMPETENCIAS TECNICO - ADMINISTRATIVAS">Frotalecimiento de competencias tecnico - Administrativas</option>
     <option value="CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS">Cursos vinculados con derechos humanos, Igualdad y no discriminación, Transparencia, Ética y Prevención de conflisctos de interes</option>
     <option value="FORTALECIMIENTO DE COMPETENCIAS ESPECIALIZADAS">Fortalecimiento de competencias especializadas</option>
 </select>
