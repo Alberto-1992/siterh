@@ -152,7 +152,18 @@ else if($validaacceso == 4){
         <th id="th">Especifique cual:</th>
         <td id="td"><?php echo $dataRegistro['otroexpidedocumento']?></td>
     </tr>
-
+    <tr>
+        <th id="th">¿El curso pertenece a alguno de los siguientes temas?:</th>
+        <td id="td"><?php echo $dataRegistro['criteriocurso']?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha vigencia inicio:</th>
+        <td id="td"><?php echo $dataRegistro['fechacriterioinicio']?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha vigencia final:</th>
+        <td id="td"><?php echo $dataRegistro['fechacriteriotermino']?></td>
+    </tr>
 </table>
 <div class="form-row">
 <div class="col-md-4">

@@ -34,7 +34,13 @@ $conexionX = new ConexionRh();
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where validaautorizacion = 0 order by datos.id DESC LIMIT 2000 ");
+    $empleado  = $conexionX->prepare("SELECT distinct id_empleado FROM datos where validaautorizacion = 0");
+    $empleado->execute();
+    $empleado = $conexionX->prepare("SELECT FOUND_ROWS()");
+    $empleado->execute();
+    $total_empleado = $empleado->fetchColumn();
+
+    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where validaautorizacion = 0 order by datos.id DESC LIMIT 50 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
@@ -50,6 +56,10 @@ $conexionX = new ConexionRh();
 <ul class="nav nav-tabs" >
         <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link active" aria-current="page" href="#" style="color: red;">Total: <?php echo $total_registro; ?> </a>
+            
+        </li>
+        <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link active" aria-current="page" href="#" style="color: blue;">Total empleados: <?php echo $total_empleado; ?> </a>
         </li>
         <!--
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">

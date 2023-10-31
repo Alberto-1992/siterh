@@ -111,7 +111,7 @@
                         <option value="Sin dato">Seleccione</option>
                         <?php
                     
-                        $query = $conexionX->prepare("SELECT * FROM catalogocapacitacion where activo = 0");
+                        $query = $conexionX->prepare("SELECT * FROM catalogocapacitacion where activo = 0 order by descripcionaccion");
                         $query->execute();
                         $query->setFetchMode(PDO::FETCH_ASSOC);
                         while ($row = $query->fetch()) { ?>
@@ -126,6 +126,29 @@
                         $('#areafortalece').val(valor)
 
                     }
+                    $(function () {
+    $('#fechainiciocriterio').prop("disabled", true);
+    $('#fechaterminocriterio').prop("disabled", true);
+
+})
+//clasificacion tamaños tumorales
+$(document).ready(function () {
+
+    $('#criteriocurso').change(function (e) {
+        if ($(this).val() === "ATLS" || $(this).val() === "ACLS" || $(this).val() === "BLS" || $(this).val() === "PALS" || $(this).val() === "RCP" ) {
+
+            $('#fechainiciocriterio').prop("disabled", false);
+            $('#fechaterminocriterio').prop("disabled", false);
+        
+        } else {
+            $('#fechainiciocriterio').prop("disabled", true);
+            $('#fechaterminocriterio').prop("disabled", true);
+            $('#fechainiciocriterio').val('');
+            $('#fechaterminocriterio').val('');
+
+        }
+    })
+});
                 </script>
 
                 <input type="hidden" class="form-control" name="areafortalece" id="areafortalece" required readonly>
@@ -141,6 +164,32 @@
                 <div class="col-md-3">
                     <label for="mensaje">Fecha de termino del curso:</label>
                     <input type="date" class="form-control" name="fechatermino" id="fechatermino" required>
+                </div>
+                <div class="col-md-6">
+                        <strong>¿El curso pertenece a alguno de los siguientes temas?</strong>
+                        <select type="form-select" class="form-control" name="criteriocurso" id="criteriocurso" required>
+                            <option selected value="No, ninguna">No, ninguna</option>
+
+                            <?php
+                            $query = $conexionX->prepare("SELECT * FROM criterioscursos order by nombrecriterio" );
+                            $query->execute();
+                            $data = $query->fetchAll();
+
+                            foreach ($data as $valores) :
+                                echo '<option value="' . $valores["nombrecriterio"] . '">' . $valores["nombrecriterio"] . '</option>';
+                            endforeach;
+
+                            ?>
+
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                    <strong for="mensaje">Fecha vigencia inicio:</strong>
+                    <input type="date" class="form-control" name="fechainiciocriterio" id="fechainiciocriterio">
+                </div>
+                <div class="col-md-3">
+                    <strong for="mensaje">Fecha vigencia final:</strong>
+                    <input type="date" class="form-control" name="fechaterminocriterio" id="fechaterminocriterio">
                 </div>
                 <div class="col-md-3">
                         <label>Modalidad</label>
