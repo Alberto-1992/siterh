@@ -343,7 +343,7 @@
         <div class="col-md-12 mb-3" style=" margin-top: -20px;">
           <h1 class="text-center" id="title" style="background-color: red;">Tus vacaciones fueron rechazadas.</h1>
           <?php 
-          $sql = $con->query("SELECT comentario from vacaciones where id_empleado = $id and periodovacacional = 2023");
+          $sql = $conexionGrafico->query("SELECT comentario from vacaciones where id_empleado = $id and periodovacacional = 2023");
             $row = mysqli_fetch_assoc($sql); 
             ?>
             <textarea class="form-control" rows="2" style="color: red;" readonly><?php echo $row['comentario'] ?></textarea>
