@@ -5,12 +5,7 @@ require_once '../clases/conexion.php';
 $conexionX = new ConexionRh();
 date_default_timezone_set("America/Monterrey");
 $hora = date("Y-m-d h:i:sa");
-
-try {
-    $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-    $conexionX->beginTransaction();
-    $sql = $conexionX->prepare("DELETE from estudiospostecnico where id_empleado = :id_empleado");
+$sql = $conexionX->prepare("DELETE from estudiospostecnico where id_empleado = :id_empleado");
             $sql->execute(array(
                 ':id_empleado'=>$id_empleado
             ));
@@ -30,6 +25,11 @@ try {
             $sql->execute(array(
                 ':id_empleado'=>$id_empleado
             ));
+try {
+    $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $conexionX->beginTransaction();
+
             
     $sql = $conexionX->prepare("UPDATE estudiosmediosup SET nombreformacionmedia=:nombreformacionmedia,nombremediasuperior=:nombremediasuperior,fechainicio=:fechainicio,fechatermino=:fechatermino,tiempocursado=:tiempocursado,documentomediosuperior=:documentomediosuperior where id_empleado=:id_empleado");
     $sql->execute(array(

@@ -61,15 +61,15 @@
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) {
-        require 'graficos/graficoCabeceraOperativo.php';
-        require 'graficos/graficosCabecera.php';
+        require_once 'graficos/graficoCabeceraOperativo.php';
+        require_once 'graficos/graficosCabecera.php';
 
         //require 'graficos/graficosCapturas.php';
     }else if(isset($_SESSION['usuarioDatos'])) {
-        require 'graficos/graficoCabeceraOperativo.php';
+        require_once 'graficos/graficoCabeceraOperativo.php';
         
     }else if(isset($_SESSION['usuarioJefe'])) {
-        require 'graficos/graficoCabeceraOperativo.php';
+        require_once 'graficos/graficoCabeceraOperativo.php';
         
     }
     ?>
@@ -78,7 +78,7 @@
     <div class="gallery">
         <?php
         if (isset($_SESSION['usuarioAdminRh'])) {
-            require 'menu/menuPrincipal.php';
+            require_once 'menu/menuPrincipal.php';
         ?>
 
 <script>
@@ -207,7 +207,7 @@
         <?php
 
         } else if (isset($_SESSION['usuarioDatos'])) {
-            require 'menu/menuPersonal.php';
+            require_once 'menu/menuPersonal.php';
         ?>
         
 
@@ -255,7 +255,7 @@
             </article>
             <?php
                 $usernameSesion = $_SESSION['usuarioDatos'];
-                require 'conexionRh.php';
+                require_once 'conexionRh.php';
                 $statement = $conexionRh->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
                 $statement->execute(array(
                     ':correo' => $usernameSesion
@@ -338,9 +338,9 @@
                 }
             
         } else if (isset($_SESSION['usuarioJefe'])) {
-            require 'menu/menuPersonal.php';
+            require_once 'menu/menuPersonal.php';
             
-        require 'conexionRh.php';
+            require_once 'conexionRh.php';
                 $statement = $conexionRh->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
                 $statement->execute(array(
                     ':correo' => $usernameSesion
@@ -429,7 +429,7 @@
             <?php
 
                 $usernameSesion = $_SESSION['usuarioJefe'];
-                require 'conexionRh.php';
+                require_once 'conexionRh.php';
                 $statement = $conexionRh->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo ");
                 $statement->execute(array(
                     ':correo' => $usernameSesion
@@ -576,7 +576,7 @@
 
 </body>
 <?php
-require 'modals/cargarImagenperfil.php';
+require_once 'modals/cargarImagenperfil.php';
 ?>
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
 
