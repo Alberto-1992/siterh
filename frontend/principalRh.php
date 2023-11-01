@@ -28,7 +28,7 @@
     </style>
     <header class="header">
         <?php 
-        error_reporting(0);
+        //error_reporting(0);
         $path = "imagenesPerfiles/".$identificador;
 
         if (file_exists($path)) {
