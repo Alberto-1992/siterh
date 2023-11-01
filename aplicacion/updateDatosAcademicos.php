@@ -10,6 +10,27 @@ try {
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
+    $sql = $conexionX->prepare("DELETE from estudiospostecnico where id_empleado = :id_empleado");
+            $sql->execute(array(
+                ':id_empleado'=>$id_empleado
+            ));
+    $sql = $conexionX->prepare("DELETE from estudiossuperior where id_empleado = :id_empleado");
+            $sql->execute(array(
+                ':id_empleado'=>$id_empleado
+            ));
+        $sql = $conexionX->prepare("DELETE from estudiosmaestria where id_empleado = :id_empleado");
+            $sql->execute(array(
+                ':id_empleado'=>$id_empleado
+            ));
+            $sql = $conexionX->prepare("DELETE from especialidad where id_empleado = :id_empleado");
+            $sql->execute(array(
+                ':id_empleado'=>$id_empleado
+            ));
+            $sql = $conexionX->prepare("DELETE from doctorado where id_empleado = :id_empleado");
+            $sql->execute(array(
+                ':id_empleado'=>$id_empleado
+            ));
+            
     $sql = $conexionX->prepare("UPDATE estudiosmediosup SET nombreformacionmedia=:nombreformacionmedia,nombremediasuperior=:nombremediasuperior,fechainicio=:fechainicio,fechatermino=:fechatermino,tiempocursado=:tiempocursado,documentomediosuperior=:documentomediosuperior where id_empleado=:id_empleado");
     $sql->execute(array(
         ':nombreformacionmedia' => $nombreformacionmedia,
@@ -37,27 +58,6 @@ try {
             ':id_empleado'=>$id_empleado
         ));
         
-        $sql = $conexionX->prepare("DELETE from estudiossuperior where id_empleado = :id_empleado");
-            $sql->execute(array(
-                ':id_empleado'=>$id_empleado
-            ));
-        $sql = $conexionX->prepare("DELETE from estudiosmaestria where id_empleado = :id_empleado");
-            $sql->execute(array(
-                ':id_empleado'=>$id_empleado
-            ));
-            $sql = $conexionX->prepare("DELETE from especialidad where id_empleado = :id_empleado");
-            $sql->execute(array(
-                ':id_empleado'=>$id_empleado
-            ));
-            $sql = $conexionX->prepare("DELETE from doctorado where id_empleado = :id_empleado");
-            $sql->execute(array(
-                ':id_empleado'=>$id_empleado
-            ));
-            $sql = $conexionX->prepare("DELETE from estudiospostecnico where id_empleado = :id_empleado");
-            $sql->execute(array(
-                ':id_empleado'=>$id_empleado
-            ));
-
    // require '../conexionRh.php';
     if ($_FILES["documentomediasup"]["error"] > 0) {
         
