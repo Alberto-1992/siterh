@@ -179,7 +179,9 @@ foreach($_FILES["documentocurphijo"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+
     mysqli_query($conexionGrafico, $consulta);
+
     if($validatransac != false){
         echo "<script>Swal.fire({
             position: 'top-end',
@@ -200,4 +202,5 @@ foreach($_FILES["documentocurphijo"]['tmp_name'] as $key => $tmp_name)
         timer: 1500
     })</script>";
 }
+
 ?>

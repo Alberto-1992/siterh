@@ -14,11 +14,12 @@
         <h1 style="text-align: center; font-size: 25px;">Actualiza tu información academica</h1>
         <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualices tus datos academicos.</h1>
         <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 0px; text-align:center;">
-            <input type="submit" name="add" value="Cerrar ventana" style="background-color: green; color: white; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">
+           
         </div>
 
         <form name="datosacademicosactualizar" id="datosacademicosactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
             <script>
+                
                 $("#datosacademicosactualizar").on("submit", function(e) {
                     e.preventDefault();
                     var formData = new FormData(document.getElementById("datosacademicosactualizar"));
@@ -26,13 +27,11 @@
                     $.ajax({
                         url: "aplicacion/updateDatosAcademicos.php",
                         type: "post",
-                        dataType: "html",
                         data: formData,
-                        cache: false,
                         contentType: false,
                         processData: false,
                         beforeSend: function(datos) {
-                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
                         },
                         success: function(datos) {
                             $("#mensaje").html(datos);
@@ -43,6 +42,7 @@
                         }
                     })
                 })
+                
             </script> 
             
             <div class="form-row">
@@ -95,6 +95,7 @@
                         <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento</strong>
                             <?php
+                            clearstatcache();
                             $mediasup = $row['nombreformacionmedia'];
                             
                             $path = "documentosmediasup/".$mediasup.$identificador;
@@ -110,7 +111,7 @@
                                     }
                                 }
                             }
-                            clearstatcache();
+                            
                             ?>
                         </div>
                         <?php
@@ -161,6 +162,7 @@
                         <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento titulo</strong>
                             <?php
+                            clearstatcache();
                             $tecnica = $rowt['nombreformaciontecnica'];
                             
                             $path = "documentostecnica/".$tecnica.$identificador;
@@ -182,6 +184,7 @@
                     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento cedula</strong>
                             <?php
+                            clearstatcache();
                             $tecnicacedula = $rowt['nombreformaciontecnica'];
                             
                             $path = "documentostecnicacedula/".$tecnicacedula.$identificador;
@@ -197,7 +200,6 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
         <!--inicia postecnico -->
@@ -261,6 +263,7 @@
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
                             <strong>Documento postecnico</strong>
                             <?php
+                            clearstatcache();
                             $postecnico = $rowsP['nombreformacionpostecnico'];
                             
                             $path = "documentospostecnico/".$postecnico.$identificador;
@@ -276,7 +279,6 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
                         
@@ -404,6 +406,7 @@
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
                             <strong>Documento titulo</strong>
                             <?php
+                            clearstatcache();
                             $licenciatura = $rows['nombreformacionsuperior'];
                             
                             $path = "documentoslicenciatura/".$licenciatura.$identificador;
@@ -419,12 +422,12 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
                             <strong>Documento cedula</strong>
                             <?php
+                            clearstatcache();
                             $licenciatura = $rows['nombreformacionsuperior'];
                             
                             $path = "documentoscedulalicenciatura/".$licenciatura.$identificador;
@@ -440,7 +443,6 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
                     </div>
@@ -571,6 +573,7 @@
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
                             <strong>Documento titulo</strong>
                             <?php
+                            clearstatcache();
                             $maestria = $rowm['nombreformacionmaestria'];
                             
                             $path = "documentosmaestria/".$maestria.$identificador;
@@ -586,12 +589,12 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
                             <strong>Documento cedula</strong>
                             <?php
+                            clearstatcache();
                             $maestria = $rowm['nombreformacionmaestria'];
                             
                             $path = "documentosmaestriacedula/".$maestria.$identificador;
@@ -607,7 +610,6 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
                     </div>
@@ -738,6 +740,7 @@
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
                             <strong>Documento</strong>
                             <?php
+                            clearstatcache();
                             $posgrado = $rowm['nombreformacionacademica'];
                             
                             $path = "documentosposgradoesp/".$posgrado.$identificador;
@@ -753,7 +756,6 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
                     </div>
@@ -888,6 +890,7 @@
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
                             <strong>Documento titulo</strong>
                             <?php
+                            clearstatcache();
                             $doctorado = $rowd['nombreformaciondoctorado'];
                             
                             $path = "documentosdoctorado/".$doctorado.$identificador;
@@ -903,12 +906,12 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
                         <div class="col-md-3" style="border: 1px solid #F0F0F0;">
                             <strong>Documento cedula</strong>
                             <?php
+                            clearstatcache();
                             $doctorado = $rowd['nombreformaciondoctorado'];
                             
                             $path = "documentosdoctoradocedula/".$doctorado.$identificador;
@@ -924,7 +927,6 @@
                                     }
                                 }
                             }
-                            clearstatcache();
                             ?>
                         </div>
                     </div>
@@ -993,22 +995,23 @@
 
                 <div id="divGuests4"></div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
+                <a href="#"  id="btn-send" style="background-color: yellow; color: white; font-size: 15px;" onclick="window.location.href='principalRh';">Cerrar</a>&nbsp;&nbsp;
                     <input type="submit" name="add" id="btn-send" value="Actualizar">
                 </div>
+            </div></form>
                 <script>
                     $('input[type="file"]').on('change', function () {
                         var ext = $(this).val().split('.').pop();
                         if ($(this).val() != '') {
                             if (ext == "pdf") {
                             
-                                if ($(this)[0].files[0].size > 9048576) {
+                                if ($(this)[0].files[0].size > 5048576) {
                                     console.log("El documento excede el tamaño máximo");
-                                    $('#modal-title').text('¡Precaución!');
-                                    $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
-                                    $("#modal-gral").modal();
+                                    alert('¡Precaución! Se solicita un archivo no mayor a 5MB. Por favor verifica.');
+                                    
                                     $(this).val('');
                                 } else {
-                                    $("#modal-gral").hide();
+                                    $("#mensaje").hide();
                                 }
                             }
                             else {

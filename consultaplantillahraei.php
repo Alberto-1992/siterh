@@ -154,7 +154,8 @@ $(function() {
             url: "consultaBusquedaPlantillaHraei.php",
             data: ob,
             beforeSend: function() {
-
+                '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+    
             },
             success: function(data) {
 
@@ -197,7 +198,7 @@ $('.item-comentario').on('click', '.ver-info', function() {
 $(document).ready(function() {
 $('.item-comentario').on('click', '.ver-info', function() {
     $('#tabla_resultado').html(
-        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
     );
 
 

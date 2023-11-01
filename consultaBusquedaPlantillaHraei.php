@@ -4,16 +4,22 @@ date_default_timezone_set('America/Monterrey');
 require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
 $id = $_POST['id'];
+try {
+    $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $conexionX->beginTransaction();
 $query= $conexionX->prepare("SELECT plantillahraei.*, horariosplantilla.*, compatibilidad.* from plantillahraei inner join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado
 inner join compatibilidad on compatibilidad.id_empleado = plantillahraei.Empleado
 where plantillahraei.Empleado = $id");
 $query->execute();
 $dataRegistro= $query->fetch();
-if($query != false){
-    
-    require 'frontend/vistaplantillahraei.php';
-}else{
-    
-}
 
+$validatransac = $conexionX->commit();
+    if ($validatransac != false) {
+        require 'frontend/vistaplantillahraei.php';
+    }
+} catch (Exception $e) {
+    $conexionX->rollBack();
+
+}
 ?>
