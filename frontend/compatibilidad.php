@@ -18,7 +18,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/estilosMenuNew.css?=1" rel="stylesheet">
+    <link href="css/estilosMenu.css?=1" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
@@ -34,11 +34,11 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #9C9B8F;">
-        <span id="cabecera">Compatibilidad laboral</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<header class="headerinfarto" style="background-color: #00BDB3;">
+        
+        <span id="cabecera">Compatibilidad laboral.</span>
+
+    </header>
 
 
     </nav>
@@ -139,8 +139,9 @@ $conexionX = new ConexionRh();
 
 ?>
 <input type="hidden" value="<?php echo $validacion ?>" id="validaotroempleo">
-<div class="col-md-6">
-                    <strong>Cuento con otro empleo:</strong>
+<div style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">
+<div class="col-md-3">
+                    <strong>Cuentas con otro empleo:</strong>
                     <select name="otroempleo" id="otroempleo" class="form-control" required>
                         <option value="<?php echo $rowC['otroempleo'] ?>"><?php echo $rowC['otroempleo'] ?></option>
                         <option value="Si">Si</option>
@@ -148,6 +149,7 @@ $conexionX = new ConexionRh();
                 
             </select>
                 </div>
+</div>
             
 <div id="contenido">
 <div class="form-row">
@@ -155,7 +157,7 @@ $conexionX = new ConexionRh();
                     <label for="mensaje">N° de Empleado:</label>
 </div>
                 <input type="text" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" value="<?php echo $identificador ?>" readonly>
-                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color: white;">
+                <div id="cabeceras">
                     <h1 style="font-size:22px;">Primer empleo</h1>
                 </div>
                 <div class="col-md-6">
@@ -191,7 +193,7 @@ $conexionX = new ConexionRh();
                 </div>
 
                 
-                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color: white;">
+                <div id="cabeceras">
                     <h1 style="font-size:22px;">Segundo empleo</h1>
                 </div>
 
@@ -224,7 +226,7 @@ $conexionX = new ConexionRh();
 </div>
 </div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
-                <a href="#" name="add" id="btn-send" style="background-color: yellow; color: black; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">Cerrar ventana</a>&nbsp;&nbsp;
+                <a href="#" name="add" id="btn-send-close" onclick="window.location.href='principalRh';">Cerrar ventana</a>&nbsp;&nbsp;
                     <input type="submit" name="add" id="btn-send" value="Enviar">
                 </div>
             </div>

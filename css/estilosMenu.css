@@ -484,3 +484,41 @@ tr {
   padding: 4px;
   margin-left: 5px;
 }
+#btn-send {
+	background: #258bdc;
+	color: #FFF;
+	padding: 5px 5px;
+	border: 0px;
+  margin-top: 15px;
+  width: 10rem;
+  border-radius: 10px;
+}
+#btn-send:hover {
+  background-color: #4092B8;
+}
+#btn-send-close {
+  background-color: yellow; 
+  color: white; 
+  font-size: 15px;
+  padding: 5px 5px;
+	border: 0px;
+  margin-top: 15px;
+  width: 10rem;
+  border-radius: 10px;
+}
+#btn-send-close:hover {
+  background-color: beige;
+  color: black;
+}
+.container {
+  background-color: #ffffff;
+  padding: 20px;
+}
+#cabeceras {
+  width: 100%; 
+  height: auto; 
+  background-color:#6bafcc; 
+  text-align:center;
+  margin-top:10px; 
+  color: white;
+}

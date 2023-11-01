@@ -1,3 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://collectivecloudperu.com/blogdevs/wp-content/uploads/2017/09/cropped-favicon-1-32x32.png">
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Actualización datos personales</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/estilosMenu.css?=1" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/starter-template.css" rel="stylesheet">
+</head>
+<body>
 <script>
     function limpiar() {
 
@@ -131,25 +157,18 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
         $obj = $sql->fetch();
         $entidadnacimiento = $obj['Estado'];
     ?>
-<nav class="navbar navbar-expand-md fixed-top" style="background-color: #0D9A85;">
-    <span id="cabecera">Actualización datos personales</span>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<header class="headerinfarto" style="background-color: #4AA29D;">
+        
+        <span id="cabecera">Actualización de datos perosnales.</span>
 
-
-</nav>
-
+    </header>
 <div class="container">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
     <link rel="stylesheet" href="iconos/css/all.css?n=1">
     <div id="mensaje"></div>
     <h1 style="text-align: center; font-size: 25px;">Actualiza tu información personal</h1>
-    <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualizes tus datos personales.</h1>
-    <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 0px; text-align:center;">
-        <input type="submit" name="add" value="Cerrar ventana" style="background-color: green; color: white; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">
-    </div>
+    <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualices tus datos personales.</h1>
 
     <form name="datospersonalesactualizar" id="datospersonalesactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
         <script>
@@ -179,7 +198,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             })
         </script>
         <div class="form-row">
-            <div style="width: 100%; height: auto; background-color:aliceblue; text-align:center;margin-top:10px;">
+            <div id="cabeceras">
                 <h1 style="font-size:22px;">Datos personales</h1>
             </div>
             <div class="col-md-3">
@@ -307,7 +326,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
                 })
             </script>
-            <div style="width: 100%; height: auto; background-color:aliceblue; text-align:center;margin-top:10px;">
+            <div id="cabeceras">
                 <h1 style="font-size:22px;">Domicilio</h1>
             </div>
             <div class="col-md-3">
@@ -481,7 +500,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
                     $edadhijo = $rows['edadhijo'];
                 ?>
-        <div style="width: 100%; height: auto; background-color:aliceblue; text-align:center;margin-top:10px;">
+        <div id="cabeceras">
                 <h1 style="font-size:22px;">Datos hijos</h1>
             </div>
             <div class="col-md-3">
@@ -545,7 +564,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
                         for (let i = 0; i < quantity; i++) {
                             content += `<div class="form-row">
-                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                            <div id="cabeceras">
                                     <h1 style="font-size:22px;">Información Hijo ${i +1}</h1>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -579,7 +598,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 </script>
                 <div id="divGuests"></div>
 
-            <div style="width: 100%; height: auto; background-color:aliceblue; text-align:center;margin-top:10px;">
+            <div id="cabeceras">
                 <h1 style="font-size:22px;">En caso de emergencia, llamar a:</h1>
             </div>
             <div class="col-md-4">
@@ -595,6 +614,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <input type="mail" class="form-control" name="parentescoemergencia" id="parentescoemergencia" value="<?php echo $parentezcoemergencia ?>">
             </div>
             <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
+            <a href="#" id="btn-send-close" onclick="window.location.href='principalRh';">Cerrar</a>&nbsp;&nbsp;
                 <input type="submit" name="add" id="btn-send" value="Actualizar">
             </div>
         </div>

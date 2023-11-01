@@ -14,33 +14,27 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Actualización datos academicos</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/estilosMenuNew.css?=1" rel="stylesheet">
+    <link href="css/estilosMenu.css?=1" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #0D9A85;">
-        <span id="cabecera">Actualización datos academicos</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<header class="headerinfarto" style="background-color: #03CAB1;">
+        
+        <span id="cabecera">Actualización de datos academicos.</span>
 
-
-    </nav>
+    </header>
 
     <div class="container">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <div id="mensaje"></div>
         <h1 style="text-align: center; font-size: 25px;">Actualiza tu información academica</h1>
         <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualizes tus datos academicos.</h1>
-        <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 0px; text-align:center;">
-            <input type="submit" name="add" value="Cerrar ventana" style="background-color: green; color: white; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">
-        </div>
-
+        
         <form name="datosacademicos" id="datosacademicos" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
             <script>
                 $("#datosacademicos").on("submit", function(e) {
@@ -69,7 +63,7 @@
                 })
             </script>
             <div class="form-row">
-                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color: white;">
+                <div id="cabeceras">
                     <h1 style="font-size:22px;">Datos Academicos</h1>
                 </div>
                 <div class="col-md-3">
@@ -77,7 +71,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label>Ultimo grado de estudios</label>
-                    <input type="text" id="ultimogradoestudios" name="ultimogradoestudios" autocomplete="off" class="form-control" value="">
+                    <input type="text" id="ultimogradoestudios" name="ultimogradoestudios" autocomplete="off" class="form-control" value="" required>
                 </div>
                 <div class="form-group col-md-12">
                     <label style="color: red;">Especialidad con la actualmente labora en el HRAEI. (Solo personal medico y enfermeria)</label>
@@ -136,7 +130,7 @@
                             clearstatcache();
                             ?>
                         </div>
-                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color:white;">
+                <div id="cabeceras">
                     <h1 style="font-size:22px;">Nivel Superior</h1>
                 </div>
 
@@ -159,7 +153,7 @@
                 while ($rows = $sql->fetch()) {
                     $valor = $rows['id_superior'];
                 ?>
-                    <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px; color:white;">
+                    <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos Licenciatura</h1>
                     </div>
                     <div class="form-row">
@@ -234,7 +228,7 @@
 
                         for (let i = 0; i < quantity; i++) {
                             content += `<div class="form-row">
-                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                            <div id="cabeceras">
                                     <h1 style="font-size:22px;">Información licenciatura ${i +1}</h1>
                                 </div>
                             <div class="form-group col-md-6">
@@ -276,7 +270,7 @@
                 </script>
                 <div id="divGuests"></div>
 
-                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color:white;">
+                <div id="cabeceras">
                     <h1 style="font-size:22px;">Nivel Maestria</h1>
                 </div>
                 <?php
@@ -298,7 +292,7 @@
                 while ($rowm = $sqlm->fetch()) {
                     $valorm = $rowm['id_maestria'];
                 ?>
-                    <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px;color:white;">
+                    <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos Maestria</h1>
                     </div>
                     <div class="form-row">
@@ -372,7 +366,7 @@
 
                         for (let i = 0; i < quantity2; i++) {
                             content += `<div class="form-row">
-                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                            <div id="cabeceras">
                                     <h1 style="font-size:22px;">Información maestria ${i +1}</h1>
                                 </div>
                             <div class="form-group col-md-6">
@@ -414,7 +408,7 @@
                 </script>
 
                 <div id="divGuests2"></div>
-                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                <div id="cabeceras">
                     <h1 style="font-size:22px;">Posgrado/Especialidad</h1>
                 </div>
                 <?php
@@ -436,7 +430,7 @@
                 while ($rowm = $sqlm->fetch()) {
                     $valorm = $rowm['id_especialidad'];
                 ?>
-                    <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px;color:white;">
+                    <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos Posgrado/Especialidad</h1>
                     </div>
                     <div class="form-row">
@@ -513,7 +507,7 @@
 
                         for (let i = 0; i < quantity3; i++) {
                             content += `<div class="form-row">
-                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                            <div id="cabeceras">
                                     <h1 style="font-size:22px;">Información posgrado ${i +1}</h1>
                                 </div>
                             <div class="form-group col-md-6">
@@ -560,7 +554,7 @@
                 </script>
 
                 <div id="divGuests3"></div>
-                <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px;color:white;">
+                <div id="cabeceras">
                     <h1 style="font-size:22px;">Doctorado/Subespecialidad</h1>
                 </div>
                 <?php
@@ -582,7 +576,7 @@
                 while ($rowd = $sqld->fetch()) {
                     $valord = $rowd['id_doctorado'];
                 ?>
-                    <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:1px;color:white;">
+                    <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos Doctorado</h1>
                     </div>
                     <div class="form-row">
@@ -659,7 +653,7 @@
 
                         for (let i = 0; i < quantity4; i++) {
                             content += `<div class="form-row">
-                            <div style="width: 100%; height: auto; background-color:#0D6F9A; text-align:center;margin-top:10px; color:white;">
+                            <div id="cabeceras">
                                     <h1 style="font-size:22px;">Información doctorado ${i +1}</h1>
                                 </div>
                             <div class="form-group col-md-6">
@@ -706,6 +700,7 @@
 
                 <div id="divGuests4"></div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
+                    <a href="#" id="btn-send-close" onclick="window.location.href='principalRh';">Cerrar</a>&nbsp;&nbsp;
                     <input type="submit" name="add" id="btn-send" value="Actualizar">
                 </div>
                 <script>
@@ -731,3 +726,8 @@
                         }
                     });
                 </script>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

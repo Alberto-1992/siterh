@@ -18,7 +18,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/estilosMenuNew.css?=1" rel="stylesheet">
+    <link href="css/estilosMenu.css?=1" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
@@ -33,16 +33,11 @@
 </script>
 
 <body>
+<header class="headerinfarto" style="background-color: #874AA2;">
+        
+            <span id="cabecera">Plan individual de capacitación.</span>
 
-    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #85B4B9;">
-        <span id="cabecera">Capacitación</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-    </nav>
-
+        </header>
     <div class="container">
         <div id="mensaje"></div>
         <h1 style="text-align: center; font-size: 25px;">Carga de información de actualización academica</h1>
@@ -273,7 +268,7 @@ $(document).ready(function () {
                     <input type="text" class="form-control" name="otroexpidedocumento" id="otroexpidedocumento">
                 </div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
-                <a href="#" id="btn-send" style="background-color: yellow; color: black; font-size: 15px; border: none; border-radius: 7px;" onclick="window.location.href='programaCapacitacion';">Cerrar ventana</a>&nbsp;&nbsp;
+                <a href="#" id="btn-send-close" onclick="window.location.href='programaCapacitacion';">Cerrar ventana</a>&nbsp;&nbsp;
                     <input type="submit" name="add" id="btn-send" value="Guardar">
                     
                 </div>
@@ -281,7 +276,7 @@ $(document).ready(function () {
         </form>
     </div>
 
-    <div class="container" style="width: 100%; overflow-x:scroll;">
+    <div class="container" style="width: 100%; overflow-x:scroll; margin-top: 15px;">
         <?php
         error_reporting(0);
         require_once 'clases/conexion.php';
