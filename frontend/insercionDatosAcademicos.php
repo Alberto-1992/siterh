@@ -22,8 +22,8 @@
 
 </head>
 
-<body>
-<header class="headerinfarto" style="background-color: #03CAB1;">
+<body style="padding: 0px;">
+<header class="headerinfarto" style="background-color: #03CAB1; padding: 0px;">
         
         <span id="cabecera">Actualización de datos academicos.</span>
 

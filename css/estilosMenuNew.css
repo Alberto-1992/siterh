@@ -134,9 +134,9 @@ nav.main-menu li.active>a,
 .dropdown-menu>.active>a:focus,
 .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
 .dashboard-page nav.dashboard-menu ul li.active a {
-   color: white;
-  background-color: #739ddb;
-    width: 100%;
+  color: white;
+  background-color: #464949;
+  width: 100%;
 
 }
 
@@ -155,16 +155,16 @@ nav.main-menu li.active>a,
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
-/*:root {
+:root {
   --header-height: 3rem;
   --nav-width: 90px;
   --first-color: #F2F3F4;
-  --first-color-light: #2E4053 ;
+  --first-color-light: #2E4053;
   --white-color: #16428E;
   --body-font: italic;
   --normal-font-size: 19px;
   --z-fixed: 100
-}*/
+}
 
 .header {
   width: 100%;
@@ -175,7 +175,7 @@ nav.main-menu li.active>a,
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;
-  background-color: #366FD3;
+  background-color: #464949;
   z-index: 99;
   transition: .5s
 }
@@ -720,105 +720,3 @@ nav li:hover ul,
 
 
 /* div.demo-content{box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.20);color:#8d9090;} */
-#notification-header {
-	background: #fff;
-    padding: 5px;
-    text-align: right;
-    /* margin-top: 4px; */
-    border-radius: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-button#notification-icon {
-	background: transparent;
-	border: 0;
-	position:relative;
-	cursor:pointer;
-}
-#notification-count{
-	position: absolute;
-    left: -2px;
-    top: -8px;
-    font-size: 14px;
-    color: #de5050;
-    font-weight: bold;
-}
-#form-header {
-	font-size:1.5em;
-}
-#frmNotification {
-	padding:10px 10px;
-}
-.form-row{
-	padding-bottom:20px;
-  
-}
-#btn-send {
-	background: #258bdc;
-	color: #FFF;
-	padding: 5px 5px;
-	border: 0px;
-  margin-top: 15px;
-  width: 10rem;
-  border-radius: 10px;
-}
-#btn-send:hover {
-  background-color: #4092B8;
-}
-div.demo-content input[type='text'],textarea{
-	width: 100%;
-	padding: 0px 5px;
-  
-}
-#notification-latest {
-	color: #555;
-  position: absolute;
-  right: 0px;
-  background: #f5f5f5;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.20);
-  /* max-width: 250px; */
-  text-align: left;
-  font-size: 12px;
-  height: 60rem;
-  overflow-y: scroll;
-  margin-top: -45px;
-  margin-right: -28px;
-  transition: all 800ms;
-  filter: blur(0px);
-}
-
-.notification-item {
-	padding:10px;
-	border-bottom: #ce2078 2px solid;
-	cursor:pointer;
-  height: auto;
-  width: 15rem;
-  
-}
-.notification-subject {		
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  
-}
-.notification-comment {		
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-style:italic;
-}
-::-webkit-scrollbar{
-  width: 9px;
-  height: 9px;
-  cursor: pointer;
-}
-::-webkit-scrollbar-track{
-  background: #ACAEAD;
-  border-radius: 50px;
-  cursor: pointer;
-}
-::-webkit-scrollbar-thumb{
-  background: #fff;
-  border-radius: 50px;
-  cursor: pointer;
-}

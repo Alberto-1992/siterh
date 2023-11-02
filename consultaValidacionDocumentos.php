@@ -71,6 +71,7 @@ $conexionX = new ConexionRh();
             </ul>
         </li>
 -->
+<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);">
     </ul>
     
     <hr id="hrinicial">

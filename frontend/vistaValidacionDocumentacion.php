@@ -13,7 +13,7 @@ require 'conexionRh.php';
 <input type="hidden" id="nombrecurso" value="<?php echo $dataRegistro['nombrecurso']; ?>">
 <input type="hidden" id="fechatermino" value="<?php echo $dataRegistro['fechatermino']; ?>">
 <input type="hidden" id="id_empleado" value="<?php echo $dataRegistro['id_empleado']; ?>">
-<ul class="nav nav-tabs" style="margin-top: 47px;" >       
+<ul class="nav nav-tabs" style="margin-top: 0px;" >       
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">

@@ -13,7 +13,7 @@ require 'conexionRh.php';
 <input type="hidden" id="curp" value="<?php echo $dataRegistro['curp']; ?>">
 <input type="hidden" id="evaluar" value="1">
 <input type="hidden" id="cancerlarevaluacion" value="0">
-<ul class="nav nav-tabs" style="margin-top: 47px;" >       
+<ul class="nav nav-tabs" style="margin-top: 0px;" >       
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">

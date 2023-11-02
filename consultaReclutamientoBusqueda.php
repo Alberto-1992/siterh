@@ -1,5 +1,5 @@
 <?php session_start();
-//error_reporting(0);
+error_reporting(0);
 require_once 'clases/conexion.php';
 $conexion = new Conexion();
 $id = $_POST['id'];

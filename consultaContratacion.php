@@ -44,9 +44,9 @@ $conexionDocumentacion = new ConexionDocumentacion();
                 <li><a class="dropdown-item" href="#" onclick="documentos();">Documentacion </a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelContratacion();">Exportar a excel </a></li>
                 
-                
             </ul>
         </li>
+        <input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeyup="return handleKeyPress(event);">
     </ul>
     <hr id="hrinicial">
 

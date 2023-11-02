@@ -23,7 +23,7 @@
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
 </head>
-<body>
+<body style="padding: 0px;">
 <script>
     function limpiar() {
 
@@ -157,7 +157,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
         $obj = $sql->fetch();
         $entidadnacimiento = $obj['Estado'];
     ?>
-<header class="headerinfarto" style="background-color: #4AA29D;">
+<header class="headerinfarto" style="background-color: #4AA29D; padding: 0px;">
         
         <span id="cabecera">Actualización de datos perosnales.</span>
 

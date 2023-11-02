@@ -133,7 +133,7 @@
                 </a>
             </article>
             <article class="card" id="estructura-organizacional" onclick="estructura();">
-                <a href="../rh/admin">
+                <a href="../rh/admin2023">
                     <hr id="hr6">
                     <i class="fa fa-desktop" aria-hidden="true" id="iconosdiv"></i>
                     <p>Control Eval Desemp.</p>
@@ -512,6 +512,7 @@
         ?>
 
     </div>
+<!--
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) { ?>
         <style>
@@ -573,7 +574,7 @@
 
         };
     </script>
-
+    -->
 </body>
 <?php
 require_once 'modals/cargarImagenperfil.php';

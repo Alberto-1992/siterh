@@ -23,18 +23,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #FEB71E;">
-        <span id="cabecera">Faltante de autorizar</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
-
-            <?php
+<header class="headerinfarto" style="background-color: #464949;">
+        
+        <span id="cabecera">Validación documentos cursos.</span>
+        <?php
             include("notificaciones/conexion.php");
             ?>
 
@@ -54,8 +46,9 @@
 
 
         </div>
-    </nav>
-<div class="box1" style="margin-top: 10px;">
+    </header>
+    
+    <div class="box1" >
     <?php 
     switch(true) {
 
@@ -63,9 +56,6 @@
             require 'menu/menuAutorizacionCursos.php';
         break;
         case isset($_SESSION['usuarioJefe']):
-            require 'menu/menuAutorizacionCursos.php';
-        break;
-        case isset($_SESSION['usuarioDatos']):
             require 'menu/menuAutorizacionCursos.php';
         break;
         default:
@@ -95,14 +85,11 @@
             })
 
         </script>
-        <div class="autoheight">
-<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);">
             <div id="tabla_resultadobus">
 
             </div>
-            <div id="tabla_resultado" class="adaptar"></div>
+            <div id="tabla_resultado"></div>
         </div>
-    </div>
 <script>
   function handleKeyPress(e)
 {
@@ -144,7 +131,7 @@
                     $("#notification-count").remove();
                     $("#notification-latest").show();
                     $("#notification-latest").html(data);
-                    $('.box1').css('filter', 'blur(3px)');
+                    //$('.box1').css('filter', 'blur(3px)');
                 },
                 error: function() {}
             });
@@ -154,7 +141,7 @@
             $('body').click(function(e) {
                 if (e.target.id != 'notification-icon') {
                     $("#notification-latest").hide();
-                    $('.box1').css('filter', 'blur(0px)');
+                    //$('.box1').css('filter', 'blur(0px)');
                 }
             });
         });

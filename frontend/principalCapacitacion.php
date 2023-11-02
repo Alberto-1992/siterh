@@ -326,6 +326,7 @@
             ?>
 
     </div>
+<!--
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) { ?>
         <style>
@@ -414,6 +415,7 @@
         }
     }
     ?>
+    -->
     <script>
         function estado() {
 

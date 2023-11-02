@@ -47,6 +47,7 @@ $conexionDocumentacion = new ConexionDocumentacion();
                 
             </ul>
         </li>
+        <input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeyup="return handleKeyPress(event);">
     </ul>
     <hr id="hrinicial">
 

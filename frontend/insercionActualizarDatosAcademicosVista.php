@@ -1,12 +1,10 @@
-<div class="container" style="margin-top: 80px; background-color: white;">
+<div class="container" style="margin-top: 0px; background-color: white;">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
     <link rel="stylesheet" href="iconos/css/all.css?n=1">
     <div id="mensaje"></div>
     <h1 style="text-align: center; font-size: 25px;">Actualiza tu información academica</h1>
-    <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 0px; text-align:center;">
-        <input type="submit" name="add" value="Cerrar ventana" style="background-color: green; color: white; width: 120px; font-size: 15px; border: none; border-radius: 5px;" onclick="window.location.href='principalRh';">
-    </div>
+
 
     <form name="datosacademicosactualizar" id="datosacademicosactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
         <script>

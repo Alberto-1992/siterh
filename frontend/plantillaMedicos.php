@@ -17,12 +17,12 @@
 
 <body>
 
-    <div class="box1">
         <header class="headerinfarto" style="background-color: #3900AF;">
         
             <span id="cabecera">Medicos.</span>
 
         </header>
+        <div class="box1">
         <?php 
     switch(true) {
 
@@ -62,14 +62,11 @@
             })
 
         </script>
-        <div class="autoheight">
-<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);">
             <div id="tabla_resultadobus">
-
+            
             </div>
-            <div id="tabla_resultado" class="adaptar"></div>
+            <div id="tabla_resultado" ></div>
         </div>
-    </div>
     
 <script>
   function handleKeyPress(e)

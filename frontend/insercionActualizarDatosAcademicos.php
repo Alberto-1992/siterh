@@ -19,8 +19,8 @@
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
 </head>
-<body>
-<header class="headerinfarto" style="background-color: #448499;">
+<body style="padding: 0px;">
+<header class="headerinfarto" style="background-color: #448499; padding: 0px;">
         
             <span id="cabecera">Actualización de datos academicos.</span>
 

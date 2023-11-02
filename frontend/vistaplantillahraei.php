@@ -26,7 +26,7 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
     
     <?php session_start();
     if (isset($_SESSION['usuarioAdminRh']) or isset($_SESSION['usuarioJefe']) or isset($_SESSION['usuarioDatos'])) { ?>
-    <ul class="nav nav-tabs" style="margin-top: 48px;" >       
+    <ul class="nav nav-tabs" style="margin-top: 0px;" >       
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">

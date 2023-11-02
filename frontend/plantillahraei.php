@@ -15,13 +15,12 @@
 </head>
 
 <body>
-
-    <div class="box1">
-        <header class="headerinfarto" style="background-color: #03CAB1;">
+        <header class="headerinfarto">
         
             <span id="cabecera">Plantilla HRAEI.</span>
 
         </header>
+        <div class="box1">
         <?php 
     switch(true) {
 
@@ -61,14 +60,15 @@
             })
 
         </script>
-        <div class="autoheight">
-<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);">
+            
+        <!--<input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);">-->
+            
             <div id="tabla_resultadobus">
-
+            
             </div>
-            <div id="tabla_resultado" class="adaptar"></div>
+            <div id="tabla_resultado"></div>
         </div>
-    </div>
+    
     <?php
     require 'modals/cargarUsuarioLogueoOperativo.php';
     require 'modals/cargarUsuarioLogueoMando.php';
