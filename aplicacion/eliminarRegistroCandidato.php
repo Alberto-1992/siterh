@@ -1,17 +1,17 @@
 <?php session_start();
-require '../conexionRh.php';
+require '../clases/conexion.php';
+$conexion = new Conexion();
 date_default_timezone_set("America/Monterrey");
 $id = $_POST['id'];
 $identificador = $_POST['curp'];
 $hora = date("Y-m-d h:i:sa");
 
 try {
-    $conexionRol->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conexionRol->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-    $conexionRol->beginTransaction();
-    $sql = $conexionRol->prepare("UPDATE datospersonales SET acceder = :acceder where id_datopersonal = :id_datopersonal");
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $conexion->beginTransaction();
+    $sql = $conexion->prepare("DELETE from datospersonales where id_datopersonal = :id_datopersonal");
     $sql->execute(array(
-        ':acceder'=>0,
         ':id_datopersonal' => $id
     ));
     $compdomicilio = 'documentocurp';
@@ -68,14 +68,14 @@ try {
     { 
      unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
     }
-    $validatransac = $conexionRol->commit();
+    $validatransac = $conexion->commit();
 
     if ($validatransac != false) {
         echo "<script>alertify.success('Registro eliminado');
 </script>";
     }
 } catch (Exception $e) {
-    $conexionRol->rollBack();
+    $conexion->rollBack();
     echo "<script>alertify.error('Error inesperado');
     </script>";
 }
