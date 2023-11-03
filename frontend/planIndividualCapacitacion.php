@@ -40,7 +40,7 @@
         </header>
     <div class="container">
         <div id="mensaje"></div>
-        <h1 style="text-align: center; font-size: 25px;">Carga de información de actualización academica</h1>
+        <h1 style="text-align: center; font-size: 25px;">Carga de información.</h1>
         <h1 style="text-align: center; font-size: 15px; color: red;">Te informamos, una vez que hayas cargado tu información, no la podras visualizar hasta que el area de capacitación haya validado los datos, si la información que capturaste es correcta podras visualizarla debajo del formulario</h1>
         <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 10px; text-align:center;">
         </div>
