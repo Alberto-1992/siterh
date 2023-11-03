@@ -302,7 +302,7 @@ thead tr th {
 }
 
 #tabla_resultadobus {
-  height: 880px;
+  height: 93vh;
   overflow: hidden;
   padding: 10px;
   background-color: white;
@@ -318,7 +318,7 @@ thead tr th {
 }
 
 #tabla_resultado {
-  height: 880px;
+  height: 93vh;
   overflow: hidden;
   padding: 10px;
   background-color: white;
@@ -330,68 +330,6 @@ thead tr th {
   overflow-y: scroll;
 
 
-}
-@media screen and (max-width: 480px) {
-  .box1 {
-    display: grid;
-    gap: .5rem;
-    grid-template-columns:  3fr 0fr;
-    margin-top: 50px;
-    margin-left: 0px;
-    padding: 10px;
-  
-  }
-  #tabla_resultadobus {
-    height: 880px;
-  overflow: hidden;
-  padding: 0rem;
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  box-shadow: 10px 5px 5px #ABAAAA;
-  border-radius: 10px;
-  color: #333;
-  cursor: pointer;
-  overflow-y: scroll;
-  }
-
-}
-
-@media screen and (max-width: 920px) {
-  .box1 {
-    display: grid;
-    gap: .5rem;
-    grid-template-columns:  1fr 3fr;
-    margin-top: 0px;
-    margin-left: 50px;
-    padding: 10px;
-  
-  }
-  #tabla_resultadobus {
-    height: 1100px;
-  overflow: hidden;
-  padding: 0rem;
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  box-shadow: 10px 5px 5px #ABAAAA;
-  border-radius: 10px;
-  color: #333;
-  cursor: pointer;
-  overflow-y: scroll;
-  }
-  #tabla_resultado {
-    height: 1100px;
-    overflow: hidden;
-    padding: 0rem;
-    background-color: white;
-    border: 1px solid #e0e0e0;
-    box-shadow: 10px 5px 5px #ABAAAA;
-    border-radius: 10px;
-    color: #333;
-    cursor: pointer;
-    overflow-y: scroll;
-  
-  
-  }
 }
 
 ::-webkit-scrollbar {

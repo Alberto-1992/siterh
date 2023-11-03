@@ -19,7 +19,6 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/estilosMenu.css?=1" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
 </head>
@@ -32,7 +31,7 @@
     }
 </script>
 
-<body>
+<body style="padding: 0px;">
 
 <header class="headerinfarto" style="background-color: #00BDB3;">
         

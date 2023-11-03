@@ -270,8 +270,8 @@
             <option value="2023-01-01:2023-12-31">Todo el año</option>
             <option value="2023-01-01:2023-03-31">Enero-Marzo</option>
             <option value="2023-04-01:2023-06-30">Abril-Junio</option>
-            <option value="2023-07-01:2023-09-30">Julio-Agosto</option>
-            <option value="2023-10-01:2023-12-31">Septiembre-Diciembre</option>
+            <option value="2023-07-01:2023-09-30">Julio-Septiembre</option>
+            <option value="2023-10-01:2023-12-31">Octubre-Diciembre</option>
         </select>
     </div>
         <div id="resultado"></div>
