@@ -9,9 +9,18 @@
         background-color: grey;
         color: white;
     }
-
+    .titulo {
+            
+            font-size:25px;
+            color : red;
+            text-align : center;
+            float: right;
+            margin-right: 10px;
+            margin-top: -5px;
+        }
     </style>
 <div id="lista-comentarios">
+<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <?php
     error_reporting(0);
     require_once 'clases/conexion.php';
@@ -105,6 +114,12 @@
                     ':id_empleado'=>$id
                 ));
                 $dataRegistro2 = $queryS->fetch();
+                $queryC = $conexionX->prepare("SELECT otroempleo from compatibilidadotroempleo where id_empleado = $id");
+                $queryC->execute(array(
+                    ':id_empleado'=>$id
+                ));
+                $dataRegistroC = $queryC->fetch();
+                $MINIMOOK = "<i class='lnr lnr-flag'></i>";
             ?>
             
             
@@ -115,7 +130,13 @@
                                 <input type="submit" value="Actualizo" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
                             <?php }else if($dataRegistro2['actualizo'] == 0) { ?>
                                 <input type="submit" value="Sin captura" style="padding: 1px; background: red; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
-                                <?php } ?>
+                                <?php } if($dataRegistroC['otroempleo'] == 'Si'){
+                                    echo "<span class='titulo'>$MINIMOOK";
+
+                                 }else{ 
+
+
+                                     } ?>
             </div>
             <hr id="hr">
             </div>

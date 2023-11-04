@@ -117,7 +117,7 @@
                     <p>Plantilla HRAEI</p>
                 </a>
             </article>
-            
+            <!--
             <article class="card" id="plantillamando" onclick="movimientosplantilla();">
                 <a href="plantillamandos">
                     <hr id="hr6">
@@ -125,6 +125,7 @@
                     <p>Movimientos plantilla</p>
                 </a>
             </article>
+                    -->
             <article class="card" id="evaluacion" onclick="evaluacion();">
                 <a href="../rh/principal">
                     <hr id="hr6">
@@ -169,6 +170,7 @@
                     <p>Contratación</p>
                 </a>
             </article>
+            <!--
             <article class="card" id="relacioneslaborales" onclick="relacioneslaborales();">
                 <a href="../relacioneslaborales/principal">
                     <hr id="hr6">
@@ -176,6 +178,7 @@
                     <p>Relaciones laborales</p>
                 </a>
             </article>
+                    -->
             <article class="card" id="academicos" onclick="datosacademicos();">
                 <a href="datosAcademicos">
                     <hr id="hr6">
