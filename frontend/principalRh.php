@@ -278,7 +278,7 @@
                         </a>
                     </article>
                     <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
-                <a href="plantillaoperativos">
+                <a href="plantillahraei">
                     <hr id="hr6">
                     <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
                     <p>Plantilla HRAEI</p>
@@ -297,7 +297,7 @@
                         </a>
                     </article>
                     <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
-                <a href="plantillaoperativos">
+                <a href="plantillahraei">
                     <hr id="hr6">
                     <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
                     <p>Plantilla HRAEI</p>
@@ -307,7 +307,7 @@
                 } else if ($admin == 'jacv_8810@hotmail.com') { ?>
                     
                     <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
-                <a href="plantillaoperativos">
+                <a href="plantillahraei">
                     <hr id="hr6">
                     <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
                     <p>Plantilla HRAEI</p>
