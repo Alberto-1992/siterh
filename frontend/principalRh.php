@@ -306,13 +306,6 @@
                 <?php
                 } else if ($admin == 'jacv_8810@hotmail.com') { ?>
                     
-                    <article class="card" id="compatibilidad" onclick="compatibilidad();">
-                        <a href="compatibilidad">
-                            <hr id="hr6">
-                            <i class="fa fa-cogs" aria-hidden="true" id="iconosdiv"></i>
-                            <p>Compatibilidad Laboral</p>
-                        </a>
-                    </article>
                     <article class="card" id="plantillaoperativo" onclick="plantillahraei();">
                 <a href="plantillaoperativos">
                     <hr id="hr6">
