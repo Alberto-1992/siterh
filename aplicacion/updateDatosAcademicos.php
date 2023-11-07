@@ -271,7 +271,7 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 	}
 
     //mysqli_query($conexionGrafico, $consulta);
-  
+
     $arraynombreformacionmaestria =  $_POST['nombreformacionmaestria'];
     $arraynombreinstitucionmaestria = $_POST['nombreinstitucionmaestria'];
     $arrayfechainiciomaestria = $_POST['fechainiciosupmaestria'];
