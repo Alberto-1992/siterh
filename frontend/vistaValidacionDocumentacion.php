@@ -13,116 +13,126 @@ require 'conexionRh.php';
 <input type="hidden" id="nombrecurso" value="<?php echo $dataRegistro['nombrecurso']; ?>">
 <input type="hidden" id="fechatermino" value="<?php echo $dataRegistro['fechatermino']; ?>">
 <input type="hidden" id="id_empleado" value="<?php echo $dataRegistro['id_empleado']; ?>">
-<ul class="nav nav-tabs" style="margin-top: 0px;" >       
-            <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
-            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="eliminarRegistro();">Eliminar registro</a></li>
-                <li><a class="dropdown-item" href="#" onclick="editarRegistro();">Editar registro</a></li>
-                </ul>
-        </li>
-    </ul>
-                <style>
-                    .table:hover {
-                            background: #EBEBEB;
-                    }
-                </style>
-                <script>
-                    function editarRegistro() {
-    var id = $("#id").val();
+<ul class="nav nav-tabs" style="margin-top: 0px;">
+    <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
+        <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <li><a class="dropdown-item" href="#" onclick="eliminarRegistro();">Eliminar registro</a></li>
+            <li><a class="dropdown-item" href="#" onclick="editarRegistro();">Editar registro</a></li>
+        </ul>
+    </li>
+</ul>
+<style>
+    .table:hover {
+        background: #EBEBEB;
+    }
+</style>
+<script>
+    function editarRegistro() {
+        var id = $("#id").val();
 
-    let parametros = { id: id}
-    $.ajax({
-        type: "POST",
-        url: "editarCursoValidacion.php",
-        data: parametros,
-        beforeSend: function() {
-            $('#tabla_resultado').html(
-                '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-            );
-        },
-        success: function (data) {
-            $("#tabla_resultado").html(data);
+        let parametros = {
+            id: id
         }
+        $.ajax({
+            type: "POST",
+            url: "editarCursoValidacion.php",
+            data: parametros,
+            beforeSend: function() {
+                $('#tabla_resultado').html(
+                    '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                );
+            },
+            success: function(data) {
+                $("#tabla_resultado").html(data);
+            }
 
-    });
-    
-}
+        });
+
+    }
+
     function eliminarRegistro() {
-    var id = $("#id").val();
-    var nombrecurso = $("#nombrecurso").val();
-    var fechatermino = $("#fechatermino").val();
-    var id_empleado = $("#id_empleado").val();
-    var mensaje = confirm("el registro se eliminara"); 
-    let parametros = { id: id,nombrecurso:nombrecurso,fechatermino:fechatermino,id_empleado:id_empleado }
-    if (mensaje == true) {
-        $.ajax({
-            data: parametros,
-            url: 'aplicacion/eliminarCursoCargadoOperativo.php',
-            type: 'post',
+        var id = $("#id").val();
+        var nombrecurso = $("#nombrecurso").val();
+        var fechatermino = $("#fechatermino").val();
+        var id_empleado = $("#id_empleado").val();
+        var mensaje = confirm("el registro se eliminara");
+        let parametros = {
+            id: id,
+            nombrecurso: nombrecurso,
+            fechatermino: fechatermino,
+            id_empleado: id_empleado
+        }
+        if (mensaje == true) {
+            $.ajax({
+                data: parametros,
+                url: 'aplicacion/eliminarCursoCargadoOperativo.php',
+                type: 'post',
 
-            success: function (response) {
-                $("#mensaje").html(response);
-                $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
-                
+                success: function(response) {
+                    $("#mensaje").html(response);
+                    $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
 
-            }
-        });
-    } else {
-        swal({
-            title: 'Cancelado!',
-            text: 'Proceso cancelado',
-            icon: 'warning',
 
-        });
+                }
+            });
+        } else {
+            swal({
+                title: 'Cancelado!',
+                text: 'Proceso cancelado',
+                icon: 'warning',
+
+            });
+        }
     }
-}
-function autorizar() {
-    var id = $("#id").val();
-    var lineaestrategica = $("#linea").val();
-    var eje = $("#eje").val();
-    var mensaje = confirm("El curso sera autorizado"); 
-    let parametros = { id: id, lineaestrategica:lineaestrategica, eje:eje }
-    if (mensaje == true) {
-        $.ajax({
-            data: parametros,
-            url: 'aplicacion/autorizarDocumento.php',
-            type: 'post',
 
-            success: function (response) {
-                $("#mensaje").html(response);
-                $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
-                
+    function autorizar() {
+        var id = $("#id").val();
+        var lineaestrategica = $("#linea").val();
+        var eje = $("#eje").val();
+        var mensaje = confirm("El curso sera autorizado");
+        let parametros = {
+            id: id,
+            lineaestrategica: lineaestrategica,
+            eje: eje
+        }
+        if (mensaje == true) {
+            $.ajax({
+                data: parametros,
+                url: 'aplicacion/autorizarDocumento.php',
+                type: 'post',
 
-            }
-        });
-    } else {
-        swal({
-            title: 'Cancelado!',
-            text: 'Proceso cancelado',
-            icon: 'warning',
+                success: function(response) {
+                    $("#mensaje").html(response);
+                    $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
 
-        });
+
+                }
+            });
+        } else {
+            swal({
+                title: 'Cancelado!',
+                text: 'Proceso cancelado',
+                icon: 'warning',
+
+            });
+        }
     }
-}
-
-
 </script>
 <?php
 $validaacceso = $dataRegistro['rolacceso'];
 $one = 'Todos los accesos';
 $two = 'Operativo';
 $thre = 'Mando';
-if($validaacceso == 8){
+if ($validaacceso == 8) {
     $acceso = $one;
-}else if($validaacceso == 7){
+} else if ($validaacceso == 7) {
     $acceso = $two;
-}
-else if($validaacceso == 4){
+} else if ($validaacceso == 4) {
     $acceso = $thre;
 }
-    ?>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
+?>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%">
     <div class="containerr2">Datos del curso</div>
     <tr>
         <th id="th">Id empleado:</th>
@@ -138,105 +148,435 @@ else if($validaacceso == 4){
     </tr>
     <tr>
         <th id="th">Fecha de inicio del curso:</th>
-        <td id="td"><?php echo $dataRegistro['fechainicio']?></td>
+        <td id="td"><?php echo $dataRegistro['fechainicio'] ?></td>
     </tr>
     <tr>
         <th id="th">Fecha de termino del curso:</th>
-        <td id="td"><?php echo $dataRegistro['fechatermino']?></td>
+        <td id="td"><?php echo $dataRegistro['fechatermino'] ?></td>
     </tr>
     <tr>
         <th id="th">Modalidad:</th>
-        <td id="td"><?php echo $dataRegistro['modalidad']?></td>
+        <td id="td"><?php echo $dataRegistro['modalidad'] ?></td>
     </tr>
     <tr>
         <th id="th">Total de horas:</th>
-        <td id="td"><?php echo $dataRegistro['horas']?></td>
+        <td id="td"><?php echo $dataRegistro['horas'] ?></td>
     </tr>
     <tr>
         <th id="th">Documento que recibe:</th>
-        <td id="td"><?php echo $dataRegistro['documentorecibe']?></td>
+        <td id="td"><?php echo $dataRegistro['documentorecibe'] ?></td>
     </tr>
     <tr>
         <th id="th">Asiste como:</th>
-        <td id="td"><?php echo $dataRegistro['asistecomo']?></td>
+        <td id="td"><?php echo $dataRegistro['asistecomo'] ?></td>
     </tr>
     <tr>
         <th id="th">Nombre del curso:</th>
-        <td id="td"><?php echo $dataRegistro['nombrecurso']?></td>
+        <td id="td"><?php echo $dataRegistro['nombrecurso'] ?></td>
     </tr>
     <tr>
         <th id="th">Nombre de la institución que lo expide:</th>
-        <td id="td"><?php echo $dataRegistro['nombreinstitucion']?></td>
+        <td id="td"><?php echo $dataRegistro['nombreinstitucion'] ?></td>
     </tr>
     <tr>
         <th id="th">Especifique cual:</th>
-        <td id="td"><?php echo $dataRegistro['otroexpidedocumento']?></td>
+        <td id="td"><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
     </tr>
     <tr>
         <th id="th">¿El curso pertenece a alguno de los siguientes temas?:</th>
-        <td id="td"><?php echo $dataRegistro['criteriocurso']?></td>
+        <td id="td"><?php echo $dataRegistro['criteriocurso'] ?></td>
     </tr>
     <tr>
         <th id="th">Fecha vigencia inicio:</th>
-        <td id="td"><?php echo $dataRegistro['fechacriterioinicio']?></td>
+        <td id="td"><?php echo $dataRegistro['fechacriterioinicio'] ?></td>
     </tr>
     <tr>
         <th id="th">Fecha vigencia final:</th>
-        <td id="td"><?php echo $dataRegistro['fechacriteriotermino']?></td>
+        <td id="td"><?php echo $dataRegistro['fechacriteriotermino'] ?></td>
     </tr>
 </table>
 <div class="form-row">
-<div class="col-md-4">
-    <strong>Linea estrategica</strong>
-<select class="form-control" id="linea" name="lineaestrategica">
-    <option value="">Seleccione</option>
-    <option value="ACTUALIZACION NORMATIVA">Actualización normativa</option>
-    <option value="FORTALECIMIENTO DE COMPETENCIAS GERENCIALES">Fortalecimiento de competencias gerenciales</option>
-    <option value="FORTALECIMIENTO DE COMPETENCIAS TECNICO - ADMINISTRATIVAS">Frotalecimiento de competencias tecnico - Administrativas</option>
-    <option value="CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS">Cursos vinculados con derechos humanos, Igualdad y no discriminación, Transparencia, Ética y Prevención de conflisctos de interes</option>
-    <option value="FORTALECIMIENTO DE COMPETENCIAS ESPECIALIZADAS">Fortalecimiento de competencias especializadas</option>
-</select>
+    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
+        <div class="col-md-4">
+            <strong>LINEA ESTRATEGICA</strong>
+            <select class="form-control" id="lineaestrategica" name="lineaestrategica">
+                <option value="">Seleccione</option>
+                <option value="COMPETENCIAS ORGANIZACIONALES">COMPETENCIAS ORGANIZACIONALES</option>
+                <option value="COMPETENCIAS DIRECTIVAS">COMPETENCIAS DIRECTIVAS</option>
+                <option value="COMPETENCIAS TECNICAS GENERALES-ADMINISTRATIVAS">COMPETENCIAS TECNICAS GENERALES-ADMINISTRATIVAS</option>
+                <option value="COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES">COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</option>
+                <option value="COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</option>
+                <option value="COMPETENCIAS TECNICAS GENERALES-MUEC">COMPETENCIAS TECNICAS GENERALES-MUEC</option>
+                <option value="CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS">CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</option>
+                <option value="COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)">COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</option>
+            </select>
+        </div>
+    </div>
+    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center; margin-top: 5px;">
+        <div id="comporganizacionales">
+            <div class="col-md-12">
+                <strong>COMPETENCIAS ORGANIZACIONALES</strong>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <option value="TRABAJO EN EQUIPO">TRABAJO EN EQUIPO</option>
+                    <option value="ORIENTACION A RESULTADOS">ORIENTACION A RESULTADOS</option>
+                    <option value="COMUNICACION">COMUNICACION</option>
+                </select>
+            </div>
+        </div>
+        <div id="compdirectivas">
+            <div class="col-md-12">
+                <strong>COMPETENCIAS DIRECTIVAS</strong>
+                <select class="form-control" id="competenciasdirectivas" name="competenciasdirectivas">
+                    <option value="">Seleccione</option>
+                    <option value="VISION ESTRATEGICA">VISION ESTRATEGICA</option>
+                    <option value="LIDERAZGO">LIDERAZGO</option>
+                    <option value="NEGOCIACION">NEGOCIACION</option>
+                </select>
+            </div>
+        </div>
+        <div id="computo">
+            <div class="col-md-12">
+                <strong>HERRAMIENTAS DE COMPUTO</strong>
+                <select class="form-control" id="herramientascomputo" name="herramientascomputo">
+                    <option value="">Seleccione</option>
+                    <option value="WORD">WORD</option>
+                    <option value="EXCEL">EXCEL</option>
+                    <option value="POWERPOINT">POWERPOINT</option>
+                    <option value="BASE DE DATOS">BASE DE DATOS</option>
+                    <option value="OUTLOOK">OUTLOOK</option>
+                    <option value="HERRAMIENTAS DIGITALES">HERRAMIENTAS DIGITALES</option>
+                </select>
+            </div>
+        </div>
+        <div id="cognitivas">
+            <div class="col-md-12">
+                <strong>BÁSICAS/COGNOSCITIVAS</strong>
+                <select class="form-control" id="basicascognitivas" name="basicascognitivas">
+                    <option value="">Seleccione</option>
+                    <option value="PENSAMIENTO CRITICO">PENSAMIENTO CRITICO</option>
+                    <option value="COMPRENSION DE TEXTOS">COMPRENSION DE TEXTOS</option>
+                    <option value="REDACCION Y ORTOGRAFIA">REDACCION Y ORTOGRAFIA</option>
+                </select>
+            </div>
+        </div>
+        <div id="eticaprofesional">
+            <div class="col-md-12">
+                <strong>BÁSICAS/EFICACIA PERSONAL</strong>
+                <select class="form-control" id="profesionaletica" name="profesionaletica">
+                    <option value="">Seleccione</option>
+                    <option value="MANEJO DEL ESTRÉS">MANEJO DEL ESTRÉS</option>
+                    <option value="INTELIGENCIA EMOCIONAL">INTELIGENCIA EMOCIONAL</option>
+                    <option value="SALUD MENTAL">SALUD MENTAL</option>
+                    <option value="PROACTIVIDAD Y COMPROMISO">PROACTIVIDAD Y COMPROMISO</option>
+                    <option value="RELACIONES INTERPERSONALES">RELACIONES INTERPERSONALES</option>
+                    <option value="ENTORNO ORGANIZACIONAL">ENTORNO ORGANIZACIONAL</option>
+                </select>
+            </div>
+        </div>
+        <div id="tecnicasgenerales">
+            <div class="col-md-12">
+                <strong>COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</strong>
+                <select class="form-control" id="comptecnicasgenerales" name="comptecnicasgenerales">
+                    <option value="">Seleccione</option>
+                    <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
+                </select>
+            </div>
+        </div>
+        <div id="tecnicasgeneralesmando">
+            <div class="col-md-12">
+                <strong>COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
+                <select class="form-control" id="comptecnicasgeneralesmando" name="comptecnicasgeneralesmando">
+                    <option value="">Seleccione</option>
+                    <option value="GESTION DE PROCESOS">GESTION DE PROCESOS</option>
+                    <option value="PLANEACION ESTRATEGICA">PLANEACION ESTRATEGICA</option>
+                    <option value="GESTION DEL TALENTO HUMANO">GESTION DEL TALENTO HUMANO</option>
+                    <option value="MEDICION Y MEJORA CONTINUA DE PROCESOS">MEDICION Y MEJORA CONTINUA DE PROCESOS</option>
+                </select>
+            </div>
+        </div>
+        <div id="muec">
+            <div class="col-md-12">
+                <strong>COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
+                <select class="form-control" id="mueccomp" name="mueccomp">
+                    <option value="">Seleccione</option>
+                    <option value="No, ninguno">No, ninguno</option>
+                    <option value="TRATO DIGNO EN LOS SERVICIOS DE SALUD">TRATO DIGNO EN LOS SERVICIOS DE SALUD</option>
+                    <option value="INTRODUCCION AL MODELO UNICO PARA LA EVALUACION DE LA CALIDAD (MUEC)">INTRODUCCION AL MODELO UNICO PARA LA EVALUACION DE LA CALIDAD (MUEC)</option>
+                    <option value="INTERCULTURALIDAD">INTERCULTURALIDAD</option>
+                    <option value="PREVENCION DE INCENDIOS Y ATENCION DE EMERGENCIAS">PREVENCION DE INCENDIOS Y ATENCION DE EMERGENCIAS</option>
+                    <option value="RPBI-RESIDUOS PELIGROSOS BIOLÓGICO-INFECCIOSOS">RPBI-RESIDUOS PELIGROSOS BIOLÓGICO-INFECCIOSOS</option>
+                    <option value="HIGIENE DE MANOS">HIGIENE DE MANOS</option>
+                    <option value="ACCIONES ESENCIALES DE SEGURIDAD DEL PACIENTE">ACCIONES ESENCIALES DE SEGURIDAD DEL PACIENTE</option>
+                    <option value="CUIDADO PALIATIVO">CUIDADO PALIATIVO</option>
+                    <option value="POE-PERSONAL OCUPACIONALMENTE EXPUESTO">POE-PERSONAL OCUPACIONALMENTE EXPUESTO</option>
+                    <option value="RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD">RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD</option>
+                    <option value="ATLS-APOYO VITAL AVANZADO EN TRAUMA">ATLS-APOYO VITAL AVANZADO EN TRAUMA</option>
+                    <option value="ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO">ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO</option>
+                    <option value="BLS-SOPORTE VITAL BASICO">BLS-SOPORTE VITAL BASICO</option>
+                    <option value="PALS-APOYO VITAL AVANZADO PEDIATRICO">PALS-APOYO VITAL AVANZADO PEDIATRICO</option>
+                    <option value="RENEO-REANIMACION NEONATAL">RENEO-REANIMACION NEONATAL</option>
+                </select>
+            </div>
+        </div>
+        <div id="derechoshumanos">
+            <div class="col-md-12">
+                <strong>CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</strong>
+                <select class="form-control" id="cursoderechoshumanos" name="cursoderechoshumanos">
+                    <option value="">Seleccione</option>
+                    <option value="TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA">TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA</option>
+                    <option value="DERECHOS HUMANOS">DERECHOS HUMANOS</option>
+                    <option value="IGUALDAD Y NO DISCRIMINACION">IGUALDAD Y NO DISCRIMINACION</option>
+                    <option value="TRANSPARENCIA Y PROTECCION DE DATOS PERSONALES">TRANSPARENCIA Y PROTECCION DE DATOS PERSONALES</option>
+                    <option value="ETICA Y PREVENCION DE CONFLICTOS DE INTERES">ETICA Y PREVENCION DE CONFLICTOS DE INTERES</option>
+                    <option value="TRATA DE PERSONAS">TRATA DE PERSONAS</option>
+                    <option value="ATENCION A VICTIMAS">ATENCION A VICTIMAS</option>
+                    <option value="DERECHOS GENERALES DE LAS NIÑAS, LOS NIÑOS Y LOS ADOLESCENTES">DERECHOS GENERALES DE LAS NIÑAS, LOS NIÑOS Y LOS ADOLESCENTES</option>
+                </select>
+            </div>
+        </div>
+        <div id="compespecializadas">
+            <div class="col-md-12">
+                <strong>COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</strong>
+                <select class="form-control" id="competenciasespecializadas" name="competenciasespecializadas">
+                    <option value="">Seleccione</option>
+                    <option value="ACTUALIZACION ADMINISTRATIVA">ACTUALIZACION ADMINISTRATIVA</option>
+                    <option value="ACTUALIZACION GERENCIAL">ACTUALIZACION GERENCIAL</option>
+                    <option value="ACTUALIZACION TECNICO MEDICO">ACTUALIZACION TECNICO MEDICO</option>
+                    <option value="ACTUALIZACION NORMATIVA">ACTUALIZACION NORMATIVA</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
+        <div class="col-md-2">
+            <input type="submit" onclick="autorizar();" value="Autorizar" class="form-control" style="background-color: green; color: white; margin-top: 17px;">
+        </div>
+    </div>
 </div>
-<div class="col-md-4">
-    <strong>Selecciona el eje</strong>
-<select class="form-control" id="eje">
-    <option value="CAPACITACION">Capacitacion</option>
-    <option value="PROGRAMA ANUAL DE CAPACITACIÓN (PAC/MIR)">Programa anual de capacitación (PAC/MIR)</option>
-    <option value="BECA TIEMPO MENOR A 30 DIAS/SRH">Beca tiempo menor a 30 dias/SRH</option>
-    <option value="COMISIÓN CENTRAL MIXTA DE CAPACITACIÓN">Conmisión central mixta de capacitación</option>
-    <option value="COMITÉ DE ENSEÑANZA Y CAPACITACIÓN">Comité de enseñanza y capacitación</option>
-    <option value="PROGRAMA DE EDUCACIÓN CONTINUA">Peograma de educación continua</option>
-    <option value="INDIVIDUAL">Individual</option>
-    <option value="PERMISO DIRECTO DEL ÁREA">Permiso de área</option>
-    <option value="PROGRAMA ANUAL DE CAPACITACIÓN EN MATERIA DE TRASPARENCIA">Programa anual de capacitación en materia de transparencia</option>
-    <option value="COMITÉ DE ETICA">Comité de etica</option>
-    <option value="ACTUALIZACION TECNICO MEDICO">Actualización tecnico medico</option>
-</select>
-</div>
-<div class="col-md-2">
-    <input type="submit" onclick="autorizar();" value="Autorizar" class="form-control" style="background-color: green; color: white; margin-top: 17px;">
-</div>
-</div>
+<br>
+<script>
+    $(function() {
+        $('#comporganizacionales').prop("hidden", true);
+        $('#compdirectivas').prop("hidden", true);
+        $('#computo').prop("hidden", true);
+        $("#cognitivas").prop("hidden", true);
+        $("#eticaprofesional").prop("hidden", true);
+        $("#tecnicasgenerales").prop("hidden", true);
+        $("#tecnicasgeneralesmando").prop("hidden", true);
+        $("#muec").prop("hidden", true);
+        $("#derechoshumanos").prop("hidden", true);
+        $("#compespecializadas").prop("hidden", true);
+
+
+        //eliminar valor por defecto
+        $("#organizacionales").prop("selectedIndex", 0);
+        $("#competenciasdirectivas").prop("selectedIndex", 0);
+        $("#herramientascomputo").prop("selectedIndex", 0);
+        $("#basicascognitivas").prop("selectedIndex", 0);
+        $("#profesionaletica").prop("selectedIndex", 0);
+        $("#comptecnicasgenerales").prop("selectedIndex", 0);
+        $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+        $("#mueccomp").prop("selectedIndex", 0);
+        $("#cursoderechoshumanos").prop("selectedIndex", 0);
+        $("#competenciasespecializadas").prop("selectedIndex", 0);
+
+
+    })
+    $(document).ready(function() {
+
+        $('#lineaestrategica').change(function(e) {
+            if ($(this).val() === "COMPETENCIAS ORGANIZACIONALES") {
+                $('#comporganizacionales').prop("hidden", false);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+
+
+            } else if ($(this).val() === "COMPETENCIAS DIRECTIVAS") {
+                $('#compdirectivas').prop("hidden", false);
+
+                $('#comporganizacionales').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+
+            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-ADMINISTRATIVAS") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", false);
+                $("#cognitivas").prop("hidden", false);
+                $("#eticaprofesional").prop("hidden", false);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", false);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", false);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-MUEC") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", false);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            } else if ($(this).val() === "CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", false);
+                $("#compespecializadas").prop("hidden", true);
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            } else if ($(this).val() === "COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", false);
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+            }
+        })
+    });
+</script>
 <div class="container" style="width: 100%; height: 100%; float: left;">
-<?php
-$nombrecurso = $dataRegistro['nombrecurso'];
-$fechafinal = $dataRegistro['fechatermino'];
-$idempleado = $dataRegistro['id_empleado'];
-$path = "documentoscursos/".$nombrecurso.$fechafinal.$idempleado;
-if (file_exists($path)) {
-    $directorio = opendir($path);
-    while ($archivo = readdir($directorio)) {
-        if (!is_dir($archivo)) {
-            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' width='100%' height='100%' margin-top='50'></iframe>";
-            echo "<a href='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Documento cargado</a>";
+    <?php
+    $nombrecurso = $dataRegistro['nombrecurso'];
+    $fechafinal = $dataRegistro['fechatermino'];
+    $idempleado = $dataRegistro['id_empleado'];
+    $path = "documentoscursos/" . $nombrecurso . $fechafinal . $idempleado;
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
+                echo "<iframe src='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' width='100%' height='100%' margin-top='50'></iframe>";
+                echo "<a href='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Documento cargado</a>";
+            }
         }
     }
-}
-?>
-    
+    ?>
+
 </div>
 <?php
-   // require 'modals/buscarpostuladobolsa.php';
+// require 'modals/buscarpostuladobolsa.php';
 
 ?>

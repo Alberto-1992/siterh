@@ -33,11 +33,11 @@
 </script>
 
 <body style="padding: 0px;">
-<header class="headerinfarto" style="background-color: #874AA2;">
-        
-            <span id="cabecera">Plan individual de capacitación.</span>
+    <header class="headerinfarto" style="background-color: #874AA2;">
 
-        </header>
+        <span id="cabecera">Plan individual de capacitación.</span>
+
+    </header>
     <div class="container">
         <div id="mensaje"></div>
         <h1 style="text-align: center; font-size: 25px;">Carga de información.</h1>
@@ -69,31 +69,30 @@
                 })
             </script>
             <div class="form-row">
-            <?php
-            error_reporting(0);
-            require_once 'clases/conexion.php';
-            $conexionX = new ConexionRh();
-    switch(true) {
+                <?php
+                error_reporting(0);
+                require_once 'clases/conexion.php';
+                $conexionX = new ConexionRh();
+                switch (true) {
 
-        case isset($_SESSION['usuarioAdminRh']):
-            $nombreempleado = $nombre;
-        break;
-        
-        case isset($_SESSION['usuarioJefe']):
-            $nombreempleado = $nombre;
-        break;
+                    case isset($_SESSION['usuarioAdminRh']):
+                        $nombreempleado = $nombre;
+                        break;
 
-        case isset($_SESSION['usuarioDatos']):
-            $nombreempleado = $nombre;
-        break;
+                    case isset($_SESSION['usuarioJefe']):
+                        $nombreempleado = $nombre;
+                        break;
 
-        default:
-        
-        require 'close_sesion.php';
-        
-        }
-        
-?>
+                    case isset($_SESSION['usuarioDatos']):
+                        $nombreempleado = $nombre;
+                        break;
+
+                    default:
+
+                        require 'close_sesion.php';
+                }
+
+                ?>
 
                 <input type="hidden" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
                 <div class="col-md-6">
@@ -105,7 +104,7 @@
                     <select class="form-control" name="tipodecapacitacion" id="tipodecapacitacion" required onchange="tipoCapacitacion();">
                         <option value="Sin dato">Seleccione</option>
                         <?php
-                    
+
                         $query = $conexionX->prepare("SELECT * FROM catalogocapacitacion where activo = 0 order by descripcionaccion");
                         $query->execute();
                         $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -121,29 +120,29 @@
                         $('#areafortalece').val(valor)
 
                     }
-                    $(function () {
-    $('#fechainiciocriterio').prop("disabled", true);
-    $('#fechaterminocriterio').prop("disabled", true);
+                    $(function() {
+                        $('#fechainiciocriterio').prop("disabled", true);
+                        $('#fechaterminocriterio').prop("disabled", true);
 
-})
-//clasificacion tamaños tumorales
-$(document).ready(function () {
+                    })
+                    //clasificacion tamaños tumorales
+                    $(document).ready(function() {
 
-    $('#criteriocurso').change(function (e) {
-        if ($(this).val() === "ATLS" || $(this).val() === "ACLS" || $(this).val() === "BLS" || $(this).val() === "PALS" || $(this).val() === "RCP" ) {
+                        $('#criteriocurso').change(function(e) {
+                            if ($(this).val() === "ATLS" || $(this).val() === "ACLS" || $(this).val() === "BLS" || $(this).val() === "PALS" || $(this).val() === "RCP") {
 
-            $('#fechainiciocriterio').prop("disabled", false);
-            $('#fechaterminocriterio').prop("disabled", false);
-        
-        } else {
-            $('#fechainiciocriterio').prop("disabled", true);
-            $('#fechaterminocriterio').prop("disabled", true);
-            $('#fechainiciocriterio').val('');
-            $('#fechaterminocriterio').val('');
+                                $('#fechainiciocriterio').prop("disabled", false);
+                                $('#fechaterminocriterio').prop("disabled", false);
 
-        }
-    })
-});
+                            } else {
+                                $('#fechainiciocriterio').prop("disabled", true);
+                                $('#fechaterminocriterio').prop("disabled", true);
+                                $('#fechainiciocriterio').val('');
+                                $('#fechaterminocriterio').val('');
+
+                            }
+                        })
+                    });
                 </script>
 
                 <input type="hidden" class="form-control" name="areafortalece" id="areafortalece" required readonly>
@@ -161,24 +160,29 @@ $(document).ready(function () {
                     <input type="date" class="form-control" name="fechatermino" id="fechatermino" required>
                 </div>
                 <div class="col-md-6">
-                        <strong>¿El curso pertenece a alguno de los siguientes temas?</strong>
-                        <select type="form-select" class="form-control" name="criteriocurso" id="criteriocurso" required>
-                            <option selected value="No, ninguna">No, ninguna</option>
+                    <strong>¿El curso pertenece a alguno de los siguientes temas?</strong>
+                    <select type="form-select" class="form-control" name="criteriocurso" id="criteriocurso" required>
+                        <option value="">Seleccione</option>
+                        <option value="No, ninguno">No, ninguno</option>
+                        <option value="TRATO DIGNO EN LOS SERVICIOS DE SALUD">TRATO DIGNO EN LOS SERVICIOS DE SALUD</option>
+                        <option value="INTRODUCCION AL MODELO UNICO PARA LA EVALUACION DE LA CALIDAD (MUEC)">INTRODUCCION AL MODELO UNICO PARA LA EVALUACION DE LA CALIDAD (MUEC)</option>
+                        <option value="INTERCULTURALIDAD">INTERCULTURALIDAD</option>
+                        <option value="PREVENCION DE INCENDIOS Y ATENCION DE EMERGENCIAS">PREVENCION DE INCENDIOS Y ATENCION DE EMERGENCIAS</option>
+                        <option value="RPBI-RESIDUOS PELIGROSOS BIOLÓGICO-INFECCIOSOS">RPBI-RESIDUOS PELIGROSOS BIOLÓGICO-INFECCIOSOS</option>
+                        <option value="HIGIENE DE MANOS">HIGIENE DE MANOS</option>
+                        <option value="ACCIONES ESENCIALES DE SEGURIDAD DEL PACIENTE">ACCIONES ESENCIALES DE SEGURIDAD DEL PACIENTE</option>
+                        <option value="CUIDADO PALIATIVO">CUIDADO PALIATIVO</option>
+                        <option value="POE-PERSONAL OCUPACIONALMENTE EXPUESTO">POE-PERSONAL OCUPACIONALMENTE EXPUESTO</option>
+                        <option value="RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD">RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD</option>
+                        <option value="ATLS-APOYO VITAL AVANZADO EN TRAUMA">ATLS-APOYO VITAL AVANZADO EN TRAUMA</option>
+                        <option value="ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO">ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO</option>
+                        <option value="BLS-SOPORTE VITAL BASICO">BLS-SOPORTE VITAL BASICO</option>
+                        <option value="PALS-APOYO VITAL AVANZADO PEDIATRICO">PALS-APOYO VITAL AVANZADO PEDIATRICO</option>
+                        <option value="RENEO-REANIMACION NEONATAL">RENEO-REANIMACION NEONATAL</option>
 
-                            <?php
-                            $query = $conexionX->prepare("SELECT * FROM criterioscursos order by nombrecriterio" );
-                            $query->execute();
-                            $data = $query->fetchAll();
-
-                            foreach ($data as $valores) :
-                                echo '<option value="' . $valores["nombrecriterio"] . '">' . $valores["nombrecriterio"] . '</option>';
-                            endforeach;
-
-                            ?>
-
-                        </select>
-                    </div>
-                    <div class="col-md-3">
+                    </select>
+                </div>
+                <div class="col-md-3">
                     <strong for="mensaje">Fecha vigencia inicio:</strong>
                     <input type="date" class="form-control" name="fechainiciocriterio" id="fechainiciocriterio">
                 </div>
@@ -187,23 +191,23 @@ $(document).ready(function () {
                     <input type="date" class="form-control" name="fechaterminocriterio" id="fechaterminocriterio">
                 </div>
                 <div class="col-md-3">
-                        <label>Modalidad</label>
-                        <select type="form-select" class="form-control" name="modalidad" id="modalidad" required>
-                            <option selected disabled value="">Seleccione</option>
+                    <label>Modalidad</label>
+                    <select type="form-select" class="form-control" name="modalidad" id="modalidad" required>
+                        <option selected disabled value="">Seleccione</option>
 
-                            <?php
-                            $query = $conexionX->prepare("SELECT * FROM modalidad");
-                            $query->execute();
-                            $data = $query->fetchAll();
+                        <?php
+                        $query = $conexionX->prepare("SELECT * FROM modalidad");
+                        $query->execute();
+                        $data = $query->fetchAll();
 
-                            foreach ($data as $valores) :
-                                echo '<option value="' . $valores["nombre_modalidad"] . '">' . $valores["nombre_modalidad"] . '</option>';
-                            endforeach;
+                        foreach ($data as $valores) :
+                            echo '<option value="' . $valores["nombre_modalidad"] . '">' . $valores["nombre_modalidad"] . '</option>';
+                        endforeach;
 
-                            ?>
+                        ?>
 
-                        </select>
-                    </div>
+                    </select>
+                </div>
                 <div class="col-md-3">
                     <label for="mensaje">Total de horas:</label>
                     <input type="text" class="form-control" name="horas" id="horas" required>
@@ -268,9 +272,9 @@ $(document).ready(function () {
                     <input type="text" class="form-control" name="otroexpidedocumento" id="otroexpidedocumento">
                 </div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
-                <a href="#" id="btn-send-close" onclick="window.location.href='programaCapacitacion';">Cerrar ventana</a>&nbsp;&nbsp;
+                    <a href="#" id="btn-send-close" onclick="window.location.href='programaCapacitacion';">Cerrar ventana</a>&nbsp;&nbsp;
                     <input type="submit" name="add" id="btn-send" value="Guardar">
-                    
+
                 </div>
             </div>
         </form>
@@ -281,7 +285,7 @@ $(document).ready(function () {
         error_reporting(0);
         require_once 'clases/conexion.php';
         $conexionX = new ConexionRh();
-                    
+
         $sql = $conexionX->prepare("SELECT * from datos where id_empleado = $identificador and validaautorizacion = 1 order by id desc");
         $sql->execute();
 
@@ -387,28 +391,27 @@ $(document).ready(function () {
         });
     </script>
     <script>
-                    $('input[type="file"]').on('change', function () {
-                        var ext = $(this).val().split('.').pop();
-                        if ($(this).val() != '') {
-                            if (ext == "pdf") {
-                            
-                                if ($(this)[0].files[0].size > 9048576) {
-                                    console.log("El documento excede el tamaño máximo");
-                                    $('#modal-title').text('¡Precaución!');
-                                    $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
-                                    $("#modal-gral").modal();
-                                    $(this).val('');
-                                } else {
-                                    $("#modal-gral").hide();
-                                }
-                            }
-                            else {
-                                $(this).val('');
-                                alert("Extensión no permitida: " + ext);
-                            }
-                        }
-                    });
-                </script>
+        $('input[type="file"]').on('change', function() {
+            var ext = $(this).val().split('.').pop();
+            if ($(this).val() != '') {
+                if (ext == "pdf") {
+
+                    if ($(this)[0].files[0].size > 9048576) {
+                        console.log("El documento excede el tamaño máximo");
+                        $('#modal-title').text('¡Precaución!');
+                        $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
+                        $("#modal-gral").modal();
+                        $(this).val('');
+                    } else {
+                        $("#modal-gral").hide();
+                    }
+                } else {
+                    $(this).val('');
+                    alert("Extensión no permitida: " + ext);
+                }
+            }
+        });
+    </script>
 
 </body>
 
