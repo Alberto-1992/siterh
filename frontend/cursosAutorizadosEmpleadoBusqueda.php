@@ -10,51 +10,23 @@
     <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <link rel="stylesheet" href="css/multiple-select.css" />
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Validación de actualizaciones academicas</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/estilosMenuNew.css?=1" rel="stylesheet">
     <link href="css/estilosMenu.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
 </head>
+<header class="headerinfarto">
+        
+            <span id="cabecera">Cursos autorizados.</span>
 
+        </header>
 <body>
-    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #85B4B9;">
-        <span id="cabecera">Datos autorizados</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
-
-            <?php
-            include("notificaciones/conexion.php");
-            ?>
-
-            <div class="demo-content">
-                <div id="notification-header">
-                    <div style="position:relative">
-                        
-                        <div id="notification-latest"></div>
-                    </div>
-                </div>
-            </div>
-
-            <?php if (isset($message)) { ?> <div class="error"><?php echo $message; ?></div> <?php } ?>
-            <?php if (isset($success)) { ?> <div class="success"><?php echo $success; ?></div> <?php } ?>
-
-
-        </div>
-    </nav>
-<div class="box1" style="margin-top: 10px;">
-    <?php 
+<?php 
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
@@ -70,7 +42,7 @@
             require 'close_sesion.php';
         }
 ?>
-
+<div class="box1" style="margin-top: 10px;">
 
         <script>
             $.ajax({
@@ -93,18 +65,16 @@
             })
 
         </script>
-        <div class="autoheight">
-<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeyup="return handleKeyPress(event);">
             <div id="tabla_resultadobus">
 
             </div>
             <div id="tabla_resultado" class="adaptar"></div>
         </div>
-    </div>
 <script>
   function handleKeyPress(e)
 {
-
+    if (e.keyCode === 13 && !e.shiftKey) {
+        e.preventDefault();
 	let evento = $("#busqueda").val();
 	let ob = {evento:evento};
   $.ajax({
@@ -117,16 +87,15 @@
                     //$("#editarDatosPersonalescancerdeMama").modal('show');
                     }
                 });
+    }
 
 };
 </script>
 <script type='text/javascript'
         src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
     </script>
-<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'>
-</script>
+
     <script src="https://code.jquery.com/jquery-2.1.1.min.js" crossorigin="anonymous"></script>
-    <script src="js/multiple-select.js"></script>
     <script>
         window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
     </script>

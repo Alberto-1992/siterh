@@ -58,8 +58,9 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
             </ul>
         </li>
 -->
+<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);">
     </ul>
-    
+
     <hr id="hrinicial">
 
         <input type="hidden" name="total_registro" id="total_registro" value="<?php echo $total_registro; ?>" >
