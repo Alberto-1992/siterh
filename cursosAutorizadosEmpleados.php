@@ -28,19 +28,28 @@
 error_reporting(0);
 require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
-$sqlQueryComentarios  = $conexionX->prepare("SELECT plantillahraei.Empleado FROM plantillahraei");
-$sqlQueryComentarios->execute();
-$sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
-$sqlQueryComentarios->execute();
-$total_registro = $sqlQueryComentarios->fetchColumn();
+    $sqlQueryComentarios  = $conexionX->prepare("SELECT id FROM datos where validaautorizacion = 1");
+    $sqlQueryComentarios->execute();
+    $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
+    $sqlQueryComentarios->execute();
+    $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT  Nombre, Empleado, DescripcionPuesto,RFC  FROM plantillahraei order by Empleado DESC LIMIT 30");
+    $empleado  = $conexionX->prepare("SELECT distinct id_empleado FROM datos where validaautorizacion = 1");
+    $empleado->execute();
+    $empleado = $conexionX->prepare("SELECT FOUND_ROWS()");
+    $empleado->execute();
+    $total_empleado = $empleado->fetchColumn();
+
+    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where validaautorizacion = 1 order by datos.id DESC LIMIT 50 ");
     if(isset($_POST['evento']))
 {
-	$id= $_POST['evento'];
-	$query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC  FROM plantillahraei where 
-    Nombre like '%$id%' or
-    Empleado like '%$id%' order by plantillahraei.Empleado");
+	$q= $_POST['evento'];
+	$query=$conexionX->prepare("SELECT datos.id, datos.nombreempleado, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado WHERE
+            id_empleado LIKE '%$q%' and validaautorizacion = 1 OR
+            nombrecurso LIKE '%$q%'  and validaautorizacion = 1 OR
+		    nombreempleado LIKE '%$q%' and validaautorizacion = 1 OR
+            DescripcionAdscripcion LIKE '%$q%' or
+            DescripcionPuesto LIKE '%$q%' group by datos.id");
 }
         ?>
 <input type="hidden" id="totalregistro" value="<?php echo $total_registro; ?>">
@@ -70,14 +79,14 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
         $query->execute();
         while($dataRegistro= $query->fetch())
         { 
+            $acceso = $dataRegistro['validaautorizacion'];
             ?>
         
-        <div class="item-comentario" id="<?php echo $dataRegistro['Empleado']; ?>">
+        <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
         
-                <div id='<?php echo $dataRegistro['Empleado']; ?>' class='ver-info'>
-                <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['Nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['RFC'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['Empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong>';
-                    
-                    ?>
+                <div id='<?php echo $dataRegistro['id']; ?>' class='ver-info'>
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong><br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
+                        ?>
                     
                     </div> 
                 <hr id="hr" >
@@ -97,13 +106,13 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
 </div>
 <?php
 
-$sql = $conexionX->prepare("SELECT id_empleado from datos WHERE validaautorizacion = 1 order by id desc limit 1");
+$sql = $conexionX->prepare("SELECT id from datos WHERE validaautorizacion = 1 order by id desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 
 ?>
 
-<input type="hidden" id="cargaPrimerRegsitro" value="<?php echo $row['id_empleado'] ?>">
+<input type="hidden" id="cargaPrimerRegsitro" value="<?php echo $row['id'] ?>">
 <script>
 function documentos() {
     var id = $("#curp").val();

@@ -15,7 +15,7 @@ require 'conexionRh.php';
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
         <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
             <li><a class="dropdown-item" href="#" onclick="eliminarRegistro();">Eliminar registro</a></li>
-            <li><a class="dropdown-item" href="#" onclick="autorizar();">Autorizar</a></li>
+            <li><a class="dropdown-item" href="#" onclick="denegarAutorizacion();">Rechazar autorización</a></li>
         </ul>
     </li>
 </ul>
@@ -60,7 +60,7 @@ require 'conexionRh.php';
         }
     }
 
-    function autorizar() {
+    function denegarAutorizacion() {
         var id = $("#id").val();
         var mensaje = confirm("El curso sera autorizado");
         let parametros = {
@@ -69,7 +69,7 @@ require 'conexionRh.php';
         if (mensaje == true) {
             $.ajax({
                 data: parametros,
-                url: 'autorizarDocumento.php',
+                url: 'aplicacion/denegarAutorizarDocumento.php',
                 type: 'post',
 
                 success: function(response) {

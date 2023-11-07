@@ -4,9 +4,9 @@ require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
 $id = $_POST['id'];
 $query = $conexionX->prepare("SELECT *
-from datos where id_empleado = :id_empleado");
+from datos where id = :id and validaautorizacion = 1");
 $query->execute(array(
-    ':id_empleado'=>$id
+    ':id'=>$id
 ));
 
 if($query != false){
