@@ -69,7 +69,8 @@
 <script>
   function handleKeyPress(e)
 {
-
+    if (e.keyCode === 13 && !e.shiftKey) {
+        e.preventDefault();
 	let evento = $("#busqueda").val();
 	let ob = {evento:evento};
   $.ajax({
@@ -82,6 +83,7 @@
                     //$("#editarDatosPersonalescancerdeMama").modal('show');
                     }
                 });
+            }
 
 };
 </script>
