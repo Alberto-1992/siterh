@@ -287,6 +287,9 @@
         <table id="example" class="table table-striped table-bordered nowrap table-darkgray table-hover">
             <thead>
                 <tr>
+                    <th>Institucion imparte</th>
+                    <th>Nombre institucion</th>
+                    <th>Tipo de capacitacion</th>
                     <th>Nombre del curso</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
@@ -303,10 +306,13 @@
                     $id_empleado = $dataRegistro['id_empleado'];
                 ?>
                     <tr>
+                        <td><?php echo $dataRegistro['nombreinstitucion'] ?></td>
+                        <td><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
+                        <td><?php echo $dataRegistro['tipocapacitacion'] ?></td>
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
                         <td><?php echo $dataRegistro['fechainicio'] ?></td>
                         <td><?php echo $dataRegistro['fechatermino'] ?></td>
-                        <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank"><iframe width="100%" name="hola" scrolling="auto" src="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" frameborder="0"></iframe><br>Ver archivo</a></td>
+                        <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank"></iframe><br>Ver archivo</a></td>
                         <td><?php echo $dataRegistro['documentorecibe'] ?></td>
 
                     </tr>
@@ -317,6 +323,9 @@
 
             <tfoot>
                 <tr>
+                    <th>Institucion imparte</th>
+                    <th>Nombre institucion</th>
+                    <th>Tipo de capacitacion</th>
                     <th>Nombre del curso</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
