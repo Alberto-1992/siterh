@@ -17,14 +17,7 @@ require 'conexionRh.php';
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="eliminarRegistro();">Eliminar registro</a></li>
-            <?php
-                if($dataRegistro['acceder'] == 1){ ?>
-            
-                <li><a class="dropdown-item" href="#" onclick="cancelaracceso();">Cancelar evaluación</a></li>
-            <?php
-                }
-            ?>
+                <li><a class="dropdown-item" href="#" onclick="eliminarRegistro();">Eliminar evaluacion</a></li>
             <?php 
             if($dataRegistro['confirmarasistencia'] == 0){ ?>
                 <li><a class="dropdown-item" href="#" onclick="confirmarasistencia();">Confirmar asistencia</a></li>
@@ -54,7 +47,7 @@ require 'conexionRh.php';
     if (mensaje == true) {
         $.ajax({
             data: parametros,
-            url: 'aplicacion/eliminarRegistroCandidato.php',
+            url: 'aplicacion/cancelaAccesoCandidato.php',
             type: 'post',
 
             success: function (response) {
@@ -74,33 +67,6 @@ require 'conexionRh.php';
     }
 }
 
-function cancelaracceso() {
-    var id = $("#idpersonal").val();
-    var actualiza = $("#cancelarevaluacion").val();
-    var mensaje = confirm("Se le cancelara el acceso, desea continuar?"); 
-    let parametros = { id: id, actualiza:actualiza }
-    if (mensaje == true) {
-        $.ajax({
-            data: parametros,
-            url: 'aplicacion/darAcceso.php',
-            type: 'post',
-
-            success: function (response) {
-                $("#mensaje").html(response);
-                $("#tabla_resultadobus").load('consultaReclutamientoEnEvaluacion.php');
-                
-
-            }
-        });
-    } else {
-        swal({
-            title: 'Cancelado!',
-            text: 'Proceso cancelado',
-            icon: 'warning',
-
-        });
-    }
-}
 function confirmarasistencia() {
     var id = $("#idpersonal").val();
     var confirmar = $("#evaluar").val();

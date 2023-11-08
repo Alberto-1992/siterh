@@ -13,12 +13,12 @@ try {
     $sql->execute(array(
         ':acceder'=>$acceder,
         ':cargodocumento'=>2,
-        ':id_datopersonal' => $id
+        ':id_datopersonal' =>$id
     ));
     $validatransac = $conexionRol->commit();
 
     if ($validatransac != false) {
-        echo "<script>alertify.success('Acceso autorizado');
+        echo "<script>alertify.success('Good');
 </script>";
     }
 } catch (Exception $e) {

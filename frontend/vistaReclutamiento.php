@@ -87,33 +87,7 @@ function asignarAcceso() {
         });
     }
 }
-function cancelaracceso() {
-    var id = $("#idpersonal").val();
-    var actualiza = $("#cancelarevaluacion").val();
-    var mensaje = confirm("Se le cancelara el acceso, desea continuar?"); 
-    let parametros = { id: id, actualiza:actualiza }
-    if (mensaje == true) {
-        $.ajax({
-            data: parametros,
-            url: 'aplicacion/darAcceso.php',
-            type: 'post',
 
-            success: function (response) {
-                $("#mensaje").html(response);
-                $("#tabla_resultadobus").load('consultaReclutamiento.php');
-                
-
-            }
-        });
-    } else {
-        swal({
-            title: 'Cancelado!',
-            text: 'Proceso cancelado',
-            icon: 'warning',
-
-        });
-    }
-}
 </script>
 
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >

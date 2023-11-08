@@ -9,8 +9,10 @@ try {
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexion->beginTransaction();
-    $sql = $conexion->prepare("DELETE from datospersonales where id_datopersonal = :id_datopersonal");
+    $sql = $conexion->prepare("UPDATE datospersonales set acceder = :acceder, cargodocumento = :cargodocumento where id_datopersonal = :id_datopersonal");
     $sql->execute(array(
+        ':acceder'=>0,
+        ':cargodocumento'=>0,
         ':id_datopersonal'=>$id
     ));
     $compdomicilio = 'documentocurp';
