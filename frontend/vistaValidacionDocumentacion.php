@@ -301,6 +301,7 @@ if ($validaacceso == 8) {
                     <option value="ACTUALIZACION GERENCIAL">ACTUALIZACION GERENCIAL</option>
                     <option value="ACTUALIZACION TECNICO MEDICO">ACTUALIZACION TECNICO MEDICO</option>
                     <option value="ACTUALIZACION NORMATIVA">ACTUALIZACION NORMATIVA</option>
+                    <option value="DESARROLLO PROFESIONAL">DESARROLLO PROFESIONAL</option>
                 </select>
             </div>
         </div>
