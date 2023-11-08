@@ -312,7 +312,7 @@
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
                         <td><?php echo $dataRegistro['fechainicio'] ?></td>
                         <td><?php echo $dataRegistro['fechatermino'] ?></td>
-                        <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank"></iframe><br>Ver archivo</a></td>
+                        <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
                         <td><?php echo $dataRegistro['documentorecibe'] ?></td>
 
                     </tr>
