@@ -1,6 +1,6 @@
 <?php
 
-require_once '../clases/conexion.php';
+require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
 
 date_default_timezone_set('America/Mexico_City');
@@ -13,8 +13,33 @@ try {
     $conexionX->beginTransaction();
 error_reporting(0);
 
-
-    $sql = $conexionX->prepare("INSERT INTO eventocapacitacion (Nombre_evento, modalidad_actividades, fecha_inicia, fecha_termino, horario_establecido, anotedocumentos, descripcionevento, ligar_dondeinpar,tipodecurso,id_empleado) 
+        if ($_FILES["comprobantecurso"]["error"] > 0) {
+        
+        } else {
+    
+            $permitidos = array("application/pdf");
+            
+            if (in_array($_FILES["comprobantecurso"]["type"], $permitidos) && $_FILES["comprobantecurso"]["size"]) {
+    
+                $ruta = 'documentobecatiempo/'.$Eventoacademico.$DateAndTime.$numeroEm. '/';
+                $archivo = $ruta . $_FILES["comprobantecurso"]["name"] = "comprobatedocumento.pdf";
+    
+    
+                if (!file_exists($ruta)) {
+                    mkdir($ruta);
+                }
+    
+                if (file_exists($archivo)) {
+    
+                    $resultado = @move_uploaded_file($_FILES["comprobantecurso"]["tmp_name"], $archivo);
+                } else {
+                    $resultado = @move_uploaded_file($_FILES["comprobantecurso"]["tmp_name"], $archivo);
+                }
+                
+            }
+            
+        }
+        $sql = $conexionX->prepare("INSERT INTO eventocapacitacion (Nombre_evento, modalidad_actividades, fecha_inicia, fecha_termino, horario_establecido, anotedocumentos, descripcionevento, ligar_dondeinpar,tipodecurso,id_empleado) 
     VALUES (:Nombre_evento, :modalidad_actividades, :fecha_inicia, :fecha_termino, :horario_establecido, :anotedocumentos, :descripcionevento,:ligar_dondeinpar,:tipodecurso,:id_empleado)");
     $sql->execute(array(
 
@@ -23,13 +48,12 @@ error_reporting(0);
             ':fecha_inicia' => $Fechainicioevento,
             ':fecha_termino' => $Fechaterminoevento,
             ':horario_establecido' => $Horarios,
-            ':anotedocumentos' => $comentario,
+            ':anotedocumentos' => $ruta,
             ':descripcionevento' => $comentarioSolicitud,
             ':ligar_dondeinpar' =>$lugarimpartira,
             ':tipodecurso'=>$tipoCurso,
             ':id_empleado'=>$numeroEm
         ));
-
     $validatransac = $conexionX->commit();
 
     if($validatransac != false){

@@ -171,7 +171,7 @@ if ($validaacceso == 8) {
 <div class="form-row">
     <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
     <div class="col-md-4">
-            <strong>CATALOGO DE PROGRAMAS</strong>
+            <strong style="font-size: 12px;">CATALOGO DE PROGRAMAS</strong>
             <select class="form-control" id="catalogoprogramas" name="catalogoprogramas">
                 <option value="">Seleccione</option>
                 <option value="PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
@@ -181,22 +181,26 @@ if ($validaacceso == 8) {
                 </select>
         </div>
         <div class="col-md-4">
-            <strong>LINEA ESTRATEGICA</strong>
+            <strong style="font-size: 12px;">LINEA ESTRATEGICA</strong>
             <select class="form-control" id="lineaestrategica" name="lineaestrategica">
                 <option value="">Seleccione</option>
-                <option value="COMPETENCIAS ORGANIZACIONALES">COMPETENCIAS ORGANIZACIONALES</option>
-                <option value="COMPETENCIAS DIRECTIVAS">COMPETENCIAS DIRECTIVAS</option>
-                <option value="COMPETENCIAS TECNICAS GENERALES">COMPETENCIAS TECNICAS GENERALES</option>
-                <option value="COMPETENCIAS TECNICAS GENERALES-MUEC">COMPETENCIAS TECNICAS GENERALES-MUEC</option>
-                <option value="CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS">CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</option>
-                <option value="COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)">COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</option>
-            </select>
+                <?php
+                    require_once 'clases/conexion.php';
+                    $conexionX = new ConexionRh();
+                    $query = $conexionX->prepare("SELECT * FROM lineaestrategica ");
+                        $query->execute();
+                        $query->setFetchMode(PDO::FETCH_ASSOC);
+                        while ($row = $query->fetch()) { ?>
+                            <option value="<?php echo $row['descripcionlinea']; ?>">
+                                <?php echo $row['descripcionlinea']; ?></option>
+                        <?php } ?>
+                </select>
         </div>
     </div>
     <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center; margin-top: 5px;">
         <div id="comporganizacionales">
             <div class="col-md-12">
-                <strong>COMPETENCIAS ORGANIZACIONALES</strong>
+                <strong style="font-size: 12px;">COMPETENCIAS ORGANIZACIONALES</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="TRABAJO EN EQUIPO">TRABAJO EN EQUIPO</option>
@@ -207,7 +211,7 @@ if ($validaacceso == 8) {
         </div>
         <div id="compdirectivas">
             <div class="col-md-12">
-                <strong>COMPETENCIAS DIRECTIVAS</strong>
+                <strong style="font-size: 12px;">COMPETENCIAS DIRECTIVAS</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="VISION ESTRATEGICA">VISION ESTRATEGICA</option>
@@ -218,7 +222,7 @@ if ($validaacceso == 8) {
         </div>
         <div id="computo">
             <div class="col-md-12">
-                <strong>COMPETENCIA</strong>
+                <strong style="font-size: 12px;">COMPETENCIA</strong>
                 <select class="form-control" id="herramientascomputo" name="herramientascomputo">
                     <option value="">Seleccione</option>
                     <option value="HERRAMIENTAS DE COMPUTO">HERRAMIENTAS DE COMPUTO</option>
@@ -231,7 +235,7 @@ if ($validaacceso == 8) {
         </div>
         <div id="tecnicasgenerales">
             <div class="col-md-12">
-                <strong>COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</strong>
+                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
@@ -240,7 +244,7 @@ if ($validaacceso == 8) {
         </div>
         <div id="tecnicasgeneralesmando">
             <div class="col-md-12">
-                <strong>COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
+                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="GESTION DE PROCESOS">GESTION DE PROCESOS</option>
@@ -252,31 +256,25 @@ if ($validaacceso == 8) {
         </div>
         <div id="muec">
             <div class="col-md-12">
-                <strong>COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
+                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
-                    <option value="No, ninguno">No, ninguno</option>
-                    <option value="TRATO DIGNO EN LOS SERVICIOS DE SALUD">TRATO DIGNO EN LOS SERVICIOS DE SALUD</option>
-                    <option value="INTRODUCCION AL MODELO UNICO PARA LA EVALUACION DE LA CALIDAD (MUEC)">INTRODUCCION AL MODELO UNICO PARA LA EVALUACION DE LA CALIDAD (MUEC)</option>
-                    <option value="INTERCULTURALIDAD">INTERCULTURALIDAD</option>
-                    <option value="PREVENCION DE INCENDIOS Y ATENCION DE EMERGENCIAS">PREVENCION DE INCENDIOS Y ATENCION DE EMERGENCIAS</option>
-                    <option value="RPBI-RESIDUOS PELIGROSOS BIOLÓGICO-INFECCIOSOS">RPBI-RESIDUOS PELIGROSOS BIOLÓGICO-INFECCIOSOS</option>
-                    <option value="HIGIENE DE MANOS">HIGIENE DE MANOS</option>
-                    <option value="ACCIONES ESENCIALES DE SEGURIDAD DEL PACIENTE">ACCIONES ESENCIALES DE SEGURIDAD DEL PACIENTE</option>
-                    <option value="CUIDADO PALIATIVO">CUIDADO PALIATIVO</option>
-                    <option value="POE-PERSONAL OCUPACIONALMENTE EXPUESTO">POE-PERSONAL OCUPACIONALMENTE EXPUESTO</option>
-                    <option value="RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD">RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD</option>
-                    <option value="ATLS-APOYO VITAL AVANZADO EN TRAUMA">ATLS-APOYO VITAL AVANZADO EN TRAUMA</option>
-                    <option value="ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO">ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO</option>
-                    <option value="BLS-SOPORTE VITAL BASICO">BLS-SOPORTE VITAL BASICO</option>
-                    <option value="PALS-APOYO VITAL AVANZADO PEDIATRICO">PALS-APOYO VITAL AVANZADO PEDIATRICO</option>
-                    <option value="RENEO-REANIMACION NEONATAL">RENEO-REANIMACION NEONATAL</option>
+                    <?php
+                    require_once 'clases/conexion.php';
+                    $conexionX = new ConexionRh();
+                    $query = $conexionX->prepare("SELECT * FROM muec ");
+                        $query->execute();
+                        $query->setFetchMode(PDO::FETCH_ASSOC);
+                        while ($row = $query->fetch()) { ?>
+                            <option value="<?php echo $row['descripcionmuec']; ?>">
+                                <?php echo $row['descripcionmuec']; ?></option>
+                        <?php } ?>
                 </select>
             </div>
         </div>
         <div id="derechoshumanos">
             <div class="col-md-12">
-                <strong>CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</strong>
+                <strong style="font-size: 12px;">CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA">TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA</option>
@@ -292,7 +290,7 @@ if ($validaacceso == 8) {
         </div>
         <div id="compespecializadas">
             <div class="col-md-12">
-                <strong>COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</strong>
+                <strong style="font-size: 12px;">COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="ACTUALIZACION ADMINISTRATIVA">ACTUALIZACION ADMINISTRATIVA</option>
@@ -349,8 +347,6 @@ if ($validaacceso == 8) {
         $('#comporganizacionales').prop("hidden", true);
         $('#compdirectivas').prop("hidden", true);
         $('#computo').prop("hidden", true);
-        $("#cognitivas").prop("hidden", true);
-        $("#eticaprofesional").prop("hidden", true);
         $("#tecnicasgenerales").prop("hidden", true);
         $("#tecnicasgeneralesmando").prop("hidden", true);
         $("#muec").prop("hidden", true);
@@ -362,8 +358,6 @@ if ($validaacceso == 8) {
         $("#organizacionales").prop("selectedIndex", 0);
         $("#competenciasdirectivas").prop("selectedIndex", 0);
         $("#herramientascomputo").prop("selectedIndex", 0);
-        $("#basicascognitivas").prop("selectedIndex", 0);
-        $("#profesionaletica").prop("selectedIndex", 0);
         $("#comptecnicasgenerales").prop("selectedIndex", 0);
         $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
         $("#mueccomp").prop("selectedIndex", 0);
@@ -466,8 +460,7 @@ if ($validaacceso == 8) {
                 $('#comporganizacionales').prop("hidden", true);
                 $('#compdirectivas').prop("hidden", true);
                 $('#computo').prop("hidden", true);
-                $("#cognitivas").prop("hidden", true);
-                $("#eticaprofesional").prop("hidden", true);
+                
                 $("#tecnicasgenerales").prop("hidden", true);
                 $("#tecnicasgeneralesmando").prop("hidden", true);
                 $("#muec").prop("hidden", true);
@@ -476,8 +469,7 @@ if ($validaacceso == 8) {
                 $("#organizacionales").prop("selectedIndex", 0);
                 $("#competenciasdirectivas").prop("selectedIndex", 0);
                 $("#herramientascomputo").prop("selectedIndex", 0);
-                $("#basicascognitivas").prop("selectedIndex", 0);
-                $("#profesionaletica").prop("selectedIndex", 0);
+                
                 $("#comptecnicasgenerales").prop("selectedIndex", 0);
                 $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
                 $("#mueccomp").prop("selectedIndex", 0);
@@ -486,8 +478,7 @@ if ($validaacceso == 8) {
                 $('#comporganizacionales').prop("hidden", true);
                 $('#compdirectivas').prop("hidden", true);
                 $('#computo').prop("hidden", true);
-                $("#cognitivas").prop("hidden", true);
-                $("#eticaprofesional").prop("hidden", true);
+                
                 $("#tecnicasgenerales").prop("hidden", true);
                 $("#tecnicasgeneralesmando").prop("hidden", true);
                 $("#muec").prop("hidden", true);
@@ -496,8 +487,7 @@ if ($validaacceso == 8) {
                 $("#organizacionales").prop("selectedIndex", 0);
                 $("#competenciasdirectivas").prop("selectedIndex", 0);
                 $("#herramientascomputo").prop("selectedIndex", 0);
-                $("#basicascognitivas").prop("selectedIndex", 0);
-                $("#profesionaletica").prop("selectedIndex", 0);
+                
                 $("#comptecnicasgenerales").prop("selectedIndex", 0);
                 $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
                 $("#mueccomp").prop("selectedIndex", 0);

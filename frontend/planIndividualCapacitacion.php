@@ -162,23 +162,16 @@
                 <div class="col-md-6">
                     <strong>¿El curso pertenece a alguno de los siguientes temas?</strong>
                     <select type="form-select" class="form-control" name="criteriocurso" id="criteriocurso" required>
-                        <option value="">Seleccione</option>
-                        <option value="No, ninguno">No, ninguno</option>
-                        <option value="TRATO DIGNO EN LOS SERVICIOS DE SALUD">TRATO DIGNO EN LOS SERVICIOS DE SALUD</option>
-                        <option value="INTRODUCCION AL MODELO UNICO PARA LA EVALUACION DE LA CALIDAD (MUEC)">INTRODUCCION AL MODELO UNICO PARA LA EVALUACION DE LA CALIDAD (MUEC)</option>
-                        <option value="INTERCULTURALIDAD">INTERCULTURALIDAD</option>
-                        <option value="PREVENCION DE INCENDIOS Y ATENCION DE EMERGENCIAS">PREVENCION DE INCENDIOS Y ATENCION DE EMERGENCIAS</option>
-                        <option value="RPBI-RESIDUOS PELIGROSOS BIOLÓGICO-INFECCIOSOS">RPBI-RESIDUOS PELIGROSOS BIOLÓGICO-INFECCIOSOS</option>
-                        <option value="HIGIENE DE MANOS">HIGIENE DE MANOS</option>
-                        <option value="ACCIONES ESENCIALES DE SEGURIDAD DEL PACIENTE">ACCIONES ESENCIALES DE SEGURIDAD DEL PACIENTE</option>
-                        <option value="CUIDADO PALIATIVO">CUIDADO PALIATIVO</option>
-                        <option value="POE-PERSONAL OCUPACIONALMENTE EXPUESTO">POE-PERSONAL OCUPACIONALMENTE EXPUESTO</option>
-                        <option value="RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD">RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD</option>
-                        <option value="ATLS-APOYO VITAL AVANZADO EN TRAUMA">ATLS-APOYO VITAL AVANZADO EN TRAUMA</option>
-                        <option value="ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO">ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO</option>
-                        <option value="BLS-SOPORTE VITAL BASICO">BLS-SOPORTE VITAL BASICO</option>
-                        <option value="PALS-APOYO VITAL AVANZADO PEDIATRICO">PALS-APOYO VITAL AVANZADO PEDIATRICO</option>
-                        <option value="RENEO-REANIMACION NEONATAL">RENEO-REANIMACION NEONATAL</option>
+                        <option value="" disabled>Seleccione</option>
+                        <?php
+
+                        $query = $conexionX->prepare("SELECT * FROM muec ");
+                        $query->execute();
+                        $query->setFetchMode(PDO::FETCH_ASSOC);
+                        while ($row = $query->fetch()) { ?>
+                            <option value="<?php echo $row['descripcionmuec']; ?>">
+                                <?php echo $row['descripcionmuec']; ?></option>
+                        <?php } ?>
 
                     </select>
                 </div>

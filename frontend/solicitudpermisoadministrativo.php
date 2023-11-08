@@ -11,13 +11,14 @@
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
     <!--<script defer src="https://app.embed.im/snow.js"></script>-->
     <title>Permisos administrativos</title>
 </head>
 
 <body>
 
-    <div class="box1">
         <header class="headerinfarto" style="background-color: #162765;">
 
             <span id="cabecera">Permiso administrativo.</span>
@@ -39,8 +40,6 @@
                 require 'close_sesion.php';
         }
         ?>
-        <div class="container" style="background-color: white; margin-top: 0px; border: none;">
-
             <style>
                 /* RESET RULES 
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -166,6 +165,17 @@
                 .page-footer span {
                     color: #e31b23;
                 }
+                #boton1:hover {
+                                    background-color: greenyellow;
+                                    color: black;
+                                    cursor: pointer;
+                                }
+
+                                #boton2:hover {
+                                    background-color: greenyellow;
+                                    color: black;
+                                    cursor: pointer;
+                                }
             </style>
 
             </head>
@@ -178,6 +188,7 @@
                 </style>
                 <div id="mensaje">
                     <div class="container" style="background-color: white; border: none; margin-top: 15%;">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                         <header style="width: auto; height: auto; margin-top: 0px; padding: 5px; text-align: center; color: rgb(0, 0, 0); background: #9E9E9E; border-radius: 10px; color: white;">
                             <p>Permiso administrativo
                                 Beca tiempo menor a 30 dias
@@ -191,7 +202,7 @@
                             }
                         </script>
 
-                        <form class="row g-3 needs-validation" id="msform" onsubmit="return limpiarformulario();">
+                        <form name="msform" id="msform" enctype="multipart/form-data" onsubmit="return limpiarformulario();">
                             <script>
                                 $("#msform").on("submit", function(e) {
                                     e.preventDefault();
@@ -199,7 +210,7 @@
                                     formData.append("dato", "valor");
                                     $.ajax({
 
-                                        url: "aplicacion/datosEvento.php",
+                                        url: "datosEvento.php",
                                         type: "post",
                                         dataType: "html",
                                         data: formData,
@@ -207,7 +218,7 @@
                                         contentType: false,
                                         processData: false,
                                         beforeSend: function(datos) {
-                                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+                                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
                                         },
                                         success: function(datos) {
                                             $("#mensaje").html(datos);
@@ -219,19 +230,6 @@
                                     })
                                 })
                             </script>
-                            <style>
-                                #boton1:hover {
-                                    background-color: greenyellow;
-                                    color: black;
-                                    cursor: pointer;
-                                }
-
-                                #boton2:hover {
-                                    background-color: greenyellow;
-                                    color: black;
-                                    cursor: pointer;
-                                }
-                            </style>
                             <?php
                             require_once 'clases/conexion.php';
                             $conexionX = new ConexionRh();
@@ -250,7 +248,7 @@
                                     ':id_jefe' => $idjefe
                                 ));
                                 $rowj = $sql->fetch();
-                            }
+                            } 
 
                             ?>
                             <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content: center;">
@@ -435,45 +433,45 @@
                                             <div class="row g-3 needs-validation">
 
                                                 <div class="col-md-10">
-                                                    <label class="form-label">Nombre completo </label>
+                                                    <strong>Nombre completo </strong>
                                                     <input type="text" class="form-control" name="Nombres" id="Nombres" value="<?php echo $rw['Nombre'] ?>">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label class="form-label">N° de Empleado</label>
+                                                    <strong>N° de Empleado</strong>
                                                     <input type="text" class="form-control" name="numeroEm" id="numeroEm" value="<?php echo $rw['Empleado'] ?>">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Puesto </label>
+                                                    <strong>Puesto </strong>
                                                     <input type="text" class="form-control" name="Puesto" id="Puesto" value="<?php echo $rw['DescripcionPuesto'] ?>">
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label class="form-label">Codigo</label>
+                                                    <strong>Codigo</strong>
                                                     <input type="text" class="form-control" name="Codigo" id="Codigo" value="<?php echo $rw['CodigoPuesto'] ?>">
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label class="form-label">Fecha de ingreso</label>
+                                                    <strong>Fecha de ingreso</strong>
                                                     <input type="date" class="form-control " name="Fechainicio1" required value="<?php echo $rw['fechaingreso'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Nombre del Area</label>
+                                                    <strong>Nombre del Area</strong>
                                                     <input type="text" class="form-control" name="Extencion" id="exten" value="<?php echo $rw['DescripcionAdscripcion'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Especialidad</label>
+                                                    <strong>Especialidad</strong>
                                                     <input type="text" class="form-control" name="Especialidad" id="Especialidad">
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Servicio</label>
+                                                    <strong>Servicio</strong>
                                                     <input type="text" class="form-control" name="Extencion" id="exten" value="<?php echo $rw['descripcionestructura3'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Turno</label>
-                                                    <input type="text" class="form-control" name="turno">
+                                                    <strong>Turno</strong>
+                                                    <input type="text" class="form-control" name="turno" required>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Dias laborales </label>
-                                                    <input type="text" class="form-control" name="Dias" id="Dias">
+                                                    <strong>Dias laborales </strong>
+                                                    <input type="text" class="form-control" name="Dias" id="Dias" required>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div><label class="form-check-label">
@@ -493,24 +491,24 @@
 
                                                 </div>
                                                 <div class="col-md-10">
-                                                    <label class="form-label">Correo electronico</label>
+                                                    <strong>Correo electronico</strong>
                                                     <input type="email" class="form-control" id="Correo" value="<?php echo $rw['correo'] ?>">
                                                 </div>
 
 
                                                 <div class="col-md-2">
-                                                    <label class="form-label">Teléfono</label>
+                                                    <strong>Teléfono</strong>
                                                     <input type="text" class="form-control" name="Telefono" id="telefono" value="<?php echo $rw['telefonocelular'] ?>">
                                                 </div>
 
 
 
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Nombre del Jefe Inmeriato</label>
+                                                    <strong>Nombre del Jefe Inmediato</strong>
                                                     <input type="text" class="form-control" name="Nombrejefe" id="Nombrejefe" value="<?php echo $rowj['nombre'] ?>">
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Cargo del jefe inmediato </label>
+                                                    <strong>Cargo del jefe inmediato </strong>
                                                     <input type="text" class="form-control" name="Cargojefe" id="Cargojefe" value="<?php echo $rowj['correo'] ?>">
                                                 </div>
 
@@ -525,7 +523,7 @@
                                                     </label><br>
                                                     <input class="form-check-input" type="radio" name="infoclara" id="gridRadios1" value="PR" <?php echo $rw['EstatusPlaza']; ?> <?php if ($rw['EstatusPlaza'] == "PR") echo 'checked="checked"' ?> disabled>
                                                     <label class="form-check-label">
-                                                        Provicinal
+                                                        Provisional
                                                     </label>
                                                 </div>
 
@@ -542,49 +540,47 @@
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Nombre del evento académico</label>
-                                                    <input type="text" class="form-control" name="Eventoacademico" id="Eventoacademico">
+                                                    <strong>Nombre del evento académico</strong>
+                                                    <input type="text" class="form-control" name="Eventoacademico" id="Eventoacademico" required>
                                                 </div>
 
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Modalidad y actividad que realizará </label>
-                                                    <input type="text" class="form-control" name="Modalidad" id="Modalidad">
+                                                    <strong>Modalidad y actividad que realizará </strong>
+                                                    <input type="text" class="form-control" name="Modalidad" id="Modalidad" required>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <label class="form-label">Lugar donde se impartira. </label>
-                                                    <input type="text" class="form-control" name="lugarimpartira" id="Modalidad">
+                                                    <strong>Lugar donde se impartira. </strong>
+                                                    <input type="text" class="form-control" name="lugarimpartira" id="Modalidad" required>
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Fechas de Inicio</label>
+                                                    <strong>Fecha de Inicio</strong>
                                                     <input type="date" class="form-control " name="Fechainicioevento" required>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Fechas de termino</label>
+                                                    <strong>Fecha de termino</strong>
                                                     <input type="date" class="form-control " name="Fechaterminoevento" required>
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <label class="form-label">Horario Establecido</label>
-                                                    <input type="text" class="form-control" name="Horarios" id="Horarios">
-                                                </div>
-
-                                                <div class="mb-12" style="text-align: center;">
-                                                    <strong class="form-label" style="text-transform: uppercase; font-size: 15px">Anote el documento que
-                                                        atjunta para la peticiónde las actividade académicas: </strong>
-                                                    <label class="form-label">Fecha de inicio,Tríptico,programa y,en su caso,oficio de
-                                                        invitación </label>
-                                                    <textarea rows="7" class="form-control" name="comentario" required></textarea>
+                                                    <strong>Horario Establecido</strong>
+                                                    <input type="text" class="form-control" name="Horarios" id="Horarios" required>
                                                 </div>
 
                                                 <div class="col-md-12" style="text-align: center;">
-                                                    <label class="form-label">Describa brevemente su solicitud </label>
+                                                    <strong style="font-size: 15px">Carga el documento que avala tu solicitud(.pdf): </strong>
+                                                
+                                                    <input type="file" class="form-control" name="comprobantecurso" required accept=".pdf">
+                                                </div>
+
+                                                <div class="col-md-12" style="text-align: center;">
+                                                    <strong>Describa brevemente su solicitud.</strong>
                                                     <textarea rows="4" class="form-control" name="comentarioSolicitud" required></textarea>
                                                 </div>
 
                                                 <div class="col-md-12" style="text-align: center;">
-                                                    <label class="form-label">Comentario del jefe inmediato de contribución al
-                                                        servicio de la capacitación solicitada </label>
+                                                    <strong>Comentario del jefe inmediato de contribución al
+                                                        servicio de la capacitación solicitada.</strong>
                                                     <textarea rows="4" class="form-control" name="comentarioJefe" readonly></textarea>
                                                 </div>
 
@@ -599,7 +595,96 @@
                                     </section>
                                 </div>
                             </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="container" style="width: 100%; overflow-x:scroll; margin-top: 15px;">
+        <?php
+        error_reporting(0);
+        require_once 'clases/conexion.php';
+        $conexionX = new ConexionRh();
+            $identificador = $rw['Empleado'];
+        $sql = $conexionX->prepare("SELECT * from eventocapacitacion where id_empleado = $identificador and validaautorizacion = 0 order by id_evento desc");
+        $sql->execute();
 
+        ?>
+
+        <table id="example" class="table table-striped table-bordered nowrap table-darkgray table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre del curso</th>
+                    <th>Feha de inicio</th>
+                    <th>Feha de termino</th>
+                    <th>Horario</th>
+                    <th>Tipo de curso</th>
+                    <th>Ver documento</th>
+                    <th>Documento recibe</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while ($dataRegistro = $sql->fetch()) {
+                    $valor = $dataRegistro['id_evento'];
+                    $nombrecurso = 'comprobatedocumento';
+                    $fechatermino = $dataRegistro['fecha_inicia'];
+                    $id_empleado = $dataRegistro['id_empleado'];
+                    $documento = $dataRegistro['anotedocumentos'];
+                ?>
+                    <tr>
+                        <td><?php echo $dataRegistro['Nombre_evento'] ?></td>
+                        <td><?php echo $dataRegistro['fecha_inicia'] ?></td>
+                        <td><?php echo $dataRegistro['fecha_termino'] ?></td>
+                        <td><?php echo $dataRegistro['horario_establecido'] ?></td>
+                        <td><?php echo $dataRegistro['tipodecurso'] ?></td>
+                        <td><a href="<?php echo "$documento$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
+                        <td><?php echo $dataRegistro['documentorecibe'] ?></td>
+
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th>Nombre del curso</th>
+                    <th>Feha de inicio</th>
+                    <th>Feha de termino</th>
+                    <th>Horario</th>
+                    <th>Tipo de curso</th>
+                    <th>Ver documento</th>
+                    <th>Documento recibe</th>
+
+                </tr>
+            </tfoot>
+        </table>
+        <script>
+            new DataTable('#example', {
+                initComplete: function() {
+                    this.api()
+                        .columns()
+                        .every(function() {
+                            let column = this;
+                            let title = column.footer().textContent;
+
+                            // Create input element
+                            let input = document.createElement('input');
+                            input.placeholder = title;
+                            column.footer().replaceChildren(input);
+
+                            // Event listener for user input
+                            input.addEventListener('keyup', () => {
+                                if (column.search() !== this.value) {
+                                    column.search(input.value).draw();
+                                }
+                            });
+                        });
+                }
+            });
+            $('#example tfoot tr').appendTo('#example thead');
+        </script>
+    </div>
+</body>
                             <script>
                                 const openEls = document.querySelectorAll("[data-open]");
                                 const closeEls = document.querySelectorAll("[data-close]");
@@ -621,20 +706,27 @@
                                 document.addEventListener("click", e => {
                                     if (e.target == document.querySelector(".modal.is-visible")) {
                                         document.querySelector(".modal.is-visible [data-close]").click();
-                                        document.getElementById("msform").reset();
+                                
                                     }
                                 });
+                                $('input[type="file"]').on('change', function() {
+            var ext = $(this).val().split('.').pop();
+            if ($(this).val() != '') {
+                if (ext == "pdf") {
+
+                    if ($(this)[0].files[0].size > 5048576) {
+                        alert('¡Precaución! Se solicita un archivo no mayor a 5MB. Por favor verifica.');
+
+                        $(this).val('');
+                    } else {
+                        $("#notificacion").hide();
+                    }
+                } else {
+                    $(this).val('');
+                    alert("Extensión no permitida: " + ext);
+                }
+            }
+        });
                             </script>
-
-
-
-                        </form>
-                    </div>
-                </div>
-
-
-
-        </div>
-</body>
 
 </html>
