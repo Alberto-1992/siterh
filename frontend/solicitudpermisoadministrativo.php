@@ -187,7 +187,7 @@
                     }
                 </style>
                 <div id="mensaje">
-                    <div class="container" style="background-color: white; border: none; margin-top: 15%;">
+                    <div class="container" style="background-color: white; border: none; margin-top: 2%;">
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                         <header style="width: auto; height: auto; margin-top: 0px; padding: 5px; text-align: center; color: rgb(0, 0, 0); background: #9E9E9E; border-radius: 10px; color: white;">
                             <p>Permiso administrativo
@@ -252,11 +252,11 @@
 
                             ?>
                             <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content: center;">
-                                <div class="btn-group;col-md-3">
+                                <!--<div class="btn-group;col-md-3">
                                     <button type="button" class="open-modal" data-open="modal1" id="boton1">
                                         Instruccciones
                                     </button>
-                                </div>&nbsp;&nbsp;
+                                </div>&nbsp;&nbsp;-->
                                 <div class="btn-group;col-md-3">
                                     <button type="button" class="open-modal" data-open="modal2" id="boton2">
                                         LLenado
@@ -604,7 +604,7 @@
         require_once 'clases/conexion.php';
         $conexionX = new ConexionRh();
             $identificador = $rw['Empleado'];
-        $sql = $conexionX->prepare("SELECT * from eventocapacitacion where id_empleado = $identificador and validaautorizacion = 0 order by id_evento desc");
+        $sql = $conexionX->prepare("SELECT * from eventocapacitacion where id_empleado = $identificador order by id_evento desc");
         $sql->execute();
 
         ?>
@@ -617,8 +617,11 @@
                     <th>Feha de termino</th>
                     <th>Horario</th>
                     <th>Tipo de curso</th>
+                    <th>Lugar donde se imparte</th>
+                    <th>Comentario Jefe</th>
                     <th>Ver documento</th>
-                    <th>Documento recibe</th>
+                    <th>Generar PDF</th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -636,8 +639,11 @@
                         <td><?php echo $dataRegistro['fecha_termino'] ?></td>
                         <td><?php echo $dataRegistro['horario_establecido'] ?></td>
                         <td><?php echo $dataRegistro['tipodecurso'] ?></td>
+                        <td><?php echo $dataRegistro['lugar_dondeimpar'] ?></td>
+                        <td><?php echo $dataRegistro['comentariojefe'] ?></td>
                         <td><a href="<?php echo "$documento$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
-                        <td><?php echo $dataRegistro['documentorecibe'] ?></td>
+                        <td><?php if($dataRegistro['validaautorizacion'] == 1){ ?><a href="generarPdfPermisoBecaTiempo">Generar pdf</a><?php }else if($dataRegistro['validaautorizacion'] == 2){ ?>Solicitud negada <?php } ?></td>
+                        
 
                     </tr>
                 <?php
@@ -652,8 +658,11 @@
                     <th>Feha de termino</th>
                     <th>Horario</th>
                     <th>Tipo de curso</th>
+                    <th>Lugar donde se imparte</th>
+                    <th>Comentario Jefe</th>
                     <th>Ver documento</th>
-                    <th>Documento recibe</th>
+                    <th>Generar PDF</th>
+                    
 
                 </tr>
             </tfoot>

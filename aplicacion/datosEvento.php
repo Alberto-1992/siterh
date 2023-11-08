@@ -39,8 +39,8 @@ error_reporting(0);
             }
             
         }
-        $sql = $conexionX->prepare("INSERT INTO eventocapacitacion (Nombre_evento, modalidad_actividades, fecha_inicia, fecha_termino, horario_establecido, anotedocumentos, descripcionevento, ligar_dondeinpar,tipodecurso,id_empleado) 
-    VALUES (:Nombre_evento, :modalidad_actividades, :fecha_inicia, :fecha_termino, :horario_establecido, :anotedocumentos, :descripcionevento,:ligar_dondeinpar,:tipodecurso,:id_empleado)");
+        $sql = $conexionX->prepare("INSERT INTO eventocapacitacion (Nombre_evento, modalidad_actividades, fecha_inicia, fecha_termino, horario_establecido, anotedocumentos, descripcionevento, lugar_dondeimpar,tipodecurso,id_empleado) 
+    VALUES (:Nombre_evento, :modalidad_actividades, :fecha_inicia, :fecha_termino, :horario_establecido, :anotedocumentos, :descripcionevento,:lugar_dondeimpar,:tipodecurso,:id_empleado)");
     $sql->execute(array(
 
             ':Nombre_evento' => $Eventoacademico,
@@ -50,7 +50,7 @@ error_reporting(0);
             ':horario_establecido' => $Horarios,
             ':anotedocumentos' => $ruta,
             ':descripcionevento' => $comentarioSolicitud,
-            ':ligar_dondeinpar' =>$lugarimpartira,
+            ':lugar_dondeimpar' =>$lugarimpartira,
             ':tipodecurso'=>$tipoCurso,
             ':id_empleado'=>$numeroEm
         ));

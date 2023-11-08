@@ -47,16 +47,17 @@ switch(true) {
         require 'clases/conexion.php';
         $conexion = new ConexionRh();
 
-        $sql = $conexion->prepare("SELECT  plantillahraei.*, eventocapacitacion.id_evento,eventocapacitacion.Nombre_evento,eventocapacitacion.modalidad_actividades,eventocapacitacion.fecha_inicia,eventocapacitacion.fecha_termino,eventocapacitacion.horario_establecido,eventocapacitacion.anotedocumentos,eventocapacitacion.descripcionevento,eventocapacitacion.comentariojefe,eventocapacitacion.ligar_dondeinpar,eventocapacitacion.id_empleado as idempleadocapacitacion, personaloperativo2023.id_jefe, personaloperativo2023.descripcionestructura3, datospersonales.telefonocelular FROM eventocapacitacion inner join plantillahraei on plantillahraei.Empleado = eventocapacitacion.id_empleado inner join personaloperativo2023 on personaloperativo2023.id_empleado = eventocapacitacion.id_empleado inner join  datospersonales on datospersonales.id_empleado = eventocapacitacion.id_empleado WHERE personaloperativo2023.id_empleado= :id_empleado");
+        $sql = $conexion->prepare("SELECT  plantillahraei.*, eventocapacitacion.id_evento,eventocapacitacion.Nombre_evento,eventocapacitacion.modalidad_actividades,eventocapacitacion.fecha_inicia,eventocapacitacion.fecha_termino,eventocapacitacion.horario_establecido,eventocapacitacion.anotedocumentos,eventocapacitacion.descripcionevento,eventocapacitacion.comentariojefe,eventocapacitacion.lugar_dondeimpar,eventocapacitacion.id_empleado as idempleadocapacitacion FROM eventocapacitacion inner join plantillahraei on plantillahraei.Empleado = eventocapacitacion.id_empleado WHERE eventocapacitacion.id_empleado= :id_empleado");
             $sql->execute(array(
                 ':id_empleado'=>$id_empleado
             ));
             
         if(!empty($sql)){
-            while($rw = $sql->fetch()){ ?>
+            while($rw = $sql->fetch()){ 
+                ?>
             
-            <article class="card" id="autorizacioncapacitacion" onclick="misEmpleados();">
-            <a href="autorizarSolicitudPermiso">
+            <article class="card" id="autorizacioncapacitacion">
+            <a href="autorizarSolicitudPermiso?id=<?php echo base64_encode($rw['id_evento']) ?>">
             <hr id="hr6">
             <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                 <p><?php echo $rw['Nombre_evento'] ?></p>

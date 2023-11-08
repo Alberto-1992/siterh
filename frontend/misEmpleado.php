@@ -56,10 +56,29 @@
             
             while($dataEmpleado = $sql->fetch()){
         
-
 ?>
 
 <div class="card">
+<?php
+$id_empleado = $dataEmpleado['Empleado'];
+require_once 'conexionRh.php';
+$count = 0;
+$sql2 = "SELECT * FROM eventocapacitacion WHERE id_empleado = $id_empleado and validaautorizacion = 0";
+$result = mysqli_query($conexionGrafico, $sql2);
+$count = mysqli_num_rows($result);
+?>
+
+<div class="demo-content">
+    <div id="notification-header">
+        <div style="position:relative">
+            <button id="notification-icon" name="button" onclick="myFunction()" class="dropbtn" style="border: none; float:right;"><span id="notification-count" style="color:red; float:right;font-size: 22px;"><?php if ($count > 0) {
+                                                                                                                                    echo $count;
+                                                                                                                                } ?></span><img src="img/icono.png" /></button>
+            <div id="notification-latest"></div>
+        </div>
+    </div>
+</div>
+
 <?php
 $identificador = $dataEmpleado['Empleado'];
         $path = "imagenesPerfiles/" . $identificador;
@@ -104,6 +123,25 @@ $sqlj = $conexionX->prepare("SELECT jefes.*, plantillahraei.DescripcionPuesto,pl
                 }else{
 ?>
 <div class="card">
+<?php
+$id_empleado = $dataEmpleadoJefe['Empleado'];
+require_once 'conexionRh.php';
+$count = 0;
+$sql2 = "SELECT * FROM eventocapacitacion WHERE id_empleado = $id_empleado and validaautorizacion = 0";
+$result = mysqli_query($conexionGrafico, $sql2);
+$count = mysqli_num_rows($result);
+?>
+
+<div class="demo-content">
+    <div id="notification-header">
+        <div style="position:relative">
+            <button id="notification-icon" name="button" onclick="myFunction()" class="dropbtn" style="border: none; float:right;"><span id="notification-count" style="color:red; float:right;font-size: 22px;"><?php if ($count > 0) {
+                                                                                                                                    echo $count;
+                                                                                                                                } ?></span><img src="img/icono.png" /></button>
+            <div id="notification-latest"></div>
+        </div>
+    </div>
+</div>
 <?php
 $identificador = $dataEmpleadoJefe['id_empleadoJefe'];
         $path = "imagenesPerfiles/" . $identificador;
