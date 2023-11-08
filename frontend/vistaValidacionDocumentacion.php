@@ -421,7 +421,7 @@ if ($validaacceso == 8) {
                 $("#cursoderechoshumanos").prop("selectedIndex", 0);
                 $("#competenciasespecializadas").prop("selectedIndex", 0);
 
-            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-ADMINISTRATIVAS") {
+            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES") {
                 $('#comporganizacionales').prop("hidden", true);
                 $('#compdirectivas').prop("hidden", true);
                 $('#computo').prop("hidden", false);
@@ -441,47 +441,7 @@ if ($validaacceso == 8) {
                 $("#mueccomp").prop("selectedIndex", 0);
                 $("#cursoderechoshumanos").prop("selectedIndex", 0);
                 $("#competenciasespecializadas").prop("selectedIndex", 0);
-            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES") {
-                $('#comporganizacionales').prop("hidden", true);
-                $('#compdirectivas').prop("hidden", true);
-                $('#computo').prop("hidden", true);
-                $("#cognitivas").prop("hidden", true);
-                $("#eticaprofesional").prop("hidden", true);
-                $("#tecnicasgenerales").prop("hidden", false);
-                $("#tecnicasgeneralesmando").prop("hidden", true);
-                $("#muec").prop("hidden", true);
-                $("#derechoshumanos").prop("hidden", true);
-                $("#compespecializadas").prop("hidden", true);
-
-                $("#organizacionales").prop("selectedIndex", 0);
-                $("#competenciasdirectivas").prop("selectedIndex", 0);
-                $("#herramientascomputo").prop("selectedIndex", 0);
-                $("#basicascognitivas").prop("selectedIndex", 0);
-                $("#profesionaletica").prop("selectedIndex", 0);
-                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
-                $("#mueccomp").prop("selectedIndex", 0);
-                $("#cursoderechoshumanos").prop("selectedIndex", 0);
-                $("#competenciasespecializadas").prop("selectedIndex", 0);
-            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL") {
-                $('#comporganizacionales').prop("hidden", true);
-                $('#compdirectivas').prop("hidden", true);
-                $('#computo').prop("hidden", true);
-                $("#cognitivas").prop("hidden", true);
-                $("#eticaprofesional").prop("hidden", true);
-                $("#tecnicasgenerales").prop("hidden", true);
-                $("#tecnicasgeneralesmando").prop("hidden", false);
-                $("#muec").prop("hidden", true);
-                $("#derechoshumanos").prop("hidden", true);
-                $("#compespecializadas").prop("hidden", true);
-                $("#organizacionales").prop("selectedIndex", 0);
-                $("#competenciasdirectivas").prop("selectedIndex", 0);
-                $("#herramientascomputo").prop("selectedIndex", 0);
-                $("#basicascognitivas").prop("selectedIndex", 0);
-                $("#profesionaletica").prop("selectedIndex", 0);
-                $("#comptecnicasgenerales").prop("selectedIndex", 0);
-                $("#mueccomp").prop("selectedIndex", 0);
-                $("#cursoderechoshumanos").prop("selectedIndex", 0);
-                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            
             } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-MUEC") {
                 $('#comporganizacionales').prop("hidden", true);
                 $('#compdirectivas').prop("hidden", true);
