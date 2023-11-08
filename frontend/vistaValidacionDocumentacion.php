@@ -86,38 +86,6 @@ require 'conexionRh.php';
         }
     }
 
-    function autorizar() {
-        var id = $("#id").val();
-        var lineaestrategica = $("#linea").val();
-        var eje = $("#eje").val();
-        var mensaje = confirm("El curso sera autorizado");
-        let parametros = {
-            id: id,
-            lineaestrategica: lineaestrategica,
-            eje: eje
-        }
-        if (mensaje == true) {
-            $.ajax({
-                data: parametros,
-                url: 'aplicacion/autorizarDocumento.php',
-                type: 'post',
-
-                success: function(response) {
-                    $("#mensaje").html(response);
-                    $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
-
-
-                }
-            });
-        } else {
-            swal({
-                title: 'Cancelado!',
-                text: 'Proceso cancelado',
-                icon: 'warning',
-
-            });
-        }
-    }
 </script>
 <?php
 $validaacceso = $dataRegistro['rolacceso'];
@@ -195,8 +163,23 @@ if ($validaacceso == 8) {
         <td id="td"><?php echo $dataRegistro['fechacriteriotermino'] ?></td>
     </tr>
 </table>
+<form id="autorizacion" name="autorizacion">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input type="hidden" id="id" name="id" value="<?php echo $dataRegistro['id']; ?>">
 <div class="form-row">
     <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
+    <div class="col-md-4">
+            <strong>CATALOGO DE PROGRAMAS</strong>
+            <select class="form-control" id="catalogoprogramas" name="catalogoprogramas">
+                <option value="">Seleccione</option>
+                <option value="PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
+                <option value="PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH">PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH</option>
+                <option value="PROGRAMA DE EDUCACION CONTINUA">PROGRAMA DE EDUCACION CONTINUA</option>
+                <option value="INDIVIDUAL">INDIVIDUAL</option>
+                </select>
+        </div>
         <div class="col-md-4">
             <strong>LINEA ESTRATEGICA</strong>
             <select class="form-control" id="lineaestrategica" name="lineaestrategica">
@@ -227,7 +210,7 @@ if ($validaacceso == 8) {
         <div id="compdirectivas">
             <div class="col-md-12">
                 <strong>COMPETENCIAS DIRECTIVAS</strong>
-                <select class="form-control" id="competenciasdirectivas" name="competenciasdirectivas">
+                <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="VISION ESTRATEGICA">VISION ESTRATEGICA</option>
                     <option value="LIDERAZGO">LIDERAZGO</option>
@@ -237,47 +220,21 @@ if ($validaacceso == 8) {
         </div>
         <div id="computo">
             <div class="col-md-12">
-                <strong>HERRAMIENTAS DE COMPUTO</strong>
+                <strong>COMPETENCIA</strong>
                 <select class="form-control" id="herramientascomputo" name="herramientascomputo">
                     <option value="">Seleccione</option>
-                    <option value="WORD">WORD</option>
-                    <option value="EXCEL">EXCEL</option>
-                    <option value="POWERPOINT">POWERPOINT</option>
-                    <option value="BASE DE DATOS">BASE DE DATOS</option>
-                    <option value="OUTLOOK">OUTLOOK</option>
-                    <option value="HERRAMIENTAS DIGITALES">HERRAMIENTAS DIGITALES</option>
-                </select>
-            </div>
-        </div>
-        <div id="cognitivas">
-            <div class="col-md-12">
-                <strong>BÁSICAS/COGNOSCITIVAS</strong>
-                <select class="form-control" id="basicascognitivas" name="basicascognitivas">
-                    <option value="">Seleccione</option>
-                    <option value="PENSAMIENTO CRITICO">PENSAMIENTO CRITICO</option>
-                    <option value="COMPRENSION DE TEXTOS">COMPRENSION DE TEXTOS</option>
-                    <option value="REDACCION Y ORTOGRAFIA">REDACCION Y ORTOGRAFIA</option>
-                </select>
-            </div>
-        </div>
-        <div id="eticaprofesional">
-            <div class="col-md-12">
-                <strong>BÁSICAS/EFICACIA PERSONAL</strong>
-                <select class="form-control" id="profesionaletica" name="profesionaletica">
-                    <option value="">Seleccione</option>
-                    <option value="MANEJO DEL ESTRÉS">MANEJO DEL ESTRÉS</option>
-                    <option value="INTELIGENCIA EMOCIONAL">INTELIGENCIA EMOCIONAL</option>
-                    <option value="SALUD MENTAL">SALUD MENTAL</option>
-                    <option value="PROACTIVIDAD Y COMPROMISO">PROACTIVIDAD Y COMPROMISO</option>
-                    <option value="RELACIONES INTERPERSONALES">RELACIONES INTERPERSONALES</option>
-                    <option value="ENTORNO ORGANIZACIONAL">ENTORNO ORGANIZACIONAL</option>
+                    <option value="HERRAMIENTAS DE COMPUTO">HERRAMIENTAS DE COMPUTO</option>
+                    <option value="BÁSICAS/COGNOSCITIVAS">BÁSICAS/COGNOSCITIVAS</option>
+                    <option value="BÁSICAS/EFICACIA PERSONAL">BÁSICAS/EFICACIA PERSONAL</option>
+                    <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
+                    <option value="GESTION DE MANDO INSTITUCIONAL">GESTION DE MANDO INSTITUCIONAL</option>
                 </select>
             </div>
         </div>
         <div id="tecnicasgenerales">
             <div class="col-md-12">
                 <strong>COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</strong>
-                <select class="form-control" id="comptecnicasgenerales" name="comptecnicasgenerales">
+                <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
                 </select>
@@ -286,7 +243,7 @@ if ($validaacceso == 8) {
         <div id="tecnicasgeneralesmando">
             <div class="col-md-12">
                 <strong>COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
-                <select class="form-control" id="comptecnicasgeneralesmando" name="comptecnicasgeneralesmando">
+                <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="GESTION DE PROCESOS">GESTION DE PROCESOS</option>
                     <option value="PLANEACION ESTRATEGICA">PLANEACION ESTRATEGICA</option>
@@ -298,7 +255,7 @@ if ($validaacceso == 8) {
         <div id="muec">
             <div class="col-md-12">
                 <strong>COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
-                <select class="form-control" id="mueccomp" name="mueccomp">
+                <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="No, ninguno">No, ninguno</option>
                     <option value="TRATO DIGNO EN LOS SERVICIOS DE SALUD">TRATO DIGNO EN LOS SERVICIOS DE SALUD</option>
@@ -322,7 +279,7 @@ if ($validaacceso == 8) {
         <div id="derechoshumanos">
             <div class="col-md-12">
                 <strong>CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</strong>
-                <select class="form-control" id="cursoderechoshumanos" name="cursoderechoshumanos">
+                <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA">TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA</option>
                     <option value="DERECHOS HUMANOS">DERECHOS HUMANOS</option>
@@ -338,7 +295,7 @@ if ($validaacceso == 8) {
         <div id="compespecializadas">
             <div class="col-md-12">
                 <strong>COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</strong>
-                <select class="form-control" id="competenciasespecializadas" name="competenciasespecializadas">
+                <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="ACTUALIZACION ADMINISTRATIVA">ACTUALIZACION ADMINISTRATIVA</option>
                     <option value="ACTUALIZACION GERENCIAL">ACTUALIZACION GERENCIAL</option>
@@ -350,12 +307,45 @@ if ($validaacceso == 8) {
     </div>
     <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
         <div class="col-md-2">
-            <input type="submit" onclick="autorizar();" value="Autorizar" class="form-control" style="background-color: green; color: white; margin-top: 17px;">
+            <input type="submit" value="Autorizar" class="form-control" style="background-color: green; color: white; margin-top: 17px;">
         </div>
     </div>
 </div>
 <br>
+</form>
 <script>
+        $("#autorizacion").on("submit", function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(document.getElementById("autorizacion"));
+                    formData.append("dato", "valor");
+                    var mensaje = confirm("El curso sera autorizado");
+                    if (mensaje == true) {
+                    $.ajax({
+                        url: "aplicacion/autorizarDocumento.php",
+                        type: "post",
+                        dataType: "html",
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function(datos) {
+                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+                        },
+                        success: function(datos) {
+                            $("#mensaje").html(datos);
+                            $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
+                        }
+                    })
+                } else {
+            swal({
+                title: 'Cancelado!',
+                text: 'Proceso cancelado',
+                icon: 'warning',
+
+            });
+        }
+    })
+
     $(function() {
         $('#comporganizacionales').prop("hidden", true);
         $('#compdirectivas').prop("hidden", true);
@@ -556,6 +546,7 @@ if ($validaacceso == 8) {
             }
         })
     });
+
 </script>
 <div class="container" style="width: 100%; height: 100%; float: left;">
     <?php
