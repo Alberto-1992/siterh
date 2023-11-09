@@ -167,150 +167,7 @@ if ($validaacceso == 8) {
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<input type="hidden" id="id" name="id" value="<?php echo $dataRegistro['id']; ?>">
-<div class="form-row">
-    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
-    <div class="col-md-4">
-            <strong style="font-size: 12px;">CATALOGO DE PROGRAMAS</strong>
-            <select class="form-control" id="catalogoprogramas" name="catalogoprogramas">
-                <option value="">Seleccione</option>
-                <option value="PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
-                <option value="PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH">PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH</option>
-                <option value="PROGRAMA DE EDUCACION CONTINUA">PROGRAMA DE EDUCACION CONTINUA</option>
-                <option value="INDIVIDUAL">INDIVIDUAL</option>
-                </select>
-        </div>
-        <div class="col-md-4">
-            <strong style="font-size: 12px;">LINEA ESTRATEGICA</strong>
-            <select class="form-control" id="lineaestrategica" name="lineaestrategica">
-                <option value="">Seleccione</option>
-                <?php
-                    require_once 'clases/conexion.php';
-                    $conexionX = new ConexionRh();
-                    $query = $conexionX->prepare("SELECT * FROM lineaestrategica ");
-                        $query->execute();
-                        $query->setFetchMode(PDO::FETCH_ASSOC);
-                        while ($row = $query->fetch()) { ?>
-                            <option value="<?php echo $row['descripcionlinea']; ?>">
-                                <?php echo $row['descripcionlinea']; ?></option>
-                        <?php } ?>
-                </select>
-        </div>
-    </div>
-    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center; margin-top: 5px;">
-        <div id="comporganizacionales">
-            <div class="col-md-12">
-                <strong style="font-size: 12px;">COMPETENCIAS ORGANIZACIONALES</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
-                    <option value="">Seleccione</option>
-                    <option value="TRABAJO EN EQUIPO">TRABAJO EN EQUIPO</option>
-                    <option value="ORIENTACION A RESULTADOS">ORIENTACION A RESULTADOS</option>
-                    <option value="COMUNICACION">COMUNICACION</option>
-                </select>
-            </div>
-        </div>
-        <div id="compdirectivas">
-            <div class="col-md-12">
-                <strong style="font-size: 12px;">COMPETENCIAS DIRECTIVAS</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
-                    <option value="">Seleccione</option>
-                    <option value="VISION ESTRATEGICA">VISION ESTRATEGICA</option>
-                    <option value="LIDERAZGO">LIDERAZGO</option>
-                    <option value="NEGOCIACION">NEGOCIACION</option>
-                </select>
-            </div>
-        </div>
-        <div id="computo">
-            <div class="col-md-12">
-                <strong style="font-size: 12px;">COMPETENCIA</strong>
-                <select class="form-control" id="herramientascomputo" name="herramientascomputo">
-                    <option value="">Seleccione</option>
-                    <option value="HERRAMIENTAS DE COMPUTO">HERRAMIENTAS DE COMPUTO</option>
-                    <option value="BÁSICAS/COGNOSCITIVAS">BÁSICAS/COGNOSCITIVAS</option>
-                    <option value="BÁSICAS/EFICACIA PERSONAL">BÁSICAS/EFICACIA PERSONAL</option>
-                    <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
-                    <option value="GESTION DE MANDO INSTITUCIONAL">GESTION DE MANDO INSTITUCIONAL</option>
-                </select>
-            </div>
-        </div>
-        <div id="tecnicasgenerales">
-            <div class="col-md-12">
-                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
-                    <option value="">Seleccione</option>
-                    <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
-                </select>
-            </div>
-        </div>
-        <div id="tecnicasgeneralesmando">
-            <div class="col-md-12">
-                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
-                    <option value="">Seleccione</option>
-                    <option value="GESTION DE PROCESOS">GESTION DE PROCESOS</option>
-                    <option value="PLANEACION ESTRATEGICA">PLANEACION ESTRATEGICA</option>
-                    <option value="GESTION DEL TALENTO HUMANO">GESTION DEL TALENTO HUMANO</option>
-                    <option value="MEDICION Y MEJORA CONTINUA DE PROCESOS">MEDICION Y MEJORA CONTINUA DE PROCESOS</option>
-                </select>
-            </div>
-        </div>
-        <div id="muec">
-            <div class="col-md-12">
-                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
-                    <option value="">Seleccione</option>
-                    <?php
-                    require_once 'clases/conexion.php';
-                    $conexionX = new ConexionRh();
-                    $query = $conexionX->prepare("SELECT * FROM muec ");
-                        $query->execute();
-                        $query->setFetchMode(PDO::FETCH_ASSOC);
-                        while ($row = $query->fetch()) { ?>
-                            <option value="<?php echo $row['descripcionmuec']; ?>">
-                                <?php echo $row['descripcionmuec']; ?></option>
-                        <?php } ?>
-                </select>
-            </div>
-        </div>
-        <div id="derechoshumanos">
-            <div class="col-md-12">
-                <strong style="font-size: 12px;">CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
-                    <option value="">Seleccione</option>
-                    <option value="TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA">TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA</option>
-                    <option value="DERECHOS HUMANOS">DERECHOS HUMANOS</option>
-                    <option value="IGUALDAD Y NO DISCRIMINACION">IGUALDAD Y NO DISCRIMINACION</option>
-                    <option value="TRANSPARENCIA Y PROTECCION DE DATOS PERSONALES">TRANSPARENCIA Y PROTECCION DE DATOS PERSONALES</option>
-                    <option value="ETICA Y PREVENCION DE CONFLICTOS DE INTERES">ETICA Y PREVENCION DE CONFLICTOS DE INTERES</option>
-                    <option value="TRATA DE PERSONAS">TRATA DE PERSONAS</option>
-                    <option value="ATENCION A VICTIMAS">ATENCION A VICTIMAS</option>
-                    <option value="DERECHOS GENERALES DE LAS NIÑAS, LOS NIÑOS Y LOS ADOLESCENTES">DERECHOS GENERALES DE LAS NIÑAS, LOS NIÑOS Y LOS ADOLESCENTES</option>
-                </select>
-            </div>
-        </div>
-        <div id="compespecializadas">
-            <div class="col-md-12">
-                <strong style="font-size: 12px;">COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
-                    <option value="">Seleccione</option>
-                    <option value="ACTUALIZACION ADMINISTRATIVA">ACTUALIZACION ADMINISTRATIVA</option>
-                    <option value="ACTUALIZACION GERENCIAL">ACTUALIZACION GERENCIAL</option>
-                    <option value="ACTUALIZACION TECNICO MEDICO">ACTUALIZACION TECNICO MEDICO</option>
-                    <option value="ACTUALIZACION NORMATIVA">ACTUALIZACION NORMATIVA</option>
-                    <option value="DESARROLLO PROFESIONAL">DESARROLLO PROFESIONAL</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
-        <div class="col-md-2">
-            <input type="submit" value="Autorizar" class="form-control" style="background-color: green; color: white; margin-top: 17px;">
-        </div>
-    </div>
-</div>
-<br>
-</form>
-<script>
+    <script>
         $("#autorizacion").on("submit", function(e) {
                     e.preventDefault();
                     var formData = new FormData(document.getElementById("autorizacion"));
@@ -332,18 +189,7 @@ if ($validaacceso == 8) {
                             $("#mensaje").html(datos);
                             $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
 
-                            let q = $("#id_empleado").val();
-                                let parametros = {q:q};
-                            $.ajax({
-                                data: parametros,
-                                url: 'consultaValidacionDocumentos.php',
-                                type: 'post',
-
-                                    success: function(response) {
-                                    $("#tabla_resultadobus").html(data);
-
-                                    }
-                                })
+                            
 
                         }
                     })
@@ -511,6 +357,171 @@ if ($validaacceso == 8) {
     });
 
 </script>
+<?php
+$nombrecurso = $dataRegistro['nombrecurso'];
+    $fechafinal = $dataRegistro['fechatermino'];
+    $idempleado = $dataRegistro['id_empleado'];
+    $path = $nombrecurso.$fechafinal.$idempleado;
+    ?>
+<input type="hidden" id="id" name="id" value="<?php echo $dataRegistro['id']; ?>">
+<input type="hidden" value="<?php echo $path ?>" name="path">
+<input type="hidden" value="<?php echo $nombrecurso ?>" name="nombrecurso">
+<input type="hidden" value="<?php echo $idempleado ?>" name="id_empleado">
+
+<div class="form-row">
+    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
+    <div class="col-md-4">
+            <strong style="font-size: 12px;">CATALOGO DE PROGRAMAS</strong>
+            <select class="form-control" id="catalogoprogramas" name="catalogoprogramas" required>
+                <option value="">Seleccione</option>
+                <option value="PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
+                <option value="PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH">PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH</option>
+                <option value="PROGRAMA DE EDUCACION CONTINUA">PROGRAMA DE EDUCACION CONTINUA</option>
+                <option value="INDIVIDUAL">INDIVIDUAL</option>
+                </select>
+        </div>
+        <div class="col-md-4">
+            <strong style="font-size: 12px;">LINEA ESTRATEGICA</strong>
+            <select class="form-control" id="lineaestrategica" name="lineaestrategica" required>
+                <option value="">Seleccione</option>
+                <?php
+                    require_once 'clases/conexion.php';
+                    $conexionX = new ConexionRh();
+                    $query = $conexionX->prepare("SELECT * FROM lineaestrategica ");
+                        $query->execute();
+                        $query->setFetchMode(PDO::FETCH_ASSOC);
+                        while ($row = $query->fetch()) { ?>
+                            <option value="<?php echo $row['descripcionlinea']; ?>">
+                                <?php echo $row['descripcionlinea']; ?></option>
+                        <?php } ?>
+                </select>
+        </div>
+        <div class="col-md-2">
+            <strong>Año</strong>
+            <select class="form-control" name="year" id="year" required>
+                <option value="">Selecciona el año</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+            </select>
+        </div>
+    </div>
+    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center; margin-top: 5px;">
+        <div id="comporganizacionales">
+            <div class="col-md-12">
+                <strong style="font-size: 12px;">COMPETENCIAS ORGANIZACIONALES</strong>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <option value="TRABAJO EN EQUIPO">TRABAJO EN EQUIPO</option>
+                    <option value="ORIENTACION A RESULTADOS">ORIENTACION A RESULTADOS</option>
+                    <option value="COMUNICACION">COMUNICACION</option>
+                </select>
+            </div>
+        </div>
+        <div id="compdirectivas">
+            <div class="col-md-12">
+                <strong style="font-size: 12px;">COMPETENCIAS DIRECTIVAS</strong>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <option value="VISION ESTRATEGICA">VISION ESTRATEGICA</option>
+                    <option value="LIDERAZGO">LIDERAZGO</option>
+                    <option value="NEGOCIACION">NEGOCIACION</option>
+                </select>
+            </div>
+        </div>
+        <div id="computo">
+            <div class="col-md-12">
+                <strong style="font-size: 12px;">COMPETENCIA</strong>
+                <select class="form-control" id="herramientascomputo" name="herramientascomputo">
+                    <option value="">Seleccione</option>
+                    <option value="HERRAMIENTAS DE COMPUTO">HERRAMIENTAS DE COMPUTO</option>
+                    <option value="BÁSICAS/COGNOSCITIVAS">BÁSICAS/COGNOSCITIVAS</option>
+                    <option value="BÁSICAS/EFICACIA PERSONAL">BÁSICAS/EFICACIA PERSONAL</option>
+                    <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
+                    <option value="GESTION DE MANDO INSTITUCIONAL">GESTION DE MANDO INSTITUCIONAL</option>
+                </select>
+            </div>
+        </div>
+        <div id="tecnicasgenerales">
+            <div class="col-md-12">
+                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</strong>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
+                </select>
+            </div>
+        </div>
+        <div id="tecnicasgeneralesmando">
+            <div class="col-md-12">
+                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <option value="GESTION DE PROCESOS">GESTION DE PROCESOS</option>
+                    <option value="PLANEACION ESTRATEGICA">PLANEACION ESTRATEGICA</option>
+                    <option value="GESTION DEL TALENTO HUMANO">GESTION DEL TALENTO HUMANO</option>
+                    <option value="MEDICION Y MEJORA CONTINUA DE PROCESOS">MEDICION Y MEJORA CONTINUA DE PROCESOS</option>
+                </select>
+            </div>
+        </div>
+        <div id="muec">
+            <div class="col-md-12">
+                <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <?php
+                    require_once 'clases/conexion.php';
+                    $conexionX = new ConexionRh();
+                    $query = $conexionX->prepare("SELECT * FROM muec ");
+                        $query->execute();
+                        $query->setFetchMode(PDO::FETCH_ASSOC);
+                        while ($row = $query->fetch()) { ?>
+                            <option value="<?php echo $row['descripcionmuec']; ?>">
+                                <?php echo $row['descripcionmuec']; ?></option>
+                        <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div id="derechoshumanos">
+            <div class="col-md-12">
+                <strong style="font-size: 12px;">CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</strong>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <option value="TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA">TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA</option>
+                    <option value="DERECHOS HUMANOS">DERECHOS HUMANOS</option>
+                    <option value="IGUALDAD Y NO DISCRIMINACION">IGUALDAD Y NO DISCRIMINACION</option>
+                    <option value="TRANSPARENCIA Y PROTECCION DE DATOS PERSONALES">TRANSPARENCIA Y PROTECCION DE DATOS PERSONALES</option>
+                    <option value="ETICA Y PREVENCION DE CONFLICTOS DE INTERES">ETICA Y PREVENCION DE CONFLICTOS DE INTERES</option>
+                    <option value="TRATA DE PERSONAS">TRATA DE PERSONAS</option>
+                    <option value="ATENCION A VICTIMAS">ATENCION A VICTIMAS</option>
+                    <option value="DERECHOS GENERALES DE LAS NIÑAS, LOS NIÑOS Y LOS ADOLESCENTES">DERECHOS GENERALES DE LAS NIÑAS, LOS NIÑOS Y LOS ADOLESCENTES</option>
+                </select>
+            </div>
+        </div>
+        <div id="compespecializadas">
+            <div class="col-md-12">
+                <strong style="font-size: 12px;">COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</strong>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <option value="ACTUALIZACION ADMINISTRATIVA">ACTUALIZACION ADMINISTRATIVA</option>
+                    <option value="ACTUALIZACION GERENCIAL">ACTUALIZACION GERENCIAL</option>
+                    <option value="ACTUALIZACION TECNICO MEDICO">ACTUALIZACION TECNICO MEDICO</option>
+                    <option value="ACTUALIZACION NORMATIVA">ACTUALIZACION NORMATIVA</option>
+                    <option value="DESARROLLO PROFESIONAL">DESARROLLO PROFESIONAL</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
+        <div class="col-md-2">
+            <input type="submit" value="Autorizar" class="form-control" style="background-color: green; color: white; margin-top: 17px;">
+        </div>
+    </div>
+</div>
+</form>
+<br>
+
 <div class="container" style="width: 100%; height: 100%; float: left;">
     <?php
     $nombrecurso = $dataRegistro['nombrecurso'];
@@ -528,7 +539,6 @@ if ($validaacceso == 8) {
         }
     }
     ?>
-
 </div>
 <?php
 // require 'modals/buscarpostuladobolsa.php';
