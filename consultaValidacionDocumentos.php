@@ -46,7 +46,6 @@ $conexionX = new ConexionRh();
 	$q= $_POST['evento'];
 	$query=$conexionX->prepare("SELECT datos.id, datos.nombreempleado, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado WHERE
             id_empleado LIKE '%$q%' and validaautorizacion = 0 OR
-            nombrecurso LIKE '%$q%'  and validaautorizacion = 0 OR
 		    nombreempleado LIKE '%$q%' and validaautorizacion = 0 OR
             DescripcionAdscripcion LIKE '%$q%' or
             DescripcionPuesto LIKE '%$q%' group by datos.id");
