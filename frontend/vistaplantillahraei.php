@@ -37,9 +37,10 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
             </ul>
         </li>
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Academicos</a>
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Revisar datos</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
                 <li><a class="dropdown-item" href="#" onclick="infoAcademica();">Datos academicos</a></li>
+                <li><a class="dropdown-item" href="#" onclick="infoPersonal();">Datos personales</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
@@ -253,6 +254,25 @@ function personales() {
             $.ajax({
                 type: "POST",
                 url: "verDatosAcademicos.php",
+                data: ob,
+
+                success: function(data) {
+
+                    $("#tabla_resultado").html(data);
+
+
+                }
+
+            });
+        }
+        function infoPersonal() {
+            let correo = $("#correo").val();
+            let ob = {
+                correo: correo
+            };
+            $.ajax({
+                type: "POST",
+                url: "verDatosPersonales.php",
                 data: ob,
 
                 success: function(data) {
