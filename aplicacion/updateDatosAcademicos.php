@@ -11,16 +11,6 @@ try {
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
 
-    $sql1 = $conexionX->prepare("DELETE from estudiospostecnico where id_empleado = $id_empleado");
-    $sql1->execute();
-    $sql2 = $conexionX->prepare("DELETE from estudiossuperior where id_empleado = $id_empleado");
-    $sql2->execute();
-    $sql3 = $conexionX->prepare("DELETE from estudiosmaestria where id_empleado = $id_empleado");
-    $sql3->execute();
-    $sql4 = $conexionX->prepare("DELETE from especialidad where id_empleado = $id_empleado");
-    $sql4->execute();
-    $sql5 = $conexionX->prepare("DELETE from doctorado where id_empleado = $id_empleado");
-    $sql5->execute();
             
     $sql = $conexionX->prepare("UPDATE estudiosmediosup SET nombreformacionmedia=:nombreformacionmedia,nombremediasuperior=:nombremediasuperior,fechainicio=:fechainicio,fechatermino=:fechatermino,tiempocursado=:tiempocursado,documentomediosuperior=:documentomediosuperior where id_empleado=:id_empleado");
     $sql->execute(array(
@@ -46,6 +36,26 @@ try {
         $sql->execute(array(
             ':descripcionultimogrado'=>$ultimogradoestudios,
             ':especialidadlaborahraei'=>$especialidadlaborahraei,
+            ':id_empleado'=>$id_empleado
+        ));
+        $sql = $conexionX->prepare("DELETE from estudiospostecnico where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id_empleado
+        ));
+        $sql = $conexionX->prepare("DELETE from estudiossuperior where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id_empleado
+        ));
+        $sql = $conexionX->prepare("DELETE from estudiosmaestria where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id_empleado
+        ));
+        $sql = $conexionX->prepare("DELETE from especialidad where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id_empleado
+        ));
+        $sql = $conexionX->prepare("DELETE from doctorado where id_empleado = :id_empleado");
+        $sql->execute(array(
             ':id_empleado'=>$id_empleado
         ));
         

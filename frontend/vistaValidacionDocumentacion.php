@@ -331,6 +331,20 @@ if ($validaacceso == 8) {
                         success: function(datos) {
                             $("#mensaje").html(datos);
                             $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
+
+                            let q = $("#id_empleado").val();
+                                let parametros = {q:q};
+                            $.ajax({
+                                data: parametros,
+                                url: 'consultaValidacionDocumentos.php',
+                                type: 'post',
+
+                                    success: function(response) {
+                                    $("#tabla_resultadobus").html(data);
+
+                                    }
+                                })
+
                         }
                     })
                 } else {
