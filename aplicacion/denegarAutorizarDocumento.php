@@ -3,17 +3,19 @@ error_reporting(0);
 require_once '../clases/conexion.php';
 $conexionX = new ConexionRh();
 $id = $_POST['id'];
+$catalogoprograma = '';
 $lineaestrategica = '';
-$eje = '';
+$competenciaalieandaeje = '';
 try {
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
-$sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautorizacion, lineaestrategica = :lineaestrategica, ejeestrategico = :ejeestrategico where id = :id");
+$sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautorizacion, catalogoprograma = :catalogoprograma, lineaestrategica = :lineaestrategica, competenciaalieandaeje = :competenciaalieandaeje where id = :id");
     $sql->execute(array(
         ':validaautorizacion'=>0,
+        ':catalogoprograma'=>$catalogoprograma,
         ':lineaestrategica'=>$lineaestrategica,
-        ':ejeestrategico'=>$eje,
+        ':competenciaalieandaeje'=>$competenciaalieandaeje,
         ':id'=>$id
     ));
 
@@ -23,7 +25,7 @@ $sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautoriz
         echo "<script>Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Autorizado',
+            title: 'Autorización rechazada',
             showConfirmButton: false,
             timer: 1500
         })</script>";
