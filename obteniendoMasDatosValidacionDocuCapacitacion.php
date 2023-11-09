@@ -13,7 +13,7 @@
     </style>
     <div id="lista-comentarios">
 <?php 
-sleep(0.5);
+sleep(1);
 
 $utimoId = $_POST['utimoId'];
 $limite  = 10;
@@ -33,13 +33,12 @@ $conexionX = new ConexionRh();
     
         while($dataRegistro= $query->fetch())
         { 
-            $acceso = $dataRegistro['validaautorizacion'];
             ?>
         
         <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
         
                 <div id='<?php echo $dataRegistro['id']; ?>' class='ver-info'>
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong><br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong>'.'<br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong>'.'<br>';
                         ?>
                     
                     </div> 

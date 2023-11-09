@@ -40,7 +40,7 @@ $conexionX = new ConexionRh();
     $empleado->execute();
     $total_empleado = $empleado->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where validaautorizacion = 0 order by datos.id DESC LIMIT 50 ");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.validaautorizacion = 0 order by datos.id DESC LIMIT 25 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
@@ -83,13 +83,12 @@ $conexionX = new ConexionRh();
         $query->execute();
         while($dataRegistro= $query->fetch())
         { 
-            $acceso = $dataRegistro['validaautorizacion'];
             ?>
         
         <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
         
                 <div id='<?php echo $dataRegistro['id']; ?>' class='ver-info'>
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong><br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong>'.'<br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
                         ?>
                     
                     </div> 
@@ -218,11 +217,7 @@ function pageScroll() {
         var scrollPos = $("#tabla_resultadobus").height() + $("#tabla_resultadobus").scrollTop();
         var totalregistro = $("#total_registro").val();
 
-        if ((((scrollHeight - 250) >= scrollPos) / scrollHeight == 0) || (((scrollHeight - 300) >=
-                scrollPos) / scrollHeight == 0) || (((scrollHeight - 350) >= scrollPos) / scrollHeight ==
-                0) || (((scrollHeight - 400) >= scrollPos) / scrollHeight == 0) || (((scrollHeight - 450) >=
-                scrollPos) / scrollHeight == 0) || (((scrollHeight - 500) >= scrollPos) / scrollHeight ==
-                0)) {
+    
             if ($(".item-comentario").length < $("#total_registro").val()) {
                 var utimoId = $(".item-comentario:last").attr("id");
                 var totalregistro = $("#total_registro").val();
@@ -248,7 +243,7 @@ function pageScroll() {
             } else {
 
             }
-        }
+        
     });
 }
 $('.ver-info').on('click',function(){

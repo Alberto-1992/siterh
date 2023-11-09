@@ -262,7 +262,8 @@ thead tr th {
 }
 #hr {
   background-color: grey;
-  margin: 0px 0px;
+  margin: 0px 0px 0px 0px;
+  
 }
 
 .parent {
