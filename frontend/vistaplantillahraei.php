@@ -21,34 +21,19 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
     <input type="hidden" id="numempleado" value="<?php echo $dataRegistro['Empleado'] ?>">
     <input type="hidden" id="correo" value="<?php echo $dataRegistro['correo'] ?>">
     <input type="hidden" id="curp" value="<?php echo $rfc ?>">
-    <input type="hidden" id="iniciaedicion" value="1">
-    <input type="hidden" id="finalizaedicion" value="0">
     
     <?php session_start();
-    if (isset($_SESSION['usuarioAdminRh']) or isset($_SESSION['usuarioJefe']) or isset($_SESSION['usuarioDatos'])) { ?>
+    if (isset($_SESSION['usuarioAdminRh'])) { 
+        $usernameSesion = $_SESSION['usuarioAdminRh']; ?>
+    <input type="hidden" id="correousuario" value="<?php echo $usernameSesion ?>">
     <ul class="nav nav-tabs" style="margin-top: 0px;" >       
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <?php
-                if ($dataRegistro['eliminado'] == 0) { ?>
 
-                    <li><a class="dropdown-item" href="#" onclick="bloquear();">Bloquear</a></li>
-                <?php
-                } else if ($dataRegistro['eliminado'] == 1) { ?>
-                    <li><a class="dropdown-item" href="#" onclick="activar();">Activar usuario</a></li>
-                <?php
-                }
-            
-                if ($dataRegistro['editarDatos'] == 0) { ?>
-                    <li><a class="dropdown-item" href="#" onclick="editardatos();">Editar datos</a></li>
-                <?php } else if ($dataRegistro['editarDatos'] == 1) { ?>
-                    <li><a class="dropdown-item" href="#" onclick="finalizarEdicion();">Finalizar edición</a></li>
-                <?php }
-
-            };
-        
-            ?>
+                <li><a class="dropdown-item" href="#" onclick="personales();">Validar datos personales</a></li>
+                <li><a class="dropdown-item" href="#" onclick="academicos();">Validar datos academicos</a></li>
+                <li><a class="dropdown-item" href="#" onclick="compatibilidad();">Validar compatibilidad</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
@@ -57,106 +42,204 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
                 <li><a class="dropdown-item" href="#" onclick="infoAcademica();">Datos academicos</a></li>
             </ul>
         </li>
+        <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Observaciones</a>
+            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#observaciones">Agregar observación</a></li>
+            </ul>
+        </li>
     </ul>
-    
+<?php } ?>
     <script>
-
-        function editardatos() {
-            var id = $("#numempleado").val();
-            var editar = $("#iniciaedicion").val();
-            var mensaje = confirm("Desea continuar con la edición de los datos");
-            let parametros = {
-                id: id,
-                editar: editar
-            }
-            if (mensaje == true) {
-                $.ajax({
-                    data: parametros,
-                    url: 'editarDatosback.php',
-                    type: 'post',
-                    success: function(datos) {
-                        $("#mensaje").html(datos);
-                        let id = $("#numempleado").val();
-                        let ob = {
-                            id: id
-                        };
-                        $.ajax({
-                            type: "POST",
-                            url: "consultaAdminBusqueda.php",
-                            data: ob,
-
-                            success: function(data) {
-
-                                $("#tabla_resultado").html(data);
-                                //$("#editarDatosPersonalescancerdeMama").modal('show');
-
-
-                            }
-
-                        });
-
-                    }
-                });
-            } else {
-
-            }
-        }
-
-        function finalizarEdicion() {
-            var id = $("#numempleado").val();
-            var editar = $("#finalizaedicion").val();
-            var mensaje = confirm("Desea finalizar la edición de los datos");
-            let parametros = {
-                id: id,
-                editar: editar
-            }
-            if (mensaje == true) {
-                $.ajax({
-                    data: parametros,
-                    url: 'editarDatosback.php',
-                    type: 'post',
-                    success: function(datos) {
-                        $("#mensaje").html(datos);
-                        let id = $("#numempleado").val();
-                        let ob = {
-                            id: id
-                        };
-                        $.ajax({
-                            type: "POST",
-                            url: "consultaAdminBusqueda.php",
-                            data: ob,
-
-                            success: function(data) {
-
-                                $("#tabla_resultado").html(data);
-                                //$("#editarDatosPersonalescancerdeMama").modal('show');
-
-
-                            }
-
-                        });
-
-                    }
-                });
-            } else {
-
-            }
-        }
-
-        function editardatospersonales() {
+    
+function personales() {
             let id = $("#numempleado").val();
+            let correovalido = $("#correousuario").val();
             let ob = {
-                id: id
+                id: id,correovalido:correovalido
             };
             $.ajax({
                 type: "POST",
-                url: "modal/editarDatosEmpleado2022.php",
+                url: "aplicacion/validarDatosPersonales.php",
                 data: ob,
-
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
                 success: function(data) {
 
-                    $("#editadatospersonales").html(data);
+                    $("#mensaje").html(data);
+                    
+                    let evento = $("#numempleado").val();
+                    let ob = {
+                            evento: evento
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaplantillahraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
 
+                    $("#tabla_resultadobus").html(data);
+                    let id = $("#numempleado").val();
+                    let ob = {
+                            id: id
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaBusquedaPlantillaHraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#tabla_resultado").html(data);
+
+                }
+
+            });
+
+                }
+
+            });
+
+                }
+
+            });
+        }
+        function compatibilidad() {
+            let id = $("#numempleado").val();
+            let correovalido = $("#correousuario").val();
+            let ob = {
+                id: id,correovalido:correovalido
+            };
+            $.ajax({
+                type: "POST",
+                url: "aplicacion/validarDatosCompatibilidad.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#mensaje").html(data);
+                    
+                    let evento = $("#numempleado").val();
+                    let ob = {
+                            evento: evento
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaplantillahraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#tabla_resultadobus").html(data);
+                    let id = $("#numempleado").val();
+                    let ob = {
+                            id: id
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaBusquedaPlantillaHraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#tabla_resultado").html(data);
+
+                }
+
+            });
+
+                }
+
+            });
+
+                }
+
+            });
+        }
+
+        function academicos() {
+            let id = $("#numempleado").val();
+            let correovalido = $("#correousuario").val();
+            let ob = {
+                id: id,correovalido:correovalido
+            };
+            $.ajax({
+                type: "POST",
+                url: "aplicacion/validarDatosAcademicos.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#mensaje").html(data);
+                    
+                    let evento = $("#numempleado").val();
+                    let ob = {
+                            evento: evento
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaplantillahraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#tabla_resultadobus").html(data);
+                    let id = $("#numempleado").val();
+                    let ob = {
+                            id: id
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaBusquedaPlantillaHraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#tabla_resultado").html(data);
+
+                }
+
+            });
+
+                }
+
+            });
 
                 }
 
@@ -467,7 +550,11 @@ $sql->execute(array(
     
     
 </table>
-<?php } ?>
+<?php }
+
+require 'modals/observaciones.php';
+
+?>
 <script>
     // var fired_button2= $("#claveUnicaContrato").val();  
     //var fired_button2=document.getElementById('claveUnicaContrato').value;

@@ -1,0 +1,64 @@
+<?php
+
+require_once '../clases/conexion.php';
+$conexionX = new ConexionRh();
+
+date_default_timezone_set('America/Mexico_City');
+$DateAndTime = date('Y-m-d', time());
+extract($_POST);
+
+try {
+    $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $conexionX->beginTransaction();
+error_reporting(0);
+
+    $sql = $conexionX->prepare("SELECT id_empleado from validaciones where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetch();
+        $validacion = $row['id_empleado'];
+
+        if($validacion != $id){
+    $sql = $conexionX->prepare("INSERT into validaciones(validocompatibilidad, correocompatibilidad, id_empleado) values(:validocompatibilidad, :correocompatibilidad, :id_empleado)");
+    $sql->execute(array( 
+        ':validocompatibilidad'=>1, 
+        ':correocompatibilidad'=>$correovalido, 
+        ':id_empleado'=>$id
+        
+        ));
+    }else if($validacion == $id){
+        $sql = $conexionX->prepare("UPDATE validaciones SET validocompatibilidad = :validocompatibilidad, correocompatibilidad = :correocompatibilidad WHERE id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':validocompatibilidad'=>1, 
+            ':correocompatibilidad'=>$correovalido, 
+            ':id_empleado'=>$id
+            
+            ));
+    }
+    $validatransac = $conexionX->commit();
+
+    if($validatransac != false){
+        echo "<script>Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Validacion exitosa',
+            showConfirmButton: false,
+            timer: 1900
+        })</script>";
+    
+    }
+
+} catch (Exception $e) {
+    $conexionX->rollBack();
+    echo "<script>Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Error al validar',
+        showConfirmButton: false,
+        timer: 1900
+    })</script>";
+}
+
+?>

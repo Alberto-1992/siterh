@@ -22,6 +22,7 @@
 <div id="lista-comentarios">
 <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <?php
+    extract($_POST);
     error_reporting(0);
     require_once 'clases/conexion.php';
     $conexionX = new ConexionRh();
@@ -109,17 +110,23 @@
             error_reporting(0);
             
             $id = $dataRegistro['Empleado'];
-            $queryS = $conexionX->prepare("SELECT actualizo from actualizacion where id_empleado = $id");
+            $queryS = $conexionX->prepare("SELECT actualizo from actualizacion where id_empleado = :id_empleado");
                 $queryS->execute(array(
                     ':id_empleado'=>$id
                 ));
                 $dataRegistro2 = $queryS->fetch();
-                $queryC = $conexionX->prepare("SELECT otroempleo from compatibilidadotroempleo where id_empleado = $id");
+                $queryC = $conexionX->prepare("SELECT otroempleo from compatibilidadotroempleo where id_empleado = :id_empleado");
                 $queryC->execute(array(
                     ':id_empleado'=>$id
                 ));
                 $dataRegistroC = $queryC->fetch();
                 $MINIMOOK = "<i class='lnr lnr-flag'></i>";
+
+                $sql = $conexionX->prepare("SELECT * from validaciones WHERE id_empleado = :id_empleado");
+                    $sql->execute(array(
+                        ':id_empleado'=>$id
+                    ));
+                    $rows = $sql->fetch();
             ?>
             
             
@@ -133,11 +140,19 @@
                                 <?php } if($dataRegistroC['otroempleo'] == 'Si'){
                                     echo "<span class='titulo'>$MINIMOOK";
 
-                                 }else{ 
-
-
-                                     } ?>
-            </div>
+                                }else{ 
+                            } 
+                            if ($rows['validoinfopersonal'] == 1) {
+                                ?>
+                                    <input type="submit" value="D.P ok" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
+                                <?php } 
+                                if ($rows['validoinfoacademica'] == 1) { ?>
+                                <input type="submit" value="D.A ok" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
+                                <?php } 
+                                if ($rows['validocompatibilidad'] == 1) { ?>
+                                <input type="submit" value="D.C ok" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
+                            <?php } ?>
+                            </div>
             <hr id="hr">
             </div>
             <?php 
