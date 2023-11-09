@@ -233,6 +233,28 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     }
                 })
             })
+            function actualizar() {
+                let evento = $("#id_empleado").val();
+                    let ob = {
+                            evento: evento
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaplantillahraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#tabla_resultadobus").html(data);
+
+                }
+
+            });
+            }
         </script>
         <div class="form-row">
             <div id="cabeceras">
@@ -651,7 +673,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <input type="mail" class="form-control" name="parentescoemergencia" id="parentescoemergencia" value="<?php echo $parentezcoemergencia ?>">
             </div>
             <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
-            <a href="#" id="btn-send-close" onclick="window.location.href='principalRh';">Cerrar</a>&nbsp;&nbsp;
+            <a href="#" id="btn-send-close" onclick="actualizar();">Cerrar</a>&nbsp;&nbsp;
                 <input type="submit" name="add" id="btn-send" value="Actualizar">
             </div>
         </div>
