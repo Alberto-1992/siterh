@@ -188,7 +188,26 @@ if ($validaacceso == 8) {
                         success: function(datos) {
                             $("#mensaje").html(datos);
                             $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
+                            let evento = $("#id_empleado").val();
+                            let ob = {
+                            evento: evento
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaValidacionDocumentos.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
 
+                    $("#tabla_resultadobus").html(data);
+
+                }
+
+            });
                             
 
                         }
@@ -316,7 +335,7 @@ if ($validaacceso == 8) {
                 $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
                 $("#cursoderechoshumanos").prop("selectedIndex", 0);
                 $("#competenciasespecializadas").prop("selectedIndex", 0);
-            } else if ($(this).val() === "CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS") {
+            } else if ($(this).val() === "CURSOS VINCULADOS CON DERECHOS HUMANOS") {
                 $('#comporganizacionales').prop("hidden", true);
                 $('#compdirectivas').prop("hidden", true);
                 $('#computo').prop("hidden", true);
@@ -334,7 +353,7 @@ if ($validaacceso == 8) {
                 $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
                 $("#mueccomp").prop("selectedIndex", 0);
                 $("#competenciasespecializadas").prop("selectedIndex", 0);
-            } else if ($(this).val() === "COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)") {
+            } else if ($(this).val() === "COMPETENCIAS ESPECIALIZADAS") {
                 $('#comporganizacionales').prop("hidden", true);
                 $('#compdirectivas').prop("hidden", true);
                 $('#computo').prop("hidden", true);
@@ -366,12 +385,23 @@ $nombrecurso = $dataRegistro['nombrecurso'];
 <input type="hidden" id="id" name="id" value="<?php echo $dataRegistro['id']; ?>">
 <input type="hidden" value="<?php echo $path ?>" name="path">
 <input type="hidden" value="<?php echo $nombrecurso ?>" name="nombrecurso">
-<input type="hidden" value="<?php echo $idempleado ?>" name="id_empleado">
+<input type="hidden" value="<?php echo $idempleado ?>" name="id_empleado" id="id_empleado">
 
 <div class="form-row">
     <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
+    <div class="col-md-2">
+            <strong style="font-size: 12px;">Año</strong>
+            <select class="form-control" name="year" id="year" required>
+                <option value="">Selecciona el año</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+            </select>
+        </div>
     <div class="col-md-4">
-            <strong style="font-size: 12px;">CATALOGO DE PROGRAMAS</strong>
+            <strong style="font-size: 12px;">Catalogo de programas</strong>
             <select class="form-control" id="catalogoprogramas" name="catalogoprogramas" required>
                 <option value="">Seleccione</option>
                 <option value="PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
@@ -381,7 +411,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                 </select>
         </div>
         <div class="col-md-4">
-            <strong style="font-size: 12px;">LINEA ESTRATEGICA</strong>
+            <strong style="font-size: 12px;">Linea estrategica</strong>
             <select class="form-control" id="lineaestrategica" name="lineaestrategica" required>
                 <option value="">Seleccione</option>
                 <?php
@@ -395,17 +425,6 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                                 <?php echo $row['descripcionlinea']; ?></option>
                         <?php } ?>
                 </select>
-        </div>
-        <div class="col-md-2">
-            <strong>Año</strong>
-            <select class="form-control" name="year" id="year" required>
-                <option value="">Selecciona el año</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-            </select>
         </div>
     </div>
     <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center; margin-top: 5px;">

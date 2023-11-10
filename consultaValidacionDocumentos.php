@@ -27,6 +27,7 @@
 <?php 
 error_reporting(0);
 require_once 'clases/conexion.php';
+extract($_POST);
 $conexionX = new ConexionRh();
     $sqlQueryComentarios  = $conexionX->prepare("SELECT id FROM datos where validaautorizacion = 0");
     $sqlQueryComentarios->execute();
