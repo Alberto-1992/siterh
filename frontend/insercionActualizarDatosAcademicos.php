@@ -50,9 +50,9 @@
                     },
                     success: function(datos) {
                         $("#mensaje").html(datos);
-                        /*setTimeout(function() {
+                        setTimeout(function() {
                             window.location.href = 'datosAcademicos';
-                        }, 2000);*/
+                        }, 2000);
 
                     }
                 })
