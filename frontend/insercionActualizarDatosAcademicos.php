@@ -50,9 +50,9 @@
                     },
                     success: function(datos) {
                         $("#mensaje").html(datos);
-                        setTimeout(function() {
+                        /*setTimeout(function() {
                             window.location.href = 'datosAcademicos';
-                        }, 2000);
+                        }, 2000);*/
 
                     }
                 })
@@ -545,31 +545,31 @@
 
                     <div class="form-group col-md-6">
                         <label>Nombre de la formación académica</label>
-                        <input type="text" id="nombreformacion" name="nombreformacionmaestria[]" class="form-control" value="<?php echo $rowm['nombreformacionmaestria']; ?>">
+                        <input type="text" id="nombreformacionmaestria" name="nombreformacionmaestria[]" class="form-control" value="<?php echo $rowm['nombreformacionmaestria']; ?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nombre de la institución educativa</label>
-                        <input type="text" id="nombreinstitucion" name="nombreinstitucionmaestria[]" class="form-control" value="<?php echo $rowm['nombremaestria'] ?>">
+                        <input type="text" id="nombreinstitucionmaestria" name="nombreinstitucionmaestria[]" class="form-control" value="<?php echo $rowm['nombremaestria'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Fecha de inicio</label>
-                        <input type="date" id="fechainicio" name="fechainiciosupmaestria[]" class="form-control" value="<?php echo $rowm['fechamaestriainicio'] ?>">
+                        <input type="date" id="fechainiciosupmaestria" name="fechainiciosupmaestria[]" class="form-control" value="<?php echo $rowm['fechamaestriainicio'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Fecha termino</label>
-                        <input type="date" id="fechatermino" name="fechaterminosupmaestria[]" class="form-control" value="<?php echo $rowm['fechamaestriatermino'] ?>">
+                        <input type="date" id="fechaterminosupmaestria" name="fechaterminosupmaestria[]" class="form-control" value="<?php echo $rowm['fechamaestriatermino'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Años cursados</label>
-                        <input type="text" id="tiempocursado" name="tiempocursadosupmaestria[]" class="form-control" value="<?php echo $rowm['tiempocursadomaestria'] ?>">
+                        <input type="text" id="tiempocursadosupmaestria" name="tiempocursadosupmaestria[]" class="form-control" value="<?php echo $rowm['tiempocursadomaestria'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Documento que recibe</label>
-                        <input type="text" id="documentorecibe" name="documentorecibemaestria[]" class="form-control" value="<?php echo $rowm['documentomaestria'] ?>">
+                        <input type="text" id="documentorecibemaestria" name="documentorecibemaestria[]" class="form-control" value="<?php echo $rowm['documentomaestria'] ?>">
                     </div>
                     <div class="form-group col-md-4">
                         <label>Numero de cedula</label>
-                        <input type="int" id="numerocedula" name="numerocedulamaestria[]" class="form-control" value="<?php echo $rowm['numerocedulamaestria'] ?>">
+                        <input type="text" id="numerocedulamaestria" name="numerocedulamaestria[]" class="form-control" value="<?php echo $rowm['numerocedulamaestria'] ?>">
                     </div>
                     <div class="form-group col-md-4">
                         <label>Sube tu titulo (PDF)</label>
@@ -664,7 +664,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Numero de cedula ${i +1}</label>
-                                <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulamaestria[]" class="form-control">
+                                <input type="text" id="numerocedulamaestria[${i}]" name="numerocedulamaestria[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Sube tu titulo ${i +1} (PDF)</label>
@@ -711,35 +711,35 @@
 
                     <div class="form-group col-md-6">
                         <label>Nombre de la formación académica</label>
-                        <input type="text" id="nombreformacion" name="nombreformacionposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['nombreformacionacademica']; ?>">
+                        <input type="text" id="nombreformacionposgradoespecialidad" name="nombreformacionposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['nombreformacionacademica']; ?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nombre de la institución educativa</label>
-                        <input type="text" id="nombreinstitucion" name="nombreinstitucionposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['nombreinstitucion'] ?>">
+                        <input type="text" id="nombreinstitucionposgradoespecialidad" name="nombreinstitucionposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['nombreinstitucion'] ?>">
                     </div>
                     <div class="form-group col-md-4">
                         <label>Unidad hospitalaria</label>
-                        <input type="text" id="unidadhospitalariaesp" name="unidadhospitalariaposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['unidadhospitalaria'] ?>">
+                        <input type="text" id="unidadhospitalariaposgradoespecialidad" name="unidadhospitalariaposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['unidadhospitalaria'] ?>">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Fecha de inicio</label>
-                        <input type="date" id="fechainicio" name="fechainiciosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['fechainicioespecialidad'] ?>">
+                        <input type="date" id="fechainiciosupposgradoespecialidad" name="fechainiciosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['fechainicioespecialidad'] ?>">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Fecha termino</label>
-                        <input type="date" id="fechatermino" name="fechaterminosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['fechaterminoespecialidad'] ?>">
+                        <input type="date" id="fechaterminosupposgradoespecialidad" name="fechaterminosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['fechaterminoespecialidad'] ?>">
                     </div>
                     <div class="form-group col-md-4">
                         <label>Años cursados</label>
-                        <input type="text" id="tiempocursado" name="tiempocursadosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['anioscursados'] ?>">
+                        <input type="text" id="tiempocursadosupposgradoespecialidad" name="tiempocursadosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['anioscursados'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Documento que recibe</label>
-                        <input type="text" id="documentorecibe" name="documentorecibeposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['documentorecibeespecialidad'] ?>">
+                        <input type="text" id="documentorecibeposgradoespecialidad" name="documentorecibeposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['documentorecibeespecialidad'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Numero de cedula</label>
-                        <input type="int" id="numerocedula" name="numerocedulaposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['numerocedulaespecialidad'] ?>">
+                        <input type="text" id="numerocedulaposgradoespecialidad" name="numerocedulaposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['numerocedulaespecialidad'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Sube tu documento (PDF)</label>
@@ -785,35 +785,35 @@
                                 </div>
                             <div class="form-group col-md-6">
                                 <label>Nombre de la formación académica ${i +1}</label>
-                                <input type="text" id="nombreformacionmaestria[${i}]" name="nombreformacionposgradoespecialidad[]" class="form-control">
+                                <input type="text" id="nombreformacionposgradoespecialidad[${i}]" name="nombreformacionposgradoespecialidad[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Nombre de la institución educativa ${i +1}</label>
-                                <input type="text" id="nombreinstitucionmaestria[${i}]" name="nombreinstitucionposgradoespecialidad[]" class="form-control">
+                                <input type="text" id="nombreinstitucionposgradoespecialidad[${i}]" name="nombreinstitucionposgradoespecialidad[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
                                 <label>Fecha de inicio ${i +1}</label>
-                                <input type="date" id="fechainiciomaestria[${i}]" name="fechainiciosupposgradoespecialidad[]" class="form-control">
+                                <input type="date" id="fechainiciosupposgradoespecialidad[${i}]" name="fechainiciosupposgradoespecialidad[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
                                 <label>Fecha termino ${i +1}</label>
-                                <input type="date" id="fechaterminomaestria[${i}]" name="fechaterminosupposgradoespecialidad[]" class="form-control">
+                                <input type="date" id="fechaterminosupposgradoespecialidad[${i}]" name="fechaterminosupposgradoespecialidad[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
                                 <label>Años cursados ${i +1}</label>
-                                <input type="text" id="tiempocursadomaestria[${i}]" name="tiempocursadosupposgradoespecialidad[]" class="form-control">
+                                <input type="text" id="tiempocursadosupposgradoespecialidad[${i}]" name="tiempocursadosupposgradoespecialidad[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
                                 <label>Unidad hospitalaria ${i +1}</label>
-                                <input type="int" id="numerocedulamaestria[${i}]" name="unidadhospitalariaposgradoespecialidad[]" class="form-control">
+                                <input type="text" id="unidadhospitalariaposgradoespecialidad[${i}]" name="unidadhospitalariaposgradoespecialidad[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Documento que recibe ${i +1}</label>
-                                <input type="text" id="documentorecibemaestria[${i}]" name="documentorecibeposgradoespecialidad[]" class="form-control">
+                                <input type="text" id="documentorecibeposgradoespecialidad[${i}]" name="documentorecibeposgradoespecialidad[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Numero de cedula ${i +1}</label>
-                                <input type="int" id="numerocedulamaestria[${i}]" name="numerocedulaposgradoespecialidad[]" class="form-control">
+                                <input type="int" id="numerocedulaposgradoespecialidad[${i}]" name="numerocedulaposgradoespecialidad[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Sube tu documento ${i +1} (PDF)</label>
@@ -857,35 +857,35 @@
 
                     <div class="form-group col-md-6">
                         <label>Nombre de la formación académica</label>
-                        <input type="text" id="nombreformacion" name="nombreformaciondoctorado[]" class="form-control" value="<?php echo $rowd['nombreformaciondoctorado']; ?>">
+                        <input type="text" id="nombreformaciondoctorado" name="nombreformaciondoctorado[]" class="form-control" value="<?php echo $rowd['nombreformaciondoctorado']; ?>">
                     </div>
                     <div class="form-group col-md-6">
                         <label>Nombre de la institución educativa</label>
-                        <input type="text" id="nombreinstitucion" name="nombreinstituciondoctorado[]" class="form-control" value="<?php echo $rowd['nombreinstituciondoctorado'] ?>">
+                        <input type="text" id="nombreinstituciondoctorado" name="nombreinstituciondoctorado[]" class="form-control" value="<?php echo $rowd['nombreinstituciondoctorado'] ?>">
                     </div>
                     <div class="form-group col-md-4">
                         <label>Unidad hospitalaria</label>
-                        <input type="text" id="unidadhospitalariaesp" name="unidadhospitalariadoctorado[]" class="form-control" value="<?php echo $rowd['unidadhospitalariadoctorado'] ?>">
+                        <input type="text" id="unidadhospitalariadoctorado" name="unidadhospitalariadoctorado[]" class="form-control" value="<?php echo $rowd['unidadhospitalariadoctorado'] ?>">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Fecha de inicio</label>
-                        <input type="date" id="fechainiciodoctorado" name="fechainiciosupdoctorado[]" class="form-control" value="<?php echo $rowd['fechainiciodoctorado'] ?>">
+                        <input type="date" id="fechainiciosupdoctorado" name="fechainiciosupdoctorado[]" class="form-control" value="<?php echo $rowd['fechainiciodoctorado'] ?>">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Fecha termino</label>
-                        <input type="date" id="fechatermino" name="fechaterminosupdoctorado[]" class="form-control" value="<?php echo $rowd['fechaterminodoctorado'] ?>">
+                        <input type="date" id="fechaterminosupdoctorado" name="fechaterminosupdoctorado[]" class="form-control" value="<?php echo $rowd['fechaterminodoctorado'] ?>">
                     </div>
                     <div class="form-group col-md-4">
                         <label>Años cursados</label>
-                        <input type="text" id="tiempocursado" name="tiempocursadosupdoctorado[]" class="form-control" value="<?php echo $rowd['anioscursadosdoctorado'] ?>">
+                        <input type="text" id="tiempocursadosupdoctorado" name="tiempocursadosupdoctorado[]" class="form-control" value="<?php echo $rowd['anioscursadosdoctorado'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Documento que recibe</label>
-                        <input type="text" id="documentorecibe" name="documentorecibedoctorado[]" class="form-control" value="<?php echo $rowd['documentorecibedoctorado'] ?>">
+                        <input type="text" id="documentorecibedoctorado" name="documentorecibedoctorado[]" class="form-control" value="<?php echo $rowd['documentorecibedoctorado'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Numero de cedula</label>
-                        <input type="int" id="numerocedula" name="numeroceduladoctorado[]" class="form-control" value="<?php echo $rowd['numeroceduladoctorado'] ?>">
+                        <input type="text" id="numeroceduladoctorado" name="numeroceduladoctorado[]" class="form-control" value="<?php echo $rowd['numeroceduladoctorado'] ?>">
                     </div>
                     <div class="form-group col-md-3">
                         <label>Sube tu titulo (PDF)</label>
@@ -955,35 +955,35 @@
                                 </div>
                             <div class="form-group col-md-6">
                                 <label>Nombre de la formación académica ${i +1}</label>
-                                <input type="text" id="nombreformacionmaestria[${i}]" name="nombreformaciondoctorado[]" class="form-control">
+                                <input type="text" id="nombreformaciondoctorado[${i}]" name="nombreformaciondoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Nombre de la institución educativa ${i +1}</label>
-                                <input type="text" id="nombreinstitucionmaestria[${i}]" name="nombreinstituciondoctorado[]" class="form-control">
+                                <input type="text" id="nombreinstituciondoctorado[${i}]" name="nombreinstituciondoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
                                 <label>Fecha de inicio ${i +1}</label>
-                                <input type="date" id="fechainiciomaestria[${i}]" name="fechainiciosupdoctorado[]" class="form-control">
+                                <input type="date" id="fechainiciosupdoctorado[${i}]" name="fechainiciosupdoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
                                 <label>Fecha termino ${i +1}</label>
-                                <input type="date" id="fechaterminomaestria[${i}]" name="fechaterminosupdoctorado[]" class="form-control">
+                                <input type="date" id="fechaterminosupdoctorado[${i}]" name="fechaterminosupdoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
                                 <label>Años cursados ${i +1}</label>
-                                <input type="text" id="tiempocursadomaestria[${i}]" name="tiempocursadosupdoctorado[]" class="form-control">
+                                <input type="text" id="tiempocursadosupdoctorado[${i}]" name="tiempocursadosupdoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
                                 <label>Unidad hospitalaria ${i +1}</label>
-                                <input type="int" id="numerocedulamaestria[${i}]" name="unidadhospitalariadoctorado[]" class="form-control">
+                                <input type="int" id="unidadhospitalariadoctorado[${i}]" name="unidadhospitalariadoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Documento que recibe ${i +1}</label>
-                                <input type="text" id="documentorecibemaestria[${i}]" name="documentorecibedoctorado[]" class="form-control">
+                                <input type="text" id="documentorecibedoctorado[${i}]" name="documentorecibedoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
                                 <label>Numero de cedula ${i +1}</label>
-                                <input type="int" id="numerocedulamaestria[${i}]" name="numeroceduladoctorado[]" class="form-control">
+                                <input type="text" id="numeroceduladoctorado[${i}]" name="numeroceduladoctorado[]" class="form-control">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Sube tu titulo ${i +1} (PDF)</label>

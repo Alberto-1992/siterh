@@ -58,7 +58,7 @@ try {
         $sql->execute(array(
             ':id_empleado'=>$id_empleado
         ));
-        
+
    // require '../conexionRh.php';
     if ($_FILES["documentomediasup"]["error"] > 0) {
         
@@ -139,22 +139,13 @@ try {
         }
         
     }
+    $arraynombreformacionPostecnico = array_map("htmlspecialchars", $nombreformacionPostecnico);
+    $arraynombreinstitucionPostecnico = array_map("htmlspecialchars", $nombreinstitucionPostecnico);
+    $arrayfechainiciosupPostecnico = array_map("htmlspecialchars", $fechainiciosupPostecnico);
+    $arrayfechaterminosupPostecnico = array_map("htmlspecialchars", $fechaterminosupPostecnico);
+    $arraytiempocursadosupPostecnico = array_map("htmlspecialchars", $tiempocursadosupPostecnico);
+    $arraydocumentorecibePostecnico = array_map("htmlspecialchars", $documentorecibePostecnico);
 
-/*inicia postecnico*/ 
-$arraynombreformacionPostecnico =  $_POST['nombreformacionPostecnico'];
-    $arraynombreinstitucionPostecnico = $_POST['nombreinstitucionPostecnico'];
-    $arrayfechainiciosupPostecnico = $_POST['fechainiciosupPostecnico'];
-    $arrayfechaterminosupPostecnico = $_POST['fechaterminosupPostecnico'];
-    $arraytiempocursadosupPostecnico = $_POST['tiempocursadosupPostecnico'];
-    $arraydocumentorecibePostecnico = $_POST['documentorecibePostecnico'];
-/*
-    $arraynombreformacionPostecnico = array_map("htmlspecialchars", $arraynombreformacionPostecnico);
-    $arraynombreinstitucionPostecnico = array_map("htmlspecialchars", $arraynombreinstitucionPostecnico);
-    $arrayfechainiciosupPostecnico = array_map("htmlspecialchars", $arrayfechainiciosupPostecnico);
-    $arrayfechaterminosupPostecnico = array_map("htmlspecialchars", $arrayfechaterminosupPostecnico);
-    $arraytiempocursadosupPostecnico = array_map("htmlspecialchars", $arraytiempocursadosupPostecnico);
-    $arraydocumentorecibePostecnico = array_map("htmlspecialchars", $arraydocumentorecibePostecnico);
-*/
     foreach ($arraynombreformacionPostecnico as $clavep => $nombreformacionPostecnico) {
         $nombreinstitucionPostecnico = $arraynombreinstitucionPostecnico[$clavep];
         $fechainiciosupPostecnico = $arrayfechainiciosupPostecnico[$clavep];
@@ -163,7 +154,7 @@ $arraynombreformacionPostecnico =  $_POST['nombreformacionPostecnico'];
         $documentorecibePostecnico = $arraydocumentorecibePostecnico[$clavep];
         $datoUnicoP[] = '("' . $nombreformacionPostecnico . '", "' . $nombreinstitucionPostecnico . '", "' . $fechainiciosupPostecnico . '", "' . $fechaterminosupPostecnico . '", "' . $tiempocursadosupPostecnico . '", "' . $documentorecibePostecnico . '", "' . $id_empleado . '")';
         $sql = $conexionX->prepare("INSERT into  estudiospostecnico(nombreformacionpostecnico,nombreinstitucionpostecnico,fechainiciosuppostecnico,fechaterminosuppostecnico,tiempocursadosuppostecnico,documentorecibepostecnico,id_empleado) VALUES " . implode(', ', $datoUnicoP));
-            
+
 }
 $sql->execute();
 foreach($_FILES["documentolicenciaturaPostecnico"]['tmp_name'] as $key => $tmp_name)
@@ -194,35 +185,26 @@ foreach($_FILES["documentolicenciaturaPostecnico"]['tmp_name'] as $key => $tmp_n
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
-//mysqli_query($conexionGrafico, $consultaP);
+    $arraynombreformacion = array_map("htmlspecialchars", $nombreformacion);
+    $arraynombreinstitucion = array_map("htmlspecialchars", $nombreinstitucion);
+    $arrayfechainicio = array_map("htmlspecialchars", $fechainiciosup);
+    $arrayfechaterminosup = array_map("htmlspecialchars", $fechaterminosup);
+    $arraytiempocursadosup = array_map("htmlspecialchars", $tiempocursadosup);
+    $arraydocumentorecibe = array_map("htmlspecialchars", $documentorecibe);
+    $arraynumerocedula = array_map("htmlspecialchars", $numerocedula);
 
-/*finaliza postecnico*/
-    $arraynombreformacion =  $_POST['nombreformacion'];
-    $arraynombreinstitucion = $_POST['nombreinstitucion'];
-    $arrayfechainicio = $_POST['fechainiciosup'];
-    $arrayfechatermino = $_POST['fechaterminosup'];
-    $arraytiempocursado = $_POST['tiempocursadosup'];
-    $arraydocumentorecibe = $_POST['documentorecibe'];
-    $arraynumerocedula = $_POST['numerocedula'];
-/*
-    $arraynombreformacion = array_map("htmlspecialchars", $arraynombreformacion);
-    $arraynombreinstitucion = array_map("htmlspecialchars", $arraynombreinstitucion);
-    $arrayfechainicio = array_map("htmlspecialchars", $arrayfechainicio);
-    $arraytiempocursado = array_map("htmlspecialchars", $arraytiempocursado);
-    $arraynumerocedula = array_map("htmlspecialchars", $arraynumerocedula);
-*/
     foreach ($arraynombreformacion as $clave => $nombreformacion) {
         $nombreinstitucion = $arraynombreinstitucion[$clave];
         $fechainicio = $arrayfechainicio[$clave];
-        $fechatermino = $arrayfechatermino[$clave];
-        $tiempocursado = $arraytiempocursado[$clave];
+        $fechatermino = $arrayfechaterminosup[$clave];
+        $tiempocursado = $arraytiempocursadosup[$clave];
         $documentorecibe = $arraydocumentorecibe[$clave];
         $numerocedula = $arraynumerocedula[$clave];
         $datoUnico[] = '("' . $nombreformacion . '", "' . $nombreinstitucion . '", "' . $fechainicio . '", "' . $fechatermino . '", "' . $tiempocursado . '", "' . $documentorecibe . '", "' . $numerocedula . '", "' . $id_empleado . '")';
         $sql = $conexionX->prepare("INSERT into  estudiossuperior(nombreformacionsuperior,nombresuperior,fechasuperiorinicio,fechasuperiortermino,tiempocursadosuperior,documentosuperior,numerocedulasuperior,id_empleado) VALUES " . implode(', ', $datoUnico));
-            
+        
 }
-$sql->execute();
+$sql->execute();  
 foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 	{
 		//condicional si el fuchero existe
@@ -279,25 +261,14 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+    $arraynombreformacionmaestria = array_map("htmlspecialchars", $nombreformacionmaestria);
+    $arraynombreinstitucionmaestria = array_map("htmlspecialchars", $nombreinstitucionmaestria);
+    $arrayfechainiciomaestria = array_map("htmlspecialchars", $fechainiciosupmaestria);
+    $arrayfechaterminomaestria = array_map("htmlspecialchars", $fechaterminosupmaestria);
+    $arraytiempocursadomaestria = array_map("htmlspecialchars", $tiempocursadosupmaestria);
+    $arraydocumentorecibemaestria = array_map("htmlspecialchars", $documentorecibemaestria);
+    $arraynumerocedulamaestria = array_map("htmlspecialchars", $numerocedulamaestria);
 
-    //mysqli_query($conexionGrafico, $consulta);
-
-    $arraynombreformacionmaestria =  $_POST['nombreformacionmaestria'];
-    $arraynombreinstitucionmaestria = $_POST['nombreinstitucionmaestria'];
-    $arrayfechainiciomaestria = $_POST['fechainiciosupmaestria'];
-    $arrayfechaterminomaestria = $_POST['fechaterminosupmaestria'];
-    $arraytiempocursadomaestria = $_POST['tiempocursadosupmaestria'];
-    $arraydocumentorecibemaestria = $_POST['documentorecibemaestria'];
-    $arraynumerocedulamaestria = $_POST['numerocedulamaestria'];
-/*
-    $arraynombreformacionmaestria = array_map("htmlspecialchars", $arraynombreformacionmaestria);
-    $arraynombreinstitucionmaestria = array_map("htmlspecialchars", $arraynombreinstitucionmaestria);
-    $arrayfechainiciomaestria = array_map("htmlspecialchars", $arrayfechainiciomaestria);
-    $arrayfechaterminomaestria = array_map("htmlspecialchars", $arrayfechaterminomaestria);
-    $arraytiempocursadomaestria = array_map("htmlspecialchars", $arraytiempocursadomaestria);
-    $arraydocumentorecibemaestria = array_map("htmlspecialchars", $arraydocumentorecibemaestria);
-    $arraynumerocedulamaestria = array_map("htmlspecialchars", $arraynumerocedulamaestria);
-*/
     foreach ($arraynombreformacionmaestria as $clavemaestria => $nombreformacionmaestria) {
         $nombreinstitucionmaestria = $arraynombreinstitucionmaestria[$clavemaestria];
         $fechainiciomaestria = $arrayfechainiciomaestria[$clavemaestria];
@@ -366,25 +337,15 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
-   // mysqli_query($conexionGrafico, $consulta2);
+    $arraynombreformacionposgradoespecialidad = array_map("htmlspecialchars", $nombreformacionposgradoespecialidad);
+    $arraynombreinstitucionposgradoespecialidad = array_map("htmlspecialchars", $nombreinstitucionposgradoespecialidad);
+    $arrayfechainicioposgradoespecialidad = array_map("htmlspecialchars", $fechainiciosupposgradoespecialidad);
+    $arrayfechaterminoposgradoespecialidad = array_map("htmlspecialchars", $fechaterminosupposgradoespecialidad);
+    $arraytiempocursadoposgradoespecialidad = array_map("htmlspecialchars", $tiempocursadosupposgradoespecialidad);
+    $arrayunidadhospitalariaposgradoespecialidad = array_map("htmlspecialchars", $unidadhospitalariaposgradoespecialidad);
+    $arraydocumentorecibeposgradoespecialidad = array_map("htmlspecialchars", $documentorecibeposgradoespecialidad);
+    $arraynumerocedulaposgradoespecialidad = array_map("htmlspecialchars", $numerocedulaposgradoespecialidad);
 
-    $arraynombreformacionposgradoespecialidad =  $_POST['nombreformacionposgradoespecialidad'];
-    $arraynombreinstitucionposgradoespecialidad = $_POST['nombreinstitucionposgradoespecialidad'];
-    $arrayfechainicioposgradoespecialidad = $_POST['fechainiciosupposgradoespecialidad'];
-    $arrayfechaterminoposgradoespecialidad = $_POST['fechaterminosupposgradoespecialidad'];
-    $arraytiempocursadoposgradoespecialidad = $_POST['tiempocursadosupposgradoespecialidad'];
-    $arrayunidadhospitalariaposgradoespecialidad = $_POST['unidadhospitalariaposgradoespecialidad'];
-    $arraydocumentorecibeposgradoespecialidad = $_POST['documentorecibeposgradoespecialidad'];
-    $arraynumerocedulaposgradoespecialidad = $_POST['numerocedulaposgradoespecialidad'];
-/*
-    $arraynombreformacionposgradoespecialidad = array_map("htmlspecialchars", $arraynombreformacionposgradoespecialidad);
-    $arraynombreinstitucionposgradoespecialidad = array_map("htmlspecialchars", $arraynombreinstitucionposgradoespecialidad);
-    $arrayfechainicioposgradoespecialidad = array_map("htmlspecialchars", $arrayfechainicioposgradoespecialidad);
-    $arrayfechaterminoposgradoespecialidad = array_map("htmlspecialchars", $arrayfechaterminoposgradoespecialidad);
-    $arraytiempocursadoposgradoespecialidad = array_map("htmlspecialchars", $arraytiempocursadoposgradoespecialidad);
-    $arrayunidadhospitalariaposgradoespecialidad = array_map("htmlspecialchars", $arrayunidadhospitalariaposgradoespecialidad);
-    $arraynumerocedulaposgradoespecialidad = array_map("htmlspecialchars", $arraynumerocedulaposgradoespecialidad);
-*/
     foreach ($arraynombreformacionposgradoespecialidad as $claveposgradoespecialidad => $nombreformacionposgradoespecialidad) {
         $nombreinstitucionposgradoespecialidad = $arraynombreinstitucionposgradoespecialidad[$claveposgradoespecialidad];
         $fechainicioposgradoespecialidad = $arrayfechainicioposgradoespecialidad[$claveposgradoespecialidad];
@@ -426,25 +387,15 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
-    //mysqli_query($conexionGrafico, $consulta3);
+    $arraynombreformaciondoctorado = array_map("htmlspecialchars", $nombreformaciondoctorado);
+    $arraynombreinstituciondoctorado = array_map("htmlspecialchars", $nombreinstituciondoctorado);
+    $arrayfechainiciodoctorado = array_map("htmlspecialchars", $fechainiciosupdoctorado);
+    $arrayfechaterminodoctorado = array_map("htmlspecialchars", $fechaterminosupdoctorado);
+    $arraytiempocursadodoctorado = array_map("htmlspecialchars", $tiempocursadosupdoctorado);
+    $arrayunidadhospitalariadoctorado = array_map("htmlspecialchars", $unidadhospitalariadoctorado);
+    $arraydocumentorecibedoctorado = array_map("htmlspecialchars", $documentorecibedoctorado);
+    $arraynumeroceduladoctorado = array_map("htmlspecialchars", $numeroceduladoctorado);
 
-    $arraynombreformaciondoctorado =  $_POST['nombreformaciondoctorado'];
-    $arraynombreinstituciondoctorado = $_POST['nombreinstituciondoctorado'];
-    $arrayfechainiciodoctorado = $_POST['fechainiciosupdoctorado'];
-    $arrayfechaterminodoctorado = $_POST['fechaterminosupdoctorado'];
-    $arraytiempocursadodoctorado = $_POST['tiempocursadosupdoctorado'];
-    $arrayunidadhospitalariadoctorado = $_POST['unidadhospitalariadoctorado'];
-    $arraydocumentorecibedoctorado = $_POST['documentorecibedoctorado'];
-    $arraynumeroceduladoctorado = $_POST['numeroceduladoctorado'];
-/*
-    $arraynombreformaciondoctorado = array_map("htmlspecialchars", $arraynombreformaciondoctorado);
-    $arraynombreinstituciondoctorado = array_map("htmlspecialchars", $arraynombreinstituciondoctorado);
-    $arrayfechainiciodoctorado = array_map("htmlspecialchars", $arrayfechainiciodoctorado);
-    $arrayfechaterminodoctorado = array_map("htmlspecialchars", $arrayfechaterminodoctorado);
-    $arraytiempocursadodoctorado = array_map("htmlspecialchars", $arraytiempocursadodoctorado);
-    $arrayunidadhospitalariadoctorado = array_map("htmlspecialchars", $arrayunidadhospitalariadoctorado);
-    $arraynumeroceduladoctorado = array_map("htmlspecialchars", $arraynumeroceduladoctorado);
-*/
     foreach ($arraynombreformaciondoctorado as $clavedoctorado => $nombreformaciondoctorado) {
         $nombreinstituciondoctorado = $arraynombreinstituciondoctorado[$clavedoctorado];
         $fechainiciodoctorado = $arrayfechainiciodoctorado[$clavedoctorado];
