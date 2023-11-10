@@ -337,6 +337,7 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+
     $arraynombreformacionposgradoespecialidad = array_map("htmlspecialchars", $nombreformacionposgradoespecialidad);
     $arraynombreinstitucionposgradoespecialidad = array_map("htmlspecialchars", $nombreinstitucionposgradoespecialidad);
     $arrayfechainicioposgradoespecialidad = array_map("htmlspecialchars", $fechainiciosupposgradoespecialidad);
@@ -345,6 +346,8 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
     $arrayunidadhospitalariaposgradoespecialidad = array_map("htmlspecialchars", $unidadhospitalariaposgradoespecialidad);
     $arraydocumentorecibeposgradoespecialidad = array_map("htmlspecialchars", $documentorecibeposgradoespecialidad);
     $arraynumerocedulaposgradoespecialidad = array_map("htmlspecialchars", $numerocedulaposgradoespecialidad);
+    $arrayfechainiciocertificadosupposgradoespecialidad = array_map("htmlspecialchars", $fechainiciocertificadosupposgradoespecialidad);
+    $arrayfechaterminocertificadosupposgradoespecialidad = array_map("htmlspecialchars", $fechaterminocertificadosupposgradoespecialidad);
 
     foreach ($arraynombreformacionposgradoespecialidad as $claveposgradoespecialidad => $nombreformacionposgradoespecialidad) {
         $nombreinstitucionposgradoespecialidad = $arraynombreinstitucionposgradoespecialidad[$claveposgradoespecialidad];
@@ -354,8 +357,10 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
         $unidadhospitalariaposgradoespecialidad = $arrayunidadhospitalariaposgradoespecialidad[$claveposgradoespecialidad];
         $documentorecibeposgradoespecialidad = $arraydocumentorecibeposgradoespecialidad[$claveposgradoespecialidad];
         $numerocedulaposgradoespecialidad = $arraynumerocedulaposgradoespecialidad[$claveposgradoespecialidad];
-        $datoUnicoposgradoespecialidad[] = '("' . $nombreformacionposgradoespecialidad . '", "' . $nombreinstitucionposgradoespecialidad . '","' . $unidadhospitalariaposgradoespecialidad . '", "' . $fechainicioposgradoespecialidad . '", "' . $fechaterminoposgradoespecialidad . '", "' . $tiempocursadoposgradoespecialidad . '", "' . $documentorecibeposgradoespecialidad . '", "' . $numerocedulaposgradoespecialidad . '", "' . $id_empleado . '")';
-        $sql = $conexionX->prepare("INSERT into  especialidad(nombreformacionacademica,nombreinstitucion,unidadhospitalaria,fechainicioespecialidad,fechaterminoespecialidad,anioscursados,documentorecibeespecialidad,numerocedulaespecialidad,id_empleado) VALUES " . implode(', ', $datoUnicoposgradoespecialidad));
+        $fechainiciocertificadosupposgradoespecialidad = $arrayfechainiciocertificadosupposgradoespecialidad[$claveposgradoespecialidad];
+        $fechaterminocertificadosupposgradoespecialidad = $arrayfechaterminocertificadosupposgradoespecialidad[$claveposgradoespecialidad];
+        $datoUnicoposgradoespecialidad[] = '("' . $nombreformacionposgradoespecialidad . '", "' . $nombreinstitucionposgradoespecialidad . '","' . $unidadhospitalariaposgradoespecialidad . '", "' . $fechainicioposgradoespecialidad . '", "' . $fechaterminoposgradoespecialidad . '", "' . $tiempocursadoposgradoespecialidad . '", "' . $documentorecibeposgradoespecialidad . '", "' . $numerocedulaposgradoespecialidad . '", "' . $id_empleado . '", "' . $fechainiciocertificadosupposgradoespecialidad . '", "' . $fechaterminocertificadosupposgradoespecialidad . '")';
+        $sql = $conexionX->prepare("INSERT into  especialidad(nombreformacionacademica,nombreinstitucion,unidadhospitalaria,fechainicioespecialidad,fechaterminoespecialidad,anioscursados,documentorecibeespecialidad,numerocedulaespecialidad,id_empleado,fechacertificadoinicio,fechacertificadotermino) VALUES " . implode(', ', $datoUnicoposgradoespecialidad));
         $sql->execute();
     }
     foreach($_FILES["documentoposgradoesp"]['tmp_name'] as $key => $tmp_name)
@@ -368,6 +373,62 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			$fuente = $_FILES["documentoposgradoesp"]["tmp_name"][$key]; 
 			
 			$carpeta = '../documentosposgradoesp/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
+    foreach($_FILES["documentocedulaposgradoesp"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentocedulaposgradoesp"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Cedula posgrado";
+			$archivonombre = $_POST['nombreformacionposgradoespecialidad'][$key];
+			$fuente = $_FILES["documentocedulaposgradoesp"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentoscedulaposgradoesp/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
+    foreach($_FILES["documentocertificadoposgradoesp"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentocertificadoposgradoesp"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Certificado posgrado";
+			$archivonombre = $_POST['nombreformacionposgradoespecialidad'][$key];
+			$fuente = $_FILES["documentocertificadoposgradoesp"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentoscertificadoposgradoesp/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
 			
 			if(!file_exists($carpeta)){
 				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
