@@ -335,7 +335,7 @@ if ($validaacceso == 8) {
                 $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
                 $("#cursoderechoshumanos").prop("selectedIndex", 0);
                 $("#competenciasespecializadas").prop("selectedIndex", 0);
-            } else if ($(this).val() === "CURSOS VINCULADOS CON DERECHOS HUMANOS") {
+            } else if ($(this).val() === "COMPETENCIAS ETICO INTEGRATIVAS Y NORMATIVA DEL SP") {
                 $('#comporganizacionales').prop("hidden", true);
                 $('#compdirectivas').prop("hidden", true);
                 $('#computo').prop("hidden", true);
@@ -504,7 +504,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         </div>
         <div id="derechoshumanos">
             <div class="col-md-12">
-                <strong style="font-size: 12px;">CURSOS VINCULADOS CON DERECHOS HUMANOS, IGUALDAD Y NO DISCRIMINACIÓN, TRANSPARENCIA, ÉTICA Y PREVENCIÓN DE CONFLICTOS DE INTERÉS</strong>
+                <strong style="font-size: 12px;">COMPETENCIAS ETICO INTEGRATIVAS Y NORMATIVA DEL SP</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA">TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA</option>
@@ -520,7 +520,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         </div>
         <div id="compespecializadas">
             <div class="col-md-12">
-                <strong style="font-size: 12px;">COMPETENCIAS ESPECIALIZADAS (TODAS AQUELLAS ACCIONES VINCULADAS A SU PROFESION Y/O AREA DE ADSCRIPCIÓN)</strong>
+                <strong style="font-size: 12px;">COMPETENCIAS ESPECIALIZADAS</strong>
                 <select class="form-control" id="organizacionales" name="organizacionales">
                     <option value="">Seleccione</option>
                     <option value="ACTUALIZACION ADMINISTRATIVA">ACTUALIZACION ADMINISTRATIVA</option>
