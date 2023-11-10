@@ -756,7 +756,7 @@ populateText: true
 legend.data.push(series);
 }
 
-makeSeries("Total palntilla", "Total plantilla");
+makeSeries("Total plantilla", "Total plantilla");
 makeSeries("Total actualizo", "Total actualizo");
 makeSeries("Total sin actualizar", "Total sin actualizar");
 
