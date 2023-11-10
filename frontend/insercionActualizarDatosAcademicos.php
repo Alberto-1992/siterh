@@ -370,7 +370,9 @@
             <?php
             while ($rows = $sql->fetch()) {
                 $valor = $rows['id_superior'];
+                
             ?>
+
                 <div id="cabeceras">
                     <h1 style="font-size:22px;">Datos Licenciatura</h1>
                 </div>
@@ -537,6 +539,7 @@
             <?php
             while ($rowm = $sqlm->fetch()) {
                 $valorm = $rowm['id_maestria'];
+            
             ?>
                 <div id="cabeceras">
                     <h1 style="font-size:22px;">Datos Maestria</h1>
@@ -621,7 +624,8 @@
                     </div>
                 </div>
 
-            <?php  } ?>
+            <?php  } 
+            ?>
 
             <div class="form-group col-md-3">
                 <strong>Agregar maestria (Solo numeros)</strong>
