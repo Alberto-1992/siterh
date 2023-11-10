@@ -129,7 +129,7 @@
                     $(document).ready(function() {
 
                         $('#criteriocurso').change(function(e) {
-                            if ($(this).val() === "ATLS" || $(this).val() === "ACLS" || $(this).val() === "BLS" || $(this).val() === "PALS" || $(this).val() === "RCP") {
+                            if ($(this).val() === "ATLS-APOYO VITAL AVANZADO EN TRAUMA" || $(this).val() === "ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO" || $(this).val() === "BLS-SOPORTE VITAL BASICO" || $(this).val() === "PALS-APOYO VITAL AVANZADO PEDIATRICO" || $(this).val() === "RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD" || $(this).val() === "INTERCULTURALIDAD") {
 
                                 $('#fechainiciocriterio').prop("disabled", false);
                                 $('#fechaterminocriterio').prop("disabled", false);
