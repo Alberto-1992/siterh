@@ -105,10 +105,10 @@
                 }
 
                 function validaciondedocumentacion() {
-                    window.open('validaDocumentacionCursos')
+                    window.location.href='validaDocumentacionCursos';
                 }
                 function listaempleados() {
-                    window.open('programaCursosAutorizadosEmpleados')
+                    window.location.href='programaCursosAutorizadosEmpleados';
                 }
                 function creacionCursoCapacitacion() {
                     window.location.href ='creacionCursoCapacitacion';
