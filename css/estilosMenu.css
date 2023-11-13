@@ -175,7 +175,7 @@ nav.main-menu li.active>a,
   display: flex;
   justify-content: space-between;
   padding: 0.1rem;
-  background-color: #464949;
+  background-color: #16428E;
   z-index: 99;
   transition: .5s;
 }

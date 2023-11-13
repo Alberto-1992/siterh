@@ -16,14 +16,24 @@
 
 <body>
 
-    <div class="box1">
         <header class="headerinfarto" style="background-color: #00D9EE;">
         
             <span id="cabecera">Usuarios Administradores.</span>
 
         </header>
 
+        <div class="box1">
+        <?php 
+    switch(true) {
 
+        case isset($_SESSION['usuarioAdminRh']):
+            require 'menu/menuCargaAdmin.php';
+        break;
+    
+        default:
+            require 'close_sesion.php';
+        }
+?>
         <script>
             $.ajax({
                 url: 'consultaAdministradoresBusqueda.php',
@@ -45,18 +55,14 @@
             })
 
         </script>
-        <div class="autoheight">
-<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeyup="return handleKeyPress(event);">
-            <div id="tabla_resultadobus">
-
-            </div>
-            <div id="tabla_resultado" class="adaptar"></div>
-        </div>
+            <div id="tabla_resultadobus"></div>
+            <div id="tabla_resultado"></div>
     </div>
 <script>
   function handleKeyPress(e)
 {
-
+    if (e.keyCode === 13 && !e.shiftKey) {
+        e.preventDefault();
 	let evento = $("#busqueda").val();
 	let ob = {evento:evento};
   $.ajax({
@@ -69,6 +75,7 @@
                     //$("#editarDatosPersonalescancerdeMama").modal('show');
                     }
                 });
+    }
 
 };
 </script>

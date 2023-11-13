@@ -23,7 +23,7 @@
 </head>
 
 <body>
-<header class="headerinfarto" style="background-color: #464949;">
+<header class="headerinfarto"|>
         
         <span id="cabecera">Validación documentos cursos.</span>
         <?php

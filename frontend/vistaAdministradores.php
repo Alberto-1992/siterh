@@ -10,7 +10,7 @@ require 'conexionRh.php';
 <div id="mensaje"></div>
 <input type="hidden" id="idpersonal" value="<?php echo $dataRegistro['id_usuario']; ?>">
 <input type="hidden" id="nombrecandidato" value="<?php echo $dataRegistro['nombrecompleto']; ?>">
-<ul class="nav nav-tabs" style="margin-top: 47px;" >       
+<ul class="nav nav-tabs" style="margin-top: 0px;" >       
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
