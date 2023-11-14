@@ -15,11 +15,6 @@ error_reporting(0);
         
         break;
 
-        case isset($_SESSION['usuarioDatos']):
-            $usernameSesion = $_SESSION['usuarioDatos'];
-            require 'frontend/accesosMasivosReclutamiento.php';
-            
-        break;
 
         default:
         

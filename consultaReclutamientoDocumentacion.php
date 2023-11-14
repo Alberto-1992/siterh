@@ -43,7 +43,7 @@ $conexionDocumentacion = new ConexionDocumentacion();
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
                 <li><a class="dropdown-item" href="#" onclick="documentos();">Documentacion </a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Exportar a excel </a></li>
-                
+                <li><a class="dropdown-item" href="#" onclick="generarCedula();">Generar cedula </a></li>
                 
             </ul>
         </li>
@@ -114,6 +114,12 @@ function documentos() {
 
             }
         });
+
+}
+function generarCedula() {
+    var id = $("#curp").val();
+    let parametros = { id: id }
+    window.location.href='reporteReclutamiento/fpdf?id='+id
 
 }
 $(function() {

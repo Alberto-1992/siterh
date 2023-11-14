@@ -43,10 +43,14 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
                 if(isset($Row[2])) {
                     $documento = mysqli_real_escape_string($con,$Row[2]);
                 }
+                $plazaevaluar = "";
+                if(isset($Row[3])) {
+                    $plazaevaluar = mysqli_real_escape_string($con,$Row[3]);
+                }
                 
                 
           
-                    $query = "UPDATE datospersonales set acceder = '".$acceder."', cargodocumento = '".$documento."' WHERE correoelectronico = '".$correo."'";
+                    $query = "UPDATE datospersonales set acceder = '".$acceder."', cargodocumento = '".$documento."', plazaevaluar = '".$plazaevaluar."' WHERE correoelectronico = '".$correo."'";
                     $resultados = mysqli_query($con, $query);
 
                     
@@ -218,6 +222,7 @@ if (mysqli_num_rows($query) > 0)
             <th>Nombre completo</th>
             <th>Correo</th>
             <th>RFC</th>
+            <th>Plaza evaluar</th>
             <th>Telefono casa</th>
             <th>Telefono celular</th>
         </tr>
@@ -230,6 +235,7 @@ if (mysqli_num_rows($query) > 0)
                 <td><?php echo $dataRegistro['nombre'].' '.$dataRegistro['appaterno'].' '.$dataRegistro['apmaterno'] ?></td>
                 <td><?php echo $dataRegistro['correoelectronico'] ?></td>
                 <td><?php echo $dataRegistro['rfc'] ?></td>
+                <td><?php echo $dataRegistro['plazaevaluar'] ?></td>
                 <td><?php echo $dataRegistro['telefonocasa'] ?></td>
                 <td><?php echo $dataRegistro['telefonocelular'] ?></td>
             </tr>
@@ -244,6 +250,7 @@ if (mysqli_num_rows($query) > 0)
             <th>Nombre completo</th>
             <th>Correo</th>
             <th>RFC</th>
+            <th>Plaza evaluar</th>
             <th>Telefono casa</th>
             <th>Telefono celular</th>
         </tr>
