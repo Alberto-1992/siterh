@@ -202,9 +202,9 @@ foreach($_FILES["documentolicenciaturaPostecnico"]['tmp_name'] as $key => $tmp_n
         $numerocedula = $arraynumerocedula[$clave];
         $datoUnico[] = '("' . $nombreformacion . '", "' . $nombreinstitucion . '", "' . $fechainicio . '", "' . $fechatermino . '", "' . $tiempocursado . '", "' . $documentorecibe . '", "' . $numerocedula . '", "' . $id_empleado . '")';
         $sql = $conexionX->prepare("INSERT into  estudiossuperior(nombreformacionsuperior,nombresuperior,fechasuperiorinicio,fechasuperiortermino,tiempocursadosuperior,documentosuperior,numerocedulasuperior,id_empleado) VALUES " . implode(', ', $datoUnico));
-        $sql->execute();
+        
 }
-
+$sql->execute();
 foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 	{
 		//condicional si el fuchero existe
@@ -278,9 +278,9 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
         $numerocedulamaestria = $arraynumerocedulamaestria[$clavemaestria];
         $datoUnicomaestria[] = '("' . $nombreformacionmaestria . '", "' . $nombreinstitucionmaestria . '", "' . $fechainiciomaestria . '", "' . $fechaterminomaestria . '", "' . $tiempocursadomaestria . '", "' . $documentorecibemaestria . '", "' . $numerocedulamaestria . '", "' . $id_empleado . '")';
         $sql = $conexionX->prepare("INSERT into  estudiosmaestria(nombreformacionmaestria,nombremaestria,fechamaestriainicio,fechamaestriatermino,tiempocursadomaestria,documentomaestria,numerocedulamaestria,id_empleado) VALUES " . implode(', ', $datoUnicomaestria));
-        $sql->execute();
+        
     } 
-    
+    $sql->execute();
     foreach($_FILES["documentomaestria"]['tmp_name'] as $key => $tmp_name)
 	{
 		//condicional si el fuchero existe
@@ -361,8 +361,9 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
         $fechaterminocertificadosupposgradoespecialidad = $arrayfechaterminocertificadosupposgradoespecialidad[$claveposgradoespecialidad];
         $datoUnicoposgradoespecialidad[] = '("' . $nombreformacionposgradoespecialidad . '", "' . $nombreinstitucionposgradoespecialidad . '","' . $unidadhospitalariaposgradoespecialidad . '", "' . $fechainicioposgradoespecialidad . '", "' . $fechaterminoposgradoespecialidad . '", "' . $tiempocursadoposgradoespecialidad . '", "' . $documentorecibeposgradoespecialidad . '", "' . $numerocedulaposgradoespecialidad . '", "' . $id_empleado . '", "' . $fechainiciocertificadosupposgradoespecialidad . '", "' . $fechaterminocertificadosupposgradoespecialidad . '")';
         $sql = $conexionX->prepare("INSERT into  especialidad(nombreformacionacademica,nombreinstitucion,unidadhospitalaria,fechainicioespecialidad,fechaterminoespecialidad,anioscursados,documentorecibeespecialidad,numerocedulaespecialidad,id_empleado,fechacertificadoinicio,fechacertificadotermino) VALUES " . implode(', ', $datoUnicoposgradoespecialidad));
-        $sql->execute();
+        
     }
+    $sql->execute();
     foreach($_FILES["documentoposgradoesp"]['tmp_name'] as $key => $tmp_name)
 	{
 		//condicional si el fuchero existe
@@ -466,8 +467,9 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
         $numeroceduladoctorado = $arraynumeroceduladoctorado[$clavedoctorado];
         $datoUnicodoctorado[] = '("' . $nombreformaciondoctorado . '", "' . $nombreinstituciondoctorado . '","' . $unidadhospitalariadoctorado . '", "' . $fechainiciodoctorado . '", "' . $fechaterminodoctorado . '", "' . $tiempocursadodoctorado . '", "' . $documentorecibedoctorado . '", "' . $numeroceduladoctorado . '", "' . $id_empleado . '")';
         $sql = $conexionX->prepare("INSERT into  doctorado(nombreformaciondoctorado,nombreinstituciondoctorado,unidadhospitalariadoctorado,fechainiciodoctorado,fechaterminodoctorado,anioscursadosdoctorado,documentorecibedoctorado,numeroceduladoctorado,id_empleado) VALUES " . implode(', ', $datoUnicodoctorado));
-        $sql->execute();  
+        
     }
+    $sql->execute();  
     foreach($_FILES["documentodoctorado"]['tmp_name'] as $key => $tmp_name)
 	{
 		//condicional si el fuchero existe
