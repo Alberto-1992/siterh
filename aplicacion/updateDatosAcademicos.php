@@ -185,6 +185,7 @@ foreach($_FILES["documentolicenciaturaPostecnico"]['tmp_name'] as $key => $tmp_n
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+if($nombreformacion != '' and $nombreinstitucion != ''){
     $arraynombreformacion = array_map("htmlspecialchars", $nombreformacion);
     $arraynombreinstitucion = array_map("htmlspecialchars", $nombreinstitucion);
     $arrayfechainicio = array_map("htmlspecialchars", $fechainiciosup);
@@ -261,6 +262,8 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+}
+if($nombreformacionmaestria != '' and $nombreinstitucionmaestria != ''){
     $arraynombreformacionmaestria = array_map("htmlspecialchars", $nombreformacionmaestria);
     $arraynombreinstitucionmaestria = array_map("htmlspecialchars", $nombreinstitucionmaestria);
     $arrayfechainiciomaestria = array_map("htmlspecialchars", $fechainiciosupmaestria);
@@ -337,7 +340,8 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
-
+}
+if($nombreformacionposgradoespecialidad != '' and $nombreinstitucionposgradoespecialidad != ''){
     $arraynombreformacionposgradoespecialidad = array_map("htmlspecialchars", $nombreformacionposgradoespecialidad);
     $arraynombreinstitucionposgradoespecialidad = array_map("htmlspecialchars", $nombreinstitucionposgradoespecialidad);
     $arrayfechainicioposgradoespecialidad = array_map("htmlspecialchars", $fechainiciosupposgradoespecialidad);
@@ -448,6 +452,8 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+}
+    if($nombreformaciondoctorado != '' and $nombreinstituciondoctorado != ''){
     $arraynombreformaciondoctorado = array_map("htmlspecialchars", $nombreformaciondoctorado);
     $arraynombreinstituciondoctorado = array_map("htmlspecialchars", $nombreinstituciondoctorado);
     $arrayfechainiciodoctorado = array_map("htmlspecialchars", $fechainiciosupdoctorado);
@@ -528,6 +534,7 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+}
 $sql = $conexionX->prepare("UPDATE actualizacion SET actualizo = :actualizo where id_empleado = :id_empleado");
     $sql->execute(array(
         ':actualizo'=>1,
