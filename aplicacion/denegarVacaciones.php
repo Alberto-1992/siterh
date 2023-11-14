@@ -8,7 +8,6 @@ $DateAndTime = date('Y-m-d', time());
 $id = $_POST['id'];
 $mensaje = $_POST['mensaje'];
 
-try {
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
@@ -35,9 +34,7 @@ error_reporting(0);
             timer: 1900
         })</script>";
     
-    }
-
-} catch (Exception $th) {
+    }else {
     $conexionX->rollBack();
     echo "<script>Swal.fire({
         position: 'top-end',

@@ -5,7 +5,6 @@ date_default_timezone_set("America/Monterrey");
 $id = $_POST['id'];
 $hora = date("Y-m-d h:i:sa");
 
-try {
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
@@ -27,8 +26,7 @@ try {
             showConfirmButton: false,
             timer: 1900
         })</script>";
-    }
-} catch (Exception $e) {
+    }else{
     $conexionX->rollBack();
     echo "<script>Swal.fire({
         position: 'top-center',

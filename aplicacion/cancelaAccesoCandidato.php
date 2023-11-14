@@ -5,7 +5,7 @@ date_default_timezone_set("America/Monterrey");
 $id = $_POST['id'];
 $identificador = $_POST['curp'];
 $hora = date("Y-m-d h:i:sa");
-try {
+
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexion->beginTransaction();
@@ -74,8 +74,7 @@ try {
     if ($validatransac != false) {
         echo "<script>alertify.success('Registro eliminado');
 </script>";
-    }
-} catch (Exception $e) {
+    }else {
     $conexion->rollBack();
     echo "<script>alertify.error('Error inesperado');
     </script>";

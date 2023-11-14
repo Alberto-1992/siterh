@@ -26,11 +26,11 @@
                     success: function(datos) {
                         $("#mensaje").html(datos);
                         setTimeout(function() {
-                            let id = $("#id_empleado").val();
-                            let ob = {id:id}
+                            let correo = $("#correo").val();
+                            let ob = {correo:correo}
                             $.ajax({
                                 type: "POST",
-                                url: "consultaBusquedaPlantillaHraei.php",
+                                url: "verDatosAcademicos.php", 
                                 data: ob,
                                 beforeSend: function() {
 
@@ -54,6 +54,7 @@
                 </div>
                 <div class="col-md-3">
                     <input type="hidden" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
+                    <input type="hidden" class="form-control" name="correo" id="correo" placeholder="N° empleado" required value="<?php echo $row['correo'] ?>" readonly>
                 </div>
                 <div class="form-group col-md-12">
                     <label>Ultimo grado de estudios</label>

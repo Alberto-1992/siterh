@@ -6,7 +6,7 @@ date_default_timezone_set("America/Monterrey");
 $id = $_POST['id'];
 $identificador = $_POST['curp'];
 $hora = date("Y-m-d h:i:sa");
-try {
+
     $conexionContratacion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionContratacion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionContratacion->beginTransaction();
@@ -21,8 +21,7 @@ $sql = $conexionContratacion->prepare("UPDATE datospersonales set datosActualiza
     if ($validatransac != false) {
         echo "<script>alertify.success('Registro eliminado');
 </script>";
-    }
-} catch (Exception $e) {
+    }else{
     $conexionContratacion->rollBack();
     echo "<script>alertify.error('Error inesperado');
     </script>";

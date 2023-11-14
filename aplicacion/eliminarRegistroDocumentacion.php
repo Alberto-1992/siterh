@@ -11,7 +11,6 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = :cargodoc
             ':cargodocumento'=>2,
             ':curp' =>$identificador
         ));
-try {
     $conexionDocumentacion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionDocumentacion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionDocumentacion->beginTransaction();
@@ -266,8 +265,7 @@ try {
     if ($validatransac != false) {
         echo "<script>alertify.success('Registro eliminado');
 </script>";
-    }
-} catch (Exception $e) {
+    }else {
     $conexionDocumentacion->rollBack();
     echo "<script>alertify.error('Error inesperado');
     </script>";

@@ -6,7 +6,6 @@ $conexionX = new ConexionRh();
 date_default_timezone_set("America/Monterrey");
 $hora = date("Y-m-d h:i:sa");
 
-try {
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
@@ -190,9 +189,8 @@ foreach($_FILES["documentocurphijo"]['tmp_name'] as $key => $tmp_name)
             showConfirmButton: false,
             timer: 1500
         })</script>";
-    }
 
-}catch(Exception $e) {
+}else{
     $conexionX->rollBack();
     echo "<script>Swal.fire({
         position: 'top-end',

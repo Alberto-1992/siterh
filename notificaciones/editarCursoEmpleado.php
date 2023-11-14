@@ -5,7 +5,9 @@ error_reporting(0);
 	$count=0;
 	extract($_POST);
 		
-
+    $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $conexionX->beginTransaction();
         $sqlvalida = $conexionX->prepare("SELECT descripcionaccion from catalogocapacitacion where id_tipodeaccion = :id_tipodeaccion");
             $sqlvalida->execute(array(
                 ':id_tipodeaccion'=>$tipodecapacitacion
@@ -62,7 +64,8 @@ if($_FILES["documentocurso"] == ''){
             }
         }
 }
-	if($sql != false){
+$validatransaccion = $conexionX->commit();
+	if($validatransaccion != false){
         echo "<script>Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -71,6 +74,7 @@ if($_FILES["documentocurso"] == ''){
             timer: 1500
         })</script>";
     }else {
+        $conexionX->rollBack();
         echo "<script>Swal.fire({
             position: 'top-end',
             icon: 'error',

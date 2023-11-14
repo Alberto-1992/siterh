@@ -3,9 +3,6 @@
 require_once '../clases/conexion.php';
 $conexion = new ConexionRh();
 extract($_POST);
-try {
-
-
 
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
@@ -138,11 +135,7 @@ try {
             timer: 1900
         })</script>";
 
-    }
-
-
-} catch (Exception $th) {
-    echo $th;
+}else{
     $conexion->rollBack();
     echo "<script>Swal.fire({
         position: 'top-end',
