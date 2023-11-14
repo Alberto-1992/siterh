@@ -154,9 +154,9 @@ try {
         $documentorecibePostecnico = $arraydocumentorecibePostecnico[$clavep];
         $datoUnicoP[] = '("' . $nombreformacionPostecnico . '", "' . $nombreinstitucionPostecnico . '", "' . $fechainiciosupPostecnico . '", "' . $fechaterminosupPostecnico . '", "' . $tiempocursadosupPostecnico . '", "' . $documentorecibePostecnico . '", "' . $id_empleado . '")';
         $sql = $conexionX->prepare("INSERT into  estudiospostecnico(nombreformacionpostecnico,nombreinstitucionpostecnico,fechainiciosuppostecnico,fechaterminosuppostecnico,tiempocursadosuppostecnico,documentorecibepostecnico,id_empleado) VALUES " . implode(', ', $datoUnicoP));
-        $sql->execute();
+        
 }
-
+$sql->execute();
 foreach($_FILES["documentolicenciaturaPostecnico"]['tmp_name'] as $key => $tmp_name)
 	{
 		//condicional si el fuchero existe
