@@ -4,7 +4,7 @@ date_default_timezone_set('America/Monterrey');
 require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
 $id = $_POST['id'];
-try {
+
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
@@ -17,8 +17,7 @@ $dataRegistro= $query->fetch();
 $validatransac = $conexionX->commit();
     if ($validatransac != false) {
         require 'frontend/vistaplantillahraei.php';
-    }
-} catch (Exception $e) {
+    }else{
     $conexionX->rollBack();
 
 }

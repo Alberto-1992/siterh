@@ -6,7 +6,6 @@ $conexionX = new ConexionRh();
 date_default_timezone_set("America/Monterrey");
 $hora = date("Y-m-d h:i:sa");
 
-try {
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
@@ -31,8 +30,6 @@ try {
             ':actualizo'=>1,
             ':id_empleado'=>$id_empleado
         ));
-
-$validatransac = $conexionX->commit();
 
 require '../conexionRh.php';
     if ($_FILES["documentomediasup"]["error"] > 0) {
@@ -293,6 +290,7 @@ foreach($_FILES["documentolicenciatura"]['tmp_name'] as $key => $tmp_name)
 		}
 	}
     mysqli_query($conexionGrafico, $consulta4);
+    $validatransac = $conexionX->commit();
 if ($validatransac != false) {
     echo "<script>Swal.fire({
         position: 'top-end',
@@ -301,8 +299,7 @@ if ($validatransac != false) {
         showConfirmButton: false,
         timer: 1500
     })</script>";
-}
-} catch (Exception $e) {
+}else{
 $conexionX->rollBack();
 echo "<script>Swal.fire({
     position: 'top-end',

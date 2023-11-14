@@ -27,7 +27,7 @@ $f_fin             = $_POST['Fechatermino'];
 $seteando_f_final  = date('Y-m-d', strtotime($f_fin));  
 $fecha_fin1        = strtotime($seteando_f_final."+ 1 days");
 $Fechatermino         = date('Y-m-d', ($fecha_fin1));
-try {
+
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
@@ -117,11 +117,8 @@ foreach($mscancer3 as $heredo3) {
             showConfirmButton: false,
             timer: 1900
         })</script>";
-    
-    }
 
-} catch (Exception $e) {
-    echo $e;
+}else{
     $conexionX->rollBack();
     echo "<script>Swal.fire({
         position: 'top-end',

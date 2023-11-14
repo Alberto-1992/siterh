@@ -5,13 +5,15 @@ error_reporting(0);
 	$count=0;
 	extract($_POST);
 		
-
+    $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $conexionX->beginTransaction();
         $sqlvalida = $conexionX->prepare("SELECT descripcionaccion from catalogocapacitacion where id_tipodeaccion = :id_tipodeaccion");
             $sqlvalida->execute(array(
                 ':id_tipodeaccion'=>$tipodecapacitacion
             ));
 
-            $row = $sqlvalida->fetch();
+    $row = $sqlvalida->fetch();
         $capacitacion = $row['descripcionaccion'];
 
 		$sql = $conexionX->prepare("INSERT INTO datos (id_empleado,nombreinstitucion,nombrecurso,fechainicio,fechatermino,areaquefortalece,modalidad,documentorecibe,tipocapacitacion,horas,asistecomo,otroexpidedocumento,nombreempleado,criteriocurso,fechacriterioinicio,fechacriteriotermino) 
@@ -58,10 +60,8 @@ error_reporting(0);
                 }
             }
         }
-	//$sql2="SELECT * FROM datos WHERE estado = 0";
-	//$result=mysqli_query($conexionGrafico, $sql2);
-	//$count=mysqli_num_rows($result);
-	if($sql != false){
+	$validatransaccion = $conexionX->commit();
+	if($validatransaccion != false){
         echo "<script>Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -70,6 +70,7 @@ error_reporting(0);
             timer: 1500
         })</script>";
     }else {
+        $conexionX->rollBack();
         echo "<script>Swal.fire({
             position: 'top-end',
             icon: 'error',
