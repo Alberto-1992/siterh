@@ -41,7 +41,8 @@
     <div class="container">
         <div id="mensaje"></div>
         <h1 style="text-align: center; font-size: 25px;">Carga de información.</h1>
-        <h1 style="text-align: center; font-size: 15px; color: red;">Te informamos, una vez que hayas cargado tu información, no la podras visualizar hasta que el area de capacitación haya validado los datos, si la información que capturaste es correcta podras visualizarla debajo del formulario</h1>
+        <h1 style="text-align: center; font-size: 15px; color: red;">Te informamos, una vez que hayas cargado tu información, no la podras visualizar hasta que el area de capacitación haya validado los datos, si la información que capturaste es correcta podras visualizarla debajo del formulario</h1><br>
+        <strong style="text-align: center; font-size: 17px; color: black; font-style: bold;">ESTIMADO USUARIO, SI LA INFORMACIÓN QUE VAS A CARGAR PERTENECE A UN DIPLOMADO, FAVOR DE CARGARLO EN EL APARTADO DE DATOS ACADEMICOS.</strong>&nbsp;&nbsp;<a href="datosAcademicos">Ir a datos academicos</a>
         <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 10px; text-align:center;">
         </div>
 

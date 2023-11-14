@@ -57,6 +57,10 @@ $hora = date("Y-m-d h:i:sa");
         $sql->execute(array(
             ':id_empleado'=>$id_empleado
         ));
+        $sql = $conexionX->prepare("DELETE from diplomado where id_empleado = :id_empleado");
+            $sql->execute(array(
+                ':id_empleado'=>$id_empleado
+            ));
 
    // require '../conexionRh.php';
     if ($_FILES["documentomediasup"]["error"] > 0) {
@@ -533,6 +537,60 @@ if($nombreformacionposgradoespecialidad != '' and $nombreinstitucionposgradoespe
 			closedir($dir); //Cerramos la conexion con la carpeta destino
 		}
 	}
+}
+if($nombreformaciondiplomado != '' and $nombreinstituciondiplomado != ''){
+    foreach($_FILES["documentodiplomado"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentodiplomado"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "Diploma diplomado";
+			$archivonombre = $_POST['nombreformaciondiplomado'][$key];
+			$fuente = $_FILES["documentodiplomado"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentosdiplomados/'.$id_empleado.'/'.$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+                mkdir($carpeta, 0777, true) or die("Hubo un error al crear el directorio de almacenamiento");	;
+				//mkdir($carpeta)
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+                    move_uploaded_file($fuente, $target_path);
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
+        $arraynombreformaciondiplomado = array_map("htmlspecialchars", $nombreformaciondiplomado);
+        $arraynombreinstituciondiplomado = array_map("htmlspecialchars", $nombreinstituciondiplomado);
+        $arrayfechainiciosupdiplomado = array_map("htmlspecialchars", $fechainiciosupdiplomado);
+        $arrayfechaterminosupdiplomado = array_map("htmlspecialchars", $fechaterminosupdiplomado);
+        $arraytiempocursadosupdiplomado = array_map("htmlspecialchars", $tiempocursadosupdiplomado);
+        $arraymodaldaddiplomado = array_map("htmlspecialchars", $modaldaddiplomado);
+        $arraydocumentorecibediplomado = array_map("htmlspecialchars", $documentorecibediplomado);
+        $arrayasistecomodiplomado = array_map("htmlspecialchars", $asistecomodiplomado);
+    
+    
+        foreach($arraynombreformaciondiplomado as $clavediplomado => $nombreformaciondiplomado){
+            $nombreinstituciondiplomado = $arraynombreinstituciondiplomado[$clavediplomado];
+            $fechainiciosupdiplomado = $arrayfechainiciosupdiplomado[$clavediplomado];
+            $fechaterminosupdiplomado = $arrayfechaterminosupdiplomado[$clavediplomado];
+            $tiempocursadosupdiplomado = $arraytiempocursadosupdiplomado[$clavediplomado];
+            $modaldaddiplomado = $arraymodaldaddiplomado[$clavediplomado];
+            $documentorecibediplomado = $arraydocumentorecibediplomado[$clavediplomado];
+            $asistecomodiplomado = $arrayasistecomodiplomado[$clavediplomado];
+        $datoDiplomado[] = '("' . $nombreformaciondiplomado . '", "' . $nombreinstituciondiplomado . '","' . $fechainiciosupdiplomado . '", "' . $fechaterminosupdiplomado . '", "' . $tiempocursadosupdiplomado . '", "' . $modaldaddiplomado . '", "' . $documentorecibediplomado . '", "' . $asistecomodiplomado . '","' . $id_empleado . '")';
+            $sql = $conexionX->prepare("INSERT into diplomado(nombreDiplomado,nombreInstitucion,fechaInicio,fechaTermino,totalHoras,modalidad,documentoRecibe,asisteComo,id_empleado) values  " . implode(', ', $datoDiplomado));
+        }
+        $sql->execute();
 }
 $sql = $conexionX->prepare("UPDATE actualizacion SET actualizo = :actualizo where id_empleado = :id_empleado");
     $sql->execute(array(
