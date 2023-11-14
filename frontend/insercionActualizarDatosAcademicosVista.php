@@ -1065,6 +1065,188 @@
                 </script>
 
                 <div id="divGuests4"></div>
+                <div id="cabeceras" style="background-color: #448499;">
+                    <h1 style="font-size:22px;">Diplomados</h1>
+                </div>
+                <?php
+                require_once 'clases/conexion.php';
+                $conexionX = new ConexionRh();
+                $sqlQueryComentariosm  = $conexionX->prepare("SELECT diplomado.id_empleado FROM diplomado where id_empleado = $identificador ");
+                $sqlQueryComentariosm->execute();
+                $sqlQueryComentariosm = $conexionX->prepare("SELECT FOUND_ROWS()");
+                $sqlQueryComentariosm->execute();
+                $total_registrom = $sqlQueryComentariosm->fetchColumn();
+
+                $sqld = $conexionX->prepare("SELECT * from diplomado where id_empleado = :id_empleado");
+                $sqld->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+
+                ?>
+
+                <?php
+                while ($rowd = $sqld->fetch()) {
+                    $valord = $rowd['id_diplomado'];
+                ?>
+                    <div id="cabeceras">
+                        <h1 style="font-size:22px;" style="background-color: #448499;">Datos Diplomado</h1>
+                    </div>
+                    <div class="form-row">
+                        
+                            <div class="form-group col-md-6">
+                                <label>Nombre del diplomado</label>
+                                <input type="text" id="nombreformaciondiplomado" name="nombreformaciondiplomado[]" class="form-control" value="<?php echo $rowd['nombreDiplomado'] ?>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa</label>
+                                <input type="text" id="nombreinstituciondiplomado" name="nombreinstituciondiplomado[]" class="form-control" value="<?php echo $rowd['nombreInstitucion'] ?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio</label>
+                                <input type="date" id="fechainiciosupdiplomado" name="fechainiciosupdiplomado[]" class="form-control" value="<?php echo $rowd['fechaInicio'] ?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino</label>
+                                <input type="date" id="fechaterminosupdiplomado" name="fechaterminosupdiplomado[]" class="form-control" value="<?php echo $rowd['fechaTermino'] ?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Total de horas</label>
+                                <input type="text" id="tiempocursadosupdiplomado" name="tiempocursadosupdiplomado[]" class="form-control" value="<?php echo $rowd['totalHoras'] ?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Modalidad</label>
+                                <select name="modaldaddiplomado[]" id="modaldaddiplomado" class="form-control">
+                                    <option value="<?php echo $rowd['modalidad'] ?>"><?php echo $rowd['modalidad'] ?></option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Documento que recibe</label>
+                                <select name="documentorecibediplomado[]" id="documentorecibediplomado" class="form-control">
+                                    <option value="<?php echo $rowd['documentoRecibe'] ?>"><?php echo $rowd['documentoRecibe'] ?></option>
+                                    <option value="Cosntancia">Cosntancia</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Reconocimiento">Reconocimiento</option>
+                                    <option value="Certificado">Certificado</option>
+                                </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Asiste como:</label>
+                                    <select class="form-control" name="asistecomodiplomado[]" id="asistecomodiplomado" required>
+                                        <option value="<?php echo $rowd['asisteComo'] ?>"><?php echo $rowd['asisteComo'] ?></option>
+                                        <option value="Participante">Participante</option>
+                                        <option value="Ponente">Ponente</option>
+                                        <option value="Coordinador">Coordinador</option>
+                                        <option value="Profesor titular">Profesor titular</option>
+                                        <option value="Profesor adjunto">Profesor adjunto</option>
+                                </select>
+                                </div>
+                            
+                            <div class="form-group col-md-6">
+                                <label>Sube tu documento (PDF)</label>
+                                <input type="file" id="documentodiplomado" name="documentodiplomado[]" class="form-control" accept=".pdf">
+                            </div>
+                            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Documento diplomado</strong>
+                            <?php
+                            clearstatcache();
+                            $diplomado = $rowd['nombreDiplomado'];
+                            $nameFile = "Diploma diplomado";
+                            $path = "documentosdiplomados/$identificador/".$diplomado.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentosdiplomados/$identificador/$diplomado$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentosdiplomados/$identificador/$diplomado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                        </div>
+
+                    <?php } ?>
+                    <div class="form-group col-md-3">
+                    <strong>Agregar diplomado (Solo numeros)</strong>
+                    <input type="number" id="quantity5" name="diplomado" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity5").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity5 = event.target.value;
+
+                        for (let i = 0; i < quantity5; i++) {
+                            content += `<div class="form-row">
+                            <div id="cabeceras" style="background-color: #448499;">
+                                    <h1 style="font-size:22px;">Información diplomado ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre del diplomado ${i +1}</label>
+                                <input type="text" id="nombreformaciondiplomado[${i}]" name="nombreformaciondiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstituciondiplomado[${i}]" name="nombreinstituciondiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciosupdiplomado[${i}]" name="fechainiciosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminosupdiplomado[${i}]" name="fechaterminosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Total de horas ${i +1}</label>
+                                <input type="text" id="tiempocursadosupdiplomado[${i}]" name="tiempocursadosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Modalidad ${i +1}</label>
+                                <select name="modaldaddiplomado[]" id="modaldaddiplomado[${i}]" class="form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Documento que recibe ${i +1}</label>
+                                <select name="documentorecibediplomado[]" id="documentorecibediplomado[${i}]" class="form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="Cosntancia">Cosntancia</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Reconocimiento">Reconocimiento</option>
+                                    <option value="Certificado">Certificado</option>
+                                </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Asiste como:</label>
+                                    <select class="form-control" name="asistecomodiplomado[]" id="asistecomodiplomado[${i}]" required>
+                                        <option value="Sin dato">Seleccione</option>
+                                        <option value="Participante">Participante</option>
+                                        <option value="Ponente">Ponente</option>
+                                        <option value="Coordinador">Coordinador</option>
+                                        <option value="Profesor titular">Profesor titular</option>
+                                        <option value="Profesor adjunto">Profesor adjunto</option>
+                                </select>
+                                </div>
+                            
+                            <div class="form-group col-md-6">
+                                <label>Sube tu documento ${i +1} (PDF)</label>
+                                <input type="file" id="documentodiplomado[${i}]" name="documentodiplomado[]" class="form-control" accept=".pdf">
+                            </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests5").innerHTML = content;
+                    })
+                </script>
+                <div id="divGuests5"></div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
                     <a href="#" id="btn-send-close" onclick="window.location.href='principalRh';">Cerrar</a>&nbsp;&nbsp;
                     <input type="submit" name="add" id="btn-send" value="Actualizar">
