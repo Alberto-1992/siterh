@@ -37,7 +37,7 @@ nav.main-menu.expanded {
   position: fixed;
   top: 49px;
   bottom: 0;
-  height: 95%;
+  height: 94vh;
   left: 0;
   width: 55px;
   overflow: hidden;
@@ -266,21 +266,6 @@ thead tr th {
   
 }
 
-.parent {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 8px;
-  row-gap: 8px;
-  border-radius: 5px;
-  width: 100%;
-  height: auto;
-  margin-top: 40px;
-  background-color: white;
-  padding: 10px;
-  overflow-y: scroll;
-
-
-}
 #busqueda {
   float: left;
   margin-left: 0px;
@@ -294,17 +279,19 @@ thead tr th {
 }
 .box1 {
   display: grid;
-  gap: .5rem;
+  gap: .7rem;
   grid-template-columns:  1fr 3fr;
   margin-top: 0px;
   margin-left: 50px;
   padding: 5px;
 
 }
-
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
 #tabla_resultadobus {
-  height: 93vh;
-  overflow: hidden;
+  height: 92vh;
   padding: 10px;
   background-color: white;
   border: 1px solid #e0e0e0;
@@ -312,15 +299,16 @@ thead tr th {
   border-radius: 10px;
   color: #333;
   cursor: pointer;
-  overflow-y: scroll;
-  margin-top:0;
-  margin-bottom:0;
+  resize: horizontal; 
+  overflow: auto;
+  margin-top:0px;
+  margin-bottom:0px;
+  margin-left: 5px;
 
 }
 
 #tabla_resultado {
-  height: 93vh;
-  overflow: hidden;
+  height: 92vh;
   padding: 10px;
   background-color: white;
   border: 1px solid #e0e0e0;
@@ -328,14 +316,13 @@ thead tr th {
   border-radius: 10px;
   color: #333;
   cursor: pointer;
-  overflow-y: scroll;
-
+  resize: horizontal; 
+  overflow: auto;
 
 }
 
 ::-webkit-scrollbar {
   width: 5px;
-  height: 5px;
   cursor: pointer;
 }
 

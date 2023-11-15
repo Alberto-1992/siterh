@@ -669,20 +669,6 @@ p:hover {
   background-position: 85% 90%; 
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #ACAEAD;
-  border-radius: 50px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #fff;
-  border-radius: 50px;
-}
-
 /*estilos formularios*/
 
 #form-ai {

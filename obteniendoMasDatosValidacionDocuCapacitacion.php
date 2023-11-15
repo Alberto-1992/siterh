@@ -25,7 +25,7 @@ $conexionX = new ConexionRh();
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, datos.validaautorizacion, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado WHERE datos.id < '".$utimoId."' ORDER BY datos.id DESC LIMIT ".$limite." ");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, datos.validaautorizacion, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado WHERE datos.id < $utimoId ORDER BY datos.id_empleado DESC LIMIT $limite ");
     $query->execute();
 	?>
 
@@ -91,6 +91,7 @@ $('.ver-info').on('click',function(){
 	$('.ver-info').removeClass('selected');
         $(this).addClass('selected');
 });
+
 
 </script>
 

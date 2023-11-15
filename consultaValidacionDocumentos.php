@@ -88,7 +88,7 @@ $conexionX = new ConexionRh();
         <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
         
                 <div id='<?php echo $dataRegistro['id']; ?>' class='ver-info'>
-                    <?php echo '<strong style="white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong>'.'<br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
+                    <?php echo '<strong style="font-size: 10px; margin-left: 7px; text-transform: uppercase; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong>'.'<br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px; margin: 0px 0px 0px 0px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
                         ?>
                     
                     </div> 
@@ -198,8 +198,7 @@ $('.item-comentario').on('click', '.ver-info', function() {
 
 
 $(document).ready(function() {
-pageScroll();
-
+    
 $('.ajax-loader').hide();
 
 });
@@ -211,17 +210,20 @@ if (event.keyCode == 8 || event.keyCode == 46) {
 }
 }, false);
 
-function pageScroll() {
-    $("#tabla_resultadobus").on("scroll", function() {
+
+$(document).ready(function(){
+    $("#tabla_resultadobus").scroll(function(){
         var scrollHeight = $(document).height();
         var scrollPos = $("#tabla_resultadobus").height() + $("#tabla_resultadobus").scrollTop();
-        var totalregistro = $("#total_registro").val();
-
-    
-            if ($(".item-comentario").length < $("#total_registro").val()) {
+        var total = parseInt($("#total_registro").val());
+        if ((((scrollHeight - 250) > scrollPos) / scrollHeight == 0) || (((scrollHeight - 300) >
+                scrollPos) / scrollHeight == 0) || (((scrollHeight - 350) > scrollPos) / scrollHeight ==
+                0) || (((scrollHeight - 400) > scrollPos) / scrollHeight == 0) || (((scrollHeight - 450) >
+                scrollPos) / scrollHeight == 0) || (((scrollHeight - 500) > scrollPos) / scrollHeight ==
+                0)) {
+            if ($(".item-comentario").length < total) {
                 var utimoId = $(".item-comentario:last").attr("id");
-                var totalregistro = $("#total_registro").val();
-                let datos = {utimoId:utimoId, totalregistro:totalregistro};
+                let datos = {utimoId:utimoId};
                 $("#tabla_resultadobus").off("scroll");
                 $.ajax({
                     url: 'obteniendoMasDatosValidacionDocuCapacitacion.php',
@@ -240,12 +242,12 @@ function pageScroll() {
                 });
 
 
-            } else {
-
             }
+        }
         
     });
-}
+})
+
 $('.ver-info').on('click',function(){
 	$('.ver-info').removeClass('selected');
         $(this).addClass('selected');

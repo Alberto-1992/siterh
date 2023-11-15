@@ -7,23 +7,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="http://collectivecloudperu.com/blogdevs/wp-content/uploads/2017/09/cropped-favicon-1-32x32.png">
-    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Validación de actualizaciones academicas</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/estilosMenuNew.css?=1" rel="stylesheet">
-    <link href="css/estilosMenu.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
 </head>
 
 <body>
-<header class="headerinfarto"|>
+<header class="headerinfarto">
         
         <span id="cabecera">Validación documentos cursos.</span>
         <?php
@@ -62,8 +59,6 @@
             require 'close_sesion.php';
         }
 ?>
-
-
         <script>
             $.ajax({
                 url: 'consultaValidacionDocumentosBusqueda.php',
@@ -85,9 +80,7 @@
             })
 
         </script>
-            <div id="tabla_resultadobus">
-
-            </div>
+            <div id="tabla_resultadobus"></div>
             <div id="tabla_resultado"></div>
         </div>
 <script>
@@ -145,6 +138,13 @@
                 }
             });
         });
+      /*  $(document).ready(function(){
+
+var height = $(window).height();
+
+$('#tabla_resultadobus').height(height);
+$('#tabla_resultado').height(height);
+});*/
     </script>
 
 </body>
