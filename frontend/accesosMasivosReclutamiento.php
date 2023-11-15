@@ -1,13 +1,8 @@
 <?php
 error_reporting(0);
 
-function connect(){
-    return new mysqli("localhost","root","","bolsatrabajo");
-  }
-  $con = connect();
-  if (!$con->set_charset("utf8")) {//asignamos la codificación comprobando que no falle
-        die("Error cargando el conjunto de caracteres utf8");
-  }
+require 'clases/conexion.php';
+$conexion = new Conexion();
 require_once('vendor/php-excel-reader/excel_reader2.php');
 require_once('vendor/SpreadsheetReader.php');
 
@@ -49,15 +44,14 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
                 }
                 
                 
-          
-                    $query = "UPDATE datospersonales set acceder = '".$acceder."', cargodocumento = '".$documento."', plazaevaluar = '".$plazaevaluar."' WHERE correoelectronico = '".$correo."'";
-                    $resultados = mysqli_query($con, $query);
+                    $query = $conexion->prepare("UPDATE datospersonales set acceder = '".$acceder."', cargodocumento = '".$documento."', plazaevaluar = '".$plazaevaluar."' WHERE correoelectronico = '".$correo."'");
+                        $query->execute();
 
                     
                  /*   $querY = "SELECT * FROM usuarioslogeo";
                     $result = mysqli_query($con, $querY);
                     
-                 
+                
                     
                  while($row= $result->fetch_assoc())
         {
@@ -208,12 +202,10 @@ $(document).ready(function() {
 
 
                 <?php
-require 'conexionRh.php';
-  $query=$conexion2->query("SELECT * FROM datospersonales where acceder = 1 and fechainicio between '2023-01-01' and '2023-12-31'");
-    
-   
-if (mysqli_num_rows($query) > 0)
-{
+
+  $query=$conexion->prepare("SELECT * FROM datospersonales where acceder = 1 and fechainicio between '2023-01-01' and '2023-12-31'");
+    $query->execute();
+    $data = $query->fetchAll();
 
    ?>
                 <table id="example" class="table table-striped table-bordered nowrap table-darkgray table-hover" style="width:100%">
@@ -229,7 +221,7 @@ if (mysqli_num_rows($query) > 0)
     </thead>
     <tbody>
         <?php
-        while ($dataRegistro = $query->fetch_assoc()) {
+        foreach($data as $dataRegistro):
         ?>
             <tr>
                 <td><?php echo $dataRegistro['nombre'].' '.$dataRegistro['appaterno'].' '.$dataRegistro['apmaterno'] ?></td>
@@ -240,8 +232,8 @@ if (mysqli_num_rows($query) > 0)
                 <td><?php echo $dataRegistro['telefonocelular'] ?></td>
             </tr>
         <?php
-        }
-    }
+        endforeach;
+    
         ?>
     </tbody>
 
