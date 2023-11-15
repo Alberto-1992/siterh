@@ -20,7 +20,7 @@
 sleep(0.5);
 
 $utimoId = $_POST['utimoId'];
-$limite  = 10;
+$limite  = 20;
 require_once 'clases/conexion.php';
 $conexionRol = new Conexion();
 $sqlQueryComentarios  = $conexionRol->prepare("SELECT datospersonales.id_datopersonal FROM datospersonales where acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' ");
@@ -41,7 +41,7 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
 
         
             <div id="<?php echo $dataRegistro['id_datopersonal'] ?>" class="ver-info" style="cursor: pointer;">
-                <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].''.$dataRegistro['appaterno'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>';
+                <?php echo '<strong style="font-family: Arial; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].''.$dataRegistro['appaterno'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>';
                     ?>
         </div> 
         <hr id="hr">

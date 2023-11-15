@@ -16,7 +16,7 @@
 sleep(0.5);
 
 $utimoId = $_POST['utimoId'];
-$limite  = 10;
+$limite  = 20;
 require_once 'clases/conexion.php';
 $conexionBolsa = new Conexion();
     $sqlQueryComentarios  = $conexionBolsa->prepare("SELECT id_datopersonal FROM datospersonales where acceder = 1 and fechainicio between '2023-01-01' and '2023-12-31'");
@@ -40,7 +40,7 @@ $conexionBolsa = new Conexion();
 
         
             <div id="<?php echo $dataRegistro['id_datopersonal'] ?>" class="ver-info" style="cursor: pointer;">
-                <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].''.$dataRegistro['appaterno'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
+                <?php echo '<strong style="font-family: Arial; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre'].''.$dataRegistro['appaterno'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['curp'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['correoelectronico'].'</strong>'.'<br>';
                     if($acceso == 1){ 
                         ?><input type="submit" value="En envaluación" style="padding: 1px; cursor-pointer: none; background: yellow; border: none; color: black; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
                     <?php 
