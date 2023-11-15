@@ -102,8 +102,9 @@
         
         
         $query->execute();
-        while($dataRegistro= $query->fetch())
-        { ?>
+        $data = $query->fetchAll();
+        foreach ($data as $dataRegistro) :
+        ?>
         
         <div class="item-comentario" id="<?php echo $dataRegistro['Empleado']; ?>" >
             <?php
@@ -156,7 +157,7 @@
             <hr id="hr">
             </div>
             <?php 
-        }
+        endforeach;
     ?>
 </div>
 

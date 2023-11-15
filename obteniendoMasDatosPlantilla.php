@@ -30,11 +30,8 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
 
     $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei WHERE plantillahraei.Empleado < '".$utimoId."' ORDER BY plantillahraei.Empleado  DESC LIMIT ".$limite."");
     $query->execute();
-	?>
-
-    <?php
-        while($dataRegistro= $query->fetch())
-        { 
+	$data = $query->fetchAll();
+     foreach($data as $dataRegistro):
             error_reporting(0);
             $id = $dataRegistro['Empleado'];
             $queryS = $conexionX->prepare("SELECT actualizo from actualizacion where id_empleado = $id");
@@ -79,7 +76,7 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
         </div>
 <?php 
 
-    }?>
+                                endforeach; ?>
     </div>
 <script>
 $(function() {

@@ -98,7 +98,7 @@
                             $query->execute();
                             $data = $query->fetchAll();
 
-                            foreach ($data as $valores) :
+                            foreach ($data as $valores) : 
                                 echo '<option value="' . $valores["nombre_programapropuesto"] . '">' . $valores["nombre_programapropuesto"] . '</option>';
                             endforeach;
 

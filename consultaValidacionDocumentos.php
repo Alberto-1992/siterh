@@ -78,11 +78,9 @@ $conexionX = new ConexionRh();
 
         <input type="hidden" name="total_registro" id="total_registro" value="<?php echo $total_registro; ?>" >
         <?php
-        
-        
         $query->execute();
-        while($dataRegistro= $query->fetch())
-        { 
+        $data = $query->fetchAll();
+            foreach($data as $dataRegistro):
             ?>
         
         <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
@@ -95,7 +93,7 @@ $conexionX = new ConexionRh();
                 <hr id="hr" >
             </div>
         <?php 
-        }
+        endforeach;
     ?>
 </div>
 

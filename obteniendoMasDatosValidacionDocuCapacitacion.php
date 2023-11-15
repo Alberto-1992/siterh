@@ -27,12 +27,11 @@ $conexionX = new ConexionRh();
 
     $query= $conexionX->prepare("SELECT datos.nombreempleado, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, datos.validaautorizacion, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado WHERE datos.id < $utimoId ORDER BY datos.id_empleado DESC LIMIT $limite ");
     $query->execute();
+    $data = $query->fetchAll();
 	?>
 
     <?php
-    
-        while($dataRegistro= $query->fetch())
-        { 
+        foreach($data as $dataRegistro):
             ?>
         
         <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
@@ -45,7 +44,7 @@ $conexionX = new ConexionRh();
                 <hr id="hr" >
             </div>
         <?php 
-        }
+        endforeach;
     ?>
 </div>
 <script>
