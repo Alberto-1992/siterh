@@ -23,7 +23,7 @@
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
 </head>
-<body style="padding: 0px;">
+<body style="padding: 0px; overflow-y:scroll;">
 <script>
     function limpiar() {
 

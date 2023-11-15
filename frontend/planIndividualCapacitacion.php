@@ -32,7 +32,7 @@
     }
 </script>
 
-<body style="padding: 0px;">
+<body style="padding: 0px; overflow-y:scroll;">
     <header class="headerinfarto" style="background-color: #874AA2;">
 
         <span id="cabecera">Plan individual de capacitación.</span>

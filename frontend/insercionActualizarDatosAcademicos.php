@@ -20,7 +20,7 @@
     <link href="css/starter-template.css" rel="stylesheet">
 </head>
 
-<body style="padding: 0px;">
+<body style="padding: 0px; overflow-y: scroll;">
     <header class="headerinfarto" style="background-color: #448499; padding: 0px;">
 
         <span id="cabecera">Actualización de datos academicos.</span>
@@ -230,11 +230,11 @@
                 $sqlP->execute(array(
                     ':id_empleado' => $identificador
                 ));
-
+                $datap = $sqlP->fetchAll();
                 ?>
 
                 <?php
-                while ($rowsP = $sqlP->fetch()) {
+                foreach($datap as $rowsP):
                     $valorP = $rowsP['id_postecnico'];
                 ?>
                     <div id="cabeceras">
@@ -294,7 +294,7 @@
 
                     </div>
 
-                <?php  } ?>
+                <?php  endforeach; ?>
 
                 <div class="form-group col-md-3">
                     <strong>Agregar postecnico (Solo numeros)</strong>
@@ -365,11 +365,11 @@
                 $sql->execute(array(
                     ':id_empleado' => $identificador
                 ));
-
+                $data = $sql->fetchAll();
                 ?>
 
                 <?php
-                while ($rows = $sql->fetch()) {
+                foreach($data as $rows):
                     $valor = $rows['id_superior'];
 
                 ?>
@@ -458,7 +458,7 @@
                         </div>
                     </div>
 
-                <?php  } ?>
+                <?php  endforeach; ?>
 
                 <div class="form-group col-md-3">
                     <strong>Agregar licenciatura (Solo numeros)</strong>
@@ -534,11 +534,11 @@
                 $sqlm->execute(array(
                     ':id_empleado' => $identificador
                 ));
-
+                    $datam = $sqlm->fetchAll();
                 ?>
 
                 <?php
-                while ($rowm = $sqlm->fetch()) {
+                foreach($datam as $rowm):
                     $valorm = $rowm['id_maestria'];
 
                 ?>
@@ -625,7 +625,7 @@
                         </div>
                     </div>
 
-                <?php  }
+                <?php  endforeach;
                 ?>
 
                 <div class="form-group col-md-3">
@@ -702,11 +702,11 @@
                 $sqlm->execute(array(
                     ':id_empleado' => $identificador
                 ));
-
+                    $dataM = $sqlm->fetchAll();
                 ?>
 
                 <?php
-                while ($rowm = $sqlm->fetch()) {
+                foreach($dataM as $rowm):
                     $valorm = $rowm['id_especialidad'];
                 ?>
                     <div id="cabeceras">
@@ -828,7 +828,7 @@
                         </div>
                     </div>
 
-                <?php  } ?>
+                <?php  endforeach;  ?>
                 <div class="form-group col-md-3">
                     <strong>Agregar posgrado/especialidad (Solo numeros)</strong>
                     <input type="number" id="quantity3" name="posgrados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
@@ -919,11 +919,11 @@
                 $sqld->execute(array(
                     ':id_empleado' => $identificador
                 ));
-
+                    $datad = $sqld->fetchAll();
                 ?>
 
                 <?php
-                while ($rowd = $sqld->fetch()) {
+                foreach($datad as $rowd):
                     $valord = $rowd['id_doctorado'];
                 ?>
                     <div id="cabeceras">
@@ -1013,7 +1013,7 @@
                         </div>
                     </div>
 
-                <?php  } ?>
+                <?php  endforeach; ?>
                 <div class="form-group col-md-3">
                     <strong>Agregar doctorado (Solo numeros)</strong>
                     <input type="number" id="quantity4" name="doctorados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
@@ -1092,11 +1092,11 @@
                 $sqld->execute(array(
                     ':id_empleado' => $identificador
                 ));
-
+                $datad = $sqld->fetchAll();
                 ?>
 
                 <?php
-                while ($rowd = $sqld->fetch()) {
+                foreach($datad as $rowd):
                     $valord = $rowd['id_diplomado'];
                 ?>
                     <div id="cabeceras">
@@ -1181,7 +1181,7 @@
                         </div>
                         </div>
 
-                    <?php } ?>
+                    <?php endforeach; ?>
                     <div class="form-group col-md-3">
                     <strong>Agregar diplomado (Solo numeros)</strong>
                     <input type="number" id="quantity5" name="diplomado" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
