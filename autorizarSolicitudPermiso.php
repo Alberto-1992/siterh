@@ -14,6 +14,16 @@ error_reporting(0);
                             $id_empleado = $rw['Empleado'];
                                 if($id_empleado != ''){
             require "frontend/autoizarSolicitudBeca.php";
+                                }else{
+                                    $statement = $conexionX->prepare("SELECT  plantillahraei.*, jefes.id_empleadoJefe, jefes.id_jefedeljefe, jefes.descripcionestructura3, datospersonales.telefonocelular, eventocapacitacion.* FROM eventocapacitacion inner join plantillahraei on plantillahraei.Empleado = eventocapacitacion.id_empleado inner join jefes on jefes.id_empleadoJefe = plantillahraei.Empleado inner join  datospersonales on datospersonales.id_empleado = plantillahraei.Empleado WHERE eventocapacitacion.id_evento= :id_evento");
+                $statement->execute(array(
+                    ':id_evento' =>$id
+                ));
+                                $rw = $statement->fetch();
+                            $id_empleado = $rw['Empleado'];
+                                if($id_empleado != ''){
+            require "frontend/autoizarSolicitudBecaJefe.php";
+                                }
                                 }
         
         break;

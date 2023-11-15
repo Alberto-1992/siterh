@@ -51,7 +51,7 @@ error_reporting(0);
             ':descripcionevento' => $comentarioSolicitud,
             ':lugar_dondeimpar' =>$lugarimpartira,
             ':tipodecurso'=>$tipoCurso,
-            ':asistecomo'=>$asistecomo,
+            ':asistecomo'=>$asistecomo, 
             ':id_empleado'=>$numeroEm
         ));
     $validatransac = $conexionX->commit();
