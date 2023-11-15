@@ -5,7 +5,9 @@ require 'clases/conexion.php';
 $conexion = new Conexion();
 require_once('vendor/php-excel-reader/excel_reader2.php');
 require_once('vendor/SpreadsheetReader.php');
-
+$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $conexion->beginTransaction();
 if (isset($_POST["import"]))
 {
     
@@ -62,11 +64,12 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
                     $querYs = "UPDATE usuarioslogeo set password = '$password' where numTrabajador = $id";
                     $results = mysqli_query($con, $querYs);
         }   */   
-            if ($query != false) {
+        $validatransaccion = $conexion->commit();
+            if ($validatransaccion != false) {
                         $type = "success";
                         $message = "Excel importado correctamente";
                     } else {
-                        
+                        $conexion->rollBack();
                         $type = "error";
                         $message = "Hubo un problema al importar registros";
                     }
@@ -199,7 +202,8 @@ $(document).ready(function() {
 
 
                 <?php
-
+require 'clases/conexion.php';
+$conexion = new Conexion();
   $query=$conexion->prepare("SELECT * FROM datospersonales where acceder = 1 and fechainicio between '2023-01-01' and '2023-12-31'");
     $query->execute();
     $data = $query->fetchAll();
