@@ -28,7 +28,7 @@ $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
 $sqlQueryComentarios->execute();
 $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei WHERE plantillahraei.Empleado < '".$utimoId."' ORDER BY plantillahraei.Empleado  DESC LIMIT ".$limite."");
+    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei WHERE plantillahraei.Empleado < $utimoId ORDER BY plantillahraei.Empleado  DESC LIMIT $limite");
     $query->execute();
 	$data = $query->fetchAll();
      foreach($data as $dataRegistro):

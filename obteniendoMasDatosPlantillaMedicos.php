@@ -29,7 +29,7 @@ $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
 $sqlQueryComentarios->execute();
 $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC FROM plantillahraei WHERE plantillahraei.Empleado < '".$utimoId."' and DescripcionPuesto like '%medico%' ORDER BY plantillahraei.Empleado  DESC LIMIT ".$limite."");
+    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC FROM plantillahraei WHERE plantillahraei.Empleado < $utimoId and DescripcionPuesto like '%medico%' ORDER BY plantillahraei.Empleado  DESC LIMIT $limite");
     $query->execute();
 	?>
 

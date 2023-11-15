@@ -29,7 +29,7 @@ $sqlQueryComentarios = $conexionRol->prepare("SELECT FOUND_ROWS()");
 $sqlQueryComentarios->execute();
 $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre,datospersonales.appaterno,datospersonales.apmaterno, datospersonales.correoelectronico FROM datospersonales WHERE acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' and datospersonales.id_datopersonal < '".$utimoId."' ORDER BY datospersonales.id_datopersonal  DESC LIMIT ".$limite."");
+    $query= $conexionRol->prepare("SELECT datospersonales.id_datopersonal, datospersonales.curp, datospersonales.nombre,datospersonales.appaterno,datospersonales.apmaterno, datospersonales.correoelectronico FROM datospersonales WHERE acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' and datospersonales.id_datopersonal < $utimoId ORDER BY datospersonales.id_datopersonal  DESC LIMIT $limite");
     $query->execute();
 	?>
 
