@@ -33,7 +33,7 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
                 
                 $plazaevaluar = $Row[3];
                 
-                $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexion->beginTransaction();
                     $query = $conexion->prepare("UPDATE datospersonales set acceder = :acceder, cargodocumento = :cargodocumento, plazaevaluar = :plazaevaluar WHERE correoelectronico = :correoelectronico");
