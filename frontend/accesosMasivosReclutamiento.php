@@ -26,26 +26,23 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
             
             foreach ($Reader as $Row)
             {
-                $acceder = "";
-                if(isset($Row[0])) {
-                    $acceder = mysqli_real_escape_string($con,$Row[0]);
-                }
-                $correo = "";
-                if(isset($Row[1])) {
-                    $correo = mysqli_real_escape_string($con,$Row[1]);
-                }
-                $documento = "";
-                if(isset($Row[2])) {
-                    $documento = mysqli_real_escape_string($con,$Row[2]);
-                }
-                $plazaevaluar = "";
-                if(isset($Row[3])) {
-                    $plazaevaluar = mysqli_real_escape_string($con,$Row[3]);
-                }
+                $acceder = $Row[0];
+                
+                $correo = $Row[1];
+                
+                $documento = $Row[2];
+                
+                $plazaevaluar = $Row[3];
                 
                 
-                    $query = $conexion->prepare("UPDATE datospersonales set acceder = '".$acceder."', cargodocumento = '".$documento."', plazaevaluar = '".$plazaevaluar."' WHERE correoelectronico = '".$correo."'");
-                        $query->execute();
+                
+                    $query = $conexion->prepare("UPDATE datospersonales set acceder = :acceder, cargodocumento = :cargodocumento, plazaevaluar = :plazaevaluar WHERE correoelectronico = :correoelectronico");
+                        $query->execute(array(
+                            ':acceder'=>$acceder,
+                            ':cargodocumento'=>$documento,
+                            ':plazaevaluar'=>$plazaevaluar,
+                            ':correoelectronico'=>$correo
+                        ));
 
                     
                  /*   $querY = "SELECT * FROM usuarioslogeo";
@@ -65,7 +62,7 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
                     $querYs = "UPDATE usuarioslogeo set password = '$password' where numTrabajador = $id";
                     $results = mysqli_query($con, $querYs);
         }   */   
-            if (!empty($resultados)) {
+            if ($query != false) {
                         $type = "success";
                         $message = "Excel importado correctamente";
                     } else {
