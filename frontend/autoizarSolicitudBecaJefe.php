@@ -25,6 +25,7 @@
 
         </header>
     
+            </head>
             <style>
                 /* RESET RULES 
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -162,10 +163,7 @@
                                     cursor: pointer;
                                 }
             </style>
-
-            </head>
-
-            <body>
+    <body>
                 <style>
                     p {
                         font-size: 18px;
