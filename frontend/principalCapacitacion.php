@@ -149,7 +149,7 @@
         $rw = $statement->fetch();
         $admin = $rw['correo'];
         if ($admin == 'beto_1866@outlook.com') {
-            include_once 'graficos/graficosCabeceraReclutamiento.php';
+            include_once 'graficos/graficosCabeceraCapacitacion.php';
         }
     } else if (isset($_SESSION['usuarioJefe'])) {
         $usernameSesion = $_SESSION['usuarioJefe'];
@@ -232,14 +232,7 @@
                 </a>
             </article>
             </article>
-            <article class="card" id="busquedacursoempleado" onclick="listaempleados();">
-                <a href="documentacion">
-                    <hr id="hr6">
-                    <i class="fa fa-search-plus" aria-hidden="true" id="iconosdiv"></i>
-                    <p>Busqueda cursos empleado</p>
-                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
-                </a>
-            </article>
+            
             <article class="card" id="programacapacitacion" onclick="programacapacitacion();">
                 <a href="programaCapacitacion">
                     <hr id="hr6">

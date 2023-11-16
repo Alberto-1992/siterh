@@ -18,7 +18,7 @@ $id_empleado =   $dataRegistro['id_capacitacion'];
     
     <?php session_start();
     if (isset($_SESSION['usuarioAdminRh']) or isset($_SESSION['usuarioJefe']) ) { ?>
-    <ul class="nav nav-tabs" style="margin-top: 46px;" >       
+    <ul class="nav nav-tabs" style="margin-top: 0px;" >       
 
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: blue;">Acciones</a>

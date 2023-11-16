@@ -36,8 +36,9 @@
         <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link active" aria-current="page" href="#">Total: <?php echo $total_registro; ?> </a>
         </li>
-        
+        <input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeyup="return handleKeyPress(event);">
     </ul>
+    
 <hr id="hrinicial" style="margin-top: 3px;">
 
     <input type="hidden" name="total_registro" id="total_registro" value="<?php echo $total_registro; ?>" />

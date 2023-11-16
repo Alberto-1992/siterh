@@ -268,7 +268,7 @@
 
                             <?php
 
-                            $query = $conexionX->prepare("SELECT * FROM catalogocapacitacion");
+                            $query = $conexionX->prepare("SELECT * FROM catalogocapacitacion where activo = 0 order by descripcionaccion"); 
                             $query->execute();
                             $data = $query->fetchAll();
 
