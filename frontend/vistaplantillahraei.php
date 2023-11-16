@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 <?php
 error_reporting(0);
 
@@ -285,6 +286,7 @@ function personales() {
             });
         }
     </script>
+    
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
 
     <div class="containerr2">Datos Personales</div>
@@ -303,7 +305,7 @@ function personales() {
             $directorio = opendir($path);
             while ($archivo = readdir($directorio)) {
                 if (!is_dir($archivo)) {
-                    echo "<img src='imagenesPerfiles/$id_empleado/$archivo' style='width: 150px; height: 150px; border-radius: 20px 20px 20px 20px; cursor: pointer; float: right; margin-right: 11px; '>";
+                    echo "<img id='myImg' src='imagenesPerfiles/$id_empleado/$archivo' style='width: 150px; height: 150px; border-radius: 20px 20px 20px 20px; cursor: pointer; float: right; margin-right: 11px; '>";
                 }
             }
         }else{
@@ -311,7 +313,7 @@ function personales() {
             $directorio = opendir($path);
             while ($archivo = readdir($directorio)) {
                 if (!is_dir($archivo)) {
-                    echo "<img src='imagenesPerfiles/fotodefault/perfil.jpg' style='width: 150px; height: 150px; border-radius: 20px 20px 20px 20px; cursor: pointer; float: right; margin-right: 11px; '>";
+                    echo "<img id='myImg' src='imagenesPerfiles/fotodefault/perfil.jpg' style='width: 150px; height: 150px; border-radius: 20px 20px 20px 20px; cursor: pointer; float: right; margin-right: 11px; '>";
                 }else{
                     
                 }
@@ -570,6 +572,7 @@ $sql->execute(array(
     
     
 </table>
+
 <?php }
 
 require 'modals/observaciones.php';
