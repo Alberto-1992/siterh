@@ -21,6 +21,17 @@
                 
                 
         </ul> 
+        <hr>
+        <ul>
+            <li>
+                <a href="cambiarPassword">
+                    <i class="fa fa-lock fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Cambiar contraseña
+                    </span>
+                </a>
+            </li>
+        </ul>
         <hr id="hr">
         <ul class="logout">
             <li>
