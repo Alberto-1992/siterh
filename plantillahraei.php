@@ -5,12 +5,13 @@ $conexionX = new ConexionRh();
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-                $query = $conexionX->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
+                $query = $conexionX->prepare("SELECT usuariosrh.correoelectronico, plantillahraei.Empleado from usuariosrh inner join plantillahraei on plantillahraei.correo = usuariosrh.correoelectronico where usuariosrh.correoelectronico = :correoelectronico");
                     $query->execute(array(
                         ':correoelectronico'=>$usernameSesion
                     ));
                     $row = $query->fetch();
                     $valida = $row['correoelectronico'];
+                    $identificador = $row['Empleado'];
                     if($valida == $usernameSesion){
             require 'frontend/plantillahraei.php';
                     }else{
