@@ -31,17 +31,17 @@ cientificaidioma.*,
 manifiesto.*
 from datospersonales 
 left outer join estudiosmediosup on estudiosmediosup.id_postulado = datospersonales.id_datopersonal 
-left outer join estudiospostecnico on estudiospostecnico.id_postulado = datospersonales.id_datopersonal 
+left outer join estudiospostecnico on estudiospostecnico.id_empleado = datospersonales.id_datopersonal 
 left outer join t_estado on t_estado.id_estado = datospersonales.estado 
 left outer join t_municipio on t_municipio.id_municipio = datospersonales.delegacion 
 left outer join t_localidad on t_localidad.id_localidad = datospersonales.localidad 
 left outer join descripcionpuestos on descripcionpuestos.codigopuesto = datospersonales.puesto 
-left outer join estudiossuperior on estudiossuperior.id_postulado = datospersonales.id_datopersonal 
-left outer join estudiosmaestria on estudiosmaestria.id_postulado = datospersonales.id_datopersonal
+left outer join estudiossuperior on estudiossuperior.id_empleado = datospersonales.id_datopersonal 
+left outer join estudiosmaestria on estudiosmaestria.id_empleado = datospersonales.id_datopersonal
 left outer join socialpracticas on socialpracticas.id_postulado = datospersonales.id_datopersonal 
-left outer join especialidad on especialidad.id_postulado = datospersonales.id_datopersonal 
-left outer join doctorado on doctorado.id_postulado = datospersonales.id_datopersonal
-left outer join diplomado on diplomado.id_postulado = datospersonales.id_datopersonal
+left outer join especialidad on especialidad.id_empleado = datospersonales.id_datopersonal 
+left outer join doctorado on doctorado.id_empleado = datospersonales.id_datopersonal
+left outer join diplomado on diplomado.id_empleado = datospersonales.id_datopersonal
 left outer join explaboralpublico on explaboralpublico.id_postulado = datospersonales.id_datopersonal
 left outer join explaboralprivado on explaboralprivado.id_postulado = datospersonales.id_datopersonal
 left outer join cientificaidioma on cientificaidioma.id_postulado = datospersonales.id_datopersonal
