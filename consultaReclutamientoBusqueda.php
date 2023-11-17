@@ -16,6 +16,7 @@ estudiosmaestria.*,
 especialidad.*,
 doctorado.*,
 diplomado.*,
+otrosestudiosaltaesp.*,
 t_estado.estado, t_municipio.municipio, 
 t_localidad.localidad, descripcionpuestos.puesto,
 socialpracticas.nombreserviciosocial, socialpracticas.fechainicioservicio, socialpracticas.fechaterminoservicio, socialpracticas.laboresservicio, 
@@ -43,6 +44,7 @@ left outer join estudiosmaestria on estudiosmaestria.id_empleado = datospersonal
 left outer join socialpracticas on socialpracticas.id_postulado = datospersonales.id_datopersonal 
 left outer join especialidad on especialidad.id_empleado = datospersonales.id_datopersonal 
 left outer join doctorado on doctorado.id_empleado = datospersonales.id_datopersonal
+left outer join otrosestudiosaltaesp on otrosestudiosaltaesp.id_postulado = datospersonales.id_datopersonal
 left outer join diplomado on diplomado.id_empleado = datospersonales.id_datopersonal
 left outer join explaboralpublico on explaboralpublico.id_postulado = datospersonales.id_datopersonal
 left outer join explaboralprivado on explaboralprivado.id_postulado = datospersonales.id_datopersonal

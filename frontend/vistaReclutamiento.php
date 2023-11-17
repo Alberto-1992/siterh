@@ -447,38 +447,51 @@ $id = $dataRegistro['id_principal'];
     
 </table>
 <?php endforeach; ?>
+<?php
+$id = $dataRegistro['id_principal'];
+    require_once 'clases/conexion.php';
+    $conexion = new Conexion();
+    $sql = $conexion->prepare("SELECT * from otrosestudiosaltaesp where id_postulado = :id_postulado");
+        $sql->execute(array(
+            ':id_postulado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistroaltaesp):
+
+    ?>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Otros estudios/Alta especialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
-        <td id="td"><?php echo $dataRegistro['nombreformacionaltaesp']?></td>
+        <td id="td"><?php echo $dataRegistroaltaesp['nombreformacionaltaesp']?></td>
     </tr>
     <tr>
         <th id="th">Nombre de la institución educativa:</th>
-        <td id="td"><?php echo $dataRegistro['nombrealtaespecialidad']?></td>
+        <td id="td"><?php echo $dataRegistroaltaesp['nombrealtaespecialidad']?></td>
     </tr>
     <tr>
         <th id="th">Unidad hospitalaria:</th>
-        <td id="td"><?php  echo $dataRegistro['unidadhospaltaesp']?></td>
+        <td id="td"><?php  echo $dataRegistroaltaesp['unidadhospaltaesp']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de inicio:</th>
-        <td id="td"><?php  echo $dataRegistro['fechainicioaltaesp']?></td>
+        <td id="td"><?php  echo $dataRegistroaltaesp['fechainicioaltaesp']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de término:</th>
-        <td id="td"><?php  echo $dataRegistro['fechaterminoaltaesp']?></td>
+        <td id="td"><?php  echo $dataRegistroaltaesp['fechaterminoaltaesp']?></td>
     </tr>
     <tr>
         <th id="th">Años cursados:</th>
-        <td id="td"><?php  echo $dataRegistro['tiempocursadoaltaesp']?></td>
+        <td id="td"><?php  echo $dataRegistroaltaesp['tiempocursadoaltaesp']?></td>
     </tr>
     <tr>
         <th id="th">Documento que recibe:</th>
-        <td id="td"><?php  echo $dataRegistro['documentorecibealtaesp']?></td>
+        <td id="td"><?php  echo $dataRegistroaltaesp['documentorecibealtaesp']?></td>
     </tr>
     
 </table>
+<?php endforeach; ?>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Otros estudios 1</div>
     <tr>
