@@ -178,7 +178,94 @@ function asignarAcceso() {
     </tr>
 
 </table>
-<div id="editarlaboratoriosartritis"></div>
+
+<!--FINALIZA SECCIÓN DE LABORATORIOS-->
+<!-- INCIA SECCIÓN USG HEPÁTICO-->
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
+    <div class="containerr3">Estudios nivel tecnico</div>
+
+    <tr>
+        <th id="th">Nombre de la formación:</th>
+        <td id="td"><?php echo $dataRegistro['nombreformaciontecnica'] ?></td>
+    </tr>
+
+    <tr>
+        <th id="th">Nombre de la institución:</th>
+        <td id="td"><?php echo $dataRegistro['nombreinstituciontecnica'] ?></td>
+    </tr>
+
+    <tr>
+        <th id="th">Fecha de inicio:</th>
+        <td id="td"><?php echo $dataRegistro['fechainiciotecnico'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha de termino:</th>
+        <td id="td"><?php echo $dataRegistro['fechaterminotecnico'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Tiempo cursado:</th>
+        <td id="td"><?php echo $dataRegistro['tiempocursadotecnico'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Documento obtenido:</th>
+        <td id="td"><?php echo $dataRegistro['documentotecnico'] ?></td>
+    </tr>
+
+</table>
+<?php
+$id = $dataRegistro['id_principal'];
+    require_once 'clases/conexion.php';
+    $conexion = new Conexion();
+    $sql = $conexion->prepare("SELECT * from estudiospostecnico where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistropostecnico):
+
+    ?>
+<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
+    <div class="containerr3">Postecnico</div>
+    <tr>
+        <th id="th">Nombre de la formación académica:</th>
+        <td id="td"><?php echo $dataRegistropostecnico['nombreformacionpostecnico']?></td>
+    </tr>
+    <tr>
+        <th id="th">Nombre de la institución educativa:</th>
+        <td id="td"><?php echo $dataRegistropostecnico['nombreinstitucionpostecnico']?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha de inicio:</th>
+        <td id="td"><?php  echo $dataRegistropostecnico['fechainiciosuppostecnico']?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha de término:</th>
+        <td id="td"><?php  echo $dataRegistropostecnico['fechaterminosuppostecnico']?></td>
+    </tr>
+    <tr>
+        <th id="th">Años cursados:</th>
+        <td id="td"><?php  echo $dataRegistropostecnico['tiempocursadosuppostecnico']?></td>
+    </tr>
+    <tr>
+        <th id="th">Documento que recibe:</th>
+        <td id="td"><?php  echo $dataRegistropostecnico['documentorecibepostecnico']?></td>
+    </tr>
+    
+</table>
+<?php endforeach; ?>
+<?php
+$id = $dataRegistro['id_principal'];
+    require_once 'clases/conexion.php';
+    $conexion = new Conexion();
+    $sql = $conexion->prepare("SELECT * from estudiossuperior where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistroe):
+
+    ?>
+
 <!--FINALIZA SECCIÓN DE LABORATORIOS-->
 <!-- INCIA SECCIÓN USG HEPÁTICO-->
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
@@ -186,174 +273,180 @@ function asignarAcceso() {
 
     <tr>
         <th id="th">Nombre de la formación:</th>
-        <td id="td"><?php echo $dataRegistro['nombreformacionsuperior'] ?></td>
+        <td id="td"><?php echo $dataRegistroe['nombreformacionsuperior'] ?></td>
     </tr>
 
     <tr>
         <th id="th">Nombre de la institución:</th>
-        <td id="td"><?php echo $dataRegistro['nombresuperior'] ?></td>
+        <td id="td"><?php echo $dataRegistroe['nombresuperior'] ?></td>
     </tr>
 
     <tr>
         <th id="th">Fecha de inicio:</th>
-        <td id="td"><?php echo $dataRegistro['fechasuperiorinicio'] ?></td>
+        <td id="td"><?php echo $dataRegistroe['fechasuperiorinicio'] ?></td>
     </tr>
     <tr>
         <th id="th">Fecha de termino:</th>
-        <td id="td"><?php echo $dataRegistro['fechasuperiortermino'] ?></td>
+        <td id="td"><?php echo $dataRegistroe['fechasuperiortermino'] ?></td>
     </tr>
     <tr>
         <th id="th">Tiempo cursado:</th>
-        <td id="td"><?php echo $dataRegistro['tiempocursadosuperior'] ?></td>
+        <td id="td"><?php echo $dataRegistroe['tiempocursadosuperior'] ?></td>
     </tr>
     <tr>
         <th id="th">Documento obtenido:</th>
-        <td id="td"><?php echo $dataRegistro['documentosuperior'] ?></td>
+        <td id="td"><?php echo $dataRegistroe['documentosuperior'] ?></td>
     </tr>
     <tr>
         <th id="th">N° de cedula profesional:</th>
-        <td id="td"><?php echo $dataRegistro['numerocedulasuperior'] ?></td>
+        <td id="td"><?php echo $dataRegistroe['numerocedulasuperior'] ?></td>
     </tr>
 </table>
-<div id="editarusghepaticoartritis"></div>
+<?php endforeach; ?>
 
+<?php
+$id = $dataRegistro['id_principal'];
+    require_once 'clases/conexion.php';
+    $conexion = new Conexion();
+    $sql = $conexion->prepare("SELECT * from estudiosmaestria where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistrom):
+
+    ?>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Estudios nivel maetria</div>
     <tr>
         <th id="th">Nombre de la formación:</th>
-        <td id="td"><?php echo $dataRegistro['nombreformacionmaestria']?></td>
+        <td id="td"><?php echo $dataRegistrom['nombreformacionmaestria']?></td>
     </tr>
     <tr>
         <th id="th">Nombre de la institución:</th>
-        <td id="td"><?php echo $dataRegistro['nombremaestria']?></td>
+        <td id="td"><?php echo $dataRegistrom['nombremaestria']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de inicio:</th>
-        <td id="td"><?php  echo $dataRegistro['fechainiciomaestria']?></td>
+        <td id="td"><?php  echo $dataRegistrom['fechainiciomaestria']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de termino:</th>
-        <td id="td"><?php  echo $dataRegistro['fechaterminomaestria']?></td>
+        <td id="td"><?php  echo $dataRegistrom['fechaterminomaestria']?></td>
     </tr>
     <tr>
         <th id="th">Tiempo cursado:</th>
-        <td id="td"><?php  echo $dataRegistro['tiempocursadomaestria']?></td>
+        <td id="td"><?php  echo $dataRegistrom['tiempocursadomaestria']?></td>
     </tr>
     <tr>
         <th id="th">Documento obtenido:</th>
-        <td id="td"><?php  echo $dataRegistro['documentomaestria']?></td>
+        <td id="td"><?php  echo $dataRegistrom['documentomaestria']?></td>
     </tr>
     <tr>
         <th id="th">N° de cedula profesional:</th>
-        <td id="td"><?php  echo $dataRegistro['cedulamaestria']?></td>
+        <td id="td"><?php  echo $dataRegistrom['cedulamaestria']?></td>
     </tr>
     
 </table>
-<div id="editartratameintoartritis"></div>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
-    <div class="containerr3">Estudios nivel segunda maetria</div>
-    <tr>
-        <th id="th">Nombre de la formación:</th>
-        <td id="td"><?php echo $dataRegistro['nombreformacionmaestriados']?></td>
-    </tr>
-    <tr>
-        <th id="th">Nombre de la institución:</th>
-        <td id="td"><?php echo $dataRegistro['nombremaestriados']?></td>
-    </tr>
-    <tr>
-        <th id="th">Fecha de inicio:</th>
-        <td id="td"><?php  echo $dataRegistro['fechainiciomaestriados']?></td>
-    </tr>
-    <tr>
-        <th id="th">Fecha de termino:</th>
-        <td id="td"><?php  echo $dataRegistro['fechaterminomaestriados']?></td>
-    </tr>
-    <tr>
-        <th id="th">Tiempo cursado:</th>
-        <td id="td"><?php  echo $dataRegistro['tiempocursadomaestriados']?></td>
-    </tr>
-    <tr>
-        <th id="th">Documento obtenido:</th>
-        <td id="td"><?php  echo $dataRegistro['documentomaestriados']?></td>
-    </tr>
-    <tr>
-        <th id="th">N° de cedula profesional:</th>
-        <td id="td"><?php  echo $dataRegistro['cedulamaestriados']?></td>
-    </tr>
-    
-</table>
+<?php endforeach; ?>
+<?php
+$id = $dataRegistro['id_principal'];
+    require_once 'clases/conexion.php';
+    $conexion = new Conexion();
+    $sql = $conexion->prepare("SELECT * from especialidad where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistroesp):
+
+    ?>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Posgrado/Especialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
-        <td id="td"><?php echo $dataRegistro['nombreformacionposgrado']?></td>
+        <td id="td"><?php echo $dataRegistroesp['nombreformacionacademica']?></td>
     </tr>
     <tr>
         <th id="th">Nombre de la institución educativa:</th>
-        <td id="td"><?php echo $dataRegistro['nombreposgrado']?></td>
+        <td id="td"><?php echo $dataRegistroesp['nombreinstitucion']?></td>
     </tr>
     <tr>
         <th id="th">Unidad hospitalaria:</th>
-        <td id="td"><?php  echo $dataRegistro['unidadhospitalaria']?></td>
+        <td id="td"><?php  echo $dataRegistroesp['unidadhospitalaria']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de inicio:</th>
-        <td id="td"><?php  echo $dataRegistro['fechaposgradoinicio']?></td>
+        <td id="td"><?php  echo $dataRegistroesp['fechainicioespecialidad']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de término:</th>
-        <td id="td"><?php  echo $dataRegistro['fechaposgradotermino']?></td>
+        <td id="td"><?php  echo $dataRegistroesp['fechaterminoespecialidad']?></td>
     </tr>
     <tr>
         <th id="th">Años cursados:</th>
-        <td id="td"><?php  echo $dataRegistro['tiempocursadoposgrado']?></td>
+        <td id="td"><?php  echo $dataRegistroesp['anioscursados']?></td>
     </tr>
     <tr>
         <th id="th">Documento que recibe:</th>
-        <td id="td"><?php  echo $dataRegistro['documentorecibeposgrado']?></td>
+        <td id="td"><?php  echo $dataRegistroesp['documentorecibeespecialidad']?></td>
     </tr>
     <tr>
         <th id="th">N° de cedula profesional:</th>
-        <td id="td"><?php  echo $dataRegistro['numerocedulaposgrado']?></td>
+        <td id="td"><?php  echo $dataRegistroesp['numerocedulaespecialidad']?></td>
     </tr>
     
 </table>
+<?php endforeach; ?>
+<?php
+$id = $dataRegistro['id_principal'];
+    require_once 'clases/conexion.php';
+    $conexion = new Conexion();
+    $sql = $conexion->prepare("SELECT * from doctorado where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistrodoctorado):
+
+    ?>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Nivel Doctorado/Subespecialidad</div>
     <tr>
         <th id="th">Nombre de la formación académica:</th>
-        <td id="td"><?php echo $dataRegistro['nombreformaciondoctorado']?></td>
+        <td id="td"><?php echo $dataRegistrodoctorado['nombreformaciondoctorado']?></td>
     </tr>
     <tr>
         <th id="th">Nombre de la institución educativa:</th>
-        <td id="td"><?php echo $dataRegistro['nombredoctorado']?></td>
+        <td id="td"><?php echo $dataRegistrodoctorado['nombreinstituciondoctorado']?></td>
     </tr>
     <tr>
         <th id="th">Unidad hospitalaria:</th>
-        <td id="td"><?php  echo $dataRegistro['unidadhospitalariadoctorado']?></td>
+        <td id="td"><?php  echo $dataRegistrodoctorado['unidadhospitalariadoctorado']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de inicio:</th>
-        <td id="td"><?php  echo $dataRegistro['fechainiciodoctorado']?></td>
+        <td id="td"><?php  echo $dataRegistrodoctorado['fechainiciodoctorado']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de término:</th>
-        <td id="td"><?php  echo $dataRegistro['fechaterminodoctorado']?></td>
+        <td id="td"><?php  echo $dataRegistrodoctorado['fechaterminodoctorado']?></td>
     </tr>
     <tr>
         <th id="th">Años cursados:</th>
-        <td id="td"><?php  echo $dataRegistro['tiempocursadodoctorado']?></td>
+        <td id="td"><?php  echo $dataRegistrodoctorado['anioscursadosdoctorado']?></td>
     </tr>
     <tr>
         <th id="th">Documento que recibe:</th>
-        <td id="td"><?php  echo $dataRegistro['documentorecibedoctorado']?></td>
+        <td id="td"><?php  echo $dataRegistrodoctorado['documentorecibedoctorado']?></td>
     </tr>
     <tr>
         <th id="th">N° de cedula profesional:</th>
-        <td id="td"><?php  echo $dataRegistro['numeroceduladoctorado']?></td>
+        <td id="td"><?php  echo $dataRegistrodoctorado['numeroceduladoctorado']?></td>
     </tr>
     
 </table>
+<?php endforeach; ?>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
     <div class="containerr3">Otros estudios/Alta especialidad</div>
     <tr>

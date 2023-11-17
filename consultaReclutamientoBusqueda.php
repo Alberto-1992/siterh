@@ -9,6 +9,7 @@ datospersonales.fechanacimiento, datospersonales.entidadnacimiento, datospersona
 datospersonales.otrotelefono, datospersonales.correoelectronico, datospersonales.fechainicio as fechapostulado, 
 estudiosmediosup.nombreformacionmedia, estudiosmediosup.nombremediasuperior, estudiosmediosup.fechainicio, estudiosmediosup.fechatermino, 
 estudiosmediosup.tiempocursado, estudiosmediosup.documentomediosuperior,
+estudiostecnico.*,
 estudiospostecnico.*,
 estudiossuperior.*,
 estudiosmaestria.*,
@@ -32,6 +33,7 @@ manifiesto.*
 from datospersonales 
 left outer join estudiosmediosup on estudiosmediosup.id_postulado = datospersonales.id_datopersonal 
 left outer join estudiospostecnico on estudiospostecnico.id_empleado = datospersonales.id_datopersonal 
+left outer join estudiostecnico on estudiostecnico.id_empleado = datospersonales.id_datopersonal
 left outer join t_estado on t_estado.id_estado = datospersonales.estado 
 left outer join t_municipio on t_municipio.id_municipio = datospersonales.delegacion 
 left outer join t_localidad on t_localidad.id_localidad = datospersonales.localidad 
