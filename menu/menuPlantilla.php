@@ -72,7 +72,7 @@
                 </a>
             </li>
         </ul> 
-        <hr>
+        <hr id="hr">
         <ul>
             <li>
                 <a href="cambiarPassword">

@@ -44,5 +44,4 @@ $conexionX = new ConexionRh();
         require 'close_sesion.php';
         
         }
-        
 ?>
