@@ -1,13 +1,6 @@
 <?php
 error_reporting(0);
-
-function connect(){
-    return new mysqli("localhost","root","","metasrh");
-  }
-  $con = connect();
-  if (!$con->set_charset("utf8")) {//asignamos la codificación comprobando que no falle
-        die("Error cargando el conjunto de caracteres utf8");
-  }
+require 'conexionRh.php';
 require_once('vendor/php-excel-reader/excel_reader2.php');
 require_once('vendor/SpreadsheetReader.php');
  
@@ -34,28 +27,28 @@ $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','text/csv'
             {
                 $numTrabajador = "";
                 if(isset($Row[0])) {
-                    $numTrabajador = mysqli_real_escape_string($con,$Row[0]);
+                    $numTrabajador = mysqli_real_escape_string($conexionGrafico,$Row[0]);
                 }
                 $rfc = "";
                 if(isset($Row[1])) {
-                    $rfc = mysqli_real_escape_string($con, hash('sha512',$Row[1]));
+                    $rfc = mysqli_real_escape_string($conexionGrafico, hash('sha512',$Row[1]));
                 }
                 $curp = "";
                 if(isset($Row[2])) {
-                    $curp = mysqli_real_escape_string($con,$Row[2]);
+                    $curp = mysqli_real_escape_string($conexionGrafico,$Row[2]);
                 }
                 $correo = "";
                 if(isset($Row[3])) {
-                    $correo = mysqli_real_escape_string($con,$Row[3]);
+                    $correo = mysqli_real_escape_string($conexionGrafico,$Row[3]);
                 }
                 $rol = "";
                 if(isset($Row[4])) {
-                    $rol = mysqli_real_escape_string($con,$Row[4]);
+                    $rol = mysqli_real_escape_string($conexionGrafico,$Row[4]);
                 }
                 
           
                     $query = "INSERT into usuarioslogeo(id_usuariologeo, numTrabajador, password, curp, correo, rol) values(null, '".$numTrabajador."','".$rfc."','".$curp."','".$correo."','".$rol."')";
-                    $resultados = mysqli_query($con, $query);
+                    $resultados = mysqli_query($conexionGrafico, $query);
                     
                  /*   $querY = "SELECT * FROM usuarioslogeo";
                     $result = mysqli_query($con, $querY);
