@@ -328,11 +328,11 @@ $id = $dataRegistro['id_principal'];
     </tr>
     <tr>
         <th id="th">Fecha de inicio:</th>
-        <td id="td"><?php  echo $dataRegistrom['fechainiciomaestria']?></td>
+        <td id="td"><?php  echo $dataRegistrom['fechamaestriainicio']?></td>
     </tr>
     <tr>
         <th id="th">Fecha de termino:</th>
-        <td id="td"><?php  echo $dataRegistrom['fechaterminomaestria']?></td>
+        <td id="td"><?php  echo $dataRegistrom['fechamaestriatermino']?></td>
     </tr>
     <tr>
         <th id="th">Tiempo cursado:</th>
@@ -344,7 +344,7 @@ $id = $dataRegistro['id_principal'];
     </tr>
     <tr>
         <th id="th">N° de cedula profesional:</th>
-        <td id="td"><?php  echo $dataRegistrom['cedulamaestria']?></td>
+        <td id="td"><?php  echo $dataRegistrom['numerocedulamaestria']?></td>
     </tr>
     
 </table>
