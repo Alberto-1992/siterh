@@ -254,6 +254,23 @@ $(function () {
                     <label for="mensaje">Sube tu documento:</label>
                     <input type="file" class="form-control" name="documentocurso" id="documentocurso" accept=".pdf">
                 </div>
+                <div class="col-md-3">
+    <?php
+    $nombrecurso = $dataRegistro['nombrecurso'];
+    $fechafinal = $dataRegistro['fechatermino'];
+    $idempleado = $dataRegistro['id_empleado'];
+    $path = "documentoscursos/" . $nombrecurso . $fechafinal . $idempleado;
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
+                echo "<input type='text' class='form-control' name='documentoaeditar' value='documentoscursos/$nombrecurso$fechafinal$idempleado' />";
+            }
+        }
+    }
+    ?>
+</div>
                 <div class="col-md-12" id="otrodocumento">
                     <strong>Especifique cual:</strong>
                     <input type="text" class="form-control" name="otroexpidedocumento" id="otroexpidedocumento" value="<?php echo $dataRegistro['otroexpidedocumento'] ?>">

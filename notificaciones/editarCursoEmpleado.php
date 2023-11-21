@@ -36,10 +36,19 @@ error_reporting(0);
                     ':fechacriteriotermino'=>$fechaterminocriterio,
                     ':id'=>$id
                 ));
-if($_FILES["documentocurso"] == ''){
+if($_FILES["documentocurso"]['name'] == null){
+    
+    $nombrecurso = $_POST["nombrecurso"].$_POST["fechatermino"];
+            $curso = $_POST["nombrecurso"];
+            $rutaAnterior = $_POST['documentoaeditar'];
+            $ruta = '../documentoscursos/'.$nombrecurso.$id_empleado;
+            
+            if (file_exists('../'.$rutaAnterior)) {
+                rename ("../$rutaAnterior", "$ruta");
+            }
 }else{
         if ($_FILES["documentocurso"]["error"] > 0) {
-
+            
         } else {
         
             $permitidos = array("application/pdf");
@@ -64,6 +73,7 @@ if($_FILES["documentocurso"] == ''){
             }
         }
 }
+
 $validatransaccion = $conexionX->commit();
 	if($validatransaccion != false){
         echo "<script>Swal.fire({
