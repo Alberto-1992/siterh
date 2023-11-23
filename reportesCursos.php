@@ -40,19 +40,19 @@
                 <tr>
                     <th>N° empleado</th>
                     <th>Año</th>
-                    <th>Impartido por el HRAEI</th>
-                    <th>Impartido por institución externa</th>
                     <th>Tipo de capacitacion</th>
                     <th>Nombre de la capacitación</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
-                    <th>Tema en especifico</th>
-                    <th>Vigencia inical</th>
-                    <th>Vigencia final</th>
                     <th>Modalidad</th>
                     <th>Horas</th>
                     <th>Asiste como</th>
                     <th>Documento recibe</th>
+                    <th>Tema en especifico</th>
+                    <th>Vigencia inical</th>
+                    <th>Vigencia final</th>
+                    <th>Impartido por el HRAEI</th>
+                    <th>Impartido por institución externa</th>
                     <th>Ver documento</th>
                     
                 </tr>
@@ -68,19 +68,19 @@
                     <tr>
                     <td><?php echo $dataRegistro['id_empleado'] ?></td>
                         <td><?php echo $dataRegistro['anio'] ?></td>
-                        <td><?php echo $dataRegistro['nombreinstitucion'] ?></td>
-                        <td><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
                         <td><?php echo $dataRegistro['tipocapacitacion'] ?></td>
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
                         <td><?php echo $dataRegistro['fechainicio'] ?></td>
                         <td><?php echo $dataRegistro['fechatermino'] ?></td>
-                        <td><?php echo $dataRegistro['criteriocurso'] ?></td>
-                        <td><?php echo $dataRegistro['fechacriterioinicio'] ?></td>
-                        <td><?php echo $dataRegistro['fechacriteriotermino'] ?></td>
                         <td><?php echo $dataRegistro['modalidad'] ?></td>
                         <td><?php echo $dataRegistro['horas'] ?></td>
                         <td><?php echo $dataRegistro['asistecomo'] ?></td>
                         <td><?php echo $dataRegistro['documentorecibe'] ?></td>
+                        <td><?php echo $dataRegistro['criteriocurso'] ?></td>
+                        <td><?php echo $dataRegistro['fechacriterioinicio'] ?></td>
+                        <td><?php echo $dataRegistro['fechacriteriotermino'] ?></td>
+                        <td><?php echo $dataRegistro['nombreinstitucion'] ?></td>
+                        <td><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
                         <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
                         
 
@@ -95,18 +95,18 @@
                 <th>N° empleado</th>
                     <th>Año</th>
                     <th>Institucion imparte</th>
-                    <th>Nombre institucion</th>
-                    <th>Tipo de capacitacion</th>
                     <th>Nombre de la capacitación</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
-                    <th>Tema en especifico</th>
-                    <th>Vigencia inical</th>
-                    <th>Vigencia final</th>
                     <th>Modalidad</th>
                     <th>Horas</th>
                     <th>Asiste como</th>
                     <th>Documento recibe</th>
+                    <th>Tema en especifico</th>
+                    <th>Vigencia inical</th>
+                    <th>Vigencia final</th>
+                    <th>Impartido por el HRAEI</th>
+                    <th>Impartido por institución externa</th>
                     <th>Ver documento</th>
                 </tr>
             </tfoot>
