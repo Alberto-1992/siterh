@@ -206,6 +206,9 @@
                         function insercion_datos() {
                             window.location.href = 'cargaRegistroCapacitacion';
                         }
+                        function busqueda() {
+                            window.location.href='reportesCursos';
+                        }
             </script>
             <article class="card" id="creaciondecursos" onclick="creacionCursoCapacitacion();">
                 <a href="creacionCursoCapacitacion" >
@@ -248,7 +251,15 @@
                     <p>Validación de documentación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
-
+                    </article>
+            <article class="card" id="validaciondocumentocapacitacion" onclick="busquedaReportes();">
+                <a href="reportesCursos">
+                    <hr id="hr6">
+                    <i class="fa fa-search" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Busqueda</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
             <?php
 
         } else if (isset($_SESSION['usuarioDatos'])) {

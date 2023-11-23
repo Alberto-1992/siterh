@@ -204,7 +204,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="mensaje">Total de horas:</label>
-                    <input type="text" class="form-control" name="horas" id="horas" required>
+                    <input type="number" class="form-control" name="horas" id="horas" required>
                 </div>
 
                 <div class="col-md-3">
@@ -291,7 +291,7 @@
                     <th>Institucion imparte</th>
                     <th>Nombre institucion</th>
                     <th>Tipo de capacitacion</th>
-                    <th>Nombre del curso</th>
+                    <th>Nombre de la capacitación</th>>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
                     <th>Ver documento</th>
@@ -327,7 +327,7 @@
                     <th>Institucion imparte</th>
                     <th>Nombre institucion</th>
                     <th>Tipo de capacitacion</th>
-                    <th>Nombre del curso</th>
+                    <th>Nombre de la capacitación</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
                     <th>Ver documento</th>
