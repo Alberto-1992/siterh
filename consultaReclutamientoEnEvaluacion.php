@@ -43,10 +43,10 @@ $conexionBolsa = new Conexion();
         </li>
         
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar a excel</a>
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
                 <li><a class="dropdown-item" href="#" onclick="documentos();">Documentacion </a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Decargar </a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Decargar a excel</a></li>
                 
                 
             </ul>

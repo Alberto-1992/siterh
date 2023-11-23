@@ -140,7 +140,7 @@ if ($validaacceso == 8) {
     </tr>
     <tr>
         <th id="th">Nombre del curso:</th>
-        <td id="td"><?php echo $dataRegistro['nombrecurso'] ?></td>
+        <td id="td" style="color: red;"><?php echo $dataRegistro['nombrecurso'] ?></td>
     </tr>
     <tr>
         <th id="th">Nombre de la institución que lo expide:</th>
@@ -403,6 +403,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
             <select class="form-control" id="catalogoprogramas" name="catalogoprogramas" required>
                 <option value="">Seleccione</option>
                 <option value="PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
+                <option value="PROGRAMA PARA LA CERTIFICACION HOSPITALARIA(MUEC)">PROGRAMA ANUAL DE CAPACITACION PARA LA CERTIFICACIÓN HOSPITALARIA(MUEC)</option>
                 <option value="PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH">PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH</option>
                 <option value="PROGRAMA DE EDUCACION CONTINUA">PROGRAMA DE EDUCACION CONTINUA</option>
                 <option value="INDIVIDUAL">INDIVIDUAL</option>
@@ -440,7 +441,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         <div id="compdirectivas">
             <div class="col-md-12">
                 <strong style="font-size: 12px;">COMPETENCIAS DIRECTIVAS</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
+                <select class="form-control" id="directivas" name="directivas">
                     <option value="">Seleccione</option>
                     <option value="VISION ESTRATEGICA">VISION ESTRATEGICA</option>
                     <option value="LIDERAZGO">LIDERAZGO</option>
@@ -451,7 +452,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         <div id="computo">
             <div class="col-md-12">
                 <strong style="font-size: 12px;">COMPETENCIA</strong>
-                <select class="form-control" id="herramientascomputo" name="herramientascomputo">
+                <select class="form-control" id="competencias" name="competencias">
                     <option value="">Seleccione</option>
                     <option value="HERRAMIENTAS DE COMPUTO">HERRAMIENTAS DE COMPUTO</option>
                     <option value="BÁSICAS/COGNOSCITIVAS">BÁSICAS/COGNOSCITIVAS</option>
@@ -464,7 +465,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         <div id="tecnicasgenerales">
             <div class="col-md-12">
                 <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
+                <select class="form-control" id="tecnicas" name="tecnicas">
                     <option value="">Seleccione</option>
                     <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
                 </select>
@@ -473,7 +474,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         <div id="tecnicasgeneralesmando">
             <div class="col-md-12">
                 <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
+                <select class="form-control" id="tecnicasmando" name="tecnicasmando">
                     <option value="">Seleccione</option>
                     <option value="GESTION DE PROCESOS">GESTION DE PROCESOS</option>
                     <option value="PLANEACION ESTRATEGICA">PLANEACION ESTRATEGICA</option>
@@ -485,7 +486,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         <div id="muec">
             <div class="col-md-12">
                 <strong style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
+                <select class="form-control" id="tecnicasmuec" name="tecnicasmuec">
                     <option value="">Seleccione</option>
                     <?php
                     require_once 'clases/conexion.php';
@@ -503,7 +504,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         <div id="derechoshumanos">
             <div class="col-md-12">
                 <strong style="font-size: 12px;">COMPETENCIAS ETICO INTEGRATIVAS Y NORMATIVA DEL SP</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
+                <select class="form-control" id="competenciasintegrativas" name="competenciasintegrativas">
                     <option value="">Seleccione</option>
                     <option value="TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA">TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA</option>
                     <option value="DERECHOS HUMANOS">DERECHOS HUMANOS</option>
@@ -519,7 +520,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
         <div id="compespecializadas">
             <div class="col-md-12">
                 <strong style="font-size: 12px;">COMPETENCIAS ESPECIALIZADAS</strong>
-                <select class="form-control" id="organizacionales" name="organizacionales">
+                <select class="form-control" id="competenciasespecializadas" name="competenciasespecializadas">
                     <option value="">Seleccione</option>
                     <option value="ACTUALIZACION ADMINISTRATIVA">ACTUALIZACION ADMINISTRATIVA</option>
                     <option value="ACTUALIZACION GERENCIAL">ACTUALIZACION GERENCIAL</option>

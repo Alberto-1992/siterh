@@ -3,25 +3,39 @@ error_reporting(0);
 require_once '../clases/conexion.php';
 $conexionX = new ConexionRh();
 extract($_POST);
-
+$valor = '';
+if($organizacionales != ''){
+    $valor = $organizacionales;
+}else if($directivas != ''){
+    $valor = $directivas;
+}else if($competencias != ''){
+    $valor = $competencias;
+}else if($tecnicas != ''){
+    $valor = $tecnicas;
+}else if($tecnicasmando != ''){
+    $valor = $tecnicasmando;
+}else if($tecnicasmuec != ''){
+    $valor = $tecnicasmuec;
+}else if($competenciasintegrativas){
+    $valor = $competenciasintegrativas;
+}else if($competenciasespecializadas != ''){
+    $valor = $competenciasespecializadas;
+}
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
-$sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautorizacion, catalogoprograma = :catalogoprograma, lineaestrategica = :lineaestrategica, competenciaalieandaeje = :competenciaalieandaeje, computo = :computo  where id = :id");
+$sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautorizacion, catalogoprograma = :catalogoprograma, lineaestrategica = :lineaestrategica, competenciaalieandaeje = :competenciaalieandaeje  where id = :id");
     $sql->execute(array(
         ':validaautorizacion'=>1,
         ':catalogoprograma'=>$catalogoprogramas,
         ':lineaestrategica'=>$lineaestrategica,
-        ':competenciaalieandaeje'=>$organizacionales,
-        ':computo'=>$herramientascomputo,
+        ':competenciaalieandaeje'=>$valor,
         ':id'=>$id
     ));
 
     $validatransac = $conexionX->commit();
-    
-    
     $from = '../documentoscursos/'.$path.'/';
-    $carpeta = '../'.$year.'/'.$catalogoprogramas.'/'.$lineaestrategica;
+    $carpeta = '../'.$year.'/'.$catalogoprogramas.'/'.$lineaestrategica.'/'.$valor;
 
     if (!file_exists($carpeta)) {
         mkdir($carpeta, 0777, true);
