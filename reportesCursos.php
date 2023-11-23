@@ -29,7 +29,7 @@
         require_once 'clases/conexion.php';
         $conexionX = new ConexionRh();
 
-        $sql = $conexionX->prepare("SELECT id,nombrecurso,id_empleado,fechainicio,fechatermino,modalidad,horas,asistecomo,nombreinstitucion,otroexpidedocumento,tipocapacitacion,documentorecibe, EXTRACT(YEAR 
+        $sql = $conexionX->prepare("SELECT id,nombrecurso,id_empleado,fechacriteriotermino,fechacriterioinicio,criteriocurso,fechainicio,fechatermino,modalidad,horas,asistecomo,nombreinstitucion,otroexpidedocumento,tipocapacitacion,documentorecibe, EXTRACT(YEAR 
         FROM fechatermino) as anio from datos order by fechainicio desc");
         $sql->execute();
 
@@ -46,6 +46,9 @@
                     <th>Nombre de la capacitación</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
+                    <th>Tema en especifico</th>
+                    <th>Vigencia inical</th>
+                    <th>Vigencia final</th>
                     <th>Modalidad</th>
                     <th>Horas</th>
                     <th>Asiste como</th>
@@ -71,6 +74,9 @@
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
                         <td><?php echo $dataRegistro['fechainicio'] ?></td>
                         <td><?php echo $dataRegistro['fechatermino'] ?></td>
+                        <td><?php echo $dataRegistro['criteriocurso'] ?></td>
+                        <td><?php echo $dataRegistro['fechacriterioinicio'] ?></td>
+                        <td><?php echo $dataRegistro['fechacriteriotermino'] ?></td>
                         <td><?php echo $dataRegistro['modalidad'] ?></td>
                         <td><?php echo $dataRegistro['horas'] ?></td>
                         <td><?php echo $dataRegistro['asistecomo'] ?></td>
@@ -94,6 +100,9 @@
                     <th>Nombre de la capacitación</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
+                    <th>Tema en especifico</th>
+                    <th>Vigencia inical</th>
+                    <th>Vigencia final</th>
                     <th>Modalidad</th>
                     <th>Horas</th>
                     <th>Asiste como</th>
