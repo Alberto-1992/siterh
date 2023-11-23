@@ -1,17 +1,17 @@
 <?php session_start();
-$curp = $_POST['id'];
+$id = $_POST['id'];
 ?>
 <div class="col-md-12" style="border: 1px solid #F0F0F0; display: flex; margin-top: 60px; padding: 10px;">
 <?php
 $activeconomica = 'documentoactvidadeconomica';
-$path = "../talent/documentos/".$activeconomica.$curp;
+$path = "../talent/documentos/".$activeconomica.$id;
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='../talent/documentos/$activeconomica$curp/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
-            echo "<a href='../talent/documentos/$activeconomica$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Constancia SAT</a>";
+            echo "<iframe src='../talent/documentos/$activeconomica$id/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
+            echo "<a href='../talent/documentos/$activeconomica$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Constancia SAT</a>";
         }
     }
 }
@@ -19,14 +19,14 @@ if (file_exists($path)) {
 ?>
 <?php
 $actanacimiento = 'documentoactanacimiento';
-$path = "../talent/documentos/".$actanacimiento.$curp;
+$path = "../talent/documentos/".$actanacimiento.$id;
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='../talent/documentos/$actanacimiento$curp/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
-            echo "<a href='../talent/documentos/$actanacimiento$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Acta nacimiento</a>";
+            echo "<iframe src='../talent/documentos/$actanacimiento$id/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
+            echo "<a href='../talent/documentos/$actanacimiento$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Acta nacimiento</a>";
         }
     }
 }
@@ -34,14 +34,14 @@ if (file_exists($path)) {
 ?>
 <?php
 $ine = 'documentoine';
-$path = "../talent/documentos/".$ine.$curp;
+$path = "../talent/documentos/".$ine.$id;
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='../talent/documentos/$ine$curp/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
-            echo "<a href='../talent/documentos/$ine$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>INE</a>";
+            echo "<iframe src='../talent/documentos/$ine$id/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
+            echo "<a href='../talent/documentos/$ine$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>INE</a>";
         }
     }
 }
@@ -51,14 +51,14 @@ if (file_exists($path)) {
 <div class="col-md-12" style="border: 1px solid #F0F0F0; display: flex; margin-top: 60px; padding: 10px;">
 <?php
 $cartilla = 'documentocartilla';
-$path = "../talent/documentos/".$cartilla.$curp;
+$path = "../talent/documentos/".$cartilla.$id;
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='../talent/documentos/$cartilla$curp/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
-            echo "<a href='../talent/documentos/$cartilla$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Cartilla militar</a>";
+            echo "<iframe src='../talent/documentos/$cartilla$id/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
+            echo "<a href='../talent/documentos/$cartilla$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Cartilla militar</a>";
         }
     }
 }
@@ -66,14 +66,14 @@ if (file_exists($path)) {
 ?>
 <?php
 $firmaelectronica = 'documentofirmaelectonica';
-$path = "../talent/documentos/".$firmaelectronica.$curp;
+$path = "../talent/documentos/".$firmaelectronica.$id;
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
             echo "<div width='170' height='220' margin-top='50' class='form-control'><a href='../talent/documentos/$firmaelectronica$curp/$archivo' target='_blank'><img src='https://cdn.icon-icons.com/icons2/160/PNG/256/folder_archive_rar_22614.png' style='width: 170px; height: 150px;'></a></div>";
-            echo "<a href='../talent/documentos/$firmaelectronica$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-archive'></i>Firma electronica</a>";
+            echo "<a href='../talent/documentos/$firmaelectronica$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-archive'></i>Firma electronica</a>";
         }
     }
 }
@@ -81,14 +81,14 @@ if (file_exists($path)) {
 ?>
 <?php
 $claveinter = 'documentoclaveinterbancaria';
-$path = "../talent/documentos/".$claveinter.$curp;
+$path = "../talent/documentos/".$claveinter.$id;
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='../talent/documentos/$claveinter$curp/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
-            echo "<a href='../talent/documentos/$claveinter$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-archive'></i>Clave interbancaria</a>";
+            echo "<iframe src='../talent/documentos/$claveinter$id/$archivo' width='170' height='220' margin-top='50' class='form-control'></iframe>";
+            echo "<a href='../talent/documentos/$claveinter$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-archive'></i>Clave interbancaria</a>";
         }
     }
 }
@@ -99,26 +99,26 @@ if (file_exists($path)) {
 
 <?php
 $compdomicilio = 'documentocurp';
-$path = "../talent/documentos/" . $compdomicilio . $curp;
+$path = "../talent/documentos/" . $compdomicilio . $id;
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='100' height='220' margin-top='50' class='form-control'></iframe>";
-            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>CURP</a>";
+            echo "<iframe src='../talent/documentos/$compdomicilio$id/$archivo' width='100' height='220' margin-top='50' class='form-control'></iframe>";
+            echo "<a href='../talent/documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>CURP</a>";
         }
     }
 }
 $compdomicilio = 'comprobantedomicilio';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
+                $path = "../talent/documentos/" . $compdomicilio . $id;
                 if (file_exists($path)) {
                     $directorio = opendir($path);
                     while ($archivo = readdir($directorio)) {
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='100' height='220' margin-top='50' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Comprobante de domicilio</a>";
+                            echo "<iframe src='../talent/documentos/$compdomicilio$id/$archivo' width='100' height='220' margin-top='50' class='form-control'></iframe>";
+                            echo "<a href='../talent/documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Comprobante de domicilio</a>";
                         }
                     }
                 }
@@ -129,244 +129,183 @@ $compdomicilio = 'comprobantedomicilio';
 
 <?php
 $compdomicilio = 'comprobante media superior';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
+                $path = "../talent/documentos/" . $compdomicilio . $id;
                 if (file_exists($path)) {
                     $directorio = opendir($path);
                     while ($archivo = readdir($directorio)) {
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Certificado media superior</a>";
+                            echo "<iframe src='../talent/documentos/$compdomicilio$id/$archivo' width='170' height='220' class='form-control'></iframe>";
+                            echo "<a href='../talent/documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Certificado media superior</a>";
                         }
                     }
                 }
                 ?>
 </div>
-<strong>Documento de media superior</strong>
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
 <?php
-    $compdomicilio = 'comprobante superior';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
-                if (file_exists($path)) {
-                    $directorio = opendir($path);
-                    while ($archivo = readdir($directorio)) {
-                        if (!is_dir($archivo)) {
-                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+require_once 'clases/conexion.php';
+$conexionD = new ConexionDocumentacion();
+    $sql = $conexionD->prepare("SELECT * from estudiossuperior where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistroe):
+    
+    $archivonombre = $dataRegistroe['nombreformacionsuperior'];
+    $id_user = $dataRegistroe['id_empleado'];
+    $path = '../talent/documentos/'.$archivonombre.$id_user. '/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Titulo superior</a>";
-                        }
-                    }
-                }
-
-    $compdomicilio = 'cedula superior';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
-                if (file_exists($path)) {
-                    $directorio = opendir($path);
-                    while ($archivo = readdir($directorio)) {
-                        if (!is_dir($archivo)) {
-                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220' class='form-control'></iframe><br>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-                        }
-                    }
-                }
-                ?>
+                echo "<iframe src='../talent/documentos/$archivonombre$id_user/$archivo' width='90' height='200' class='form-control'></iframe>";
+                echo "<a href='../talent/documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                //echo "<a href='eliminarDocumentacion/eliminarCedSuperior?titulo=$archivonombre&id=$id_user&archivo=$archivo'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    }
+endforeach;
+    ?>
                 
                 </div>
-                <strong>Documentos superior</strong>
+                <strong>Documentos Licenciatura</strong>              
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-                $compdomicilio = 'comprobante maestria';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
+
+<?php
+require_once 'clases/conexion.php';
+$conexionD = new ConexionDocumentacion();
+    $sql = $conexionD->prepare("SELECT * from estudiosmaestria where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistroMaestria):
+    
+    $archivonombre = $dataRegistroMaestria['nombreformacionmaestria'];
+    $id_user = $dataRegistroMaestria['id_empleado'];
+                $path = "../talent/documentos/" . $archivonombre . $id_user;
                 if (file_exists($path)) {
                     $directorio = opendir($path);
                     while ($archivo = readdir($directorio)) {
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                            echo "<iframe src='../talent/documentos/$archivonombre$id_user/$archivo' width='170' height='220' class='form-control'></iframe>";
+                            echo "<a href='../talent/documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
                         }
                     }
                 }
-                $compdomicilio = 'cedula maestria';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
-                if (file_exists($path)) {
-                    $directorio = opendir($path);
-                    while ($archivo = readdir($directorio)) {
-                        if (!is_dir($archivo)) {
-                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-                        }
-                    }
-                }
+            endforeach;
                 ?>
     </div>
-<strong>Documentos maestria</strong>
-    <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-    $compdomicilio = 'comprobante maestria dos';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-    $compdomicilio = 'cedula maestria dos';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
-                if (file_exists($path)) {
-                    $directorio = opendir($path);
-                    while ($archivo = readdir($directorio)) {
-                        if (!is_dir($archivo)) {
-                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-                        }
-                    }
-                }
-                ?>
-                </div>
-<strong>Documentos segunda maestria</strong>
+    <strong>Documentos maestria</strong>
+    
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
-    $compdomicilio = 'comprobante posgrado';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
+                require_once 'clases/conexion.php';
+                $conexionD = new ConexionDocumentacion();
+                    $sql = $conexionD->prepare("SELECT * from especialidad where id_empleado = :id_empleado");
+                        $sql->execute(array(
+                            ':id_empleado'=>$id
+                        ));
+                        $row = $sql->fetchAll();
+                        foreach($row as $dataRegistroEspecialidad):
+                    
+                    $archivonombre = $dataRegistroEspecialidad['nombreformacionacademica'];
+                    $id_user = $dataRegistroEspecialidad['id_empleado'];
+    $path = "../talent/documentos/" . $archivonombre . $id_user;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$archivonombre$id_user/$archivo' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$archivonombre$id_user  /$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
     }
-    $compdomicilio = 'cedula posgrado';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
-                if (file_exists($path)) {
-                    $directorio = opendir($path);
-                    while ($archivo = readdir($directorio)) {
-                        if (!is_dir($archivo)) {
-                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-                        }
-                    }
-                }
-                ?>
+endforeach;
+    ?>
                 </div>
                 <strong>Documentos posgrado/especialidad</strong>
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
-    $compdomicilio = 'comprobante doctorado';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
+    require_once 'clases/conexion.php';
+    $conexionD = new ConexionDocumentacion();
+        $sql = $conexionD->prepare("SELECT * from doctorado where id_empleado = :id_empleado");
+            $sql->execute(array(
+                ':id_empleado'=>$id
+            ));
+            $row = $sql->fetchAll();
+            foreach($row as $dataRegistroDoctorado):
+        
+        $archivonombre = $dataRegistroDoctorado['nombreformaciondoctorado'];
+        $id_user = $dataRegistroDoctorado['id_empleado'];
+    $path = "../talent/documentos/" . $archivonombre . $id_user;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$archivonombre$id_user/$archivo' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
     }
-    $compdomicilio = 'cedula doctorado';
-                $path = "../talent/documentos/" . $compdomicilio . $curp;
-                if (file_exists($path)) {
-                    $directorio = opendir($path);
-                    while ($archivo = readdir($directorio)) {
-                        if (!is_dir($archivo)) {
-                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                            echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-                        }
-                    }
-                }
+    endforeach
                 ?>
                 </div>
                 <strong>Documentos doctorado/subespecialidad</strong>
-<div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
+<div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
-    $compdomicilio = 'comprobante alta epecialidad';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
+    require_once 'clases/conexion.php';
+    $conexionD = new ConexionDocumentacion();
+        $sql = $conexionD->prepare("SELECT * from otrosestudiosaltaesp where id_postulado = :id_postulado");
+            $sql->execute(array(
+                ':id_postulado'=>$id
+            ));
+            $row = $sql->fetchAll();
+            foreach($row as $dataRegistroAltaEsp):
+        
+        $archivonombre = $dataRegistroAltaEsp['nombreformacionaltaesp'];
+        $id_user = $dataRegistroAltaEsp['id_postulado'];
+    $path = "../talent/documentos/" . $archivonombre . $id_user;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$archivonombre$id_user/$archivo' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
     }
+endforeach;
                 ?>
                 </div>
                 <strong>Documentos otros estudios alta epecialidad</strong>
-<div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-    $compdomicilio = 'comprobante otro estudio';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-                ?>
-                </div>
-<strong>Documentos otros estudios 1</strong>
-                <div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-    $compdomicilio = 'comprobante otro estudio segundo';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-                ?>
-                </div>
-<strong>Documentos otros estudios 2</strong>
+            
 <div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
     $compdomicilio = 'documento servicio social';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
+    $path = "../talent/documentos/" . $compdomicilio . $id_user;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$compdomicilio$id_user/$archivo' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$compdomicilio$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
     }
@@ -376,15 +315,15 @@ $compdomicilio = 'comprobante media superior';
 <div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
     $compdomicilio = 'documento practicas profesionales';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
+    $path = "../talent/documentos/" . $compdomicilio . $id_user;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$compdomicilio$id_user/$archivo' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$compdomicilio$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
     }
@@ -409,24 +348,7 @@ $compdomicilio = 'comprobante media superior';
                 ?>
                 </div>
 <strong>Documento certificacion uno</strong>
-<div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-    $compdomicilio = 'documento certificacion dos';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-                ?>
-                </div>
-<strong>Documento certificacion dos</strong>
 <div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
     $compdomicilio = 'documento actualizacion academica uno';
@@ -445,42 +367,8 @@ $compdomicilio = 'comprobante media superior';
                 ?>
                 </div>
 <strong>Actualizacion academica/primer curso</strong>
-<div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-    $compdomicilio = 'documento actualizacion academica dos';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-                ?>
-                </div>
-<strong>Actualizacion academica/segundo curso</strong>
-<div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-    $compdomicilio = 'documento actualizacion academica tres';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-                ?>
-                </div>
-                <strong>Actualizacion academica/tercer curso</strong>
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
     $compdomicilio = 'documento exp laboral primero 1';
@@ -511,69 +399,8 @@ $compdomicilio = 'comprobante media superior';
     }
                 ?>
                 </div>
-                <strong>Exp laboral sector privado primero</strong>
-                <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-    $compdomicilio = 'documento exp laboral segundo 1';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-    $compdomicilio = 'documento exp laboral segundo 2';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-                ?>
-                </div>
-                <strong>Exp laboral sector privado segundo</strong>
-                <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
-                <?php
-    $compdomicilio = 'documento exp laboral tercero 1';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-    $compdomicilio = 'documento exp laboral tercero 2';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
-            }
-        }
-    }
-                ?>
-                </div>
-                <strong>Exp laboral sector privado tercero</strong>
+                <strong>Exp laboral sector privado</strong>
+                
                 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
     $compdomicilio = 'documento exp laboral publico primero 1';

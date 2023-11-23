@@ -4,16 +4,14 @@ $conexionContratacion = new ConexionDocumentacion();
 $conexion = new Conexion();
 date_default_timezone_set("America/Monterrey");
 $id = $_POST['id'];
-$identificador = $_POST['curp'];
 $hora = date("Y-m-d h:i:sa");
 
     $conexionContratacion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionContratacion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionContratacion->beginTransaction();
-$sql = $conexionContratacion->prepare("UPDATE datospersonales set datosActualizados = :datosActualizados where curp = :curp");
+$sql = $conexionContratacion->prepare("DELETE from datospersonales where id_datopersonal = :id_datopersonal");
         $sql->execute(array(
-            ':datosActualizados'=>1,
-            ':curp' =>$identificador
+            ':id_datopersonal' =>$id
         ));
 
     $validatransac = $conexionContratacion->commit();

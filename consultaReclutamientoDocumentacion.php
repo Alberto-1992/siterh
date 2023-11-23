@@ -100,7 +100,7 @@ $sql = $conexionDocumentacion->prepare("SELECT id_datopersonal from datospersona
 
 }
 function documentos() {
-    var id = $("#curp").val();
+    var id = $("#idpersonal").val();
     let parametros = { id: id }
         $.ajax({
             data: parametros,
