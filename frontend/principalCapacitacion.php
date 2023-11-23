@@ -210,6 +210,17 @@
                             window.location.href='reportesCursos';
                         }
             </script>
+            <?php
+                    require_once 'clases/conexion.php';
+                    $conexion = new ConexionRh();
+                    $usernameSesion = $_SESSION['usuarioAdminRh'];
+                    $statement = $conexion->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
+                    $statement->execute(array(
+                        ':correo' => $usernameSesion
+                    ));
+                    $rw = $statement->fetch();
+                    $admin = $rw['correo'];
+                    if ($admin == 'bramirez699@gmail.com' or $admin == 'beto_1866@outlook.com') { ?>
             <article class="card" id="creaciondecursos" onclick="creacionCursoCapacitacion();">
                 <a href="creacionCursoCapacitacion" >
                     <hr id="hr6">
@@ -252,6 +263,7 @@
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
                     </article>
+                
             <article class="card" id="validaciondocumentocapacitacion" onclick="busquedaReportes();">
                 <a href="reportesCursos">
                     <hr id="hr6">
@@ -260,15 +272,13 @@
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
+                    <?php } ?>
             <?php
 
         } else if (isset($_SESSION['usuarioDatos'])) {
             require 'menu/menuPersonal.php';
 
             ?>
-
-
-
                 <?php
                 if (isset($_SESSION['usuarioDatos'])) {
                     $usernameSesion = $_SESSION['usuarioDatos'];
