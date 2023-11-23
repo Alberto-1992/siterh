@@ -130,7 +130,7 @@ endforeach;
     ?>
                 
                 </div>
-                <strong>Documentos Licenciatura</strong>              
+                <strong>Documentos Licenciatura</strong>               
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
 
 <?php
@@ -254,15 +254,15 @@ endforeach;
 <div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
     $compdomicilio = 'documento servicio social';
-    $path = "../talent/documentos/" . $compdomicilio . $id_user;
+    $path = "../talent/documentos/" . $compdomicilio . $id;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$id_user/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$compdomicilio$id/$archivo' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
     }
@@ -272,15 +272,15 @@ endforeach;
 <div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
     $compdomicilio = 'documento practicas profesionales';
-    $path = "../talent/documentos/" . $compdomicilio . $id_user
+    $path = "../talent/documentos/" . $compdomicilio . $id;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$id_user/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$compdomicilio$id/$archivo' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
     }

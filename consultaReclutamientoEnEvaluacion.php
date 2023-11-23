@@ -45,6 +45,7 @@ $conexionBolsa = new Conexion();
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar a excel</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+                <li><a class="dropdown-item" href="#" onclick="documentos();">Documentacion </a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcel();">Decargar </a></li>
                 
                 
@@ -103,6 +104,23 @@ $sql = $conexionBolsa->query("SELECT id_datopersonal from datospersonales where 
 <script>
 function exportarExcel() {
     window.location.href='aplicacion/exportarExcelpreseleccion'
+
+}
+function documentos() {
+    var id = $("#idpersonal").val();
+    let parametros = { id: id }
+        $.ajax({
+            data: parametros,
+            url: 'verDocumento.php',
+            type: 'post',
+
+            success: function (data) {
+                //$("#mensaje").html(response);
+                $("#tabla_resultado").html(data);
+                
+
+            }
+        });
 
 }
 $(function() {
