@@ -7,7 +7,6 @@ $fecha_actual = new DateTime(date('Y-m-d'));
 
 require 'conexionRh.php';
 ?>
-
 <div id="mensaje"></div>
 <input type="hidden" id="id" value="<?php echo $dataRegistro['id']; ?>">
 <input type="hidden" id="nombrecurso" value="<?php echo $dataRegistro['nombrecurso']; ?>">
