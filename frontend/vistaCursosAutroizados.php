@@ -158,9 +158,9 @@ while ($dataRegistro = $query->fetch()) {
             <th id="th">Especifique cual:</th>
             <td id="td"><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
         </tr>
-
-        <tr>
-            <th id="th">Documento cargado:</th>
+        </table>
+        <br>
+        
             <?php
             $nombrecurso = $dataRegistro['nombrecurso'];
             $fechafinal = $dataRegistro['fechatermino'];
@@ -171,17 +171,18 @@ while ($dataRegistro = $query->fetch()) {
                 while ($archivo = readdir($directorio)) {
                     if (!is_dir($archivo)) {
                         echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
+                        echo "<iframe src='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' width='100%' height='100%' margin-top='50'></iframe>";
                         echo "<td><a href='documentoscursos/$nombrecurso$fechafinal$idempleado/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver archivo</a></td>";
                     }
                 }
             }
             ?>
 
-        </tr>
     <?php
 }
     ?>
-    </table>
+    <br>
+
     <!--
     <script>
         $(document).ready(function() {

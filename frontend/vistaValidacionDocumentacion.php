@@ -401,7 +401,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
             <select class="form-control" id="catalogoprogramas" name="catalogoprogramas" required>
                 <option value="">Seleccione</option>
                 <option value="PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
-                <option value="PROGRAMA PARA LA CERTIFICACION HOSPITALARIA(MUEC)">PROGRAMA ANUAL DE CAPACITACION PARA LA CERTIFICACIÓN HOSPITALARIA(MUEC)</option>
+                <option value="MODELO UNICO DE EVALUACION DE LA CALIDAD(MUEC)">MÓDELO UNICO DE EVALUACIÓN DE LA CALIDAD(MUEC)</option>
                 <option value="PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH">PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH</option>
                 <option value="PROGRAMA DE EDUCACION CONTINUA">PROGRAMA DE EDUCACION CONTINUA</option>
                 <option value="INDIVIDUAL">INDIVIDUAL</option>
