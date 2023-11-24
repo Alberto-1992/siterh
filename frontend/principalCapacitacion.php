@@ -173,7 +173,7 @@
         if (isset($_SESSION['usuarioAdminRh'])) {
             require 'menu/menuPrincipal.php';
         ?>
-
+<script src="notification.js"></script>
             <script>
                 function reclutamiento() {
                     window.location.href = '';
