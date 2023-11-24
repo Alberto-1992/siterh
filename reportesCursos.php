@@ -29,7 +29,7 @@
         require_once 'clases/conexion.php';
         $conexionX = new ConexionRh();
 
-        $sql = $conexionX->prepare("SELECT id,nombrecurso,id_empleado,fechacriteriotermino,fechacriterioinicio,criteriocurso,fechainicio,fechatermino,modalidad,horas,asistecomo,nombreinstitucion,otroexpidedocumento,tipocapacitacion,documentorecibe, EXTRACT(YEAR 
+        $sql = $conexionX->prepare("SELECT id,nombrecurso,catalogoprograma,lineaestrategica,competenciaalieandaeje,id_empleado,fechacriteriotermino,fechacriterioinicio,criteriocurso,fechainicio,fechatermino,modalidad,horas,asistecomo,nombreinstitucion,otroexpidedocumento,tipocapacitacion,documentorecibe, EXTRACT(YEAR 
         FROM fechatermino) as anio from datos order by fechainicio desc");
         $sql->execute();
 
@@ -40,6 +40,9 @@
                 <tr>
                     <th>N° empleado</th>
                     <th>Año</th>
+                    <th>Programa</th>
+                    <th>Linea estrategica</th>
+                    <th>Competencia</th>
                     <th>Tipo de capacitacion</th>
                     <th>Nombre de la capacitación</th>
                     <th>Feha de inicio</th>
@@ -68,6 +71,9 @@
                     <tr>
                     <td><?php echo $dataRegistro['id_empleado'] ?></td>
                         <td><?php echo $dataRegistro['anio'] ?></td>
+                        <td><?php echo $dataRegistro['catalogoprograma'] ?></td>
+                        <td><?php echo $dataRegistro['lineaestrategica'] ?></td>
+                        <td><?php echo $dataRegistro['competenciaalieandaeje'] ?></td>
                         <td><?php echo $dataRegistro['tipocapacitacion'] ?></td>
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
                         <td><?php echo $dataRegistro['fechainicio'] ?></td>
@@ -94,6 +100,9 @@
                 <tr>
                 <th>N° empleado</th>
                     <th>Año</th>
+                    <th>Programa</th>
+                    <th>Linea estrategica</th>
+                    <th>Competencia</th>
                     <th>Institucion imparte</th>
                     <th>Nombre de la capacitación</th>
                     <th>Feha de inicio</th>

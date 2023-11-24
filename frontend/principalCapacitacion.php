@@ -265,7 +265,7 @@
                     </article>
                 
             <article class="card" id="validaciondocumentocapacitacion" onclick="busquedaReportes();">
-                <a href="reportesCursos">
+                <a href="reportesCursos" target="_black">
                     <hr id="hr6">
                     <i class="fa fa-search" aria-hidden="true" id="iconosdiv"></i>
                     <p>Busqueda</p>
