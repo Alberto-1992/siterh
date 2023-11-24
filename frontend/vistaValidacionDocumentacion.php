@@ -184,7 +184,7 @@ if ($validaacceso == 8) {
                         success: function(datos) {
                             $("#mensaje").html(datos);
                             //$("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
-                            let evento = $("#id_empleado").val();
+                            let evento = $("#busqueda").val();
                             let ob = {
                             evento: evento
                         };

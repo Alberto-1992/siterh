@@ -40,17 +40,17 @@
                 <tr>
                     <th>N° empleado</th>
                     <th>Año</th>
+                    <th>Tipo de capacitación</th>
+                    <th>Nombre del curso</th>
+                    <th>Horas</th>
+                    <th>Modalidad</th>
+                    <th>Feha de inicio</th>
+                    <th>Feha de termino</th>
+                    <th>Asiste como</th>
+                    <th>Documento recibe</th>
                     <th>Programa</th>
                     <th>Linea estrategica</th>
                     <th>Competencia</th>
-                    <th>Tipo de capacitacion</th>
-                    <th>Nombre de la capacitación</th>
-                    <th>Feha de inicio</th>
-                    <th>Feha de termino</th>
-                    <th>Modalidad</th>
-                    <th>Horas</th>
-                    <th>Asiste como</th>
-                    <th>Documento recibe</th>
                     <th>Tema en especifico</th>
                     <th>Vigencia inical</th>
                     <th>Vigencia final</th>
@@ -71,17 +71,17 @@
                     <tr>
                     <td><?php echo $dataRegistro['id_empleado'] ?></td>
                         <td><?php echo $dataRegistro['anio'] ?></td>
+                        <td><?php echo $dataRegistro['tipocapacitacion'] ?></td>
+                        <td><?php echo $dataRegistro['nombrecurso'] ?></td>
+                        <td><?php echo $dataRegistro['horas'] ?></td>
+                        <td><?php echo $dataRegistro['modalidad'] ?></td>
+                        <td><?php echo $dataRegistro['fechainicio'] ?></td>
+                        <td><?php echo $dataRegistro['fechatermino'] ?></td>
+                        <td><?php echo $dataRegistro['asistecomo'] ?></td>
+                        <td><?php echo $dataRegistro['documentorecibe'] ?></td>
                         <td><?php echo $dataRegistro['catalogoprograma'] ?></td>
                         <td><?php echo $dataRegistro['lineaestrategica'] ?></td>
                         <td><?php echo $dataRegistro['competenciaalieandaeje'] ?></td>
-                        <td><?php echo $dataRegistro['tipocapacitacion'] ?></td>
-                        <td><?php echo $dataRegistro['nombrecurso'] ?></td>
-                        <td><?php echo $dataRegistro['fechainicio'] ?></td>
-                        <td><?php echo $dataRegistro['fechatermino'] ?></td>
-                        <td><?php echo $dataRegistro['modalidad'] ?></td>
-                        <td><?php echo $dataRegistro['horas'] ?></td>
-                        <td><?php echo $dataRegistro['asistecomo'] ?></td>
-                        <td><?php echo $dataRegistro['documentorecibe'] ?></td>
                         <td><?php echo $dataRegistro['criteriocurso'] ?></td>
                         <td><?php echo $dataRegistro['fechacriterioinicio'] ?></td>
                         <td><?php echo $dataRegistro['fechacriteriotermino'] ?></td>
@@ -100,17 +100,17 @@
                 <tr>
                 <th>N° empleado</th>
                     <th>Año</th>
+                    <th>Tipo de capacitación</th>
+                    <th>Nombre del curso</th>
+                    <th>Horas</th>
+                    <th>Modalidad</th>
+                    <th>Feha de inicio</th>
+                    <th>Feha de termino</th>
+                    <th>Asiste como</th>
+                    <th>Documento recibe</th>
                     <th>Programa</th>
                     <th>Linea estrategica</th>
                     <th>Competencia</th>
-                    <th>Institucion imparte</th>
-                    <th>Nombre de la capacitación</th>
-                    <th>Feha de inicio</th>
-                    <th>Feha de termino</th>
-                    <th>Modalidad</th>
-                    <th>Horas</th>
-                    <th>Asiste como</th>
-                    <th>Documento recibe</th>
                     <th>Tema en especifico</th>
                     <th>Vigencia inical</th>
                     <th>Vigencia final</th>

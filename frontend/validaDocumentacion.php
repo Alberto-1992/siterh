@@ -22,11 +22,11 @@
 <body>
 <header class="headerinfarto">
         
-        <span id="cabecera">Validación documentos cursos.</span>
+        
         <?php
             include("notificaciones/conexion.php");
             ?>
-
+<!--
             <div class="demo-content">
                 <div id="notification-header">
                     <div style="position:relative">
@@ -43,8 +43,9 @@
 
 
         </div>
+                                                                                                                                        -->
     </header>
-    
+    <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);" style="width: 48vh; margin-top: -40px; margin-left: 60px; z-index: 999;">
     <div class="box1" >
     <?php 
     switch(true) {
@@ -80,7 +81,10 @@
             })
 
         </script>
-            <div id="tabla_resultadobus"></div>
+       
+            <div id="tabla_resultadobus">
+            
+            </div>
             <div id="tabla_resultado"></div>
         </div>
 <script>

@@ -47,13 +47,14 @@ $conexionX = new ConexionRh();
 	$q= $_POST['evento'];
 	$query=$conexionX->prepare("SELECT datos.id, datos.nombreempleado, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado WHERE
             id_empleado LIKE '%$q%' and validaautorizacion = 0 OR
+            nombrecurso LIKE '%$q%' and validaautorizacion = 0 OR
 		    nombreempleado LIKE '%$q%' and validaautorizacion = 0 OR
             DescripcionAdscripcion LIKE '%$q%' or
             DescripcionPuesto LIKE '%$q%' group by datos.id");
 }
         ?>
 <input type="hidden" id="totalregistro" value="<?php echo $total_registro; ?>">
-<ul class="nav nav-tabs" >
+<ul class="nav nav-tabs">
         <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link active" aria-current="page" href="#" style="color: red;">Total: <?php echo $total_registro; ?> </a>
             
@@ -71,7 +72,7 @@ $conexionX = new ConexionRh();
             </ul>
         </li>
 -->
-<input type="text" class="form-control col-md-12" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);">
+
     </ul>
     
     <hr id="hrinicial">
