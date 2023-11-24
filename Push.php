@@ -1,5 +1,5 @@
-<?php session_start();
-date_default_timezone_set("America/Lima");
+<?php
+date_default_timezone_set("America/Monterrey");
 class Push {
 	private $host  = 'localhost';
     private $user  = 'root';
