@@ -163,7 +163,6 @@ if ($validaacceso == 8) {
     </tr>
 </table>
 <form id="autorizacion" name="autorizacion">
-
     <script>
         $("#autorizacion").on("submit", function(e) {
                     e.preventDefault();
