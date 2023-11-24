@@ -28,7 +28,4 @@ $conexionX->rollBack();
 echo "<script>alert('something was wrong');
 window.history.back();</script>";
 }
-
-
-
 ?>
