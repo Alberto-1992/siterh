@@ -29,7 +29,7 @@ function showNotification() {
 						};
 						setTimeout(function(){
 							notifikasi.close();
-						}, 5000);
+						}, 9000);
 					};
 				} else {
 				}

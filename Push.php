@@ -36,7 +36,7 @@ class Push {
 	
 	
 	public function updateNotification($id) {		
-		$sqlUpdate = "UPDATE ".$this->notifTable." SET notif_loop = 1, publish_date=CURRENT_TIMESTAMP() WHERE id='$id'";
+		$sqlUpdate = "UPDATE ".$this->notifTable." SET notif_loop = 1 WHERE id=$id";
 		mysqli_query($this->dbConnect, $sqlUpdate);
 	}	
 }

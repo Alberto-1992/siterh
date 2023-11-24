@@ -6,10 +6,9 @@ $rows=array();
 $notifList = $push->listNotificationUser($_SESSION['usuarioAdminRh']); 
 $record = 0;
 foreach ($notifList as $key) {
- $data['title'] = $key['nombrecurso'];
- $data['msg'] = $key['id_empleado'];
+ $data['title'] = $key['nombreempleado'].' A cargado un: '.$key['tipocapacitacion'].' llamado: ';
+ $data['msg'] = $key['nombrecurso'];
  $data['icon'] = 'images/avatar.png';
- $data['url'] = 'https://www.baulphp.com';
  $rows[] = $data;
  //$nextime = date('Y-m-d H:i:s',strtotime(date('Y-m-d H:i:s'))+($key['notif_repeat']*60));
  $push->updateNotification($key['id']);
