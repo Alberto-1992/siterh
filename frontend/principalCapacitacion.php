@@ -136,6 +136,7 @@
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) {
         include_once 'graficos/graficosCabeceraCapacitacion.php';
+        include_once 'graficos/graficosPiesCapacitacion.php';
 
         //require 'graficos/graficosCapturas.php';
     } else if (isset($_SESSION['usuarioDatos'])) {
@@ -272,9 +273,12 @@
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-                    <?php } ?>
-            <?php
-
+            
+                    <?php  } 
+               
+                
+            
+                    //require 'graficos/graficosCapturas.php';
         } else if (isset($_SESSION['usuarioDatos'])) {
             require 'menu/menuPersonal.php';
 
@@ -430,6 +434,7 @@
 <!--
     <?php
     if (isset($_SESSION['usuarioAdminRh'])) { ?>
+    
         <style>
             tfoot input {
                 width: 100%;
