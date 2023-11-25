@@ -287,11 +287,11 @@ chart.appear(1000, 100);
                 <?php
                 require 'conexionRh.php';
 
-                $sql1 = $conexionGrafico->query("SELECT distinct count(*) as valorq from datos where fechatermino like '%2021%'");
+                $sql1 = $conexionGrafico->query("SELECT count(distinct(id_empleado)) as valorq from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2021%'");
                 $row1 = mysqli_fetch_assoc($sql1);
-                $sql2 = $conexionGrafico->query("SELECT distinct count(*) as valorw from datos where fechatermino like '%2022%'");
+                $sql2 = $conexionGrafico->query("SELECT count(distinct(id_empleado)) as valorw from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2022%'");
                 $row2 = mysqli_fetch_assoc($sql2);
-                $sql3 = $conexionGrafico->query("SELECT distinct count(*) as valorr from datos where fechatermino like '%2023%'");
+                $sql3 = $conexionGrafico->query("SELECT count(distinct(id_empleado)) as valorr from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%'");
                 $row3 = mysqli_fetch_assoc($sql3);
                 
 
@@ -398,11 +398,11 @@ var datos = [
 <?php
 require 'conexionRh.php';
 
-$sql1 = $conexionGrafico->query("SELECT distinct count(*) as modalidad1 from datos where fechatermino like '%2021%'");
+$sql1 = $conexionGrafico->query("SELECT count(distinct(id_empleado)) as modalidad1 from datos where fechatermino like '%2021%'");
 $row1 = mysqli_fetch_assoc($sql1);
-$sql2 = $conexionGrafico->query("SELECT distinct count(*) as modalidad2 from datos where fechatermino like '%2022%'");
+$sql2 = $conexionGrafico->query("SELECT count(distinct(id_empleado)) as modalidad2 from datos where fechatermino like '%2022%'");
 $row2 = mysqli_fetch_assoc($sql2);
-$sql3 = $conexionGrafico->query("SELECT distinct count(*) as modalidad3 from datos where fechatermino like '%2023%'");
+$sql3 = $conexionGrafico->query("SELECT count(distinct(id_empleado)) as modalidad3 from datos where fechatermino like '%2023%'");
 $row3 = mysqli_fetch_assoc($sql3);
 
 
