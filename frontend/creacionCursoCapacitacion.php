@@ -394,7 +394,7 @@
                         <label>Todo personal</label>
                         <select name='mscancer3[]' id='mscancer3' class='form-control' multiple='multiple'>
                             <?php
-                            $prod = $conexionX->prepare("SELECT * FROM plantillahraei WHERE tipoPersonal is not null order by Empleado asc");
+                            $prod = $conexionX->prepare("SELECT * FROM plantillahraei order by Empleado asc");
                             $prod->execute();
                             $row = $prod->fetchAll();
                             foreach ($row as $valores) :

@@ -346,7 +346,7 @@ chart.appear(1000, 100);
 }
 </style>
 <div class="titulo">
-        <h2 style="font-size: 13px;">Numero total de participantes 2021-2023</h2>
+        <h2 style="font-size: 13px;">Numero total unico de participantes 2021-2023</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>

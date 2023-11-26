@@ -58,13 +58,13 @@
 }
 </style>
 <div class="titulo">
-        <h2 style="font-size: 13px;">TOTAL DE
+        <h2 style="font-size: 13px;">TOTAL CURSOS REALIZADOS POR
 SERVIDORES
 PÚBLICOS QUE
 PARTICIPARON EN
 ACCIONES DEL
 PROGRAMA ANUAL
-DE CAPACITACIÓN</h2>
+DE CAPACITACIÓN 2023</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -116,14 +116,14 @@ var datos = [
 <?php
 require 'conexionRh.php';
 
-$sql1 = $conexionGrafico->query("SELECT count(*) as modalidad1, plantillahraei.EstatusPlaza from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%' and plantillahraei.EstatusPlaza = 'B'");
+$sql1 = $conexionGrafico->query("SELECT count(id_empleado) as modalidad1, plantillahraei.EstatusPlaza from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%' and plantillahraei.EstatusPlaza = 'B'");
 $row1 = mysqli_fetch_assoc($sql1);
-$sql2 = $conexionGrafico->query("SELECT count(*) as modalidad2, plantillahraei.EstatusPlaza from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%' and plantillahraei.EstatusPlaza = 'CF'");
+$sql2 = $conexionGrafico->query("SELECT count(id_empleado) as modalidad2, plantillahraei.EstatusPlaza from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%' and plantillahraei.EstatusPlaza = 'CF'");
 $row2 = mysqli_fetch_assoc($sql2);
-$sql3 = $conexionGrafico->query("SELECT count(*) as modalidad3, plantillahraei.EstatusPlaza from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%' and plantillahraei.EstatusPlaza = 'PR'");
+$sql3 = $conexionGrafico->query("SELECT count(id_empleado) as modalidad3, plantillahraei.EstatusPlaza from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%' and plantillahraei.EstatusPlaza = 'PR'");
 $row3 = mysqli_fetch_assoc($sql3);
 
-$sql4 = $conexionGrafico->query("SELECT count(*) as modalidad4, plantillahraei.EstatusPlaza from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%' and plantillahraei.EstatusPlaza = 'EV'");
+$sql4 = $conexionGrafico->query("SELECT count(id_empleado) as modalidad4, plantillahraei.EstatusPlaza from datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.fechatermino like '%2023%' and plantillahraei.EstatusPlaza = 'EV'");
 $row4 = mysqli_fetch_assoc($sql4);
 
 //$total = $row4['total4'] + $row3['total3'] + $row2['total2'] + $row1['total1'];
@@ -245,7 +245,7 @@ QUE
 PARTICIPARON EN
 ACCIONES DEL
 PROGRAMA ANUAL
-DE CAPACITACIÓN</h2>
+DE CAPACITACIÓN 2023</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -419,7 +419,7 @@ chart.appear(1000, 100);
 }
 </style>
 <div class="titulo">
-        <h2 style="font-size: 13px;">Numero total de participantes 2021-2023</h2>
+        <h2 style="font-size: 13px;">Numero total de cursos realizados por participantes 2021-2023</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -471,11 +471,11 @@ var datos = [
 <?php
 require 'conexionRh.php';
 
-$sql1 = $conexionGrafico->query("SELECT distinct count(*) as modalidad1 from datos where fechatermino like '%2021%'");
+$sql1 = $conexionGrafico->query("SELECT count(*) as modalidad1 from datos where fechatermino like '%2021%'");
 $row1 = mysqli_fetch_assoc($sql1);
-$sql2 = $conexionGrafico->query("SELECT distinct count(*) as modalidad2 from datos where fechatermino like '%2022%'");
+$sql2 = $conexionGrafico->query("SELECT count(*) as modalidad2 from datos where fechatermino like '%2022%'");
 $row2 = mysqli_fetch_assoc($sql2);
-$sql3 = $conexionGrafico->query("SELECT distinct count(*) as modalidad3 from datos where fechatermino like '%2023%'");
+$sql3 = $conexionGrafico->query("SELECT count(*) as modalidad3 from datos where fechatermino like '%2023%'");
 $row3 = mysqli_fetch_assoc($sql3);
 
 

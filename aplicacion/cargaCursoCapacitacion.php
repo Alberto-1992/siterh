@@ -71,41 +71,33 @@ $Fechatermino         = date('Y-m-d', ($fecha_fin1));
             ':lugarevento'=>$LugarImparte,
             ':id_curso'=>$id
         ));
-    $mscancer;
-    if($mscancer == ''){
-    }else{
-    foreach($mscancer as $heredo) {
-        $sql = $conexionX->prepare("INSERT into personalcurso(id_empleado, id_curso) 
-        values(:id_empleado, :id_curso)");
-        $sql->execute(array(
-            ':id_empleado'=>$heredo,
-            ':id_curso'=>$id
-        ));
+if($mscancer != ''){
+            $arraymscancer = array_map("htmlspecialchars", $mscancer);
+            foreach ($arraymscancer as $clave => $mscancer) {
+                $mscancer = $arraymscancer[$clave];
+                $dato[] = '("'.$mscancer.'","'.$id.'")';
+                $sql = $conexionX->prepare("INSERT into personalcurso(id_empleado, id_curso) values" . implode(', ', $dato));
     }
+    $sql->execute();
 }
-    $mscancer2;
-    if($mscancer2 == ''){
-    }else{
-    foreach($mscancer2 as $heredo2) {
-        $sql = $conexionX->prepare("INSERT into personalcurso(id_empleado, id_curso) 
-        values(:id_empleado, :id_curso)");
-        $sql->execute(array(
-            ':id_empleado'=>$heredo2,
-            ':id_curso'=>$id
-        ));
-    }
+
+    if($mscancer2 != ''){
+        $arraymscancer2 = array_map("htmlspecialchars", $mscancer2);
+        foreach ($arraymscancer2 as $clave2 => $mscancer2) {
+            $mscancer2 = $arraymscancer2[$clave2];
+            $dato2[] = '("'.$mscancer2.'","'.$id.'")';
+            $sql = $conexionX->prepare("INSERT into personalcurso(id_empleado, id_curso) values" . implode(', ', $dato2));
 }
-$mscancer3;
-if($mscancer3 == ''){
-}else{
-foreach($mscancer3 as $heredo3) {
-    $sql = $conexionX->prepare("INSERT into personalcurso(id_empleado, id_curso) 
-    values(:id_empleado, :id_curso)");
-    $sql->execute(array(
-        ':id_empleado'=>$heredo3,
-        ':id_curso'=>$id
-    ));
+$sql->execute();
 }
+if($mscancer3 != ''){
+    $arraymscancer3 = array_map("htmlspecialchars", $mscancer3);
+    foreach ($arraymscancer3 as $clave3 => $mscancer3) {
+        $mscancer3 = $arraymscancer3[$clave3];
+        $dato3[] = '("'.$mscancer3.'","'.$id.'")';
+        $sql = $conexionX->prepare("INSERT into personalcurso(id_empleado, id_curso) values" . implode(', ', $dato3));
+}
+$sql->execute();
 }
     $validatransac = $conexionX->commit();
 
