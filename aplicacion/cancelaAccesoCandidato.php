@@ -16,59 +16,12 @@ $hora = date("Y-m-d h:i:sa");
         ':id_datopersonal'=>$id
     ));
     $compdomicilio = 'documentocurp';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador ;
+    $ar = '../../talent/documentos/'.$id ;
     foreach(glob($ar."/*.*") as $archivos_carpeta) 
     { 
      unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
     }
-    $compdomicilio = 'comprobantedomicilio';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador ;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-    { 
-     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
-    }
-    $compdomicilio = 'comprobante media superior';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador ;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-    { 
-     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
-    }
-    $compdomicilio = 'comprobante superior';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador ;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-    { 
-     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
-    }
-    $compdomicilio = 'cedula superior';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-    { 
-     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
-    }
-    $compdomicilio = 'comprobante maestria';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-    { 
-     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
-    }
-    $compdomicilio = 'cedula maestria';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-    { 
-     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
-    }
-    $compdomicilio = 'comprobante maestria dos';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-    { 
-     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
-    }
-    $compdomicilio = 'cedula maestria dos';
-    $ar = '../../reestructuracionpaginawebhraei/documentos/'.$compdomicilio.$identificador;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-    { 
-     unlink($archivos_carpeta);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
-    }
+    
     $validatransac = $conexion->commit();
 
     if ($validatransac != false) {

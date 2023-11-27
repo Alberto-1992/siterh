@@ -280,7 +280,8 @@
         require_once 'clases/conexion.php';
         $conexionX = new ConexionRh();
 
-        $sql = $conexionX->prepare("SELECT * from datos where id_empleado = $identificador and validaautorizacion = 1 order by id desc");
+        $sql = $conexionX->prepare("SELECT id,nombrecurso,catalogoprograma,lineaestrategica,competenciaalieandaeje,id_empleado,fechacriteriotermino,fechacriterioinicio,criteriocurso,fechainicio,fechatermino,modalidad,horas,asistecomo,nombreinstitucion,otroexpidedocumento,tipocapacitacion,documentorecibe, EXTRACT(YEAR 
+        FROM fechatermino) as anio from datos where id_empleado = $identificador and validaautorizacion = 1 order by id desc");
         $sql->execute();
 
         ?>
@@ -288,12 +289,14 @@
         <table id="example" class="table table-striped table-bordered nowrap table-darkgray table-hover">
             <thead>
                 <tr>
-                    <th>Institucion imparte</th>
-                    <th>Nombre institucion</th>
+                    <th>Año</th>
                     <th>Tipo de capacitacion</th>
-                    <th>Nombre de la capacitación</th>>
+                    <th>Nombre de la capacitación</th>
+                    <th>Horas</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
+                    <th>Impartido por el HRAEI</th>
+                    <th>Nombre institucion externo</th>
                     <th>Ver documento</th>
                     <th>Documento recibe</th>
                 </tr>
@@ -307,12 +310,14 @@
                     $id_empleado = $dataRegistro['id_empleado'];
                 ?>
                     <tr>
-                        <td><?php echo $dataRegistro['nombreinstitucion'] ?></td>
-                        <td><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
+                        <td><?php echo $dataRegistro['anio'] ?></td>
                         <td><?php echo $dataRegistro['tipocapacitacion'] ?></td>
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
+                        <td><?php echo $dataRegistro['horas'] ?></td>
                         <td><?php echo $dataRegistro['fechainicio'] ?></td>
                         <td><?php echo $dataRegistro['fechatermino'] ?></td>
+                        <td><?php echo $dataRegistro['nombreinstitucion'] ?></td>
+                        <td><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
                         <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
                         <td><?php echo $dataRegistro['documentorecibe'] ?></td>
 
@@ -324,12 +329,14 @@
 
             <tfoot>
                 <tr>
-                    <th>Institucion imparte</th>
-                    <th>Nombre institucion</th>
+                <th>Año</th>
                     <th>Tipo de capacitacion</th>
                     <th>Nombre de la capacitación</th>
+                    <th>Horas</th>
                     <th>Feha de inicio</th>
                     <th>Feha de termino</th>
+                    <th>Impartido por el HRAEI</th>
+                    <th>Nombre institucion externo</th>
                     <th>Ver documento</th>
                     <th>Documento recibe</th>
 
