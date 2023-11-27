@@ -23,7 +23,39 @@
         <span id="cabecera">Capacitación</span>
 
     </header>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        #closeWindow {
+            background: yellow;
+            color: white;
+            text-align: center;
+        }
+        #export {
+            background: green;
+            color: white;
+            text-align: center;
+        }
+        #closeWindow:hover {
+            background: white;
+            color: black;
+        }
+        #export:hover {
+            background: white;
+            color: black;
+        }
+    </style>
+
 <div style="width: 100%; height: 92vh; resize: horizontal; overflow-x:scroll; margin-top: 15px; padding: 15px;">
+<div style="width: 100%; height: auto; display: flex; justify-content:center; align-items: center; padding: 10px;">
+<div class="col-md-1">
+    <a href="principalRh" class="form-control" id="closeWindow">Cerrar vista</a>
+</div>&nbsp;
+<div class="col-md-1">
+    <a href="reporteCapacitacion" class="form-control" id="export">Exportar Reporte</a>
+</div>
+</div>
         <?php session_start();
         error_reporting(0);
         require_once 'clases/conexion.php';
