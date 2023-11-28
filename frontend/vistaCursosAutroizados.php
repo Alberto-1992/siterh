@@ -62,9 +62,16 @@ require 'conexionRh.php';
 
     function denegarAutorizacion() {
         var id = $("#id").val();
-        var mensaje = confirm("El curso sera autorizado");
+        let year = $("#year").val();
+        let programa = $("#programa").val();
+        let lineaestrategica2 = $("#lineaestrategica").val();
+        let competencia = $("#competencia").val();
+        let id_empleado = $("#id_empleado").val();
+        let nombreaeliminar = $("#nombreaeliminar").val();
+        
+        var mensaje = confirm("La autorización sera eliminada");
         let parametros = {
-            id: id
+            id: id, year:year, programa:programa, lineaestrategica2:lineaestrategica2, competencia:competencia, id_empleado:id_empleado, nombreaeliminar:nombreaeliminar
         }
         if (mensaje == true) {
             $.ajax({
@@ -108,56 +115,89 @@ while ($dataRegistro = $query->fetch()) {
     <input type="hidden" id="fechatermino" value="<?php echo $dataRegistro['fechatermino']; ?>">
     <input type="hidden" id="id_empleado" value="<?php echo $dataRegistro['id_empleado']; ?>">
 
+    <input type="hidden" id="year" value="<?php echo $dataRegistro['anio']; ?>">
+    <input type="hidden" id="programa" value="<?php echo $dataRegistro['catalogoprograma']; ?>">
+    <input type="hidden" id="lineaestrategica" value="<?php echo $dataRegistro['lineaestrategica']; ?>">
+    <input type="hidden" id="competencia" value="<?php echo $dataRegistro['competenciaalieandaeje']; ?>">
+
     <table class="table table-responsive  table-bordered " cellspacing="0" width="100%">
         <div class="containerr2">Datos del curso</div>
+    <tr>
+        <th id="th">Año:</th>
+        <td id="td"><?php echo $dataRegistro['anio'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Programa:</th>
+        <td id="td"><?php echo $dataRegistro['catalogoprograma'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Linea estrategica:</th>
+        <td id="td"><?php echo $dataRegistro['lineaestrategica'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Competencia:</th>
+        <td id="td"><?php echo $dataRegistro['competenciaalieandaeje'] ?></td>
+    </tr>
         <tr>
-            <th id="th">Id empleado:</th>
-            <td id="td"><?php echo $dataRegistro['id_empleado'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Nombre empleado:</th>
-            <td id="td"><?php echo $dataRegistro['nombreempleado'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Tipo de capacitacion:</th>
-            <td id="td"><?php echo $dataRegistro['tipocapacitacion'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Fecha de inicio del curso:</th>
-            <td id="td"><?php echo $dataRegistro['fechainicio'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Fecha de termino del curso:</th>
-            <td id="td"><?php echo $dataRegistro['fechatermino'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Modalidad:</th>
-            <td id="td"><?php echo $dataRegistro['modalidad'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Total de horas:</th>
-            <td id="td"><?php echo $dataRegistro['horas'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Documento que recibe:</th>
-            <td id="td"><?php echo $dataRegistro['documentorecibe'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Asiste como:</th>
-            <td id="td"><?php echo $dataRegistro['asistecomo'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Nombre del curso:</th>
-            <td id="td"><?php echo $dataRegistro['nombrecurso'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Nombre de la institución que lo expide:</th>
-            <td id="td"><?php echo $dataRegistro['nombreinstitucion'] ?></td>
-        </tr>
-        <tr>
-            <th id="th">Especifique cual:</th>
-            <td id="td"><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
-        </tr>
+        <th id="th">Id empleado:</th>
+        <td id="td"><?php echo $dataRegistro['id_empleado'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Nombre empleado:</th>
+        <td id="td"><?php echo $dataRegistro['nombreempleado'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Tipo de capacitacion:</th>
+        <td id="td"><?php echo $dataRegistro['tipocapacitacion'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha de inicio del curso:</th>
+        <td id="td"><?php echo $dataRegistro['fechainicio'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha de termino del curso:</th>
+        <td id="td"><?php echo $dataRegistro['fechatermino'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Modalidad:</th>
+        <td id="td"><?php echo $dataRegistro['modalidad'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Total de horas:</th>
+        <td id="td"><?php echo $dataRegistro['horas'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Documento que recibe:</th>
+        <td id="td"><?php echo $dataRegistro['documentorecibe'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Asiste como:</th>
+        <td id="td"><?php echo $dataRegistro['asistecomo'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Nombre del curso:</th>
+        <td id="td" style="color: red;"><?php echo $dataRegistro['nombrecurso'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Nombre de la institución que lo expide:</th>
+        <td id="td"><?php echo $dataRegistro['nombreinstitucion'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Especifique cual:</th>
+        <td id="td"><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">¿El curso pertenece a alguno de los siguientes temas?:</th>
+        <td id="td"><?php echo $dataRegistro['criteriocurso'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha vigencia inicio:</th>
+        <td id="td"><?php echo $dataRegistro['fechacriterioinicio'] ?></td>
+    </tr>
+    <tr>
+        <th id="th">Fecha vigencia final:</th>
+        <td id="td"><?php echo $dataRegistro['fechacriteriotermino'] ?></td>
+    </tr>
         </table>
         <br>
         
@@ -177,12 +217,29 @@ while ($dataRegistro = $query->fetch()) {
                 }
             }
             ?>
-
+<div class="col-md-3">
+    <?php
+    $nombrecurso = $dataRegistro['nombrecurso'];
+    $fechafinal = $dataRegistro['fechatermino'];
+    $idempleado = $dataRegistro['id_empleado'];
+    $path = "documentoscursos/" . $nombrecurso . $fechafinal . $idempleado;
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
+                echo "<input type='hidden' class='form-control' name='' value='documentoscursos/$nombrecurso$fechafinal$idempleado'>";
+                echo "<input type='text' class='form-control' name='nombreaeliminar' id='nombreaeliminar' value='$idempleado$archivo'>";
+            }
+        }
+    }
+    ?>
+</div>
     <?php
 }
     ?>
     <br>
-
+    
     <!--
     <script>
         $(document).ready(function() {

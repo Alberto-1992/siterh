@@ -20,6 +20,17 @@ $sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautoriz
     ));
 
     $validatransac = $conexionX->commit();
+    $year = $_POST['year']; 
+    $programa = $_POST['programa'];
+    $lineaestrategica2 = $_POST['lineaestrategica2'];
+    $competencia = $_POST['competencia'];
+    $id_empleado = $_POST['id_empleado'];
+    $file = $_POST['nombreaeliminar'];
+    $ar = '../'.$year.'/'.$programa.'/'.$lineaestrategica2.'/'.$competencia.'/'.$file;
+   
+     unlink($ar);     // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    
+    
 
     if($validatransac != false){
         echo "<script>Swal.fire({
