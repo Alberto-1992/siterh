@@ -16,12 +16,13 @@
 <body>
 <form name="edicionDocumentacion" id="edicionDocumentacion" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
             <script>
+                
                 $("#edicionDocumentacion").on("submit", function(e) {
                     e.preventDefault();
                     var formData = new FormData(document.getElementById("edicionDocumentacion"));
                     formData.append("dato", "valor");
                     $.ajax({
-                        url: "notificaciones/editarCursoEmpleado.php",
+                        url: "editarCursoEmpleado.php",
                         type: "post",
                         dataType: "html",
                         data: formData,
@@ -58,6 +59,7 @@
 
                     })
                 })
+                
             </script>
             <div class="form-row">
         <div style="width: 100%; height: auto; background-color:  #464949; ">
@@ -263,8 +265,8 @@ $(function () {
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-                echo "<input type='text' class='form-control' name='documentoaeditar' value='$nombrecurso$fechafinal$idempleado' />";
-                echo "<input type='text' class='form-control' name='nombreaeditar' value='$archivo' />";
+                echo "<input type='text' class='form-control' name='documentoaeditar' value='documentoscursos/$nombrecurso$fechafinal$idempleado'>";
+                echo "<input type='text' class='form-control' name='nombreaeditar' value='$archivo'>";
             }
         }
     }

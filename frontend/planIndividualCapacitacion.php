@@ -319,14 +319,16 @@
                         <td><?php echo $dataRegistro['nombreinstitucion'] ?></td>
                         <td><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
                         <td><?php
-    $path = "documentoscursos/" . $nombrecurso . $fechatermino . $id_empleado;
+    $path = "documentoscursos/".$nombrecurso.$fechatermino.$id_empleado;
     if (file_exists($path)) {
         $directorio = opendir($path);
-        $archivo = readdir($directorio);
+        while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
                 echo "<a href='documentoscursos/$nombrecurso$fechatermino$id_empleado/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Documento cargado</a>";
             }
         }
+    }
     
     ?></td>
                         <td><?php echo $dataRegistro['documentorecibe'] ?></td>

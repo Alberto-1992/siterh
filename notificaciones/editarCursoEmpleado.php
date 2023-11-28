@@ -1,8 +1,9 @@
 <?php session_start();
 error_reporting(0);
-	require_once '../clases/conexion.php';
+	require_once 'clases/conexion.php';
     $conexionX = new ConexionRh();
 	$count=0;
+    
 	extract($_POST);
 		
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -36,26 +37,29 @@ error_reporting(0);
                     ':fechacriteriotermino'=>$fechaterminocriterio,
                     ':id'=>$id
                 ));
+                
 if($_FILES["documentocurso"]['name'] == null){
-    
+   
     $nombrecurso = $_POST["nombrecurso"].$_POST["fechatermino"];
     $curso = $_POST["nombrecurso"].'.pdf';
-    $rutaAnterior = $_POST['documentoaeditar'];
-    $ruta = $nombrecurso.$id_empleado;
-    $cursos = $_POST['nombreaeditar'];
-   
-        rename("../documentoscursos/$rutaAnterior/$cursos", "../documentoscursos/$ruta/$curso");
+    $cursos = $_POST["nombreaeditar"];
+    $rutaAnterior = $_POST["documentoaeditar"];
+    $rutaAc = $rutaAnterior;
+    $ruta = "documentoscursos/".$nombrecurso.$id_empleado;
     
+    
+       rename("$rutaAnterior", "$ruta");
+          
 }else{
         if ($_FILES["documentocurso"]["error"] > 0) {
             
         } else {
-        
+            $rutaAnterior = $_POST["documentoaeditar"];
             $permitidos = array("application/pdf");
                 $nombrecurso = $_POST["nombrecurso"].$_POST["fechatermino"];
             if (in_array($_FILES["documentocurso"]["type"], $permitidos) && $_FILES["documentocurso"]["size"]) {
         
-                $ruta = '../documentoscursos/'.$nombrecurso.$id_empleado.'/';
+                $ruta = 'documentoscursos/'.$nombrecurso.$id_empleado.'/';
                 $archivo = $ruta . $_FILES["documentocurso"]["name"] = $_POST["nombrecurso"].'.pdf';
         
         
@@ -66,14 +70,17 @@ if($_FILES["documentocurso"]['name'] == null){
                 if (!file_exists($archivo)) {
         
                     $resultado = @move_uploaded_file($_FILES["documentocurso"]["tmp_name"], $archivo);
-        
+                    
                 }else{
                     $resultado = @move_uploaded_file($_FILES["documentocurso"]["tmp_name"], $archivo);
+                    
                 }
             }
+      
+   
         }
 }
-
+    
 $validatransaccion = $conexionX->commit();
 	if($validatransaccion != false){
         echo "<script>Swal.fire({
@@ -91,6 +98,8 @@ $validatransaccion = $conexionX->commit();
             title: 'Error al enviar tus datos',
             showConfirmButton: false,
             timer: 1500
+        
         })</script>";
     }
+    
 ?>
