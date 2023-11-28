@@ -400,8 +400,8 @@ $nombrecurso = $dataRegistro['nombrecurso'];
             <strong style="font-size: 12px;">Catalogo de programas</strong>
             <select class="form-control" id="catalogoprogramas" name="catalogoprogramas" required>
                 <option value="">Seleccione</option>
-                <option value="PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
-                <option value="MODELO UNICO DE EVALUACION DE LA CALIDAD(MUEC)">MÓDELO UNICO DE EVALUACIÓN DE LA CALIDAD(MUEC)</option>
+                <option value="PROGRAMA CAPACITACION ADMINISTRATIVO GERENCIAL PAC MIR">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
+                <option value="MODELO UNICO DE EVALUACION DE LA CALIDAD MUEC">MÓDELO UNICO DE EVALUACIÓN DE LA CALIDAD(MUEC)</option>
                 <option value="PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH">PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH</option>
                 <option value="PROGRAMA DE EDUCACION CONTINUA">PROGRAMA DE EDUCACION CONTINUA</option>
                 <option value="INDIVIDUAL">INDIVIDUAL</option>
@@ -453,8 +453,8 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                 <select class="form-control" id="competencias" name="competencias">
                     <option value="">Seleccione</option>
                     <option value="HERRAMIENTAS DE COMPUTO">HERRAMIENTAS DE COMPUTO</option>
-                    <option value="BÁSICAS/COGNOSCITIVAS">BÁSICAS/COGNOSCITIVAS</option>
-                    <option value="BÁSICAS/EFICACIA PERSONAL">BÁSICAS/EFICACIA PERSONAL</option>
+                    <option value="BÁSICAS COGNOSCITIVAS">BÁSICAS/COGNOSCITIVAS</option>
+                    <option value="BÁSICAS EFICACIA PERSONAL">BÁSICAS/EFICACIA PERSONAL</option>
                     <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
                     <option value="GESTION DE MANDO INSTITUCIONAL">GESTION DE MANDO INSTITUCIONAL</option>
                 </select>

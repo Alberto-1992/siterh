@@ -39,13 +39,13 @@ error_reporting(0);
 if($_FILES["documentocurso"]['name'] == null){
     
     $nombrecurso = $_POST["nombrecurso"].$_POST["fechatermino"];
-            $curso = $_POST["nombrecurso"];
-            $rutaAnterior = $_POST['documentoaeditar'];
-            $ruta = '../documentoscursos/'.$nombrecurso.$id_empleado;
-            
-            if (file_exists('../'.$rutaAnterior)) {
-                rename ("../$rutaAnterior", "$ruta");
-            }
+    $curso = $_POST["nombrecurso"].'.pdf';
+    $rutaAnterior = $_POST['documentoaeditar'];
+    $ruta = $nombrecurso.$id_empleado;
+    $cursos = $_POST['nombreaeditar'];
+   
+        rename("../documentoscursos/$rutaAnterior/$cursos", "../documentoscursos/$ruta/$curso");
+    
 }else{
         if ($_FILES["documentocurso"]["error"] > 0) {
             

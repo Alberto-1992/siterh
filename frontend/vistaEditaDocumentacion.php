@@ -148,18 +148,16 @@ $(function () {
                         <strong>¿El curso pertenece a alguno de los siguientes temas?</strong>
                         <select type="form-select" class="form-control" name="criteriocurso" id="criteriocurso" required>
                             <option value="<?php echo $dataRegistro['criteriocurso'] ?>"><?php echo $dataRegistro['criteriocurso'] ?></option>
-                            <option value="No, ninguna">No, ninguna</option>
 
                             <?php
-                            $query = $conexionX->prepare("SELECT * FROM criterioscursos order by nombrecriterio" );
-                            $query->execute();
-                            $data = $query->fetchAll();
 
-                            foreach ($data as $valores) :
-                                echo '<option value="' . $valores["nombrecriterio"] . '">' . $valores["nombrecriterio"] . '</option>';
-                            endforeach;
-
-                            ?>
+                        $query = $conexionX->prepare("SELECT * FROM muec ");
+                        $query->execute();
+                        $query->setFetchMode(PDO::FETCH_ASSOC);
+                        while ($row = $query->fetch()) { ?>
+                            <option value="<?php echo $row['descripcionmuec']; ?>">
+                                <?php echo $row['descripcionmuec']; ?></option>
+                        <?php } ?>
 
                         </select>
                     </div>
@@ -265,7 +263,8 @@ $(function () {
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-                echo "<input type='text' class='form-control' name='documentoaeditar' value='documentoscursos/$nombrecurso$fechafinal$idempleado' />";
+                echo "<input type='text' class='form-control' name='documentoaeditar' value='$nombrecurso$fechafinal$idempleado' />";
+                echo "<input type='text' class='form-control' name='nombreaeditar' value='$archivo' />";
             }
         }
     }

@@ -318,9 +318,18 @@
                         <td><?php echo $dataRegistro['fechatermino'] ?></td>
                         <td><?php echo $dataRegistro['nombreinstitucion'] ?></td>
                         <td><?php echo $dataRegistro['otroexpidedocumento'] ?></td>
-                        <td><a href="<?php echo "documentoscursos/$nombrecurso$fechatermino$id_empleado/$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
+                        <td><?php
+    $path = "documentoscursos/" . $nombrecurso . $fechatermino . $id_empleado;
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<a href='documentoscursos/$nombrecurso$fechatermino$id_empleado/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Documento cargado</a>";
+            }
+        }
+    
+    ?></td>
                         <td><?php echo $dataRegistro['documentorecibe'] ?></td>
-
                     </tr>
                 <?php
                 }
@@ -343,6 +352,7 @@
                 </tr>
             </tfoot>
         </table>
+        
         <script>
             new DataTable('#example', {
                 initComplete: function() {
