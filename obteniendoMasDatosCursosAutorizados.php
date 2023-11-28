@@ -23,13 +23,13 @@ $utimoId = $_POST['utimoId'];
 $limite  = 10;
 require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
-$sqlQueryComentarios  = $conexionX->prepare("SELECT Nombre, Empleado,puDescripcion,RFC FROM plantillahraei");
-$sqlQueryComentarios->execute();
-$sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
-$sqlQueryComentarios->execute();
-$total_registro = $sqlQueryComentarios->fetchColumn();
+$sqlQueryComentarios  = $conexionX->prepare("SELECT id FROM datos where validaautorizacion = 1");
+    $sqlQueryComentarios->execute();
+    $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
+    $sqlQueryComentarios->execute();
+    $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT Nombre, Empleado,puDescripcion,RFC FROM plantillahraei WHERE plantillahraei.Empleado < $utimoId ORDER BY plantillahraei.Empleado  DESC LIMIT $limite");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.id < $utimoId ORDER BY datos.id  DESC LIMIT $limite");
     $query->execute();
 	?>
 
@@ -37,11 +37,11 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
         while($dataRegistro= $query->fetch())
         { ?>
 
-    <div class="item-comentario" id="<?php echo $dataRegistro['Empleado']; ?>">
+    <div class="item-comentario" id="<?php echo $dataRegistro['id']; ?>">
 
         
-            <div id="<?php echo $dataRegistro['Empleado'] ?>" class="ver-info" style="cursor: pointer;">
-            <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['Nombre'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['RFC'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['Empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['puDescripcion'].'</strong>';
+            <div id="<?php echo $dataRegistro['id'] ?>" class="ver-info" style="cursor: pointer;">
+            <?php echo '<strong style="font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombrecurso'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['nombreempleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['id_empleado'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong><br>'.'<strong style="font-size: 10px; color: red; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
                     
                     ?>
         </div>
