@@ -144,13 +144,26 @@
                             }
                         })
                     });
+                    function check(e) {
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8 || tecla == 32) {
+        return true;
+    }
+
+    // Patrón de entrada, en este caso solo acepta numeros y letras
+    patron = /[A-Za-z0-9]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
                 </script>
 
                 <input type="hidden" class="form-control" name="areafortalece" id="areafortalece" required readonly>
 
                 <div class="col-md-6">
                     <label for="mensaje">Nombre del curso:</label>
-                    <input type="text" class="form-control" name="nombrecurso" id="nombrecurso" placeholder="Nombre del curso" required>
+                    <input type="text" class="form-control" name="nombrecurso" id="nombrecurso" placeholder="Max 100 caracteres, no se permiten caracteres especiales como'.,:-_?'" required maxlength="100" onkeypress="return check(event)">
                 </div>
                 <div class="col-md-3">
                     <label for="mensaje">Fecha de inicio del curso:</label>
