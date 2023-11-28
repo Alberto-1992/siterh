@@ -40,7 +40,7 @@ $conexionX = new ConexionRh();
     $empleado->execute();
     $total_empleado = $empleado->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where validaautorizacion = 1 order by datos.id DESC LIMIT 50 ");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where validaautorizacion = 1 order by datos.id DESC LIMIT 30 ");
     if(isset($_POST['evento']))
 {
 	$q= $_POST['evento'];
