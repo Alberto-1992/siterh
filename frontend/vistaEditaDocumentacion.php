@@ -172,7 +172,11 @@ $(function () {
                     <strong for="mensaje">Fecha vigencia final:</strong>
                     <input type="date" class="form-control" name="fechaterminocriterio" id="fechaterminocriterio" value="<?php echo $dataRegistro['fechacriteriotermino'] ?>">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    <label for="mensaje">Calificación:</label>
+                    <input type="number" step="any" class="form-control" name="calificacion" id="calificacion" value="<?php echo $dataRegistro['calificacion'] ?>">
+                </div>
+                <div class="col-md-2">
                         <label>Modalidad</label>
                         <select type="form-select" class="form-control" name="modalidad" id="modalidad" required>
                             <option selected value="<?php echo $dataRegistro['modalidad'] ?>"><?php echo $dataRegistro['modalidad'] ?></option>
@@ -190,7 +194,7 @@ $(function () {
 
                         </select>
                     </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="mensaje">Total de horas:</label>
                     <input type="text" class="form-control" name="horas" id="horas" required value="<?php echo $dataRegistro['horas'] ?>">
                 </div>
@@ -242,7 +246,7 @@ $(function () {
                             }
                     })
                 </script>
-                <div class="col-md-9">
+                <div class="col-md-3">
                     <label for="autor">Nombre la institución que lo expide:</label>
                     <select class="form-control" name="nombreinstitucion" id="nombreinstitucion" placeholder="Institución" required>
                         <option value="<?php echo $dataRegistro['nombreinstitucion'] ?>"><?php echo $dataRegistro['nombreinstitucion'] ?></option>

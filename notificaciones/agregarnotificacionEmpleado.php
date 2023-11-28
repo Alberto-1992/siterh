@@ -16,8 +16,8 @@ error_reporting(0);
     $row = $sqlvalida->fetch();
         $capacitacion = $row['descripcionaccion'];
 
-		$sql = $conexionX->prepare("INSERT INTO datos (id_empleado,nombreinstitucion,nombrecurso,fechainicio,fechatermino,areaquefortalece,modalidad,documentorecibe,tipocapacitacion,horas,asistecomo,otroexpidedocumento,nombreempleado,criteriocurso,fechacriterioinicio,fechacriteriotermino) 
-        VALUES(:id_empleado,:nombreinstitucion,:nombrecurso,:fechainicio,:fechatermino,:areaquefortalece,:modalidad,:documentorecibe,:tipocapacitacion,:horas,:asistecomo,:otroexpidedocumento,:nombreempleado,:criteriocurso,:fechacriterioinicio,:fechacriteriotermino)");
+		$sql = $conexionX->prepare("INSERT INTO datos (id_empleado,nombreinstitucion,nombrecurso,fechainicio,fechatermino,areaquefortalece,modalidad,documentorecibe,tipocapacitacion,horas,asistecomo,otroexpidedocumento,nombreempleado,criteriocurso,fechacriterioinicio,fechacriteriotermino,calificacion) 
+        VALUES(:id_empleado,:nombreinstitucion,:nombrecurso,:fechainicio,:fechatermino,:areaquefortalece,:modalidad,:documentorecibe,:tipocapacitacion,:horas,:asistecomo,:otroexpidedocumento,:nombreempleado,:criteriocurso,:fechacriterioinicio,:fechacriteriotermino,:calificacion)");
                 $sql->execute(array(
                     ':id_empleado'=>$id_empleado,
                     ':nombreinstitucion'=>$nombreinstitucion,
@@ -34,7 +34,8 @@ error_reporting(0);
                     ':nombreempleado'=>$nombreempleado,
                     ':criteriocurso'=>$criteriocurso,
                     ':fechacriterioinicio'=>$fechainiciocriterio,
-                    ':fechacriteriotermino'=>$fechaterminocriterio
+                    ':fechacriteriotermino'=>$fechaterminocriterio,
+                    ':calificacion'=>$calificacion
                 ));
 
         if ($_FILES["documentocurso"]["error"] > 0) {

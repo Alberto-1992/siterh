@@ -167,6 +167,10 @@ while ($dataRegistro = $query->fetch()) {
         <td id="td"><?php echo $dataRegistro['horas'] ?></td>
     </tr>
     <tr>
+        <th id="th">Calificación:</th>
+        <td id="td"><?php echo $dataRegistro['calificacion'] ?></td>
+    </tr>
+    <tr>
         <th id="th">Documento que recibe:</th>
         <td id="td"><?php echo $dataRegistro['documentorecibe'] ?></td>
     </tr>

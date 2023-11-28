@@ -19,7 +19,7 @@ error_reporting(0);
 
 		$sql = $conexionX->prepare("UPDATE datos set nombreinstitucion=:nombreinstitucion,nombrecurso=:nombrecurso,fechainicio=:fechainicio,fechatermino=:fechatermino,areaquefortalece=:areaquefortalece,
         modalidad=:modalidad,documentorecibe=:documentorecibe,tipocapacitacion=:tipocapacitacion,horas=:horas,asistecomo=:asistecomo,otroexpidedocumento=:otroexpidedocumento,
-        criteriocurso=:criteriocurso,fechacriterioinicio=:fechacriterioinicio,fechacriteriotermino=:fechacriteriotermino where id = :id"); 
+        criteriocurso=:criteriocurso,fechacriterioinicio=:fechacriterioinicio,fechacriteriotermino=:fechacriteriotermino, calificacion=:calificacion where id = :id"); 
                 $sql->execute(array(
                     ':nombreinstitucion'=>$nombreinstitucion,
                     ':nombrecurso'=>$nombrecurso,
@@ -35,6 +35,7 @@ error_reporting(0);
                     ':criteriocurso'=>$criteriocurso,
                     ':fechacriterioinicio'=>$fechainiciocriterio,
                     ':fechacriteriotermino'=>$fechaterminocriterio,
+                    ':calificacion'=>$calificacion,
                     ':id'=>$id
                 ));
                 

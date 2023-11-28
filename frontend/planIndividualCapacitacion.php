@@ -197,7 +197,7 @@
                     <strong for="mensaje">Fecha vigencia final:</strong>
                     <input type="date" class="form-control" name="fechaterminocriterio" id="fechaterminocriterio">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label>Modalidad</label>
                     <select type="form-select" class="form-control" name="modalidad" id="modalidad" required>
                         <option selected disabled value="">Seleccione</option>
@@ -215,9 +215,13 @@
 
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <label for="mensaje">Total de horas:</label>
                     <input type="number" class="form-control" name="horas" id="horas" required>
+                </div>
+                <div class="col-md-2">
+                    <label for="mensaje">Calificación:</label>
+                    <input type="number" step="any" class="form-control" name="calificacion" id="calificacion">
                 </div>
 
                 <div class="col-md-3">
