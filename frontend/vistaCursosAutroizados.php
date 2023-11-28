@@ -229,7 +229,7 @@ while ($dataRegistro = $query->fetch()) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
                 echo "<input type='hidden' class='form-control' name='' value='documentoscursos/$nombrecurso$fechafinal$idempleado'>";
-                echo "<input type='text' class='form-control' name='nombreaeliminar' id='nombreaeliminar' value='$idempleado$archivo'>";
+                echo "<input type='hidden' class='form-control' name='nombreaeliminar' id='nombreaeliminar' value='$idempleado$archivo'>";
             }
         }
     }
