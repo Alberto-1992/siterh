@@ -29,7 +29,7 @@ $sqlQueryComentarios  = $conexionX->prepare("SELECT id FROM datos where validaau
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.id < $utimoId ORDER BY datos.id  DESC LIMIT $limite");
+    $query= $conexionX->prepare("SELECT datos.nombreempleado,datos.validaautorizacion, datos.id, datos.id_empleado, datos.nombreinstitucion,datos.nombrecurso,datos.areaquefortalece,datos.modalidad,datos.asistecomo, plantillahraei.DescripcionAdscripcion, plantillahraei.DescripcionPuesto FROM datos inner join plantillahraei on plantillahraei.Empleado = datos.id_empleado where datos.id < $utimoId and validaautorizacion = 1 ORDER BY datos.id  DESC LIMIT $limite");
     $query->execute();
 	?>
 
