@@ -278,8 +278,8 @@ function check(e) {
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-                echo "<input type='text' class='form-control' name='documentoaeditar' value='documentoscursos/$nombrecurso$fechafinal$idempleado'>";
-                echo "<input type='text' class='form-control' name='nombreaeditar' value='$archivo'>";
+                echo "<input type='hidden' class='form-control' name='documentoaeditar' value='documentoscursos/$nombrecurso$fechafinal$idempleado'>";
+                echo "<input type='hidden' class='form-control' name='nombreaeditar' value='$archivo'>";
             }
         }
     }
