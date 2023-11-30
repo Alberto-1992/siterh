@@ -211,14 +211,14 @@
                     <p>Movimientos plantilla</p>
                 </a>
             </article>
-                    -->
+                    
             <article class="card" id="evaluacion" onclick="evaluacion();">
                 <a href="../rh/principal">
                     <hr id="hr6">
                     <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Evaluación del Desempeño</p>
                 </a>
-            </article>
+            </article>-->
             <article class="card" id="estructura-organizacional" onclick="estructura();">
                 <a href="../rh/admin2023">
                     <hr id="hr6">
@@ -321,13 +321,14 @@
                     <p>Capacitación y cursos</p>
                 </a>
             </article>
+            <!--
             <article class="card" id="evaluacion" onclick="evaluacion();">
                 <a href="../rh/principal">
                     <hr id="hr6">
                     <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Evaluación del Desempeño</p>
                 </a>
-            </article>
+            </article>-->
             <article class="card" id="compatibilidad" onclick="compatibilidadUsuarios();">
                 <a href="compatibilidadusuarios">
                     <hr id="hr6">
@@ -466,13 +467,14 @@
                 <p>Mis trabajadores</p>
             </a>
             </article>
+            <!--
             <article class="card" id="evaluacion" onclick="evaluacion();">
             <a href="../rh/principal">
             <hr id="hr6">
             <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                 <p>Evaluación del Desempeño</p>
             </a>
-            </article>
+            </article>-->
             <article class="card" id="datosTrabajador" onclick="misDatos();">
                 <a href="actualizacionDatosPersonales">
                     <hr id="hr6">
