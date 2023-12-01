@@ -82,7 +82,7 @@
                                                 "formulariousuariologueo"));
                                             formData.append("dato", "valor");
                                             $.ajax({
-                                                url: "../rh/aplicacion/registrarUsuarioNuevoLogueo.php",
+                                                url: "aplicacion/registrarUsuarioNuevoLogueo.php",
                                                 type: "post",
                                                 dataType: "html",
                                                 data: formData,

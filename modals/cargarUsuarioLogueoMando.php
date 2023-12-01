@@ -1,11 +1,11 @@
 <div id="carganuevousuariologueomando" class="modal fade in" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="css/estilosMenu.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link href="css/estilosMenu.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
     <div class="modal-dialog modal-lg">
         <style>
             #botonescarga1 {
@@ -72,17 +72,17 @@
                                 font-size: 17px;">
                                     DATOS DEL EMPLEADO </h5>
                             </div>
-                            <form name="formulariousuariologueo" id="formulariousuariologueo" onsubmit="return limpiar()">
+                            <form name="formulariousuariologueoMando" id="formulariousuariologueoMando" onsubmit="return limpiar()">
                                 <div class="form-row">
                                     <div id="mensaje"></div>
                                     <script>
-                                        $("#formulariousuariologueo").on("submit", function(e) {
+                                        $("#formulariousuariologueoMando").on("submit", function(e) {
                                             e.preventDefault();
                                             var formData = new FormData(document.getElementById(
-                                                "formulariousuariologueo"));
+                                                "formulariousuariologueoMando"));
                                             formData.append("dato", "valor");
                                             $.ajax({
-                                                url: "../rh/aplicacion/registrarUsuarioNuevoLogueoMando.php",
+                                                url: "aplicacion/registrarUsuarioNuevoLogueoMando.php",
                                                 type: "post",
                                                 dataType: "html",
                                                 data: formData,

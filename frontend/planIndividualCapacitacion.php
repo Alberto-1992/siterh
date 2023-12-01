@@ -158,6 +158,24 @@
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
 }
+function validarDate() {
+var fechaEntrada = document.getElementById('fechainicio').value;
+var fechaLimite = '2019-01-01';
+if( (new Date(fechaEntrada).getTime() < new Date(fechaLimite).getTime()))
+{
+    Swal.fire({
+            position: 'top-start',
+            icon: 'error',
+            title: 'No se permiten fechas de inicio de curso anteriores al año 2019',
+            showConfirmButton: true,
+            timer: 4000
+        })
+   $("#fechainicio").val('');
+    return false;
+}else{
+    return true;
+}
+}
                 </script>
 
                 <input type="hidden" class="form-control" name="areafortalece" id="areafortalece" required readonly>
@@ -168,7 +186,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="mensaje">Fecha de inicio del curso:</label>
-                    <input type="date" class="form-control" name="fechainicio" id="fechainicio" required>
+                    <input type="date" class="form-control" name="fechainicio" id="fechainicio" min="2019-01-01" onblur="validarDate();" required>
                 </div>
                 <div class="col-md-3">
                     <label for="mensaje">Fecha de termino del curso:</label>

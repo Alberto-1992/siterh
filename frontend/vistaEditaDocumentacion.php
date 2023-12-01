@@ -103,7 +103,7 @@
 $(document).ready(function () {
 
     $('#criteriocurso').change(function (e) {
-        if ($(this).val() === "ATLS" || $(this).val() === "ACLS" || $(this).val() === "BLS" || $(this).val() === "PALS" || $(this).val() === "RCP" ) {
+        if ($(this).val() === "ATLS-APOYO VITAL AVANZADO EN TRAUMA" || $(this).val() === "ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO" || $(this).val() === "BLS-SOPORTE VITAL BASICO" || $(this).val() === "PALS-APOYO VITAL AVANZADO PEDIATRICO" || $(this).val() === "RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD" || $(this).val() === "INTERCULTURALIDAD") {
 
             $('#fechainiciocriterio').prop("disabled", false);
             $('#fechaterminocriterio').prop("disabled", false);
@@ -121,14 +121,13 @@ $(document).ready(function () {
 });
 $(function () {
     let criteriovalida = $('#criteriocurso').val();
-    if(criteriovalida === "ATLS" || criteriovalida === "ACLS" || criteriovalida === "BLS" || criteriovalida === "PALS" || criteriovalida === "RCP"){
+    if(criteriovalida === "ATLS-APOYO VITAL AVANZADO EN TRAUMA" || criteriovalida === "ACLS-SOPORTE VITAL CARDIOVASCULAR AVANZADO" || criteriovalida === "BLS-SOPORTE VITAL BASICO" || criteriovalida === "PALS-APOYO VITAL AVANZADO PEDIATRICO" || criteriovalida === "RCP-REANIMACION CARDIOPULMONAR PARA PROFESIONALES DE LA SALUD" || criteriovalida === "INTERCULTURALIDAD"){
             $('#fechainiciocriterio').prop("disabled", false);
             $('#fechaterminocriterio').prop("disabled", false);
     }else{
         $('#fechainiciocriterio').prop("disabled", true);
         $('#fechaterminocriterio').prop("disabled", true);
     }
-
 });
 
                 </script>
