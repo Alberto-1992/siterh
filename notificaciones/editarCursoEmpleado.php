@@ -16,13 +16,14 @@ error_reporting(0);
 
             $row = $sqlvalida->fetch();
             $capacitacion = $row['descripcionaccion'];
-
+            $institucionNombre = strtoupper($nombreinstitucion);
+            $cursoNombre = strtoupper($nombrecurso);
 		$sql = $conexionX->prepare("UPDATE datos set nombreinstitucion=:nombreinstitucion,nombrecurso=:nombrecurso,fechainicio=:fechainicio,fechatermino=:fechatermino,areaquefortalece=:areaquefortalece,
         modalidad=:modalidad,documentorecibe=:documentorecibe,tipocapacitacion=:tipocapacitacion,horas=:horas,asistecomo=:asistecomo,otroexpidedocumento=:otroexpidedocumento,
         criteriocurso=:criteriocurso,fechacriterioinicio=:fechacriterioinicio,fechacriteriotermino=:fechacriteriotermino, calificacion=:calificacion where id = :id"); 
                 $sql->execute(array(
-                    ':nombreinstitucion'=>$nombreinstitucion,
-                    ':nombrecurso'=>$nombrecurso,
+                    ':nombreinstitucion'=>$institucionNombre,
+                    ':nombrecurso'=>$cursoNombre,
                     ':fechainicio'=>$fechainicio,
                     ':fechatermino'=>$fechatermino,
                     ':areaquefortalece'=>$areafortalece,
@@ -37,12 +38,11 @@ error_reporting(0);
                     ':fechacriteriotermino'=>$fechaterminocriterio,
                     ':calificacion'=>$calificacion,
                     ':id'=>$id
-                ));
-                
+                ));            
 if($_FILES["documentocurso"]['name'] == null){
    
-    $nombrecurso = $_POST["nombrecurso"].$_POST["fechatermino"];
-    $curso = $_POST["nombrecurso"].'.pdf';
+    $nombrecurso = strtoupper($_POST["nombrecurso"]).$_POST["fechatermino"];
+    $curso = strtoupper($_POST["nombrecurso"]).'.pdf';
     $cursos = $_POST["nombreaeditar"];
     $rutaAnterior = $_POST["documentoaeditar"];
     $rutaAc = $rutaAnterior;
@@ -57,11 +57,11 @@ if($_FILES["documentocurso"]['name'] == null){
         } else {
             $rutaAnterior = $_POST["documentoaeditar"];
             $permitidos = array("application/pdf");
-                $nombrecurso = $_POST["nombrecurso"].$_POST["fechatermino"];
+                $nombrecurso = strtoupper($_POST["nombrecurso"]).$_POST["fechatermino"];
             if (in_array($_FILES["documentocurso"]["type"], $permitidos) && $_FILES["documentocurso"]["size"]) {
         
                 $ruta = 'documentoscursos/'.$nombrecurso.$id_empleado.'/';
-                $archivo = $ruta . $_FILES["documentocurso"]["name"] = $_POST["nombrecurso"].'.pdf';
+                $archivo = $ruta . $_FILES["documentocurso"]["name"] = strtoupper($_POST["nombrecurso"]).'.pdf';
         
         
                 if (!file_exists($ruta)) {
