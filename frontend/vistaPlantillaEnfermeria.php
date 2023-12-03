@@ -57,8 +57,8 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
                     data: parametros,
                     url: 'editarDatosback.php',
                     type: 'post',
-                    success: function(datos) {
-                        $("#mensaje").html(datos);
+                    success: function(data) {
+                        $("#mensaje").html(data);
                         let id = $("#numempleado").val();
                         let ob = {
                             id: id

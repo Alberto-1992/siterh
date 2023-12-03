@@ -122,8 +122,8 @@ function eliminarCurso() {
                     data: parametros,
                     url: 'editarDatosback.php',
                     type: 'post',
-                    success: function(datos) {
-                        $("#mensaje").html(datos);
+                    success: function(data) {
+                        $("#mensaje").html(data);
                         let id = $("#numempleado").val();
                         let ob = {
                             id: id

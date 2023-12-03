@@ -184,11 +184,11 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     cache: false,
                     contentType: false,
                     processData: false,
-                    beforeSend: function(datos) {
+                    beforeSend: function(data) {
                         $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
                     },
-                    success: function(datos) {
-                        $("#mensaje").html(datos);
+                    success: function(data) {
+                        $("#mensaje").html(data);
                         setTimeout(function() {
                             window.location.href = 'actualizacionDatosPersonales';
                         }, 2000);

@@ -182,11 +182,11 @@ if ($validaacceso == 8) {
                         cache: false,
                         contentType: false,
                         processData: false,
-                        beforeSend: function(datos) {
+                        beforeSend: function(data) {
                             $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
                         },
-                        success: function(datos) {
-                            $("#mensaje").html(datos);
+                        success: function(data) {
+                            $("#mensaje").html(data);
                             //$("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
                             let evento = $("#busqueda").val();
                             let ob = {
@@ -388,7 +388,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
 <input type="hidden" value="<?php echo $idempleado ?>" name="id_empleado" id="id_empleado">
 
 <div class="form-row">
-    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center">
+    <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content:center;">
     <div class="col-md-2">
             <strong style="font-size: 12px;">Año</strong>
             <select class="form-control" name="year" id="year" required>
@@ -406,7 +406,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                 <option value="2025">2025</option>
             </select>
         </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
             <strong style="font-size: 12px;">Catalogo de programas</strong>
             <select class="form-control" id="catalogoprogramas" name="catalogoprogramas" required>
                 <option value="">Seleccione</option>
@@ -417,7 +417,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                 <option value="INDIVIDUAL">INDIVIDUAL</option>
                 </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <strong style="font-size: 12px;">Linea estrategica</strong>
             <select class="form-control" id="lineaestrategica" name="lineaestrategica" required>
                 <option value="">Seleccione</option>
