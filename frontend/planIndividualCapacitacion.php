@@ -8,7 +8,6 @@
     <meta name="author" content="">
     <link rel="icon" href="http://collectivecloudperu.com/blogdevs/wp-content/uploads/2017/09/cropped-favicon-1-32x32.png">
     <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
@@ -54,18 +53,18 @@
                     var formData = new FormData(document.getElementById("frmNotification"));
                     formData.append("dato", "valor");
                     $.ajax({
-                        url: "notificaciones/agregarnotificacionEmpleado.php",
+                        url: "aplicacion/agregarCursoEmpleado.php",
                         type: "post",
                         dataType: "html",
                         data: formData,
                         cache: false,
                         contentType: false,
                         processData: false,
-                        beforeSend: function(datos) {
+                        beforeSend: function(data) {
                             $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
                         },
-                        success: function(datos) {
-                            $("#mensaje").html(datos);
+                        success: function(data) {
+                            $("#mensaje").html(data);
                         }
                     })
                 })
@@ -117,6 +116,7 @@
                     </select>
                 </div>
                 <script>
+                    
                     function tipoCapacitacion() {
                         let valor = $("#tipodecapacitacion").val();
                         $('#areafortalece').val(valor)
@@ -157,6 +157,7 @@
     patron = /[A-Za-z0-9]/;
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
+    
 }
 function validarDate() {
 var fechaEntrada = document.getElementById('fechainicio').value;
@@ -176,8 +177,13 @@ if( (new Date(fechaEntrada).getTime() < new Date(fechaLimite).getTime()))
     return true;
 }
 }
-                </script>
 
+                </script>
+<style>
+    input{
+    text-transform: uppercase;
+}
+</style>
                 <input type="hidden" class="form-control" name="areafortalece" id="areafortalece" required readonly>
 
                 <div class="col-md-6">
@@ -295,7 +301,7 @@ if( (new Date(fechaEntrada).getTime() < new Date(fechaLimite).getTime()))
 
                 <div class="col-md-3">
                     <label for="mensaje">Sube tu documento:</label>
-                    <input type="file" class="form-control" name="documentocurso" id="documentocurso" required accept=".pdf">
+                    <input type="file" class="form-control" name="documentocurso[]" id="documentocurso" required accept=".pdf">
                 </div>
                 <div class="col-md-12" id="otrodocumento">
                     <strong>Especifique cual:</strong>
