@@ -43,8 +43,8 @@ $cursoNombre = strtoupper($nombrecurso);
                     //condicional si el fuchero existe
                     if($_FILES["documentocurso"]["name"][$key]) {
                         // Nombres de archivos de temporales
-                        $nombredelarchivo = $_POST["nombrecurso"].$_POST["fechatermino"];
-                        $archivonombre = $_POST['nombrecurso'];
+                        $nombredelarchivo = strtoupper($_POST["nombrecurso"]).$_POST["fechatermino"];
+                        $archivonombre = strtoupper($_POST['nombrecurso']);
                         $fuente = $_FILES["documentocurso"]["tmp_name"][$key]; 
                         
                         $carpeta = '../documentoscursos/'.$nombredelarchivo.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
