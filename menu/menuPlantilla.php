@@ -38,7 +38,7 @@
                 <hr id="hr">
                 <li>
                 <a href="#" class="usuariologueoperativo">
-                    <i class="fa fa-desktop fa-2x" id="icon-color"></i>
+                    <i class="fa fa-user fa-2x" id="icon-color"></i>
                     <span class="nav-text">
                         Nuevo usuario operativo
                     </span>
@@ -47,7 +47,7 @@
             <hr id="hr">
                 <li>
                 <a href="#" class="usuariologueomando">
-                    <i class="fa fa-desktop fa-2x" id="icon-color"></i>
+                    <i class="fa fa-user-circle fa-2x" id="icon-color"></i>
                     <span class="nav-text">
                         Nuevo usuario mando
                     </span>
@@ -56,7 +56,7 @@
             <hr id="hr">
                 <li>
                 <a href="cargaMasiva" target="_blank">
-                    <i class="fa fa-desktop fa-2x" id="icon-color"></i>
+                    <i class="fa fa-user-o fa-2x" id="icon-color"></i>
                     <span class="nav-text">
                         Cargar masiva usuarios operativos
                     </span>
@@ -65,7 +65,7 @@
             <hr id="hr">
                 <li>
                 <a href="cargaMasivaJefes" target="_blank">
-                    <i class="fa fa-desktop fa-2x" id="icon-color"></i>
+                    <i class="fa fa-user-circle-o fa-2x" id="icon-color"></i>
                     <span class="nav-text">
                         Cargar masiva usuarios mandos
                     </span>

@@ -96,6 +96,9 @@
                         function documentos() {
                             window.location.href = 'documentacion';
                         }
+                        function descripcionPuesto() {
+                            window.location.href = 'creacionPuesto';
+                        }
                     </script>
                     <article class="card" id="reclutamiento" onclick="reclutamiento();">
                         <a href="reclutamiento">
@@ -118,6 +121,14 @@
                     <hr id="hr6">
                     <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Carga de documentación</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="endocumentacion" onclick="descripcionPuesto();">
+                <a href="creacionPuesto">
+                    <hr id="hr6">
+                    <i class="fa fa-address-book-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Descripción de puesto</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
@@ -154,6 +165,9 @@
                         function documentos() {
                             window.location.href = 'documentacion';
                         }
+                        function descripcionPuesto() {
+                            window.location.href = 'creacionPuesto';
+                        }
                     </script>
                     <article class="card" id="reclutamiento" onclick="reclutamiento();">
                         <a href="reclutamiento">
@@ -176,6 +190,14 @@
                     <hr id="hr6">
                     <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Carga de documentación</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="endocumentacion" onclick="descripcionPuesto();">
+                <a href="creacionPuesto">
+                    <hr id="hr6">
+                    <i class="fa fa-address-book-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Descripción de puesto</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
@@ -210,6 +232,9 @@
                         function documentos() {
                             window.location.href = 'documentacion';
                         }
+                        function descripcionPuesto() {
+                            window.location.href = 'creacionPuesto';
+                        }
                     </script>
                     <article class="card" id="reclutamiento" onclick="reclutamiento();">
                         <a href="reclutamiento">
@@ -232,6 +257,14 @@
                     <hr id="hr6">
                     <i class="fa fa-folder-open" aria-hidden="true" id="iconosdiv"></i>
                     <p>Carga de documentación</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="endocumentacion" onclick="descripcionPuesto();">
+                <a href="creacionPuesto">
+                    <hr id="hr6">
+                    <i class="fa fa-address-book-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Descripción de puesto</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>

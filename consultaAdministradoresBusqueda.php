@@ -1,8 +1,9 @@
 <?php session_start();
 error_reporting(0);
-require_once 'conexionRh.php';
+require_once 'clases/conexion.php';
+$conexion = new ConexionRh();
 $id = $_POST['id'];
-$query = $conexionRh->prepare("SELECT *
+$query = $conexion->prepare("SELECT *
 from usuariosrh where id_usuario = :id_usuario");
 $query->execute(array(
     ':id_usuario'=>$id

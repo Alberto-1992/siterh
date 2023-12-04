@@ -12,7 +12,7 @@ $conexion = new ConexionRh();
                     $row = $query->fetch();
                     $valida = $row['correoelectronico'];
                     if($valida == $usernameSesion){
-            require 'frontend/contratacion.php';
+            require 'contra/index.php';
                     }else{
                         echo "<script>alert('No tienes acceso, no insistas');
                         window.history.back();</script>";
@@ -22,13 +22,28 @@ $conexion = new ConexionRh();
         
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
-            require 'frontend/contratacion.php';
-        
+            $statement = $conexion->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
+        $statement->execute(array(
+            ':correo' => $usernameSesion
+        ));
+        $rw = $statement->fetch();
+        $admin = $rw['correo'];
+        if ($admin == 'brendacontreras@hotmail.com') {
+            require 'contra/index.php';
+        }
         break;
 
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
-        require 'frontend/contratacion.php';
+            $statement = $conexion->prepare("SELECT correo FROM plantillahraei WHERE correo= :correo");
+            $statement->execute(array(
+                ':correo' => $usernameSesion
+            ));
+            $rw = $statement->fetch();
+            $admin = $rw['correo'];
+            if ($admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'alexvpuebla@gmail.com') {
+                require 'contra/index.php';
+            }
         break;
 
         default:

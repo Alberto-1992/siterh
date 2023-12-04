@@ -82,8 +82,8 @@
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 450px;
+    width: 100%;
+    max-width: 550px;
     
 }
 #img01 {
@@ -210,7 +210,7 @@
                     <i class="fa fa-users" aria-hidden="true" id="iconosdiv"></i>
                     <p>Movimientos plantilla</p>
                 </a>
-            </article>
+            </article>-->
                     
             <article class="card" id="evaluacion" onclick="evaluacion();">
                 <a href="../rh/principal">
@@ -218,7 +218,7 @@
                     <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
                     <p>Evaluación del Desempeño</p>
                 </a>
-            </article>-->
+            </article>
             <article class="card" id="estructura-organizacional" onclick="estructura();">
                 <a href="../rh/admin2023">
                     <hr id="hr6">

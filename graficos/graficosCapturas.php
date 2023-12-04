@@ -105,15 +105,15 @@
             <?php
             require '../conexionRh.php';
 
-            $sql1 = $conexionGrafico->query("SELECT count(*) as total1 from personaloperativo2022 where vistobuenoResultado2022 = 1 and eliminado = 0");
+            $sql1 = $conexionGrafico->query("SELECT count(*) as total1 from vistosbuenosresultadosobtenidos where estadovistobueno = 1 and periodoevaluacion = 2023");
             $row1 = mysqli_fetch_assoc($sql1);
-            $sql2 = $conexionGrafico->query("SELECT count(*) as total2 from personaloperativo2022 where vistobuenoResultado2022 = 2 and eliminado = 0");
+            $sql2 = $conexionGrafico->query("SELECT count(*) as total2 from vistosbuenosresultadosobtenidos where estadovistobueno = 2 and periodoevaluacion = 2023");
             $row2 = mysqli_fetch_assoc($sql2);
-            $sql3 = $conexionGrafico->query("SELECT count(*) as total3 from personaloperativo2022 where vistobuenoResultado2022 = 3 and eliminado = 0");
+            $sql3 = $conexionGrafico->query("SELECT count(*) as total3 from vistosbuenosresultadosobtenidos where estadovistobueno = 3 and periodoevaluacion = 2023");
             $row3 = mysqli_fetch_assoc($sql3);
-            $sql5 = $conexionGrafico->query("SELECT count(*) as total5 from personaloperativo2022 where vistobuenoResultado2022 = 5 and eliminado = 0");
+            $sql5 = $conexionGrafico->query("SELECT count(*) as total5 from vistosbuenosresultadosobtenidos where estadovistobueno = 5 and periodoevaluacion = 2023");
             $row5 = mysqli_fetch_assoc($sql5);
-            $sqlSC = $conexionGrafico->query("SELECT count(*) as totalSC from personaloperativo2022 where vistobuenoResultado2022 = 4 and eliminado = 0");
+            $sqlSC = $conexionGrafico->query("SELECT count(*) as totalSC from vistosbuenosresultadosobtenidos where estadovistobueno = 4 and periodoevaluacion = 2023");
             $rowSC = mysqli_fetch_assoc($sqlSC);
                 $total = $row5['total5'] + $row3['total3'] + $row2['total2'] + $row1['total1'];
             ?>

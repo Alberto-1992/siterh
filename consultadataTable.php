@@ -1,7 +1,8 @@
 <?php
 $status = $_POST['status'];
-require 'conexionRh.php';
-$sql = $conexionRh->prepare("SELECT personaloperativo2023.id_empleado,personaloperativo2023.rfc as rfcempleado, personaloperativo2023.nombre as nombretrabajador, personaloperativo2023.apellidopaterno, personaloperativo2023.apellidomaterno,personaloperativo2023.descripcionestructura2,personaloperativo2023.correo as correoempleado, jefes2022.nombre as nombrejefe, jefes2022.correo as correojefe, jefes2022.rfc as rfcjefe 
+require_once 'clases/conexion.php';
+$conexion = new ConexionRh();
+$sql = $conexion->prepare("SELECT personaloperativo2023.id_empleado,personaloperativo2023.rfc as rfcempleado, personaloperativo2023.nombre as nombretrabajador, personaloperativo2023.apellidopaterno, personaloperativo2023.apellidomaterno,personaloperativo2023.descripcionestructura2,personaloperativo2023.correo as correoempleado, jefes2022.nombre as nombrejefe, jefes2022.correo as correojefe, jefes2022.rfc as rfcjefe 
         from personaloperativo2023 inner join jefes2022 on jefes2022.id_jefe=personaloperativo2023.id_jefe where personaloperativo2023.eliminado = :eliminado and vistobueno=:vistobueno");
 $sql->execute(array(
     ':eliminado' => 0,

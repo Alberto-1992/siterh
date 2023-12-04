@@ -133,14 +133,14 @@
 </script>
 <?php 
 $datocurp = $row['CURP'];
-$sql = $conexionRh->prepare("SELECT t_estado.estado from t_estado where id_estado = :id_estado");
+$sql = $conexion->prepare("SELECT t_estado.estado from t_estado where id_estado = :id_estado");
     $sql->execute(array(
         ':id_estado'=>$estado
     ));
     $rowestado = $sql->fetch();
     $estadovive = $rowestado['estado'];
     
-$sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipio = :id_municipio");
+$sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio = :id_municipio");
     $sql->execute(array(
         ':id_municipio'=>$municipio
     ));
@@ -150,7 +150,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
     $curp = $row['CURP'];
     $rest = substr($curp, -7, 2);
 
-    $sql = $conexionRh->prepare("SELECT Estado from codigoestadosmexico where RENAPO = :RENAPO");
+    $sql = $conexion->prepare("SELECT Estado from codigoestadosmexico where RENAPO = :RENAPO");
         $sql->execute(array(
             ':RENAPO'=>$rest
         ));

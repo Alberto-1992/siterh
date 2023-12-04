@@ -44,8 +44,8 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header" id="cabeceraModalArtritis" style="background-color: #0A4380;">
-                <span class="material-symbols-outlined">
-                    edit_note
+                <span class="material-symbols-outlined" style="color: white;">
+                    Datos del empleado
                 </span>
                 <button type="button" class="close" data-bs-dismiss="modal" onclick="limpiarformularioseguimiento();">&times;</button>
             </div>
@@ -64,14 +64,7 @@
                                 }*/
                             </script>
                             <!-- form start -->
-                            <div class="form-header">
-                                <h5 class="form-title" style="text-align: center;
-                                color:aliceblue; 
-                                background-color:#0A4380; 
-                                margin-top: 5px; 
-                                font-size: 17px;">
-                                    DATOS DEL EMPLEADO </h5>
-                            </div>
+                            
                             <form name="formulariousuariologueoMando" id="formulariousuariologueoMando" onsubmit="return limpiar()">
                                 <div class="form-row">
                                     <div id="mensaje"></div>
@@ -112,20 +105,20 @@
                                     $hoy = date("Y-m-d h:i:s");
 
                                     ?>
-                                    <div class="col-md-4" id="fehareferenciacarga">
+                                    <div class="col-md-12" id="fehareferenciacarga">
                                         <strong>N° empleado</strong>
                                         <input type="number" class="form-control" name="numempleado" required>
                                     </div>
                                 
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <strong>CURP</strong>
                                         <input name="curp" class="form-control" type="text" maxlength="18" required>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <strong>RFC</strong>
                                         <input type="text" class="form-control" name="rfc" required>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <strong>Correo electronico</strong>
                                         <input type="text" class="form-control" name="correo" required>
                                     </div>

@@ -12,7 +12,7 @@
         }
     </style>
     <div class="titulo">
-        <h2 style="font-size: 13px;">Estado de capturas de Metas 2023</h2>
+        <h2 style="font-size: 13px;">Estado de capturas de resultado obtenido 2023</h2>
     </div>
     <!-- Resources -->
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -107,19 +107,18 @@
 
                 <?php
                 require 'conexionRh.php';
-                $sql = $conexionGrafico->query("SELECT periodo from periodoevaluacion where estatus = 1");
-                    $rowestatus = mysqli_fetch_assoc($sql);
-                    $periodoevaluacion = $rowestatus['periodo'];
 
-                $sql1 = $conexionGrafico->query("SELECT count(*) as total1 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 1 and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
-                $row1 = mysqli_fetch_assoc($sql1);
-                $sql2 = $conexionGrafico->query("SELECT count(*) as total2 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 2 and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
-                $row2 = mysqli_fetch_assoc($sql2);
-                $sql3 = $conexionGrafico->query("SELECT count(*) as total3 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 3 and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
-                $row3 = mysqli_fetch_assoc($sql3);
-                $sql4 = $conexionGrafico->query("SELECT count(*) as total4 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 4 and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
-                $row4 = mysqli_fetch_assoc($sql4);
-                $total = $row4['total4'] + $row3['total3'] + $row2['total2'] + $row1['total1'];
+                    $sql1 = $conexionGrafico->query("SELECT count(*) as total1 from vistosbuenosresultadosobtenidos where estadovistobueno = 1 and periodoevaluacion = 2023");
+                    $row1 = mysqli_fetch_assoc($sql1);
+                    $sql2 = $conexionGrafico->query("SELECT count(*) as total2 from vistosbuenosresultadosobtenidos where estadovistobueno = 2 and periodoevaluacion = 2023");
+                    $row2 = mysqli_fetch_assoc($sql2);
+                    $sql3 = $conexionGrafico->query("SELECT count(*) as total3 from vistosbuenosresultadosobtenidos where estadovistobueno = 3 and periodoevaluacion = 2023");
+                    $row3 = mysqli_fetch_assoc($sql3);
+                    $sql5 = $conexionGrafico->query("SELECT count(*) as total5 from vistosbuenosresultadosobtenidos where estadovistobueno = 5 and periodoevaluacion = 2023");
+                    $row5 = mysqli_fetch_assoc($sql5);
+                    $sqlSC = $conexionGrafico->query("SELECT count(*) as totalSC from vistosbuenosresultadosobtenidos where estadovistobueno = 4 and periodoevaluacion = 2023");
+                    $rowSC = mysqli_fetch_assoc($sqlSC);
+                $total = $row5['total5'] + $row3['total3'] + $row2['total2'] + $row1['total1'];
                 ?>
             ];
             // Set data
@@ -129,7 +128,7 @@
                 },
                 {
                     name: "Sin captura",
-                    value: <?php echo $row4['total4'] ?>
+                    value: <?php echo $row5['total5'] ?>
                 },
                 {
                     name: "Autorizado",
@@ -188,7 +187,7 @@
         }
     </style>
     <div class="titulo">
-        <h2 style="font-size: 13px;">Porcentaje actualizacion global</h2>
+        <h2 style="font-size: 13px;">Porcentaje de captura de resultado obtenido 2023</h2>
     </div>
     <!-- Resources -->
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -233,10 +232,10 @@
             
 
 
-$sqlSinactualizar = $conexionGrafico->query("SELECT count(*) as total2 from actualizacion where actualizo = 0");
+$sqlSinactualizar = $conexionGrafico->query("SELECT count(*) as total2 from vistosbuenosresultadosobtenidos where vistosbuenosresultadosobtenidos.estadovistobueno != 5 and vistosbuenosresultadosobtenidos.estadovistobueno != 4 and vistosbuenosresultadosobtenidos.periodoevaluacion = 2023");
 $rowSinactualizar = mysqli_fetch_assoc($sqlSinactualizar);
 
-$sqlActualizo = $conexionGrafico->query("SELECT count(*) as total1 from actualizacion where actualizo = 1");
+$sqlActualizo = $conexionGrafico->query("SELECT count(*) as total1 from vistosbuenosresultadosobtenidos where vistosbuenosresultadosobtenidos.estadovistobueno = 5 and vistosbuenosresultadosobtenidos.periodoevaluacion = 2023");
 $rowActualizo = mysqli_fetch_assoc($sqlActualizo);
 
                 ?>
@@ -245,11 +244,11 @@ $rowActualizo = mysqli_fetch_assoc($sqlActualizo);
             // https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
             series.data.setAll([{
                     value: <?php echo $rowSinactualizar['total2'] ?>,
-                    category: "Sin actualizar"
+                    category: "Capturaron"
                 },
                 {
                     value: <?php echo $rowActualizo['total1'] ?>,
-                    category: "Actualizaron"
+                    category: "Sin captura"
                 }
 
             ]);
@@ -287,7 +286,7 @@ font-size: 12px;
 }
 </style>
 <div class="titulo">
-        <h2 style="font-size: 13px;">Sin captura de metas 2023</h2>
+        <h2 style="font-size: 13px;">Sin captura de resultado obtenido 2023</h2>
     </div>
 <!-- Resources -->
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -338,15 +337,15 @@ var datos = [
 <?php
                 require 'conexionRh.php';
 
-                $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 4 and personaloperativo2023.descripcionestructura2 = 'DIRECCION MEDICA' and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
+                $sqlDM2 = $conexionGrafico->query("SELECT count(*) as totalDM2 from vistosbuenosresultadosobtenidos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenosresultadosobtenidos.id_empleado where vistosbuenosresultadosobtenidos.estadovistobueno = 5 and personaloperativo2023.descripcionestructura2 = 'DIRECCION MEDICA' and personaloperativo2023.eliminado = 0 and vistosbuenosresultadosobtenidos.periodoevaluacion = 2023");
                 $rowDM2 = mysqli_fetch_assoc($sqlDM2);
-                $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado where vistosbuenos.estadovistobueno = 4 and personaloperativo2023.descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
+                $sqlDAF2 = $conexionGrafico->query("SELECT count(*) as totalDAF2 from vistosbuenosresultadosobtenidos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenosresultadosobtenidos.id_empleado where vistosbuenosresultadosobtenidos.estadovistobueno = 5 and personaloperativo2023.descripcionestructura2 = 'DIRECCION DE ADMINISTRACION Y FINANZAS' and personaloperativo2023.eliminado = 0 and vistosbuenosresultadosobtenidos.periodoevaluacion = 2023");
                 $rowDAF2 = mysqli_fetch_assoc($sqlDAF2);
-                $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado  where vistosbuenos.estadovistobueno = 4 and personaloperativo2023.descripcionestructura2 = 'DIRECCION GENERAL' and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
+                $sqlDG2 = $conexionGrafico->query("SELECT count(*) as totalDG2 from vistosbuenosresultadosobtenidos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenosresultadosobtenidos.id_empleado  where vistosbuenosresultadosobtenidos.estadovistobueno = 5 and personaloperativo2023.descripcionestructura2 = 'DIRECCION GENERAL' and personaloperativo2023.eliminado = 0 and vistosbuenosresultadosobtenidos.periodoevaluacion = 2023");
                 $rowDG2 = mysqli_fetch_assoc($sqlDG2);
-                $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado  where vistosbuenos.estadovistobueno = 4 and personaloperativo2023.descripcionestructura2 = 'DIRECCION DE OPERACIONES' and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
+                $sqlDO2 = $conexionGrafico->query("SELECT count(*) as totalDO2 from vistosbuenosresultadosobtenidos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenosresultadosobtenidos.id_empleado  where vistosbuenosresultadosobtenidos.estadovistobueno = 5 and personaloperativo2023.descripcionestructura2 = 'DIRECCION DE OPERACIONES' and personaloperativo2023.eliminado = 0 and vistosbuenosresultadosobtenidos.periodoevaluacion = 2023");
                 $rowDO2 = mysqli_fetch_assoc($sqlDO2);
-                $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from vistosbuenos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenos.id_empleado  where vistosbuenos.estadovistobueno = 4 and personaloperativo2023.descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and personaloperativo2023.eliminado = 0 and vistosbuenos.periodoevaluacion = $periodoevaluacion");
+                $sqlDEP2 = $conexionGrafico->query("SELECT count(*) as totalDEP2 from vistosbuenosresultadosobtenidos inner join personaloperativo2023 on personaloperativo2023.id_empleado = vistosbuenosresultadosobtenidos.id_empleado  where vistosbuenosresultadosobtenidos.estadovistobueno = 5 and personaloperativo2023.descripcionestructura2 = 'DIRECCION DE PLANEACION, ENSEÑANZA E INVESTIGACION' and personaloperativo2023.eliminado = 0 and vistosbuenosresultadosobtenidos.periodoevaluacion = 2023");
                 $rowDEP2 = mysqli_fetch_assoc($sqlDEP2);
                 ?>
             ];

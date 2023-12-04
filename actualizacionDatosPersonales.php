@@ -1,11 +1,12 @@
 <?php session_start();
-error_reporting(0);
+//error_reporting(0);
 switch(true) {
 
     case isset($_SESSION['usuarioAdminRh']):
         $usernameSesion = $_SESSION['usuarioAdminRh']; 
-        require 'conexionRh.php';
-        $sql = $conexionRh->prepare("SELECT usuariosrh.*, plantillahraei.*, datospersonales.*, t_estado.estado as entidadnacimi FROM usuariosrh inner join plantillahraei on plantillahraei.correo = usuariosrh.correoelectronico inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado  left join t_estado on t_estado.id_estado = datospersonales.entidadnacimiento where usuariosrh.correoelectronico = :correoelectronico");
+        require 'clases/conexion.php';
+        $conexion = new ConexionRh();
+        $sql = $conexion->prepare("SELECT usuariosrh.*, plantillahraei.*, datospersonales.*, t_estado.estado as entidadnacimi FROM usuariosrh inner join plantillahraei on plantillahraei.correo = usuariosrh.correoelectronico inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado  left join t_estado on t_estado.id_estado = datospersonales.entidadnacimiento where usuariosrh.correoelectronico = :correoelectronico");
             $sql->execute(array(
                 ':correoelectronico'=>$usernameSesion
             ));
@@ -47,8 +48,9 @@ switch(true) {
     
     case isset($_SESSION['usuarioJefe']):
         $usernameSesion = $_SESSION['usuarioJefe'];
-        require 'conexionRh.php';
-        $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
+        require 'clases/conexion.php';
+        $conexion = new ConexionRh();
+        $sql = $conexion->prepare("SELECT plantillahraei.*, datospersonales.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
             $sql->execute(array(
                 ':correo'=>$usernameSesion
             ));
@@ -82,7 +84,7 @@ switch(true) {
             if($validaid != ''){
                 require 'frontend/insercionActualizarDatosPersonales.php';
             }else if($validaid == ''){
-                $sql = $conexionRh->prepare("SELECT * FROM plantillahraei where plantillahraei.correo = :correo");
+                $sql = $conexion->prepare("SELECT * FROM plantillahraei where plantillahraei.correo = :correo");
                     $sql->execute(array(
                 ':correo'=>$usernameSesion
             ));
@@ -99,8 +101,9 @@ switch(true) {
 
     case isset($_SESSION['usuarioDatos']):
         $usernameSesion = $_SESSION['usuarioDatos'];
-        require 'conexionRh.php';
-        $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
+        require 'clases/conexion.php';
+        $conexion = new ConexionRh();
+        $sql = $conexion->prepare("SELECT plantillahraei.*, datospersonales.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
             $sql->execute(array(
                 ':correo'=>$usernameSesion
             ));
@@ -134,7 +137,7 @@ switch(true) {
             if($validaid != ''){
                 require 'frontend/insercionActualizarDatosPersonales.php';
             }else if($validaid == ''){
-                $sql = $conexionRh->prepare("SELECT * FROM plantillahraei where plantillahraei.correo = :correo");
+                $sql = $conexion->prepare("SELECT * FROM plantillahraei where plantillahraei.correo = :correo");
             $sql->execute(array(
                 ':correo'=>$usernameSesion
             ));
