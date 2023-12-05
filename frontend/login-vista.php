@@ -57,16 +57,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $password = hash('sha512', $password);
     $bloqueado = 7;
     $bloqueadomando = 4;
+    $eliminado = 0;
+    $rolaccesoadmin = 8;
 include("clases/conexion.php");
 $conexion = new ConexionRh();
 
     $statement = $conexion->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeo WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado');
-    $statement->execute(array(
-        ':correo' => $correo,
-        ':password' => $password,
-        ':rol'=>$bloqueado,
-        ':eliminado'=>0
-    ));
+    $statement->bindParam(':correo', $correo, PDO::PARAM_STR);
+    $statement->bindParam(':password',$password, PDO::PARAM_STR);
+    $statement->bindParam(':rol',$bloqueado, PDO::PARAM_INT);
+    $statement->bindParam(':eliminado', $eliminado, PDO::PARAM_INT);
+    $statement->execute();
     $resultado = $statement->fetch();
     if (!empty($resultado)){
         $_SESSION['usuarioDatos'] = $correo;
@@ -76,13 +77,11 @@ $conexion = new ConexionRh();
 
     
         $statement4 = $conexion->prepare('SELECT correo, rol, password, eliminado FROM usuarioslogeojefes WHERE correo= :correo AND password = :password and rol = :rol and eliminado = :eliminado');
-        $statement4->execute(array(
-            
-            ':correo' => $correo,
-            ':password' => $password,
-            ':rol'=>$bloqueadomando,
-            ':eliminado'=>0
-        ));
+        $statement4->bindParam(':correo',$correo,PDO::PARAM_STR);
+        $statement4->bindParam(':password',$password,PDO::PARAM_STR);
+        $statement4->bindParam(':rol',$bloqueadomando,PDO::PARAM_INT);
+        $statement4->bindParam(':eliminado',$eliminado,PDO::PARAM_INT);
+        $statement4->execute();
         $resultado4 = $statement4->fetch();
         
             if ($resultado4 != false){
@@ -92,14 +91,10 @@ $conexion = new ConexionRh();
             
     }
         $sqlAdmin = $conexion->prepare('SELECT correoelectronico, claveacceso, rolacceso from usuariosrh where correoelectronico = :correoelectronico  AND claveacceso = :claveacceso and rolacceso = :rolacceso');
-
-        $sqlAdmin->execute(array(
-            
-            ':correoelectronico' => $correo,
-            ':claveacceso' => $password,
-            ':rolacceso' =>8
-        ));
-    
+        $sqlAdmin->bindParam(':correoelectronico',$correo,PDO::PARAM_STR);
+        $sqlAdmin->bindParam(':claveacceso',$password,PDO::PARAM_STR);
+        $sqlAdmin->bindParam(':rolacceso',$rolaccesoadmin,PDO::PARAM_INT);
+        $sqlAdmin->execute();
         $rowAdmin = $sqlAdmin->fetch();
         
             if (!empty($rowAdmin)){

@@ -42,7 +42,7 @@
 
     </nav>
     <?php
-            error_reporting(0);
+            //error_reporting(0);
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
@@ -121,16 +121,15 @@ $('#otroempleo').change(function (e) {
 
 </script>
 <?php 
-require 'clases/conexion.php';
-$conexionX = new ConexionRh();
-        $sqlC = $conexionX->prepare("SELECT * from compatibilidadotroempleo where id_empleado = :id_empleado");
+
+        $sqlC = $conexion->prepare("SELECT * from compatibilidadotroempleo where id_empleado = :id_empleado");
             $sqlC->execute(array(
                 ':id_empleado'=>$identificador
             ));
         $rowC = $sqlC->fetch();
         $validacion = $rowC['otroempleo'];
 
-        $sql = $conexionX->prepare("SELECT * from compatibilidad where id_empleado = :id_empleado");
+        $sql = $conexion->prepare("SELECT * from compatibilidad where id_empleado = :id_empleado");
         $sql->execute(array(
             ':id_empleado'=>$identificador
         ));

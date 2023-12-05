@@ -149,7 +149,6 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
 
     $curp = $row['CURP'];
     $rest = substr($curp, -7, 2);
-
     $sql = $conexion->prepare("SELECT Estado from codigoestadosmexico where RENAPO = :RENAPO");
         $sql->execute(array(
             ':RENAPO'=>$rest
