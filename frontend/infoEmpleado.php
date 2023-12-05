@@ -44,8 +44,6 @@ switch(true) {
     <?php
 //error_reporting(0);
     $id_empleado = base64_decode($_GET['id']);
-        require 'clases/conexion.php';
-        $conexion = new ConexionRh();
 
         $sql = $conexion->prepare("SELECT  plantillahraei.*, eventocapacitacion.id_evento,eventocapacitacion.Nombre_evento,eventocapacitacion.modalidad_actividades,eventocapacitacion.fecha_inicia,eventocapacitacion.fecha_termino,eventocapacitacion.horario_establecido,eventocapacitacion.anotedocumentos,eventocapacitacion.descripcionevento,eventocapacitacion.comentariojefe,eventocapacitacion.lugar_dondeimpar,eventocapacitacion.id_empleado as idempleadocapacitacion FROM eventocapacitacion inner join plantillahraei on plantillahraei.Empleado = eventocapacitacion.id_empleado WHERE eventocapacitacion.id_empleado= :id_empleado");
             $sql->execute(array(
