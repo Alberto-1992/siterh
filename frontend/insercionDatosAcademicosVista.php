@@ -15,7 +15,7 @@
                         cache: false,
                         contentType: false,
                         processData: false,
-                        beforeSend: function(data) {
+                        beforeSend: function(objeto) {
                             $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
                         },
                         success: function(data) {

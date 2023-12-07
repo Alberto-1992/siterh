@@ -14,8 +14,6 @@ error_reporting(0);
             require 'frontend/accesosMasivosReclutamiento.php';
         
         break;
-
-
         default:
         
         require 'close_sesion.php';
