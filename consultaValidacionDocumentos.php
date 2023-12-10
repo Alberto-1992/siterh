@@ -242,8 +242,6 @@ function pageScroll() {
                 });
 
 
-            } else {
-
             }
         }
     });

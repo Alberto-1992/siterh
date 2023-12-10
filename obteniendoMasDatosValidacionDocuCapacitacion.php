@@ -16,7 +16,7 @@
 sleep(0.5);
 
 $utimoId = $_POST['utimoId'];
-$limite  = 25;
+$limite  = 10;
 require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
     $sqlQueryComentarios  = $conexionX->prepare("SELECT id FROM datos where validaautorizacion = 0");

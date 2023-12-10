@@ -19,7 +19,7 @@
 <?php 
 sleep(0.5);
 $utimoId = $_POST['utimoId'];
-$limite  = 25;
+$limite  = 10;
 require_once 'clases/conexion.php';
 $conexionX = new ConexionRh();
 $sqlQueryComentarios  = $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei");
@@ -28,7 +28,7 @@ $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
 $sqlQueryComentarios->execute();
 $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei WHERE plantillahraei.Empleado < $utimoId ORDER BY plantillahraei.Empleado  DESC LIMIT $limite");
+    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei WHERE plantillahraei.Empleado <= $utimoId ORDER BY plantillahraei.Empleado  DESC LIMIT $limite");
     $query->execute();
 	$data = $query->fetchAll();
      foreach($data as $dataRegistro):
