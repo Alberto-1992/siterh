@@ -88,8 +88,8 @@ if (file_exists($path)) {
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 60px; padding: 10px;">
 
 <?php
-$compdomicilio = 'documentocurp';
-$path = "../talent/documentos/" . $compdomicilio . $id;
+$comprobateCurp = 'comprobante curp';
+$path = "../talent/documentos/".$id.'/'.$comprobateCurp.'.pdf';
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
@@ -100,8 +100,8 @@ if (file_exists($path)) {
         }
     }
 }
-$compdomicilio = 'comprobantedomicilio';
-                $path = "../talent/documentos/" . $compdomicilio . $id;
+$comprobanteDomicilio = 'comprobante de domicilio';
+                $path = "../talent/documentos/".$id.'/'.$comprobanteDomicilio.'.pdf';
                 if (file_exists($path)) {
                     $directorio = opendir($path);
                     while ($archivo = readdir($directorio)) {

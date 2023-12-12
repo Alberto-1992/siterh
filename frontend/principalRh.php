@@ -175,7 +175,7 @@
                             window.location.href='plantillaMedicos';
                         }
                     </script>
-        <article class="card" id="plantillaMedicos" onclick="plantillamedicos();">
+        <article class="card" id="plantillaMedicos" onclick="plantillamedicos();" move="transform: translateY(-0)">
             <a href="plantillaMedicos">
             <hr id="hr6">
             <i class="fa fa-stethoscope" aria-hidden="true" id="iconosdiv"></i>

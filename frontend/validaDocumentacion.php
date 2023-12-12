@@ -45,7 +45,7 @@
         </div>
                                                                                                                                         -->
     </header>
-    <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar..." onkeypress="return handleKeyPress(event);" style="width: 48vh; margin-top: -40px; margin-left: 60px; z-index: 999;">
+    <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Buscar..." autocomplete="off" onkeypress="return handleKeyPress(event);" style="width: 48vh; margin-top: -40px; margin-left: 60px; z-index: 999;">
     <div class="box1" >
     <?php 
     switch(true) {
@@ -81,7 +81,7 @@
             })
 
         </script>
-       
+
             <div id="tabla_resultadobus">
             
             </div>
