@@ -95,8 +95,8 @@ if (file_exists($path)) {
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='../talent/documentos/$compdomicilio$id/$archivo' width='100' height='220' margin-top='50' class='form-control'></iframe>";
-            echo "<a href='../talent/documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>CURP</a>";
+            echo "<iframe src='../talent/documentos/$id/$comprobateCurp.pdf' width='100' height='220' margin-top='50' class='form-control'></iframe>";
+            echo "<a href='../talent/documentos/$id/$comprobateCurp.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>CURP</a>";
         }
     }
 }
@@ -107,8 +107,8 @@ $comprobanteDomicilio = 'comprobante de domicilio';
                     while ($archivo = readdir($directorio)) {
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-                            echo "<iframe src='../talent/documentos/$compdomicilio$id/$archivo' width='100' height='220' margin-top='50' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Comprobante de domicilio</a>";
+                            echo "<iframe src='../talent/documentos/$id/$comprobanteDomicilio.pdf' width='100' height='220' margin-top='50' class='form-control'></iframe>";
+                            echo "<a href='../talent/documentos/$id/$comprobanteDomicilio.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Comprobante de domicilio</a>";
                         }
                     }
                 }
