@@ -41,7 +41,7 @@ $conexionDocumentacion = new ConexionDocumentacion();
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Check documentos</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="documentos();">Documentacion </a></li>
+                <li><a class="dropdown-item" href="#" onclick="documentos();">Documentación </a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelContratacion();">Exportar a excel </a></li>
                 
             </ul>

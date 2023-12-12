@@ -88,27 +88,27 @@ if (file_exists($path)) {
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 60px; padding: 10px;">
 
 <?php
-$comprobateCurp = 'comprobante curp';
-$path = "../talent/documentos/".$id.'/'.$comprobateCurp.'.pdf';
+$comprobatecurp = 'comprobante curp';
+$path = "../talent/documentos/".$id.'/'.$comprobatecurp.'.pdf';
 if (file_exists($path)) {
     $directorio = opendir($path);
     while ($archivo = readdir($directorio)) {
         if (!is_dir($archivo)) {
             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-            echo "<iframe src='../talent/documentos/$id/$comprobateCurp.pdf' width='100' height='220' margin-top='50' class='form-control'></iframe>";
-            echo "<a href='../talent/documentos/$id/$comprobateCurp.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>CURP</a>";
+            echo "<iframe src='../talent/documentos/$id/$comprobatecurp.pdf' width='100' height='220' margin-top='50' class='form-control'></iframe>";
+            echo "<a href='../talent/documentos/$id/$comprobatecurp.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>CURP</a>";
         }
     }
 }
-$comprobanteDomicilio = 'comprobante de domicilio';
-                $path = "../talent/documentos/".$id.'/'.$comprobanteDomicilio.'.pdf';
+$comprobantedomicilio = 'comprobante de domicilio';
+                $path = "../talent/documentos/".$id.'/'.$comprobantedomicilio.'.pdf';
                 if (file_exists($path)) {
                     $directorio = opendir($path);
                     while ($archivo = readdir($directorio)) {
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div>";
-                            echo "<iframe src='../talent/documentos/$id/$comprobanteDomicilio.pdf' width='100' height='220' margin-top='50' class='form-control'></iframe>";
-                            echo "<a href='../talent/documentos/$id/$comprobanteDomicilio.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Comprobante de domicilio</a>";
+                            echo "<iframe src='../talent/documentos/$id/$comprobantedomicilio.pdf' width='100' height='220' margin-top='50' class='form-control'></iframe>";
+                            echo "<a href='../talent/documentos/$id/$comprobantedomicilio.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Comprobante de domicilio</a>";
                         }
                     }
                 }
