@@ -5,9 +5,9 @@ $conexionX = new ConexionRh();
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-        $sql = $conexionX->prepare("SELECT * from usuariosrh where correo = :correo");
+        $sql = $conexionX->prepare("SELECT * from usuariosrh where correoelectronico = :correoelectronico");
             $sql->execute(array(
-                ':correo'=>$usernameSesion
+                ':correoelectronico'=>$usernameSesion
             ));
             $row = $sql->fetch();
             if($row != false){
