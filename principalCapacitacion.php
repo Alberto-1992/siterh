@@ -5,7 +5,7 @@ $conexionX = new ConexionRh();
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-        $sql = $conexionX->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
+        $sql = $conexionX->prepare("SELECT * from usuariosrh where correo = :correo");
             $sql->execute(array(
                 ':correo'=>$usernameSesion
             ));
@@ -13,21 +13,12 @@ $conexionX = new ConexionRh();
             if($row != false){
             $identificador = $row['id_empleado'];
             require 'frontend/principalCapacitacion.php';
-            }else{
-                $usernameSesion = $_SESSION['usuarioAdminRh']; 
-                $sql = $conexionX->prepare("SELECT id_jefe from jefes2022 where correo = :correo");
-                $sql->execute(array(
-                    ':correo'=>$usernameSesion
-                ));
-                $row = $sql->fetch();
-                $identificador = $row['id_jefe'];
-            require 'frontend/principalCapacitacion.php';
             }
         break;
         
         case isset($_SESSION['usuarioJefe']):
             $usernameSesion = $_SESSION['usuarioJefe'];
-            $sql = $conexionX->prepare("SELECT correo,id_jefe from jefes2022 where correo = :correo");
+            $sql = $conexionX->prepare("SELECT correo, id_jefe from jefes2022 where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));
@@ -44,12 +35,12 @@ $conexionX = new ConexionRh();
 
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
-            $sql = $conexionX->prepare("SELECT id_empleado from personaloperativo2023 where correo = :correo");
+            $sql = $conexionX->prepare("SELECT Empleado from plantillahraei where correo = :correo");
                 $sql->execute(array(
                     ':correo'=>$usernameSesion
                 ));
                 $row = $sql->fetch();
-                $identificador = $row['id_empleado'];
+                $identificador = $row['Empleado'];
         require 'frontend/principalCapacitacion.php';
         break;
 
