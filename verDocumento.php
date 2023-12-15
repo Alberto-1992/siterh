@@ -2,8 +2,7 @@
 error_reporting(0);
 $id = $_POST['id'];
 ?>
-<link rel="stylesheet" href="iconos/css/all.min.css?n=1">
-<link rel="stylesheet" href="iconos/css/all.css?n=1">
+
 <?php
     $documento = 'avisoconfidencialidad';
     $path = "../talent/documentos/" .$id."/".$documento.'.pdf';
@@ -14,8 +13,8 @@ $id = $_POST['id'];
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                 echo "<label>Aviso de confidencialidad</label>";
                 echo "<iframe src='../talent/documentos/$id/$documento.pdf' class='form-control'></iframe>";
-                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a>";
-                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a><br>";
+                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'>Eliminar</a>";
             }
         
     }
@@ -32,8 +31,8 @@ $id = $_POST['id'];
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                 echo "<label>Cédula de integración de antigüedad</label>";
                 echo "<iframe src='../talent/documentos/$id/$documento.pdf' class='form-control'></iframe>";
-                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a>";
-                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a><br>";
+                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'>Eliminar</a>";
             }
         
     }
@@ -50,8 +49,8 @@ $id = $_POST['id'];
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                 echo "<label>Declaración de no conflicto de interés</label>";
                 echo "<iframe src='../talent/documentos/$id/$documento.pdf' class='form-control'></iframe>";
-                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a>";
-                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a><br>";
+                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'>Eliminar</a>";
             }
         
     }
@@ -69,8 +68,8 @@ $id = $_POST['id'];
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                 echo "<label>Declaración para ocupación</label>";
                 echo "<iframe src='../talent/documentos/$id/$documento.pdf' class='form-control'></iframe>";
-                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a>";
-                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a><br>";
+                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'>Eliminar</a>";
             }
         
     }
@@ -87,8 +86,8 @@ $id = $_POST['id'];
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                 echo "<label>Documento de no empleo</label>";
                 echo "<iframe src='../talent/documentos/$id/$documento.pdf' class='form-control'></iframe>";
-                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a>";
-                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a><br>";
+                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'>Eliminar</a>";
             }
         
     }
@@ -106,8 +105,8 @@ $id = $_POST['id'];
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                 echo "<label>Formato consentimiento</label>";
                 echo "<iframe src='../talent/documentos/$id/$documento.pdf' class='form-control'></iframe>";
-                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a>";
-                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a><br>";
+                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'>Eliminar</a>";
             }
         
     }
@@ -125,8 +124,8 @@ $id = $_POST['id'];
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                 echo "<label>Formato datos de otro empleo</label>";
                 echo "<iframe src='../talent/documentos/$id/$documento.pdf' class='form-control'></iframe>";
-                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a>";
-                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a><br>";
+                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'>Eliminar</a>";
             }
         
     }
@@ -143,15 +142,29 @@ $id = $_POST['id'];
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                 echo "<label>Formato de aviso de protección de datos</label>";
                 echo "<iframe src='../talent/documentos/$id/$documento.pdf' class='form-control'></iframe>";
-                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a>";
-                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='../talent/documentos/$id/$documento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver documento</a><br>";
+                echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$documento'>Eliminar</a>";
             }
         
     }
 
     ?>
 <div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
+<?php
+    $archivonombre = 'Titulo tecnico';
+    $path = '../talent/documentos/'.$id.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
+                echo "<iframe src='../talent/documentos/$id/$archivonombre.pdf' width='90' height='200' class='form-control'></iframe>";
+                echo "<a href='../talent/documentos/$id/$archivonombre.pdf' target='_blank'>Ver</a>";
+            }
+        }
+    
+
+    ?>
 <?php
 $mediasup = 'Certificado media superior';
                 $path = "../talent/documentos/".$id.'/'.$mediasup.'.pdf';
@@ -163,6 +176,8 @@ $mediasup = 'Certificado media superior';
 
                             echo "<iframe src='../talent/documentos/$id/$mediasup.pdf' width='170' height='220' class='form-control'></iframe>";
                             echo "<a href='../talent/documentos/$id/$mediasup.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Certificado media superior</a>";
+                            echo "<a href='../talent/eliminarDocumentacion/eliminarDocumento?titulo=$archivonombre&id=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            
                         }
                     }
                 ?>
@@ -293,6 +308,19 @@ $conexionD = new ConexionDocumentacion();
                 echo "<a href='../talent/documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Cedula posgrado</a>";
             }
         }
+        $archivonombre = 'Certificado consejo'.' '.$dataRegistroEspecialidad['nombreformacionacademica'];
+        $id_user = $dataRegistroEspecialidad['id_empleado'];
+    $path = "../talent/documentos/" .$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='../talent/documentos/$id_user/$archivonombre.pdf' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Certificado consejo</a>";
+            }
+        }
 endforeach;
     ?>
                 </div>
@@ -334,6 +362,7 @@ endforeach;
                 echo "<a href='../talent/documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
+        
 endforeach;
                 ?>
                 </div>
@@ -417,24 +446,35 @@ endforeach;
                 ?>
                 </div>
 <strong>Documento practicas profesionales</strong>
-<div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
+<div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
-    $compdomicilio = 'documento certificacion uno';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
+    require_once 'clases/conexion.php';
+    $conexionD = new ConexionDocumentacion();
+        $sql = $conexionD->prepare("SELECT * from cerficacion where id_postulado = :id_postulado");
+            $sql->execute(array(
+                ':id_postulado'=>$id
+            ));
+            $row = $sql->fetchAll();
+            foreach($row as $dataRegistroCertificacion):
+        
+        $archivonombre = 'Documento certificacion'.' '.$dataRegistroCertificacion['nombrecertificacionuno'];
+        $id_user = $dataRegistroCertificacion['id_postulado'];
+    $path = "../talent/documentos/" .$id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$id_user/$archivonombre.pdf' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
-    }
+        
+endforeach;
                 ?>
                 </div>
-<strong>Documento certificacion uno</strong>
+                <strong>Documento certificaciones</strong>
 
 <div class="col-md-6" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
@@ -457,35 +497,45 @@ endforeach;
 
 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
-    $compdomicilio = 'documento exp laboral primero 1';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
+    require_once 'clases/conexion.php';
+    $conexionD = new ConexionDocumentacion();
+        $sql = $conexionD->prepare("SELECT * from explaboralprivado where id_postulado = :id_postulado");
+            $sql->execute(array(
+                ':id_postulado'=>$id
+            ));
+            $row = $sql->fetchAll();
+            foreach($row as $dataRegistroExpLaboralPriva):
+        
+        $archivonombre = 'Documento exp laboral privada 1'.' '.$dataRegistroExpLaboralPriva['nombrelaboralprivada'];
+        $id_user = $dataRegistroExpLaboralPriva['id_postulado'];
+    $path = "../talent/documentos/" .$id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$id_user/$archivonombre.pdf' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
-    }
-    $compdomicilio = 'documento exp laboral primero 2';
-    $path = "../talent/documentos/" . $compdomicilio . $curp;
+        $archivonombre = 'Documento exp laboral privada 2'.' '.$dataRegistroExpLaboralPriva['nombrelaboralprivada'];
+        $id_user = $dataRegistroExpLaboralPriva['id_postulado'];
+    $path = "../talent/documentos/" .$id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='../talent/documentos/$compdomicilio$curp/$archivo' width='170' height='220'class='form-control' ></iframe>";
-                echo "<a href='../talent/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
+                echo "<iframe src='../talent/documentos/$id_user/$archivonombre.pdf' width='170' height='220'class='form-control' ></iframe>";
+                echo "<a href='../talent/documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Ver</a>";
             }
         }
-    }
+endforeach;
                 ?>
                 </div>
-                <strong>Exp laboral sector privado primero</strong>
+                <strong>Exp laboral sector privado</strong>
                
                 <div class="col-md-10" style="border: 1px solid #F0F0F0; display: flex; margin-top: 20px; padding: 10px;">
                 <?php
