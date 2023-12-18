@@ -109,6 +109,10 @@ while ($dataRegistro = $query->fetch()) {
     } else if ($validaacceso == 4) {
         $acceso = $thre;
     }
+    $fechainicio = $dataRegistro['fechainicio'];
+$fechatermino = $dataRegistro['fechatermino'];
+$fechainicionew = date("d-m-Y", strtotime($fechainicio));
+$fechaterminonew = date("d-m-Y", strtotime($fechatermino));
 ?>
     <input type="hidden" id="id" value="<?php echo $dataRegistro['id']; ?>">
     <input type="hidden" id="nombrecurso" value="<?php echo $dataRegistro['nombrecurso']; ?>">
@@ -152,11 +156,11 @@ while ($dataRegistro = $query->fetch()) {
     </tr>
     <tr>
         <th id="th">Fecha de inicio del curso:</th>
-        <td id="td"><?php echo $dataRegistro['fechainicio'] ?></td>
+        <td id="td"><?php echo $fechainicionew; ?></td>
     </tr>
     <tr>
         <th id="th">Fecha de termino del curso:</th>
-        <td id="td"><?php echo $dataRegistro['fechatermino'] ?></td>
+        <td id="td"><?php echo $fechaterminonew; ?></td>
     </tr>
     <tr>
         <th id="th">Modalidad:</th>
