@@ -8,11 +8,16 @@ $hora = date("Y-m-d h:i:sa");
 $sql = $conexion->prepare("UPDATE datospersonales set acceder = :acceder, cargodocumento = :cargodocumento where id_datopersonal = :id_datopersonal");
     $sql->execute(array(
         ':acceder'=>1,
-        ':cargodocumento'=>2,
+        ':cargodocumento'=>1,
         ':id_datopersonal'=>$id
     ));
-
-    $conexionContratacion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = $conexionContratacion->prepare("UPDATE datospersonales set datosActualizados = :datosActualizados, rechazoContratacion = :rechazoContratacion where id_datopersonal = :id_datopersonal");
+    $sql->execute(array(
+        ':datosActualizados'=>1,
+        ':rechazoContratacion'=>1,
+        ':id_datopersonal'=>$id
+    ));
+    /*$conexionContratacion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionContratacion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionContratacion->beginTransaction();
 $sql = $conexionContratacion->prepare("DELETE from datospersonales where id_datopersonal = :id_datopersonal");
@@ -21,7 +26,7 @@ $sql = $conexionContratacion->prepare("DELETE from datospersonales where id_dato
         ));
 
 
-    $validatransac = $conexionContratacion->commit();
+    $validatransac = $conexionContratacion->commit();*/
 
     if ($validatransac != false) {
         echo "<script>alertify.success('Registro eliminado');

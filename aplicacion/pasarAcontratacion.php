@@ -10,9 +10,10 @@ $hora = date("Y-m-d h:i:sa");
     $conexionContratacion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionContratacion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionContratacion->beginTransaction();
-$sql = $conexionContratacion->prepare("UPDATE datospersonales set datosActualizados = :datosActualizados where curp = :curp");
+$sql = $conexionContratacion->prepare("UPDATE datospersonales set datosActualizados = :datosActualizados, rechazoContratacion = :rechazoContratacion where curp = :curp");
         $sql->execute(array(
             ':datosActualizados'=>3,
+            ':rechazoContratacion'=>0,
             ':curp' =>$identificador
         ));
 
