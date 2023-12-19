@@ -5,6 +5,7 @@ clases/configDocumentos
 clases/configRh
 close_sesion.php
 imagenesPerfiles/**/
+documentosactanacimiento/**/
 documentoscursos/**/
 calendario/config.php
 calendarioVacaciones/config.php
@@ -14,6 +15,7 @@ documentoscartilla/**/
 documentoscomprobantedomicilio/**/
 documentoscurp/**/
 documentoscursos/**/
+documentosdiplomados/**/
 documentosdoctorado/**/
 documentoshijos/**/
 documentoslicenciatura/**/
@@ -24,5 +26,6 @@ documentoscedulalicenciatura/**/
 documentosdoctoradocedula/**/
 documentosmaestriacedula/**/
 Push.php
+subidas/
 
 

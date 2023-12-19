@@ -99,6 +99,7 @@ $(document).ready(function () {
     })
 });
 </script>
+
 <nav class="navbar navbar-expand-md fixed-top" style="background-color: #0A4380;">
         <span id="cabecera">Actualización datos personales</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +109,7 @@ $(document).ready(function () {
 
     </nav>
 
-    <div class="container">
+    <div class="container" style="overflow-y:scroll;">
         <div id="mensaje"></div>
         <h1 style="text-align: center; font-size: 25px;">Actualiza tu información personal</h1>
         <h1 style="text-align: center; font-size: 15px; color: red;">Con la finalidad de mantener tu expediente actualizado, te solicitamos actualizes tus datos personales.</h1>

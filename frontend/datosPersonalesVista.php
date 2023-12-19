@@ -293,6 +293,31 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             clearstatcache();
                             ?>
                         </div>
+                        <div class="col-md-3">
+            <label for="mensaje">Sube acta de nacimiento:</label>
+                <input type="file" class="form-control" name="documentoactanacimiento" id="documentoactanacimiento" accept=".pdf">
+            </div>
+            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista acta nacimiento</strong>
+                            <?php
+                            $archivo = "Comprobante acta nacimiento";
+                            
+                            $path = "documentosactanacimiento/".$identificador.'/';
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentosactanacimiento/$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentosactanacimiento/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+                            clearstatcache();
+                            ?>
+                        </div>
             <div class="col-md-3">
                 <label for="mensaje">Fecha de nacimiento:</label>
                 <input type="date" class="form-control" name="fechanacimiento" id="fechanacimiento" required readonly value="">

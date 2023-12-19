@@ -20,7 +20,7 @@ $sql = $conexionContratacion->prepare("UPDATE datospersonales set datosActualiza
     $validatransac = $conexionContratacion->commit();
 
     if ($validatransac != false) {
-        echo "<script>alertify.success('Registro eliminado');
+        echo "<script>alertify.success('Registo asignado');
 </script>";
     }else{
     $conexionContratacion->rollBack();

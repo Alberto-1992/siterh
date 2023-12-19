@@ -71,6 +71,32 @@ $hora = date("Y-m-d h:i:sa");
         }
         
     }
+    if ($_FILES["documentoactanacimiento"]["error"] > 0) {
+        
+    } else {
+
+        $permitidos = array("application/pdf");
+        
+        if (in_array($_FILES["documentoactanacimiento"]["type"], $permitidos) && $_FILES["documentoactanacimiento"]["size"]) {
+
+            $ruta = '../documentosactanacimiento/'.$id_empleado. '/';
+            $archivo = $ruta . $_FILES["documentoactanacimiento"]["name"] = "Comprobante acta nacimiento.pdf";
+
+
+            if (!file_exists($ruta)) {
+                mkdir($ruta);
+            }
+
+            if (file_exists($archivo)) {
+
+                $resultado = @move_uploaded_file($_FILES["documentoactanacimiento"]["tmp_name"], $archivo);
+            } else {
+                $resultado = @move_uploaded_file($_FILES["documentoactanacimiento"]["tmp_name"], $archivo);
+            }
+            
+        }
+        
+    }
     if ($_FILES["documentocartilla"]["error"] > 0) {
         
     } else {
