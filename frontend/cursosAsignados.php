@@ -172,18 +172,35 @@ hr {
   </div>
 </div>
 <style>
-    .box1 {
+    .gallery {
   display: grid;
-  gap: 0.7rem;
-  grid-template-columns: 1fr 3fr;
-  margin-top: 0px;
-  margin-left: 50px;
-  padding: 5px;
+  gap: .5rem;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  margin-top: 10px;
+  margin-left: 0px;
+  padding: 7px;
+  background-color: white;
+}
+.tarjeta {
+  overflow: hidden;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 10px 5px 5px #ABAAAA;
+  border-radius: 10px;
+  border-radius: 0.8rem;
+  color: #333;
+  cursor: pointer;
+    text-align: center;
+}
+
+.tarjeta:hover {
+  box-shadow: 10px 5px 5px rgb(0, 23, 176);
+
 }
 </style>
-<div class="box1">
-<div class="grid" style="margin-top: 5px; padding: 15px;">
-
+<div class="gallery">
 <?php 
     $sql = $conexionX->prepare("SELECT nombre_capacitacion.* from nombre_capacitacion inner join personalcurso on personalcurso.id_curso = nombre_capacitacion.id_capacitacion where personalcurso.id_empleado = :id_empleado");
     $sql->execute(array(
@@ -196,7 +213,7 @@ hr {
         $nombreCurso = "#".$row['id_capacitacion'];
         $cursoLink = $row['id_capacitacion'];
 ?>
-<div class="card" style="width: 18rem; ">
+<div class="tarjeta">
       <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="<?php echo $row['rutaimagen'] ?>" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
     
       <div class="card-body" >
@@ -208,8 +225,8 @@ hr {
   </a>
         </p>
       
-  <div class="collapse" id="<?php echo $cursoLink; ?>">
-  <div class="card card-body">
+  <div class="collapse" id="<?php echo $cursoLink; ?>" >
+  <div class="card card-body" style="width: 15rem;">
         <?php echo $row['objetivo'] ?>
         <a href="<?php echo $row['link'] ?>" style="text-decoration-line: underline; color: blue;" target="_blank">Link de inscripción</a>
   </div>
@@ -220,7 +237,7 @@ hr {
 <?php } ?>
 
 </div>
-</div>
+
 
 
 
