@@ -9,13 +9,13 @@ $hora = date("Y-m-d h:i:sa");
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
-
+/*
     $sql = $conexionX->prepare("UPDATE plantillahraei set Empleado = :Empleado where curp = :curp");
         $sql->execute(array(
             ':Empleado'=>$id_empleado,
             ':curp'=>$curp
         ));
-        /*
+        */
     $sql = $conexionX->prepare("UPDATE datospersonales set fechanacimiento = :fechanacimiento, edad = :edad, estadocivil = :estadocivil, entidadnacimiento = :entidadnacimiento, genero = :genero,tipodesangre = :tipodesangre,
     nacionalidad = :nacionalidad,numerocartillamilitar = :numerocartillamilitar, cartanaturalizacion = :cartanaturalizacion,calle = :calle, numeroexterior = :numeroexterior, numerointerior = :numerointerior,
     codigopostal = :codigopostal, colonia = :colonia, estado = :estado, municipio = :municipio, localidad = :localidad, telefonocasa = :telefonocasa, telefonocelular = :telefonocelular, otrotelefono = :otrotelefono, 
@@ -213,8 +213,7 @@ foreach($_FILES["documentocurphijo"]['tmp_name'] as $key => $tmp_name)
 	}
 
     mysqli_query($conexionGrafico, $consulta);
-*/
-$validatransac = $conexionX->commit();
+
     if($validatransac != false){
         echo "<script>Swal.fire({
             position: 'top-end',

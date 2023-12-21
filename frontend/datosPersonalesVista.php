@@ -262,7 +262,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             </div>
             <div class="col-md-3">
                 <label for="mensaje">N° empleado:</label>
-                <input type="number" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" >
+                <input type="number" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
             </div>
             <div class="col-md-3">
                 <label for="mensaje">CURP:</label>
@@ -320,19 +320,19 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                         </div>
             <div class="col-md-3">
                 <label for="mensaje">Fecha de nacimiento:</label>
-                <input type="date" class="form-control" name="fechanacimiento" id="fechanacimiento" readonly value="">
+                <input type="date" class="form-control" name="fechanacimiento" id="fechanacimiento" required readonly value="">
             </div>
             <div class="col-md-3">
                 <label for="mensaje">Edad:</label>
-                <input type="number" class="form-control" name="edad" id="edad" readonly value="<?php echo $edad ?>">
+                <input type="number" class="form-control" name="edad" id="edad" required readonly value="<?php echo $edad ?>">
             </div>
             <div class="col-md-3">
                 <label for="mensaje">Sexo:</label>
-                <input type="text" class="form-control" name="sexo" id="sexo" readonly value="<?php echo $sexo ?>">
+                <input type="text" class="form-control" name="sexo" id="sexo" required readonly value="<?php echo $sexo ?>">
             </div>
             <div class="col-md-3">
                 <label for="mensaje">Estado civil:</label>
-                <input type="text" class="form-control" name="estadocivil" id="estadocivil" value="<?php echo $row['estadocivil'] ?>">
+                <input type="text" class="form-control" name="estadocivil" id="estadocivil" required value="<?php echo $row['estadocivil'] ?>">
             </div>
             <div class="col-md-3">
                 <label for="mensaje">Entidad de nacimiento:</label>
@@ -341,11 +341,11 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
             <div class="col-md-3">
                 <label for="mensaje">Tipo de sangre:</label>
-                <input type="text" class="form-control" name="tipodesangre" id="tipodesangre" value="<?php echo $tiposangre ?>">
+                <input type="text" class="form-control" name="tipodesangre" id="tipodesangre" required value="<?php echo $tiposangre ?>">
             </div>
             <div class="col-md-3">
                 <label for="mensaje">Nacionalidad:</label>
-                <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" value="<?php echo $nacionalidad ?>">
+                <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" required value="<?php echo $nacionalidad ?>">
             </div>
             <div class="col-md-3">
                 <label for="mensaje">N° de cartilla militar:</label>
@@ -431,7 +431,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             </div>
             <div class="col-md-3">
                 <label for="mensaje">Estado:</label>
-                <select class="form-control" name="cbx_estado" id="cbx_estado" onchange="tipoCapacitacion();">
+                <select class="form-control" name="cbx_estado" id="cbx_estado" required onchange="tipoCapacitacion();">
                     <option value="<?php echo $estado ?>"><?php echo $estadovive ?></option>
                     <?php
                     require 'conexionRh.php';
