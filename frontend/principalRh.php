@@ -203,6 +203,13 @@
                     <p>Plantilla HRAEI</p>
                 </a>
             </article>
+            <article class="card" id="compatibilidades" onclick="controlCompatibilidad();">
+                <a href="controlCompatibilidad">
+                    <hr id="hr6">
+                    <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Control compatibilidades</p>
+                </a>
+            </article>
             <!--
             <article class="card" id="plantillamando" onclick="movimientosplantilla();">
                 <a href="plantillamandos">

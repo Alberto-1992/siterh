@@ -460,85 +460,9 @@ $sql->execute(array(
     $dataestado = $sqlestado->fetch();
  if($dataCurso != ''){
 ?>
-<table class="table table-responsive  table-bordered " cellspacing="0" width="100%">
-    <div class="containerr3" style="background-color: orange;">Información personal</div>
 
-    <tr>
-        <th id="th">Fecha de nacimiento:</th>
-        <td id="td"><?php echo $dataCurso['fechanacimiento'] ?></td>
-    </tr>
-    <tr>
-        <th id="th">Edad:</th>
-        <td id="td"><?php echo $dataCurso['edad']?></td>
-    </tr>
-    <tr>
-        <th id="th">Estado civil:</th>
-        <td id="td"><?php echo $dataCurso['estadocivil']?></td>
-    </tr>
-    <tr>
-        <th id="th">Entidad de nacimiento:</th>
-        <td id="td"><?php echo $dataCurso['entidadnacimi']?></td>
-    </tr>
-    <tr>
-        <th id="th">Sexo:</th>
-        <td id="td"><?php echo $dataCurso['genero']?></td>
-    </tr>
-    <tr>
-        <th id="th">Tipo de sangre:</th>
-        <td id="td"><?php echo $dataCurso['tipodesangre']?></td>
-    </tr>
-    <tr>
-        <th id="th">Nacionalidad:</th>
-        <td id="td"><?php echo $dataCurso['nacionalidad']?></td>
-    </tr>
-    <tr>
-        <th id="th">N° de cartilla militar:</th>
-        <td id="td"><?php echo $dataCurso['numerocartillamilitar']?></td>
-    </tr>
-    <tr>
-        <th id="th">Carta de naturalización:</th>
-        <td id="td"><?php echo $dataCurso['cartanaturalizacion']?></td>
-    </tr>
-    <tr>
-        <th id="th">N° de seguro social:</th>
-        <td id="td"><?php echo $dataCurso['numerosegurosocial']?></td>
-    </tr>
-
-</table>
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%">
-    <div class="containerr3" style="background-color: orange;">Información domicilio</div>
-    <tr>
-        <th id="th">Calle:</th>
-        <td id="td"><?php echo $dataCurso['calle'] ?></td>
-    </tr>
-    <tr>
-        <th id="th">N° exterior:</th>
-        <td id="td"><?php echo $dataCurso['numeroexterior'] ?></td>
-    </tr>
-    <tr>
-        <th id="th">N° interior:</th>
-        <td id="td"><?php echo $dataCurso['numerointerior']?></td>
-    </tr>
-    <tr>
-        <th id="th">Codigo postal:</th>
-        <td id="td"><?php echo $dataCurso['codigopostal']?></td>
-    </tr>
-    <tr>
-        <th id="th">Colonia:</th>
-        <td id="td"><?php echo $dataCurso['colonia']?></td>
-    </tr>
-    <tr>
-        <th id="th">Estado:</th>
-        <td id="td"><?php echo $dataestado['estado']?></td>
-    </tr>
-    <tr>
-        <th id="th">Alcaldia/Municipio:</th>
-        <td id="td"><?php echo $dataCurso['municipio']?></td>
-    </tr>
-    <tr>
-        <th id="th">Localidad:</th>
-        <td id="td"><?php echo $dataCurso['localidad']?></td>
-    </tr>
+    <div class="containerr3" style="background-color: orange;">Información de contacto</div>
     <tr>
         <th id="th">Tel casa:</th>
         <td id="td"><?php echo $dataCurso['telefonocasa']?></td>

@@ -4,9 +4,11 @@ require 'generarCedulaReclutamiento.php';
 require '../clases/conexion.php';
 $id = $_GET['id'];
 $conexion = new ConexionDocumentacion();
-$sql = $conexion->prepare("SELECT datospersonales.*, estudiosmediosup.*, posgespecilidad.*, explaboralprivado.*, explaboralpublico.*, actualizacionacademica.* from datospersonales 
-left outer join estudiosmediosup on estudiosmediosup.id_postulado = datospersonales.id_datopersonal 
-left outer join posgespecilidad on posgespecilidad.id_postulado = datospersonales.id_datopersonal
+$sql = $conexion->prepare("SELECT datospersonales.*, estudiossuperior.*, estuidosmaestria.*, estudiosmediosup.*, especialidad.*, explaboralprivado.*, explaboralpublico.*, actualizacionacademica.* from datospersonales 
+left outer join estudiosmediosup on estudiosmediosup.id_postulado = datospersonales.id_datopersonal
+left outer join estudiossuperior on estudiossuperior.id_empleado = datospersonales.id_datopersonal
+left outer join estudiosmaestria on estudiosmaestria.id_empleado = datospersonales.id_datopersonal 
+left outer join especialidad on especialidad.id_empleado = datospersonales.id_datopersonal
 left outer join explaboralprivado on explaboralprivado.id_postulado = datospersonales.id_datopersonal
 left outer join explaboralpublico on explaboralpublico.id_postulado = datospersonales.id_datopersonal
 left outer join actualizacionacademica on actualizacionacademica.id_postulado = datospersonales.id_datopersonal
@@ -15,13 +17,13 @@ where datospersonales.curp = :curp");
         ':curp'=>$id
     ));
 
-while ($row = $sql->fetch()) {
+while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
     $id_postulado = $row['id_postulado'];
     $sql_m = $conexion->prepare("SELECT SUM( IF(nombrecursouno != '-', 1,0) + IF(nombrecursodos != '-', 1,0) + IF(nombrecursotres != '-', 1,0)) total FROM actualizacionacademica where id_postulado = :id_postulado");
         $sql_m->execute(array(
             ':id_postulado'=>$id_postulado
         ));
-    $rows = $sql_m->fetch(PDO::FETCH_ASSOC);
+    $rows = $sql_m->fetch();
     $valida = $rows['total'];
     if($valida == 1 or $valida == 2 or $valida == 3){
         $punto = '1 punto';
@@ -37,7 +39,7 @@ $conexionP = new Conexion();
             ':codigopuesto'=>$codigopuesto
         ));
     $rowCodigo = $sql_p->fetch(PDO::FETCH_ASSOC);
-    $pdf = new PDF("P", "mm", "LETTER"); //Orientacion,Unidad de mediada en (mm,cm,p),tipo,
+    $pdf = new PDF("P", "mm", "A4"); //Orientacion,Unidad de mediada en (mm,cm,p),tipo,
     $pdf->AliasNbPages();
     $pdf->AddPage();
     $pdf->SetFont("Arial", "BI", 15);
@@ -1847,12 +1849,11 @@ $conexionP = new Conexion();
 
     //$pdf->SetFont("Arial", "I", 10); //Das diselo al recuadro, dependiendo donde lo pociciones 
     //$pdf->SetTextColor(0, 0, 0);
-}
-
-
+    }
+    
 //$pdf->Cell(50, 10, "Reporte PHP", 1, 1, "C"); //la SElda contine un ancho,una altura, el relleno ,contorno,salto de linea y alineacion 
 //$pdf->MultiCell(50, 10, "Reporte PHP", 1, "C");
-$pdf->Output(); //muestras el pdf
-
-
+    $pdf->Output("pdf", 'I'); //muestras el pdf
+    
+    
 ?>

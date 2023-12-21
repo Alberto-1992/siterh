@@ -20,30 +20,22 @@
 sleep(0.5);
 $utimoId = $_POST['utimoId'];
 $limite  = 10;
-require_once 'clases/conexion.php';
+require 'clases/conexion.php';
 $conexionX = new ConexionRh();
-$sqlQueryComentarios  = $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei");
+$sqlQueryComentarios  = $conexionX->prepare("SELECT plantillahraei.Empleado, compatibilidadotroempleo.id_empleado FROM plantillahraei inner join compatibilidadotroempleo on compatibilidadotroempleo.id_empleado = plantillahraei.Empleado and compatibilidadotroempleo.otroempleo = 'Si'");
 $sqlQueryComentarios->execute();
 $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
 $sqlQueryComentarios->execute();
 $total_registro = $sqlQueryComentarios->fetchColumn();
 
-    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei WHERE plantillahraei.Empleado < $utimoId ORDER BY plantillahraei.Empleado  DESC LIMIT $limite");
+    $query= $conexionX->prepare("SELECT plantillahraei.Nombre, plantillahraei.correo, plantillahraei.Empleado, plantillahraei.DescripcionPuesto, plantillahraei.RFC, plantillahraei.DescripcionAdscripcion, compatibilidadotroempleo.otroempleo  FROM plantillahraei inner join compatibilidadotroempleo on compatibilidadotroempleo.id_empleado = plantillahraei.Empleado WHERE plantillahraei.Empleado < $utimoId and compatibilidadotroempleo.otroempleo = 'Si' ORDER BY plantillahraei.Empleado  DESC LIMIT $limite");
     $query->execute();
 	$data = $query->fetchAll();
         foreach($data as $dataRegistro):
             error_reporting(0);
             $id = $dataRegistro['Empleado'];
-            $queryS = $conexionX->prepare("SELECT actualizo from actualizacion where id_empleado = $id");
-                $queryS->execute(array(
-                    ':id_empleado'=>$id
-                ));
-                $dataRegistro2 = $queryS->fetch();
-                $sql = $conexionX->prepare("SELECT * from validaciones WHERE id_empleado = :id_empleado");
-                $sql->execute(array(
-                    ':id_empleado'=>$id
-                ));
-                $rows = $sql->fetch();
+            $acceso = $dataRegistro['otroempleo'];
+            $confirmar = $dataRegistro['Empleado'];
             ?>
 
     <div class="item-comentario" id="<?php echo $dataRegistro['Empleado']; ?>">
@@ -51,26 +43,9 @@ $total_registro = $sqlQueryComentarios->fetchColumn();
         
             <div id="<?php echo $dataRegistro['Empleado'] ?>" class="ver-info" style="cursor: pointer;">
             <?php echo '<strong style="font-family: Arial; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['Nombre'].'</strong>'.''.'<strong style="font-size: 9px; margin-left: 7px; color:red;">&nbsp'.$dataRegistro['Empleado'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: black;">&nbsp'.$dataRegistro['RFC'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionPuesto'].'</strong>'.'<strong style="font-size: 10px; color: red; margin-left: 7px;">&nbsp'.$dataRegistro['DescripcionAdscripcion'].'</strong><br>';
-                        if ($dataRegistro2['actualizo'] == 1) {
-                            ?>
-                                <input type="submit" value="Actualizo" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
-                            <?php }else if($dataRegistro2['actualizo'] == 0) { ?>
-                                <input type="submit" value="Sin captura" style="padding: 1px; background: red; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
-                                <?php } if($dataRegistroC['otroempleo'] == 'Si'){
-                                    echo "<span class='titulo'>$MINIMOOK";
-
-                                }else{ 
-                            } 
-                            if ($rows['validoinfopersonal'] == 1) {
-                                ?>
-                                    <input type="submit" value="D.P ok" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
-                                <?php } 
-                                if ($rows['validoinfoacademica'] == 1) { ?>
-                                <input type="submit" value="D.A ok" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
-                                <?php } 
-                                if ($rows['validocompatibilidad'] == 1) { ?>
-                                <input type="submit" value="D.C ok" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
-                            <?php } ?>
+                  if($acceso == 'Si'){ 
+                    ?><input type="submit" value="Otro empleo" style="padding: 1px; cursor-pointer: none; background: orange; border: none; color: black; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;"><?php } ?>
+                          
         </div>
         <hr id="hr">
         </div>
@@ -89,7 +64,7 @@ $(function() {
         };
         $.ajax({
             type: "POST",
-            url: "consultaBusquedaPlantillaHraei.php",
+            url: "consultaBusquedaCompatibilidad.php",
             data: ob,
             beforeSend: function() {
 

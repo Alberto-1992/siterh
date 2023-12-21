@@ -668,7 +668,12 @@ p:hover {
   background-size: 100% 100%;
   background-position: 85% 90%; 
 }
-
+#compatibilidades {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(12, 23, 179));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
 /*estilos formularios*/
 
 #form-ai {
