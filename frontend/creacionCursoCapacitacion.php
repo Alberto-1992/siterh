@@ -85,7 +85,7 @@
                 <div class="form-row">
                     <div class="col-md-8">
                         <label>Nombre del curso</label>
-                        <input type="text" class="form-control" name="Nombrecurso">
+                        <input type="text" class="form-control" name="Nombrecurso" required>
                     </div>
                     <div class="col-md-4">
                         <label>Programa</label>
@@ -109,7 +109,7 @@
 
                     <div class="col-md-4">
                         <label>Linea Estratejica</label>
-                        <select class="form-control" name="LineaEstratejica">
+                        <select class="form-control" name="LineaEstratejica" required>
                             <option selected disabled value="">Choose...</option>
                             <?php
 
@@ -263,7 +263,7 @@
 
                     <div class="col-md-4">
                         <label>Tipo de capacitación</label>
-                        <select type="form-select" class="form-control" name="tipoaccion">
+                        <select type="form-select" class="form-control" name="tipoaccion" required>
                             <option selected disabled value="">Choose...</option>
 
                             <?php
@@ -425,38 +425,43 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label>Lugar de inparticion</label>
+                        <label>Lugar de impartición</label>
                         <input type="text" class="form-control" name="LugarImparte">
                     </div>
 
                     <div class="col-md-2">
                         <label>Fecha de inicio</label>
-                        <input type="date" class="form-control " name="Fechainicio">
+                        <input type="date" class="form-control " name="Fechainicio" required>
                     </div>
                     <div class="col-md-2">
                         <label>Fecha de terminó</label>
                         <input type="date" class="form-control " name="Fechatermino">
                     </div>
-
+                            <!--
                     <div class="col-md-4">
                         <label>Instructores</label>
                         <input type="text" class="form-control" name="instructor">
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <label>Numero de Asistentes</label>
                         <input type="number" class="form-control" name="asistentes">
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-3">
                         <label>Temario</label>
                         <input type="text" class="form-control" name="Temariocapacitacion">
                     </div>
-
-                    <div class="col-md-5">
+                        -->
+                    <div class="col-md-3">
                         <label>Objetivo</label>
                         <input type="text" class="form-control" name="objetivocapacitacion">
                     </div>
+                    <div class="col-md-3">
+                        <label>Sube la imagen del curso</label>
+                        <input type="file" class="form-control" name="imagenCurso" accept="image/jpg,image/jpeg,image/png">
+                    </div>
+                    
                     <style>
                         .circu{
   padding: 25px;

@@ -5,6 +5,7 @@ clases/configDocumentos
 clases/configRh
 close_sesion.php
 imagenesPerfiles/**/
+imagenesCursos/**/
 documentosactanacimiento/**/
 documentoscursos/**/
 calendario/config.php

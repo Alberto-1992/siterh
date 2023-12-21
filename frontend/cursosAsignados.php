@@ -184,7 +184,7 @@ hr {
         $tipoaccion = $row['tipode_accion'];
 ?>
 <div class="card" style="width: 18rem; ">
-      <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="https://asch.com.mx/images/resource/proyectos/HospitalAltaEspecialidadIxtapaluca05.jpg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="<?php echo $row['rutaimagen'] ?>" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
     
       <div class="card-body" >
         <h5 class="card-title"><?php echo $tipoaccion ?></h5>
