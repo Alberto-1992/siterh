@@ -34,15 +34,58 @@
 <body style="padding: 0px; overflow-y:scroll;">
     <header class="headerinfarto" style="background-color: #874AA2;">
 
-        <span id="cabecera">Plan individual de capacitación.</span>
+        <span id="cabecera">Registro de constancias de capacitación.</span>
 
     </header>
     <div class="container">
         <div id="mensaje"></div>
-        <h1 style="text-align: center; font-size: 28px; -webkit-text-stroke: 1px #282828;
-	text-shadow: 0px 4px 4px #282828;">CARGA DE INFORMACIÓN.</h1>
-        <h1 style="text-align: center; font-size: 18px; color: red; -webkit-text-stroke: 1px #282828;
-	text-shadow: 0px 1px 1px #282828;">Te informamos, una vez que hayas cargado tu información, no la podras visualizar hasta que el area de capacitación haya validado los datos, si la información que capturaste es correcta podras visualizarla debajo del formulario</h1><br>
+        <div class="col-md-12">
+<label for="mensaje" style="color: red; -webkit-text-stroke: 0px #282828;
+	text-shadow: 0px 0px 0px #282828;">CONSULTAR INFORMACIÓN DE MIS CURSOS CARGADOS: ¡NOTA! ESTE APARTADO ES DE SOLO CONSULTA, LA INFORMACIÓN INGRESADA AQUI NO SE GUARDARA.</label>
+                    
+                    <input list="nombredelcurso" type="text" class="form-control" id="nombredelcursoconsultar" placeholder="Escribe el nombre del curso a consultar" >
+                        <datalist id="nombredelcurso">
+                        <?php              
+    $query = $conexionX->prepare("SELECT id, nombrecurso FROM datos where id_empleado = :id_empleado ");
+    $query->bindParam(':id_empleado', $identificador, PDO::PARAM_INT);
+    $query->execute();
+    $query->setFetchMode(PDO::FETCH_ASSOC);
+                while($row = $query->fetch()) { ?>
+                        <option value="<?php echo $row['id']; ?>">
+                            <?php echo $row['nombrecurso']; ?></option>
+                        <?php } ?>
+
+                    </datalist>
+                </div>
+                <div id="resultado"></div>
+                <script>
+                    $(function () {
+   $("#nombredelcursoconsultar").change(function (e) {
+    e.preventDefault();
+    let valida = $("#nombredelcursoconsultar").val();
+if(valida != ''){
+    let ob = {valida:valida};
+    $.ajax({
+                        type: "POST",
+                        url: "modals/verCursoCargado.php",
+                        data: ob,
+                        beforeSend: function(objeto) {
+                           // $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+                        },
+                        success: function(data) {
+                            $("#resultado").html(data);
+                        }
+                    })
+}
+  })
+
+})
+                </script>
+                <hr>
+        <h1 style="text-align: center; font-size: 28px; -webkit-text-stroke: 0px #282828;
+	text-shadow: 0px 0px;">CARGA DE INFORMACIÓN.</h1>
+        <h1 style="text-align: center; font-size: 18px; color: red; -webkit-text-stroke: 0px #282828;
+	text-shadow: 0px 0px 0px #282828;">Te informamos, una vez que hayas cargado tu información, no la podras visualizar hasta que el area de capacitación haya validado los datos, si la información que capturaste es correcta podras visualizarla debajo del formulario</h1><br>
         <strong style="text-align: center; font-size: 17px; color: black; font-style: bold;">ESTIMADO USUARIO, SI LA INFORMACIÓN QUE VAS A CARGAR PERTENECE A UN DIPLOMADO, FAVOR DE CARGARLO EN EL APARTADO DE DATOS ACADEMICOS.</strong>&nbsp;&nbsp;<a href="datosAcademicos">Ir a datos academicos</a><br>
         <!--<h1 style="text-align: center; font-size: 25px; color: red;">¡RECUERDA QUE! La información que registres deberá ser a partir del año 2019 en adelante.</h1>-->
         <div style="width:100%; display: flex; justify-content: left; align-items: left; margin-left: 10px; text-align:center;">
@@ -96,48 +139,7 @@
                 }
 
                 ?>
-                <div class="col-md-12">
-<label for="mensaje" style="color: red; -webkit-text-stroke: 1px #282828;
-	text-shadow: 0px 4px 4px #282828;">CONSULTAR INFORMACIÓN DE MIS CURSOS CARGADOS: ¡NOTA! ESTE APARTADO ES DE SOLO CONSULTA, LA INFORMACIÓN INGRESADA AQUI NO SE GUARDARA</label>
-                    
-                    <input list="nombredelcurso" type="text" class="form-control" id="nombredelcursoconsultar" placeholder="Escribe el nombre del curso a consultar" >
-                        <datalist id="nombredelcurso">
-                        <?php              
-    $query = $conexionX->prepare("SELECT id, nombrecurso FROM datos where id_empleado = :id_empleado ");
-    $query->bindParam(':id_empleado', $identificador, PDO::PARAM_INT);
-    $query->execute();
-    $query->setFetchMode(PDO::FETCH_ASSOC);
-                while($row = $query->fetch()) { ?>
-                        <option value="<?php echo $row['id']; ?>">
-                            <?php echo $row['nombrecurso']; ?></option>
-                        <?php } ?>
-
-                    </datalist>
-                </div>
-                <div id="resultado"></div>
-                <script>
-                    $(function () {
-   $("#nombredelcursoconsultar").change(function (e) {
-    e.preventDefault();
-    let valida = $("#nombredelcursoconsultar").val();
-if(valida != ''){
-    let ob = {valida:valida};
-    $.ajax({
-                        type: "POST",
-                        url: "modals/verCursoCargado.php",
-                        data: ob,
-                        beforeSend: function(objeto) {
-                           // $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
-                        },
-                        success: function(data) {
-                            $("#resultado").html(data);
-                        }
-                    })
-}
-  })
-
-})
-                </script>
+                
                 <input type="hidden" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
                 <div class="col-md-6">
                     <label for="mensaje">Nombre:</label>
