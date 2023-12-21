@@ -39,11 +39,13 @@
     </header>
     <div class="container">
         <div id="mensaje"></div>
+        <h1 style="text-align: center; font-size: 28px; -webkit-text-stroke: 0px #282828;
+	text-shadow: 0px 0px;">Consulta de constancias registradas.</h1>
         <div class="col-md-12">
 <label for="mensaje" style="color: red; -webkit-text-stroke: 0px #282828;
-	text-shadow: 0px 0px 0px #282828;">CONSULTAR INFORMACIÓN DE MIS CURSOS CARGADOS: ¡NOTA! ESTE APARTADO ES DE SOLO CONSULTA, LA INFORMACIÓN INGRESADA AQUI NO SE GUARDARA.</label>
+	text-shadow: 0px 0px 0px #282828;">¿Deseas corroborar si ya registraste información de algún curso?.</label>
                     
-                    <input list="nombredelcurso" type="text" class="form-control" id="nombredelcursoconsultar" placeholder="Escribe el nombre del curso a consultar" >
+                    <input list="nombredelcurso" type="text" class="form-control" id="nombredelcursoconsultar" placeholder="Consultalo aqui... INGRESA EL NOMBRE DEL CURSO" >
                         <datalist id="nombredelcurso">
                         <?php              
     $query = $conexionX->prepare("SELECT id, nombrecurso FROM datos where id_empleado = :id_empleado ");
@@ -57,6 +59,9 @@
 
                     </datalist>
                 </div>
+                <div class="col-md-12">
+                <label for="mensaje" style="color: red; -webkit-text-stroke: 0px #282828;
+	text-shadow: 0px 0px 0px #282828;">NOTA: Este apartado es solo de consulta, la información que ingreses aqui NO SE GUARDARA; Si el registro no aparece deberás ingresarlo en el apartado de abajo llamado "CARGA DE INFORMACIÓN".</label></div>
                 <div id="resultado"></div>
                 <script>
                     $(function () {
@@ -81,7 +86,7 @@ if(valida != ''){
 
 })
                 </script>
-                <hr>
+                <hr><hr>
         <h1 style="text-align: center; font-size: 28px; -webkit-text-stroke: 0px #282828;
 	text-shadow: 0px 0px;">CARGA DE INFORMACIÓN.</h1>
         <h1 style="text-align: center; font-size: 18px; color: red; -webkit-text-stroke: 0px #282828;
