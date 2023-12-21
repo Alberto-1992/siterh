@@ -114,7 +114,7 @@
                             window.location.href = 'planindividualcapacitacion';
                         }
                         function capacitacionuseranual() {
-                            window.open('capacitacionuseranual');
+                            window.location.href = 'capacitacionuseranual';
                         }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
