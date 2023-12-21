@@ -200,7 +200,7 @@ hr {
   <div class="collapse" id="<?php echo $cursoLink; ?>">
   <div class="card card-body">
         <?php echo $row['objetivo'] ?>
-        <a href="<?php echo $row['link'] ?>" style="text-decoration-line: underline; color: blue;">Link de inscripción</a>
+        <a href="<?php echo $row['link'] ?>" style="text-decoration-line: underline; color: blue;" target="_blank">Link de inscripción</a>
   </div>
     
     </div>
