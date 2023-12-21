@@ -182,6 +182,8 @@ hr {
     while($row = $sql->fetch()){
         $curso = $row['nombre_capacitacion'];
         $tipoaccion = $row['tipode_accion'];
+        $nombreCurso = "#".$row['id_capacitacion'];
+        $cursoLink = $row['id_capacitacion'];
 ?>
 <div class="card" style="width: 18rem; ">
       <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="<?php echo $row['rutaimagen'] ?>" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -189,9 +191,21 @@ hr {
       <div class="card-body" >
         <h5 class="card-title"><?php echo $tipoaccion ?></h5>
         <p class="card-text"><?php echo $curso ?></p>
-        <a href="#" class="btn btn-primary" >Ver infromacion</a>
-      </div>
+        <p>
+  <a class="btn btn-primary" data-toggle="collapse" href="<?php echo $nombreCurso; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Ver información
+  </a>
+        </p>
+      
+  <div class="collapse" id="<?php echo $cursoLink; ?>">
+  <div class="card card-body">
+        <?php echo $row['objetivo'] ?>
+        <a href="<?php echo $row['link'] ?>" style="text-decoration-line: underline; color: blue;">Link de inscripción</a>
+  </div>
+    
     </div>
+    </div>
+</div>
 <?php } ?>
 
 </div>

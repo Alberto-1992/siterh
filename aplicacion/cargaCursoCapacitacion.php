@@ -70,9 +70,9 @@ if ($_FILES["imagenCurso"]["error"] > 0) {
     $conexionX->beginTransaction();
     $rutaGuardar = 'imagenesCursos/'.$Nombrecurso.$Fechainicio.'/'.$Nombrecurso.'.jpg';
     $sql = $conexionX->prepare("INSERT INTO nombre_capacitacion (nombre_capacitacion, nombre_del_instructor, lugar_imparte, tema_capacitacion, objetivo, num_participantes, tienecosto, coasto, duracion_cuerso, 
-    programa, lineaestratejica, id_areacordinacion, id_provedor, programapropuesto, tipode_accion, arefortalese, id_tipopersonal, modalidad, fecha_inicio, fecha_termino, competencia, rutaimagen) 
+    programa, lineaestratejica, id_areacordinacion, id_provedor, programapropuesto, tipode_accion, arefortalese, id_tipopersonal, modalidad, fecha_inicio, fecha_termino, competencia, rutaimagen, link) 
     VALUES (:nombre_capacitacion, :nombre_del_instructor, :lugar_imparte, :tema_capacitacion, :objetivo, :num_participantes, :tienecosto, :coasto, :duracion_cuerso, :programa, :lineaestratejica, :id_areacordinacion, :id_provedor, 
-    :programapropuesto, :tipode_accion, :arefortalese, :id_tipopersonal, :modalidad, :fecha_inicio, :fecha_termino, :competencia, :rutaimagen)");
+    :programapropuesto, :tipode_accion, :arefortalese, :id_tipopersonal, :modalidad, :fecha_inicio, :fecha_termino, :competencia, :rutaimagen, :link)");
     $sql->execute(
         array(
 
@@ -97,7 +97,8 @@ if ($_FILES["imagenCurso"]["error"] > 0) {
             ':fecha_inicio' =>$Fechainicio,
             ':fecha_termino'=>$Fechatermino,
             ':competencia' =>$Competencia,
-            ':rutaimagen'=>$rutaGuardar
+            ':rutaimagen'=>$rutaGuardar,
+            ':link'=>$link
         ));
     $id = $conexionX->lastInsertId();
     $sql = $conexionX->prepare("INSERT INTO eventoscalendar(evento,fecha_inicio,fecha_fin,color_evento,lugarevento,id_curso)VALUES (:evento,:fecha_inicio,:fecha_fin,:color_evento,:lugarevento,:id_curso)");
