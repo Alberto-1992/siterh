@@ -40,7 +40,7 @@ $conexion = new ConexionRh();
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Check documentos</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
                 <li><a class="dropdown-item" href="#" onclick="documentos();">Documentación </a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelContratacion();">Exportar a excel </a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarCompatibilidad();">Exportar a excel </a></li>
                 
             </ul>
         </li>
@@ -92,8 +92,8 @@ $sql = $conexion->prepare("SELECT Empleado from plantillahraei inner join compat
 
 <input type="hidden" id="cargaPrimerRegsitro" value="<?php echo $row['Empleado'] ?>">
 <script>
-    function exportarExcelContratacion() {
-    window.location.href='aplicacion/exportarExcelContratacion'
+    function exportarCompatibilidad() {
+    window.location.href='aplicacion/excelCompatibilidad'
 
 }
 function documentos() {

@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
 <?php
 error_reporting(0);
 
@@ -31,20 +29,11 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-
-                <li><a class="dropdown-item" href="#" onclick="personales();">Validar datos personales</a></li>
-                <li><a class="dropdown-item" href="#" onclick="academicos();">Validar datos academicos</a></li>
-                <li><a class="dropdown-item" href="#" onclick="compatibilidad();">Validar compatibilidad</a></li>
+            <li><a class="dropdown-item" href="#" onclick="editarInfoCompatibilidad();">Editar información</a></li>
+            
             </ul>
         </li>
-        <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Revisar datos</a>
-            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-                <li><a class="dropdown-item" href="#" onclick="infoAcademica();">Datos academicos</a></li>
-                <li><a class="dropdown-item" href="#" onclick="infoPersonal();">Datos personales</a></li>
-                <li><a class="dropdown-item" href="#" onclick="documentacion();">Documentación</a></li>
-            </ul>
-        </li>
+        
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Observaciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
@@ -54,72 +43,27 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
     </ul>
 <?php } ?>
     <script>
-    
-function personales() {
-            let id = $("#numempleado").val();
-            let correovalido = $("#correousuario").val();
+        function editarInfoCompatibilidad() {
+            let identificador = $("#numempleado").val();
             let ob = {
-                id: id,correovalido:correovalido
+                identificador: identificador
             };
             $.ajax({
                 type: "POST",
-                url: "aplicacion/validarDatosPersonales.php",
+                url: "verDatosCompatibilidad.php",
                 data: ob,
-                beforeSend: function() {
-                    $('#mensaje').html(
-        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-                        );
-                    },
-                success: function(data) {
 
-                    $("#mensaje").html(data);
-                    
-                    let evento = $("#numempleado").val();
-                    let ob = {
-                            evento: evento
-                        };
-                    $.ajax({
-                            type: "POST",
-                url: "consultaplantillahraei.php",
-                data: ob,
-                beforeSend: function() {
-                    $('#mensaje').html(
-        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-                        );
-                    },
-                success: function(data) {
-
-                    $("#tabla_resultadobus").html(data);
-                    let id = $("#numempleado").val();
-                    let ob = {
-                            id: id
-                        };
-                    $.ajax({
-                            type: "POST",
-                url: "consultaBusquedaPlantillaHraei.php",
-                data: ob,
-                beforeSend: function() {
-                    $('#mensaje').html(
-        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-                        );
-                    },
                 success: function(data) {
 
                     $("#tabla_resultado").html(data);
 
-                }
-
-            });
 
                 }
 
             });
-
-                }
-
-            });
-        }
-        function compatibilidad() {
+        } 
+        /*
+        function editarInfoCompatibilidad() {
             let id = $("#numempleado").val();
             let correovalido = $("#correousuario").val();
             let ob = {
@@ -183,109 +127,11 @@ function personales() {
 
             });
         }
-
-        function academicos() {
-            let id = $("#numempleado").val();
-            let correovalido = $("#correousuario").val();
-            let ob = {
-                id: id,correovalido:correovalido
-            };
-            $.ajax({
-                type: "POST",
-                url: "aplicacion/validarDatosAcademicos.php",
-                data: ob,
-                beforeSend: function() {
-                    $('#mensaje').html(
-        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-                        );
-                    },
-                success: function(data) {
-
-                    $("#mensaje").html(data);
-                    
-                    let evento = $("#numempleado").val();
-                    let ob = {
-                            evento: evento
-                        };
-                    $.ajax({
-                            type: "POST",
-                url: "consultaplantillahraei.php",
-                data: ob,
-                beforeSend: function() {
-                    $('#mensaje').html(
-        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-                        );
-                    },
-                success: function(data) {
-
-                    $("#tabla_resultadobus").html(data);
-                    let id = $("#numempleado").val();
-                    let ob = {
-                            id: id
-                        };
-                    $.ajax({
-                            type: "POST",
-                url: "consultaBusquedaPlantillaHraei.php",
-                data: ob,
-                beforeSend: function() {
-                    $('#mensaje').html(
-        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
-                        );
-                    },
-                success: function(data) {
-
-                    $("#tabla_resultado").html(data);
-
-                }
-
-            });
-
-                }
-
-            });
-
-                }
-
-            });
+        */
+        function excelCompatibilidad() {
+            window.location.href = 'excelCompatibilidad';
         }
-        function infoAcademica() {
-            let correo = $("#correo").val();
-            let ob = {
-                correo: correo
-            };
-            $.ajax({
-                type: "POST",
-                url: "verDatosAcademicos.php",
-                data: ob,
-
-                success: function(data) {
-
-                    $("#tabla_resultado").html(data);
-
-
-                }
-
-            });
-        }
-        function infoPersonal() {
-            let correo = $("#correo").val();
-            let ob = {
-                correo: correo
-            };
-            $.ajax({
-                type: "POST",
-                url: "verDatosPersonales.php",
-                data: ob,
-
-                success: function(data) {
-
-                    $("#tabla_resultado").html(data);
-
-
-                }
-
-            });
-        }
+        
     </script>
     
 <table class="table table-responsive  table-bordered " cellspacing="0" width="100%" >
