@@ -171,7 +171,18 @@ hr {
     </nav>
   </div>
 </div>
-<div  class="grid text-center" style="margin-top: 5px; padding: 15px;">
+<style>
+    .box1 {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: 1fr 3fr;
+  margin-top: 0px;
+  margin-left: 50px;
+  padding: 5px;
+}
+</style>
+<div class="box1">
+<div class="grid" style="margin-top: 5px; padding: 15px;">
 
 <?php 
     $sql = $conexionX->prepare("SELECT nombre_capacitacion.* from nombre_capacitacion inner join personalcurso on personalcurso.id_curso = nombre_capacitacion.id_capacitacion where personalcurso.id_empleado = :id_empleado");
@@ -208,6 +219,7 @@ hr {
 </div>
 <?php } ?>
 
+</div>
 </div>
 
 
