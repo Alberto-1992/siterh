@@ -81,7 +81,7 @@
                 <a href="planindividualcapacitacion">
                     <hr id="hr6">
                     <i class="fa fa-bookmark" aria-hidden="true" id="iconosdiv"></i>
-                    <p>Plan individual de capacitacion</p>
+                    <p>Registro de constancias de capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
@@ -129,7 +129,7 @@
                 <a href="planindividualcapacitacion">
                     <hr id="hr6">
                     <i class="fa fa-bookmark" aria-hidden="true" id="iconosdiv"></i>
-                    <p>Plan individual de capacitación</p>
+                    <p>Registro de constancias de capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
@@ -174,7 +174,7 @@
                 <a href="planindividualcapacitacion">
                     <hr id="hr6">
                     <i class="fa fa-bookmark" aria-hidden="true" id="iconosdiv"></i>
-                    <p>Plan individual de capacitacion</p>
+                    <p>Registro de constancias de capacitación</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
