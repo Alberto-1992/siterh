@@ -181,6 +181,8 @@ hr {
   margin-left: 0px;
   padding: 7px;
   background-color: white;
+
+  
 }
 .tarjeta {
   overflow: hidden;
@@ -192,15 +194,18 @@ hr {
   border-radius: 0.8rem;
   color: #333;
   cursor: pointer;
-    text-align: center;
+text-align: center;
+    
+
 }
 
 .tarjeta:hover {
   box-shadow: 10px 5px 5px rgb(0, 23, 176);
 
 }
+
 </style>
-<div class="gallery">
+<div class="gallery" >
 <?php 
     $sql = $conexionX->prepare("SELECT nombre_capacitacion.* from nombre_capacitacion inner join personalcurso on personalcurso.id_curso = nombre_capacitacion.id_capacitacion where personalcurso.id_empleado = :id_empleado");
     $sql->execute(array(
@@ -213,19 +218,20 @@ hr {
         $nombreCurso = "#".$row['id_capacitacion'];
         $cursoLink = $row['id_capacitacion'];
 ?>
-<div class="tarjeta">
+<div class="tarjeta" ><a  data-toggle="collapse" href="<?php echo $nombreCurso; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
       <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="<?php echo $row['rutaimagen'] ?>" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
     
       <div class="card-body" >
+        <div style="height: 5rem;">
         <h5 class="card-title"><?php echo $tipoaccion ?></h5>
-        <p class="card-text"><?php echo $curso ?></p>
-        <p>
+        <p class="card-text" style="font-size: 12px;"><?php echo $curso ?></p></div>
+    
   <a class="btn btn-primary" data-toggle="collapse" href="<?php echo $nombreCurso; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
     Ver información
   </a>
-        </p>
+        
       
-  <div class="collapse" id="<?php echo $cursoLink; ?>" >
+  <div class="collapse" id="<?php echo $cursoLink; ?>" style="margin-top: 10px;">
   <div class="card card-body" style="width: 15rem;">
         <?php echo $row['objetivo'] ?>
         <a href="<?php echo $row['link'] ?>" style="text-decoration-line: underline; color: blue;" target="_blank">Link de inscripción</a>
