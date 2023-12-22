@@ -100,17 +100,21 @@
                     $nombrecurso = $dataRegistro['nombrecurso'];
                     $fechatermino = $dataRegistro['fechatermino'];
                     $id_empleado = $dataRegistro['id_empleado'];
+
+                    $fechavalidacion = date("d-m-Y", strtotime($dataRegistro['fechavalidacion']));
+                    $fechainicionew = date("d-m-Y", strtotime($dataRegistro['fechainicio']));
+                    $fechaterminonew = date("d-m-Y", strtotime($dataRegistro['fechatermino']));
                 ?>
                     <tr>
                     <td><?php echo $dataRegistro['id_empleado'] ?></td>
-                    <td><?php echo $dataRegistro['fechavalidacion'] ?></td>
+                    <td><?php echo $fechavalidacion ?></td>
                         <td><?php echo $dataRegistro['anio'] ?></td>
                         <td><?php echo $dataRegistro['tipocapacitacion'] ?></td>
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
                         <td><?php echo $dataRegistro['horas'] ?></td>
                         <td><?php echo $dataRegistro['modalidad'] ?></td>
-                        <td><?php echo $dataRegistro['fechainicio'] ?></td>
-                        <td><?php echo $dataRegistro['fechatermino'] ?></td>
+                        <td><?php echo $fechainicionew; ?></td>
+                        <td><?php echo $fechaterminonew; ?></td>
                         <td><?php echo $dataRegistro['asistecomo'] ?></td>
                         <td><?php echo $dataRegistro['documentorecibe'] ?></td>
                         <td><?php echo $dataRegistro['catalogoprograma'] ?></td>
