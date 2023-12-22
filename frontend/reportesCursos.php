@@ -61,7 +61,7 @@
         require_once 'clases/conexion.php';
         $conexionX = new ConexionRh();
 
-        $sql = $conexionX->prepare("SELECT id,nombrecurso,catalogoprograma,lineaestrategica,competenciaalieandaeje,id_empleado,fechacriteriotermino,fechacriterioinicio,criteriocurso,fechainicio,fechatermino,modalidad,horas,asistecomo,nombreinstitucion,otroexpidedocumento,tipocapacitacion,documentorecibe, EXTRACT(YEAR 
+        $sql = $conexionX->prepare("SELECT id,nombrecurso,catalogoprograma,lineaestrategica,competenciaalieandaeje,id_empleado,fechacriteriotermino,fechacriterioinicio,criteriocurso,fechainicio,fechatermino,modalidad,horas,asistecomo,nombreinstitucion,otroexpidedocumento,tipocapacitacion,documentorecibe, fechavalidacion, EXTRACT(YEAR 
         FROM fechatermino) as anio from datos order by fechainicio desc");
         $sql->execute();
 
@@ -71,6 +71,7 @@
             <thead>
                 <tr>
                     <th>N° empleado</th>
+                    <th>Fecha validacion</th>
                     <th>Año</th>
                     <th>Tipo de capacitación</th>
                     <th>Nombre del curso</th>
@@ -102,6 +103,7 @@
                 ?>
                     <tr>
                     <td><?php echo $dataRegistro['id_empleado'] ?></td>
+                    <td><?php echo $dataRegistro['fechavalidacion'] ?></td>
                         <td><?php echo $dataRegistro['anio'] ?></td>
                         <td><?php echo $dataRegistro['tipocapacitacion'] ?></td>
                         <td><?php echo $dataRegistro['nombrecurso'] ?></td>
@@ -141,6 +143,7 @@
             <tfoot>
                 <tr>
                 <th>N° empleado</th>
+                <th>Fecha validacion</th>
                     <th>Año</th>
                     <th>Tipo de capacitación</th>
                     <th>Nombre del curso</th>
