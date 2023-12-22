@@ -72,6 +72,9 @@
     function datospersonales() {
         window.location='exportaciones/datosPersonalesUltimogradoEstudios';
     }
+    function datosdireccion() {
+        window.location='exportaciones/datosPersonales';
+    }
 </script>
 <ul class="nav nav-tabs" >
         <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
@@ -80,6 +83,7 @@
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <li><a class="dropdown-item" href="#" onclick="datosdireccion();">Datos personales</a></li>
             <li><a class="dropdown-item" href="#" onclick="datospersonales();">Datos empleado/ultimo grado estudios</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelmediosuperior();">Descargar a excel medio superior</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExceltecnicos();">Descargar a excel tecnicos</a></li>

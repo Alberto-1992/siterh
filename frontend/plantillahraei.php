@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
 // Cantidad de copos de nieve
-var snowMax = 70;
+var snowMax = 60;
 
 // Color de los copos
 var snowColor = ["#BC955C", "#DDc9A3"];
@@ -33,7 +33,7 @@ var snowSpeed = 0.85;
 var snowMinSize = 9;
 
 // Tamaño maximo de los copos
-var snowMaxSize = 30;
+var snowMaxSize = 20;
 
 // Velocidad de refrescamiento (en milliseconds)
 var snowRefresh = 50;
