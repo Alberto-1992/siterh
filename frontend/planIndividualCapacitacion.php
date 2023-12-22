@@ -32,16 +32,114 @@
     }
 </script>
 
+<script type="text/javascript">
+
+// Cantidad de copos de nieve
+var snowMax = 60;
+
+// Color de los copos
+var snowColor = ["#BC955C", "#DDc9A3"];
+
+// Forma de la nieve
+var snowEntity = " ❄ ";
+
+// Velocidad mientras cae
+var snowSpeed = 0.85;
+
+// Tamaño minimo de los copos
+var snowMinSize = 9;
+
+// Tamaño maximo de los copos
+var snowMaxSize = 20;
+
+// Velocidad de refrescamiento (en milliseconds)
+var snowRefresh = 50;
+
+// Estilo adicional
+var snowStyles = "cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;";
+
+/*
+// Fin de la configuración
+// ----------------------------------------
+// No modifiques a partir de esta linea
+*/
+
+var snow = [],
+	pos = [],
+	coords = [],
+	lefr = [],
+	marginBottom,
+	marginRight;
+
+function randomise(range) {
+	rand = Math.floor(range * Math.random());
+	return rand;
+}
+
+function initSnow() {
+	var snowSize = snowMaxSize - snowMinSize;
+	marginBottom = document.body.scrollHeight - 5;
+	marginRight = document.body.clientWidth - 15;
+
+	for (i = 0; i <= snowMax; i++) {
+		coords[i] = 0;
+		lefr[i] = Math.random() * 15;
+		pos[i] = 0.03 + Math.random() / 10;
+		snow[i] = document.getElementById("flake" + i);
+		snow[i].style.fontFamily = "inherit";
+		snow[i].size = randomise(snowSize) + snowMinSize;
+		snow[i].style.fontSize = snow[i].size + "px";
+		snow[i].style.color = snowColor[randomise(snowColor.length)];
+		snow[i].style.zIndex = 1000;
+		snow[i].sink = snowSpeed * snow[i].size / 5;
+		snow[i].posX = randomise(marginRight - snow[i].size);
+		snow[i].posY = randomise(2 * marginBottom - marginBottom - 2 * snow[i].size);
+		snow[i].style.left = snow[i].posX + "px";
+		snow[i].style.top = snow[i].posY + "px";
+	}
+
+	moveSnow();
+}
+
+function resize() {
+	marginBottom = document.body.scrollHeight - 5;
+	marginRight = document.body.clientWidth - 15;
+}
+
+function moveSnow() {
+	for (i = 0; i <= snowMax; i++) {
+		coords[i] += pos[i];
+		snow[i].posY += snow[i].sink;
+		snow[i].style.left = snow[i].posX + lefr[i] * Math.sin(coords[i]) + "px";
+		snow[i].style.top = snow[i].posY + "px";
+
+		if (snow[i].posY >= marginBottom - 2 * snow[i].size || parseInt(snow[i].style.left) > (marginRight - 3 * lefr[i])) {
+			snow[i].posX = randomise(marginRight - snow[i].size);
+			snow[i].posY = 0;
+		}
+	}
+
+	setTimeout("moveSnow()", snowRefresh);
+}
+
+for (i = 0; i <= snowMax; i++) {
+	document.write("<span id='flake" + i + "' style='" + snowStyles + "position:absolute;top:-" + snowMaxSize + "'>" + snowEntity + "</span>");
+}
+
+window.addEventListener('resize', resize);
+window.addEventListener('load', initSnow);
+
+</script>
 <body style="padding: 0px; overflow-y:scroll;">
     <header class="headerinfarto" style="background-color: #874AA2;">
 
         <span id="cabecera">Registro de constancias de capacitación.</span>
 
     </header>
-    <div class="container">
+    <div class="container" style="margin-top: 10px;">
         <div id="mensaje"></div>
         <h1 style="text-align: center; font-size: 28px; -webkit-text-stroke: 0px #282828;
-	text-shadow: 0px 0px;">Consulta de constancias registradas.</h1>
+	text-shadow: 0px 0px;">CONSULTA DE CONSTANCIAS REGISTRADAS.</h1>
         <div class="col-md-12">
 <label for="mensaje" style="color: red; -webkit-text-stroke: 0px #282828;
 	text-shadow: 0px 0px 0px #282828;">¿Deseas corroborar si ya registraste información de algún curso?.</label>
@@ -61,7 +159,7 @@
                     </datalist>
                 </div>
                 <div class="col-md-12">
-                <label for="mensaje" style="color: red; -webkit-text-stroke: 0px #282828;
+                <label for="mensaje" style="color: black; -webkit-text-stroke: 0px #282828;
 	text-shadow: 0px 0px 0px #282828;">NOTA: Este apartado es solo de consulta, la información que ingreses aqui NO SE GUARDARA; Si el registro no aparece deberás ingresarlo en el apartado de abajo llamado "CARGA DE INFORMACIÓN".</label></div>
                 <div id="resultado"></div>
                 <script>
@@ -87,7 +185,9 @@ if(valida != ''){
 
 })
                 </script>
-                <hr><hr>
+                <hr>
+    </div>
+    <div class="container" style="width: 100%; overflow-x:scroll; margin-top: 15px;">
         <h1 style="text-align: center; font-size: 28px; -webkit-text-stroke: 0px #282828;
 	text-shadow: 0px 0px;">CARGA DE INFORMACIÓN.</h1>
         <h1 style="text-align: center; font-size: 18px; color: red; -webkit-text-stroke: 0px #282828;

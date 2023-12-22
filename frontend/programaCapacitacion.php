@@ -49,6 +49,7 @@
  
 
     <div class="gallery">
+        
         <?php
         if (isset($_SESSION['usuarioAdminRh'])) {
             require 'menu/menuCapacitacion.php';
