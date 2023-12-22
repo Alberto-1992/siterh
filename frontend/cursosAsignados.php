@@ -39,8 +39,8 @@ hr {
     <header class="header">
     <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="float: left;">
   Menu
-</a>
-        <span id="cabecera">Cursos asignados</span>
+</a><span id="cabecera">PLAN INDIVIDUAL DE CAPACITACIÓN</span>
+        <span id="cabecera">(Cursos asignados)</span>
 
     </header>
     

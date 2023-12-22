@@ -97,7 +97,7 @@
                         <a href="cursosasignados">
                             <hr id="hr6">
                             <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
-                            <p>Cursos asignados</p>
+                            <p>Plan individual de capacitación</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
@@ -164,7 +164,7 @@
                         <a href="cursosasignados">
                             <hr id="hr6">
                             <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
-                            <p>Cursos asignados</p>
+                            <p>Plan individual de capacitación</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
@@ -229,7 +229,7 @@
                         <a href="cursosasignados">
                             <hr id="hr6">
                             <i class="fa fa-book" aria-hidden="true" id="iconosdiv"></i>
-                            <p>Cursos asignados</p>
+                            <p>Plan individual de capacitación</p>
                             <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
                         </a>
                     </article>
