@@ -3,6 +3,8 @@ error_reporting(0);
 require_once '../clases/conexion.php';
 $conexionX = new ConexionRh();
 extract($_POST);
+date_default_timezone_set("America/Monterrey");
+$fechahoy = date("Y-m-d");
 $valor = '';
 if($organizacionales != ''){
     $valor = $organizacionales;
@@ -24,13 +26,14 @@ if($organizacionales != ''){
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
-$sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautorizacion, catalogoprograma = :catalogoprograma, lineaestrategica = :lineaestrategica, competenciaalieandaeje = :competenciaalieandaeje  where id = :id");
+$sql = $conexionX->prepare("UPDATE datos set validaautorizacion = :validaautorizacion, catalogoprograma = :catalogoprograma, lineaestrategica = :lineaestrategica, competenciaalieandaeje = :competenciaalieandaeje, fechavalidacion = :fechavalidacion  where id = :id");
     $sql->execute(array(
         ':validaautorizacion'=>1,
         ':catalogoprograma'=>$catalogoprogramas,
         ':lineaestrategica'=>$lineaestrategica,
         ':competenciaalieandaeje'=>$valor,
-        ':id'=>$id
+        ':id'=>$id,
+        ':fechavalidacion'=>$fechahoy
     ));
 
     $validatransac = $conexionX->commit();

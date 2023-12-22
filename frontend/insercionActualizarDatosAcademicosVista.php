@@ -1,11 +1,81 @@
-<div class="container" style="margin-top: 0px; background-color: white;">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
     <link rel="stylesheet" href="iconos/css/all.css?n=1">
     <div id="mensaje"></div>
     <h1 style="text-align: center; font-size: 25px;">Actualiza tu información academica</h1>
+    <input type="hidden" id="numempleado" value="<?php echo $row['Empleado'] ?>">
+    <input type="hidden" id="correo" value="<?php echo $row['correo'] ?>">
+   
+    <a href="#" class="form-control" style="width: 125px; background: yellowgreen;" onclick="academicos();">Validar Datos</a>
+ 
+    <script>
+        function academicos() {
+            let id = $("#numempleado").val();
+            let correovalido = $("#correousuario").val();
+            let ob = {
+                id: id,correovalido:correovalido
+            };
+            $.ajax({
+                type: "POST",
+                url: "aplicacion/validarDatosAcademicos.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
 
+                    $("#mensaje").html(data);
+                    
+                    let evento = $("#numempleado").val();
+                    let ob = {
+                            evento: evento
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaplantillahraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
 
+                    $("#tabla_resultadobus").html(data);
+                    let id = $("#numempleado").val();
+                    let ob = {
+                            id: id
+                        };
+                    $.ajax({
+                            type: "POST",
+                url: "consultaBusquedaPlantillaHraei.php",
+                data: ob,
+                beforeSend: function() {
+                    $('#mensaje').html(
+        '<div id="tabla_resultado" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>'
+                        );
+                    },
+                success: function(data) {
+
+                    $("#tabla_resultado").html(data);
+
+                }
+
+            });
+
+                }
+
+            });
+
+                }
+
+            });
+        }
+    </script>
+    
     <form name="datosacademicosactualizar" id="datosacademicosactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
         <script>
             $("#datosacademicosactualizar").on("submit", function(e) {
