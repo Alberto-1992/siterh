@@ -21,6 +21,7 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
 ?>
     <input type="hidden" id="numempleado" value="<?php echo $dataRegistro['Empleado'] ?>">
     <input type="hidden" id="correo" value="<?php echo $dataRegistro['correo'] ?>">
+    <input type="hidden" id="nombre" value="<?php echo $dataRegistro['Nombre'] ?>">
     <input type="hidden" id="curp" value="<?php echo $rfc ?>">
     
     <?php session_start();
@@ -49,6 +50,12 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Observaciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#observaciones">Agregar observación</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Cargar constancia capacitacioón</a>
+            <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+                <li><a class="dropdown-item" href="#" onclick="constancia();">Agregar</a></li>
             </ul>
         </li>
     </ul>
@@ -275,6 +282,26 @@ function personales() {
             $.ajax({
                 type: "POST",
                 url: "verDatosPersonales.php",
+                data: ob,
+
+                success: function(data) {
+
+                    $("#tabla_resultado").html(data);
+
+
+                }
+
+            });
+        }
+        function constancia() {
+            let nombre = $("#nombre").val();
+            let empleado = $("#numempleado").val();
+            let ob = {
+                nombre:nombre, empleado: empleado
+            };
+            $.ajax({
+                type: "POST",
+                url: "cargaConstanciaAdmin.php",
                 data: ob,
 
                 success: function(data) {
