@@ -263,7 +263,6 @@ if( (new Date(fechaEntrada).getTime() < new Date(fechaLimite).getTime()))
                     <input type="text" class="form-control" name="otroexpidedocumento" id="otroexpidedocumento">
                 </div>
                 <div style="width:100%;display: flex; justify-content: center; align-items: center; text-align:center;">
-                    <a href="#" id="btn-send-close" onclick="window.location.href='programaCapacitacion';">Cerrar ventana</a>&nbsp;&nbsp;
                     <input type="submit" name="add" id="btn-send" value="Guardar">
 
                 </div>
