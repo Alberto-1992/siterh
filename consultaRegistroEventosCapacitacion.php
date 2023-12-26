@@ -21,13 +21,13 @@
     $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
-    $query= $conexionX->prepare("SELECT id_capacitacion,nombre_capacitacion, lugar_imparte,nombre_del_instructor,tema_capacitacion,estadoactivo,editarDatos FROM nombre_capacitacion order by id_capacitacion DESC LIMIT 30");
+    $query= $conexionX->prepare("SELECT id_capacitacion,nombre_capacitacion, lugar_imparte,programa,tema_capacitacion,estadoactivo,editarDatos FROM nombre_capacitacion order by id_capacitacion DESC LIMIT 30");
     if (isset($_POST['evento'])) {
         $id = $_POST['evento'];
-    $query= $conexionX->prepare("SELECT id_capacitacion,nombre_capacitacion, lugar_imparte,nombre_del_instructor,tema_capacitacion FROM nombre_capacitacion where 
+    $query= $conexionX->prepare("SELECT id_capacitacion,nombre_capacitacion, lugar_imparte,programa,tema_capacitacion FROM nombre_capacitacion where 
     nombre_capacitacion like '%$id%' or
     lugar_imparte like '%$id%' or
-    nombre_del_instructor like '%$id%' or
+    programa like '%$id%' or
     tema_capacitacion like '%$id%' order by nombre_capacitacion.id_capacitacion");
     }
     
@@ -58,7 +58,7 @@
             ?>
             
                 <div id='<?php echo $id ?>' class='ver-info' >
-                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre_capacitacion'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['lugar_imparte'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['nombre_del_instructor'].'</strong>'.'<br>'.'<strong style="font-size: 8px; margin-left: 7px;">&nbsp'.$dataRegistro['tema_capacitacion'].'</strong>';
+                    <?php echo '<strong style="font-family: Arial; white-space: nowrap; font-size: 10px; margin-left: 7px; text-transform: uppercase;">&nbsp'.$dataRegistro['nombre_capacitacion'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px;">&nbsp'.$dataRegistro['lugar_imparte'].'</strong>'.'<br>'.'<strong style="font-size: 9px; margin-left: 7px; color: red;">&nbsp'.$dataRegistro['programa'].'</strong>';
                     
                         ?>
             </div>

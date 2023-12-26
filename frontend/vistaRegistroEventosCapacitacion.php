@@ -28,10 +28,10 @@ $id_empleado =   $dataRegistro['id_capacitacion'];
             <?php
                 if ($dataRegistro['estadoactivo'] == 0) { ?>
 
-                    <li><a class="dropdown-item" href="#" onclick="bloquear();">Bloquear</a></li>
+                    <!--<li><a class="dropdown-item" href="#" onclick="bloquear();">Bloquear</a></li>-->
                 <?php
                 } else if ($dataRegistro['estadoactivo'] == 1) { ?>
-                    <li><a class="dropdown-item" href="#" onclick="activar();">Activar usuario</a></li>
+                    <!--<li><a class="dropdown-item" href="#" onclick="activar();">Activar usuario</a></li>-->
                 <?php
                 }
             
@@ -73,44 +73,23 @@ function eliminarCurso() {
             }
         }
         function editardatos() {
-            var id = $("#numempleado").val();
-            var editar = $("#iniciaedicion").val();
-            var mensaje = confirm("Desea continuar con la edición de los datos");
-            let parametros = {
-                id: id,
-                editar: editar
-            }
-            if (mensaje == true) {
-                $.ajax({
-                    data: parametros,
-                    url: 'editarDatosback.php',
-                    type: 'post',
-                    success: function(datos) {
-                        $("#mensaje").html(datos);
-                        let id = $("#numempleado").val();
-                        let ob = {
-                            id: id
-                        };
-                        $.ajax({
-                            type: "POST",
-                            url: "consultaAdminBusqueda.php",
-                            data: ob,
+            let id_capacitacion = $("#numempleado").val();
+            let ob = {
+                id_capacitacion: id_capacitacion
+            };
+            $.ajax({
+                type: "POST",
+                url: "verInformacionCurso.php",
+                data: ob,
 
-                            success: function(data) {
+                success: function(data) {
 
-                                $("#tabla_resultado").html(data);
-                                //$("#editarDatosPersonalescancerdeMama").modal('show');
+                    $("#tabla_resultado").html(data);
 
 
-                            }
+                }
 
-                        });
-
-                    }
-                });
-            } else {
-
-            }
+            });
         }
 
         function finalizarEdicion() {
@@ -268,6 +247,63 @@ function eliminarCurso() {
     </tr>
 </table>
 
+                    <form id="agregarUsuarios" name="agregarUsuarios">
+                    <script>
+                    
+                    $(document).ready(function() {
+                        $('#mscancer3').change(function(e) {}).multipleSelect({
+                            width: '100%'
+                        });
+                    });
+                    $("#agregarUsuarios").on("submit", function(th) {
+
+
+th.preventDefault();
+
+var formData = new FormData(document.getElementById(
+"agregarUsuarios"));
+formData.append("dato", "valor");
+$.ajax({
+
+    url: "aplicacion/agregarUsuariosCurso.php",
+    type: "post",
+    dataType: "html",
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+    beforeSend: function(data) {
+        $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader2.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+    },
+    success: function(data) {
+        $("#mensaje").html(data);
+
+
+    }
+})
+
+})
+                </script>
+<link rel="stylesheet" href="css/multiple-select.css" />
+<input type="hidden" value="<?php echo $dataRegistro['id_capacitacion'] ?>" id="id_capacitacion" name="id_capacitacion">
+<div class="col-md-4" id="tp">
+                        <label>Agregar personal al curso</label>
+                        <select name='mscancer3[]' id='mscancer3' class='form-control' multiple='multiple'>
+                            <?php
+                            $prod = $conexionX->prepare("SELECT * FROM plantillahraei order by Empleado asc");
+                            $prod->execute();
+                            $row = $prod->fetchAll();
+                            foreach ($row as $valores) :
+                                echo '<option value=' . $valores['Empleado'] . '>' . $valores['Empleado'] . ' ' . $valores['Nombre'] . '</option>';
+                            endforeach
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                    <input type="submit" name="Guardar" class="btn btn-success" value="Agregar" style="margin-top: 10px;">
+                    </div>
+                    <script src="js/multiple-select-cancermama.js"></script>
+                    </form>
 <script>
     // var fired_button2= $("#claveUnicaContrato").val();  
     //var fired_button2=document.getElementById('claveUnicaContrato').value;

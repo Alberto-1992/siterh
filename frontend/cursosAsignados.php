@@ -219,7 +219,7 @@ text-align: center;
         $cursoLink = $row['id_capacitacion'];
 ?>
 <div class="tarjeta" >
-      <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="<?php echo $row['rutaimagen'] ?>" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="<?php echo $row['rutaimagen'] ?>" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false" style="width: 80%; border-radius: 20px;">
     
       <div class="card-body" >
         <div style="height: 5rem;">
