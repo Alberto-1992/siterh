@@ -433,7 +433,21 @@ window.addEventListener('load', initSnow);
                             function validaciondedocumentacion() {
                                 window.location.href = 'validaDocumentacionCursos'
                             }
+                            function creacionCursoCapacitacion() {
+                    window.location.href ='creacionCursoCapacitacion';
+                }
                         </script>
+                        <?php
+                        if ($admin == 'claehf@hotmail.com' ){ ?>
+            <article class="card" id="creaciondecursos" onclick="creacionCursoCapacitacion();">
+                <a href="creacionCursoCapacitacion" >
+                    <hr id="hr6">
+                    <i class="fa fa-cloud-upload" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Creación nuevo curso</p>
+                    <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
+                </a>
+            </article>
+            <?php } ?>
                         <article class="card" id="creaciondecursos" onclick="creaciondecursos();">
                             <a href="reclutamiento">
                                 <hr id="hr6">

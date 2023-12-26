@@ -17,7 +17,7 @@ $id_empleado =   $dataRegistro['id_capacitacion'];
     
     
     <?php session_start();
-    if (isset($_SESSION['usuarioAdminRh']) or isset($_SESSION['usuarioJefe']) ) { ?>
+    if (isset($_SESSION['usuarioAdminRh']) or isset($_SESSION['usuarioJefe']) or isset($_SESSION['usuarioDatos']) == 'claehf@hotmail.com' ) { ?>
     <ul class="nav nav-tabs" style="margin-top: 0px;" >       
 
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">

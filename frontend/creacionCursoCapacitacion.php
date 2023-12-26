@@ -78,7 +78,160 @@
                         })
                     }
                 })
-            </script>
+                $(function() {
+        $('#comporganizacionales').prop("hidden", true);
+        $('#compdirectivas').prop("hidden", true);
+        $('#computo').prop("hidden", true);
+        $("#tecnicasgenerales").prop("hidden", true);
+        $("#tecnicasgeneralesmando").prop("hidden", true);
+        $("#muec").prop("hidden", true);
+        $("#derechoshumanos").prop("hidden", true);
+        $("#compespecializadas").prop("hidden", true);
+
+
+        //eliminar valor por defecto
+        $("#organizacionales").prop("selectedIndex", 0);
+        $("#competenciasdirectivas").prop("selectedIndex", 0);
+        $("#herramientascomputo").prop("selectedIndex", 0);
+        $("#comptecnicasgenerales").prop("selectedIndex", 0);
+        $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+        $("#mueccomp").prop("selectedIndex", 0);
+        $("#cursoderechoshumanos").prop("selectedIndex", 0);
+        $("#competenciasespecializadas").prop("selectedIndex", 0);
+
+
+    })
+    $(document).ready(function() {
+
+        $('#lineaestrategica').change(function(e) {
+            if ($(this).val() === "COMPETENCIAS ORGANIZACIONALES") {
+                $('#comporganizacionales').prop("hidden", false);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+
+
+            } else if ($(this).val() === "COMPETENCIAS DIRECTIVAS") {
+                $('#compdirectivas').prop("hidden", false);
+
+                $('#comporganizacionales').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+
+            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", false);
+                $("#cognitivas").prop("hidden", false);
+                $("#eticaprofesional").prop("hidden", false);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            
+            } else if ($(this).val() === "COMPETENCIAS TECNICAS GENERALES-MUEC") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                $("#cognitivas").prop("hidden", true);
+                $("#eticaprofesional").prop("hidden", true);
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", false);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", true);
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                $("#basicascognitivas").prop("selectedIndex", 0);
+                $("#profesionaletica").prop("selectedIndex", 0);
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            } else if ($(this).val() === "COMPETENCIAS ETICO INTEGRATIVAS Y NORMATIVA DEL SP") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", false);
+                $("#compespecializadas").prop("hidden", true);
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#competenciasespecializadas").prop("selectedIndex", 0);
+            } else if ($(this).val() === "COMPETENCIAS ESPECIALIZADAS") {
+                $('#comporganizacionales').prop("hidden", true);
+                $('#compdirectivas').prop("hidden", true);
+                $('#computo').prop("hidden", true);
+                
+                $("#tecnicasgenerales").prop("hidden", true);
+                $("#tecnicasgeneralesmando").prop("hidden", true);
+                $("#muec").prop("hidden", true);
+                $("#derechoshumanos").prop("hidden", true);
+                $("#compespecializadas").prop("hidden", false);
+                $("#organizacionales").prop("selectedIndex", 0);
+                $("#competenciasdirectivas").prop("selectedIndex", 0);
+                $("#herramientascomputo").prop("selectedIndex", 0);
+                
+                $("#comptecnicasgenerales").prop("selectedIndex", 0);
+                $("#comptecnicasgeneralesmando").prop("selectedIndex", 0);
+                $("#mueccomp").prop("selectedIndex", 0);
+                $("#cursoderechoshumanos").prop("selectedIndex", 0);
+            }
+        })
+    });
+
+</script>
 
             <figure id="curso">
 
@@ -91,40 +244,134 @@
                         <label>Programa</label>
                         <select class="form-control" name="programa">
                             <option selected disabled value="">Choose...</option>
-
-                            <?php
-
-                            $query = $conexionX->prepare("SELECT * FROM programa_propuesto");
-                            $query->execute();
-                            $data = $query->fetchAll();
-
-                            foreach ($data as $valores) : 
-                                echo '<option value="' . $valores["nombre_programapropuesto"] . '">' . $valores["nombre_programapropuesto"] . '</option>';
-                            endforeach;
-
-                            ?>
-
+                            <option value="PROGRAMA CAPACITACION ADMINISTRATIVO GERENCIAL PAC MIR">PROGRAMA ANUAL DE CAPACITACION ADMINISTRATIVO GERENCIAL (PAC/MIR)</option>
+                            <option value="MODELO UNICO DE EVALUACION DE LA CALIDAD MUEC">MÓDELO UNICO DE EVALUACIÓN DE LA CALIDAD(MUEC)</option>
+                            <option value="PERMISO ADMINISTRATIVO BECA TIEMPO MENOR A 30 DIAS SRH">PERMISO ADMINISTRATIVO-BECA TIEMPO MENOR A 30 DIAS/SRH</option>
+                            <option value="PROGRAMA DE EDUCACION CONTINUA">PROGRAMA DE EDUCACION CONTINUA</option>
+                            <option value="INDIVIDUAL">INDIVIDUAL</option>
                         </select>
                     </div>
 
                     <div class="col-md-4">
                         <label>Linea Estratejica</label>
-                        <select class="form-control" name="LineaEstratejica" required>
+                        <select class="form-control" name="LineaEstratejica" id="lineaestrategica" required>
                             <option selected disabled value="">Choose...</option>
                             <?php
-
-                            $query = $conexionX->prepare("SELECT * FROM lineaestrategica");
-                            $query->execute();
-                            $data = $query->fetchAll();
-
-                            foreach ($data as $valores) :
-                                echo '<option value="' . $valores["descripcionlinea"] . '">' . $valores["descripcionlinea"] . '</option>';
-                            endforeach;
-
-                            ?>
+                    require_once 'clases/conexion.php';
+                    $conexionX = new ConexionRh();
+                    $query = $conexionX->prepare("SELECT * FROM lineaestrategica ");
+                        $query->execute();
+                        $query->setFetchMode(PDO::FETCH_ASSOC);
+                        while ($row = $query->fetch()) { ?>
+                            <option value="<?php echo $row['descripcionlinea']; ?>">
+                                <?php echo $row['descripcionlinea']; ?></option>
+                        <?php } ?>
                         </select>
                     </div>
-
+            
+        <div id="comporganizacionales">
+            <div class="col-md-12">
+                <label style="font-size: 12px;">COMPETENCIAS ORGANIZACIONALES</label>
+                <select class="form-control" id="organizacionales" name="organizacionales">
+                    <option value="">Seleccione</option>
+                    <option value="TRABAJO EN EQUIPO">TRABAJO EN EQUIPO</option>
+                    <option value="ORIENTACION A RESULTADOS">ORIENTACION A RESULTADOS</option>
+                    <option value="COMUNICACION">COMUNICACION</option>
+                </select>
+            </div>
+        </div>
+        <div id="compdirectivas">
+            <div class="col-md-12">
+                <label style="font-size: 12px;">COMPETENCIAS DIRECTIVAS</label>
+                <select class="form-control" id="directivas" name="directivas">
+                    <option value="">Seleccione</option>
+                    <option value="VISION ESTRATEGICA">VISION ESTRATEGICA</option>
+                    <option value="LIDERAZGO">LIDERAZGO</option>
+                    <option value="NEGOCIACION">NEGOCIACION</option>
+                </select>
+            </div>
+        </div>
+        <div id="computo">
+            <div class="col-md-12">
+                <label style="font-size: 12px;">COMPETENCIA</label>
+                <select class="form-control" id="competencias" name="competencias">
+                    <option value="">Seleccione</option>
+                    <option value="HERRAMIENTAS DE COMPUTO">HERRAMIENTAS DE COMPUTO</option>
+                    <option value="BÁSICAS COGNOSCITIVAS">BÁSICAS/COGNOSCITIVAS</option>
+                    <option value="BÁSICAS EFICACIA PERSONAL">BÁSICAS/EFICACIA PERSONAL</option>
+                    <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
+                    <option value="GESTION DE MANDO INSTITUCIONAL">GESTION DE MANDO INSTITUCIONAL</option>
+                </select>
+            </div>
+        </div>
+        <div id="tecnicasgenerales">
+            <div class="col-md-12">
+                <label style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-ADMINISTRACION DE HOSPITALES</label>
+                <select class="form-control" id="tecnicas" name="tecnicas">
+                    <option value="">Seleccione</option>
+                    <option value="ADMINISTRACION DE HOSPITALES">ADMINISTRACION DE HOSPITALES</option>
+                </select>
+            </div>
+        </div>
+        <div id="tecnicasgeneralesmando">
+            <div class="col-md-12">
+                <label style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</label>
+                <select class="form-control" id="tecnicasmando" name="tecnicasmando">
+                    <option value="">Seleccione</option>
+                    <option value="GESTION DE PROCESOS">GESTION DE PROCESOS</option>
+                    <option value="PLANEACION ESTRATEGICA">PLANEACION ESTRATEGICA</option>
+                    <option value="GESTION DEL TALENTO HUMANO">GESTION DEL TALENTO HUMANO</option>
+                    <option value="MEDICION Y MEJORA CONTINUA DE PROCESOS">MEDICION Y MEJORA CONTINUA DE PROCESOS</option>
+                </select>
+            </div>
+        </div>
+        <div id="muec">
+            <div class="col-md-12">
+                <label style="font-size: 12px;">COMPETENCIAS TECNICAS GENERALES-GESTION DE MANDO INSTITUCIONAL</label>
+                <select class="form-control" id="tecnicasmuec" name="tecnicasmuec">
+                    <option value="">Seleccione</option>
+                    <?php
+                    require_once 'clases/conexion.php';
+                    $conexionX = new ConexionRh();
+                    $query = $conexionX->prepare("SELECT * FROM muec ");
+                        $query->execute();
+                        $query->setFetchMode(PDO::FETCH_ASSOC);
+                        while ($row = $query->fetch()) { ?>
+                            <option value="<?php echo $row['descripcionmuec']; ?>">
+                                <?php echo $row['descripcionmuec']; ?></option>
+                        <?php } ?>
+                </select>
+            </div>
+        </div>
+        <div id="derechoshumanos">
+            <div class="col-md-12">
+                <label style="font-size: 12px;">COMPETENCIAS ETICO INTEGRATIVAS Y NORMATIVA DEL SP</label>
+                <select class="form-control" id="competenciasintegrativas" name="competenciasintegrativas">
+                    <option value="">Seleccione</option>
+                    <option value="TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA">TEMATICAS VINCULADAS A LA ADMINISTRACION PUBLICA</option>
+                    <option value="DERECHOS HUMANOS">DERECHOS HUMANOS</option>
+                    <option value="IGUALDAD Y NO DISCRIMINACION">IGUALDAD Y NO DISCRIMINACION</option>
+                    <option value="TRANSPARENCIA Y PROTECCION DE DATOS PERSONALES">TRANSPARENCIA Y PROTECCION DE DATOS PERSONALES</option>
+                    <option value="ETICA Y PREVENCION DE CONFLICTOS DE INTERES">ETICA Y PREVENCION DE CONFLICTOS DE INTERES</option>
+                    <option value="TRATA DE PERSONAS">TRATA DE PERSONAS</option>
+                    <option value="ATENCION A VICTIMAS">ATENCION A VICTIMAS</option>
+                    <option value="DERECHOS GENERALES DE LAS NIÑAS, LOS NIÑOS Y LOS ADOLESCENTES">DERECHOS GENERALES DE LAS NIÑAS, LOS NIÑOS Y LOS ADOLESCENTES</option>
+                </select>
+            </div>
+        </div>
+        <div id="compespecializadas">
+            <div class="col-md-12">
+                <label style="font-size: 12px;">COMPETENCIAS ESPECIALIZADAS</label>
+                <select class="form-control" id="competenciasespecializadas" name="competenciasespecializadas">
+                    <option value="">Seleccione</option>
+                    <option value="ACTUALIZACION ADMINISTRATIVA">ACTUALIZACION ADMINISTRATIVA</option>
+                    <option value="ACTUALIZACION GERENCIAL">ACTUALIZACION GERENCIAL</option>
+                    <option value="ACTUALIZACION TECNICO MEDICO">ACTUALIZACION TECNICO MEDICO</option>
+                    <option value="ACTUALIZACION NORMATIVA">ACTUALIZACION NORMATIVA</option>
+                    <option value="DESARROLLO PROFESIONAL">DESARROLLO PROFESIONAL</option>
+                </select>
+            </div>
+        </div>
                     <div class="col-md-4">
                         <label>Area que coordina</label>
                         <select class="form-control" name="AreaCordina">
@@ -222,7 +469,7 @@
                         <label>Duracion</label>
                         <input type="text" class="form-control" name="Duracion">
                     </div>
-
+                    <!--
                     <div class="col-md-4">
                         <label>Competencia</label>
                         <select type="form-select" class="form-control" name="Competencia">
@@ -241,7 +488,7 @@
                             ?>
                         </select>
                     </div>
-
+                        -->
 
                     <div class="col-md-2">
                         <div class="form-check">

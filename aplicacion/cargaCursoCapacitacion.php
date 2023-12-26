@@ -5,6 +5,24 @@ $conexionX = new ConexionRh();
 date_default_timezone_set('America/Mexico_City');
 $DateAndTime = date('Y-m-d', time());
 extract($_POST);
+$valor = '';
+if($organizacionales != ''){
+    $valor = $organizacionales;
+}else if($directivas != ''){
+    $valor = $directivas;
+}else if($competencias != ''){
+    $valor = $competencias;
+}else if($tecnicas != ''){
+    $valor = $tecnicas;
+}else if($tecnicasmando != ''){
+    $valor = $tecnicasmando;
+}else if($tecnicasmuec != ''){
+    $valor = $tecnicasmuec;
+}else if($competenciasintegrativas){
+    $valor = $competenciasintegrativas;
+}else if($competenciasespecializadas != ''){
+    $valor = $competenciasespecializadas;
+}
 if($tienecosto == ''){
     $cuentacosto = 'No';
 }else {
@@ -96,7 +114,7 @@ if ($_FILES["imagenCurso"]["error"] > 0) {
             ':modalidad'=>$Modalidad,
             ':fecha_inicio' =>$Fechainicio,
             ':fecha_termino'=>$Fechatermino,
-            ':competencia' =>$Competencia,
+            ':competencia' =>$valor,
             ':rutaimagen'=>$rutaGuardar,
             ':link'=>$link
         ));

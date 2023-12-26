@@ -34,6 +34,9 @@
         case isset($_SESSION['usuarioAdminRh']):
             require 'menu/menuAsignaCursoCapacitacion.php';
         break;
+        case isset($_SESSION['usuarioDatos']):
+            require 'menu/menuAsignaCursoCapacitacion.php';
+        break;
         
         default:
             require 'close_sesion.php';

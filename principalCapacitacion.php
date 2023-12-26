@@ -41,7 +41,7 @@ $conexionX = new ConexionRh();
                 ));
                 $row = $sql->fetch();
                 $identificador = $row['Empleado'];
-        require 'frontend/principalCapacitacion.php';
+        require 'frontend/programaCapacitacion.php';
         break;
 
         default:

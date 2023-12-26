@@ -122,7 +122,32 @@
                         function capacitacionuseranual() {
                             window.location.href = 'capacitacionuseranual';
                         }
+                        function creacionCursoCapacitacion() {
+                    window.location.href ='creacionCursoCapacitacion';
+                        }
+                        function registroenventoscapacitacion() {
+                            window.location.href = 'registroeventoscapacitacion';
+                        }
                     </script>
+                    <?php
+                        if ($usernameSesion == 'claehf@hotmail.com' ){ ?>
+            <article class="card" id="creaciondecursos" onclick="creacionCursoCapacitacion();">
+                <a href="creacionCursoCapacitacion" >
+                    <hr id="hr6">
+                    <i class="fa fa-cloud-upload" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Creación nuevo curso</p>
+                    <!--<a id="link" href="../bolsa/principal" class="btn btn-success">Reclutamiento</a>-->
+                </a>
+            </article>
+            <article class="card" id="busquedacurso" onclick="registroenventoscapacitacion();">
+                <a href="registroeventoscapacitacion">
+                    <hr id="hr6">
+                    <i class="fa fa-search" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Busqueda cursos capacitación</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <?php } ?>
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
                         <a href="capacitacionuseranual">
                             <hr id="hr6">

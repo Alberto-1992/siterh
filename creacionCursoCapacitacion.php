@@ -16,7 +16,19 @@ $conexionX = new ConexionRh();
             require 'frontend/creacionCursoCapacitacion.php';
             }
         break;
-        
+        case isset($_SESSION['usuarioDatos']):
+            $usernameSesion = $_SESSION['usuarioDatos']; 
+            $sql = $conexionX->prepare("SELECT Empleado from plantillahraei where correo = :correo");
+                $sql->execute(array(
+                    ':correo'=>$usernameSesion
+                ));
+                $row = $sql->fetch();
+                $id_empleado = $row['Empleado'];
+                if($id_empleado == 123){
+                $identificador = $row['Empleado'];
+                require 'frontend/creacionCursoCapacitacion.php';
+                }
+        break;
 
         default:
         
