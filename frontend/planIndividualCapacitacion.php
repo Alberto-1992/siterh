@@ -257,6 +257,26 @@ if(valida != ''){
                     <label for="mensaje">Nombre:</label>
                     <input type="text" class="form-control" name="nombreempleado" id="nombreempleado" placeholder="Nombre" required value="<?php echo $nombreempleado ?>" readonly>
                 </div>
+                <?php 
+                $tipoCapacitacion = $_GET['capacitacion'];
+                    if($tipoCapacitacion != ''){
+                        $query = $conexionX->prepare("SELECT id_tipodeaccion FROM catalogocapacitacion where descripcionaccion = :descripcionaccion");
+                        $query->execute(array(
+                            ':descripcionaccion'=>$tipoCapacitacion
+                        ));
+                        $rowaccion = $query->fetch();
+                        $id_tipodeaccion = $rowaccion['id_tipodeaccion']
+                ?>
+                <div class="col-md-6">
+                    <label for="mensaje">Tipo de capacitación:</label>
+                    <select class="form-control" name="tipodecapacitacion" id="tipodecapacitacion" readonly>
+                        <option value="<?php echo $id_tipodeaccion ?>"><?php echo $tipoCapacitacion ?></option>
+                    </select>
+                </div>
+
+
+                        <?php 
+                    }else{ ?>
                 <div class="col-md-6">
                     <label for="mensaje">Tipo de capacitación:</label>
                     <select class="form-control" name="tipodecapacitacion" id="tipodecapacitacion" required onchange="tipoCapacitacion();">
@@ -272,6 +292,7 @@ if(valida != ''){
                         <?php } ?>
                     </select>
                 </div>
+                <?php } ?>
                 <script>
                     
                     function tipoCapacitacion() {
@@ -342,14 +363,27 @@ if( (new Date(fechaEntrada).getTime() < new Date(fechaLimite).getTime()))
 }
 </style>
                 <input type="hidden" class="form-control" name="areafortalece" id="areafortalece" required readonly>
-
+                <?php 
+                    $nombreCapacitacion = $_GET['nombre'];
+                    if($nombreCapacitacion != ''){
+                ?>
                 <div class="col-md-6">
                 <label for="mensaje">Nombre del curso:</label>
                     
                                         <input type="text" name="nombrecurso" id="nombrecurso" type="text" class="form-control"
-                                        placeholder="Max 100 caracteres, no se permiten caracteres especiales como'.,:-_?'" required maxlength="100" onkeypress="return check(event)">
+                                        placeholder="Max 100 caracteres, no se permiten caracteres especiales como'.,:-_?'" value="<?php echo $nombreCapacitacion ?>" readonly>
                                             
                                     </div>
+                    <?php
+                    }else{ ?>
+                    <div class="col-md-6">
+                <label for="mensaje">Nombre del curso:</label>
+                    
+                                        <input type="text" name="nombrecurso" id="nombrecurso" type="text" class="form-control"
+                                        placeholder="Max 100 caracteres, no se permiten caracteres especiales como'.,:-_?'" required maxlength="100" onkeypress="return check(event)" >
+                                            
+                                    </div>
+                            <?php } ?>
                 <div class="col-md-3">
                     <label for="mensaje">Fecha de inicio del curso:</label>
                     <input type="date" class="form-control" name="fechainicio" id="fechainicio" min="2019-01-01" onblur="validarDate();" required>

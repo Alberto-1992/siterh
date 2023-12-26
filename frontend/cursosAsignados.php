@@ -218,7 +218,7 @@ text-align: center;
         $nombreCurso = "#".$row['id_capacitacion'];
         $cursoLink = $row['id_capacitacion'];
 ?>
-<div class="tarjeta" ><a  data-toggle="collapse" href="<?php echo $nombreCurso; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+<div class="tarjeta" >
       <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="<?php echo $row['rutaimagen'] ?>" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
     
       <div class="card-body" >
@@ -233,6 +233,9 @@ text-align: center;
     Detalle del curso
   </a>
     </div>
+    <a class="btn btn-warning" href="planindividualcapacitacion?nombre=<?php echo $row['nombre_capacitacion'] ?>&capacitacion=<?php echo $row['tipode_accion'] ?>" target="_blank" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-top: 5px;">
+    Cargar constancia
+  </a>
         
       
   <div class="collapse" id="<?php echo $cursoLink; ?>" style="margin-top: 10px;">
