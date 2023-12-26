@@ -701,14 +701,14 @@
                     </div>
                         -->
                     <div class="col-md-4">
-                        <label>Ligera descripción del curso</label>
-                        <input type="text" class="form-control" name="objetivocapacitacion" required>
+                        <label>Ficha tecnica</label>
+                        <input type="file" class="form-control" name="fichacurso" required>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>Sube la imagen del curso</label>
                         <input type="file" class="form-control" name="imagenCurso" accept="image/jpg,image/jpeg,image/png">
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <label>Link para inscripción</label>
                         <input type="text" class="form-control" name="link" required>
                     </div>

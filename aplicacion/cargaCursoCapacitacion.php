@@ -83,10 +83,49 @@ if ($_FILES["imagenCurso"]["error"] > 0) {
     }
     
 }
+if ($_FILES["fichacurso"]["error"] > 0) {
+
+} else {
+    
+    $admitidos = array("image/jpg","image/jpeg","image/png");
+    $valorRand = rand();
+
+    if (array($_FILES["fichacurso"]["type"], $admitidos) && $_FILES["fichacurso"]["size"]) {
+
+        $ruta = '../fichasCursos/'.$Nombrecurso.$Fechainicio.'/';
+        $archivo = $ruta . $_FILES["fichacurso"]["name"] = $Nombrecurso.'.pdf';
+
+
+        if (!file_exists($ruta)) {
+            mkdir($ruta);
+        }
+
+        if (file_exists($archivo)) {
+            $resultado = @move_uploaded_file($_FILES["fichacurso"]["tmp_name"], $archivo);
+
+            /*if ($resultado) {
+                echo "<script>alert('Foto actualizada exitosamente'); window.history.back();</script>";
+            } else {
+                echo "<script>alert('Error al subir la imagen'); window.history.back();</script>";
+            }*/
+        } elseif (!file_exists($archivo)) {
+        
+            $resultado = @move_uploaded_file($_FILES["fichacurso"]["tmp_name"], $archivo);
+
+            /*if ($resultado) {
+                echo "<script>alert('Foto cargada exitosamente'); window.history.back();</script>";
+            } else {
+                echo "<script>alert('Error al subir la imagen'); window.history.back();</script>";
+            }*/
+        }
+    }
+    
+}
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
     $rutaGuardar = 'imagenesCursos/'.$Nombrecurso.$Fechainicio.'/'.$Nombrecurso.'.jpg';
+    $rutaArchivo = 'fichasCursos/'.$Nombrecurso.$Fechainicio.'/'.$Nombrecurso.'.pdf';
     $sql = $conexionX->prepare("INSERT INTO nombre_capacitacion (nombre_capacitacion, nombre_del_instructor, lugar_imparte, tema_capacitacion, objetivo, num_participantes, tienecosto, coasto, duracion_cuerso, 
     programa, lineaestratejica, id_areacordinacion, id_provedor, programapropuesto, tipode_accion, arefortalese, id_tipopersonal, modalidad, fecha_inicio, fecha_termino, competencia, rutaimagen, link) 
     VALUES (:nombre_capacitacion, :nombre_del_instructor, :lugar_imparte, :tema_capacitacion, :objetivo, :num_participantes, :tienecosto, :coasto, :duracion_cuerso, :programa, :lineaestratejica, :id_areacordinacion, :id_provedor, 
@@ -98,7 +137,7 @@ if ($_FILES["imagenCurso"]["error"] > 0) {
             ':nombre_del_instructor' => $instructor,
             ':lugar_imparte' => $LugarImparte,
             ':tema_capacitacion' => $Temariocapacitacion,
-            ':objetivo' => $objetivocapacitacion,
+            ':objetivo'=>$rutaArchivo,
             ':num_participantes' => $asistentes,
             ':tienecosto'=>$cuentacosto,
             ':coasto' => $costodelcurso,

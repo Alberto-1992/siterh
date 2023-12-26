@@ -176,7 +176,7 @@ hr {
   display: grid;
   gap: .5rem;
   grid-auto-rows: auto;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   margin-top: 10px;
   margin-left: 0px;
   padding: 7px;
@@ -225,10 +225,14 @@ text-align: center;
         <div style="height: 5rem;">
         <h5 class="card-title"><?php echo $tipoaccion ?></h5>
         <p class="card-text" style="font-size: 12px;"><?php echo $curso ?></p></div>
-    
-  <a class="btn btn-primary" data-toggle="collapse" href="<?php echo $nombreCurso; ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Ver información
+    <div style="width: 100%; height: auto; display: flex; justify-content: center; align-items: center;">
+  <a class="btn btn-primary" href="<?php echo $row['link'] ?>" target="_blank" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Ir al curso
+  </a>&nbsp;
+  <a class="btn btn-primary" href="<?php echo $row['objetivo'] ?>" target="_blank" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Detalle del curso
   </a>
+    </div>
         
       
   <div class="collapse" id="<?php echo $cursoLink; ?>" style="margin-top: 10px;">
