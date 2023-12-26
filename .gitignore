@@ -3,7 +3,6 @@ clases/conexion.php
 clases/config
 clases/configDocumentos
 clases/configRh
-close_sesion.php
 imagenesPerfiles/**/
 imagenesCursos/**/
 documentosactanacimiento/**/
@@ -28,6 +27,5 @@ documentosdoctoradocedula/**/
 documentosmaestriacedula/**/
 Push.php
 subidas/
-close_sesion.php
 
 
