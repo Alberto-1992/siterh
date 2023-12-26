@@ -702,7 +702,7 @@
                         -->
                     <div class="col-md-4">
                         <label>Ficha tecnica</label>
-                        <input type="file" class="form-control" name="fichacurso" required>
+                        <input type="file" class="form-control" name="fichacurso" required accept=".pdf">
                     </div>
                     <div class="col-md-4">
                         <label>Sube la imagen del curso</label>

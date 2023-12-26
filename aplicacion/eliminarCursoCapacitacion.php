@@ -3,8 +3,21 @@ require_once '../clases/conexion.php';
 $conexionX = new ConexionRh();
 date_default_timezone_set("America/Monterrey");
 $id = $_POST['id'];
+$nombrecurso = $_POST['nombrecurso'];
+$fechainicio = $_POST['fechainicio'];
 $hora = date("Y-m-d h:i:sa");
-
+$imagencurso = '../imagenesCursos/'.$nombrecurso.$fechainicio;
+    foreach(glob($imagencurso."/*.*") as $archivos_carpeta) 
+        { 
+            unlink($archivos_carpeta);
+            rmdir($imagencurso);      // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    }
+    $fichacurso = '../fichasCursos/'.$nombrecurso.$fechainicio;
+    foreach(glob($fichacurso."/*.*") as $archivos_carpeta) 
+        { 
+            unlink($archivos_carpeta);
+            rmdir($fichacurso);      // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
+    }
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();

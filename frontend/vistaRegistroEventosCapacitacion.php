@@ -14,6 +14,8 @@ $id_empleado =   $dataRegistro['id_capacitacion'];
 
 ?>
     <input type="hidden" id="numempleado" value="<?php echo $dataRegistro['id_capacitacion'] ?>">
+    <input type="hidden" id="nombrecurso" value="<?php echo $dataRegistro['nombre_capacitacion'] ?>">
+    <input type="hidden" id="fechainicio" value="<?php echo  $dataRegistro['fecha_inicio'] ?>">
     
     
     <?php session_start();
@@ -49,9 +51,11 @@ $id_empleado =   $dataRegistro['id_capacitacion'];
     <script>
 function eliminarCurso() {
             var id = $("#numempleado").val();
+            let nombrecurso = $("#nombrecurso").val();
+            let fechainicio = $("#fechainicio").val();
             var mensaje = confirm("El curso sera eliminado");
             let parametros = {
-                id: id
+                id: id, nombrecurso:nombrecurso, fechainicio:fechainicio
             }
             if (mensaje == true) {
                 $.ajax({
