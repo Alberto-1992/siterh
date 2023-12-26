@@ -245,7 +245,7 @@ if( (new Date(fechaEntrada).getTime() < new Date(fechaLimite).getTime()))
 
                     })
                 </script>
-                <div class="col-md-9">
+                <div class="col-md-3">
                     <label for="autor">Nombre la institución que lo expide:</label>
                     <select class="form-control" name="nombreinstitucion" id="nombreinstitucion" placeholder="Institución" required>
                         <option value="Seleccione">Seleccione</option>
