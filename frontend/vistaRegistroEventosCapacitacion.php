@@ -160,19 +160,13 @@ function eliminarCurso() {
         <th id="th">Nombre de la capacitación:</th>
         <td id="td"><?php echo $dataRegistro['nombre_capacitacion'] ?></td>
     </tr>
-    <tr>
-        <th id="th">Nombre del instructor:</th>
-        <td id="td"><?php echo $dataRegistro['nombre_del_instructor']?></td>
-    </tr>
+    
     <tr>
         <th id="th">Lugar donde se imparte:</th>
         <td id="td"><?php echo $dataRegistro['lugar_imparte'] ?></td>
     </tr>
     <tr>
-    <tr>
-        <th id="th">Tema de capacitacion:</th>
-        <td id="td"><?php echo $dataRegistro['tema_capacitacion'] ?></td>
-    </tr>
+    
     <tr>
     <tr>
         <th id="th">Objetivo:</th>
