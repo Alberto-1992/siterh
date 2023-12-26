@@ -18,7 +18,12 @@
         background-color: white;
     }
 </style>
-
+<script>
+        window.onload = function(){killerSession();}
+        function killerSession(){
+        setTimeout("window.location.href='close_sesion.php'", 2.4e+6);
+        }
+        </script>
 <body>
 
     <div class="box1">

@@ -24,6 +24,12 @@
     <link href="css/starter-template.css" rel="stylesheet">
 </head>
 <script>
+        window.onload = function(){killerSession();}
+        function killerSession(){
+        setTimeout("window.location.href='close_sesion.php'", 2.4e+6);
+        }
+        </script>
+<script>
     function limpiar() {
 
         setTimeout('document.frmNotification.reset()', 1000);

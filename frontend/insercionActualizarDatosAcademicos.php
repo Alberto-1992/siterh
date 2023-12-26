@@ -19,7 +19,12 @@
     <!-- Custom styles for this template -->
     <link href="css/starter-template.css" rel="stylesheet">
 </head>
-
+<script>
+        window.onload = function(){killerSession();}
+        function killerSession(){
+        setTimeout("window.location.href='close_sesion.php'", 2.4e+6);
+        }
+        </script>
 <body style="padding: 0px; overflow-y: scroll;">
     <header class="headerinfarto" style="background-color: #448499; padding: 0px;">
 

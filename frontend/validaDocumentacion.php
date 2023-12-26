@@ -18,7 +18,12 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
 </head>
-
+<script>
+        window.onload = function(){killerSession();}
+        function killerSession(){
+        setTimeout("window.location.href='close_sesion.php'", 2.4e+6);
+        }
+        </script>
 <body>
 <header class="headerinfarto">
         

@@ -19,7 +19,12 @@
     <link rel="stylesheet" href="css/signup-form.css" type="text/css" />
 
 </head>
-
+<script>
+        window.onload = function(){killerSession();}
+        function killerSession(){
+        setTimeout("window.location.href='close_sesion.php'", 2.4e+6);
+        }
+        </script>
 <body>
 
 

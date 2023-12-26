@@ -16,7 +16,12 @@
     <!--<script defer src="https://app.embed.im/snow.js"></script>-->
     <title>Permisos administrativos</title>
 </head>
-
+<script>
+        window.onload = function(){killerSession();}
+        function killerSession(){
+        setTimeout("window.location.href='close_sesion.php'", 2.4e+6);
+        }
+        </script>
 <body>
 
     <header class="headerinfarto" style="background-color: #162765;">

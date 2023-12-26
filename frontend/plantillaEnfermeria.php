@@ -14,7 +14,12 @@
     <!--<script defer src="https://app.embed.im/snow.js"></script>-->
     <title>Plantilla Enfermeria</title>
 </head>
-
+<script>
+        window.onload = function(){killerSession();}
+        function killerSession(){
+        setTimeout("window.location.href='close_sesion.php'", 2.4e+6);
+        }
+        </script>
 <body>
 
     

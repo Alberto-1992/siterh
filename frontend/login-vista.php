@@ -49,7 +49,7 @@
 </html>
 <?php session_start();
 error_reporting(0);
-
+$ip = $_SERVER['HTTP_CLIENT_IP'];
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     $correo = $_POST['usuario'];
@@ -90,6 +90,14 @@ $conexion = new ConexionRh();
             
             
     }
+    $sqlValida = $conexion->prepare("SELECT logueado from usuariosrh where correoelectronico = :correoelectronico");
+        $sqlValida->bindParam(':correoelectronico',$correo,PDO::PARAM_STR);
+            $sqlValida->execute();
+            $rowValida = $sqlValida->fetch();
+        $validaSesion = $rowValida['logueado'];
+    if($validaSesion == 1){
+        echo "<script>alertify.error('Solo puedes tener una sesion activa');</script>";
+    }else{
         $sqlAdmin = $conexion->prepare('SELECT correoelectronico, claveacceso, rolacceso from usuariosrh where correoelectronico = :correoelectronico  AND claveacceso = :claveacceso and rolacceso = :rolacceso');
         $sqlAdmin->bindParam(':correoelectronico',$correo,PDO::PARAM_STR);
         $sqlAdmin->bindParam(':claveacceso',$password,PDO::PARAM_STR);
@@ -98,11 +106,23 @@ $conexion = new ConexionRh();
         $rowAdmin = $sqlAdmin->fetch();
         
             if (!empty($rowAdmin)){
+                
+                $sql = $conexion->prepare("UPDATE usuariosrh set logueado = 1 where correoelectronico = :correoelectronico");
+                    $sql->bindParam(':correoelectronico',$correo,PDO::PARAM_STR);
+                        $sql->execute();
+                    $sqlIP = $conexion->prepare("UPDATE usuariosrh set ipequipo = :ipequipo where correoelectronico = :correoelectronico");
+                        $sqlIP->execute(array(
+                            ':ipequipo'=>$ip,
+                            ':correoelectronico'=>$correo
+                        ));
+                    
+                        //$sqlIP->bindParam(':correo',$correo,PDO::PARAM_STR);
+                
                 $_SESSION['usuarioAdminRh'] = $correo;
                     header('location: principalRh');
             
+        }
     }
-    
     echo "<script>alertify.error('Usuario o contraseña incorrectos');</script>";
                     }
 ?>
