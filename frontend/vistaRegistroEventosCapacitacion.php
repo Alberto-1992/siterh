@@ -273,8 +273,6 @@ if (isset($_SESSION['usuarioAdminRh']) or isset($_SESSION['usuarioJefe']) or iss
                     },
                     success: function(data) {
                         $("#mensaje").html(data);
-
-
                     }
                 })
 
