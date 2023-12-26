@@ -58,7 +58,9 @@ function getRealIP() {
       
     return $_SERVER['REMOTE_ADDR'];
   }
+  date_default_timezone_set("America/Monterrey");
   $ip = getRealIP();
+  $hoy = date("Y-m-d H:i:s");
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     $correo = $_POST['usuario'];
@@ -99,11 +101,12 @@ $conexion = new ConexionRh();
             
             
     }
-    $sqlValida = $conexion->prepare("SELECT logueado from usuariosrh where correoelectronico = :correoelectronico");
+    $sqlValida = $conexion->prepare("SELECT logueado, id_usuario from usuariosrh where correoelectronico = :correoelectronico");
         $sqlValida->bindParam(':correoelectronico',$correo,PDO::PARAM_STR);
             $sqlValida->execute();
             $rowValida = $sqlValida->fetch();
         $validaSesion = $rowValida['logueado'];
+        $idUserLogueado = $rowValida['id_usuario'];
     if($validaSesion == 1){
         echo "<script>alertify.error('Solo puedes tener una sesion activa');</script>";
     }else{
@@ -119,13 +122,12 @@ $conexion = new ConexionRh();
                 $sql = $conexion->prepare("UPDATE usuariosrh set logueado = 1 where correoelectronico = :correoelectronico");
                     $sql->bindParam(':correoelectronico',$correo,PDO::PARAM_STR);
                         $sql->execute();
-                    $sqlIP = $conexion->prepare("UPDATE usuariosrh set ipequipo = :ipequipo where correoelectronico = :correoelectronico");
+                    $sqlIP = $conexion->prepare("INSERT into usuariologueado(iplogueada,fechahora,id_usuario) values(:iplogueada,:fechahora,:id_usuario)");
                         $sqlIP->execute(array(
-                            ':ipequipo'=>$ip,
-                            ':correoelectronico'=>$correo
+                            ':iplogueada'=>$ip,
+                            ':fechahora'=>$hoy,
+                            ':id_usuario'=>$idUserLogueado
                         ));
-                    
-                        //$sqlIP->bindParam(':correo',$correo,PDO::PARAM_STR);
                 
                 $_SESSION['usuarioAdminRh'] = $correo;
                     header('location: principalRh');
