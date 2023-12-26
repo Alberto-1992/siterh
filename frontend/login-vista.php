@@ -49,7 +49,7 @@
 </html>
 <?php session_start();
 error_reporting(0);
-$ip = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     $correo = $_POST['usuario'];
