@@ -163,7 +163,7 @@ $pdf->Cell(200, 4, utf8_decode("Instrucciones: Realise el llenado y marque con u
 $pdf->SetFont("Arial", "B", 8);
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 4, 7);
-$pdf->Cell(170, 3, utf8_decode("Comseptos:"), 1, 0, "L", 1);
+$pdf->Cell(170, 3, utf8_decode("Conceptos:"), 1, 0, "L", 1);
 
 $pdf->SetFont("Arial", "B", 8);
 $pdf->SetFillColor(255, 255, 255);
