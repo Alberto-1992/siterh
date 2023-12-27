@@ -253,7 +253,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label>Linea Estratejica</label>
+                        <label>Linea Estrategica</label>
                         <select class="form-control" name="LineaEstratejica" id="lineaestrategica" required>
                             <option selected disabled value="">Choose...</option>
                             <?php
@@ -529,7 +529,7 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label>Area que fortalese</label>
+                        <label>Area que fortalece</label>
                         <select type="form-select" class="form-control" name="areaquefortalese">
                             <option selected disabled value="">Choose...</option>
 
@@ -681,7 +681,7 @@
                         <input type="date" class="form-control " name="Fechainicio" required>
                     </div>
                     <div class="col-md-2">
-                        <label>Fecha de terminó</label>
+                        <label>Fecha de termino</label>
                         <input type="date" class="form-control " name="Fechatermino">
                     </div>
                             <!--

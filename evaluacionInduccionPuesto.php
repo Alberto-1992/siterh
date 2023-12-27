@@ -1,10 +1,12 @@
 <?php session_start();
+error_reporting(0);
+require 'clases/conexion.php';
+$conexionX = new ConexionRh();
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
             $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            require_once 'clases/conexion.php';
-                $conexionX = new ConexionRh();
+            
                 $query = $conexionX->prepare("SELECT correoelectronico from usuariosrh where correoelectronico = :correoelectronico");
                     $query->execute(array(
                         ':correoelectronico'=>$usernameSesion
@@ -28,7 +30,23 @@
 
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
-        require 'evaluacionInduccion/index.php';
+            $sql = $conexionX->prepare("SELECT Empleado FROM plantillahraei where plantillahraei.correo = :correo");
+            $sql->execute(array(
+                ':correo'=>$usernameSesion
+            ));
+            $row = $sql->fetch();
+            $identificador = $row['Empleado']; 
+            $sqlIdent = $conexionX->prepare("SELECT id_Empleado FROM intoduccionpuesto where id_Empleado = :id_Empleado");
+            $sqlIdent->execute(array(
+                ':id_Empleado'=>$identificador
+            ));
+            $rowIdent = $sqlIdent->fetch();
+            $validaId = $rowIdent['id_Empleado'];
+            if($validaId == ''){
+                    require 'evaluacionInduccion/index.php';
+            }else{
+                header('location: evaluacionInduccion/reportePDF?id='.$validaId);
+            }
         break;
 
         default:

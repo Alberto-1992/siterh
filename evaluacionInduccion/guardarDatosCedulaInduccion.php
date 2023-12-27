@@ -50,6 +50,7 @@ error_reporting(0);
             showConfirmButton: false,
             timer: 1500
         })</script>";
+    
     }else{
     $conexion->rollBack();
     echo "<script>Swal.fire({

@@ -21,9 +21,23 @@
     <?php
     date_default_timezone_set('America/mexico_city');
     $hoy = date("Y-m-d");
+    $sql = $conexionX->prepare("SELECT plantillahraei.Empleado, plantillahraei.Nombre, plantillahraei.id_jefe, plantillahraei.DescripcionPuesto, plantillahraei.DescripcionAdscripcion, plantillahraei.Nombre, jefes2022.nombre as nombrejefe, jefes2022.puesto as puestojefe from plantillahraei inner join jefes2022 on jefes2022.id_jefe = plantillahraei.id_jefe where plantillahraei.Empleado = :Empleado");
+    $sql->execute(array(
+        ':Empleado'=>$identificador
+    ));
+    $data = $sql->fetch();
     ?>
     <div id="mensaje"></div>
-    <div class="container" style="border: 1px solid rgb( 221 ,201, 163); ">
+<div class="container" style="border: 1px solid rgb( 221 ,201, 163); padding: 8px; ">
+    <form class="row g-3 needs-validation" novalidate id="msform" onsubmit="return limpiarformulario();">
+    <div class="col-md-6" style="background-color: #fef6cd; margin-top: 10px;">
+            <strong>Descarga de formato</strong>
+<a href="../formatos/formatoInduccionInstitucional.pdf" class="form-control" target="_blank">Descarga el formato</a>
+        </div>
+        <div class="col-md-6" style="background-color: #fef6cd; margin-top: 10px;">
+            <strong>Sube el formato que descargaste</strong>
+<input type="file" class="form-control" name="cargaformato" required></input>
+        </div>
 
         <header
 
@@ -45,16 +59,7 @@
                 return false;
             }
         </script>
-
-        <form class="row g-3 needs-validation" novalidate id="msform" onsubmit="return limpiarformulario();">
-        <div class="col-md-6">
-            <strong>Descarga de formato</strong>
-<a href="../formatos/formatoInduccionInstitucional.pdf" class="form-control" target="_blank">Descarga el formato</a>
-        </div>
-        <div class="col-md-6">
-            <strong>Sube el formato que descargaste</strong>
-<input type="file" class="form-control" name="cargaformato" required></input>
-        </div>
+        
             <script>
                 $("#msform").on("submit", function (e) {
 
@@ -67,7 +72,7 @@
 
                     $.ajax({
 
-                        url: "guardarDatosCedulaInduccion.php",
+                        url: "evaluacionInduccion/guardarDatosCedulaInduccion.php",
                         type: "post",
                         dataType: "html",
                         data: formData,
@@ -79,7 +84,6 @@
                         },
                         success: function (datos) {
                             $("#mensaje").html(datos);
-                            document.getElementById("");
 
                         }
                     })
@@ -87,14 +91,14 @@
                 })
 
             </script>
-            <section class="text-end"> <strong style="text-transform: uppercase; font-size: 18px">Ixtapaluca,Estado de
-                    México</strong> <input type="date" name="fechahoy" value="<?php echo $hoy ?>"></section><br>
+            <section class="text-end"> <label style="text-transform: uppercase; font-size: 18px">Ixtapaluca,Estado de
+                    México</label> <input type="date" name="fechahoy" value="<?php echo $hoy ?>"></section><br>
 
             <div class="col-md-12" style=" color: rgb(0, 0, 0); font-size: 20px;">
-                <strong>Objetivo: Evaluar la información proporcionada al empleado de nuevo ingreso con respecto a las
+                <label>Objetivo: Evaluar la información proporcionada al empleado de nuevo ingreso con respecto a las
                     funciones de su puesto y las
                     principales características del área y/o servicio en el cual se va a desempeñar
-                </strong>
+                </label>
             </div><br>
             </section>
 
@@ -105,21 +109,21 @@
 
             <div class="col-md-3">
                 <label class="form-label">Nombre del Trabajador </label>
-                <input type="text" class="form-control" name="Trabajador" id="Trabajador1" readonly>
+                <input type="text" class="form-control" name="Trabajador" id="Trabajador1" value="<?php echo $data['Nombre'] ?>" >
             </div>
             <div class="col-md-3">
                 <label class="form-label">Número de Empleado</label>
-                <input type="text" class="form-control" name="Empleado" id="Empleado1" readonly>
+                <input type="text" class="form-control" name="Empleado" id="Empleado1" value="<?php echo $data['Empleado'] ?>" >
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Puesto </label>
-                <input type="text" class="form-control" name="Puesto" id="Puesto1" readonly>
+                <input type="text" class="form-control" name="Puesto" id="Puesto1" value="<?php echo $data['DescripcionPuesto'] ?>">
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Fecha de ingreso</label>
-                <input type="date" class="form-control" nombre="Fechaingreso" id="Fechaingreso" readonly>
+                <input type="date" class="form-control" nombre="Fechaingreso" id="Fechaingreso" >
             </div>
 
 
@@ -131,16 +135,16 @@
 
             <div class="col-md-4">
                 <label class="form">Nombre del área</label>
-                <input type="text" class="form-control" name="nombreárea" id="nombreárea" readonly>
+                <input type="text" class="form-control" name="nombreárea" id="nombreárea" value="<?php echo $data['DescripcionAdscripcion'] ?>">
             </div>
             <div class="col-md-4">
                 <label class="form">Nombre del jefe inmediato </label>
-                <input type="text" class="form-control" name="nomjefe" id="nomjefe" readonly>
+                <input type="text" class="form-control" name="nomjefe" id="nomjefe" value="<?php echo $data['nombrejefe'] ?>">
             </div>
 
             <div class="col-md-4">
                 <label class="form">Puesto del jefe inmediato </label>
-                <input type="text" class="form-control" name="Puestojefe" id="Puestojefe" readonly>
+                <input type="text" class="form-control" name="Puestojefe" id="Puestojefe" value="<?php echo $data['puestojefe'] ?>">
             </div>
 
             <div class="col-md-12"
@@ -148,7 +152,7 @@
                 <label style="text-transform: uppercase; font-size: 25px">INDUCCIÓN AL PUESTO </label>
             </div>
 
-            <div class="col-md-12" style=" color: black; font-size: 20px; background-color: #fef6cd;">
+            <div class="col-md-12" style=" color: black; font-size: 20px; background-color: #fef6cd; margin-top: 0px;">
                 <strong>Nota: La fecha deberá corresponder al día en el que iniciaste y concluiste la capacitación en tu
                     servicio.
                 </strong>
@@ -178,7 +182,7 @@
                         puesto?
                     </legend>
                 </div>
-                <div class="col-md-2" style="margin-top: 10px; text-align: center ;font-size: 20px">
+                <div class="col-md-2" style="margin-top: 10px; text-align: center ;font-size: 18px">
 
                     <input class="form-check-input" type="radio" name="Entrevistajefe" id="Entrevistajefe" value="Si"
                         required="">
@@ -198,7 +202,7 @@
                     <legend class="form-label  pt-0">2.-¿El lenguaje que se utilizó fue sencillo, claro y cordial?
                     </legend>
                 </div>
-                <div class="col-md-2" style="margin-top: 10px; text-align: center ;font-size: 20px">
+                <div class="col-md-2" style="margin-top: 10px; text-align: center ;font-size: 18px">
 
                     <input class="form-check-input" type="radio" name="lenguajeutilizo" id="lenguajeutilizo" value="Si"
                         required="">
@@ -218,7 +222,7 @@
                         equipo de trabajo?
                     </legend>
                 </div>
-                <div class="col-md-2" style="margin-top: 10px; text-align: center ;font-size: 20px">
+                <div class="col-md-2" style="margin-top: 10px; text-align: center ;font-size: 18px">
 
                     <input class="form-check-input" type="radio" name="precentacionoficial" id=" precentacionoficial" value="Si"
                         required="">
@@ -239,7 +243,7 @@
                         las cuales se relacionará laboralmente?
                     </legend>
                 </div>
-                <div class="col-md-2" style="margin-top: 10px; text-align: center ;font-size: 20px">
+                <div class="col-md-2" style="margin-top: 10px; text-align: center ;font-size: 18px">
 
                     <input class="form-check-input" type="radio" name="presentaempleados" id="presentaempleados" value="Si"
                         required="">
@@ -605,18 +609,17 @@
                 </div>
             </fieldset>
             <hr id="hr">
-            <fieldset class="row mb-3" text-center>
                 <div class="col-md-12"
-                    style="text-align: center; font-size: 25px; color: black; background-color: rgb( 221 ,201, 163); margin: 0px 0px 0px 0px;">
+                style="text-align: center; font-size: 15px; color: black; background-color: rgb( 221 ,201, 163); margin: 0px 0px 0px 0px;">
                     <label style="text-transform: uppercase; font-size: 25px">Impacto de la inducción</label>
                 </div>
-
+                <fieldset class="row mb-3" text-center>
                 <div class="col-md-10">
                     <legend class="form-label  pt-1">16.-La información proporcionada, ¿Fue de utilidad para el mejor
                         desempeño de las funcionesde su puesto?
                     </legend>
                 </div>
-                <div class="col-md-2" style="margin-top: 15px; text-align: center ;font-size: 15px">
+                <div class="col-md-2" style="margin-top: 15px; text-align: center ;font-size: 18px">
 
                     <input class="form-check-input" type="radio" name="fueutil" id="fueutil" value="Si"
                         required="">
@@ -635,7 +638,7 @@
                     <legend class="form-label  pt-1">17.-Le dieron retroalimentación para resolver sus dudas
                     </legend>
                 </div>
-                <div class="col-md-2" style="margin-top: 15px; text-align: center ;font-size: 15px"">
+                <div class="col-md-2" style="margin-top: 15px; text-align: center ;font-size: 18px">
 
                     <input class=" form-check-input" type="radio" name="retroalimentacion" id="retroalimentacion" value="Si"
                     required="">
@@ -655,7 +658,7 @@
                     <legend class="form-label  pt-1">18.-¿El tiempo utilizado para la inducción fue adecuado?
                     </legend>
                 </div>
-                <div class="col-md-2" style="margin-top: 15px; text-align: center ;font-size: 15px">
+                <div class="col-md-2" style="margin-top: 15px; text-align: center ;font-size: 18px">
 
                     <input class="form-check-input" type="radio" name="tiempoutilisado" id="tiempoutilisado" value="Si"
                         required="">
@@ -670,12 +673,12 @@
             </fieldset>
             <hr id="hr">
             <div class="col-md-12">
-                <strong>¿Por Que?</strong>
+            <legend class="form-label  pt-1">¿Por Que?</legend>
                 <textarea rows="5" class="form-control" name="Porque" required=""></textarea>
             </div>
 
             <div class="col-md-12">
-                <h4>Comentarios y/o Sugerencias</h4>
+            <legend class="form-label  pt-1">Comentarios y/o Sugerencias</legend>
                 <textarea rows="5" class="form-control" name="Comentario" required=""></textarea>
             </div>
 
