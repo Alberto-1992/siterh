@@ -112,16 +112,16 @@
 
             <div class="col-md-3">
                 <label class="form-label">Nombre del Trabajador </label>
-                <input type="text" class="form-control" name="Trabajador" id="Trabajador1" value="<?php echo $data['Nombre'] ?>" >
+                <input type="text" class="form-control" name="Trabajador" id="Trabajador1" value="<?php echo $data['Nombre'] ?>" readonly>
             </div>
             <div class="col-md-3">
                 <label class="form-label">Número de Empleado</label>
-                <input type="text" class="form-control" name="Empleado" id="Empleado1" value="<?php echo $data['Empleado'] ?>" >
+                <input type="text" class="form-control" name="Empleado" id="Empleado1" value="<?php echo $data['Empleado'] ?>" readonly>
             </div>
 
             <div class="col-md-3">
                 <label class="form-label">Puesto </label>
-                <input type="text" class="form-control" name="Puesto" id="Puesto1" value="<?php echo $data['DescripcionPuesto'] ?>">
+                <input type="text" class="form-control" name="Puesto" id="Puesto1" value="<?php echo $data['DescripcionPuesto'] ?>" readonly>
             </div>
 
             <div class="col-md-3">
@@ -138,16 +138,16 @@
 
             <div class="col-md-4">
                 <label class="form">Nombre del área</label>
-                <input type="text" class="form-control" name="nombreárea" id="nombreárea" value="<?php echo $data['DescripcionAdscripcion'] ?>">
+                <input type="text" class="form-control" name="nombreárea" id="nombreárea" value="<?php echo $data['DescripcionAdscripcion'] ?>" readonly>
             </div>
             <div class="col-md-4">
                 <label class="form">Nombre del jefe inmediato </label>
-                <input type="text" class="form-control" name="nomjefe" id="nomjefe" value="<?php echo $data['nombrejefe'] ?>">
+                <input type="text" class="form-control" name="nomjefe" id="nomjefe" value="<?php echo $data['nombrejefe'] ?>" readonly>
             </div>
 
             <div class="col-md-4">
-                <label class="form">Puesto del jefe inmediato </label>
-                <input type="text" class="form-control" name="Puestojefe" id="Puestojefe" value="<?php echo $data['puestojefe'] ?>">
+                <label class="form">Puesto del jefe inmediato </label> 
+                <input type="text" class="form-control" name="Puestojefe" id="Puestojefe" value="<?php echo $data['puestojefe'] ?>" readonly>
             </div>
 
             <div class="col-md-12"
