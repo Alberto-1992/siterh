@@ -74,7 +74,7 @@
                             window.location.href = 'capacitacionuseranual';
                         }
                         function formatoInduccionInstitucional() {
-                            window.location.href = 'formatos/formatoInduccionInstitucional.pdf'
+                            window.location.href = 'evaluacionInduccion'
                         }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
@@ -102,7 +102,7 @@
                 </a>
             </article>
             <article class="card" id="formatoinduccion" onclick="formatoInduccionInstitucional();">
-                <a href="formatos/formatoInduccionInstitucional.pdf" target="_blank">
+                <a href="evaluacionInduccion" target="_blank">
                     <hr id="hr6">
                     <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
                     <p>Formato de inducción institucional</p>
@@ -139,7 +139,7 @@
                             window.location.href = 'registroeventoscapacitacion';
                         }
                         function formatoInduccionInstitucional() {
-                            window.location.href = 'formatos/formatoInduccionInstitucional.pdf'
+                            window.location.href = 'evaluacionInduccion'
                         }
                     </script>
                     <?php
@@ -186,7 +186,7 @@
                 </a>
             </article>
             <article class="card" id="formatoinduccion" onclick="formatoInduccionInstitucional();">
-                <a href="formatos/formatoInduccionInstitucional.pdf" target="_blank">
+                <a href="evaluacionInduccion" target="_blank">
                     <hr id="hr6">
                     <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
                     <p>Formato de inducción institucional</p>
