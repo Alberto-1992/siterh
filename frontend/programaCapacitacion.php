@@ -185,8 +185,8 @@
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            <article class="card" id="permisoadministrativo" onclick="formatoInduccionInstitucional();">
-                <a href="formatos/formatoInduccionInstitucional.pdf">
+            <article class="card" id="formatoinduccion" onclick="formatoInduccionInstitucional();">
+                <a href="formatos/formatoInduccionInstitucional.pdf" target="_blank">
                     <hr id="hr6">
                     <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
                     <p>Formato de inducción institucional</p>
