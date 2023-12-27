@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
 </head>
 
-<body style="padding: 20px;">
+<body style="padding: 10px;background-color: #F8F8F8;">
 
     <?php
     date_default_timezone_set('America/mexico_city');
@@ -28,17 +28,20 @@
     $data = $sql->fetch();
     ?>
     <div id="mensaje"></div>
-<div class="container" style="border: 1px solid rgb( 221 ,201, 163); padding: 8px; ">
+<div class="container" style="border: 1px solid rgb( 221 ,201, 163); padding: 8px; background-color: white; ">
     <form class="row g-3 needs-validation" novalidate id="msform" onsubmit="return limpiarformulario();">
+    <div style="width: 100%; height: auto; padding: 10px; background-color: rgb(35 , 91 , 78); text-align: center;">
+    <strong style="text-transform: uppercase; font-size: 25px; color: white; ">Descarga los formatos</strong>
+    </div>
     <div class="col-md-6" style="background-color: #fef6cd; margin-top: 10px;">
             <strong>Descarga de formato</strong>
-<a href="../formatos/formatoInduccionInstitucional.pdf" class="form-control" target="_blank">Descarga el formato</a>
+<a href="formatos/formatoInduccionInstitucional.pdf" class="form-control" target="_blank" style="color: blue;">click para descargar el formato</a>
         </div>
         <div class="col-md-6" style="background-color: #fef6cd; margin-top: 10px;">
             <strong>Sube el formato que descargaste</strong>
 <input type="file" class="form-control" name="cargaformato" required></input>
         </div>
-
+   
         <header
 
             style="width: 100%; height: auto; margin-top: 15px; padding: 8px; color:white; text-align: center; font-size: 35px; background: rgb(35 , 91 , 78) ">

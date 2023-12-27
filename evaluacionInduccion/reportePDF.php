@@ -184,11 +184,11 @@ $pdf->SetFont("Arial", "B", 9);
 $pdf->SetTextColor(0, 4, 7);
 if($entrevistajefe == 'Si'){
 $pdf->SetFillColor(0, 0, 0);
-$pdf->Cell(15, 4, utf8_decode("      si"), 1, 0);
+$pdf->Cell(15, 4, utf8_decode("      X"), 1, 0);
 }else{
 $pdf->SetFillColor(0, 0, 0);
 $pdf->Cell(15);
-$pdf->Cell(15, 4, utf8_decode("      no"), 1, 0);
+$pdf->Cell(15, 4, utf8_decode("      X"), 1, 0);
 }
 $pdf->Ln();
 $pdf->Cell(170, 4, utf8_decode("2.-¿El lenguaje que se utilizó fue sencillo, claro y cordial?"), 1, 0);
@@ -197,11 +197,11 @@ $pdf->SetFont("Arial", "B", 9);
 $pdf->SetTextColor(0, 4, 7);
 if($lenguaje == 'Si'){
     $pdf->SetFillColor(0, 0, 0);
-$pdf->Cell(15, 4, utf8_decode("      si"), 1, 0);
+$pdf->Cell(15, 4, utf8_decode("      X"), 1, 0);
 }else{
 $pdf->SetFillColor(0, 0, 0);
 $pdf->Cell(15);
-$pdf->Cell(15, 4, utf8_decode("      no"), 1, 0);
+$pdf->Cell(15, 4, utf8_decode("      X"), 1, 0);
 }
 $pdf->Ln();
 $pdf->SetFont("Arial", "B", 8);
@@ -214,10 +214,10 @@ $pdf->SetFont("Arial", "B", 9);
 $pdf->SetTextColor(0, 4, 7);
 if($presentacion == 'Si'){
     $pdf->SetFillColor(0, 0, 0);
-$pdf->Cell(15, 4, utf8_decode("      si"), 1, 0);
+$pdf->Cell(15, 4, utf8_decode("      X"), 1, 0);
 }else{
 $pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(15, 4, utf8_decode("      no"), 1, 1);
+$pdf->Cell(15, 4, utf8_decode("      X"), 1, 0);
 }
 $pdf->Ln();
 $pdf->SetFont("Arial", "B",8);
