@@ -99,6 +99,14 @@
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
+            <article class="card" id="formatoinduccion" onclick="formatoInduccionInstitucional();">
+                <a href="formatos/formatoInduccionInstitucional.pdf" target="_blank">
+                    <hr id="hr6">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Formato de inducción institucional</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
         
             
         <?php
@@ -127,6 +135,9 @@
                         }
                         function registroenventoscapacitacion() {
                             window.location.href = 'registroeventoscapacitacion';
+                        }
+                        function formatoInduccionInstitucional() {
+                            window.location.href = 'formatos/formatoInduccionInstitucional.pdf'
                         }
                     </script>
                     <?php
@@ -169,6 +180,14 @@
                     <hr id="hr6">
                     <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
                     <p>Solicitud de permiso administrativo menor a 30 días</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="permisoadministrativo" onclick="formatoInduccionInstitucional();">
+                <a href="formatos/formatoInduccionInstitucional.pdf">
+                    <hr id="hr6">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Formato de inducción institucional</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>

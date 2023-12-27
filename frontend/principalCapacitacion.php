@@ -363,7 +363,6 @@ window.addEventListener('load', initSnow);
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-            </article>
             
             <article class="card" id="programacapacitacion" onclick="programacapacitacion();">
                 <a href="programaCapacitacion">
