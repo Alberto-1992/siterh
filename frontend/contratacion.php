@@ -19,7 +19,6 @@
         <header class="headerinfarto" style="background-color: #3900AF;">
         
             <span id="cabecera">Contratación.</span>
-
         </header>
         <div class="box1">
         <?php 
