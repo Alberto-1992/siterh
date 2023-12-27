@@ -73,7 +73,9 @@
                         function capacitacionuseranual() {
                             window.location.href = 'capacitacionuseranual';
                         }
-                        
+                        function formatoInduccionInstitucional() {
+                            window.location.href = 'formatos/formatoInduccionInstitucional.pdf'
+                        }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
                         <a href="capacitacionuseranual">
