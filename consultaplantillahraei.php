@@ -85,13 +85,15 @@
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
             <li><a class="dropdown-item" href="#" onclick="datosdireccion();">Datos personales</a></li>
             <li><a class="dropdown-item" href="#" onclick="datospersonales();">Datos empleado/ultimo grado estudios</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelmediosuperior();">Descargar a excel medio superior</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExceltecnicos();">Descargar a excel tecnicos</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelpostecnicos();">Descargar a excel postecnicos</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelsuperior();">Descargar a excel superior</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelsuperior();">Datos academicos</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelmaestria();">Mas de 2 licenciaturas</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelpostecnicos();">Mas de 2 maestrias</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExceldoctorado();">Mas de 2 doctorados</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcelposgradoespecialidad();">Mas de 2 especialidades</a></li>
+                <!--<li><a class="dropdown-item" href="#" onclick="exportarExcelsuperior();">Descargar a excel superior</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelmaestria();">Descargar a excel maestria</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelposgradoespecialidad();">Descargar a excel posgrados/especialidad</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExceldoctorado();">Descargar a excel doctorado</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExceldoctorado();">Descargar a excel doctorado</a></li>-->
                 
                 
             </ul>

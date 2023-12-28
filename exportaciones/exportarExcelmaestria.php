@@ -2,50 +2,46 @@
 
 require_once '../conexionRh.php'; 
 
-//  variables de formulario 
+$salida = "";
+$salida .= "<table style='color: black; font-size: 14px;' border=1>";
+$salida .= "<thead style='color: white; background: grey; height: 22px; font-size: 14px;'> 
+<th>Num de empleado</th>
 
-//$fecha1 = $_POST['fecha1']; 
-//$fecha2 = $_POST['fecha2']; 
+<th style='background: green; color: white;'>Nombre de la institucion superior</th>
+<th style='background: green; color: white;'>Nombre de la formacion superior</th>
+<th style='background: green; color: white;'>Fecha de inicio</th>
+<th style='background: green; color: white;'>Fecha de termino</th>
+<th style='background: green; color: white;'>Tiempo cursado</th>
+<th style='background: green; color: white;'>Documento obtenido</th>
+<th style='background: green; color: white;'>Numero de cedula</th>
 
-//if(isset($_POST['generar_reporte']))
-//{    
-    // nombre del archivo 
-    header('Content-Type:text/csv; charset = latin1'); 
-    header('Content-Disposition: attachment; filename="estudiosMaestria.csv"'); 
+</thead>";
 
-    //salida del archivo function de fopen w de write  
-    $salida = fopen('php://output', 'W'); 
+$QueryConsulta= $conexionGrafico->query("SELECT  
+estudiossuperior.id_empleado, estudiossuperior.nombresuperior, estudiossuperior.nombreformacionsuperior,estudiossuperior.fechasuperiorinicio,estudiossuperior.fechasuperiortermino,estudiossuperior.tiempocursadosuperior,estudiossuperior.documentosuperior,estudiossuperior.numerocedulasuperior
+    from estudiossuperior where id_empleado in (select id_empleado from estudiossuperior 
+    GROUP BY estudiossuperior.id_empleado HAVING count(id_empleado) > 1) order by id_empleado"); 
+    while($filaR=$QueryConsulta->fetch_assoc()){
+    $salida .= "<tr>
+    <td>".$filaR['id_empleado']."</td>
+    <td>".mb_convert_encoding($filaR['nombresuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['nombreformacionsuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechasuperiorinicio'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechasuperiortermino'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['tiempocursadosuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['documentosuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['numerocedulasuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    
+    </tr>";  
+        
+    }
 
-    //columnas del archivo , llamar a la funcion fputcsv
-    fputcsv($salida, array(
-            'Empleado',
-            'nombre formacion postecnico',
-            'nombre institucion',
-            'fecha inicio',
-            'fecha termino',
-            'tiempo cursado',
-            'documento obtenido medio superior',
-            'Numero de cedula',
-            'actualizo'
-    )); 
-
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.Empleado, estudiosmaestria.*, CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos from plantillahraei 
-    left outer join estudiosmaestria on estudiosmaestria.id_empleado = plantillahraei.Empleado 
-    left outer join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado"); 
-    while($filaR=$QueryConsulta->fetch_assoc())
-    fputcsv($salida, array(
-                        $filaR['Empleado'],
-                        mb_convert_encoding($filaR['nombreformacionmaestria'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['nombremaestria'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['fechamaestriainicio'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['fechamaestriatermino'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['tiempocursadomaestria'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['documentomaestria'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['numerocedulamaestria'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['actualizodatos'], 'ISO-8859-1', 'UTF-8')
-                        
-                    ));
 
 //}
-
+$salida .= "</table>";
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=ReporteInformacionAcademica_".time().".xls");
+header("Pragma: no-cache");
+header("Expires: 0");
+echo $salida;
 ?>

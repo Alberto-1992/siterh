@@ -2,52 +2,51 @@
 
 require_once '../conexionRh.php'; 
 
-//  variables de formulario 
+$salida = "";
+$salida .= "<table style='color: black; font-size: 14px;' border=1>";
+$salida .= "<thead style='color: white; background: grey; height: 22px; font-size: 14px;'> 
+<th>Num de empleado</th>
 
-//$fecha1 = $_POST['fecha1']; 
-//$fecha2 = $_POST['fecha2']; 
+<th style='background: black; color: white;'>Nombre de la institucion especialidad</th>
+<th style='background: black; color: white;'>Nombre de la formacion especialidad</th>
+<th style='background: black; color: white;'>Unidad hospitalaria especialidad</th>
+<th style='background: black; color: white;'>Fecha de inicio</th>
+<th style='background: black; color: white;'>Fecha de termino</th>
+<th style='background: black; color: white;'>Tiempo cursado</th>
+<th style='background: black; color: white;'>Documento obtenido</th>
+<th style='background: black; color: white;'>Numero de cedula</th>
+<th style='background: black; color: white;'>Vigencia certificicado inicio</th>
+<th style='background: black; color: white;'>Vigencia certificado termino</th>
 
-//if(isset($_POST['generar_reporte']))
-//{    
-    // nombre del archivo 
-    header('Content-Type:text/csv; charset = latin1'); 
-    header('Content-Disposition: attachment; filename="estudiosPosgradoEspecialidad.csv"'); 
+</thead>";
 
-    //salida del archivo function de fopen w de write  
-    $salida = fopen('php://output', 'W'); 
+$QueryConsulta= $conexionGrafico->query("SELECT 
+especialidad.nombreformacionacademica as nombreformacionacademicaespecialidad, especialidad.nombreinstitucion as nombreinstitucionespecialidad,especialidad.unidadhospitalaria as unidadhospitalariaespecialidad,especialidad.fechainicioespecialidad,especialidad.fechaterminoespecialidad,especialidad.anioscursados as anioscursadosespecialidad,especialidad.documentorecibeespecialidad,especialidad.numerocedulaespecialidad,especialidad.fechacertificadoinicio,especialidad.fechacertificadotermino 
+    from especialidad where id_empleado in (select id_empleado
+    GROUP BY especialidad.id_empleado HAVING COUNT(id_empleado) > 1) order by id_empleado"); 
+    while($filaR=$QueryConsulta->fetch_assoc()){
+    $salida .= "<tr>
+    <td>".$filaR['id_empleado']."</td>
+    <td>".mb_convert_encoding($filaR['nombreformacionacademicaespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['nombreinstitucionespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['unidadhospitalariaespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechainicioespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechaterminoespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['anioscursadosespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['documentorecibeespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['numerocedulaespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechacertificadoinicio'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechacertificadotermino'], 'ISO-8859-1', 'UTF-8')."</td>
+    </tr>";  
+        
+    }
 
-    //columnas del archivo , llamar a la funcion fputcsv
-    fputcsv($salida, array(
-            'Empleado',
-            'nombre formacion postecnico',
-            'nombre institucion',
-            'Unidad hospitalaria',
-            'fecha inicio',
-            'fecha termino',
-            'tiempo cursado',
-            'documento obtenido medio superior',
-            'Numero de cedula',
-            'actualizo'
-    )); 
-
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.Empleado, especialidad.*, CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos from plantillahraei 
-    left outer join especialidad on especialidad.id_empleado = plantillahraei.Empleado 
-    left outer join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado"); 
-    while($filaR=$QueryConsulta->fetch_assoc())
-    fputcsv($salida, array(
-                        $filaR['Empleado'],
-                        mb_convert_encoding($filaR['nombreformacionacademica'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['nombreinstitucion'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['unidadhospitalaria'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['fechainicioespecialidad'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['fechaterminoespecialidad'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['anioscursados'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['documentorecibeespecialidad'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['numerocedulaespecialidad'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['actualizodatos'], 'ISO-8859-1', 'UTF-8')
-                        
-                    ));
 
 //}
-
+$salida .= "</table>";
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=ReporteInformacionAcademica_".time().".xls");
+header("Pragma: no-cache");
+header("Expires: 0");
+echo $salida;
 ?>
