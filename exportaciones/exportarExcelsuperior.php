@@ -63,10 +63,11 @@ $salida .= "<thead style='color: white; background: grey; height: 22px; font-siz
 <th style='background: black; color: white;'>Numero de cedula</th>
 <th style='background: black; color: white;'>Vigencia certificicado inicio</th>
 <th style='background: black; color: white;'>Vigencia certificado termino</th>
-
+<th style='background: black; color: white;'>Descripcion puesto</th>
+<th style='background: black; color: white;'>Area de adscripcion</th>
 </thead>";
 
-$QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.Nombre, plantillahraei.Empleado, 
+$QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.Nombre, plantillahraei.Empleado, plantillahraei.DescripcionPuesto, plantillahraei.DescripcionAdscripcion,
 estudiosmediosup.nombreformacionmedia,estudiosmediosup.nombremediasuperior,estudiosmediosup.fechainicio,estudiosmediosup.fechatermino,estudiosmediosup.tiempocursado,estudiosmediosup.documentomediosuperior,
 estudiostecnico.nombreinstituciontecnica,estudiostecnico.nombreformaciontecnica,estudiostecnico.fechainiciotecnico,estudiostecnico.fechaterminotecnico,estudiostecnico.tiempocursadotecnico,estudiostecnico.documentotecnico,
 estudiospostecnico.nombreformacionpostecnico,estudiospostecnico.nombreinstitucionpostecnico,estudiospostecnico.fechainiciosuppostecnico,estudiospostecnico.fechaterminosuppostecnico,estudiospostecnico.tiempocursadosuppostecnico,estudiospostecnico.documentorecibepostecnico,
@@ -136,6 +137,8 @@ especialidad.nombreformacionacademica as nombreformacionacademicaespecialidad, e
     <td>".mb_convert_encoding($filaR['numerocedulaespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['fechacertificadoinicio'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['fechacertificadotermino'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['DescripcionPuesto'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['DescripcionAdscripcion'], 'ISO-8859-1', 'UTF-8')."</td>
     </tr>";  
         
     }

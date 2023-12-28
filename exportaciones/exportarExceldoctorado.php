@@ -15,11 +15,11 @@ $salida .= "<thead style='color: white; background: grey; height: 22px; font-siz
 <th style='background: brown; color: white;'>Tiempo cursado</th>
 <th style='background: brown; color: white;'>Documento obtenido</th>
 <th style='background: brown; color: white;'>Numero de cedula</th>
-
-
+<th style='background: black; color: white;'>Descripcion puesto</th>
+<th style='background: black; color: white;'>Area de adscripcion</th>
 </thead>";
 
-$QueryConsulta= $conexionGrafico->query("SELECT doctorado.id_empleado,
+$QueryConsulta= $conexionGrafico->query("SELECT doctorado.id_empleado,plantillahraei.DescripcionPuesto, plantillahraei.DescripcionAdscripcion,
 doctorado.nombreformaciondoctorado,doctorado.nombreinstituciondoctorado,doctorado.unidadhospitalariadoctorado,doctorado.fechainiciodoctorado,doctorado.fechaterminodoctorado,doctorado.anioscursadosdoctorado,doctorado.documentorecibedoctorado,doctorado.numeroceduladoctorado
     from doctorado where id_empleado in ( select id_empleado from doctorado
     GROUP BY doctorado.id_empleado HAVING COUNT(id_empleado) > 1) order by id_empleado "); 
@@ -34,7 +34,8 @@ doctorado.nombreformaciondoctorado,doctorado.nombreinstituciondoctorado,doctorad
     <td>".mb_convert_encoding($filaR['anioscursadosdoctorado'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['documentorecibedoctorado'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['numeroceduladoctorado'], 'ISO-8859-1', 'UTF-8')."</td>
-    
+    <td>".mb_convert_encoding($filaR['DescripcionPuesto'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['DescripcionAdscripcion'], 'ISO-8859-1', 'UTF-8')."</td>
     </tr>";  
         
     }

@@ -17,12 +17,14 @@ $salida .= "<thead style='color: white; background: grey; height: 22px; font-siz
 <th style='background: black; color: white;'>Numero de cedula</th>
 <th style='background: black; color: white;'>Vigencia certificicado inicio</th>
 <th style='background: black; color: white;'>Vigencia certificado termino</th>
+<th style='background: black; color: white;'>Descripcion puesto</th>
+<th style='background: black; color: white;'>Area de adscripcion</th>
 
 </thead>";
 
-$QueryConsulta= $conexionGrafico->query("SELECT especialidad.id_empleado,
+$QueryConsulta= $conexionGrafico->query("SELECT especialidad.id_empleado, plantillahraei.DescripcionPuesto, plantillahraei.DescripcionAdscripcion,
 especialidad.nombreformacionacademica as nombreformacionacademicaespecialidad, especialidad.nombreinstitucion as nombreinstitucionespecialidad,especialidad.unidadhospitalaria as unidadhospitalariaespecialidad,especialidad.fechainicioespecialidad,especialidad.fechaterminoespecialidad,especialidad.anioscursados as anioscursadosespecialidad,especialidad.documentorecibeespecialidad,especialidad.numerocedulaespecialidad,especialidad.fechacertificadoinicio,especialidad.fechacertificadotermino 
-    from especialidad where id_empleado in (select id_empleado from especialidad
+    from especialidad left join plantillahraei on plantillahraei.Empleado = especialidad.id_empleado where id_empleado in (select id_empleado from especialidad
     GROUP BY especialidad.id_empleado HAVING COUNT(id_empleado) > 1) order by id_empleado"); 
     while($filaR=$QueryConsulta->fetch_assoc()){
     $salida .= "<tr>
@@ -37,6 +39,8 @@ especialidad.nombreformacionacademica as nombreformacionacademicaespecialidad, e
     <td>".mb_convert_encoding($filaR['numerocedulaespecialidad'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['fechacertificadoinicio'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['fechacertificadotermino'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['DescripcionPuesto'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['DescripcionAdscripcion'], 'ISO-8859-1', 'UTF-8')."</td>
     </tr>";  
         
     }

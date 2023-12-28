@@ -31,7 +31,6 @@ estudiossuperior.id_empleado, estudiossuperior.nombresuperior, estudiossuperior.
     <td>".mb_convert_encoding($filaR['tiempocursadosuperior'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['documentosuperior'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['numerocedulasuperior'], 'ISO-8859-1', 'UTF-8')."</td>
-    
     </tr>";  
         
     }
