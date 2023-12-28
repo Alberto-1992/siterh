@@ -6,6 +6,7 @@ $salida = "";
 $salida .= "<table style='color: black; font-size: 14px;' border=1>";
 $salida .= "<thead style='color: white; background: grey; height: 22px; font-size: 14px;'> 
 <th>Num de empleado</th>
+<th>Nombre</th>
 
 <th style='background: orange; color: white;'>Nombre de la institucion tecnico</th>
 <th style='background: orange; color: white;'>Nombre de la formacion tecnico</th>
@@ -83,10 +84,11 @@ especialidad.nombreformacionacademica as nombreformacionacademicaespecialidad, e
     left outer join estudiosmaestria on estudiosmaestria.id_empleado = plantillahraei.Empleado
     left outer join doctorado on doctorado.id_empleado = plantillahraei.Empleado 
     left outer join especialidad on especialidad.id_empleado = plantillahraei.Empleado
-    GROUP BY estudiossuperior.id_empleado HAVING COUNT(*) >= 1"); 
+    GROUP BY estudiossuperior.id_empleado HAVING COUNT(*) = 1"); 
     while($filaR=$QueryConsulta->fetch_assoc()){
     $salida .= "<tr>
     <td>".$filaR['id_empleado']."</td>
+    <td>".mb_convert_encoding($filaR['Nombre'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['nombreinstituciontecnica'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['nombreformaciontecnica'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['fechainiciotecnico'], 'ISO-8859-1', 'UTF-8')."</td>

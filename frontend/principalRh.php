@@ -14,7 +14,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script type="text/javascript" src="js/scriptInicio.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script defer src="https://app.embed.im/snow.js"></script>
+    <!--<script defer src="https://app.embed.im/snow.js"></script>-->
     <title>Plataforma HRAEI</title>
 </head>
 <script>
@@ -24,7 +24,7 @@
         }
         </script>
 <script type="text/javascript">
-
+/*
 // Cantidad de copos de nieve
 var snowMax = 60;
 
@@ -49,11 +49,7 @@ var snowRefresh = 50;
 // Estilo adicional
 var snowStyles = "cursor: default; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none;";
 
-/*
-// Fin de la configuración
-// ----------------------------------------
-// No modifiques a partir de esta linea
-*/
+
 
 var snow = [],
 	pos = [],
@@ -119,7 +115,7 @@ for (i = 0; i <= snowMax; i++) {
 
 window.addEventListener('resize', resize);
 window.addEventListener('load', initSnow);
-
+*/
 </script>
 <body style="background-color: #EBECED;">
 
