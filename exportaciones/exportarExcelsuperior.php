@@ -75,13 +75,13 @@ estudiosmaestria.nombremaestria, estudiosmaestria.nombreformacionmaestria,estudi
 doctorado.nombreformaciondoctorado,doctorado.nombreinstituciondoctorado,doctorado.unidadhospitalariadoctorado,doctorado.fechainiciodoctorado,doctorado.fechaterminodoctorado,doctorado.anioscursadosdoctorado,doctorado.documentorecibedoctorado,doctorado.numeroceduladoctorado,
 especialidad.nombreformacionacademica as nombreformacionacademicaespecialidad, especialidad.nombreinstitucion as nombreinstitucionespecialidad,especialidad.unidadhospitalaria as unidadhospitalariaespecialidad,especialidad.fechainicioespecialidad,especialidad.fechaterminoespecialidad,especialidad.anioscursados as anioscursadosespecialidad,especialidad.documentorecibeespecialidad,especialidad.numerocedulaespecialidad,especialidad.fechacertificadoinicio,especialidad.fechacertificadotermino 
     from plantillahraei
-    left join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado
-    left join estudiostecnico on estudiostecnico.id_empleado = plantillahraei.Empleado
-    left join estudiospostecnico on estudiospostecnico.id_empleado = plantillahraei.Empleado 
-    left join estudiossuperior on estudiossuperior.id_empleado = plantillahraei.Empleado 
-    left join estudiosmaestria on estudiosmaestria.id_empleado = plantillahraei.Empleado
-    left join doctorado on doctorado.id_empleado = plantillahraei.Empleado 
-    left join especialidad on especialidad.id_empleado = plantillahraei.Empleado
+    left outer join estudiosmediosup on estudiosmediosup.id_empleado = plantillahraei.Empleado
+    left outer join estudiostecnico on estudiostecnico.id_empleado = plantillahraei.Empleado
+    left outer join estudiospostecnico on estudiospostecnico.id_empleado = plantillahraei.Empleado 
+    left outer join estudiossuperior on estudiossuperior.id_empleado = plantillahraei.Empleado 
+    left outer join estudiosmaestria on estudiosmaestria.id_empleado = plantillahraei.Empleado
+    left outer join doctorado on doctorado.id_empleado = plantillahraei.Empleado 
+    left outer join especialidad on especialidad.id_empleado = plantillahraei.Empleado
     order by plantillahraei.Empleado"); 
     while($filaR=$QueryConsulta->fetch_assoc()){
     $salida .= "<tr>
