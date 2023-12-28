@@ -48,14 +48,11 @@ require_once '../conexionRh.php';
             'DIAS LABORALES 2',
             'OBSERVACIONES',
             'tipopuesto2',
-            'descripcion ultimo grado de estudios',
-            'especialidad labora hraei',
             'actualizo'
     )); 
 
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, ultimogradoestudios.*, horariosplantilla.Turno,horariosplantilla.Jornada,horariosplantilla.Horario,horariosplantilla.Control,horariosplantilla.Tipo,horariosplantilla.Adicional,
-    compatibilidad.*, CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos from plantillahraei 
-    left outer join ultimogradoestudios on ultimogradoestudios.id_empleado = plantillahraei.Empleado 
+    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, horariosplantilla.Turno,horariosplantilla.Jornada,horariosplantilla.Horario,horariosplantilla.Control,horariosplantilla.Tipo,horariosplantilla.Adicional,
+    compatibilidad.*, CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos from plantillahraei  
     left outer join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado
     left outer join compatibilidad on compatibilidad.id_empleado = plantillahraei.Empleado
     left outer join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado"); 
@@ -91,8 +88,6 @@ require_once '../conexionRh.php';
                         mb_convert_encoding($filaR['DIASLABORALES2'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['OBSERVACIONES'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['tipopuesto2'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['descripcionultimogrado'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['especialidadlaborahraei'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['actualizodatos'], 'ISO-8859-1', 'UTF-8')
                         
                     ));

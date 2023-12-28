@@ -84,7 +84,7 @@
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
             <li><a class="dropdown-item" href="#" onclick="datosdireccion();">Datos personales</a></li>
-            <li><a class="dropdown-item" href="#" onclick="datospersonales();">Datos empleado/ultimo grado estudios</a></li>
+            <li><a class="dropdown-item" href="#" onclick="datospersonales();">Datos empleado</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelsuperior();">Datos academicos</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelmaestria();">Mas de 2 licenciaturas</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelpostecnicos();">Mas de 2 maestrias</a></li>
