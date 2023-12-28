@@ -20,7 +20,7 @@ $salida .= "<thead style='color: white; background: grey; height: 22px; font-siz
 
 </thead>";
 
-$QueryConsulta= $conexionGrafico->query("SELECT especialidad.id_empleado
+$QueryConsulta= $conexionGrafico->query("SELECT especialidad.id_empleado,
 especialidad.nombreformacionacademica as nombreformacionacademicaespecialidad, especialidad.nombreinstitucion as nombreinstitucionespecialidad,especialidad.unidadhospitalaria as unidadhospitalariaespecialidad,especialidad.fechainicioespecialidad,especialidad.fechaterminoespecialidad,especialidad.anioscursados as anioscursadosespecialidad,especialidad.documentorecibeespecialidad,especialidad.numerocedulaespecialidad,especialidad.fechacertificadoinicio,especialidad.fechacertificadotermino 
     from especialidad where id_empleado in (select id_empleado
     GROUP BY especialidad.id_empleado HAVING COUNT(id_empleado) > 1) order by id_empleado"); 
