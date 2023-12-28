@@ -34,17 +34,14 @@
     <strong style="text-transform: uppercase; font-size: 25px; color: white; ">Descarga los formatos</strong>
     </div>
     <div class="col-md-6" style="background-color: #fef6cd; margin-top: 10px;">
-            <strong>Descarga de formato</strong>
+            <strong>Descarga el formato de carta de inducción institucional</strong>
 <a href="formatos/formatoInduccionInstitucional.pdf" class="form-control" target="_blank" style="color: blue;">click para descargar el formato</a>
         </div>
         <div class="col-md-6" style="background-color: #fef6cd; margin-top: 10px;">
-            <strong>Sube el formato que descargaste</strong>
+            <strong>Sube el formato de carta de inducción institucional debidamente firmado</strong>
 <input type="file" class="form-control" name="cargaformato" required></input>
         </div>
-   
-        <header
-
-            style="width: 100%; height: auto; margin-top: 15px; padding: 8px; color:white; text-align: center; font-size: 35px; background: rgb(35 , 91 , 78) ">
+        <header style="width: 100%; height: auto; margin-top: 25px; padding: 8px; color:white; text-align: center; font-size: 35px; background: rgb(35 , 91 , 78) ">
             <strong style="text-transform: uppercase; font-size: 25px;"> Cédula de Evaluación de inducción al
                 puesto</strong>
         </header>
@@ -98,10 +95,10 @@
                     México</label> <input type="date" name="fechahoy" value="<?php echo $hoy ?>"></section><br>
 
             <div class="col-md-12" style=" color: rgb(0, 0, 0); font-size: 20px;">
-                <label>Objetivo: Evaluar la información proporcionada al empleado de nuevo ingreso con respecto a las
+                <strong>Objetivo:</strong> Evaluar la información proporcionada al empleado de nuevo ingreso con respecto a las
                     funciones de su puesto y las
                     principales características del área y/o servicio en el cual se va a desempeñar
-                </label>
+                
             </div><br>
             </section>
 
