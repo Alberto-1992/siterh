@@ -31,7 +31,7 @@
 <div class="container" style="border: 1px solid rgb( 221 ,201, 163); padding: 8px; background-color: white; ">
     <form class="row g-3 needs-validation" novalidate id="msform" onsubmit="return limpiarformulario();">
     <div style="width: 100%; height: auto; padding: 10px; background-color: rgb(35 , 91 , 78); text-align: center;">
-    <strong style="text-transform: uppercase; font-size: 25px; color: white; ">Descarga los formatos</strong>
+    <strong style="text-transform: uppercase; font-size: 25px; color: white; ">Descarga el formato de carta de inducción institucional.</strong>
     </div>
     <div class="col-md-6" style="background-color: #fef6cd; margin-top: 10px;">
             <strong>Descarga el formato de carta de inducción institucional</strong>
