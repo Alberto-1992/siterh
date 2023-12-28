@@ -338,7 +338,7 @@ window.addEventListener('load', initSnow);
                     ));
                     $rw = $statement->fetch();
                     $admin = $rw['correo'];
-                    if ($admin == 'bramirez699@gmail.com' or $admin == 'beto_1866@outlook.com' or $admin == 'isabella291216@gmail.com' or $admin == 'hfco.rosas@gmail.com') { ?>
+                    if ($admin == 'bramirez699@gmail.com' or $admin == 'beto_1866@outlook.com' or $admin == 'isabella291216@gmail.com' or $admin == 'hfco.rosas@gmail.com' or $admin == 'pasantes@hraei.gob.mx') { ?>
             <article class="card" id="creaciondecursos" onclick="creacionCursoCapacitacion();">
                 <a href="creacionCursoCapacitacion" >
                     <hr id="hr6">
