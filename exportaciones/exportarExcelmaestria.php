@@ -17,11 +17,14 @@ $salida .= "<thead style='color: white; background: grey; height: 22px; font-siz
 <th style='background: black; color: white;'>Descripcion puesto</th>
 <th style='background: black; color: white;'>Area de adscripcion</th>
 
+<th style='background: orange; color: white;'>Descripcion ultimo grado de estudios</th>
+<th style='background: orange; color: white;'>Especailidad labora hraei</th>
 </thead>";
 
-$QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.DescripcionPuesto, plantillahraei.DescripcionAdscripcion,
+$QueryConsulta= $conexionGrafico->query("SELECT ultimogradoestudios.descripcionultimogrado,ultimogradoestudios.especialidadlaborahraei, plantillahraei.DescripcionPuesto, plantillahraei.DescripcionAdscripcion,
 estudiossuperior.id_empleado, estudiossuperior.nombresuperior, estudiossuperior.nombreformacionsuperior,estudiossuperior.fechasuperiorinicio,estudiossuperior.fechasuperiortermino,estudiossuperior.tiempocursadosuperior,estudiossuperior.documentosuperior,estudiossuperior.numerocedulasuperior
-    from estudiossuperior left join plantillahraei on plantillahraei.Empleado = estudiossuperior.id_empleado where id_empleado in (select id_empleado from estudiossuperior 
+    from estudiossuperior left join plantillahraei on plantillahraei.Empleado = estudiossuperior.id_empleado left join ultimogradoestudios on ultimogradoestudios.id_empleado = estudiossuperior.id_empleado
+    where estudiossuperior.id_empleado in (select estudiossuperior.id_empleado from estudiossuperior 
     GROUP BY estudiossuperior.id_empleado HAVING count(id_empleado) > 1) order by id_empleado"); 
     while($filaR=$QueryConsulta->fetch_assoc()){
     $salida .= "<tr>
@@ -35,6 +38,8 @@ estudiossuperior.id_empleado, estudiossuperior.nombresuperior, estudiossuperior.
     <td>".mb_convert_encoding($filaR['numerocedulasuperior'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['DescripcionPuesto'], 'ISO-8859-1', 'UTF-8')."</td>
     <td>".mb_convert_encoding($filaR['DescripcionAdscripcion'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['descripcionultimogrado'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['especialidadlaborahraei'], 'ISO-8859-1', 'UTF-8')."</td>
     </tr>";  
         
     }
