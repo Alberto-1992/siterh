@@ -82,7 +82,7 @@ especialidad.nombreformacionacademica as nombreformacionacademicaespecialidad, e
     left outer join estudiosmaestria on estudiosmaestria.id_empleado = plantillahraei.Empleado
     left outer join doctorado on doctorado.id_empleado = plantillahraei.Empleado 
     left outer join especialidad on especialidad.id_empleado = plantillahraei.Empleado
-    order by plantillahraei.Empleado"); 
+    GROUP BY estudiossuperior.id_empleado HAVING COUNT(*) > 1"); 
     while($filaR=$QueryConsulta->fetch_assoc()){
     $salida .= "<tr>
     <td>".$filaR['id_empleado']."</td>
