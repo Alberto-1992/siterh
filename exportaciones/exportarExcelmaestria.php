@@ -21,7 +21,7 @@ $salida .= "<thead style='color: white; background: grey; height: 22px; font-siz
 
 $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.DescripcionPuesto, plantillahraei.DescripcionAdscripcion,
 estudiossuperior.id_empleado, estudiossuperior.nombresuperior, estudiossuperior.nombreformacionsuperior,estudiossuperior.fechasuperiorinicio,estudiossuperior.fechasuperiortermino,estudiossuperior.tiempocursadosuperior,estudiossuperior.documentosuperior,estudiossuperior.numerocedulasuperior
-    from estudiossuperior where id_empleado in (select id_empleado from estudiossuperior 
+    from estudiossuperior left join estudiossuperior on estudiossuperior.id_empleado = plantillahraei.Empleado where id_empleado in (select id_empleado from estudiossuperior 
     GROUP BY estudiossuperior.id_empleado HAVING count(id_empleado) > 1) order by id_empleado"); 
     while($filaR=$QueryConsulta->fetch_assoc()){
     $salida .= "<tr>
