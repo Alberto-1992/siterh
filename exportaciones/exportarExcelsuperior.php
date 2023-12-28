@@ -2,50 +2,58 @@
 
 require_once '../conexionRh.php'; 
 
-//  variables de formulario 
+$salida = "";
+$salida .= "<table style='color: black; font-size: 14px;' border=1>";
+$salida .= "<thead style='color: white; background: grey; height: 22px; font-size: 14px;'> 
+<th>Num de empleado</th>
+<th>Nombre de la institucion</th>
+<th>Nombre de la formacion superior</th>
+<th>Fecha de inicio</th>
+<th>Fecha de termino</th>
+<th>Tiempo cursado</th>
+<th>Documento obtenido</th>
+<th>Numero de cedula</th>
 
-//$fecha1 = $_POST['fecha1']; 
-//$fecha2 = $_POST['fecha2']; 
+<th>Nombre de la institucion maestria</th>
+<th>Nombre de la formacion maestria</th>
+<th>Fecha de inicio</th>
+<th>Fecha de termino</th>
+<th>Tiempo cursado</th>
+<th>Documento obtenido</th>
+<th>Numero de cedula</th>
 
-//if(isset($_POST['generar_reporte']))
-//{    
-    // nombre del archivo 
-    header('Content-Type:text/csv; charset = latin1'); 
-    header('Content-Disposition: attachment; filename="estudiosSuperior.csv"'); 
+</thead>";
 
-    //salida del archivo function de fopen w de write  
-    $salida = fopen('php://output', 'W'); 
+$QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.Nombre, plantillahraei.Empleado, estudiossuperior.id_empleado, estudiossuperior.nombresuperior, estudiossuperior.nombreformacionsuperior,estudiossuperior.fechasuperiorinicio,estudiossuperior.fechasuperiortermino,estudiossuperior.tiempocursadosuperior,estudiossuperior.documentosuperior,estudiossuperior.numerocedulasuperior,
+estudiosmaestria.nombremaestria, estudiosmaestria.nombreformacionmaestria,estudiosmaestria.fechamaestriainicio,estudiosmaestria.fechamaestriatermino,estudiosmaestria.tiempocursadomaestria,estudiosmaestria.documentomaestria,estudiosmaestria.numerocedulamaestria
+    from plantillahraei left join estudiossuperior on estudiossuperior.id_empleado = plantillahraei.Empleado left join estudiosmaestria on estudiosmaestria.id_empleado = plantillahraei.Empleado order by plantillahraei.Empleado"); 
+    while($filaR=$QueryConsulta->fetch_assoc()){
+    $salida .= "<tr>
+    <td>".$filaR['id_empleado']."</td>
+    <td>".mb_convert_encoding($filaR['nombresuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['nombreformacionsuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechasuperiorinicio'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechasuperiortermino'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['tiempocursadosuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['documentosuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['numerocedulasuperior'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['nombremaestria'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['nombreformacionmaestria'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechamaestriainicio'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['fechamaestriatermino'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['tiempocursadomaestria'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['documentomaestria'], 'ISO-8859-1', 'UTF-8')."</td>
+    <td>".mb_convert_encoding($filaR['numerocedulamaestria'], 'ISO-8859-1', 'UTF-8')."</td>
+    </tr>";  
+        
+    }
 
-    //columnas del archivo , llamar a la funcion fputcsv
-    fputcsv($salida, array(
-            'Empleado',
-            'nombre formacion postecnico',
-            'nombre institucion',
-            'fecha inicio',
-            'fecha termino',
-            'tiempo cursado',
-            'documento obtenido medio superior',
-            'Numero de cedula',
-            'actualizo'
-    )); 
-
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.Empleado, estudiossuperior.*, CASE WHEN actualizacion.actualizo = 1 THEN 'Actualizo datos' ELSE 'Sin actualizar' END as actualizodatos from plantillahraei 
-    left outer join estudiossuperior on estudiossuperior.id_empleado = plantillahraei.Empleado 
-    left outer join actualizacion on actualizacion.id_empleado = plantillahraei.Empleado"); 
-    while($filaR=$QueryConsulta->fetch_assoc())
-    fputcsv($salida, array(
-                        $filaR['Empleado'],
-                        mb_convert_encoding($filaR['nombreformacionsuperior'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['nombresuperior'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['fechasuperiorinicio'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['fechasuperiortermino'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['tiempocursadosuperior'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['documentosuperior'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['numerocedulasuperior'], 'ISO-8859-1', 'UTF-8'),
-                        mb_convert_encoding($filaR['actualizodatos'], 'ISO-8859-1', 'UTF-8')
-                        
-                    ));
 
 //}
-
+$salida .= "</table>";
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=ReporteMetas2023_".time().".xls");
+header("Pragma: no-cache");
+header("Expires: 0");
+echo $salida;
 ?>
