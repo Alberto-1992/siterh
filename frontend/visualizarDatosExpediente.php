@@ -123,14 +123,12 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             }
         }
     }
-                    } else {
-                        echo "<li>" . $archivo . "</li>";
-                    }
+                    } 
                 }
             }
             
             // Cierra el gestor de directorios
-            //closedir($gestor);
+            closedir($gestor);
             echo "</ul>";
         } else {
             echo "No es una ruta de directorio valida<br/>";
