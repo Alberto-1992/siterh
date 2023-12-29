@@ -477,7 +477,16 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos Licenciatura</h1>
                     </div>
-                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacion" name="nombreformacion[]" class="form-control" value="<?php echo $rows['nombreformacionsuperior']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucion" name="nombreinstitucion[]" class="form-control" value="<?php echo $rows['nombresuperior'] ?>">
+                        </div>
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento titulo</strong>
                             <?php
                             clearstatcache();
@@ -497,7 +506,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             }
                             ?>
                         </div>
-                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento cedula</strong>
                             <?php
                             clearstatcache();
@@ -549,8 +558,17 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos Maestria</h1>
                     </div>
-                    
-                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacionmaestria" name="nombreformacionmaestria[]" class="form-control" value="<?php echo $rowm['nombreformacionmaestria']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucionmaestria" name="nombreinstitucionmaestria[]" class="form-control" value="<?php echo $rowm['nombremaestria'] ?>">
+                        </div>
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento titulo</strong>
                             <?php
                             clearstatcache();
@@ -570,7 +588,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             }
                             ?>
                         </div>
-                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento cedula</strong>
                             <?php
                             clearstatcache();
@@ -621,8 +639,17 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos Posgrado/Especialidad</h1>
                     </div>
-                    
-                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacionposgradoespecialidad" name="nombreformacionposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['nombreformacionacademica']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucionposgradoespecialidad" name="nombreinstitucionposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['nombreinstitucion'] ?>">
+                        </div>
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Titulo</strong>
                             <?php
                             clearstatcache();
@@ -642,7 +669,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             }
                             ?>
                         </div>
-                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Cedula</strong>
                             <?php
                             clearstatcache();
@@ -712,8 +739,17 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos Doctorado</h1>
                     </div>
-                    
-                        <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformaciondoctorado" name="nombreformaciondoctorado[]" class="form-control" value="<?php echo $rowd['nombreformaciondoctorado']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstituciondoctorado" name="nombreinstituciondoctorado[]" class="form-control" value="<?php echo $rowd['nombreinstituciondoctorado'] ?>">
+                        </div>
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento titulo</strong>
                             <?php
                             clearstatcache();
@@ -733,7 +769,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             }
                             ?>
                         </div>
-                        <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento cedula</strong>
                             <?php
                             clearstatcache();
@@ -783,8 +819,17 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     <div id="cabeceras">
                         <h1 style="font-size:22px;" style="background-color: #448499;">Datos Diplomado</h1>
                     </div>
-                    
-                            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                    <div class="form-row">
+                        
+                            <div class="form-group col-md-6">
+                                <label>Nombre del diplomado</label>
+                                <input type="text" id="nombreformaciondiplomado" name="nombreformaciondiplomado[]" class="form-control" value="<?php echo $rowd['nombreDiplomado'] ?>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa</label>
+                                <input type="text" id="nombreinstituciondiplomado" name="nombreinstituciondiplomado[]" class="form-control" value="<?php echo $rowd['nombreInstitucion'] ?>">
+                                </div>
+                            <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Documento diplomado</strong>
                             <?php
                             clearstatcache();
