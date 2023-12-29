@@ -83,8 +83,56 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             </div>
     <div class="col-md-12">
         <?php
-    echo "<a href='expedienteanterior/$identificador/' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Expediente anterior</a>";
-        ?>
+        obtener_estructura_directorios("expedienteanterior/".$identificador.'/');
+        function obtener_estructura_directorios($ruta){
+        if (is_dir($ruta)){
+            // Abre un gestor de directorios para la ruta indicada
+            $gestor = opendir($ruta);
+            echo "<ul>";
+    
+            // Recorre todos los elementos del directorio
+            while (($archivo = readdir($gestor)) !== false)  {
+                    
+                $ruta_completa = $ruta . "/" . $archivo;
+    
+                // Se muestran todos los archivos y carpetas excepto "." y ".."
+                if ($archivo != "." && $archivo != "..") {
+                    // Si es un directorio se recorre recursivamente
+                    if (is_dir($ruta_completa)) {
+                        echo "<li>" . $archivo . "</li>";
+                        echo "<a href='$ruta_completa' target='_blank'>Ver archivos</a>";
+                        obtener_estructura_directorios($ruta_completa);
+                    } else {
+                        echo "<li>" . $archivo . "</li>";
+                    }
+                }
+            }
+            
+            // Cierra el gestor de directorios
+            //closedir($gestor);
+            echo "</ul>";
+        } else {
+            echo "No es una ruta de directorio valida<br/>";
+        }
+        }
+        
+        $identificador;
+        $path = "expedienteanterior/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='expedienteanterior/$identificador/$archivo/' class='form-control'></iframe>";
+                echo "<a href='expedienteanterior/$identificador/$archivo/' target='_blank'>Ver archivos</a>";
+                
+            }
+        }
+    }
+    clearstatcache();
+    ?>
+        
     </div>
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Constancia</strong>
