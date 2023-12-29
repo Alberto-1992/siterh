@@ -14,6 +14,8 @@
 <body style="padding: 0px;">
 
 <?php 
+$nombremediosuperior = $row['nombreformacionmedia'];
+$nombreinstitucionmediosup = $row['nombremediasuperior'];
 $correo = $_POST['correo'];
 require 'conexionRh.php';
  $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
@@ -318,26 +320,26 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 </div>
                 <div class="form-group col-md-6">
                     <label>Nombre de la formación académica</label>
-                    <input type="text" id="nombreformacionmedia" name="nombreformacionmedia" autocomplete="off" class="form-control" value="<?php echo $row['nombreformacionmedia'] ?>">
+                    <input type="text" id="nombreformacionmedia" name="nombreformacionmedia" autocomplete="off" class="form-control" value="<?php echo $nombremediosuperior; ?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Nombre de la institución educativa</label>
-                    <input type="text" id="nombremediasuperior" name="nombremediasuperior" autocomplete="off" class="form-control" value="<?php echo $row['nombremediasuperior'] ?>">
+                    <input type="text" id="nombremediasuperior" name="nombremediasuperior" autocomplete="off" class="form-control" value="<?php echo $nombreinstitucionmediosup; ?>">
                 </div>
                 <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                     <strong>Documento</strong>
                     <?php
                     clearstatcache();
-                    $mediasup = $row['nombreformacionmedia'];
-                    $path = "documentosmediasup/" . $mediasup . $identificador;
+                    
+                    $path = "documentosmediasup/" . $nombremediosuperior . $identificador;
                     if (file_exists($path)) {
                         $directorio = opendir($path);
                         while ($archivo = readdir($directorio)) {
                             if (!is_dir($archivo)) {
                                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                echo "<iframe src='documentosmediasup/$mediasup$identificador/$archivo' class='form-control'></iframe>";
-                                echo "<a href='documentosmediasup/$mediasup$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                echo "<iframe src='documentosmediasup/$nombremediosuperior$identificador/$archivo' class='form-control'></iframe>";
+                                echo "<a href='documentosmediasup/$nombremediosuperior$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                             }
                         }
                     }
