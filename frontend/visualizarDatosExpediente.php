@@ -318,6 +318,14 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <div id="cabeceras">
                     <h1 style="font-size:22px;">Nivel Medio Superior</h1>
                 </div>
+                <div class="form-group col-md-6">
+                    <label>Nombre de la formación académica</label>
+                    <input type="text" id="nombreformacionmedia" name="nombreformacionmedia" autocomplete="off" class="form-control" value="<?php echo $row['nombreformacionmedia'] ?>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Nombre de la institución educativa</label>
+                    <input type="text" id="nombremediasuperior" name="nombremediasuperior" autocomplete="off" class="form-control" value="<?php echo $row['nombremediasuperior'] ?>">
+                </div>
                 <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                     <strong>Documento</strong>
                     <?php
@@ -351,7 +359,14 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <div id="cabeceras">
                     <h1 style="font-size:22px;">Nivel tecnico</h1>
                 </div>
-
+                <div class="form-group col-md-6">
+                    <label>Nombre de la formación académica</label>
+                    <input type="text" id="nombreinstituciontecnica" name="nombreinstituciontecnica" autocomplete="off" class="form-control" value="<?php echo $rowt['nombreinstituciontecnica'] ?>">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Nombre de la institución educativa</label>
+                    <input type="text" id="nombreformaciontecnica" name="nombreformaciontecnica" autocomplete="off" class="form-control" value="<?php echo $rowt['nombreformaciontecnica'] ?>">
+                </div>
             
                 <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                     <strong>Documento titulo</strong>
@@ -420,7 +435,17 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     <div id="cabeceras">
                         <h1 style="font-size:22px;">Datos postecnico</h1>
                     </div>
-                    
+                    <div class="form-row">
+
+                        <input type="hidden" name="id_carrera" value="<?php echo $valorP ?>">
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la formación académica</label>
+                            <input type="text" id="nombreformacionPostecnico" name="nombreformacionPostecnico[]" class="form-control" value="<?php echo $rowsP['nombreformacionpostecnico']; ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nombre de la institución educativa</label>
+                            <input type="text" id="nombreinstitucionPostecnico" name="nombreinstitucionPostecnico[]" class="form-control" value="<?php echo $rowsP['nombreinstitucionpostecnico'] ?>">
+                        </div>
                         <div class="col-md-4" style="border: 1px solid #F0F0F0;">
                             <strong>Documento postecnico</strong>
                             <?php
@@ -689,7 +714,15 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             }
                             ?>
                         </div>
-                        <div class="col-md-4" style="border: 1px solid #F0F0F0;">
+                        <div class="form-group col-md-6">
+                            <label>Fecha de vigencia inicio certificado</label>
+                            <input type="date" id="fechainiciocertificadosupposgradoespecialidad" name="fechainiciocertificadosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['fechacertificadoinicio'] ?>">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Fecha de vigencia termino certificado</label>
+                            <input type="date" id="fechaterminocertificadosupposgradoespecialidad" name="fechaterminocertificadosupposgradoespecialidad[]" class="form-control" value="<?php echo $rowm['fechacertificadotermino'] ?>">
+                        </div>
+                        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Certificado consejo</strong>
                             <?php
                             clearstatcache();
