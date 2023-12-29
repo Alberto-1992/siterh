@@ -73,13 +73,11 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
         $entidadnacimiento = $obj['Estado'];
     ?>
 
-    <h1 style="text-align: center; font-size: 25px;">Información personal</h1>
-
     <form name="datospersonalesactualizar" id="datospersonalesactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
 
         <div class="form-row">
             <div id="cabeceras">
-                <h1 style="font-size:22px;">Datos personales</h1>
+                <h1 style="font-size:18px;">Datos personales</h1>
             </div>
             <div class="col-md-3">
                 <label for="mensaje">N° empleado:</label>
@@ -204,7 +202,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     $edadhijo = $rows['edadhijo'];
                 ?>
         <div id="cabeceras">
-                <h1 style="font-size:22px;">Datos hijos</h1>
+                <h1 style="font-size:18px;">Datos hijos</h1>
             </div>
             <div class="col-md-3">
                 <label for="mensaje">CURP:</label>
@@ -312,11 +310,11 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
 <div class="form-row">
                 <div id="cabeceras">
-                    <h1 style="font-size:22px;">Datos Academicos</h1>
+                    <h1 style="font-size:18px;">Datos Academicos</h1>
                 </div>
                 
                 <div id="cabeceras">
-                    <h1 style="font-size:22px;">Nivel Medio Superior</h1>
+                    <h1 style="font-size:18px;">Nivel Medio Superior</h1>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Nombre de la formación académica</label>
@@ -357,7 +355,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 $rowt = $sqlt->fetch();
                 ?>
                 <div id="cabeceras">
-                    <h1 style="font-size:22px;">Nivel tecnico</h1>
+                    <h1 style="font-size:18px;">Nivel tecnico</h1>
                 </div>
                 <div class="form-group col-md-6">
                     <label>Nombre de la formación académica</label>
@@ -409,7 +407,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 </div>
                 <!--inicia postecnico -->
                 <div id="cabeceras">
-                    <h1 style="font-size:22px;">Nivel postecnico</h1>
+                    <h1 style="font-size:18px;">Nivel postecnico</h1>
                 </div>
 
                 <?php
@@ -433,7 +431,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     $valorP = $rowsP['id_postecnico'];
                 ?>
                     <div id="cabeceras">
-                        <h1 style="font-size:22px;">Datos postecnico</h1>
+                        <h1 style="font-size:18px;">Datos postecnico</h1>
                     </div>
                     <div class="form-row">
 
@@ -474,7 +472,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 
                 <!--inicia licenciatura -->
                 <div id="cabeceras">
-                    <h1 style="font-size:22px;">Nivel Superior</h1>
+                    <h1 style="font-size:18px;">Nivel Superior</h1>
                 </div>
 
                 <?php
@@ -500,7 +498,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 ?>
 
                     <div id="cabeceras">
-                        <h1 style="font-size:22px;">Datos Licenciatura</h1>
+                        <h1 style="font-size:18px;">Datos Licenciatura</h1>
                     </div>
                     <div class="form-row">
                     <div class="form-group col-md-6">
@@ -557,7 +555,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
                 
                 <div id="cabeceras">
-                    <h1 style="font-size:22px;">Nivel Maestria</h1>
+                    <h1 style="font-size:18px;">Nivel Maestria</h1>
                 </div>
                 <?php
                 require_once 'clases/conexion.php';
@@ -581,7 +579,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
                 ?>
                     <div id="cabeceras">
-                        <h1 style="font-size:22px;">Datos Maestria</h1>
+                        <h1 style="font-size:18px;">Datos Maestria</h1>
                     </div>
                     <div class="form-row">
 
@@ -639,7 +637,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 ?>
 
                 <div id="cabeceras">
-                    <h1 style="font-size:22px;">Posgrado/Especialidad</h1>
+                    <h1 style="font-size:18px;">Posgrado/Especialidad</h1>
                 </div>
                 <?php
                 require_once 'clases/conexion.php';
@@ -662,7 +660,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     $valorm = $rowm['id_especialidad'];
                 ?>
                     <div id="cabeceras">
-                        <h1 style="font-size:22px;">Datos Posgrado/Especialidad</h1>
+                        <h1 style="font-size:18px;">Datos Posgrado/Especialidad</h1>
                     </div>
                     <div class="form-row">
 
@@ -747,7 +745,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <?php  } ?>
                 
                 <div id="cabeceras">
-                    <h1 style="font-size:22px;">Doctorado/Subespecialidad</h1>
+                    <h1 style="font-size:18px;">Doctorado/Subespecialidad</h1>
                 </div>
                 <?php
                 require_once 'clases/conexion.php';
@@ -770,7 +768,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     $valord = $rowd['id_doctorado'];
                 ?>
                     <div id="cabeceras">
-                        <h1 style="font-size:22px;">Datos Doctorado</h1>
+                        <h1 style="font-size:18px;">Datos Doctorado</h1>
                     </div>
                     <div class="form-row">
 
@@ -827,7 +825,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <?php  } ?>
                 
                 <div id="cabeceras" style="background-color: #448499;">
-                    <h1 style="font-size:22px;">Diplomados</h1>
+                    <h1 style="font-size:18px;">Diplomados</h1>
                 </div>
                 <?php
                 require_once 'clases/conexion.php';
@@ -850,7 +848,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     $valord = $rowd['id_diplomado'];
                 ?>
                     <div id="cabeceras">
-                        <h1 style="font-size:22px;" style="background-color: #448499;">Datos Diplomado</h1>
+                        <h1 style="font-size:18px;" style="background-color: #448499;">Datos Diplomado</h1>
                     </div>
                     <div class="form-row">
                         
