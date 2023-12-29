@@ -81,9 +81,8 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             <div id="cabeceras">
                 <h1 style="font-size:18px;">Datos personales</h1>
             </div>
-            <div class=" col-md-6">
-        <label>Sube tu Constancia de situación fiscal</label>
-    <input type="file"  class="form-control" name="documentoactvidadeconomica" accept=".pdf" >
+    <div class="col-md-12">
+        <a href="expedienteanterior/"<?php echo $identificador ?> class="form-control">Ver expediente anterior</a>
     </div>
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Constancia</strong>
@@ -105,10 +104,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
     ?>
     </div>
-    <div class="col-md-6">
-        <strong>Sube tu INE</strong>
-        <input type="file"  class="form-control" name="documentoine" accept=".pdf" >
-    </div>
+
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>INE</strong>
     <?php
@@ -130,10 +126,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
     ?>
     </div>
 
-    <div class="col-md-6">
-        <strong>Firma electronica</strong>
-        <input type="file"  class="form-control" name="documentofirmaelectonica" accept=".zip" >
-    </div>
+
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Firma electronica</strong>
     <?php
@@ -153,10 +146,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
         }
     ?>
     </div>
-    <div class="col-md-6">
-        <strong>Clave interbancaria</strong>
-        <input type="file"  class="form-control" name="documentoclaveinterbancaria" accept=".pdf" >
-    </div>
+    
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Clave interbancaria</strong>
     <?php
@@ -176,6 +166,30 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
         }
 
     ?>
+    </div>
+    
+    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>Acta de matrimonio</strong>
+    <?php
+    $identificador;
+    $actamatrimonio = 'acta de matrimonio';
+    $path = "documentos/" .$identificador.'/'.$actamatrimonio.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$identificador/$actamatrimonio.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$identificador/$actamatrimonio.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<a href='aplicacion/eliminarDocumento?titulo=$actamatrimonio&id=$identificador'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+
+    ?>
+    </div>
+    <div class="col-md-6">
+
     </div>
             <div class="col-md-3">
                 <label for="mensaje">N° empleado:</label>

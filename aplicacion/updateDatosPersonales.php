@@ -158,6 +158,33 @@ $hora = date("Y-m-d h:i:sa");
                 }
                 
             }
+            
+            if ($_FILES["documentoactamatrimonio"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $claveinter = 'acta de matrimonio';
+                if (in_array($_FILES["documentoactamatrimonio"]["type"], $permitidos) && $_FILES["documentoactamatrimonio"]["size"]) {
+    
+                    $ruta = '../documentos/' .$id_empleado . '/';
+                    $archivo = $ruta . $_FILES["documentoactamatrimonio"]["name"] = "acta de matrimonio.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoactamatrimonio"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoactamatrimonio"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
     if ($_FILES["documentocurp"]["error"] > 0) {
         
     } else {
@@ -294,11 +321,39 @@ foreach($_FILES["documentocurphijo"]['tmp_name'] as $key => $tmp_name)
 		//condicional si el fuchero existe
 		if($_FILES["documentocurphijo"]["name"][$key]) {
 			// Nombres de archivos de temporales
-            $nombredelarchivo = "Documento hijo";
+            $nombredelarchivo = "curp hijo";
 			$archivonombre = $_POST['nombrehijo'][$key];
 			$fuente = $_FILES["documentocurphijo"]["tmp_name"][$key]; 
 			
-			$carpeta = '../documentoshijos/' .$archivonombre.$id_empleado. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			$carpeta = '../documentoshijos/'.$archivonombre.$id_empleado.'/'; //Declaramos el nombre de la carpeta que guardara los archivos
+			
+			if(!file_exists($carpeta)){
+				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+			}
+			
+			$dir=opendir($carpeta);
+			$target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+			
+	
+			if(file_exists($carpeta)) {	
+                move_uploaded_file($fuente, $target_path);
+				
+				} else {	
+				echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+			}
+			closedir($dir); //Cerramos la conexion con la carpeta destino
+		}
+	}
+    foreach($_FILES["documentoactahijo"]['tmp_name'] as $key => $tmp_name)
+	{
+		//condicional si el fuchero existe
+		if($_FILES["documentoactahijo"]["name"][$key]) {
+			// Nombres de archivos de temporales
+            $nombredelarchivo = "acta hijo";
+			$archivonombre = $_POST['nombrehijo'][$key];
+			$fuente = $_FILES["documentoactahijo"]["tmp_name"][$key]; 
+			
+			$carpeta = '../documentoshijos/'.$nombredelarchivo.$archivonombre.$id_empleado; //Declaramos el nombre de la carpeta que guardara los archivos
 			
 			if(!file_exists($carpeta)){
 				mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	

@@ -164,7 +164,7 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
     ?>
 <header class="headerinfarto" style="background-color: #4AA29D; padding: 0px;">
         
-        <span id="cabecera">Actualización de datos perosnales.</span>
+        <span id="cabecera">Actualización de datos personales.</span>
 
     </header>
 <div class="container">
@@ -209,7 +209,7 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
             </div>
 
     <div class=" col-md-6">
-        <label>Sube tu Constancia de situación fiscal</label>
+        <strong>Sube tu Constancia de situación fiscal</strong>
     <input type="file"  class="form-control" name="documentoactvidadeconomica" accept=".pdf" >
     </div>
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
@@ -299,6 +299,30 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
                 echo "<iframe src='documentos/$identificador/$claveinter.pdf' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$identificador/$claveinter.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
                 echo "<a href='aplicacion/eliminarDocumento?titulo=$claveinter&id=$identificador'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+
+    ?>
+    </div>
+    <div class="col-md-6">
+        <strong>¿Eres casado? sube tu acta de matrimonio</strong>
+        <input type="file"  class="form-control" name="documentoactamatrimonio" accept=".pdf" >
+    </div>
+    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>Documento acta de matrimonio</strong>
+    <?php
+    $identificador;
+    $actamatrimonio = 'acta de matrimonio';
+    $path = "documentos/" .$identificador.'/'.$actamatrimonio.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$identificador/$actamatrimonio.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$identificador/$actamatrimonio.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<a href='aplicacion/eliminarDocumento?titulo=$actamatrimonio&id=$identificador'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
 
@@ -639,28 +663,28 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
                 <label for="mensaje">Nombre completo:</label>
                 <input type="text" class="form-control" name="nombrehijo[]" id="nombrehijo[]" value="<?php echo $rows['nombrecompletohijo'] ?>">
             </div>
-            <div class="col-md-3">
-                <label>Fecha nacimiento hijo</label>
+            <div class="col-md-2">
+                <label>Fecha de nacimiento</label>
                 <input type="date" name="fechanacimientohijo[]" id="fechanacimientohijo[]" class="form-control" value="<?php echo $rows['fechanacimientohijo'] ?>" >
                 </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="mensaje">Edad:</label>
                 <input type="number" class="form-control" name="edadhijo[]" id="edadhijo[]" value="<?php echo $edadhijo ?>" >
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="mensaje">Sexo:</label>
                 <input type="text" class="form-control" name="sexohijo[]" id="sexohijo[]" value="<?php echo $rows['sexohijo'] ?>" >
             </div>
             
-            <div class="col-md-4">
-                <label for="mensaje">Sube acta de nacimiento o CURP:</label>
+            <div class="col-md-6">
+                <label for="mensaje">Sube el CURP:</label>
                 <input type="file" class="form-control" name="documentocurphijo[]" id="documentocurphijo" accept=".pdf">
             </div>
-            <div class="col-md-5" style="border: 1px solid #F0F0F0;">
-                            <strong>Vista CURP Hijo</strong>
+            <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista CURP hijo</strong>
                             <?php
                             $idhijo = $rows['nombrecompletohijo'];
-                            $archivo = "Comprobante hijo";
+                            $doc = "curp hijo";
                             
                             $path = "documentoshijos/".$idhijo.$identificador;
                             if (file_exists($path)) {
@@ -671,6 +695,32 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
 
                                         echo "<iframe src='documentoshijos/$idhijo$identificador/$archivo' class='form-control'></iframe>";
                                         echo "<a href='documentoshijos/$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+                            clearstatcache();
+                            ?>
+                </div>
+                <div class="col-md-6">
+                <label for="mensaje">Sube el acta de nacimiento:</label>
+                <input type="file" class="form-control" name="documentoactahijo[]" id="documentoactahijo" accept=".pdf">
+            </div>
+            <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista acta nacimineto hijo</strong>
+                            <?php
+                            $idhijo = $rows['nombrecompletohijo'];
+                            $docacta = "acta hijo";
+                            
+                            $path = "documentoshijos/".$docacta.$idhijo.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoshijos/$docacta$idhijo$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoshijos/$docacta$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         
                                     }
                                 }
@@ -716,8 +766,12 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
                                 <input type="text" id="sexohijo" name="sexohijo[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
-                                <label>Sube acta de nacimiento o CURP ${i +1}</label>
+                                <label>Sube el CURP ${i +1}</label>
                                 <input type="file" id="documentocurphijo[${i}]" name="documentocurphijo[]" class="form-control" accept=".pdf">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Sube acta de nacimiento  ${i +1}</label>
+                                <input type="file" id="documentoactahijo[${i}]" name="documentoactahijo[]" class="form-control" accept=".pdf">
                                 </div>
                         </div>`;
                         }
