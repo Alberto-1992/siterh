@@ -100,8 +100,20 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                     // Si es un directorio se recorre recursivamente
                     if (is_dir($ruta_completa)) {
                         echo "<li>" . $archivo . "</li>";
-                        echo "<a href='$ruta_completa' target='_blank'>Ver archivos</a>";
                         obtener_estructura_directorios($ruta_completa);
+                        $path = $ruta_completa;
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='$ruta_completa/$archivo' class='form-control'></iframe>";
+                echo "<a href='$ruta_completa/$archivo' target='_blank'>Ver archivos</a>";
+                
+            }
+        }
+    }
                     } else {
                         echo "<li>" . $archivo . "</li>";
                     }
