@@ -1,4 +1,3 @@
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
     <link rel="stylesheet" href="iconos/css/all.css?n=1">
@@ -8,7 +7,234 @@
     <input type="hidden" id="correo" value="<?php echo $row['correo'] ?>">
    
     <a href="#" class="form-control" style="width: 125px; background: yellowgreen;" onclick="academicos();">Validar Datos</a>
- 
+    <!DOCTYPE html>
+<html lang="es">
+
+</head>
+<body style="padding: 0px;">
+
+<?php 
+$correo = $_POST['correo'];
+require 'conexionRh.php';
+ $sql = $conexionRh->prepare("SELECT plantillahraei.*, datospersonales.* FROM plantillahraei inner join datospersonales on datospersonales.id_empleado = plantillahraei.Empleado where plantillahraei.correo = :correo");
+ $sql->execute(array(
+     ':correo'=>$correo
+ ));
+ $row = $sql->fetch();
+ $identificador = $row['Empleado'];
+            $validaid = $row['id_datopersonal'];
+            $nss = $row['NSS'];
+            $banco = $row['NombreBanco'];
+            $cuenta = $row['CuentaClabe'];
+            $nacionalidad = $row['nacionalidad'];
+            $calle = $row['calle'];
+            $numexte = $row['numeroexterior'];
+            $numint = $row['numerointerior'];
+            $cp = $row['codigopostal'];
+            $colonia = $row['colonia'];
+            $telcasa = $row['telefonocasa'];
+            $telcel = $row['telefonocelular'];
+            $fechanacimiento = $row['fechanacimiento'];
+            $edad = $row['edad'];
+            $sexo = $row['genero'];
+            $tiposangre = $row['tipodesangre'];
+            $nombreemergencia = $row['nombreemergencia'];
+            $telefonoemergencia = $row['telefonoemergencia'];
+            $parentezcoemergencia = $row['parentescoemergencia'];
+            $otrotel = $row['otrotelefono'];
+            $localidad = $row['localidad'];
+            $numerocartillamilitar = $row['numerocartillamilitar'];
+            $cartanaturalizacion = $row['cartanaturalizacion'];
+            $estado = $row['estado'];
+            $municipio = $row['municipio'];
+$datocurp = $row['CURP'];
+$sql = $conexionRh->prepare("SELECT t_estado.estado from t_estado where id_estado = :id_estado");
+    $sql->execute(array(
+        ':id_estado'=>$estado
+    ));
+    $rowestado = $sql->fetch();
+    $estadovive = $rowestado['estado'];
+    
+$sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipio = :id_municipio");
+    $sql->execute(array(
+        ':id_municipio'=>$municipio
+    ));
+    $rowmunicipio = $sql->fetch();
+    $municipiovive = $rowmunicipio['municipio'];
+
+    $curp = $row['CURP'];
+    $rest = substr($curp, -7, 2);
+
+    $sql = $conexionRh->prepare("SELECT Estado from codigoestadosmexico where RENAPO = :RENAPO");
+        $sql->execute(array(
+            ':RENAPO'=>$rest
+        ));
+        $obj = $sql->fetch();
+        $entidadnacimiento = $obj['Estado'];
+    ?>
+
+    <h1 style="text-align: center; font-size: 25px;">Información personal</h1>
+
+    <form name="datospersonalesactualizar" id="datospersonalesactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
+
+        <div class="form-row">
+            <div id="cabeceras">
+                <h1 style="font-size:22px;">Datos personales</h1>
+            </div>
+            <div class="col-md-3">
+                <label for="mensaje">N° empleado:</label>
+                <input type="number" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
+            </div>
+            <div class="col-md-3">
+                <label for="mensaje">CURP:</label>
+                <input type="text" class="form-control" name="curp" id="curp" placeholder="CURP" minlength="18" maxlength="18" value="<?php echo $row['CURP'] ?>" required onkeyup="curp2dateAct();" readonly>
+            </div>
+            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista CURP</strong>
+                            <?php
+                            $archivo = "Comprobante CURP";
+                            
+                            $path = "documentoscurp/".$datocurp.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoscurp/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoscurp/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+                            clearstatcache();
+                            ?>
+                        </div>
+                
+            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista acta nacimiento</strong>
+                            <?php
+                            $archivo = "Comprobante acta nacimiento";
+                            
+                            $path = "documentosactanacimiento/".$identificador.'/';
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentosactanacimiento/$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentosactanacimiento/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+                            clearstatcache();
+                            ?>
+                        </div>
+            
+            <div class="col-md-3">
+                <label for="mensaje">N° de cartilla militar:</label>
+                <input type="text" class="form-control" name="cartillamilitar" id="cartillamilitar" value="<?php echo $numerocartillamilitar ?>">
+            </div>
+        
+            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista Cartilla</strong>
+                            <?php
+                            $archivo = "Cartilla militar";
+                            
+                            $path = "documentoscartilla/".$datocurp.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoscartilla/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoscartilla/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+                            clearstatcache();
+                            ?>
+                        </div>
+            
+            <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista Comp Domicilio</strong>
+                            <?php
+                            
+                            $archivo = "Comprobante domicilio";
+                            
+                            $path = "documentoscomprobantedomicilio/".$datocurp.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoscomprobantedomicilio/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoscomprobantedomicilio/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+                            clearstatcache();
+                            ?>
+                        </div>
+                
+                        <?php
+                $sqlhijos  = $conexionRh->prepare("SELECT hijos.id_empleado FROM hijos where id_empleado = $identificador ");
+                $sqlhijos->execute();
+                $sqlhijos = $conexionRh->prepare("SELECT FOUND_ROWS()");
+                $sqlhijos->execute();
+                $total_registro = $sqlhijos->fetchColumn();
+
+                $sql = $conexionRh->prepare("SELECT * from hijos where id_empleado = :id_empleado");
+                $sql->execute(array(
+                    ':id_empleado' => $identificador
+                ));
+
+                ?>
+
+                <?php
+                while ($rows = $sql->fetch()) {
+                    $valor = $rows['id_hijo'];
+
+                    $edadhijo = $rows['edadhijo'];
+                ?>
+        <div id="cabeceras">
+                <h1 style="font-size:22px;">Datos hijos</h1>
+            </div>
+            <div class="col-md-3">
+                <label for="mensaje">CURP:</label>
+                <input type="text" class="form-control" name="curphijo[]" id="curphijo[]" value="<?php echo $rows['curphijo'] ?>" maxlength="18">
+            </div>
+            
+            <div class="col-md-5" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista CURP Hijo</strong>
+                            <?php
+                            $idhijo = $rows['nombrecompletohijo'];
+                            $archivo = "Comprobante hijo";
+                            
+                            $path = "documentoshijos/".$idhijo.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoshijos/$idhijo$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoshijos/$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+                            clearstatcache();
+                            ?>
+                </div>
+            <?php } ?>
+
     <script>
         function academicos() {
             let id = $("#numempleado").val();
@@ -77,7 +303,12 @@
     </script>
     
     <form name="datosacademicosactualizar" id="datosacademicosactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
-
+<style>
+    iframe {
+        width: 15rem;
+        height: 15rem;
+    }
+</style>
 
 <div class="form-row">
                 <div id="cabeceras">
