@@ -113,12 +113,11 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                         $path = $ruta_completa;
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='$ruta_completa/$archivo' class='form-control' style='height: 300px;'></iframe>";
-                echo "<a href='$ruta_completa/$archivo' target='_blank'>$archivo</a>";
+        while ($archivos = readdir($directorio)) {
+            if (!is_dir($archivos)) {
+                echo "<iframe src='$ruta_completa/$archivos' class='form-control' style='height: 300px;'></iframe>";
+                echo "<div data='" . $path . "/" . $archivos . "'><a href='" . $path . "/" . $archivos . "' >$archivos</a></div><br>";
+                
                 
             }
         }
