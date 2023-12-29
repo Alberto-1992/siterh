@@ -109,7 +109,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
                 echo "<iframe src='$ruta_completa/$archivo' class='form-control' style='height: 300px;'></iframe>";
-                echo "<a href='$ruta_completa/$archivo' target='_blank'>Ver archivos</a>";
+                echo "<a href='$ruta_completa/$archivo' target='_blank'>$archivo</a>";
                 
             }
         }
