@@ -77,10 +77,19 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
 
     <form name="datospersonalesactualizar" id="datospersonalesactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
 
-        <div class="form-row">
+        
             <div id="cabeceras">
                 <h1 style="font-size:18px;">Datos personales</h1>
             </div>
+            <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Expediente(click para ocultar/ver)
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
     <div class="col-md-12">
         <?php
         obtener_estructura_directorios("expedienteanterior/".$identificador.'/');
@@ -127,25 +136,14 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             echo "No es una ruta de directorio valida<br/>";
         }
         }
-        
-        $identificador;
-        $path = "expedienteanterior/".$identificador.'/';
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='expedienteanterior/$identificador/$archivo/' class='form-control'></iframe>";
-                echo "<a href='expedienteanterior/$identificador/$archivo/' target='_blank'>Ver archivos</a>";
-                
-            }
-        }
-    }
-    clearstatcache();
     ?>
         
     </div>
+    </div>
+    </div>
+  </div>
+            </div>
+  <div class="form-row">
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Constancia</strong>
     <?php
