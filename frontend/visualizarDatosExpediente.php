@@ -116,7 +116,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
         while ($archivos = readdir($directorio)) {
             if (!is_dir($archivos)) {
                 echo "<iframe src='$ruta_completa/$archivos' class='form-control' style='height: 300px;'></iframe>";
-                echo "<div data='" . $path . "/" . $archivos . "'><a href='" . $path . "/" . $archivos . "' >$archivos</a></div><br>";
+                echo "<div data='" . $path . "/" . $archivos . "'><a href='" . $path . "/" . $archivos . "' target='_blank' >$archivos</a></div><br>";
                 
                 
             }
