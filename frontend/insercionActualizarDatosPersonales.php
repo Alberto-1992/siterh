@@ -785,7 +785,7 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
                     $('input[type="file"]').on('change', function () {
                         var ext = $(this).val().split('.').pop();
                         if ($(this).val() != '') {
-                            if (ext == "pdf") {
+                            if (ext == "pdf" || ext == "zip") {
                             
                                 if ($(this)[0].files[0].size > 9048576) {
                                     console.log("El documento excede el tamaño máximo");
