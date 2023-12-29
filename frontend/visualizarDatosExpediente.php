@@ -82,7 +82,9 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <h1 style="font-size:18px;">Datos personales</h1>
             </div>
     <div class="col-md-12">
-        <a href="expedienteanterior/"<?php echo $identificador ?> class="form-control">Ver expediente anterior</a>
+        <?php
+    echo "<a href='expedienteanterior/$identificador/' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Expediente anterior</a>";
+        ?>
     </div>
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Constancia</strong>
