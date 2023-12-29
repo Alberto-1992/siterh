@@ -202,10 +202,108 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
                 })
             })
         </script>
+
         <div class="form-row">
             <div id="cabeceras">
                 <h1 style="font-size:22px;">Datos personales</h1>
             </div>
+
+    <div class=" col-md-6">
+        <label>Sube tu Constancia de situación fiscal</label>
+    <input type="file"  class="form-control" name="documentoactvidadeconomica" accept=".pdf" >
+    </div>
+    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>Constancia</strong>
+    <?php
+    $identificador;
+    $acteconomica = 'actividad economica';
+    $path = "documentos/".$identificador.'/'.$acteconomica.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$identificador/$acteconomica.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$identificador/$acteconomica.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<a href='aplicacion/eliminarDocumento?titulo=$acteconomica&id=$identificador'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+
+    ?>
+    </div>
+    <div class="col-md-6">
+        <strong>Sube tu INE</strong>
+        <input type="file"  class="form-control" name="documentoine" accept=".pdf" >
+    </div>
+    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>INE</strong>
+    <?php
+    $identificador;
+    $ine = 'ine';
+    $path = "documentos/" .$identificador.'/'.$ine.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$identificador/$ine.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$identificador/$ine.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<a href='aplicacion/eliminarDocumento?titulo=$ine&id=$identificador'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+
+    ?>
+    </div>
+
+    <div class="col-md-6">
+        <strong>Firma electronica</strong>
+        <input type="file"  class="form-control" name="documentofirmaelectonica" accept=".zip" >
+    </div>
+    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>Firma electronica</strong>
+    <?php
+    $identificador;
+    $firmaelectronica = 'firma electronica';
+    $path = "documentos/" .$identificador.'/'.$firmaelectronica.'.rar';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                //echo "<iframe src='documentos/$firmaelectronica$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$identificador/$firmaelectronica.rar' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar' class='fas fa-file-archive' style='font-size: 25px;'></i></a>";
+                echo "<a href='aplicacion/eliminarFirmaElectronica?titulo=$firmaelectronica&id=$identificador'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    ?>
+    </div>
+    <div class="col-md-6">
+        <strong>Clave interbancaria</strong>
+        <input type="file"  class="form-control" name="documentoclaveinterbancaria" accept=".pdf" >
+    </div>
+    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>Clave interbancaria</strong>
+    <?php
+    $identificador;
+    $claveinter = 'clave interbancaria';
+    $path = "documentos/" .$identificador.'/'.$claveinter.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$identificador/$claveinter.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$identificador/$claveinter.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<a href='aplicacion/eliminarDocumento?titulo=$claveinter&id=$identificador'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+
+    ?>
+    </div>
             <div class="col-md-3">
                 <label for="mensaje">N° empleado:</label>
                 <input type="number" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>

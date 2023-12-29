@@ -52,6 +52,112 @@ $hora = date("Y-m-d h:i:sa");
             $sql->execute(array(
                 ':id_empleado'=>$id_empleado
             ));
+            if ($_FILES["documentoactvidadeconomica"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $activeconomica = 'documentoactvidadeconomica';
+                if (in_array($_FILES["documentoactvidadeconomica"]["type"], $permitidos) && $_FILES["documentoactvidadeconomica"]["size"]) {
+    
+                    $ruta = '../documentos/'.$id_empleado . '/';
+                    $archivo = $ruta . $_FILES["documentoactvidadeconomica"]["name"] = "actividad economica.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoactvidadeconomica"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoactvidadeconomica"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            
+            if ($_FILES["documentoine"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $ine = 'documentoine';
+                if (in_array($_FILES["documentoine"]["type"], $permitidos) && $_FILES["documentoine"]["size"]) {
+    
+                    $ruta = '../documentos/' .$id_empleado.'/';
+                    $archivo = $ruta . $_FILES["documentoine"]["name"] = "ine.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoine"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoine"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+        
+            if ($_FILES["documentofirmaelectonica"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/zip", "application/x-zip-compressed");
+                $firmaelectronica = 'documentofirmaelectonica';
+                if (in_array($_FILES["documentofirmaelectonica"]["type"], $permitidos) && $_FILES["documentofirmaelectonica"]["size"]) {
+    
+                    $ruta = '../documentos/' .$id_empleado . '/';
+                    $archivo = $ruta . $_FILES["documentofirmaelectonica"]["name"] = "firma electronica.rar";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentofirmaelectonica"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentofirmaelectonica"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentoclaveinterbancaria"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $claveinter = 'documentoclaveinterbancaria';
+                if (in_array($_FILES["documentoclaveinterbancaria"]["type"], $permitidos) && $_FILES["documentoclaveinterbancaria"]["size"]) {
+    
+                    $ruta = '../documentos/' .$id_empleado . '/';
+                    $archivo = $ruta . $_FILES["documentoclaveinterbancaria"]["name"] = "clave interbancaria.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoclaveinterbancaria"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoclaveinterbancaria"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
     if ($_FILES["documentocurp"]["error"] > 0) {
         
     } else {
