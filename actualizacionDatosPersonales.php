@@ -143,10 +143,7 @@ switch(true) {
             ));
             $row = $sql->fetch();
             $identificador = $row['Empleado']; 
-            $nss = $row['NSS'];
-            $banco = $row['NombreBanco'];
-            $cuenta = $row['CuentaClabe'];
-            $nacionalidad = $row['nacionalidad'];
+            
                 require 'frontend/insercionDatosPersonales.php';
             }
     break;
