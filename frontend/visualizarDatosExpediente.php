@@ -80,8 +80,42 @@
 
 
         <div id="cabeceras">
-            <h1 style="font-size:18px;">Datos personales</h1>
+            <h1 style="font-size:18px;">Expediente anterior</h1>
         </div>
+        <?php
+        /*
+$zip = new \ZipArchive();
+
+//abrimos el archivo y lo preparamos para agregarle archivos
+$zip->open("nombreArchivo.zip", \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+
+//indicamos cual es la carpeta que se quiere comprimir
+$origen = realpath("expedienteanterior/" . $identificador);
+
+//Ahora usando funciones de recursividad vamos a explorar todo el directorio y a enlistar todos los archivos contenidos en la carpeta
+$files = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($origen),
+            \RecursiveIteratorIterator::LEAVES_ONLY
+);
+
+//Ahora recorremos el arreglo con los nombres los archivos y carpetas y se adjuntan en el zip
+foreach ($files as $name => $file)
+{
+   if (!$file->isDir())
+   {
+       $filePath = $file->getRealPath();
+       $relativePath = substr($filePath, strlen($origen) + 1);
+
+       $zip->addFile($filePath, $relativePath);
+   }
+}
+
+//Se cierra el Zip
+$zip->close();
+*/
+        ?>
+        
+  
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -93,7 +127,7 @@
                     <div class="accordion-body">
                         <div class="col-md-12">
                             <?php
-                            obtener_estructura_directorios("expedienteanterior/" . $identificador . '/');
+                            obtener_estructura_directorios("expedienteanterior/" . $identificador);
                             function obtener_estructura_directorios($ruta)
                             {
                                 if (is_dir($ruta)) {
@@ -111,6 +145,7 @@
                                         if ($archivo != "." && $archivo != "..") {
                                             // Si es un directorio se recorre recursivamente
                                             if (is_dir($ruta_completa)) {
+                                            
                                                 echo "<li>" . $archivo . "</li>";
                                                 obtener_estructura_directorios($ruta_completa);
                                                 $path = $ruta_completa;
@@ -118,8 +153,9 @@
                                                     $directorio = opendir($path);
                                                     while ($archivos = readdir($directorio)) {
                                                         if (!is_dir($archivos)) {
+                                                            
                                                             //echo "<iframe src='$ruta_completa/$archivos' class='form-control' style='height: 300px;'></iframe>";
-                                                            echo "<div data='" . $path . "/" . $archivos . "' class='form-control'><a href='" . $path . "/" . $archivos . "' target='_blank' >$archivos</a></div><br>";
+                                                                echo "<div data='" . $path . "/" . $archivos . "' class='form-control'><a href='" . $path . "/" . $archivos . "' target='_blank' >$archivos</a></div><br>";
                                                         }
                                                     }
                                                 }
@@ -130,7 +166,7 @@
 
 
                                     // Cierra el gestor de directorios
-
+                                    closedir($gestor);
                                     echo "</ul>";
                                 } else {
                                     echo "No es una ruta de directorio valida<br/>";
@@ -143,6 +179,18 @@
                 </div>
             </div>
         </div>
+        <div id="cabeceras">
+            <h1 style="font-size:18px;">Expediente actual</h1>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Datos personales(click para ocultar/ver)
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
         <div class="form-row">
             <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                 <strong>Constancia</strong>
@@ -251,14 +299,8 @@
             <div class="col-md-6">
 
             </div>
-            <div class="col-md-3">
-                <label for="mensaje">N° empleado:</label>
-                <input type="number" class="form-control" name="id_empleado" id="id_empleado" placeholder="N° empleado" required value="<?php echo $identificador ?>" readonly>
-            </div>
-            <div class="col-md-3">
-                <label for="mensaje">CURP:</label>
-                <input type="text" class="form-control" name="curp" id="curp" placeholder="CURP" minlength="18" maxlength="18" value="<?php echo $row['CURP'] ?>" required onkeyup="curp2dateAct();" readonly>
-            </div>
+            
+            
             <div class="col-md-3" style="border: 1px solid #F0F0F0;">
                 <strong>Vista CURP</strong>
                 <?php
@@ -299,11 +341,6 @@
                 }
                 clearstatcache();
                 ?>
-            </div>
-
-            <div class="col-md-3">
-                <label for="mensaje">N° de cartilla militar:</label>
-                <input type="text" class="form-control" name="cartillamilitar" id="cartillamilitar" value="<?php echo $numerocartillamilitar ?>">
             </div>
 
             <div class="col-md-3" style="border: 1px solid #F0F0F0;">
@@ -399,7 +436,10 @@
                     ?>
                 </div>
             <?php } ?>
-
+            </div>
+                </div>
+            </div>
+        </div>
             <script>
                 function academicos() {
                     let id = $("#numempleado").val();
@@ -476,11 +516,20 @@
                     }
                 </style>
 
-                <div class="form-row">
+                
                     <div id="cabeceras">
                         <h1 style="font-size:18px;">Datos Academicos</h1>
                     </div>
-
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
+                        Datos personales(click para ocultar/ver)
+                    </button>
+                </h2>
+                <div id="collapseTree" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <div class="form-row">
                     <div id="cabeceras">
                         <h1 style="font-size:18px;">Nivel Medio Superior</h1>
                     </div>
@@ -1051,7 +1100,10 @@
                         </div>
 
                     <?php } ?>
-
+                    </div>
+                </div>
+            </div>
+        </div>
 
                 </div>
         </div>
