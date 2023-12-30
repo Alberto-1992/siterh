@@ -192,6 +192,9 @@ $zip->close();
                 <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
         <div class="form-row">
+        <div id="cabeceras">
+            <h1 style="font-size:18px;">Datos personales</h1>
+        </div>
             <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                 <strong>Constancia</strong>
                 <?php
@@ -524,7 +527,7 @@ $zip->close();
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
-                        Datos personales(click para ocultar/ver)
+                        Datos academicos(click para ocultar/ver)
                     </button>
                 </h2>
                 <div id="collapseTree" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
