@@ -799,34 +799,57 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
     </form>
 </div>
 
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js" crossorigin="anonymous"></script>
-    <script>
-        window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-    </script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js" crossorigin="anonymous"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ie10-viewport-bug-workaround.js"></script>
 
-    <script type="text/javascript">
-        function myFunction() {
-            $.ajax({
-                url: "notificaciones/notificaciones.php",
-                type: "POST",
-                processData: false,
-                success: function(data) {
-                    $("#notification-count").remove();
-                    $("#notification-latest").show();
-                    $("#notification-latest").html(data);
-                },
-                error: function() {}
-            });
-        }
-
-        $(document).ready(function() {
-            $('body').click(function(e) {
-                if (e.target.id != 'notification-icon') {
-                    $("#notification-latest").hide();
-                }
-            });
+<script type="text/javascript">
+    function myFunction() {
+        $.ajax({
+            url: "notificaciones/notificaciones.php",
+            type: "POST",
+            processData: false,
+            success: function(data) {
+                $("#notification-count").remove();
+                $("#notification-latest").show();
+                $("#notification-latest").html(data);
+            },
+            error: function() {}
         });
-    </script>
+    }
+
+    $(document).ready(function() {
+        $('body').click(function(e) {
+            if (e.target.id != 'notification-icon') {
+                $("#notification-latest").hide();
+            }
+        });
+    });
+</script>
+<script>
+                    $('input[type="file"]').on('change', function () {
+                        var ext = $(this).val().split('.').pop();
+                        if ($(this).val() != '') {
+                            if (ext == "pdf" || ext == "zip") {
+                            
+                                if ($(this)[0].files[0].size > 9048576) {
+                                    console.log("El documento excede el tamaño máximo");
+                                    $('#modal-title').text('¡Precaución!');
+                                    $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
+                                    $("#modal-gral").modal();
+                                    $(this).val('');
+                                } else {
+                                    $("#modal-gral").hide();
+                                }
+                            }
+                            else {
+                                $(this).val('');
+                                alert("Extensión no permitida: " + ext);
+                            }
+                        }
+                    });
+                </script>
