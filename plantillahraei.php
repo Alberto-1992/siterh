@@ -5,7 +5,7 @@ switch(true) {
 
     case isset($_SESSION['usuarioAdminRh']):
         $usernameSesion = $_SESSION['usuarioAdminRh']; 
-            $query = $conexionX->prepare("SELECT usuariosrh.correoelectronico, plantillahraei.Empleado from usuariosrh left join plantillahraei on plantillahraei.correo = usuariosrh.correoelectronico where usuariosrh.correoelectronico = :correoelectronico");
+            $query = $conexionX->prepare("SELECT usuariosrh.correoelectronico, plantillahraei.Empleado from usuariosrh left outer join plantillahraei on plantillahraei.correo = usuariosrh.correoelectronico where usuariosrh.correoelectronico = :correoelectronico");
                 $query->execute(array(
                     ':correoelectronico'=>$usernameSesion
                 ));

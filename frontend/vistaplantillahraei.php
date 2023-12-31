@@ -1,13 +1,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<?php
-error_reporting(0);
-
-?>
-
-
 <div id="mensaje"></div>
 <?php
+error_reporting(0);
 require 'conexionRh.php';
 $rol = $dataRegistro['rol'];
 $rfc =   $dataRegistro['RFC'];
@@ -493,7 +488,7 @@ function personales() {
 </table>
 
 <?php 
-$sql = $conexionRh->prepare("SELECT datospersonales.*, t_estado.estado as entidadnacimi, t_municipio.municipio from datospersonales left join t_estado on t_estado.id_estado = datospersonales.entidadnacimiento left join t_municipio on t_municipio.id_municipio = datospersonales.municipio where datospersonales.id_empleado = :id_empleado");
+$sql = $conexionRh->prepare("SELECT datospersonales.*, t_estado.estado as entidadnacimi, t_municipio.municipio from datospersonales left outer join t_estado on t_estado.id_estado = datospersonales.entidadnacimiento left outer join t_municipio on t_municipio.id_municipio = datospersonales.municipio where datospersonales.id_empleado = :id_empleado");
 $sql->execute(array(
     ':id_empleado'=>$id_empleado
 ));
