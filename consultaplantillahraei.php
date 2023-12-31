@@ -24,7 +24,7 @@
     <?php
     extract($_POST);
     error_reporting(0);
-    require_once 'clases/conexion.php';
+    require 'clases/conexion.php';
     $conexionX = new ConexionRh();
     $sqlQueryComentarios  = $conexionX->prepare("SELECT plantillahraei.Empleado FROM plantillahraei");
     $sqlQueryComentarios->execute();
@@ -42,18 +42,7 @@
     }
 ?>
 <script>
-    function exportarExcel() {
-        window.location.href='exportarPlantillaExcel';
-    }
-    function exportarExcelSin() {
-        window.location.href='exportarPlantillaExcelSinCaptura';
-    }
-    function exportarExcelmediosuperior() {
-        window.location.href='exportaciones/exportarExcelmediosuperior';
-    }
-    function exportarExceltecnicos() {
-        window.location.href='exportaciones/exportarExceltecnicos';
-    }
+
     function exportarExcelpostecnicos() {
         window.location.href='exportaciones/exportarExcelpostecnicos';
     }
@@ -90,11 +79,6 @@
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelpostecnicos();">Mas de 2 maestrias</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExceldoctorado();">Mas de 2 doctorados</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelposgradoespecialidad();">Mas de 2 especialidades</a></li>
-                <!--<li><a class="dropdown-item" href="#" onclick="exportarExcelsuperior();">Descargar a excel superior</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelmaestria();">Descargar a excel maestria</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelposgradoespecialidad();">Descargar a excel posgrados/especialidad</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExceldoctorado();">Descargar a excel doctorado</a></li>-->
-                
                 
             </ul>
         </li>
@@ -109,7 +93,7 @@
         
         $query->execute();
         $data = $query->fetchAll();
-        foreach ($data as $dataRegistro) :
+        foreach ($data as $dataRegistro):
         ?>
         
         <div class="item-comentario" id="<?php echo $dataRegistro['Empleado']; ?>" >
@@ -144,11 +128,7 @@
                                 <input type="submit" value="Actualizo" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
                             <?php }else if($dataRegistro2['actualizo'] == 0) { ?>
                                 <input type="submit" value="Sin captura" style="padding: 1px; background: red; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
-                                <?php } if($dataRegistroC['otroempleo'] == 'Si'){
-                                    echo "<span class='titulo'>$MINIMOOK";
-
-                                }else{ 
-                            } 
+                                <?php } 
                             if ($rows['validoinfopersonal'] == 1) {
                                 ?>
                                     <input type="submit" value="D.P ok" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
@@ -158,7 +138,11 @@
                                 <?php } 
                                 if ($rows['validocompatibilidad'] == 1) { ?>
                                 <input type="submit" value="D.C ok" style="padding: 1px; background: green; border: none; color: white; margin-left: 1%; font-size: 10px; font-style: arial; margin-top: 0px;">
-                            <?php } ?>
+                            <?php } 
+                            if($dataRegistroC['otroempleo'] == 'Si'){
+                                echo "<span class='titulo'>$MINIMOOK";
+
+                            } ?>
                             </div>
             <hr id="hr">
             </div>
@@ -209,10 +193,7 @@ $(function() {
         
 })
 
-</script> 
-        <script>
-            
-                $(function() {
+$(function() {
 
 $('.item-comentario').on('click', '.ver-info', function() {
 
