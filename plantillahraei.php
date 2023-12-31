@@ -1,5 +1,5 @@
 <?php session_start();
-require_once 'clases/conexion.php';
+require 'clases/conexion.php';
 $conexionX = new ConexionRh();
 switch(true) {
 
