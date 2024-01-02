@@ -65,7 +65,7 @@ $headers .= "Content-type: text/html; charset=UTF8\r\n";
 
 //dirección del remitente
 
-$headers .= "FROM: Capacitación $correo\r\n";
+$headers .= "FROM: $correo\r\n";
 mail($destinatario,$asunto,$cuerpo,$headers);
     if($sql == true){
         echo "<script>Swal.fire({
