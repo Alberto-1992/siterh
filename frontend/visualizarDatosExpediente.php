@@ -154,10 +154,12 @@ $zip->close();
                                                     while ($archivos = readdir($directorio)) {
                                                         if (!is_dir($archivos)) {
                                                             
-                                                            //echo "<iframe src='$ruta_completa/$archivos' class='form-control' style='height: 300px;'></iframe>";
+                                                              //echo "<iframe src='$ruta_completa/$archivos' class='form-control' style='height: 300px;'></iframe>";
                                                                 echo "<div data='" . $path . "/" . $archivos . "' class='form-control'><a href='" . $path . "/" . $archivos . "' target='_blank' >$archivos</a></div><br>";
+                                                                
                                                         }
                                                     }
+                                                    echo "<input type='file' src='$ruta_completa/$archivos' class='form-control'>";
                                                 }
                                             }
                                         }
