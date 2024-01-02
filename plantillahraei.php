@@ -17,7 +17,7 @@ switch(true) {
                 }else{
                     echo "<script>alert('No tienes acceso, no insistas');
                     window.history.back();</script>";
-                }
+            }
     
     break;
     
@@ -34,7 +34,7 @@ switch(true) {
     require 'frontend/plantillahraei.php';
 
     break;
-            }
+        }
 
     case isset($_SESSION['usuarioDatos']):
         $usernameSesion = $_SESSION['usuarioDatos'];
@@ -48,7 +48,7 @@ switch(true) {
             if ($admin == 'msandoval@hraei.gob.mx' or $admin == 'isabella291216@gmail.com' or $admin == 'daniel.hernanriv@gmail.com' or $admin == 'maryonec@gmail.com' or $admin == 'jacv_8810@hotmail.com' or $admin == 'jbaldome@yahoo.com.mx' or $admin == 'adriana.zent@hotmail.com') {
     require 'frontend/plantillahraei.php';
     break;
-            }
+        }
     default:
     
     require 'close_sesion.php';

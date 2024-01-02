@@ -185,6 +185,17 @@
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
+            <?php   
+                require 'clases/conexion.php';
+                $conexion = new ConexionRh();
+                            $sql = $conexion->prepare("SELECT correo, Empleado from plantillahaei where correo = :correo");
+                                $sql->execute(array(
+                                    ':correo'=>$usernameSesion
+                                ));
+                                $row = $sql->fetch();
+                                $validaFormato = $row['Empleado'];
+                        if($validaFormato >= 2807){ 
+                            ?>
             <article class="card" id="formatoinduccion" onclick="formatoInduccionInstitucional();">
                 <a href="evaluacionInduccionPuesto">
                     <hr id="hr6">
@@ -193,6 +204,7 @@
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
+            <?php } ?>
                     <?php
                 
             } else if (isset($_SESSION['usuarioJefe'])) {

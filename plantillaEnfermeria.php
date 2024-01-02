@@ -17,7 +17,6 @@ $conexionX = new ConexionRh();
                         echo "<script>alert('No tienes acceso, no insistas');
                         window.history.back();</script>";
                     }
-        
         break;
         
         case isset($_SESSION['usuarioJefe']):

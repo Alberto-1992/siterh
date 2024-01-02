@@ -45,9 +45,7 @@ $conexionX = new ConexionRh();
         break;
 
         default:
-        
         require 'close_sesion.php';
-        
         }
         
 ?>
