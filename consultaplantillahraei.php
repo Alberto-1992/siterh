@@ -64,6 +64,9 @@
     function datosdireccion() {
         window.location='exportaciones/datosPersonales';
     }
+    function plantilla() {
+        window.location='exportaciones/exportarplantilla';
+    }
 </script>
 <ul class="nav nav-tabs" >
         <li class="nav-item" style="margin: 0px; font-size: 10px; padding: 0px;">
@@ -72,6 +75,7 @@
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <li><a class="dropdown-item" href="#" onclick="plantilla();">Plantilla</a></li>
             <li><a class="dropdown-item" href="#" onclick="datosdireccion();">Datos personales</a></li>
             <li><a class="dropdown-item" href="#" onclick="datospersonales();">Datos empleado</a></li>
                 <li><a class="dropdown-item" href="#" onclick="exportarExcelsuperior();">Datos academicos</a></li>
