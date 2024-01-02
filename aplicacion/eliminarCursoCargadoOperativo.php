@@ -40,7 +40,7 @@ $nombre = $usuarioNombre;
 //$mensaje = $_POST['mensaje'];
 //echo $correo . " " . $nombre . " " . $mensaje;
 
-$destinatario = "beto_1866@outlook.com";
+$destinatario = $usuarioCorreo;
 $asunto = "Documento eliminado"; 
 $cuerpo = '
     <html> 
