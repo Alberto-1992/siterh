@@ -194,7 +194,7 @@
                                 ));
                                 $row = $sql->fetch();
                                 $validaFormato = $row['Empleado'];
-                        if($validaFormato >= 2807){ 
+                        if($validaFormato > 2806){ 
                             ?>
             <article class="card" id="formatoinduccion" onclick="formatoInduccionInstitucional();">
                 <a href="evaluacionInduccionPuesto">
