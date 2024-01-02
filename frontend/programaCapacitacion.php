@@ -188,7 +188,7 @@
             <?php   
                 require 'clases/conexion.php';
                 $conexion = new ConexionRh();
-                            $sql = $conexion->prepare("SELECT correo, Empleado from plantillahaei where correo = :correo");
+                            $sql = $conexion->prepare("SELECT correo, Empleado from plantillahraei where correo = :correo");
                                 $sql->execute(array(
                                     ':correo'=>$usernameSesion
                                 ));
