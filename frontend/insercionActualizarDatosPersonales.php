@@ -270,7 +270,7 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
         <input type="file"  class="form-control" name="documentofirmaelectonica" accept=".zip" >
     </div>
     <div class="col-md-3">
-        <strong>Fecha de vencimiento eFIRMA</strong>
+        <strong>Fecha de expedición eFIRMA</strong>
         <input type="date"  class="form-control" name="fechavencimientoefirma" value="<?php echo $row['fechavencimientoefirma'] ?>">
     </div>
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">

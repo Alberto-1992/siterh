@@ -203,9 +203,13 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
                 <h1 style="font-size:22px;">Datos personales</h1>
             </div>
 
-    <div class=" col-md-6">
+    <div class=" col-md-3">
         <strong>Sube tu Constancia de situación fiscal</strong>
     <input type="file"  class="form-control" name="documentoactvidadeconomica" accept=".pdf" >
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de expedición de constancia</strong>
+        <input type="date"  class="form-control" name="fechaexpedicionconstancia">
     </div>
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Constancia</strong>
@@ -227,9 +231,13 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
 
     ?>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
         <strong>Sube tu INE</strong>
         <input type="file"  class="form-control" name="documentoine" accept=".pdf" >
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de vencimiento INE</strong>
+        <input type="date"  class="form-control" name="fechavencimientoine" >
     </div>
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>INE</strong>
@@ -254,7 +262,11 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
 
     <div class="col-md-6">
         <strong>Firma electronica</strong>
-        <input type="file"  class="form-control" name="documentofirmaelectonica" accept=".zip" >
+        <input type="file"  class="form-control" name="documentofirmaelectonica" accept=".zip">
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de expedición eFIRMA</strong>
+        <input type="date"  class="form-control" name="fechavencimientoefirma">
     </div>
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Firma electronica</strong>

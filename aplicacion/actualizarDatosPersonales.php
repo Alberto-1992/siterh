@@ -9,8 +9,8 @@ $hora = date("Y-m-d h:i:sa");
     $conexionX->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $conexionX->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
     $conexionX->beginTransaction();
-    $sql = $conexionX->prepare("INSERT INTO datospersonales(fechanacimiento,edad,estadocivil,entidadnacimiento,genero,tipodesangre,nacionalidad,numerocartillamilitar,cartanaturalizacion,calle,numeroexterior,numerointerior,codigopostal,colonia,estado,municipio,localidad,telefonocasa,telefonocelular,otrotelefono,id_empleado,fechaactualizo,nombreemergencia,telefonoemergencia,parentescoemergencia)
-    values(:fechanacimiento,:edad,:estadocivil,:entidadnacimiento,:genero,:tipodesangre,:nacionalidad,:numerocartillamilitar,:cartanaturalizacion,:calle,:numeroexterior,:numerointerior,:codigopostal,:colonia,:estado,:municipio,:localidad,:telefonocasa,:telefonocelular,:otrotelefono,:id_empleado,:fechaactualizo,:nombreemergencia,:telefonoemergencia,:parentescoemergencia)");
+    $sql = $conexionX->prepare("INSERT INTO datospersonales(fechanacimiento,edad,estadocivil,entidadnacimiento,genero,tipodesangre,nacionalidad,numerocartillamilitar,cartanaturalizacion,calle,numeroexterior,numerointerior,codigopostal,colonia,estado,municipio,localidad,telefonocasa,telefonocelular,otrotelefono,id_empleado,fechaactualizo,nombreemergencia,telefonoemergencia,parentescoemergencia,fechaexpedicionconstancia,fechavencimientoine,fechavencimientoefirma)
+    values(:fechanacimiento,:edad,:estadocivil,:entidadnacimiento,:genero,:tipodesangre,:nacionalidad,:numerocartillamilitar,:cartanaturalizacion,:calle,:numeroexterior,:numerointerior,:codigopostal,:colonia,:estado,:municipio,:localidad,:telefonocasa,:telefonocelular,:otrotelefono,:id_empleado,:fechaactualizo,:nombreemergencia,:telefonoemergencia,:parentescoemergencia,:fechaexpedicionconstancia,:fechavencimientoine,:fechavencimientoefirma)");
     $sql->execute(array(
         ':fechanacimiento'=>$fechanacimiento,
         ':edad'=>$edad,
@@ -36,7 +36,10 @@ $hora = date("Y-m-d h:i:sa");
         ':fechaactualizo'=>$hora,
         ':nombreemergencia'=>$nombreemergencia,
         ':telefonoemergencia'=>$telefonoemergencia,
-        ':parentescoemergencia'=>$parentescoemergencia
+        ':parentescoemergencia'=>$parentescoemergencia,
+        ':fechaexpedicionconstancia'=>$fechaexpedicionconstancia,
+        ':fechavencimientoine'=>$fechavencimientoine,
+        ':fechavencimientoefirma'=>$fechavencimientoefirma
     ));
     $sql = $conexionX->prepare("DELETE from hijos where id_empleado = :id_empleado");
             $sql->execute(array(
