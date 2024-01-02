@@ -12,6 +12,7 @@ require 'conexionRh.php';
 <input type="hidden" id="nombrecurso" value="<?php echo $dataRegistro['nombrecurso']; ?>">
 <input type="hidden" id="fechatermino" value="<?php echo $dataRegistro['fechatermino']; ?>">
 <input type="hidden" id="id_empleado" value="<?php echo $dataRegistro['id_empleado']; ?>">
+<input type="hidden" id="tipocapacitacion" value="<?php echo $dataRegistro['tipocapacitacion']  ?>">
 <ul class="nav nav-tabs" style="margin-top: 0px;">
     <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
@@ -55,12 +56,14 @@ require 'conexionRh.php';
         var nombrecurso = $("#nombrecurso").val();
         var fechatermino = $("#fechatermino").val();
         var id_empleado = $("#id_empleado").val();
+        var tipocapacitacion = $("#tipocapacitacion").val();
         var mensaje = confirm("el registro se eliminara");
         let parametros = {
             id: id,
             nombrecurso: nombrecurso,
             fechatermino: fechatermino,
-            id_empleado: id_empleado
+            id_empleado: id_empleado,
+            tipocapacitacion: tipocapacitacion
         }
         if (mensaje == true) {
             $.ajax({
