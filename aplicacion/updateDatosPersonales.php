@@ -19,7 +19,7 @@ $hora = date("Y-m-d h:i:sa");
     $sql = $conexionX->prepare("UPDATE datospersonales set fechanacimiento = :fechanacimiento, edad = :edad, estadocivil = :estadocivil, entidadnacimiento = :entidadnacimiento, genero = :genero,tipodesangre = :tipodesangre,
     nacionalidad = :nacionalidad,numerocartillamilitar = :numerocartillamilitar, cartanaturalizacion = :cartanaturalizacion,calle = :calle, numeroexterior = :numeroexterior, numerointerior = :numerointerior,
     codigopostal = :codigopostal, colonia = :colonia, estado = :estado, municipio = :municipio, localidad = :localidad, telefonocasa = :telefonocasa, telefonocelular = :telefonocelular, otrotelefono = :otrotelefono, 
-    fechaactualizo = :fechaactualizo, nombreemergencia = :nombreemergencia, telefonoemergencia = :telefonoemergencia, parentescoemergencia = :parentescoemergencia where id_empleado = :id_empleado");
+    fechaactualizo = :fechaactualizo, nombreemergencia = :nombreemergencia, telefonoemergencia = :telefonoemergencia, parentescoemergencia = :parentescoemergencia, fechaexpedicionconstancia = :fechaexpedicionconstancia, fechavencimientoine = :fechavencimientoine, fechavencimientoefirma = :fechavencimientoefirma where id_empleado = :id_empleado");
     
     $sql->execute(array(
         ':fechanacimiento'=>$fechanacimiento,
@@ -46,6 +46,9 @@ $hora = date("Y-m-d h:i:sa");
         ':nombreemergencia'=>$nombreemergencia,
         ':telefonoemergencia'=>$telefonoemergencia,
         ':parentescoemergencia'=>$parentescoemergencia,
+        ':fechaexpedicionconstancia'=>$fechaexpedicionconstancia,
+        ':fechavencimientoine'=>$fechavencimientoine,
+        ':fechavencimientoefirma'=>$fechavencimientoefirma,
         ':id_empleado'=>$id_empleado
     ));
     $sql = $conexionX->prepare("DELETE from hijos where id_empleado = :id_empleado");
