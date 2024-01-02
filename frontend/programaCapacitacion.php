@@ -186,7 +186,6 @@
                 </a>
             </article>
             <?php   
-                require 'clases/conexion.php';
                 $conexion = new ConexionRh();
                             $sql = $conexion->prepare("SELECT correo, Empleado from plantillahraei where correo = :correo");
                                 $sql->execute(array(
@@ -194,7 +193,7 @@
                                 ));
                                 $row = $sql->fetch();
                                 $validaFormato = $row['Empleado'];
-                        if($validaFormato > 2806){ 
+                        if($validaFormato >= 2807){ 
                             ?>
             <article class="card" id="formatoinduccion" onclick="formatoInduccionInstitucional();">
                 <a href="evaluacionInduccionPuesto">
