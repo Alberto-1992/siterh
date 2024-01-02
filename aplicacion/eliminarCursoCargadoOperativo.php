@@ -21,21 +21,26 @@ $sql = $conexionRh->prepare("DELETE from datos where id = :id");
             unlink($archivos_carpeta);  
             rmdir($curso);   // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
     }
-$correo = $usuarioCorreo;
+$correo = 'capacitacion_hraei@outlook.com';
 $nombre = $usuarioNombre;
 $mensaje = $_POST['mensaje'];
 //echo $correo . " " . $nombre . " " . $mensaje;
 
 $destinatario = "beto_1866@outlook.com";
-$asunto = "Envio de correo de prueba con PHP"; 
+$asunto = "Documento eliminado"; 
 $cuerpo = '
     <html> 
         <head> 
-            <title>Prueba de envio de correo</title> 
+            <title>Curso eliminado</title> 
         </head>
 
         <body> 
-            <h1>Solicitud de contacto desde correo de prueba !  </h1>
+            <h1>Estimado usuario, '.$nombre.' su curso llamado '.$nombrecurso.' ha sido eliminado de la plataforma, esto debido a que no cumple con los criterios especificados.
+            Los criterios por los cuales su curso pudo ser eliminado son los siguientes:
+                -Los datos no corresponden a los del archivo cargado.
+                -El documento cargado no es una constancia.
+                -La información cargada no pertenence a alguno de los temas listados en TIPO DE CAPACITACIÓN.
+            </h1>
             <p> 
                 Contacto:  '.$nombre . ' - ' . $asunto .'  <br>
                 Mensaje: '.$mensaje.' 
