@@ -70,7 +70,7 @@ require 'conexionRh.php';
                 
                 success: function(data) {
                     $("#mensaje").html(data);
-                    //$("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
+                    $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
 
 
                 }
