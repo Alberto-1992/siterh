@@ -35,7 +35,7 @@ $validatransaccion = $conexionRh->commit();
             unlink($archivos_carpeta);  
             rmdir($curso);   // Eliminamos todos los archivos de la carpeta hasta dejarla vacia 
     }
-$correo = 'capacitacion_hraei@outlook.com';
+$correo = 'capacitacion@talentorh.cloud';
 $nombre = $usuarioNombre;
 //$mensaje = $_POST['mensaje'];
 //echo $correo . " " . $nombre . " " . $mensaje;
@@ -54,7 +54,7 @@ $cuerpo = '
                 <p>-Los datos no corresponden a los del archivo cargado.</p>
                 <p>-El documento cargado no es una constancia, diploma, reconocimiento o certificado</p>
                 <p>-La información cargada no pertenence a alguno de los temas listados en TIPO DE CAPACITACIÓN.</p> 
-                Contacto:  Capacitación - ' . $asunto .'  <br>
+                Contacto: Cualquier duda puedes enviar correo al siguiente email: ' . $correo .'  <br>
                 Mensaje: 
         </body>
     </html>
@@ -65,7 +65,7 @@ $headers .= "Content-type: text/html; charset=UTF8\r\n";
 
 //dirección del remitente
 
-$headers .= "FROM: Capacitación <$correo>\r\n";
+$headers .= "FROM: Capacitación $correo\r\n";
 mail($destinatario,$asunto,$cuerpo,$headers);
     if($sql == true){
         echo "<script>Swal.fire({
