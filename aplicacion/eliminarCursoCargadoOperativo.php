@@ -55,7 +55,7 @@ $cuerpo = '
                 <p>-El documento cargado no es una constancia, diploma, reconocimiento o certificado</p>
                 <p>-La información cargada no pertenence a alguno de los temas listados en TIPO DE CAPACITACIÓN.</p> 
                 Contacto: Cualquier duda puedes enviar correo al siguiente email: ' . $correo .'  <br>
-                Mensaje: 
+                
         </body>
     </html>
 ';
