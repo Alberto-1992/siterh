@@ -35,16 +35,13 @@ $cuerpo = '
         </head>
 
         <body> 
-            <h1>Estimado usuario, '.$nombre.' su curso llamado '.$nombrecurso.' ha sido eliminado de la plataforma, esto debido a que no cumple con los criterios especificados.
-            Los criterios por los cuales su curso pudo ser eliminado son los siguientes:
-                -Los datos no corresponden a los del archivo cargado.
-                -El documento cargado no es una constancia.
-                -La información cargada no pertenence a alguno de los temas listados en TIPO DE CAPACITACIÓN.
-            </h1>
-            <p> 
-                Contacto:  '.$nombre . ' - ' . $asunto .'  <br>
-                Mensaje: '.$mensaje.' 
-            </p> 
+            <h2>Estimado usuario, '.$nombre.' su curso llamado '.$nombrecurso.' ha sido eliminado de la plataforma, esto debido a que no cumple con los criterios especificados.</h2>
+            <h3>Los criterios por los cuales su curso pudo ser eliminado son los siguientes:</h3>
+                <p>-Los datos no corresponden a los del archivo cargado.</p>
+                <p>-El documento cargado no es una constancia.</p>
+                <p>-La información cargada no pertenence a alguno de los temas listados en TIPO DE CAPACITACIÓN.</p> 
+                Contacto:  Capacitación - ' . $asunto .'  <br>
+                Mensaje: 
         </body>
     </html>
 ';
@@ -54,7 +51,7 @@ $headers .= "Content-type: text/html; charset=UTF8\r\n";
 
 //dirección del remitente
 
-$headers .= "FROM: $nombre <$correo>\r\n";
+$headers .= "FROM: Capacitación <$correo>\r\n";
 mail($destinatario,$asunto,$cuerpo,$headers);
     if($sql){
         echo "<script>Swal.fire({
