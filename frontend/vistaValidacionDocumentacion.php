@@ -67,10 +67,10 @@ require 'conexionRh.php';
                 data: parametros,
                 url: 'aplicacion/eliminarCursoCargadoOperativo.php',
                 type: 'post',
-
-                success: function(response) {
-                    $("#mensaje").html(response);
-                    $("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
+                
+                success: function(data) {
+                    $("#mensaje").html(data);
+                    //$("#tabla_resultadobus").load('consultaValidacionDocumentos.php');
 
 
                 }

@@ -4,6 +4,9 @@ $id = $_POST['id'];
 $nombrecurso = $_POST["nombrecurso"];
 $fechatermino = $_POST['fechatermino'];
 $id_empleado = $_POST['id_empleado'];
+$conexionRh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conexionRh->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
+    $conexionRh->beginTransaction();
 $sql = $conexionRh->prepare("DELETE from datos where id = :id");
     $sql->execute(array(
         ':id'=>$id
@@ -12,9 +15,18 @@ $sql = $conexionRh->prepare("DELETE from datos where id = :id");
     $sql->execute(array(
         ':Empleado'=>$id_empleado
     ));
+    
         $row = $sql->fetch();
         $usuarioCorreo = $row['correo'];
         $usuarioNombre = $row['Nombre'];
+    
+    $sql = $conexionRh->prepare("INSERT into cursoseliminado(correousuario,id_empleado,nombrecurso) values(:correousuario,:id_empleado,:nombrecurso)");
+    $sql->execute(array(
+        ':correousuario'=>$usuarioCorreo,
+        ':id_empleado'=>$id_empleado,
+        ':nombrecurso'=>$nombrecurso
+    ));
+$validatransaccion = $conexionRh->commit();
     $curso = '../documentoscursos/'.$nombrecurso.$fechatermino.$id_empleado;
     foreach(glob($curso."/*.*") as $archivos_carpeta) 
         { 
@@ -23,7 +35,7 @@ $sql = $conexionRh->prepare("DELETE from datos where id = :id");
     }
 $correo = 'capacitacion_hraei@outlook.com';
 $nombre = $usuarioNombre;
-$mensaje = $_POST['mensaje'];
+//$mensaje = $_POST['mensaje'];
 //echo $correo . " " . $nombre . " " . $mensaje;
 
 $destinatario = "beto_1866@outlook.com";
@@ -38,7 +50,7 @@ $cuerpo = '
             <h2>Estimado usuario, '.$nombre.' su curso llamado '.$nombrecurso.' ha sido eliminado de la plataforma, esto debido a que no cumple con los criterios especificados.</h2>
             <h3>Los criterios por los cuales su curso pudo ser eliminado son los siguientes:</h3>
                 <p>-Los datos no corresponden a los del archivo cargado.</p>
-                <p>-El documento cargado no es una constancia.</p>
+                <p>-El documento cargado no es una constancia, diploma, reconocimiento o certificado</p>
                 <p>-La información cargada no pertenence a alguno de los temas listados en TIPO DE CAPACITACIÓN.</p> 
                 Contacto:  Capacitación - ' . $asunto .'  <br>
                 Mensaje: 
@@ -53,7 +65,7 @@ $headers .= "Content-type: text/html; charset=UTF8\r\n";
 
 $headers .= "FROM: Capacitación <$correo>\r\n";
 mail($destinatario,$asunto,$cuerpo,$headers);
-    if($sql){
+    if($sql == true){
         echo "<script>Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -62,6 +74,7 @@ mail($destinatario,$asunto,$cuerpo,$headers);
             timer: 1500
         })</script>";
     }else{
+        $conexionRh->rollBack();
         echo "<script>Swal.fire({
             position: 'top-end',
             icon: 'error',
