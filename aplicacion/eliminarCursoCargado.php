@@ -9,7 +9,7 @@ $sql = $conexionRh->prepare("SELECT Nombre, correo from plantillahraei where Emp
         ':Empleado'=>$id_empleado
     ));
         $row = $sql->fetch();
-        $usuarioCorreo = $row['Empleado'];
+        $usuarioCorreo = $row['correo'];
         $usuarioNombre = $row['Nombre'];
 $sql = $conexionRh->prepare("DELETE from datos where id = :id");
     $sql->execute(array(
@@ -26,7 +26,7 @@ $nombre = $usuarioNombre;
 $mensaje = $_POST['mensaje'];
 //echo $correo . " " . $nombre . " " . $mensaje;
 
-$destinatario = "infobeto91@gmail.com";
+$destinatario = "beto_1866@outlook.com";
 $asunto = "Envio de correo de prueba con PHP"; 
 $cuerpo = '
     <html> 
