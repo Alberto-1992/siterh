@@ -55,6 +55,106 @@ $hora = date("Y-m-d h:i:sa");
             $sql->execute(array(
                 ':id_empleado'=>$id_empleado
             ));
+            if ($_FILES["documentoactaadministrativa"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                if (in_array($_FILES["documentoactaadministrativa"]["type"], $permitidos) && $_FILES["documentoactaadministrativa"]["size"]) {
+    
+                    $ruta = '../disciplinarios/actas administrativas/'.$id_empleado . '/';
+                    $archivo = $ruta . $_FILES["documentoactaadministrativa"]["name"] = $razonmotivo.$fechaactaadministrativa.'.pdf';
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoactaadministrativa"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoactaadministrativa"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentoinvitacion"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                if (in_array($_FILES["documentoinvitacion"]["type"], $permitidos) && $_FILES["documentoinvitacion"]["size"]) {
+    
+                    $ruta = '../disciplinarios/invitaciones/'.$id_empleado . '/';
+                    $archivo = $ruta . $_FILES["documentoinvitacion"]["name"] = $fechainvitacion.$tituloinvitacion.'.pdf';
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoinvitacion"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoinvitacion"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentosuspencion"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                if (in_array($_FILES["documentosuspencion"]["type"], $permitidos) && $_FILES["documentosuspencion"]["size"]) {
+    
+                    $ruta = '../disciplinarios/suspenciones/por retardos/'.$id_empleado . '/';
+                    $archivo = $ruta . $_FILES["documentosuspencion"]["name"] = $fechasuspencion.$titulosuspencion.'.pdf';
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentosuspencion"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentosuspencion"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentosuspenciontemporar"]["name"] == null) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                if (in_array($_FILES["documentosuspenciontemporar"]["type"], $permitidos) && $_FILES["documentosuspenciontemporar"]["size"]) {
+    
+                    $ruta = '../disciplinarios/suspenciones/temporar/'.$id_empleado . '/';
+                    $archivo = $ruta . $_FILES["documentosuspenciontemporar"]["name"] = $fechasuspenciontemporar.$titulosuspenciontemporar.'.pdf';
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentosuspenciontemporar"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentosuspenciontemporar"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
             if ($_FILES["documentoactvidadeconomica"]["name"] == null) {
         
             } else {

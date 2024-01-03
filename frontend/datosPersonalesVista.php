@@ -258,6 +258,171 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
         </script>
         <div class="form-row">
             <div id="cabeceras">
+                <h1 style="font-size:22px;">Disciplinarios</h1>
+            </div>
+            <div id="cabeceras">
+                        <h1 style="font-size:18px; background-color:chocolate;">Actas administrativas</h1>
+                    </div>
+            <div class=" col-md-3">
+        <strong>Sube el acta administrativa</strong>
+    <input type="file"  class="form-control" name="documentoactaadministrativa" accept=".pdf" >
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de expedición</strong>
+        <input type="date"  class="form-control" name="fechaactaadministrativa" value="<?php echo $row['fechaactaadministrativa'] ?>">
+    </div>
+    <div class="col-md-3">
+        <strong>Razón o Motivo</strong>
+        <input type="text"  class="form-control" name="razonmotivo" value="<?php echo $row['razonmotivo'] ?>" maxlength="30">
+    </div>
+    <div class="col-md-3">
+        <strong>Razón o Motivo</strong>
+        <textarea  class="form-control" name="razodescribe" ><?php echo $row['razondescribe'] ?></textarea>
+    </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento acta</strong>
+    <?php
+    $identificador;
+    $fechaactaadministrativa = $row['fechaactaadministrativa'];
+    $actaadministrativa = 'acta administrativa';
+    $path = "disciplinarios/actas administrativas/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='disciplinarios/actas administrativas/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='disciplinarios/actas administrativas/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                
+            }
+        }
+    }
+
+    ?>
+    </div>
+    <div id="cabeceras">
+                        <h1 style="font-size:18px; background-color:chocolate;">Invitaciones</h1>
+                    </div>
+                    <div class=" col-md-3">
+        <strong>Sube la invitación</strong>
+    <input type="file"  class="form-control" name="documentoinvitacion" accept=".pdf" >
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de la invitación</strong>
+        <input type="date"  class="form-control" name="fechainvitacion" value="<?php echo $row['fechainvitacion'] ?>">
+    </div>
+    <div class="col-md-3">
+        <strong>Titulo</strong>
+        <input type="text"  class="form-control" name="tituloinvitacion" value="<?php echo $row['tituloinvitacion'] ?>" maxlength="30">
+    </div>
+    <div class="col-md-3">
+        <strong>Descripcion</strong>
+        <textarea  class="form-control" name="descripcioninvitacion" ><?php echo $row['descripcioninvitacion'] ?></textarea>
+    </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento invitación</strong>
+    <?php
+    $identificador;
+    $path = "disciplinarios/invitaciones/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='disciplinarios/invitaciones/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='disciplinarios/invitaciones/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                
+            }
+        }
+    }
+
+    ?>
+    </div>
+    <div id="cabeceras">
+                        <h1 style="font-size:18px; background-color:chocolate;">Suspenciones por retardo</h1>
+                    </div>
+        
+        <div class=" col-md-3">
+        <strong>Sube la suspencion</strong>
+    <input type="file"  class="form-control" name="documentosuspencion" accept=".pdf" >
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de la suspención</strong>
+        <input type="date"  class="form-control" name="fechasuspencion" value="<?php echo $row['fechasuspención'] ?>">
+    </div>
+    <div class="col-md-3">
+        <strong>Titulo</strong>
+        <input type="text"  class="form-control" name="titulosuspencion" value="<?php echo $row['titulosuspencion'] ?>" maxlength="30">
+    </div>
+    <div class="col-md-3">
+        <strong>Descripcion</strong>
+        <textarea  class="form-control" name="descripcionsuspencion" ><?php echo $row['descripcionsuspencion'] ?></textarea>
+    </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento suspención</strong>
+    <?php
+    $identificador;
+    $path = "disciplinarios/suspenciones/por retardos/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='disciplinarios/suspenciones/por retardos/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='disciplinarios/suspenciones/por retardos/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                
+            }
+        }
+    }
+
+    ?>
+    </div>
+    <div id="cabeceras">
+                        <h1 style="font-size:18px; background-color:chocolate;">Suspenciones temporar</h1>
+                    </div>
+        
+        <div class=" col-md-3">
+        <strong>Sube la suspencion</strong>
+    <input type="file"  class="form-control" name="documentosuspenciontemporar" accept=".pdf" >
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de la suspención</strong>
+        <input type="date"  class="form-control" name="fechasuspenciontemporar" value="<?php echo $row['fechasuspenciontemporar'] ?>">
+    </div>
+    <div class="col-md-3">
+        <strong>Titulo</strong>
+        <input type="text"  class="form-control" name="titulosuspenciontemporar" value="<?php echo $row['titulosuspenciontemporar'] ?>" maxlength="30">
+    </div>
+    <div class="col-md-3">
+        <strong>Descripcion</strong>
+        <textarea  class="form-control" name="descripcionsuspenciontemporar" ><?php echo $row['descripcionsuspenciontemporar'] ?></textarea>
+    </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento suspención</strong>
+    <?php
+    $identificador;
+    $path = "disciplinarios/suspenciones/temporar/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='disciplinarios/suspenciones/temporar/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='disciplinarios/suspenciones/temporar/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                
+            }
+        }
+    }
+
+    ?>
+    </div>
+    </div>
+        <div class="form-row">
+            <div id="cabeceras">
                 <h1 style="font-size:22px;">Datos personales</h1>
             </div>
             <div class=" col-md-3">

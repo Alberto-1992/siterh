@@ -555,7 +555,98 @@ $zip->close();
                 </h2>
                 <div id="collapseDisciplinarios" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
+                    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>Documento acta</strong>
+    <?php
+    $identificador;
+    $path = "disciplinarios/actas administrativas/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
+                echo "<iframe src='disciplinarios/actas administrativas/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='disciplinarios/actas administrativas/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                
+            }
+        }
+    }
+
+    ?>
+    </div>
+    <div id="cabeceras">
+            <h1 style="font-size:18px; background-color:chocolate;">Invitaciones</h1>
+        </div>
+        <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>Documento invitacion</strong>
+    <?php
+    $identificador;
+    $path = "disciplinarios/invitaciones/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='disciplinarios/invitaciones/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='disciplinarios/invitaciones/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                
+            }
+        }
+    }
+
+    ?>
+    </div>
+    <div id="cabeceras">
+            <h1 style="font-size:18px; background-color:chocolate;">Suspenciones</h1>
+        </div>
+        <div id="cabeceras">
+            <h1 style="font-size:18px; background-color:darkgray;">Por retardo</h1>
+        </div>
+        <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento suspención por retardo</strong>
+    <?php
+    $identificador;
+    $path = "disciplinarios/suspenciones/por retardos/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='disciplinarios/suspenciones/por retardos/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='disciplinarios/suspenciones/por retardos/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                
+            }
+        }
+    }
+
+    ?>
+    </div>
+    <div id="cabeceras">
+            <h1 style="font-size:18px; background-color:darkgray;">Temporar</h1>
+        </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento suspención temporar</strong>
+    <?php
+    $identificador;
+    $path = "disciplinarios/suspenciones/temporar/".$identificador.'/';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='disciplinarios/suspenciones/temporar/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='disciplinarios/suspenciones/temporar/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                
+            }
+        }
+    }
+
+    ?>
+    </div>
                     </div>
                 </div>
             </div>
