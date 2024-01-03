@@ -61,7 +61,7 @@ if($_FILES["documentocurso"]['name'] == null){
             if (in_array($_FILES["documentocurso"]["type"], $permitidos) && $_FILES["documentocurso"]["size"]) {
         
                 $ruta = 'documentoscursos/'.$nombrecurso.$id_empleado.'/';
-                $archivo = $ruta . $_FILES["documentocurso"]["name"] = 'comprobante.pdf';
+                $archivo = $ruta . $_FILES["documentocurso"]["name"] = $nombrecurso.'.pdf';
         
         
                 if (!file_exists($ruta)) {
