@@ -11,7 +11,7 @@ $id = $_POST['id'];
 $query= $conexion->prepare("SELECT plantillahraei.*, horariosplantilla.*, compatibilidad.* from plantillahraei 
 left outer join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado
 left outer join compatibilidad on compatibilidad.id_empleado = plantillahraei.Empleado
-where plantillahraei.Empleado = $id and plantillahraei.baja = 0");
+where plantillahraei.Empleado = $id and plantillahraei.baja = 1");
 $query->execute();
 $dataRegistro= $query->fetch();
 

@@ -26,19 +26,19 @@
     error_reporting(0);
     require 'clases/conexion.php';
     $conexionX = new ConexionRh();
-    $sqlQueryComentarios  = $conexionX->prepare("SELECT plantillahraei.Empleado FROM plantillahraei where baja = 0");
+    $sqlQueryComentarios  = $conexionX->prepare("SELECT plantillahraei.Empleado FROM plantillahraei where baja = 1");
     $sqlQueryComentarios->execute();
     $sqlQueryComentarios = $conexionX->prepare("SELECT FOUND_ROWS()");
     $sqlQueryComentarios->execute();
     $total_registro = $sqlQueryComentarios->fetchColumn();
-    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei where baja = 0 order by Empleado DESC LIMIT 30");
+    $query= $conexionX->prepare("SELECT Nombre, Empleado, DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei where baja = 1 order by Empleado DESC LIMIT 30");
     if (isset($_POST['evento'])) {
         $id = $_POST['evento'];
     $query= $conexionX->prepare("SELECT Nombre, Empleado,DescripcionPuesto,RFC,DescripcionAdscripcion FROM plantillahraei where 
-    Nombre like '%$id%' and baja = 0 or
-    Empleado like '%$id%' and baja = 0 or
-    DescripcionAdscripcion like '%$id%' and baja = 0 or
-    DescripcionPuesto like '%$id%' and baja = 0 order by plantillahraei.Empleado");
+    Nombre like '%$id%' and baja = 1 or
+    Empleado like '%$id%' and baja = 1 or
+    DescripcionAdscripcion like '%$id%' and baja = 1 or
+    DescripcionPuesto like '%$id%' and baja = 1 order by plantillahraei.Empleado");
     }
 ?>
 <script>
@@ -165,7 +165,7 @@
 </div>
 <?php
 
-$sql = $conexionX->prepare("SELECT Empleado from plantillahraei where baja = 0 order by Empleado desc limit 1");
+$sql = $conexionX->prepare("SELECT Empleado from plantillahraei where baja = 1 order by Empleado desc limit 1");
 $sql->execute();
 $row = $sql->fetch();
 
@@ -183,7 +183,7 @@ $(function() {
   
         $.ajax({
             type: "POST",
-            url: "consultaBusquedaPlantillaHraei.php",
+            url: "consultaBusquedaPlantillaBajas.php",
             data: ob,
             beforeSend: function() {
                 
@@ -209,7 +209,7 @@ $('.item-comentario').on('click', '.ver-info', function() {
 
     $.ajax({
         type: "POST",
-        url: "consultaBusquedaPlantillaHraei.php",
+        url: "consultaBusquedaPlantillaBajas.php",
         data: ob,
         beforeSend: function() {
 
@@ -267,7 +267,7 @@ function pageScroll() {
                 let datos = {utimoId:utimoId, totalregistro:totalregistro};
                 $("#tabla_resultadobus").off("scroll");
                 $.ajax({
-                    url: 'obteniendoMasDatosPlantilla.php',
+                    url: 'obteniendoMasDatosPlantillaBajas.php',
                     data: datos,
                     type: "POST",
                     beforeSend: function() {

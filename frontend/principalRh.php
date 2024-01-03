@@ -273,6 +273,9 @@ window.addEventListener('load', initSnow);
                         function plantillamedicos() {
                             window.location.href='plantillaMedicos';
                         }
+                        function plantillabajas() {
+                            window.location.href='plantillabajas';
+                        }
                     </script>
         <article class="card" id="plantillaMedicos" onclick="plantillamedicos();" move="transform: translateY(-0)">
             <a href="plantillaMedicos">
@@ -300,6 +303,13 @@ window.addEventListener('load', initSnow);
                     <hr id="hr6">
                     <i class="fa fa-user" aria-hidden="true" id="iconosdiv"></i>
                     <p>Plantilla HRAEI</p>
+                </a>
+            </article>
+            <article class="card" id="plantillamando" onclick="plantillabajas();">
+                <a href="plantillabajas">
+                    <hr id="hr6">
+                    <i class="fa fa-users" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Bajas plantilla</p>
                 </a>
             </article>
             <article class="card" id="compatibilidades" onclick="controlCompatibilidad();">
