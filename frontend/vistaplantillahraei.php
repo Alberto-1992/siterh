@@ -421,6 +421,10 @@ function personales() {
         <td id="td"><?php echo $dataRegistro['Tipo'] ?></td>
     </tr>
     <tr>
+        <th id="th">Fecha ingreso:</th>
+        <td id="td"><?php echo $dataRegistro['fechaingreso'] ?></td>
+    </tr>
+    <tr>
         <th id="th">Adicional:</th>
         <td id="td"><?php echo $dataRegistro['Adicional'] ?></td>
     </tr>

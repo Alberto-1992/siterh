@@ -187,8 +187,12 @@ $zip->close();
                 </div>
             </div>
         </div>
+        
         <div id="cabeceras">
             <h1 style="font-size:18px; background-color:#448499;">Expediente actual</h1>
+        </div>
+        <div id="cabeceras">
+            <h1 style="font-size:18px; background-color:chocolate;">Datos personales</h1>
         </div>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -200,9 +204,7 @@ $zip->close();
                 <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
         <div class="form-row">
-        <div id="cabeceras">
-            <h1 style="font-size:18px; background-color:chocolate;">Datos personales</h1>
-        </div>
+
             <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                 <strong>Constancia</strong>
                 <?php
@@ -259,7 +261,7 @@ $zip->close();
                         echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
                         //echo "<iframe src='documentos/$firmaelectronica$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
-                        echo "<a href='documentos/$identificador/$firmaelectronica.rar' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar' class='fas fa-file-archive' style='font-size: 25px;'></i></a>";
+                        echo "<a href='documentos/$identificador/$firmaelectronica.rar' target='_blank' style='height: 150px;'> <i title='Ver Archivo Adjunto' id='guardar' class='fas fa-file-archive' style='font-size: 25px;'></i></a>";
                         echo "<a href='aplicacion/eliminarFirmaElectronica?titulo=$firmaelectronica&id=$identificador'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
                     }
                 }
@@ -324,7 +326,7 @@ $zip->close();
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                            echo "<iframe src='documentoscurp/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                            echo "<iframe src='documentoscurp/$datocurp$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                             echo "<a href='documentoscurp/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                         }
                     }
@@ -345,7 +347,7 @@ $zip->close();
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                            echo "<iframe src='documentosactanacimiento/$identificador/$archivo' class='form-control'></iframe>";
+                            echo "<iframe src='documentosactanacimiento/$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                             echo "<a href='documentosactanacimiento/$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                         }
                     }
@@ -366,7 +368,7 @@ $zip->close();
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                            echo "<iframe src='documentoscartilla/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                            echo "<iframe src='documentoscartilla/$datocurp$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                             echo "<a href='documentoscartilla/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                         }
                     }
@@ -388,7 +390,7 @@ $zip->close();
                         if (!is_dir($archivo)) {
                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                            echo "<iframe src='documentoscomprobantedomicilio/$datocurp$identificador/$archivo' class='form-control'></iframe>";
+                            echo "<iframe src='documentoscomprobantedomicilio/$datocurp$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                             echo "<a href='documentoscomprobantedomicilio/$datocurp$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                         }
                     }
@@ -438,7 +440,7 @@ $zip->close();
                             if (!is_dir($archivo)) {
                                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                echo "<iframe src='documentoshijos/$idhijo$identificador/$archivo' class='form-control'></iframe>";
+                                echo "<iframe src='documentoshijos/$idhijo$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                 echo "<a href='documentoshijos/$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                             }
                         }
@@ -520,13 +522,24 @@ $zip->close();
             </script>
 
             <form name="datosacademicosactualizar" id="datosacademicosactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
-                <style>
-                    iframe {
-                        width: 15rem;
-                        height: 15rem;
-                    }
-                </style>
+    <div id="cabeceras">
+            <h1 style="font-size:18px; background-color:chocolate;">Disciplinarios</h1>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDisciplinarios" aria-expanded="true" aria-controls="collapseDisciplinarios">
+                        Datos disciplinarios(click para ocultar/ver)
+                    </button>
+                </h2>
+                <div id="collapseDisciplinarios" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        
                 
                     <div id="cabeceras">
                         <h1 style="font-size:18px; background-color:chocolate;">Datos Academicos</h1>
@@ -564,7 +577,7 @@ $zip->close();
                                 if (!is_dir($archivo)) {
                                     echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                    echo "<iframe src='documentosmediasup/$nombremediosuperior$identificador/$archivo' class='form-control'></iframe>";
+                                    echo "<iframe src='documentosmediasup/$nombremediosuperior$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                     echo "<a href='documentosmediasup/$nombremediosuperior$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                 }
                             }
@@ -605,7 +618,7 @@ $zip->close();
                             while ($archivo = readdir($directorio)) {
                                 if (!is_dir($archivo)) {
                                     echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-                                    echo "<iframe src='documentostecnica/$tecnica$identificador/$archivo' class='form-control'></iframe>";
+                                    echo "<iframe src='documentostecnica/$tecnica$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                     echo "<a href='documentostecnica/$tecnica$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                 }
                             }
@@ -626,7 +639,7 @@ $zip->close();
                                 if (!is_dir($archivo)) {
                                     echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                    echo "<iframe src='documentostecnicacedula/$tecnicacedula$identificador/$archivo' class='form-control'></iframe>";
+                                    echo "<iframe src='documentostecnicacedula/$tecnicacedula$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                     echo "<a href='documentostecnicacedula/$tecnicacedula$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                 }
                             }
@@ -685,7 +698,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentospostecnico/$postecnico$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentospostecnico/$postecnico$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentospostecnico/$postecnico$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -750,7 +763,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentoslicenciatura/$licenciatura$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentoslicenciatura/$licenciatura$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentoslicenciatura/$licenciatura$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -770,7 +783,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentoscedulalicenciatura/$licenciatura$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentoscedulalicenciatura/$licenciatura$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentoscedulalicenciatura/$licenciatura$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -832,7 +845,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentosmaestria/$maestria$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentosmaestria/$maestria$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentosmaestria/$maestria$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -852,7 +865,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentosmaestriacedula/$maestria$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentosmaestriacedula/$maestria$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentosmaestriacedula/$maestria$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -913,7 +926,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentosposgradoesp/$posgrado$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentosposgradoesp/$posgrado$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentosposgradoesp/$posgrado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -933,7 +946,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentoscedulaposgradoesp/$posgrado$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentoscedulaposgradoesp/$posgrado$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentoscedulaposgradoesp/$posgrado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -961,7 +974,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentoscertificadoposgradoesp/$posgrado$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentoscertificadoposgradoesp/$posgrado$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentoscertificadoposgradoesp/$posgrado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -1021,7 +1034,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentosdoctorado/$doctorado$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentosdoctorado/$doctorado$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentosdoctorado/$doctorado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -1041,7 +1054,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentosdoctoradocedula/$doctorado$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentosdoctoradocedula/$doctorado$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentosdoctoradocedula/$doctorado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -1101,7 +1114,7 @@ $zip->close();
                                         if (!is_dir($archivo)) {
                                             echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                            echo "<iframe src='documentosdiplomados/$identificador/$diplomado$identificador/$archivo' class='form-control'></iframe>";
+                                            echo "<iframe src='documentosdiplomados/$identificador/$diplomado$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                             echo "<a href='documentosdiplomados/$identificador/$diplomado$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         }
                                     }
@@ -1132,7 +1145,10 @@ $zip->close();
         <div id="cabeceras">
             <h1 style="font-size:18px;">Cursos</h1>
         </div>
-        <div class="container" style="width: 100%; overflow-x:scroll; margin-top: 15px;">
+        <div style="width: 100%; overflow-x:scroll; margin-top: 15px;">
+        <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <?php
         error_reporting(0);
         require_once 'clases/conexion.php';
