@@ -422,11 +422,11 @@ $zip->close();
                 <div id="cabeceras">
                     <h1 style="font-size:18px; background-color:chocolate;">Datos hijos</h1>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-12">
                     <label for="mensaje">CURP:</label>
                     <input type="text" class="form-control" name="curphijo[]" id="curphijo[]" value="<?php echo $rows['curphijo'] ?>" maxlength="18">
                 </div>
-                <div class="col-md-5" style="border: 1px solid #F0F0F0;">
+                <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                     <strong>Vista CURP Hijo</strong>
                     <?php
                     $idhijo = $rows['nombrecompletohijo'];
@@ -460,7 +460,7 @@ $zip->close();
                                     if (!is_dir($archivo)) {
                                         echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                        echo "<iframe src='documentoshijos/$docacta$idhijo$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<iframe src='documentoshijos/$docacta$idhijo$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                         echo "<a href='documentoshijos/$docacta$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         
                                     }
