@@ -555,7 +555,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
 </form>
 <br>
 
-<div style="width: 100%; height: 100%; float: left;">
+<div style="width: 100%; height: 100%;">
     <?php
     $nombrecurso = $dataRegistro['nombrecurso'];
     $fechafinal = $dataRegistro['fechatermino'];
@@ -573,7 +573,8 @@ $nombrecurso = $dataRegistro['nombrecurso'];
     }
     ?>
 </div>
-<div class="accordion" id="accordionExample">
+<div style="width: 100%; height: 100%; margin-top: 40px;">
+<div class="accordion" id="accordionExample" >
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -723,6 +724,82 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                 </div>
             </div>
         </div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTres" aria-expanded="true" aria-controls="collapseTres">
+                        Archivos 2022
+                    </button>
+                </h2>
+                <div id="collapseTres" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="col-md-12">
+                        <form id="actualizarExpediente" name="actualizarExpediente" enctype="multipart/form-data"> 
+                            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+                            <?php
+                            
+                            obtener_estructura_directorios3("2021/");
+                            function obtener_estructura_directorios3($ruta)
+                            {
+                                if (is_dir($ruta)) {
+                                    // Abre un gestor de directorios para la ruta indicada
+                                    $gestor = opendir($ruta);
+                                    
+                                    echo "<ul>";
+
+                                    // Recorre todos los elementos del directorio
+                                    while (($archivo = readdir($gestor)) !== false) {
+
+                                        $ruta_completa = $ruta . "/" . $archivo;
+
+                                        // Se muestran todos los archivos y carpetas excepto "." y ".."
+                                        if ($archivo != "." && $archivo != "..") {
+                                            // Si es un directorio se recorre recursivamente
+                                            if (is_dir($ruta_completa)) {
+                                            
+                                                echo "<li>" . $archivo . "</li>";
+                                                obtener_estructura_directorios3($ruta_completa);
+                                                $path = $ruta_completa;
+                                                if (file_exists($path)) {
+                                                    $directorio = opendir($path);
+                                                    while ($archivos = readdir($directorio)) {
+                                                        if (!is_dir($archivos)) {
+                                                            
+                                                              //echo "<iframe src='$ruta_completa/$archivos' class='form-control' style='height: 300px;'></iframe>";
+                                                                echo "<div data='" . $path . "/" . $archivos . "' class='form-control'><a href='" . $path . "/" . $archivos . "' target='_blank' >$archivos</a></div><br>";
+                                                                
+                                                        }
+                                                    }
+                                                
+
+                                                }
+                                            }
+                                        }
+                                    }
+
+
+
+                                    // Cierra el gestor de directorios
+                                    closedir($gestor);
+                                    echo "</ul>";
+                                
+                                } else {
+                                    echo "No es una ruta de directorio valida<br/>";
+                                }
+                                
+                            }
+                            
+                            ?>
+
+                        
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
 <?php
 // require 'modals/buscarpostuladobolsa.php';
 
