@@ -555,6 +555,9 @@ $zip->close();
                 </h2>
                 <div id="collapseDisciplinarios" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
+                    <div id="cabeceras">
+                        <h1 style="font-size:18px; background-color:chocolate;">Actas administrativas</h1>
+                    </div>
                     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Documento acta</strong>
     <?php
