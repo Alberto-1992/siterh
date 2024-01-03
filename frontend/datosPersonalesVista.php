@@ -261,7 +261,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <h1 style="font-size:22px;">Datos personales</h1>
             </div>
             <div class=" col-md-3">
-        <label>Sube tu Constancia de situación fiscal</label>
+        <strong>Sube tu Constancia de situación fiscal</strong>
     <input type="file"  class="form-control" name="documentoactvidadeconomica" accept=".pdf" >
     </div>
     <div class="col-md-3">

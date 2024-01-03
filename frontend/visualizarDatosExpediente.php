@@ -426,7 +426,6 @@ $zip->close();
                     <label for="mensaje">CURP:</label>
                     <input type="text" class="form-control" name="curphijo[]" id="curphijo[]" value="<?php echo $rows['curphijo'] ?>" maxlength="18">
                 </div>
-
                 <div class="col-md-5" style="border: 1px solid #F0F0F0;">
                     <strong>Vista CURP Hijo</strong>
                     <?php
@@ -447,6 +446,28 @@ $zip->close();
                     }
                     clearstatcache();
                     ?>
+                </div>
+            <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+                            <strong>Vista acta nacimiento hijo</strong>
+                            <?php
+                            $idhijo = $rows['nombrecompletohijo'];
+                            $docacta = "acta hijo";
+                            
+                            $path = "documentoshijos/".$docacta.$idhijo.$identificador;
+                            if (file_exists($path)) {
+                                $directorio = opendir($path);
+                                while ($archivo = readdir($directorio)) {
+                                    if (!is_dir($archivo)) {
+                                        echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                                        echo "<iframe src='documentoshijos/$docacta$idhijo$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<a href='documentoshijos/$docacta$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                        
+                                    }
+                                }
+                            }
+                            clearstatcache();
+                            ?>
                 </div>
             <?php } ?>
             </div>

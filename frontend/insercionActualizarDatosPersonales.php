@@ -719,7 +719,7 @@ $sql = $conexion->prepare("SELECT municipio from t_municipio where id_municipio 
                 <input type="file" class="form-control" name="documentoactahijo[]" id="documentoactahijo" accept=".pdf">
             </div>
             <div class="col-md-6" style="border: 1px solid #F0F0F0;">
-                            <strong>Vista acta nacimineto hijo</strong>
+                            <strong>Vista acta nacimiento hijo</strong>
                             <?php
                             $idhijo = $rows['nombrecompletohijo'];
                             $docacta = "acta hijo";
