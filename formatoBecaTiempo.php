@@ -39,7 +39,7 @@ $conexion = new ConexionRh();
 
         case isset($_SESSION['usuarioDatos']):
             $usernameSesion = $_SESSION['usuarioDatos'];
-                $statement = $conexion->prepare("SELECT  plantillahraei.*, personaloperativo2023.id_empleado, personaloperativo2023.id_jefe, personaloperativo2023.descripcionestructura3, datospersonales.telefonocelular,eventocapacitacion.* FROM plantillahraei inner join personaloperativo2023 on personaloperativo2023.id_empleado = plantillahraei.Empleado inner join  datospersonales on datospersonales.id_empleado = plantillahraei.Empleado inner join eventocapacitacion on eventocapacitacion.id_empleado = plantillahraei.Empleado WHERE plantillahraei.correo= :correo");
+                $statement = $conexion->prepare("SELECT  plantillahraei.*, personaloperativo2023.id_empleado, personaloperativo2023.id_jefe, personaloperativo2023.descripcionestructura3, datospersonales.telefonocelular,eventocapacitacion.*, horariosplantilla.Turno, horariosplantilla.Jornada, horariosplantilla.Horario FROM plantillahraei left outer join personaloperativo2023 on personaloperativo2023.id_empleado = plantillahraei.Empleado left outer join  datospersonales on datospersonales.id_empleado = plantillahraei.Empleado left outer join eventocapacitacion on eventocapacitacion.id_empleado = plantillahraei.Empleado left outer join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado WHERE plantillahraei.correo= :correo");
                 $statement->execute(array(
                     ':correo' => $usernameSesion
                 ));

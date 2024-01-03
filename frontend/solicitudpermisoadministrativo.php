@@ -237,7 +237,7 @@
                         })
                     </script>
                     <?php
-                    require_once 'clases/conexion.php';
+                    require 'clases/conexion.php';
                     $conexionX = new ConexionRh();
                     if (isset($_SESSION['usuarioJefe'])) {
                         $idjefe = $rw['id_jefedeljefe'];
@@ -273,7 +273,6 @@
                         <div class="modal-dialog modal-xl">
                             <header class="modal-header">
                                 <h1>INSTRUCTIVO DE LLENADO</h1>
-                                <input type="submit" class="close-modal" value="X" onclick="window.location.href='solicitudpermisoadministrativo'">
 
                             </header>
                             <section class="modal-content">
@@ -419,7 +418,7 @@
                                     recogida
                                     en el
                                     tiempo anteriormente citado quedara cancelada.</blockquote>
-
+                                    <input type="submit" class="btn btn-warning" value="Cerrar" onclick="window.location.href='solicitudpermisoadministrativo'">
                                 </h3><br>
                             </section>
                         </div>
@@ -473,17 +472,17 @@
                                         </div>
                                         <div class="col-md-4">
                                             <strong>Turno</strong>
-                                            <input type="text" class="form-control" name="turno" required>
+                                            <input type="text" class="form-control" name="turno" value="<?php echo $rw['Turno'] ?>" required>
                                         </div>
                                         <div class="col-md-4">
                                             <strong>Dias laborales </strong>
-                                            <input type="text" class="form-control" name="Dias" id="Dias" required>
+                                            <input type="text" class="form-control" name="Dias" id="Dias" value="<?php echo $rw['Jornada'] ?>" required>
                                         </div>
                                         <div class="col-md-4">
                                             <div><label class="form-check-label">
                                                     Curso Interno
                                                 </label>
-                                                <input class="form-check-input" type="radio" name="tipoCurso" id="gridRadios1" value="Ponencia Nacional" required>
+                                                <input class="form-check-input" type="radio" name="tipoCursoIntExt" id="gridRadios1" value="Interno" required>
                                             </div>
 
 
@@ -491,7 +490,7 @@
                                             <div><label class="form-check-label">
                                                     Curso Externo
                                                 </label>
-                                                <input class="form-check-input" type="radio" name="tipoCurso" id="gridRadios1" value="Ponencia Internacional">
+                                                <input class="form-check-input" type="radio" name="tipoCursoIntExt" id="gridRadios1" value="Externo">
                                             </div>
 
 
@@ -687,7 +686,7 @@
                             <td><?php echo $dataRegistro['lugar_dondeimpar'] ?></td>
                             <td><?php echo $dataRegistro['comentariojefe'] ?></td>
                             <td><a href="<?php echo "$documento$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
-                            <td><?php if ($dataRegistro['validaautorizacion'] == 1) { ?><a href="formatoBecaTiempo">Generar pdf</a><?php } else if ($dataRegistro['validaautorizacion'] == 2) { ?>Solicitud negada <?php } ?></td>
+                            <td><?php if ($dataRegistro['validaautorizacion'] == 1 or $dataRegistro['validaautorizacion'] == 0) { ?><a href="formatoBecaTiempo">Generar pdf</a><?php } else if ($dataRegistro['validaautorizacion'] == 2) { ?>Solicitud negada <?php } ?></td>
 
 
                         </tr>
