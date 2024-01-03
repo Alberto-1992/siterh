@@ -49,8 +49,8 @@ if($_FILES["documentocurso"]['name'] == null){
     $ruta = "documentoscursos/".$nombrecurso.$id_empleado;
     
     
-       rename("$rutaAnterior", "$ruta");
-          
+    rename("$rutaAnterior", "$ruta");
+        
 }else{
         if ($_FILES["documentocurso"]["error"] > 0) {
             
@@ -61,7 +61,7 @@ if($_FILES["documentocurso"]['name'] == null){
             if (in_array($_FILES["documentocurso"]["type"], $permitidos) && $_FILES["documentocurso"]["size"]) {
         
                 $ruta = 'documentoscursos/'.$nombrecurso.$id_empleado.'/';
-                $archivo = $ruta . $_FILES["documentocurso"]["name"] = strtoupper($_POST["nombrecurso"]).'.pdf';
+                $archivo = $ruta . $_FILES["documentocurso"]["name"] = 'comprobante.pdf';
         
         
                 if (!file_exists($ruta)) {

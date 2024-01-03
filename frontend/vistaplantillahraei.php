@@ -27,7 +27,6 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
             <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: red;">Acciones</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-
                 <li><a class="dropdown-item" href="#" onclick="personales();">Validar datos personales</a></li>
                 <li><a class="dropdown-item" href="#" onclick="academicos();">Validar datos academicos</a></li>
                 <li><a class="dropdown-item" href="#" onclick="compatibilidad();">Validar compatibilidad</a></li>
@@ -36,7 +35,9 @@ $sql = $conexionRh->prepare("SELECT * from estructuras where id_empleado = :id_e
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Revisar datos</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
+            <?php if($usernameSesion == 'ceciliabau22@hotmail.com' or $usernameSesion == 'beto_1866@outlook.com' or $usernameSesion == 'felipelira0.7@hotmail.com' or $usernameSesion == 'bramirez699@gmail.com'){ ?>
             <li><a class="dropdown-item" href="#" onclick="datosExpediente();">Documentos expediente</a></li>
+            <?php } ?>
                 <li><a class="dropdown-item" href="#" onclick="infoAcademica();">Datos academicos</a></li>
                 <li><a class="dropdown-item" href="#" onclick="infoPersonal();">Datos personales</a></li>
                 <li><a class="dropdown-item" href="#" onclick="documentacion();">Documentación</a></li>

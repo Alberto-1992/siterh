@@ -54,7 +54,7 @@ $cursoNombre = strtoupper($nombrecurso);
                         }
                         
                         $dir=opendir($carpeta);
-                        $target_path = $carpeta.'/'.$archivonombre.'.pdf'; //indicamos la ruta de destino de los archivos
+                        $target_path = $carpeta.'/comprobante.pdf'; //indicamos la ruta de destino de los archivos
                         
                 
                         if(file_exists($carpeta)) {	

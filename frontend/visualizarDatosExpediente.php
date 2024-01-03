@@ -75,12 +75,8 @@
     $obj = $sql->fetch();
     $entidadnacimiento = $obj['Estado'];
     ?>
-
-    <form name="datospersonalesactualizar" id="datospersonalesactualizar" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
-
-
         <div id="cabeceras">
-            <h1 style="font-size:18px;">Expediente anterior</h1>
+            <h1 style="font-size:18px; background-color:#448499;">Expediente anterior</h1>
         </div>
         <?php
         /*
@@ -115,7 +111,7 @@ $zip->close();
 */
         ?>
         
-  
+
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -126,7 +122,11 @@ $zip->close();
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="col-md-12">
+                        <form id="actualizarExpediente" name="actualizarExpediente" enctype="multipart/form-data"> 
+                            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
                             <?php
+                            
                             obtener_estructura_directorios("expedienteanterior/" . $identificador);
                             function obtener_estructura_directorios($ruta)
                             {
@@ -159,7 +159,8 @@ $zip->close();
                                                                 
                                                         }
                                                     }
-                                                    echo "<input type='file' src='$ruta_completa/$archivos' class='form-control'>";
+                                                
+
                                                 }
                                             }
                                         }
@@ -170,19 +171,24 @@ $zip->close();
                                     // Cierra el gestor de directorios
                                     closedir($gestor);
                                     echo "</ul>";
+                                
                                 } else {
                                     echo "No es una ruta de directorio valida<br/>";
                                 }
+                                
                             }
+                            
                             ?>
 
+                        
                         </div>
+                    
                     </div>
                 </div>
             </div>
         </div>
         <div id="cabeceras">
-            <h1 style="font-size:18px;">Expediente actual</h1>
+            <h1 style="font-size:18px; background-color:#448499;">Expediente actual</h1>
         </div>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -195,7 +201,7 @@ $zip->close();
                     <div class="accordion-body">
         <div class="form-row">
         <div id="cabeceras">
-            <h1 style="font-size:18px;">Datos personales</h1>
+            <h1 style="font-size:18px; background-color:chocolate;">Datos personales</h1>
         </div>
             <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                 <strong>Constancia</strong>
@@ -412,7 +418,7 @@ $zip->close();
                 $edadhijo = $rows['edadhijo'];
             ?>
                 <div id="cabeceras">
-                    <h1 style="font-size:18px;">Datos hijos</h1>
+                    <h1 style="font-size:18px; background-color:chocolate;">Datos hijos</h1>
                 </div>
                 <div class="col-md-3">
                     <label for="mensaje">CURP:</label>
@@ -523,7 +529,7 @@ $zip->close();
 
                 
                     <div id="cabeceras">
-                        <h1 style="font-size:18px;">Datos Academicos</h1>
+                        <h1 style="font-size:18px; background-color:chocolate;">Datos Academicos</h1>
                     </div>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -1046,7 +1052,7 @@ $zip->close();
 
                     <?php  } ?>
 
-                    <div id="cabeceras" style="background-color: #448499;">
+                    <div id="cabeceras" style="background-color:chocolate;">
                         <h1 style="font-size:18px;">Diplomados</h1>
                     </div>
                     <?php
@@ -1111,7 +1117,7 @@ $zip->close();
         </div>
 </div>
 <div id="cabeceras">
-            <h1 style="font-size:18px;">Cursos</h1>
+            <h1 style="font-size:18px; background-color:chocolate;">Cursos</h1>
         </div>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -1246,12 +1252,7 @@ $zip->close();
                 </div>
             </div>
         </div>
-
-
-
-
-
-        </div>
+    </div>
 </body>
 
 </html>
