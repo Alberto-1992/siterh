@@ -900,7 +900,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                 <label for="mensaje">Edad:</label>
                 <input type="number" class="form-control" name="edadhijo[]" id="edadhijo[]" value="<?php echo $edadhijo ?>" >
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label for="mensaje">Sexo:</label>
                 <input type="text" class="form-control" name="sexohijo[]" id="sexohijo[]" value="<?php echo $rows['sexohijo'] ?>" >
             </div>
@@ -908,6 +908,10 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
             <div class="col-md-4">
                 <label for="mensaje">Sube el CURP:</label>
                 <input type="file" class="form-control" name="documentocurphijo[]" id="documentocurphijo" accept=".pdf">
+            </div>
+            <div class="col-md-4">
+                <label for="mensaje">Sube el acta de nacimiento:</label>
+                <input type="file" class="form-control" name="documentoactahijo[]" id="documentoactahijo" accept=".pdf">
             </div>
             <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Vista CURP hijo</strong>
@@ -922,7 +926,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                                     if (!is_dir($archivo)) {
                                         echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                        echo "<iframe src='documentoshijos/$idhijo$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<iframe src='documentoshijos/$idhijo$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                         echo "<a href='documentoshijos/$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         
                                     }
@@ -931,10 +935,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                             clearstatcache();
                             ?>
                 </div>
-                <div class="col-md-6">
-                <label for="mensaje">Sube el acta de nacimiento:</label>
-                <input type="file" class="form-control" name="documentoactahijo[]" id="documentoactahijo" accept=".pdf">
-            </div>
+                
             <div class="col-md-6" style="border: 1px solid #F0F0F0;">
                             <strong>Vista acta nacimineto hijo</strong>
                             <?php
@@ -948,7 +949,7 @@ $sql = $conexionRh->prepare("SELECT municipio from t_municipio where id_municipi
                                     if (!is_dir($archivo)) {
                                         echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                                        echo "<iframe src='documentoshijos/$docacta$idhijo$identificador/$archivo' class='form-control'></iframe>";
+                                        echo "<iframe src='documentoshijos/$docacta$idhijo$identificador/$archivo' class='form-control' style='height: 150px;'></iframe>";
                                         echo "<a href='documentoshijos/$docacta$idhijo$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                                         
                                     }
