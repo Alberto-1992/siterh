@@ -24,9 +24,9 @@
         </script>
 <body>
 
-    <header class="headerinfarto" style="background-color: #162765;">
+    <header class="headerinfarto" style="background-color: #15929E;">
 
-        <span id="cabecera">Permiso administrativo.</span>
+        <span id="cabecera">Permiso administrativo ponente.</span>
 
     </header>
     <?php
@@ -196,9 +196,7 @@
             <div class="container" style="background-color: white; border: none; margin-top: 2%;">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                 <header style="width: auto; height: auto; margin-top: 0px; padding: 5px; text-align: center; color: rgb(0, 0, 0); background: #9E9E9E; border-radius: 10px; color: white;">
-                    <p>Permiso administrativo
-                        Beca tiempo menor a 30 dias
-                        Asistente.</p>
+                    <p>Permiso administrativo ponente.</p>
                 </header><br>
 
                 <script>
@@ -279,7 +277,7 @@
                                 <fieldset nombre="Datos">
 
                                     <div class="row g-3 needs-validation">
-                                    <input type="hidden" class="form-control" name="tipode" id="tipode" value="Asistente">
+                                    <input type="hidden" class="form-control" name="tipode" id="tipode" value="Ponente">
                                         <div class="col-md-10">
                                             <strong>Nombre completo </strong>
                                             <input type="text" class="form-control" name="Nombres" id="Nombres" value="<?php echo $rw['Nombre'] ?>">
@@ -434,6 +432,10 @@
                                             <strong>Nombre del evento académico</strong>
                                             <input type="text" class="form-control" name="Eventoacademico" id="Eventoacademico" required>
                                         </div>
+                                        <div class="col-md-12">
+                                            <strong>Nombre del tema que presentara</strong>
+                                            <input type="text" class="form-control" name="temapresentara" id="temapresentara" required>
+                                        </div>
 
                                         <div class="col-md-12">
                                             <strong>Lugar donde se impartira. </strong>
@@ -491,7 +493,7 @@
             require_once 'clases/conexion.php';
             $conexionX = new ConexionRh();
             $identificador = $rw['Empleado'];
-            $sql = $conexionX->prepare("SELECT * from eventocapacitacion where id_empleado = $identificador and tipode = 'Asistente' order by id_evento desc");
+            $sql = $conexionX->prepare("SELECT * from eventocapacitacion where id_empleado = $identificador and tipode = 'Ponente' order by id_evento desc");
             $sql->execute();
 
             ?>

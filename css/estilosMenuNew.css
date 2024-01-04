@@ -644,6 +644,12 @@ p:hover {
   background-size: 100% 100%;
   background-position: 85% 90%;
 }
+#permisoadministrativoponente {
+  background-repeat: no-repeat;
+  background: linear-gradient(rgb(255, 255, 255) 80%, rgb(26, 156, 173));
+  background-size: 100% 100%;
+  background-position: 85% 90%;
+}
 #autorizacioncapacitacion {
   background-repeat: no-repeat;
   background: linear-gradient(rgb(255, 255, 255) 80%, rgb(53, 53, 54));

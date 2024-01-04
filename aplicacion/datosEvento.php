@@ -38,8 +38,9 @@ error_reporting(0);
             }
             
         }
-        $sql = $conexionX->prepare("INSERT INTO eventocapacitacion (Nombre_evento, modalidad_actividades, fecha_inicia, fecha_termino, horario_establecido, anotedocumentos, descripcionevento, lugar_dondeimpar,tipodecurso,asistecomo,id_empleado,tipoCursoIntExt,fechagenerosolicitud) 
-    VALUES (:Nombre_evento, :modalidad_actividades, :fecha_inicia, :fecha_termino, :horario_establecido, :anotedocumentos, :descripcionevento,:lugar_dondeimpar,:tipodecurso,:asistecomo,:id_empleado,:tipoCursoIntExt,:fechagenerosolicitud)");
+    if($temapresentara == ''){
+        $sql = $conexionX->prepare("INSERT INTO eventocapacitacion (Nombre_evento, modalidad_actividades, fecha_inicia, fecha_termino, horario_establecido, anotedocumentos, descripcionevento, lugar_dondeimpar,tipodecurso,asistecomo,id_empleado,tipoCursoIntExt,fechagenerosolicitud,tipode) 
+    VALUES (:Nombre_evento, :modalidad_actividades, :fecha_inicia, :fecha_termino, :horario_establecido, :anotedocumentos, :descripcionevento,:lugar_dondeimpar,:tipodecurso,:asistecomo,:id_empleado,:tipoCursoIntExt,:fechagenerosolicitud,:tipode)");
     $sql->execute(array(
 
             ':Nombre_evento' => $Eventoacademico,
@@ -54,7 +55,8 @@ error_reporting(0);
             ':asistecomo'=>$asistecomo, 
             ':id_empleado'=>$numeroEm,
             ':tipoCursoIntExt'=>$tipoCursoIntExt,
-            ':fechagenerosolicitud'=>$DateAndTime
+            ':fechagenerosolicitud'=>$DateAndTime,
+            ':tipode'=>$tipode
         ));
     $validatransac = $conexionX->commit();
 
@@ -77,5 +79,47 @@ error_reporting(0);
         timer: 1900
     })</script>";
 }
+    }else{
+        $sql = $conexionX->prepare("INSERT INTO eventocapacitacion (Nombre_evento, modalidad_actividades, fecha_inicia, fecha_termino, horario_establecido, anotedocumentos, descripcionevento, lugar_dondeimpar,tipodecurso,asistecomo,id_empleado,tipoCursoIntExt,fechagenerosolicitud,tipode,temapresentara) 
+    VALUES (:Nombre_evento, :modalidad_actividades, :fecha_inicia, :fecha_termino, :horario_establecido, :anotedocumentos, :descripcionevento,:lugar_dondeimpar,:tipodecurso,:asistecomo,:id_empleado,:tipoCursoIntExt,:fechagenerosolicitud,:tipode,:temapresentara)");
+    $sql->execute(array(
 
+            ':Nombre_evento' => $Eventoacademico,
+            ':modalidad_actividades' => $Modalidad,
+            ':fecha_inicia' => $Fechainicioevento,
+            ':fecha_termino' => $Fechaterminoevento,
+            ':horario_establecido' => $Horarios,
+            ':anotedocumentos' => $ruta,
+            ':descripcionevento' => $comentarioSolicitud,
+            ':lugar_dondeimpar' =>$lugarimpartira,
+            ':tipodecurso'=>$tipoCurso,
+            ':asistecomo'=>$asistecomo, 
+            ':id_empleado'=>$numeroEm,
+            ':tipoCursoIntExt'=>$tipoCursoIntExt,
+            ':fechagenerosolicitud'=>$DateAndTime,
+            ':tipode'=>$tipode,
+            ':temapresentara'=>$temapresentara
+        ));
+    $validatransac = $conexionX->commit();
+
+    if($validatransac != false){
+        echo "<script>Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Gracias por participar, tus datos han sido enviados exitosamente',
+            showConfirmButton: false,
+            timer: 1900
+        })</script>";
+    
+    }else{
+    $conexionX->rollBack();
+    echo "<script>Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Error al enviar tus datos',
+        showConfirmButton: false,
+        timer: 1900
+    })</script>";
+}
+    }
 ?>

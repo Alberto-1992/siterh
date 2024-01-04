@@ -217,6 +217,7 @@ text-align: center;
         $tipoaccion = $row['tipode_accion'];
         $nombreCurso = "#".$row['id_capacitacion'];
         $cursoLink = $row['id_capacitacion'];
+        $empleado = $row['id_empleado'];
 ?>
 <div class="tarjeta" >
       <img class="bd-placeholder-img card-img-top" width="100%" height="180" src="<?php echo $row['rutaimagen'] ?>" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false" style="width: 80%; border-radius: 20px;">

@@ -79,11 +79,11 @@
             <h1 style="font-size:18px; background-color:#448499;">Expediente anterior</h1>
         </div>
         <?php
-        /*
+/*
 $zip = new \ZipArchive();
 
 //abrimos el archivo y lo preparamos para agregarle archivos
-$zip->open("nombreArchivo.zip", \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+$zip->open("expedienteanterior/".$identificador.".zip", \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
 
 //indicamos cual es la carpeta que se quiere comprimir
 $origen = realpath("expedienteanterior/" . $identificador);
@@ -111,7 +111,6 @@ $zip->close();
 */
         ?>
         
-
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
@@ -122,7 +121,7 @@ $zip->close();
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="col-md-12">
-                        <form id="actualizarExpediente" name="actualizarExpediente" enctype="multipart/form-data"> 
+                    
                             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
                             <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
                             <?php

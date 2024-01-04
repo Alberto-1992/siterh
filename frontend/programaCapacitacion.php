@@ -97,7 +97,7 @@
                 <a href="solicitudpermisoadministrativo">
                     <hr id="hr6">
                     <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
-                    <p>Permiso administrativo menor a 30 días</p>
+                    <p>Permiso administrativo Beca tiempo menor a 30 dias Asistente.</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
@@ -141,6 +141,9 @@
                         function formatoInduccionInstitucional() {
                             window.location.href = 'evaluacionInduccionPuesto'
                         }
+                        function solicitudpermisoadministrativoponente() {
+                            window.location.href = 'solicitudpermisoadministrativoponente';
+                        }
                     </script>
                     <?php
                         if ($usernameSesion == 'claehf@hotmail.com' ){ ?>
@@ -181,7 +184,15 @@
                 <a href="solicitudpermisoadministrativo">
                     <hr id="hr6">
                     <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
-                    <p>Solicitud de permiso administrativo menor a 30 días</p>
+                    <p>Permiso administrativo Beca tiempo menor a 30 dias Asistente.</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="permisoadministrativoponente" onclick="solicitudpermisoadministrativoponente();">
+                <a href="solicitudpermisoadministrativoponente">
+                    <hr id="hr6">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Permiso administrativo Beca Ponente.</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
@@ -224,6 +235,12 @@
                         function capacitacionuseranual() {
                             window.location.href = 'capacitacionuseranual';
                         }
+                        function formatoInduccionInstitucional() {
+                            window.location.href = 'evaluacionInduccionPuesto'
+                        }
+                        function solicitudpermisoadministrativoponente() {
+                            window.location.href = 'solicitudpermisoadministrativoponente';
+                        }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
                         <a href="capacitacionuseranual">
@@ -245,11 +262,37 @@
                 <a href="solicitudpermisoadministrativo">
                     <hr id="hr6">
                     <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
-                    <p>Solicitud de permiso administrativo menor a 30 días</p>
+                    <p>Permiso administrativo Beca tiempo menor a 30 dias Asistente.</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
-        <?php
+            <article class="card" id="permisoadministrativoponente" onclick="solicitudpermisoadministrativoponente();">
+                <a href="solicitudpermisoadministrativoponente">
+                    <hr id="hr6">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Permiso administrativo Beca Ponente.</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <?php   
+                $conexion = new ConexionRh();
+                            $sql = $conexion->prepare("SELECT correo, Empleado from plantillahraei where correo = :correo");
+                                $sql->execute(array(
+                                    ':correo'=>$usernameSesion
+                                ));
+                                $row = $sql->fetch();
+                                $validaFormato = $row['Empleado'];
+                        if($validaFormato >= 2807){ 
+                            ?>
+            <article class="card" id="formatoinduccion" onclick="formatoInduccionInstitucional();">
+                <a href="evaluacionInduccionPuesto">
+                    <hr id="hr6">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Formato de inducción institucional</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <?php }
             
             }
         

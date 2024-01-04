@@ -71,6 +71,15 @@
                     </span>
                 </a>
             </li>
+            <!--<hr id="hr">
+                <li>
+                <a href="actualizarDatosPersonalesMasivo" target="_blank">
+                    <i class="fa fa-user-circle-o fa-2x" id="icon-color"></i>
+                    <span class="nav-text">
+                        Cargar masiva usuarios direcciones
+                    </span>
+                </a>
+            </li>-->
         </ul> 
         <hr id="hr">
         <ul>

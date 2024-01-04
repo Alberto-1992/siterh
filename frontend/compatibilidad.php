@@ -42,7 +42,7 @@
 
     </nav>
     <?php
-            //error_reporting(0);
+    error_reporting(0);
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
