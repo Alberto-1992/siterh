@@ -76,6 +76,9 @@
                         function formatoInduccionInstitucional() {
                             window.location.href = 'evaluacionInduccionPuesto'
                         }
+                        function solicitudpermisoadministrativoponente() {
+                            window.location.href = 'solicitudpermisoadministrativoponente';
+                        }
                     </script>
                     <article class="card" id="creaciondecursos" onclick="capacitacionuseranual();">
                         <a href="capacitacionuseranual">
@@ -98,6 +101,14 @@
                     <hr id="hr6">
                     <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
                     <p>Permiso administrativo Beca tiempo menor a 30 dias Asistente.</p>
+                    <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
+                </a>
+            </article>
+            <article class="card" id="permisoadministrativoponente" onclick="solicitudpermisoadministrativoponente();">
+                <a href="solicitudpermisoadministrativoponente">
+                    <hr id="hr6">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true" id="iconosdiv"></i>
+                    <p>Permiso administrativo Beca Ponente.</p>
                     <!--<a id="link" href="../compatibilidad/principal" class="btn btn-success">Compatibilidad</a>-->
                 </a>
             </article>
