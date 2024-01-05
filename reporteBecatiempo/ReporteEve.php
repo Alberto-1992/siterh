@@ -21,16 +21,7 @@ require_once 'clases/conexion.php';
 $pdf = new PDF("P", "mm", "LETTER");
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->Ln(10);
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->SetFillColor(255, 255, 255);
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetXY(83, 25);
-    $pdf->MultiCell(50, 3, utf8_decode("PERMISO ADMINISTRATIVO (beca tiempo menor a 30 dias)"), 0, "C");
-    $pdf->SetFont('Arial', 'B', 7);
-    $pdf->Text(20, 100, $pdf->MultiCell(55, 3, utf8_decode("MTRO. HUGO FRANCISCO ROSAS CUEVAS.
-SUBDIRECTOR DE RECURSOS HUMANOS
-PRESENTE"), 0, 1));
+
 $pdf->SetFont("Arial", "B", 8);
 $pdf->SetFillColor(221, 221, 221);
 $pdf->SetTextColor(0, 0, 0);
