@@ -142,7 +142,7 @@ $pdf->Cell(12, 4, utf8_decode("Turno:"), 0, 0, "C", 1);
 $pdf->SetFont("Arial", "I", 9);
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(20, 4, utf8_decode($rw['Turno']), 1, 0, "l", 1);
+$pdf->Cell(22, 4, utf8_decode($rw['Turno']), 1, 0, "l", 1);
 
 $pdf->SetFont("Arial", "B", 9);
 $pdf->SetFillColor(255, 255, 255);
@@ -152,7 +152,7 @@ $pdf->Cell(25, 4, utf8_decode("Días laborales:"), 0, 0, "C", 1);
 $pdf->SetFont("Arial", "I", 9);
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(60, 4, utf8_decode($rw['Jornada']), 1, 0, "l", 1);
+$pdf->Cell(58, 4, utf8_decode($rw['Jornada']), 1, 0, "l", 1);
 
 $pdf->SetFont("Arial", "B", 9);
 $pdf->SetFillColor(255, 255, 255);
@@ -269,12 +269,12 @@ $pdf->ln(5);
 $pdf->SetFont("Arial", "B", 9);
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 4, 7);
-$pdf->Cell(50, 5, utf8_decode(" Nombre del tema que presentara:"), 0, 0, "L", 1);
+$pdf->Cell(53, 5, utf8_decode(" Nombre del tema que presentara:"), 0, 0, "L", 1);
 
 $pdf->SetFont("Arial", "I", 9);
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
-$pdf->Cell(150, 4, utf8_decode($rw['temapresentara']), 1, 0, "C", 1);
+$pdf->Cell(147, 4, utf8_decode($rw['temapresentara']), 1, 0, "C", 1);
 $pdf->SetFont("Arial", "B", 9);
 
 $pdf->Ln(6);
