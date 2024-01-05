@@ -1,18 +1,17 @@
 <?php
 require 'reporteBecatiempo/plntilla.php';
-require 'clases/conexion.php';
-                            $conexionX = new ConexionRh();
+
                             if (isset($_SESSION['usuarioJefe'])) {
                                 $idjefe = $rw['id_jefedeljefe'];
 
-                                $sql = $conexionX->prepare("SELECT * from jefes2022 where id_jefe = :id_jefe");
+                                $sql = $conexion->prepare("SELECT * from jefes2022 where id_jefe = :id_jefe");
                                 $sql->execute(array(
                                     ':id_jefe' => $idjefe
                                 ));
                                 $rowj = $sql->fetch();
                             } else if (isset($_SESSION['usuarioDatos'])) {
                                 $idjefe = $rw['id_jefe'];
-                                $sql = $conexionX->prepare("SELECT * from jefes2022 where id_jefe = :id_jefe");
+                                $sql = $conexion->prepare("SELECT * from jefes2022 where id_jefe = :id_jefe");
                                 $sql->execute(array(
                                     ':id_jefe' => $idjefe
                                 ));
