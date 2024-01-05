@@ -36,7 +36,7 @@ require_once '../conexionRh.php';
             'Estatus'
     )); 
 
-    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, CASE WHEN plantillahraei.activo = 1 THEN 'Activo' ELSE 'Baja' END as estatus from plantillahraei where plantillahraei.baja = 0"); 
+    $QueryConsulta= $conexionGrafico->query("SELECT plantillahraei.*, CASE WHEN plantillahraei.activo = 1 THEN 'Activo' ELSE 'Baja' END as estatus from plantillahraei where plantillahraei.baja = 1"); 
     while($filaR=$QueryConsulta->fetch_assoc())
     fputcsv($salida, array(
                         $filaR['Empleado'],

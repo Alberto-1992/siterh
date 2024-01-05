@@ -43,29 +43,8 @@
 ?>
 <script>
 
-    function exportarExcelpostecnicos() {
-        window.location.href='exportaciones/exportarExcelpostecnicos';
-    }
-    function exportarExcelsuperior() {
-        window.location.href='exportaciones/exportarExcelsuperior';
-    }
-    function exportarExcelmaestria() {
-        window.location.href='exportaciones/exportarExcelmaestria';
-    }
-    function exportarExcelposgradoespecialidad() {
-        window.location.href='exportaciones/exportarExcelposgradoespecialidad';
-    }
-    function exportarExceldoctorado() {
-        window.location.href='exportaciones/exportarExceldoctorado';
-    }
-    function datospersonales() {
-        window.location='exportaciones/datosPersonalesUltimogradoEstudios';
-    }
-    function datosdireccion() {
-        window.location='exportaciones/datosPersonales';
-    }
-    function plantilla() {
-        window.location='exportaciones/exportarplantilla';
+    function plantillaBajas() {
+        window.location='exportaciones/exportarplantillabajas';
     }
 </script>
 <ul class="nav nav-tabs" >
@@ -75,14 +54,8 @@
         <li class="nav-item dropdown" style="margin: 0px; font-size: 10px; padding: 0px;">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Exportar</a>
             <ul class="dropdown-menu" style="margin: 0px; font-size: 10px; padding: 0px;">
-            <li><a class="dropdown-item" href="#" onclick="plantilla();">Plantilla</a></li>
-            <li><a class="dropdown-item" href="#" onclick="datosdireccion();">Datos personales</a></li>
-            <li><a class="dropdown-item" href="#" onclick="datospersonales();">Datos empleado</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelsuperior();">Datos academicos</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelmaestria();">Mas de 2 licenciaturas</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelpostecnicos();">Mas de 2 maestrias</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExceldoctorado();">Mas de 2 doctorados</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcelposgradoespecialidad();">Mas de 2 especialidades</a></li>
+            <li><a class="dropdown-item" href="#" onclick="plantillaBajas();">Plantilla Bajas</a></li>
+            
                 
             </ul>
         </li>
