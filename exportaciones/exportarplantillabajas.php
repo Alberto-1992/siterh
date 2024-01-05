@@ -56,7 +56,7 @@ require_once '../conexionRh.php';
                         mb_convert_encoding($filaR['DescripcionAdscripcion'], 'ISO-8859-1', 'UTF-8'),
                         mb_convert_encoding($filaR['estatus'], 'ISO-8859-1', 'UTF-8')
                     
-                        
+                    
                     ));
 
 //}
