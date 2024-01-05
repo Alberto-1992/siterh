@@ -515,7 +515,7 @@
                     <?php
                     while ($dataRegistro = $sql->fetch()) {
                         $valor = $dataRegistro['id_evento'];
-                        $valorCifrado = $valor;
+                        $valorCifrado = base64_encode($valor);
                         $nombrecurso = 'comprobatedocumento';
                         $fechatermino = $dataRegistro['fecha_inicia'];
                         $id_empleado = $dataRegistro['id_empleado'];
@@ -532,7 +532,7 @@
                             <td><?php echo $dataRegistro['lugar_dondeimpar'] ?></td>
                             <td><?php echo $dataRegistro['comentariojefe'] ?></td>
                             <td><a href="<?php echo "$documento$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
-                            <td><?php if ($dataRegistro['validaautorizacion'] == 1 or $dataRegistro['validaautorizacion'] == 0) { ?><a href="formatoBecaTiempo?id=<?php echo $valorCifrado ?>">Generar pdf</a><?php } else if ($dataRegistro['validaautorizacion'] == 2) { ?>Solicitud negada <?php } ?></td>
+                            <td><?php if ($dataRegistro['validaautorizacion'] == 1 or $dataRegistro['validaautorizacion'] == 0) { ?><a href="formatoBecaTiempo?id=<?php echo $valorCifrado ?>" target="_blank">Generar pdf</a><?php } else if ($dataRegistro['validaautorizacion'] == 2) { ?>Solicitud negada <?php } ?></td>
                             <?php if($ruta != ''){ ?>
                             <td><a href="<?php echo "$ruta$direccionarchivo.pdf" ?>" target="_blank">Ver documento firmado</a></td>
                             <?php }else { ?>
