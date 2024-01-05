@@ -195,10 +195,8 @@
         <div id="mensaje">
             <div class="container" style="background-color: white; border: none; margin-top: 2%;">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <header style="width: auto; height: auto; margin-top: 0px; padding: 5px; text-align: center; color: rgb(0, 0, 0); background: #9E9E9E; border-radius: 10px; color: white;">
-                    <p>Permiso administrativo
-                        Beca tiempo menor a 30 dias
-                        Asistente.</p>
+                <header style="width: auto; height: auto; margin-top: 0px; padding: 0px; text-align: center; color: rgb(0, 0, 0); background: #9E9E9E; border-radius: 10px; color: white;">
+                    <p style="font-size: 25px;">Permiso administrativo beca tiempo menor a 30 dias, Asistente.</p>
                 </header><br>
 
                 <script>
@@ -508,6 +506,8 @@
                         <th>Comentario Jefe</th>
                         <th>Ver documento</th>
                         <th>Generar PDF</th>
+                        <th>Ver formato cargado y firmado</th>
+                        <th>Sube tu formato firmado</th>
 
                     </tr>
                 </thead>
@@ -515,10 +515,13 @@
                     <?php
                     while ($dataRegistro = $sql->fetch()) {
                         $valor = $dataRegistro['id_evento'];
+                        $valorCifrado = base64_encode($valor);
                         $nombrecurso = 'comprobatedocumento';
                         $fechatermino = $dataRegistro['fecha_inicia'];
                         $id_empleado = $dataRegistro['id_empleado'];
                         $documento = $dataRegistro['anotedocumentos'];
+                        $ruta = $dataRegistro['rutadocumentofirmado'];
+                        $direccionarchivo = $valor.'_'.$id_empleado;
                     ?>
                         <tr>
                             <td><?php echo $dataRegistro['Nombre_evento'] ?></td>
@@ -529,9 +532,18 @@
                             <td><?php echo $dataRegistro['lugar_dondeimpar'] ?></td>
                             <td><?php echo $dataRegistro['comentariojefe'] ?></td>
                             <td><a href="<?php echo "$documento$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
-                            <td><?php if ($dataRegistro['validaautorizacion'] == 1 or $dataRegistro['validaautorizacion'] == 0) { ?><a href="formatoBecaTiempo">Generar pdf</a><?php } else if ($dataRegistro['validaautorizacion'] == 2) { ?>Solicitud negada <?php } ?></td>
-
-
+                            <td><?php if ($dataRegistro['validaautorizacion'] == 1 or $dataRegistro['validaautorizacion'] == 0) { ?><a href="formatoBecaTiempo?id=<?php echo $valorCifrado ?>">Generar pdf</a><?php } else if ($dataRegistro['validaautorizacion'] == 2) { ?>Solicitud negada <?php } ?></td>
+                            <?php if($ruta != ''){ ?>
+                            <td><a href="<?php echo "$ruta$direccionarchivo.pdf" ?>" target="_blank">Ver documento firmado</a></td>
+                            <?php }else { ?>
+                                <td>Sin archivo</td>
+                            <?php } ?>
+                            <td><form action="subirFormatobeca" method="POST" enctype="multipart/form-data">
+                                <div class="col-md-12">
+                                <input type="file" name="archivobeca" accept=".pdf" class="form-control"><input type="hidden" name="empleado" value="<?php echo $dataRegistro['id_empleado'] ?>"><input type="hidden" name="idevento" value="<?php echo $dataRegistro['id_evento'] ?>"><input type="submit" name="formato" value="Subir" class="btn btn-warning" style="margin-left: 20%;">
+                            </div>
+                            </form>
+                            </td>
                         </tr>
                     <?php
                     }
@@ -549,7 +561,8 @@
                         <th>Comentario Jefe</th>
                         <th>Ver documento</th>
                         <th>Generar PDF</th>
-
+                        <th>Ver formato cargado y firmado</th>
+                        <th>Sube tu formato firmado</th>
 
                     </tr>
                 </tfoot>

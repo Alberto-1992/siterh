@@ -1,6 +1,7 @@
 <?php session_start();
 require 'clases/conexion.php';
 $conexion = new ConexionRh();
+$id = base64_decode($_GET['id']);
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):
@@ -12,7 +13,7 @@ $conexion = new ConexionRh();
                     $rw = $query->fetch();
                     $valida = $rw['correoelectronico'];
                     if($valida == $usernameSesion){
-            require 'reporteBecatiempo/ReporteEve.php';
+            require 'reporteBecatiempo/reportePonente.php';
                     }else{
                         echo "<script>alert('No tienes acceso, no insistas');
                         window.history.back();</script>";
@@ -29,7 +30,7 @@ $conexion = new ConexionRh();
                 $rw = $statement->fetch();
                 $admin = $rw['correo'];
                 if ($admin == $usernameSesion) {
-        require 'reporteBecatiempo/ReporteEve.php';
+        require 'reporteBecatiempo/reportePonente.php';
     }else{
         echo "<script>alert('No tienes acceso, no insistas');
         </script>";
@@ -38,7 +39,7 @@ $conexion = new ConexionRh();
                 
 
         case isset($_SESSION['usuarioDatos']):
-            $id = base64_decode($_GET['id']);
+            
             $usernameSesion = $_SESSION['usuarioDatos'];
                 $statement = $conexion->prepare("SELECT  plantillahraei.*, personaloperativo2023.id_empleado, personaloperativo2023.id_jefe, personaloperativo2023.descripcionestructura3, datospersonales.telefonocelular,eventocapacitacion.*, horariosplantilla.Turno, horariosplantilla.Jornada, horariosplantilla.Horario FROM plantillahraei left outer join personaloperativo2023 on personaloperativo2023.id_empleado = plantillahraei.Empleado left outer join  datospersonales on datospersonales.id_empleado = plantillahraei.Empleado left outer join eventocapacitacion on eventocapacitacion.id_empleado = plantillahraei.Empleado left outer join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado WHERE plantillahraei.correo= :correo and eventocapacitacion.id_evento = $id");
                 $statement->execute(array(
@@ -47,7 +48,7 @@ $conexion = new ConexionRh();
                 $rw = $statement->fetch();
                 $admin = $rw['correo'];
                 if ($admin == $usernameSesion) {
-        require 'reporteBecatiempo/ReporteEve.php';
+        require 'reporteBecatiempo/reportePonente.php';
     }else{
         echo "<script>alert('No tienes acceso, no insistas');
         window.history.back();</script>";

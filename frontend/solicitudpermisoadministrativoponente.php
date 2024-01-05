@@ -195,8 +195,8 @@
         <div id="mensaje">
             <div class="container" style="background-color: white; border: none; margin-top: 2%;">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <header style="width: auto; height: auto; margin-top: 0px; padding: 5px; text-align: center; color: rgb(0, 0, 0); background: #9E9E9E; border-radius: 10px; color: white;">
-                    <p>Permiso administrativo ponente.</p>
+                <header style="width: auto; height: auto; margin-top: 0px; padding: 0px; text-align: center; color: rgb(0, 0, 0); background-color:burlywood; border-radius: 10px; color: white;">
+                    <p style="font-size: 25px;">Permiso administrativo ponente.</p>
                 </header><br>
 
                 <script>
@@ -258,7 +258,7 @@
                     <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content: center;">
                         
                         <div class="btn-group;col-md-3">
-                            <button type="button" class="open-modal" data-open="modal2" id="boton2">
+                            <button type="button" class="open-modal" data-open="modal2" id="boton2" style="background-color:cadetblue;">
                                 LLenado
                             </button>
                         </div>
@@ -501,7 +501,7 @@
             <table id="example" class="table table-striped table-bordered nowrap table-darkgray table-hover">
                 <thead>
                     <tr>
-                        <th>Nombre del curso</th>
+                    <th>Nombre del curso</th>
                         <th>Feha de inicio</th>
                         <th>Feha de termino</th>
                         <th>Horario</th>
@@ -510,6 +510,8 @@
                         <th>Comentario Jefe</th>
                         <th>Ver documento</th>
                         <th>Generar PDF</th>
+                        <th>Ver formato cargado y firmado</th>
+                        <th>Sube tu formato firmado</th>
 
                     </tr>
                 </thead>
@@ -517,10 +519,13 @@
                     <?php
                     while ($dataRegistro = $sql->fetch()) {
                         $valor = $dataRegistro['id_evento'];
+                        $valorCifrado = base64_encode($valor);
                         $nombrecurso = 'comprobatedocumento';
                         $fechatermino = $dataRegistro['fecha_inicia'];
                         $id_empleado = $dataRegistro['id_empleado'];
                         $documento = $dataRegistro['anotedocumentos'];
+                        $ruta = $dataRegistro['rutadocumentofirmado'];
+                        $direccionarchivo = $valor.'_'.$id_empleado;
                     ?>
                         <tr>
                             <td><?php echo $dataRegistro['Nombre_evento'] ?></td>
@@ -531,9 +536,18 @@
                             <td><?php echo $dataRegistro['lugar_dondeimpar'] ?></td>
                             <td><?php echo $dataRegistro['comentariojefe'] ?></td>
                             <td><a href="<?php echo "$documento$nombrecurso.pdf" ?>" target="_blank">Ver archivo</a></td>
-                            <td><?php if ($dataRegistro['validaautorizacion'] == 1 or $dataRegistro['validaautorizacion'] == 0) { ?><a href="formatoBecaTiempo">Generar pdf</a><?php } else if ($dataRegistro['validaautorizacion'] == 2) { ?>Solicitud negada <?php } ?></td>
-
-
+                            <td><?php if ($dataRegistro['validaautorizacion'] == 1 or $dataRegistro['validaautorizacion'] == 0) { ?><a href="formatoBecaTiempo?id=<?php echo $valorCifrado ?>">Generar pdf</a><?php } else if ($dataRegistro['validaautorizacion'] == 2) { ?>Solicitud negada <?php } ?></td>
+                            <?php if($ruta != ''){ ?>
+                            <td><a href="<?php echo "$ruta$direccionarchivo.pdf" ?>" target="_blank">Ver documento firmado</a></td>
+                            <?php }else { ?>
+                                <td>Sin archivo</td>
+                            <?php } ?>
+                            <td><form action="subirFormatobecaPonente" method="POST" enctype="multipart/form-data">
+                                <div class="col-md-12">
+                                <input type="file" name="archivobeca" accept=".pdf" class="form-control"><input type="hidden" name="empleado" value="<?php echo $dataRegistro['id_empleado'] ?>"><input type="hidden" name="idevento" value="<?php echo $dataRegistro['id_evento'] ?>"><input type="submit" name="formato" value="Subir" class="btn btn-warning" style="margin-left: 20%;">
+                            </div>
+                            </form>
+                            </td>
                         </tr>
                     <?php
                     }
@@ -542,7 +556,7 @@
 
                 <tfoot>
                     <tr>
-                        <th>Nombre del curso</th>
+                    <th>Nombre del curso</th>
                         <th>Feha de inicio</th>
                         <th>Feha de termino</th>
                         <th>Horario</th>
@@ -551,6 +565,8 @@
                         <th>Comentario Jefe</th>
                         <th>Ver documento</th>
                         <th>Generar PDF</th>
+                        <th>Ver formato cargado y firmado</th>
+                        <th>Sube tu formato firmado</th>
 
 
                     </tr>

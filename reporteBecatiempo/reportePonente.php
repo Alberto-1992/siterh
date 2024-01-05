@@ -265,6 +265,19 @@ $pdf->SetTextColor(0, 0, 0);
 $pdf->Cell(150, 4, utf8_decode($rw['Nombre_evento']), 1, 0, "C", 1);
 $pdf->SetFont("Arial", "B", 9);
 
+$pdf->ln(5);
+
+$pdf->SetFont("Arial", "B", 9);
+$pdf->SetFillColor(255, 255, 255);
+$pdf->SetTextColor(0, 4, 7);
+$pdf->Cell(50, 5, utf8_decode(" Nombre del tema que presentara:"), 0, 0, "L", 1);
+
+$pdf->SetFont("Arial", "I", 9);
+$pdf->SetFillColor(255, 255, 255);
+$pdf->SetTextColor(0, 0, 0);
+$pdf->Cell(150, 4, utf8_decode($rw['temapresentara']), 1, 0, "C", 1);
+$pdf->SetFont("Arial", "B", 9);
+
 $pdf->Ln(6);
 
 $pdf->SetFont("Arial", "B", 9);

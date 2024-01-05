@@ -9,7 +9,6 @@ setTimeout('document.cargaAdmin.reset()', 1000);
 return false;
 }
     </script>
-
         <form name="cargaAdmin" id="cargaAdmin" enctype="multipart/form-data" onsubmit="return limpiar();" autocomplete="off">
             <script>
                 $("#cargaAdmin").on("submit", function(e) {

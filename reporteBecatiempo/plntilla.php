@@ -11,27 +11,17 @@ class PDF extends FPDF
     $this->Image('reporteBecatiempo/imagen/2.png', 10, 4, 20);
     $this->SetFont('Arial', 'B', 10);
   
-    $this->Cell(60);
-    $this->SetFont('Arial', 'B', 9);
-    $this->SetFillColor(255, 255, 255);
-    $this->SetTextColor(0, 0, 0);
-    $this->SetXY(83, 25);
-    $this->MultiCell(50, 3, utf8_decode("PERMISO ADMINISTRATIVO (beca tiempo menor a 30 dias)"), 0, "C");
+    
     //Fecha Posición
     $this->Ln(3);
     $this->Cell(125);
     
-    $this->Ln(-20);
+    $this->Ln(0);
     $this->Cell(137);
     $this->SetFont('Arial', 'B', 9);
     $this->Text(20, 100, $this->MultiCell(90, 3, utf8_decode("                                      Dirección General
  Dirección de Administración y Finanzas
       Subdirección de Recursos Humanos"), 0, 1));
-    $this->Ln(10);
-    $this->SetFont('Arial', 'B', 7);
-    $this->Text(20, 100, $this->MultiCell(55, 3, utf8_decode("MTRO. HUGO FRANCISCO ROSAS CUEVAS.
-SUBDIRECTOR DE RECURSOS HUMANOS
-PRESENTE"), 0, 1));
   }
   function Footer()
   {
