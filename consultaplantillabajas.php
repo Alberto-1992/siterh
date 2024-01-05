@@ -44,7 +44,7 @@
 <script>
 
     function plantillaBajas() {
-        window.location='exportaciones/exportarplantillabajas';
+        window.location.href='exportaciones/exportarplantillabajas';
     }
 </script>
 <ul class="nav nav-tabs" >

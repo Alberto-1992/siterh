@@ -59,13 +59,13 @@
         window.location.href='exportaciones/exportarExceldoctorado';
     }
     function datospersonales() {
-        window.location='exportaciones/datosPersonalesUltimogradoEstudios';
+        window.location.href='exportaciones/datosPersonalesUltimogradoEstudios';
     }
     function datosdireccion() {
-        window.location='exportaciones/datosPersonales';
+        window.location.href='exportaciones/datosPersonales';
     }
     function plantilla() {
-        window.location='exportaciones/exportarplantilla';
+        window.location.href='exportaciones/exportarplantilla';
     }
 </script>
 <ul class="nav nav-tabs" >
