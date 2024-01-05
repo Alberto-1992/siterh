@@ -30,7 +30,7 @@ class PDF extends FPDF
     
     $this->SetFont('Arial','I',8);
     //Número de página
-    $this->Image('imagenes/imagen1.jpg' , 5 ,260, 210 , 20);
+    $this->Image('imagenes/Imagen1.jpg' , 5 ,260, 210 , 20);
    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 
   }

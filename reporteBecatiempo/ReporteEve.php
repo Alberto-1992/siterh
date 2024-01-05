@@ -1,6 +1,6 @@
 <?php
 require 'reporteBecatiempo/plntilla.php';
-require_once 'clases/conexion.php';
+require 'clases/conexion.php';
                             $conexionX = new ConexionRh();
                             if (isset($_SESSION['usuarioJefe'])) {
                                 $idjefe = $rw['id_jefedeljefe'];
