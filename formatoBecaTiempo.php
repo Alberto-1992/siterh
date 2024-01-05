@@ -40,7 +40,7 @@ $conexion = new ConexionRh();
                 
 
         case isset($_SESSION['usuarioDatos']):
-            $id = 11;
+            $id = base64_decode($_GET['id']);
             $usernameSesion = $_SESSION['usuarioDatos'];
                 $statement = $conexion->prepare("SELECT  plantillahraei.*, personaloperativo2023.id_empleado, personaloperativo2023.id_jefe, personaloperativo2023.descripcionestructura3, datospersonales.telefonocelular,eventocapacitacion.*, horariosplantilla.Turno, horariosplantilla.Jornada, horariosplantilla.Horario FROM plantillahraei left outer join personaloperativo2023 on personaloperativo2023.id_empleado = plantillahraei.Empleado left outer join  datospersonales on datospersonales.id_empleado = plantillahraei.Empleado left outer join eventocapacitacion on eventocapacitacion.id_empleado = plantillahraei.Empleado left outer join horariosplantilla on horariosplantilla.Empleado = plantillahraei.Empleado WHERE plantillahraei.correo= :correo and eventocapacitacion.id_evento = :id_evento");
                 $statement->execute(array(
