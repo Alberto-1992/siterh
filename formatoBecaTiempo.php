@@ -1,7 +1,7 @@
 <?php session_start();
 require 'clases/conexion.php';
 $conexion = new ConexionRh();
-$id = base64_decode($_GET['id']);
+$id = $_GET['id'];
     switch(true) {
 
         case isset($_SESSION['usuarioAdminRh']):

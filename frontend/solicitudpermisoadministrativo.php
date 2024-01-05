@@ -515,7 +515,7 @@
                     <?php
                     while ($dataRegistro = $sql->fetch()) {
                         $valor = $dataRegistro['id_evento'];
-                        $valorCifrado = base64_encode($valor);
+                        $valorCifrado = $valor;
                         $nombrecurso = 'comprobatedocumento';
                         $fechatermino = $dataRegistro['fecha_inicia'];
                         $id_empleado = $dataRegistro['id_empleado'];
