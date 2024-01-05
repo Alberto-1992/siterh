@@ -584,9 +584,6 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="col-md-12">
-                        <form id="actualizarExpediente" name="actualizarExpediente" enctype="multipart/form-data"> 
-                            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
                             <?php
                             
                             obtener_estructura_directorios("2023/");
@@ -659,9 +656,6 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                 <div id="collapseDos" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="col-md-12">
-                        <form id="actualizarExpediente" name="actualizarExpediente" enctype="multipart/form-data"> 
-                            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
                             <?php
                             
                             obtener_estructura_directorios2("2022/");
@@ -734,9 +728,7 @@ $nombrecurso = $dataRegistro['nombrecurso'];
                 <div id="collapseTres" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <div class="col-md-12">
-                        <form id="actualizarExpediente" name="actualizarExpediente" enctype="multipart/form-data"> 
-                            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+                            
                             <?php
                             
                             obtener_estructura_directorios3("2021/");

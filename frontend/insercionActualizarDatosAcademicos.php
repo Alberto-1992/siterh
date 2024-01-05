@@ -183,7 +183,7 @@
                     <?php
                     clearstatcache();
                     $tecnica = $rowt['nombreformaciontecnica'];
-                    $path = "documentostecnica/" . $tecnica . $identificador;
+                    $path = __DIR__ ."documentostecnica/" . $tecnica . $identificador;
                     if (file_exists($path)) {
                         $directorio = opendir($path);
                         while ($archivo = readdir($directorio)) {
@@ -191,6 +191,7 @@
                                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
                                 echo "<iframe src='documentostecnica/$tecnica$identificador/$archivo' class='form-control'></iframe>";
                                 echo "<a href='documentostecnica/$tecnica$identificador/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                                
                             }
                         }
                     }
