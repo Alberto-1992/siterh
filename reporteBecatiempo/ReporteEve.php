@@ -196,31 +196,7 @@ $pdf->SetFont("Arial", "I", 9);
 $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(0, 0, 0);
 
-if($rw['EstatusPlaza'] == 'B'){
-$pdf->Cell(15, 4, utf8_decode("    X"), 0, 0, "l", 1);   
-}
-$pdf->SetFont("Arial", "B", 9);
-$pdf->SetFillColor(255, 255, 255);
-$pdf->SetTextColor(0, 4, 7);
-$pdf->Cell(18, 4, utf8_decode("Confianza:"), 0, 0, "C", 1);
 
-$pdf->SetFont("Arial", "I", 9);
-$pdf->SetFillColor(255, 255, 255);
-$pdf->SetTextColor(0, 0, 0);
-if($rw['EstatusPlaza'] == 'CF'){
-    $pdf->Cell(15, 4, utf8_decode("    X"), 0, 0, "l", 1);   
-    }
-$pdf->SetFont("Arial", "B", 9);
-$pdf->SetFillColor(255, 255, 255);
-$pdf->SetTextColor(0, 4, 7);
-$pdf->Cell(22, 4, utf8_decode("Provisional:"), 0, 0, "C", 1);
-
-$pdf->SetFont("Arial", "I", 9);
-$pdf->SetFillColor(255, 255, 255);
-$pdf->SetTextColor(0, 0, 0);
-if($rw['EstatusPlaza'] == 'PR'){
-$pdf->Cell(15, 4, utf8_decode("    X"), 0, 0, "l", 1);
-}
 $pdf->Ln(6);
 
 $pdf->SetFont("Arial", "B", 9);
