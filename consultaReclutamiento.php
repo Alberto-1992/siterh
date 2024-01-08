@@ -87,7 +87,7 @@ $conexionRol = new Conexion();
 </div>
 <?php
 
-$sql = $conexionRol->prepare("SELECT id_datopersonal from datospersonales WHERE acceder = 0 and fechainicio between '2023-01-01' and '2023-12-31' order by id_datopersonal desc limit 1");
+$sql = $conexionRol->prepare("SELECT id_datopersonal from datospersonales WHERE acceder = 0 and fechainicio between '2024-01-01' and '2024-12-31' order by id_datopersonal desc limit 1");
         $sql->execute();
             $row = $sql->fetch();
 
